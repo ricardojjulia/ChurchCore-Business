@@ -21,6 +21,8 @@ Status Legend:
 | **COUNCIL-2026-002** | `REQ-002-01` "Powered by ChurchCore" Trust Badge | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
 | **COUNCIL-2026-002** | `REQ-002-02` WCAG AAA Color Contrast Compliance | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
 | **COUNCIL-2026-002** | `REQ-002-03` Sub-Brand Orthography & Nomenclature | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-003** | `REQ-003-01` Pre-Flight Agent Rule Installation | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
+| **COUNCIL-2026-003** | `REQ-003-02` Local Implementation Ledger Setup | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
 
 ---
 

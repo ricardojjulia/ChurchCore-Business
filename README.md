@@ -27,7 +27,8 @@ ChurchCore-Business/
 │   │   └── BRANDING-GOVERNANCE.md # Brand Architecture, White-Label & Ethical Invariants
 │   ├── council/              # Binding Ratified Council Decisions (COUNCIL-2026-XXX)
 │   │   ├── COUNCIL-2026-001.md (Inaugural Ecosystem & Commercial Ratification)
-│   │   └── COUNCIL-2026-002.md (Branding Governance & Sub-Brand Taxonomy Ratification)
+│   │   ├── COUNCIL-2026-002.md (Branding Governance & Sub-Brand Taxonomy Ratification)
+│   │   └── COUNCIL-2026-003.md (Mandatory Cross-Repo Governance Sync Protocol)
 │   ├── governance-sync/      # Cross-Repo Directive Dispatch & Compliance Engine
 │   │   ├── manifest.json     # Machine-Readable JSON Manifest of Active Directives
 │   │   └── COMPLIANCE-MATRIX.md # Ecosystem-Wide Implementation Tracking Board
@@ -89,7 +90,8 @@ ChurchCore-Business/
 │   │   ├── 01-sovereign-database-isolation-and-security-architecture.md
 │   │   ├── 02-unified-ux-shell-and-app-switcher.md
 │   │   ├── 03-customer-onboarding-and-migration-playbook.md
-│   │   └── 04-sunday-readiness-disaster-recovery-and-sla.md
+│   │   ├── 04-sunday-readiness-disaster-recovery-and-sla.md
+│   │   └── 05-cross-repo-governance-sync-and-dispatch-standard.md
 │   └── templates/            # Standardized Markdown Templates for Council, Inquiries & Dossiers
 └── .agents/rules/            # AI Governance Rules & Persona Charters
     ├── council-charter.md    # The 6-Seat Governing Council & 13 HQ Specialist Personas

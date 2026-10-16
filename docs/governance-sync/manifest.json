@@ -103,6 +103,35 @@
           "verification": "Headers, titles, and metadata tags match exact capitalization rules."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-003",
+      "title": "Mandatory Cross-Repository Council Governance Synchronization Protocol across all ChurchCore Software",
+      "ratification_date": "2026-10-16",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-003.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-003-01",
+          "title": "Mandatory Pre-Flight Agent Rule Installation",
+          "description": "Install .agents/rules/council-governance-sync.md in product repo to mandate manifest pre-flight at session start.",
+          "verification": "File exists and passes agent pre-flight checks."
+        },
+        {
+          "req_id": "REQ-003-02",
+          "title": "Local Implementation Ledger Initialization",
+          "description": "Initialize docs/council/ACKNOWLEDGMENTS.md in product repo to log verified requirement implementations.",
+          "verification": "File exists and contains acknowledgment entries with commit hashes and test surfaces."
+        }
+      ]
     }
   ]
 }
