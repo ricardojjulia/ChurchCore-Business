@@ -49,7 +49,8 @@ ChurchCore-Business/
 │   │   └── intake/           # Staging Queue for Autonomous Agent Submissions
 │   ├── strategy/             # GTM, Defensible Moats, Competitor Battlecards & TAM/SAM/SOM
 │   │   ├── 01-competitive-battlecards.md
-│   │   └── 02-architectural-and-business-moats.md
+│   │   ├── 02-architectural-and-business-moats.md
+│   │   └── 03-ecclesial-advisory-board-and-council-of-reference.md
 │   ├── pitch/                # Pitch Decks, Executive Narratives & Audience Archetypes
 │   │   ├── 01-executive-pitch-deck-narrative.md
 │   │   ├── 02-executive-memo-and-investor-brief.md
@@ -72,17 +73,25 @@ ChurchCore-Business/
 │   │   ├── 02-offering-catalog-and-packaging-matrix.md
 │   │   ├── 03-scenario-planning-and-sensitivity-models.md
 │   │   ├── 04-operational-playbooks-and-scenarios.md
-│   │   └── 05-multi-year-pnl-and-cash-flow-model.md
+│   │   ├── 05-multi-year-pnl-and-cash-flow-model.md
+│   │   └── 06-fintech-underwriting-and-fraud-risk-policy.md
 │   ├── marketing/            # Marketing Strategies, Collateral & Focused Documentation
 │   │   ├── README.md         # Marketing Command Center & Quick Links
 │   │   ├── brand-and-voice/  # Brand Guidelines, Messaging Hierarchy & Tokens
 │   │   ├── campaigns/        # PCO Conquest & AETH Hispanic Institutes Campaigns
 │   │   ├── collateral/       # 2-Page Executive Product Sheet (PDF/Print)
 │   │   └── market-research/  # Buyer Personas & Ideal Customer Profiles (ICPs)
-│   ├── operations/           # ChurchCore ID, OneRoster Interoperability & Migration Playbooks
+│   ├── operations/           # Sovereign Isolation, UX Shell, Onboarding & Sunday SLA
+│   │   ├── README.md         # Operations Command Center & Quick Links
+│   │   ├── 01-sovereign-database-isolation-and-security-architecture.md
+│   │   ├── 02-unified-ux-shell-and-app-switcher.md
+│   │   ├── 03-customer-onboarding-and-migration-playbook.md
+│   │   └── 04-sunday-readiness-disaster-recovery-and-sla.md
 │   └── templates/            # Standardized Markdown Templates for Council, Inquiries & Dossiers
 └── .agents/rules/            # AI Governance Rules & Persona Charters
-    └── council-charter.md    # The 6-Seat Governing Council & 13 HQ Specialist Personas
+    ├── council-charter.md    # The 6-Seat Governing Council & 13 HQ Specialist Personas
+    ├── branding-governance.md # AI Copywriting, Nomenclature & WCAG AAA Contrast Rules
+    └── opportunity-submission-protocol.md # Autonomous Agent BOP Submission Protocol
 ```
 
 ---
