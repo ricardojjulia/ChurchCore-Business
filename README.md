@@ -37,8 +37,14 @@ ChurchCore-Business/
 │   │   ├── 05-churchcore-orthos.md (Governance, Safeguarding & Health Audit)
 │   │   └── 06-faithfull-scholars.md (Theological Higher Ed & Academic Network)
 │   ├── business-models/      # Monetization, Packaging Tiers & Unit Economics
+│   │   ├── 01-pricing-and-packaging-architecture.md
+│   │   └── 02-unit-economics-and-fintech-monetization.md
 │   ├── strategy/             # GTM, Defensible Moats, Competitor Battlecards & TAM/SAM/SOM
+│   │   ├── 01-competitive-battlecards.md
+│   │   └── 02-architectural-and-business-moats.md
 │   ├── pitch/                # Pitch Decks, Executive Narratives & Capital Strategy
+│   │   ├── 01-executive-pitch-deck-narrative.md
+│   │   └── 02-executive-memo-and-investor-brief.md
 │   ├── operations/           # ChurchCore ID, OneRoster Interoperability & Migration Playbooks
 │   └── templates/            # Standardized Markdown Templates for Council, Inquiries & Dossiers
 └── .agents/rules/            # AI Governance Rules & Persona Charters
