@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChurchCore Governance Dispatch Manifest",
+  "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
+  "version": "1.0.0",
+  "organization": "ChurchCore",
+  "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
+  "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
+  "last_updated": "2026-10-16T18:35:00Z",
+  "registered_products": [
+    {
+      "name": "ChurchCore",
+      "repo": "ricardojjulia/ChurchCore",
+      "domain": "ChMS, Worship & Finance"
+    },
+    {
+      "name": "ChurchCore-LMS",
+      "repo": "ricardojjulia/ChurchCore-LMS",
+      "domain": "Discipleship, Training & PWA"
+    },
+    {
+      "name": "ChurchCore-Academy",
+      "repo": "ricardojjulia/ChurchCore-Academy",
+      "domain": "K-12 & Higher-Ed SIS"
+    },
+    {
+      "name": "ChurchCoreCare",
+      "repo": "ricardojjulia/ChurchCoreCare",
+      "domain": "Pastoral & Clinical Counseling EHR"
+    },
+    {
+      "name": "ChurchCore-Orthos",
+      "repo": "ricardojjulia/ChurchCore-Orthos",
+      "domain": "Governance & Safeguarding Audits"
+    },
+    {
+      "name": "FaithFullScholars",
+      "repo": "ricardojjulia/FaithFullScholars",
+      "domain": "Theological Higher-Ed & Faculty Search"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "COUNCIL-2026-001",
+      "title": "Formal Ratification of ChurchCore Ecosystem Architecture & Commercial Portfolio Strategy",
+      "ratification_date": "2026-10-16",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-001.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-001-01",
+          "title": "Constitutional Row-Level Security (RLS) Mandate",
+          "description": "Enforce 100% PostgreSQL Row-Level Security on all tenant tables with zero service-role bypass in client components.",
+          "verification": "All tables pass automated `audit:rls` or migration lint test suite."
+        },
+        {
+          "req_id": "REQ-001-02",
+          "title": "Zero Cross-Application Data Propagation",
+          "description": "No background event bus or automated synchronization daemon shall copy user records across sovereign application databases.",
+          "verification": "Database schemas and API routes operate as independent sovereign silos."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-002",
+      "title": "Ratification of ChurchCore Ecosystem Branding Governance, Sub-Brand Taxonomy & White-Label Standards",
+      "ratification_date": "2026-10-16",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-002.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-002-01",
+          "title": "Powered by ChurchCore Trust Badge",
+          "description": "Display official 'Powered by ChurchCore' trust badge in application footers linking to security documentation.",
+          "verification": "Rendered in primary layouts (e.g. `src/components/layout/footer.tsx` or equivalent)."
+        },
+        {
+          "req_id": "REQ-002-02",
+          "title": "WCAG AAA Color Contrast Compliance",
+          "description": "Audit and enforce minimum 7:1 contrast ratio across primary text, buttons, and card surfaces.",
+          "verification": "Automated axe-core / Playwright accessibility scan passes with 0 contrast violations."
+        },
+        {
+          "req_id": "REQ-002-03",
+          "title": "Sub-Brand Orthography & Nomenclature",
+          "description": "Enforce standard naming orthography (ChurchCore, ChurchCore-LMS, ChurchCore-Academy, ChurchCoreCare, ChurchCore-Orthos, FaithFullScholars).",
+          "verification": "Headers, titles, and metadata tags match exact capitalization rules."
+        }
+      ]
+    }
+  ]
+}

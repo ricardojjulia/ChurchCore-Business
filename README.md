@@ -28,6 +28,9 @@ ChurchCore-Business/
 │   ├── council/              # Binding Ratified Council Decisions (COUNCIL-2026-XXX)
 │   │   ├── COUNCIL-2026-001.md (Inaugural Ecosystem & Commercial Ratification)
 │   │   └── COUNCIL-2026-002.md (Branding Governance & Sub-Brand Taxonomy Ratification)
+│   ├── governance-sync/      # Cross-Repo Directive Dispatch & Compliance Engine
+│   │   ├── manifest.json     # Machine-Readable JSON Manifest of Active Directives
+│   │   └── COMPLIANCE-MATRIX.md # Ecosystem-Wide Implementation Tracking Board
 │   ├── deliberations/        # Chronological Executive Session Journals & Debate Transcripts
 │   │   └── SESSION-2026-10-16-FOUNDATIONAL-ARCHITECTURE.md
 │   ├── inquiries/            # Strategic Questions, Debates & Resolved Dilemmas
