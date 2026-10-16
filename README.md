@@ -22,10 +22,12 @@ Across the ecosystem, ChurchCore replaces fragmented, obsolete legacy software (
 ```
 ChurchCore-Business/
 ├── docs/
-│   ├── constitution/         # The 7 Constitutional Invariants & Non-Negotiables
-│   │   └── CONSTITUTION.md
+│   ├── constitution/         # Constitutional Invariants & Institutional Standards
+│   │   ├── CONSTITUTION.md   # The 7 Non-Negotiable Invariants
+│   │   └── BRANDING-GOVERNANCE.md # Brand Architecture, White-Label & Ethical Invariants
 │   ├── council/              # Binding Ratified Council Decisions (COUNCIL-2026-XXX)
-│   │   └── COUNCIL-2026-001.md (Inaugural Ecosystem & Commercial Ratification)
+│   │   ├── COUNCIL-2026-001.md (Inaugural Ecosystem & Commercial Ratification)
+│   │   └── COUNCIL-2026-002.md (Branding Governance & Sub-Brand Taxonomy Ratification)
 │   ├── inquiries/            # Strategic Questions, Debates & Resolved Dilemmas
 │   │   └── INQ-2026-001-unified-identity-strategy.md
 │   ├── portfolio/            # Deep-Dive Product Dossiers (Live Capabilities & Code Audits)
