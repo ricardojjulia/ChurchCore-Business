@@ -41,6 +41,10 @@ ChurchCore-Business/
 │   ├── business-models/      # Monetization, Packaging Tiers & Unit Economics
 │   │   ├── 01-pricing-and-packaging-architecture.md
 │   │   └── 02-unit-economics-and-fintech-monetization.md
+│   ├── business-opportunities/ # Innovation Engine, BOP Reports & Agent Submission Intake
+│   │   ├── README.md         # Master Priority Matrix (RICE Scores) & Opportunities Hub
+│   │   ├── reports/          # Evaluated Opportunity Proposals (Insurance, AETH, Endowments)
+│   │   └── intake/           # Staging Queue for Autonomous Agent Submissions
 │   ├── strategy/             # GTM, Defensible Moats, Competitor Battlecards & TAM/SAM/SOM
 │   │   ├── 01-competitive-battlecards.md
 │   │   └── 02-architectural-and-business-moats.md
