@@ -50,7 +50,15 @@ ChurchCore-Business/
 │   │   │   ├── 02-council-of-churches-and-denominations.md
 │   │   │   └── 03-theological-association-aeth.md
 │   │   └── templates/
-│   │       └── PITCH-DECK-TEMPLATE.md
+│   ├── competitive-analysis/ # Detailed Competitor Teardowns by Product & Full Platform
+│   │   ├── README.md         # Competitive Command Center & Comparison Quick Links
+│   │   ├── 00-platform-ecosystem-competitive-landscape.md
+│   │   ├── 01-churchcore-chms-competitors.md (PCO, Breeze, Tithe.ly, Realm)
+│   │   ├── 02-churchcore-lms-competitors.md (Canvas, Teachable, RightNow Media)
+│   │   ├── 03-churchcore-academy-competitors.md (FACTS/RenWeb, Blackbaud K-12)
+│   │   ├── 04-churchcore-care-competitors.md (SimplePractice, TherapyNotes)
+│   │   ├── 05-churchcore-orthos-competitors.md (Protect My Ministry, MinistrySafe)
+│   │   └── 06-faithfull-scholars-competitors.md (HigherEdJobs, CCCU, ETS/SBL)
 │   ├── marketing/            # Marketing Strategies, Collateral & Focused Documentation
 │   │   ├── README.md         # Marketing Command Center & Quick Links
 │   │   ├── brand-and-voice/  # Brand Guidelines, Messaging Hierarchy & Tokens
