@@ -58,7 +58,13 @@ ChurchCore-Business/
 │   │   ├── 03-churchcore-academy-competitors.md (FACTS/RenWeb, Blackbaud K-12)
 │   │   ├── 04-churchcore-care-competitors.md (SimplePractice, TherapyNotes)
 │   │   ├── 05-churchcore-orthos-competitors.md (Protect My Ministry, MinistrySafe)
-│   │   └── 06-faithfull-scholars-competitors.md (HigherEdJobs, CCCU, ETS/SBL)
+│   ├── financial-operations/ # Financial Modeling, COGS, OpEx, Offerings & Scenario Playbooks
+│   │   ├── README.md         # Financial Operations Command Center & Quick Links
+│   │   ├── 01-cost-structure-and-opex-breakdown.md
+│   │   ├── 02-offering-catalog-and-packaging-matrix.md
+│   │   ├── 03-scenario-planning-and-sensitivity-models.md
+│   │   ├── 04-operational-playbooks-and-scenarios.md
+│   │   └── 05-multi-year-pnl-and-cash-flow-model.md
 │   ├── marketing/            # Marketing Strategies, Collateral & Focused Documentation
 │   │   ├── README.md         # Marketing Command Center & Quick Links
 │   │   ├── brand-and-voice/  # Brand Guidelines, Messaging Hierarchy & Tokens
