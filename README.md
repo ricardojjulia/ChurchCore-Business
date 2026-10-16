@@ -42,9 +42,21 @@ ChurchCore-Business/
 │   ├── strategy/             # GTM, Defensible Moats, Competitor Battlecards & TAM/SAM/SOM
 │   │   ├── 01-competitive-battlecards.md
 │   │   └── 02-architectural-and-business-moats.md
-│   ├── pitch/                # Pitch Decks, Executive Narratives & Capital Strategy
+│   ├── pitch/                # Pitch Decks, Executive Narratives & Audience Archetypes
 │   │   ├── 01-executive-pitch-deck-narrative.md
-│   │   └── 02-executive-memo-and-investor-brief.md
+│   │   ├── 02-executive-memo-and-investor-brief.md
+│   │   ├── archetypes/       # Tailored Pitch Blueprints by Audience
+│   │   │   ├── 01-single-local-church.md
+│   │   │   ├── 02-council-of-churches-and-denominations.md
+│   │   │   └── 03-theological-association-aeth.md
+│   │   └── templates/
+│   │       └── PITCH-DECK-TEMPLATE.md
+│   ├── marketing/            # Marketing Strategies, Collateral & Focused Documentation
+│   │   ├── README.md         # Marketing Command Center & Quick Links
+│   │   ├── brand-and-voice/  # Brand Guidelines, Messaging Hierarchy & Tokens
+│   │   ├── campaigns/        # PCO Conquest & AETH Hispanic Institutes Campaigns
+│   │   ├── collateral/       # 2-Page Executive Product Sheet (PDF/Print)
+│   │   └── market-research/  # Buyer Personas & Ideal Customer Profiles (ICPs)
 │   ├── operations/           # ChurchCore ID, OneRoster Interoperability & Migration Playbooks
 │   └── templates/            # Standardized Markdown Templates for Council, Inquiries & Dossiers
 └── .agents/rules/            # AI Governance Rules & Persona Charters
