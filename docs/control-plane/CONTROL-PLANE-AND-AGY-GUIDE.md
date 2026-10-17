@@ -118,13 +118,13 @@ Here is the current audited status of our six sovereign platforms:
 | :--- | :---: | :---: | :--- | :--- | :---: | :---: |
 | **ChurchCore ChMS** | `v3.5.0` | 🟢 ONLINE | [churchcore.vercel.app](https://churchcore.vercel.app) | Connected (Prod) | **94%** | `PRODUCTION` (92%) |
 | **ChurchCore LMS** | `v0.47.0` | 🟢 ONLINE | [church-core-lms.vercel.app](https://church-core-lms.vercel.app) | Connected (Prod) | **95%** | `BETA` (88%) |
-| **ChurchCore Academy**| `v0.10.0` | 🟡 STAGING | Pending Credentials | Local Rehearsal | **78%** | `PILOT_READY` (82%) |
+| **ChurchCore Academy**| `v0.10.0` | ⚪ LOCAL ONLY | Owner-deferred | Local only; RLS verification blocked | **33% of Workstream C gates** | `PILOT_READY` (functional MVP built) |
 | **ChurchCore Care** | `v7.0.0` | 🟢 ONLINE | [churchcore-care.vercel.app](https://churchcore-care.vercel.app)<br>`www.churchcorecare.io` | Connected (Prod) | **95%** | `PRODUCTION` (90%) |
 | **ChurchCore Orthos** | `v0.18.0` | 🟡 PREVIEW | [churchcore-orthos.vercel.app](https://churchcore-orthos.vercel.app)| Staging Link | **85%** | `BETA` (85%) |
 | **FaithFull Scholars**| `v0.1.0` | 🟢 ONLINE | [faithfull-scholars.vercel.app](https://faithfull-scholars.vercel.app)| Connected (Prod) | **90%** | `BETA` (85%) |
 
 ### What's Blocking the Remaining Staging Apps from Reaching 100% Online?
-1. **ChurchCore Academy** (78% Readiness): Awaiting production Vercel project credentials binding and completion of the Colegio Biblos pilot migration seed rehearsal.
+1. **ChurchCore Academy** (1 of 3 local Workstream C gates): Local preparation passed. The actual participant-browser login and real uncoached session remain. Hosted deployment is owner-deferred, not a control-plane blocker or authorization.
 2. **ChurchCore Orthos** (85% Readiness): Awaiting binding of production Vercel environment variables to the Supabase cloud instance and execution of the `test:omni-council` compliance suite.
 
 ---
@@ -187,14 +187,14 @@ You don't even have to `cd` into the other folder! You can command it from right
 ```bash
 agy --add-dir "/Users/rjulia/ChurchCore LMS" \
     --mode auto \
-    -p "Read .agents/rules/churchcore-control-plane.md, run npm run test:surface, and run python3 scripts/report-telemetry.py"
+    -p "Read .agents/rules/council-governance-sync.md, run the repository-owned verification gates, and update telemetry only with verified facts"
 ```
 
 #### Recipe 3: Fix Deployment Blockers in ChurchCore Academy
 ```bash
 agy --add-dir "/Users/rjulia/ChurchCore Academy" \
     --mode auto \
-    -p "Check the readiness blockers in docs/control-plane/telemetry.json and verify the Colegio Biblos pilot migration seed rehearsal."
+    -p "Check docs/control-plane/telemetry.json and prepare the approved local participant-login and uncoached-session gate without authorizing deployment."
 ```
 
 ---

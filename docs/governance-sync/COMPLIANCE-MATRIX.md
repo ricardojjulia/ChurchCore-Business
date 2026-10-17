@@ -16,7 +16,7 @@ Status Legend:
 
 | Council Decision | Requirement ID & Title | ChurchCore | ChurchCore-LMS | ChurchCore-Academy | ChurchCoreCare | ChurchCore-Orthos | FaithFullScholars |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **COUNCIL-2026-001** | `REQ-001-01` Constitutional Row-Level Security (RLS) Mandate | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-001** | `REQ-001-01` Constitutional Row-Level Security (RLS) Mandate | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚠️ VERIFICATION BLOCKED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
 | **COUNCIL-2026-001** | `REQ-001-02` Zero Cross-Application Data Propagation | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
 | **COUNCIL-2026-002** | `REQ-002-01` Powered by ChurchCore Trust Badge | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS |
 | **COUNCIL-2026-002** | `REQ-002-02` WCAG AAA Color Contrast Compliance | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
@@ -32,7 +32,7 @@ Status Legend:
 ## 2. Requirement Details & Implementation Notes
 
 ### COUNCIL-2026-001: Ecosystem Architecture & Sovereign Invariants
-* **`REQ-001-01` (Row-Level Security):** All 517 database tables across the 6 suites enforce PostgreSQL RLS policies at the migration layer. Verified during initial codebase audit.
+* **`REQ-001-01` (Row-Level Security):** Do not infer fleet-wide verification from migration text or file presence. Academy's three repository-owned RLS commands were attempted on 2026-10-17 and could not complete because local anon/authenticated roles lacked required table privileges; Academy remains unverified until those commands pass after an Academy-scoped security review.
 * **`REQ-001-02` (Zero Data Propagation):** All 6 application databases operate as sovereign silos. No background message bus or automated sync pipelines connect them. Verified during initial architecture audit.
 
 ### COUNCIL-2026-002: Branding Governance & White-Label Standards
