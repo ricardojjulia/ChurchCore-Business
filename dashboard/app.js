@@ -14,17 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateClock, 1000);
   updateClock();
 
-  // 2. Fetch or load fleet data
+  // 2. Fetch or load fleet data with cache-busting
   async function initData() {
-    if (!fleetData) {
-      try {
-        const resp = await fetch('fleet-data.json');
-        if (resp.ok) {
-          fleetData = await resp.json();
-        }
-      } catch (e) {
-        console.warn('Could not fetch fleet-data.json, checking window object:', e);
+    try {
+      const resp = await fetch(`fleet-data.json?_t=${Date.now()}`);
+      if (resp.ok) {
+        fleetData = await resp.json();
       }
+    } catch (e) {
+      console.warn('Could not fetch fleet-data.json, falling back to static script:', e);
+    }
+
+    if (!fleetData && window.CHURCHCORE_FLEET_DATA) {
+      fleetData = window.CHURCHCORE_FLEET_DATA;
     }
 
     if (fleetData) {
@@ -43,14 +45,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 3. Render Top KPIs
+  // 3. Render Top KPIs & Dynamic Filter Badges
   function renderKPIs(data) {
-    const summary = data.summary;
-    document.getElementById('kpi-total-repos').textContent = summary.total_products;
-    document.getElementById('kpi-online-count').textContent = `${summary.online_in_production} / ${summary.total_products}`;
-    document.getElementById('kpi-avg-readiness').textContent = `${summary.average_readiness_score}%`;
-    document.getElementById('kpi-avg-completion').textContent = `${summary.average_completion_pct}%`;
-    document.getElementById('kpi-online-sub').textContent = `${Math.round((summary.online_in_production / summary.total_products) * 100)}% Fleet on Vercel Edge`;
+    const products = data.products || [];
+    const total = products.length;
+    const onlineCount = products.filter(p => p.online_status.is_online).length;
+    const stagingCount = total - onlineCount;
+    const avgReadiness = Math.round(products.reduce((acc, p) => acc + (p.online_status.readiness_assessment.readiness_score_pct || 0), 0) / Math.max(total, 1));
+    const avgCompletion = Math.round(products.reduce((acc, p) => acc + (p.mvp_status.completion_pct || 0), 0) / Math.max(total, 1));
+
+    document.getElementById('kpi-total-repos').textContent = total;
+    document.getElementById('kpi-online-count').textContent = `${onlineCount} / ${total}`;
+    document.getElementById('kpi-avg-readiness').textContent = `${avgReadiness}%`;
+    document.getElementById('kpi-avg-completion').textContent = `${avgCompletion}%`;
+    document.getElementById('kpi-online-sub').textContent = `${Math.round((onlineCount / total) * 100)}% Fleet on Vercel Edge`;
+
+    // Dynamic Filter Chips & Badges
+    const badgeEl = document.getElementById('tab-blocker-count');
+    if (badgeEl) badgeEl.textContent = `${stagingCount} In Review`;
+
+    const chipAll = document.getElementById('filter-chip-all');
+    if (chipAll) chipAll.textContent = `All (${total})`;
+
+    const chipOnline = document.getElementById('filter-chip-online');
+    if (chipOnline) chipOnline.textContent = `Online (${onlineCount})`;
+
+    const chipStaging = document.getElementById('filter-chip-staging');
+    if (chipStaging) chipStaging.textContent = `Staging Review (${stagingCount})`;
   }
 
   // 4. Render Fleet Grid

@@ -55,8 +55,8 @@
 
       <div class="kpi-card highlight-online">
         <div class="kpi-label">PRODUCTION ONLINE</div>
-        <div class="kpi-val" id="kpi-online-count">3 / 6</div>
-        <div class="kpi-sub" id="kpi-online-sub">50% Fleet on Vercel Edge</div>
+        <div class="kpi-val" id="kpi-online-count">4 / 6</div>
+        <div class="kpi-sub" id="kpi-online-sub">67% Fleet on Vercel Edge</div>
       </div>
 
       <div class="kpi-card">
@@ -93,7 +93,7 @@
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
         Readiness Action Radar
-        <span class="tab-badge" id="tab-blocker-count">3 In Review</span>
+        <span class="tab-badge" id="tab-blocker-count">2 In Review</span>
       </button>
 
       <button class="tab-btn" data-tab="tab-directives">
@@ -125,9 +125,9 @@
       <div class="filter-bar">
         <div class="filter-group">
           <span class="filter-label">Filter Fleet:</span>
-          <button class="filter-chip active" data-filter="all">All (6)</button>
-          <button class="filter-chip" data-filter="online">Online (3)</button>
-          <button class="filter-chip" data-filter="staging">Staging Review (3)</button>
+          <button class="filter-chip active" id="filter-chip-all" data-filter="all">All (6)</button>
+          <button class="filter-chip" id="filter-chip-online" data-filter="online">Online (4)</button>
+          <button class="filter-chip" id="filter-chip-staging" data-filter="staging">Staging Review (2)</button>
         </div>
         <div class="search-box">
           <input type="text" id="fleet-search" placeholder="Search by name, version, or tech...">

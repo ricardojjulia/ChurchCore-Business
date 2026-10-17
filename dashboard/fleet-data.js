@@ -1,5 +1,5 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-17T15:33:26.742604+00:00",
+  "generated_at": "2026-10-17T15:38:58.428366+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 4,
@@ -12,7 +12,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-chms",
       "repo_name": "ChurchCore",
       "version": "3.5.0",
-      "report_timestamp": "2026-10-17T15:19:19.578297+00:00",
+      "report_timestamp": "2026-10-17T15:38:50.106726+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -38,11 +38,11 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "fix: R1d frontend for Council Review 56 (finish/resend, i18n errors, recurring gifts, localized member page) (fa4a8a2)",
+        "fix: R1d Council Review 56 backend fixes (R1-R9, widened erasure) (480559b)",
         "docs: Council Review 56 (R1d) synthesis and agent reports (56c054e)",
         "feat: R1d erasure approval screens (queue, member data-rights, e2e) (a22c36e)",
-        "fix: R1d send the erasure notice only after the erasure succeeds (b38636f)",
-        "feat: R1d erasure approval flow backend (Council Review 55 A1 F5) (ca543ff)",
-        "docs: R1d erasure approval flow brief (owner-approved) (5b2d933)"
+        "fix: R1d send the erasure notice only after the erasure succeeds (b38636f)"
       ],
       "next_steps": [
         "Verify send erasure notice only after erasure succeeds in production",
@@ -51,7 +51,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 180,
-        "session_date": "2026-10-17T15:19:19.578297+00:00",
+        "session_date": "2026-10-17T15:38:50.106726+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle."
       },
@@ -78,9 +78,9 @@ window.CHURCHCORE_FLEET_DATA = {
     },
     {
       "product_id": "churchcore-lms",
-      "repo_name": "ChurchCore LMS",
+      "repo_name": "ChurchCore-LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-17T15:32:38.918970+00:00",
+      "report_timestamp": "2026-10-17T15:38:50.106726+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -106,11 +106,11 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "Merge pull request #90 from ricardojjulia/feat/sync-control-plane-and-telemetry (28eafe2)",
+        "chore(control-plane): sync telemetry reporter and agent governance rules (c987b9c)",
         "Merge pull request #89 from ricardojjulia/feat/fix-turbopack-build-and-auth-layout (83933a2)",
         "fix(build): resolve Turbopack use-server sync export error and unmount sidebar on auth pages (29a9ca9)",
-        "Merge pull request #88 from ricardojjulia/feat/neutral-preauth-and-dynamic-branding (fe412f0)",
-        "feat(branding): neutral pre-auth gateway and dynamic post-login brand switcher (e77746e)",
-        "Merge pull request #87 from ricardojjulia/feat/wire-unmounted-features-and-nav (a8b9d6b)"
+        "Merge pull request #88 from ricardojjulia/feat/neutral-preauth-and-dynamic-branding (fe412f0)"
       ],
       "next_steps": [
         "Test course completion webhook integration with local certification service",
@@ -118,10 +118,10 @@ window.CHURCHCORE_FLEET_DATA = {
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 30,
-        "session_date": "2026-10-17T15:32:38.918970+00:00",
-        "session_operator": "Ricardo Julia",
-        "summary_of_work": "Routine development & maintenance"
+        "session_duration_minutes": 120,
+        "session_date": "2026-10-17T15:38:50.106726+00:00",
+        "session_operator": "Ricardo J. Julia",
+        "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -150,7 +150,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-academy",
       "repo_name": "ChurchCore-Academy",
       "version": "0.10.0",
-      "report_timestamp": "2026-10-17T15:19:19.578297+00:00",
+      "report_timestamp": "2026-10-17T15:38:50.106726+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "pending",
@@ -193,7 +193,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 90,
-        "session_date": "2026-10-17T15:19:19.578297+00:00",
+        "session_date": "2026-10-17T15:38:50.106726+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications."
       },
@@ -222,13 +222,14 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-care",
       "repo_name": "ChurchCoreCare",
       "version": "7.0.0",
-      "report_timestamp": "2026-10-17T15:19:19.578297+00:00",
+      "report_timestamp": "2026-10-17T15:38:50.106726+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
         "vercel_url": "https://churchcore-care.vercel.app",
+        "custom_domain": "https://www.churchcorecare.io",
         "supabase_status": "connected",
-        "supabase_project_ref": "pending-cloud-target",
+        "supabase_project_ref": "prod-care-db",
         "readiness_assessment": {
           "readiness_score_pct": 95,
           "blockers": [],
@@ -236,17 +237,15 @@ window.CHURCHCORE_FLEET_DATA = {
             "Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)",
             "Run automated smoke test suite: npm run test:smoke"
           ]
-        },
-        "custom_domain": "https://www.churchcorecare.io"
+        }
       },
       "mvp_status": {
         "phase": "production",
         "completion_pct": 90,
         "latest_milestones": [
-          "Vercel production deployment verified live at churchcore-care.vercel.app & www.churchcorecare.io",
-          "PR #139: Mobile Vite lockfile resolution and dependency alignment",
-          "Counseling intake, pastoral notes, and secure consent flows verified",
-          "Automated AppSec and nightly security test suites operational"
+          "Vercel production deployment verified live at churchcore-care.vercel.app and www.churchcorecare.io",
+          "PR #139 merged: Mobile Vite lockfile resolution and dependency alignment",
+          "Counseling intake, pastoral notes, and secure consent flows verified in production"
         ]
       },
       "latest_changes": [
@@ -259,7 +258,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 60,
-        "session_date": "2026-10-17T15:19:19.578297+00:00",
+        "session_date": "2026-10-17T15:38:50.106726+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries."
       },
@@ -288,7 +287,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-orthos",
       "repo_name": "ChurchCore-Orthos",
       "version": "0.18.0",
-      "report_timestamp": "2026-10-17T15:19:19.578297+00:00",
+      "report_timestamp": "2026-10-17T15:38:50.106726+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "preview",
@@ -331,7 +330,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 75,
-        "session_date": "2026-10-17T15:19:19.578297+00:00",
+        "session_date": "2026-10-17T15:38:50.106726+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls."
       },
@@ -360,7 +359,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-17T15:19:19.578297+00:00",
+      "report_timestamp": "2026-10-17T15:38:50.106726+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -386,11 +385,11 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "docs(spec): A3a technical brief (awaiting gate 5) (e5b82f5)",
+        "docs(spec): A3 story (owner-approved, split A3a/A3b) and owner decisions (6789d71)",
         "docs: A1 honest launch surface merged and live (#87) (5edc51b)",
         "fix: A1 follow-ups \u2014 server language, translated sign-up errors, honest plan name (#86) (06f4b65)",
-        "fix(csp): allow Cloudflare Turnstile so sign-up can complete (#85) (c508488)",
-        "feat: honest launch surface (Council Review 20 slice A1) (#84) (619b94a)",
-        "feat: remove the example data (ADR 0030 migration (b)) (#83) (b9fd154)"
+        "fix(csp): allow Cloudflare Turnstile so sign-up can complete (#85) (c508488)"
       ],
       "next_steps": [
         "Complete faculty profile public monograph index",
@@ -399,7 +398,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 105,
-        "session_date": "2026-10-17T15:19:19.578297+00:00",
+        "session_date": "2026-10-17T15:38:50.106726+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel."
       },

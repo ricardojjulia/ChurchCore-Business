@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-17 15:33:26 UTC`  
+> **Last Aggregated:** `2026-10-17 15:38:58 UTC`  
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -43,10 +43,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `fix: R1d frontend for Council Review 56 (finish/resend, i18n errors, recurring gifts, localized member page) (fa4a8a2)`
+- `fix: R1d Council Review 56 backend fixes (R1-R9, widened erasure) (480559b)`
 - `docs: Council Review 56 (R1d) synthesis and agent reports (56c054e)`
 - `feat: R1d erasure approval screens (queue, member data-rights, e2e) (a22c36e)`
-- `fix: R1d send the erasure notice only after the erasure succeeds (b38636f)`
-- `feat: R1d erasure approval flow backend (Council Review 55 A1 F5) (ca543ff)`
 
 **Next Engineering Steps:**
 - 🎯 Verify send erasure notice only after erasure succeeds in production
@@ -55,7 +55,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `180 minutes`
-- **Session Timestamp:** `2026-10-17T15:19:19.578297+00:00`
+- **Session Timestamp:** `2026-10-17T15:38:50.106726+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle.
 
@@ -66,7 +66,7 @@
 
 ---
 
-### ChurchCore LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
+### ChurchCore-LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -93,10 +93,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Merge pull request #90 from ricardojjulia/feat/sync-control-plane-and-telemetry (28eafe2)`
+- `chore(control-plane): sync telemetry reporter and agent governance rules (c987b9c)`
 - `Merge pull request #89 from ricardojjulia/feat/fix-turbopack-build-and-auth-layout (83933a2)`
 - `fix(build): resolve Turbopack use-server sync export error and unmount sidebar on auth pages (29a9ca9)`
-- `Merge pull request #88 from ricardojjulia/feat/neutral-preauth-and-dynamic-branding (fe412f0)`
-- `feat(branding): neutral pre-auth gateway and dynamic post-login brand switcher (e77746e)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
@@ -104,10 +104,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-17T15:32:38.918970+00:00`
-- **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Routine development & maintenance
+- **Session Duration:** `120 minutes`
+- **Session Timestamp:** `2026-10-17T15:38:50.106726+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -159,7 +159,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `90 minutes`
-- **Session Timestamp:** `2026-10-17T15:19:19.578297+00:00`
+- **Session Timestamp:** `2026-10-17T15:38:50.106726+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications.
 
@@ -191,10 +191,9 @@
 - **Current Phase:** `PRODUCTION`
 - **Completion Percentage:** `90%`
 - **Recent Milestones Delivered:**
-  - ✅ Vercel production deployment verified live at churchcore-care.vercel.app & www.churchcorecare.io
-  - ✅ PR #139: Mobile Vite lockfile resolution and dependency alignment
-  - ✅ Counseling intake, pastoral notes, and secure consent flows verified
-  - ✅ Automated AppSec and nightly security test suites operational
+  - ✅ Vercel production deployment verified live at churchcore-care.vercel.app and www.churchcorecare.io
+  - ✅ PR #139 merged: Mobile Vite lockfile resolution and dependency alignment
+  - ✅ Counseling intake, pastoral notes, and secure consent flows verified in production
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
@@ -207,7 +206,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `60 minutes`
-- **Session Timestamp:** `2026-10-17T15:19:19.578297+00:00`
+- **Session Timestamp:** `2026-10-17T15:38:50.106726+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries.
 
@@ -260,7 +259,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `75 minutes`
-- **Session Timestamp:** `2026-10-17T15:19:19.578297+00:00`
+- **Session Timestamp:** `2026-10-17T15:38:50.106726+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
 
@@ -298,10 +297,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `docs(spec): A3a technical brief (awaiting gate 5) (e5b82f5)`
+- `docs(spec): A3 story (owner-approved, split A3a/A3b) and owner decisions (6789d71)`
 - `docs: A1 honest launch surface merged and live (#87) (5edc51b)`
 - `fix: A1 follow-ups — server language, translated sign-up errors, honest plan name (#86) (06f4b65)`
-- `fix(csp): allow Cloudflare Turnstile so sign-up can complete (#85) (c508488)`
-- `feat: honest launch surface (Council Review 20 slice A1) (#84) (619b94a)`
 
 **Next Engineering Steps:**
 - 🎯 Complete faculty profile public monograph index
@@ -310,7 +309,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `105 minutes`
-- **Session Timestamp:** `2026-10-17T15:19:19.578297+00:00`
+- **Session Timestamp:** `2026-10-17T15:38:50.106726+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
 
