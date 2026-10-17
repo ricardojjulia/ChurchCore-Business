@@ -1328,6 +1328,244 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================================================
+  // 21. Marketing & Business Presentations Hub Tab
+  // ==========================================================================
+  let selectedPresoId = 'platform';
+  let currentSlideIndex = 0;
+  let selectedAiFormat = 'claude';
+
+  function renderPresosTab(presosList) {
+    if (!presosList || presosList.length === 0) {
+      if (window.CHURCHCORE_PRESOS_DATA && window.CHURCHCORE_PRESOS_DATA.decks) {
+        presosList = window.CHURCHCORE_PRESOS_DATA.decks;
+      } else {
+        return;
+      }
+    }
+
+    const navBar = document.getElementById('presos-nav-bar');
+    const badgeEl = document.getElementById('tab-presos-badge');
+    if (badgeEl) badgeEl.textContent = `${presosList.length}`;
+
+    if (navBar) {
+      navBar.innerHTML = '';
+      presosList.forEach(deck => {
+        const btn = document.createElement('button');
+        btn.className = `preso-pill-btn ${deck.id === selectedPresoId ? 'active' : ''}`;
+        btn.setAttribute('data-preso-id', deck.id);
+        btn.innerHTML = `<span>${deck.icon}</span> <span>${escapeHtml(deck.short_name)}</span>`;
+        btn.addEventListener('click', () => {
+          selectedPresoId = deck.id;
+          currentSlideIndex = 0;
+          document.querySelectorAll('.preso-pill-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          updatePresoView(presosList);
+        });
+        navBar.appendChild(btn);
+      });
+    }
+
+    // Refresh button listener
+    document.getElementById('btn-refresh-presos')?.addEventListener('click', () => {
+      showToast('Refreshing live telemetry & presentation materials...');
+      initData();
+    });
+
+    // AI Tab buttons listener
+    document.querySelectorAll('.ai-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.ai-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedAiFormat = btn.getAttribute('data-ai');
+        updateAiPromptView(presosList);
+      });
+    });
+
+    // Copy Prompt Button
+    document.getElementById('btn-copy-ai-prompt')?.addEventListener('click', () => {
+      const codeEl = document.getElementById('ai-prompt-code');
+      if (codeEl) {
+        navigator.clipboard.writeText(codeEl.textContent).then(() => {
+          showToast(`Copied ${selectedAiFormat.toUpperCase()} prompt packet to clipboard!`);
+        });
+      }
+    });
+
+    // Slide Navigation Buttons
+    const btnPrev = document.getElementById('btn-preso-prev');
+    const btnNext = document.getElementById('btn-preso-next');
+    const btnFullscreen = document.getElementById('btn-preso-fullscreen');
+
+    btnPrev?.addEventListener('click', () => {
+      const deck = presosList.find(d => d.id === selectedPresoId) || presosList[0];
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        updateSlideCanvas(deck);
+      }
+    });
+
+    btnNext?.addEventListener('click', () => {
+      const deck = presosList.find(d => d.id === selectedPresoId) || presosList[0];
+      if (currentSlideIndex < deck.slides.length - 1) {
+        currentSlideIndex++;
+        updateSlideCanvas(deck);
+      }
+    });
+
+    btnFullscreen?.addEventListener('click', () => {
+      const card = document.querySelector('.preso-player-card');
+      if (card) {
+        if (!document.fullscreenElement) {
+          card.requestFullscreen?.().catch(err => console.warn(err));
+        } else {
+          document.exitFullscreen?.();
+        }
+      }
+    });
+
+    // Keyboard Arrow Keys support for Slides
+    window.addEventListener('keydown', (e) => {
+      const presosTab = document.getElementById('tab-presos');
+      if (presosTab && presosTab.classList.contains('active')) {
+        const deck = presosList.find(d => d.id === selectedPresoId) || presosList[0];
+        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+          if (currentSlideIndex < deck.slides.length - 1) {
+            currentSlideIndex++;
+            updateSlideCanvas(deck);
+          }
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            updateSlideCanvas(deck);
+          }
+        }
+      }
+    });
+
+    updatePresoView(presosList);
+  }
+
+  function updatePresoView(presosList) {
+    const deck = presosList.find(d => d.id === selectedPresoId) || presosList[0];
+    if (!deck) return;
+
+    // 1. Update Hero Banner
+    const heroBanner = document.getElementById('preso-hero-banner');
+    if (heroBanner) {
+      heroBanner.innerHTML = `
+        <div>
+          <div class="preso-hero-title">
+            <span>${deck.icon}</span>
+            <span>${escapeHtml(deck.name)}</span>
+            <span class="badge-gold">${escapeHtml(deck.badge)}</span>
+          </div>
+          <div class="preso-hero-tagline">${escapeHtml(deck.tagline)}</div>
+          <div class="preso-meta-chips">
+            <span class="preso-chip">🎯 <strong>Buyers:</strong> ${escapeHtml(deck.buyer_personas.slice(0, 2).join(', '))}</span>
+            <span class="preso-chip">⚡ <strong>Replaces:</strong> ${escapeHtml(deck.displacement_targets.replace(/Displaces|Replaces/gi, ''))}</span>
+            <span class="preso-chip green">🌐 <a href="${deck.live_domain}" target="_blank" style="color: inherit; text-decoration: none;"><strong>${escapeHtml(deck.live_domain.replace('https://', ''))}</strong> ↗</a></span>
+            <span class="preso-chip gold">📊 <strong>Scale:</strong> ${escapeHtml(deck.scale_metrics)}</span>
+            <span class="preso-chip">💰 <strong>Pricing:</strong> ${escapeHtml(deck.pricing_headline)}</span>
+          </div>
+        </div>
+        <div style="text-align: right; min-width: 140px;">
+          <a href="docs/marketing/presos/${deck.id}-preso.md" target="_blank" class="btn btn-secondary" style="font-size: 11px; padding: 6px 12px; gap: 6px; text-decoration: none;">
+            📄 View Dossier
+          </a>
+          <div style="font-size: 10px; color: var(--text-dim); margin-top: 8px;">
+            Synced: ${escapeHtml(deck.last_synced.split(' ')[0])}
+          </div>
+        </div>
+      `;
+    }
+
+    // 2. Update Slide View
+    updateSlideCanvas(deck);
+
+    // 3. Update AI Prompts
+    updateAiPromptView(presosList);
+
+    // 4. Update Live Milestones Card
+    const versionTag = document.getElementById('preso-version-tag');
+    if (versionTag) versionTag.textContent = deck.version || 'v1.0.0';
+    const lastSyncedLabel = document.getElementById('preso-last-synced-label');
+    if (lastSyncedLabel) lastSyncedLabel.textContent = `Last Indexed: ${deck.last_synced}`;
+
+    const bulletsContainer = document.getElementById('preso-live-bullets-container');
+    if (bulletsContainer) {
+      bulletsContainer.innerHTML = `
+        <div style="padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border: 1px solid var(--border-subtle);">
+          <strong style="color: #FFF; display: block; margin-bottom: 4px;">🛡️ Constitutional Guarantee</strong>
+          ${escapeHtml(deck.constitutional_moat)}
+        </div>
+        <div style="padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-radius: 8px; border: 1px solid var(--border-subtle);">
+          <strong style="color: #FFF; display: block; margin-bottom: 4px;">🚀 Live Production Target</strong>
+          Active deployment at <a href="${deck.live_domain}" target="_blank" style="color: var(--cyan-400);">${escapeHtml(deck.live_domain)}</a>
+        </div>
+      `;
+    }
+  }
+
+  function updateSlideCanvas(deck) {
+    const slide = deck.slides[currentSlideIndex] || deck.slides[0];
+    const counterEl = document.getElementById('preso-slide-counter');
+    const badgeEl = document.getElementById('preso-slide-badge');
+    const viewport = document.getElementById('preso-slide-viewport');
+
+    if (counterEl) counterEl.textContent = `Slide ${currentSlideIndex + 1} of ${deck.slides.length}`;
+    if (badgeEl) badgeEl.textContent = (slide.type || 'SLIDE').replace(/_/g, ' ').toUpperCase();
+
+    // Disable/Enable buttons
+    const btnPrev = document.getElementById('btn-preso-prev');
+    const btnNext = document.getElementById('btn-preso-next');
+    if (btnPrev) btnPrev.style.opacity = currentSlideIndex === 0 ? '0.4' : '1';
+    if (btnNext) btnNext.style.opacity = currentSlideIndex === deck.slides.length - 1 ? '0.4' : '1';
+
+    if (viewport) {
+      const bulletsHtml = slide.key_takeaways.map(t => `
+        <div class="slide-takeaway-item">
+          <span style="color: var(--gold-500); font-size: 16px;">✦</span>
+          <span>${escapeHtml(t)}</span>
+        </div>
+      `).join('');
+
+      viewport.innerHTML = `
+        <div class="slide-title-area">
+          <div class="slide-main-title">${escapeHtml(slide.title)}</div>
+          <div class="slide-subtitle">${escapeHtml(slide.subtitle)}</div>
+        </div>
+
+        <div class="slide-body-grid">
+          <div class="slide-takeaways-list">
+            ${bulletsHtml}
+          </div>
+          <div class="slide-media-preview">
+            <img src="${slide.visual_asset}" alt="${escapeHtml(slide.title)}" onerror="this.src='dashboard/screenshots/fleet_tab_top_view.png'">
+            <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 6px; font-size: 10px; color: var(--gold-400); font-weight: 700;">
+              VERIFIED ARTIFACT
+            </div>
+          </div>
+        </div>
+
+        <div class="preso-speaker-notes-box">
+          <div class="speaker-notes-label">🗣️ Presenter Script (Verbatim Voice Track)</div>
+          <div class="speaker-notes-text">"${escapeHtml(slide.speaker_notes)}"</div>
+        </div>
+      `;
+    }
+  }
+
+  function updateAiPromptView(presosList) {
+    const deck = presosList.find(d => d.id === selectedPresoId) || presosList[0];
+    if (!deck) return;
+
+    const codeEl = document.getElementById('ai-prompt-code');
+    if (codeEl && deck.prompts) {
+      codeEl.textContent = deck.prompts[selectedAiFormat] || deck.prompts['claude'];
+    }
+  }
+
   // Master Render
   function renderDashboard(data) {
     renderKPIs(data);
@@ -1345,6 +1583,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAIStream(data.products || []);
     setupCliGenerator();
     renderManualTab();
+    renderPresosTab(data.presos || (window.CHURCHCORE_PRESOS_DATA ? window.CHURCHCORE_PRESOS_DATA.decks : []));
   }
 
   initData();

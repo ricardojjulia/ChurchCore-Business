@@ -381,6 +381,19 @@ def main():
         "tech_stack_mesh": tech_stack_mesh
     }
 
+    # Automatically refresh Marketing & Business Presentations
+    try:
+        import subprocess
+        presos_script = os.path.join(WORKSPACE_ROOT, "scripts", "generate-marketing-presos.py")
+        if os.path.exists(presos_script):
+            subprocess.run([sys.executable, presos_script], check=True, stdout=subprocess.DEVNULL)
+            presos_json = os.path.join(WORKSPACE_ROOT, "dashboard", "presos-data.json")
+            if os.path.exists(presos_json):
+                with open(presos_json) as pjf:
+                    fleet_payload["presos"] = json.load(pjf).get("decks", [])
+    except Exception as pe:
+        print(f"[-] Warning: Failed to refresh presentation decks: {pe}")
+
     with open(json_path, "w") as f:
         json.dump(fleet_payload, f, indent=2)
 

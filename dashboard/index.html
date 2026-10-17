@@ -188,6 +188,16 @@
         </svg>
         <span class="tab-label">Manual</span>
       </button>
+
+      <button class="tab-btn highlight-gold-tab" data-tab="tab-presos" data-tooltip="Marketing & Business Presos — Dynamic Slide Decks & AI Prompt Packs" aria-label="Marketing & Business Presos">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span class="tab-label">Presos</span>
+        <span class="tab-badge" id="tab-presos-badge">7</span>
+      </button>
     </nav>
 
     <!-- TAB 1: FLEET GRID -->
@@ -945,6 +955,101 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
       </div>
     </section>
 
+    <!-- TAB 13: MARKETING & BUSINESS PRESENTATIONS (PRESOS) -->
+    <section id="tab-presos" class="tab-content">
+      <div class="section-hero">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2>Marketing & Business Presentations Hub</h2>
+            <p>Dynamic, self-refreshing pitch decks & AI prompt packets synthesized from active telemetry, verified schemas, and live releases.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="preso-chip green" id="presos-sync-badge">🟢 Living Telemetry Synced</span>
+            <button id="btn-refresh-presos" class="btn btn-secondary" style="padding: 8px 14px; font-size: 12px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Refresh Decks
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="presos-container">
+        <!-- Product & General Navigation Filter Bar -->
+        <div class="presos-nav-bar" id="presos-nav-bar">
+          <!-- Dynamically populated via JS: Platform, ChMS, LMS, Academy, Care, Orthos, Scholars -->
+        </div>
+
+        <!-- Hero Presentation Banner -->
+        <div class="preso-hero-banner" id="preso-hero-banner">
+          <!-- Dynamically rendered -->
+        </div>
+
+        <!-- Interactive Slide Deck Player Canvas -->
+        <div class="preso-player-card">
+          <div class="preso-player-header">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="preso-slide-counter" id="preso-slide-counter">Slide 1 of 6</span>
+              <span id="preso-slide-badge" class="badge-tag" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">HERO HOOK</span>
+            </div>
+            <div class="preso-controls">
+              <button class="preso-ctrl-btn" id="btn-preso-prev">◀ Prev Slide</button>
+              <button class="preso-ctrl-btn" id="btn-preso-next">Next Slide ▶</button>
+              <button class="preso-ctrl-btn highlight-gold-tab" id="btn-preso-fullscreen" title="Toggle Fullscreen Presenter Mode">⛶ Presenter</button>
+            </div>
+          </div>
+
+          <div class="preso-slide-viewport" id="preso-slide-viewport">
+            <!-- Dynamic Slide Content (Title, Bullets, Real Screenshot, Speaker Notes) -->
+          </div>
+        </div>
+
+        <!-- AI Prompt Packs Section -->
+        <div class="ai-packs-wrapper">
+          <div class="ai-packs-header">
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; display: flex; align-items: center; gap: 8px;">
+                <span>🤖 Feed to AI: One-Click LLM Presentation Packets</span>
+              </h3>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                Copy complete, highly-structured context packets ready to paste into Claude, ChatGPT, Prezi AI, or Gamma for on-the-fly slide & marketing generation.
+              </p>
+            </div>
+            <div class="ai-tab-buttons" id="ai-tab-buttons">
+              <button class="ai-tab-btn active" data-ai="claude">Claude 3.7 (Artifacts)</button>
+              <button class="ai-tab-btn" data-ai="chatgpt">ChatGPT 4o (Canvas)</button>
+              <button class="ai-tab-btn" data-ai="prezi_gamma">Prezi AI & Gamma</button>
+              <button class="ai-tab-btn" data-ai="prompt_ai">PromptAI Visuals</button>
+            </div>
+          </div>
+
+          <div class="ai-prompt-display-box" id="ai-prompt-display-box">
+            <button class="btn-copy-prompt" id="btn-copy-ai-prompt">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Prompt
+            </button>
+            <pre id="ai-prompt-code" style="margin: 0; font-family: inherit; font-size: inherit; color: inherit;"></pre>
+          </div>
+        </div>
+
+        <!-- Live Telemetry & Engineering Milestones Card -->
+        <div class="kpi-card" style="padding: 20px 24px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div style="font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: #FFF; display: flex; align-items: center; gap: 8px;">
+              <span>⚡ Live Telemetry & Verified Milestones</span>
+              <span id="preso-version-tag" class="badge-tag" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; font-size: 11px;">v1.0.0</span>
+            </div>
+            <span style="font-size: 11px; color: var(--text-muted);" id="preso-last-synced-label">Synced: Live</span>
+          </div>
+          <div id="preso-live-bullets-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; font-size: 13px; color: var(--text-muted);">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bottom-footer">
       <div>ChurchCore Sovereign Control Plane • Powered by Google Antigravity & DeepMind Advanced Agentic Systems</div>
@@ -1061,6 +1166,7 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
 
   <!-- Load Static Fallback Data First -->
   <script src="fleet-data.js?v=20261017b"></script>
+  <script src="presos-data.js?v=20261017b"></script>
   <!-- Main Application Script -->
   <script src="app.js?v=20261017b"></script>
 </body>
