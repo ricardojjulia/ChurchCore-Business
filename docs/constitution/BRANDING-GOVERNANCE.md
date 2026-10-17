@@ -65,7 +65,7 @@ Many churches, Christian school academies, and dioceses desire custom-branded mo
 
 ### I. The "Powered by ChurchCore" Covenant
 * Every white-labeled web portal, parent portal, giving checkout, and student interface **must display the official "Powered by ChurchCore" cryptographic trust badge** in the footer.
-* Minimum badge size: Height of 16px; clickable link to `https://churchcore.com/security`.
+* Minimum badge size: Height of 16px; clickable link to `https://www.churchcore.io/security`.
 * Purpose: Reassures donors, parents, and church members that their financial data and children's check-in records are protected by enterprise-grade PostgreSQL Row-Level Security.
 
 ### II. Denominational & Diocese Co-Branding Standards

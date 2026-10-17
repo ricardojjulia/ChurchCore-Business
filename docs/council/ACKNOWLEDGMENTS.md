@@ -1,7 +1,7 @@
 # ChurchCore - Council Governance & Directive Ledger
 
 > **Central Manifest:** https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json
-> **Last Enforced:** 2026-10-17 17:31:25 UTC
+> **Last Enforced:** 2026-10-17 21:44:03 UTC
 > **Enforcement Engine:** `scripts/pull-and-enforce-directives.py`
 
 ## Active Directives Implementation Ledger

@@ -36,7 +36,7 @@ Status Legend:
 * **`REQ-001-02` (Zero Data Propagation):** All 6 application databases operate as sovereign silos. No background message bus or automated sync pipelines connect them. Verified during initial architecture audit.
 
 ### COUNCIL-2026-002: Branding Governance & White-Label Standards
-* **`REQ-002-01` (Footer Trust Badge):** All client-facing footers must render the official *"Powered by ChurchCore"* trust mark linking to `https://churchcore.com/security`. Dispatched to all 6 product repos.
+* **`REQ-002-01` (Footer Trust Badge):** All client-facing footers must render the official *"Powered by ChurchCore"* trust mark linking to `https://www.churchcore.io/security`. Dispatched to all 6 product repos.
 * **`REQ-002-02` (WCAG AAA Contrast):** Automated accessibility audit (7:1 contrast ratio) required on primary navigation and dashboard buttons. Dispatched to all 6 product repos.
 * **`REQ-002-03` (Naming Orthography):** All repos have verified exact CamelCase nomenclature (`ChurchCore`, `ChurchCore-LMS`, `ChurchCore-Academy`, `ChurchCoreCare`, `ChurchCore-Orthos`, `FaithFullScholars`).
 

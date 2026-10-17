@@ -4,7 +4,7 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-17 20:23:37 UTC
+> **Last Synced from Telemetry:** 2026-10-17 21:49:25 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.1.0 Live)*
 
-- Latest Feature Delivered: docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
-- Ecosystem Hardening: A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
+- Latest Feature Delivered: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
+- Ecosystem Hardening: docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
 - Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matc
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
 Recent Engineering Delivery & Milestones:
+- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
 - docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
 - A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
 - docs: A1 honest launch surface merged and live (#87) (5edc51b)
-- fix: A1 follow-ups — server language, translated sign-up errors, honest plan name (#86) (06f4b65)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 - Live Site: https://faith-full-scholars.vercel.app
 - Pricing: $2,500–$15,000/yr per Institution
-- Latest Features: docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8), A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410), docs: A1 honest launch surface merged and live (#87) (5edc51b)
+- Latest Features: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be), docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8), A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
 - docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
 - A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
-- docs: A1 honest launch surface merged and live (#87) (5edc51b)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

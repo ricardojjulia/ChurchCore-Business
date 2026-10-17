@@ -4,7 +4,7 @@
 > **Scale:** 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0  
 > **Target Buyers:** Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter  
 > **Live URL:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-17 20:23:37 UTC
+> **Last Synced from Telemetry:** 2026-10-17 21:49:25 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.18.0 Live)*
 
-- Latest Feature Delivered: Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)
-- Ecosystem Hardening: feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)
+- Latest Feature Delivered: fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)
+- Ecosystem Hardening: Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)
 - Reliability Proof: [2026-10-15] Configured explicit CSP allowlists in vercel.json for audit PDF preview rendering.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Omni-Council Compliance Engine: Real-time checks for b
 Commercial Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
 
 Recent Engineering Delivery & Milestones:
+- fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)
 - Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)
 - feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)
 - Merge pull request #25 from ricardojjulia/feature/ministry-governance-maturity-engine (3296855)
-- feat(ministries): Departmental Ministry Governance & Maturity Engine (v0.18.0) (aa4412c)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Orthos**
 - Core Value: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity
 - Live Site: https://church-core-orthos.vercel.app
 - Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
-- Latest Features: Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7), feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa), Merge pull request #25 from ricardojjulia/feature/ministry-governance-maturity-engine (3296855)
+- Latest Features: fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a), Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7), feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)
 - Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)
 - feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)
-- Merge pull request #25 from ricardojjulia/feature/ministry-governance-maturity-engine (3296855)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

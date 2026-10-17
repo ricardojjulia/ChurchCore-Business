@@ -87,7 +87,7 @@
         {
           "req_id": "REQ-002-01",
           "title": "Powered by ChurchCore Trust Badge",
-          "description": "Display official 'Powered by ChurchCore' trust badge in application footers linking to security documentation.",
+          "description": "Display official 'Powered by ChurchCore' trust badge in application footers linking to security documentation (https://www.churchcore.io/security).",
           "verification": "Rendered in primary layouts (e.g. `src/components/layout/footer.tsx` or equivalent)."
         },
         {

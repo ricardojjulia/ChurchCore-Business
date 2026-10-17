@@ -4,7 +4,7 @@
 > **Scale:** 133 Relational Tables • 121 Application Routes • v3.5.0  
 > **Target Buyers:** Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator, Children's Ministry Director, Church Treasurer / Stewardship Committee  
 > **Live URL:** [https://www.churchcore.io](https://www.churchcore.io)  
-> **Last Synced from Telemetry:** 2026-10-17 20:23:37 UTC
+> **Last Synced from Telemetry:** 2026-10-17 21:49:25 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.1.0 Live)*
 
-- Latest Feature Delivered: docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)
-- Ecosystem Hardening: Automated Council Directives sync
+- Latest Feature Delivered: fix(marketing): resolve screenshot relative paths for live slide player and update telemetry (1119bac)
+- Ecosystem Hardening: feat(marketing): launch dynamic Marketing & Business Presos Hub with interactive decks and AI prompt packs (f17127e)
 - Reliability Proof: Automated CI/CD validation and zero-downtime database migrations.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,7 +87,10 @@ Constitutional Invariant: Financial Double-Entry Ledger with Fund Accounting Inv
 Commercial Pricing: $49–$749/mo + 1% Transparent Giving Interchange
 
 Recent Engineering Delivery & Milestones:
-- docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)
+- fix(marketing): resolve screenshot relative paths for live slide player and update telemetry (1119bac)
+- feat(marketing): launch dynamic Marketing & Business Presos Hub with interactive decks and AI prompt packs (f17127e)
+- sec(governance): sequester confidential financial models and battlecards to private ChurchCore-Vault (b96b43f)
+- fix(governance): add multi-tier manifest discovery with authenticated gh api and token fallback (5751a7a)
 </context>
 
 <instructions>
@@ -113,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore ChMS**.
 - Core Value: Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs
 - Live Site: https://www.churchcore.io
 - Pricing: $49–$749/mo + 1% Transparent Giving Interchange
-- Latest Features: docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)
+- Latest Features: fix(marketing): resolve screenshot relative paths for live slide player and update telemetry (1119bac), feat(marketing): launch dynamic Marketing & Business Presos Hub with interactive decks and AI prompt packs (f17127e), sec(governance): sequester confidential financial models and battlecards to private ChurchCore-Vault (b96b43f)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -145,7 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)
+- fix(marketing): resolve screenshot relative paths for live slide player and update telemetry (1119bac)
+- feat(marketing): launch dynamic Marketing & Business Presos Hub with interactive decks and AI prompt packs (f17127e)
+- sec(governance): sequester confidential financial models and battlecards to private ChurchCore-Vault (b96b43f)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

@@ -2,7 +2,7 @@
   "product_id": "churchcore-chms",
   "repo_name": "ChurchCore-Business",
   "version": "0.1.0",
-  "report_timestamp": "2026-10-17T17:31:25.757289+00:00",
+  "report_timestamp": "2026-10-17T21:48:37.645780+00:00",
   "online_status": {
     "is_online": false,
     "vercel_status": "pending",
@@ -24,7 +24,13 @@
       "Core schema and UI foundation completed"
     ]
   },
-  "latest_changes": "docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)",
+  "latest_changes": [
+    "fix(marketing): resolve screenshot relative paths for live slide player and update telemetry (1119bac)",
+    "feat(marketing): launch dynamic Marketing & Business Presos Hub with interactive decks and AI prompt packs (f17127e)",
+    "sec(governance): sequester confidential financial models and battlecards to private ChurchCore-Vault (b96b43f)",
+    "fix(governance): add multi-tier manifest discovery with authenticated gh api and token fallback (5751a7a)",
+    "docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)"
+  ],
   "next_steps": [
     "Execute automated test suite",
     "Verify production deployment"
@@ -32,7 +38,7 @@
   "ai_session_telemetry": {
     "last_model": "gemini-2.5-pro",
     "session_duration_minutes": 30,
-    "session_date": "2026-10-17T17:31:25.757289+00:00",
+    "session_date": "2026-10-17T21:48:37.645780+00:00",
     "session_operator": "Ricardo Julia",
     "summary_of_work": "Automated Council Directives Enforcement"
   },
@@ -49,8 +55,5 @@
     ],
     "brand_house_compliant": true,
     "sovereign_db_isolation_verified": true
-  },
-  "council_governing_state": {
-    "documented_reviews_count": 4
   }
 }
