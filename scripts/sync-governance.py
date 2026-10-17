@@ -150,6 +150,24 @@ def main():
                 else:
                     cols.append("— (N/A)")
             rows.append("| " + " | ".join(cols) + " |")
+
+    table_md = header + separator + "\n".join(rows) + "\n"
+
+    # Read existing COMPLIANCE-MATRIX.md and replace table section
+    if os.path.exists(MATRIX_PATH):
+        with open(MATRIX_PATH, "r") as f:
+            mat_text = f.read()
+        
+        # Replace section 1 table
+        sec1_pattern = r'(## 1\. Master Ecosystem Compliance Dashboard[\s\S]*?\n\n)(\| Council Decision[\s\S]*?\n\n)(---)'
+        m = re.search(sec1_pattern, mat_text)
+        if m:
+            new_text = mat_text[:m.start(2)] + table_md + "\n" + mat_text[m.start(3):]
+            with open(MATRIX_PATH, "w") as f:
+                f.write(new_text)
+            print(f"Updated {MATRIX_PATH}")
+        else:
+            print("Note: Section 1 pattern not matched, updating file directly.")
             
     print("Governance Sync complete.")
 

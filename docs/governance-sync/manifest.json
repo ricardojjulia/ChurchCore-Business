@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ChurchCore Governance Dispatch Manifest",
   "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "organization": "ChurchCore",
   "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
   "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
-  "last_updated": "2026-10-16T18:35:00Z",
+  "last_updated": "2026-10-17T15:00:00Z",
   "registered_products": [
     {
       "name": "ChurchCore",
@@ -130,6 +130,41 @@
           "title": "Local Implementation Ledger Initialization",
           "description": "Initialize docs/council/ACKNOWLEDGMENTS.md in product repo to log verified requirement implementations.",
           "verification": "File exists and contains acknowledgment entries with commit hashes and test surfaces."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-004",
+      "title": "Ecosystem Sovereign Control Plane, Automated Telemetry Protocol, and Central Directive Dispatch",
+      "ratification_date": "2026-10-17",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-004.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-004-01",
+          "title": "Edge Telemetry Reporting File & Script",
+          "description": "Maintain docs/control-plane/telemetry.json matching telemetry-schema.json and provide scripts/report-telemetry.py.",
+          "verification": "Telemetry payload validates against schema and reports online/Vercel/Supabase status, MVP progress, and AI session history."
+        },
+        {
+          "req_id": "REQ-004-02",
+          "title": "Mandatory Offline Readiness Assessment",
+          "description": "Provide a comprehensive readiness score, blocking dependencies, and next actions if not live in production.",
+          "verification": "Present in telemetry.json under online_status.readiness_assessment."
+        },
+        {
+          "req_id": "REQ-004-03",
+          "title": "AI Session Logging & Deployment Diagnostics",
+          "description": "Log LLM model used, session duration, deployment errors encountered, and exact mitigations applied.",
+          "verification": "Fields populated in ai_session_telemetry and deployment_diagnostics upon session close."
         }
       ]
     }

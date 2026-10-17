@@ -25,10 +25,17 @@ ChurchCore-Business/
 │   ├── constitution/         # Constitutional Invariants & Institutional Standards
 │   │   ├── CONSTITUTION.md   # The 7 Non-Negotiable Invariants
 │   │   └── BRANDING-GOVERNANCE.md # Brand Architecture, White-Label & Ethical Invariants
+│   ├── control-plane/        # Sovereign Control Plane, Fleet Telemetry & Central Directives
+│   │   ├── ARCHITECTURE.md   # Control Plane Blueprint & AI Permanent Connection Strategy
+│   │   ├── ECOSYSTEM-DASHBOARD.md # Master Fleet Status, Vercel/Supabase Health & AI Logs
+│   │   ├── CENTRAL-ROADMAP.md # Central Roadmap & Imposed Development Directives
+│   │   ├── TELEMETRY-SPEC.md # Edge Telemetry Reporting Standard & Invariants
+│   │   └── telemetry-schema.json # JSON Schema for Edge Node Telemetry
 │   ├── council/              # Binding Ratified Council Decisions (COUNCIL-2026-XXX)
 │   │   ├── COUNCIL-2026-001.md (Inaugural Ecosystem & Commercial Ratification)
 │   │   ├── COUNCIL-2026-002.md (Branding Governance & Sub-Brand Taxonomy Ratification)
-│   │   └── COUNCIL-2026-003.md (Mandatory Cross-Repo Governance Sync Protocol)
+│   │   ├── COUNCIL-2026-003.md (Mandatory Cross-Repo Governance Sync Protocol)
+│   │   └── COUNCIL-2026-004.md (Sovereign Control Plane & Telemetry Protocol)
 │   ├── governance-sync/      # Cross-Repo Directive Dispatch & Compliance Engine
 │   │   ├── manifest.json     # Machine-Readable JSON Manifest of Active Directives
 │   │   └── COMPLIANCE-MATRIX.md # Ecosystem-Wide Implementation Tracking Board

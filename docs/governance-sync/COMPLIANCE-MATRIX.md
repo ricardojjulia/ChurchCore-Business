@@ -14,15 +14,18 @@ Status Legend:
 - 🟡 **IN PROGRESS:** Actively being developed or tested.  
 - ⚪ **PENDING / DISPATCHED:** Active directive dispatched; awaiting product repo sprint allocation.  
 
-| Council Decision | Requirement ID & Title | ChurchCore (ChMS) | ChurchCore-LMS | ChurchCore-Academy | ChurchCoreCare | ChurchCore-Orthos | FaithFullScholars |
+| Council Decision | Requirement ID & Title | ChurchCore | ChurchCore-LMS | ChurchCore-Academy | ChurchCoreCare | ChurchCore-Orthos | FaithFullScholars |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **COUNCIL-2026-001** | `REQ-001-01` Constitutional RLS Mandate | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
-| **COUNCIL-2026-001** | `REQ-001-02` Zero Cross-App Data Propagation | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
-| **COUNCIL-2026-002** | `REQ-002-01` "Powered by ChurchCore" Trust Badge | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
+| **COUNCIL-2026-001** | `REQ-001-01` Constitutional Row-Level Security (RLS) Mandate | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-001** | `REQ-001-02` Zero Cross-Application Data Propagation | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-002** | `REQ-002-01` Powered by ChurchCore Trust Badge | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS | 🟡 IN PROGRESS |
 | **COUNCIL-2026-002** | `REQ-002-02` WCAG AAA Color Contrast Compliance | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
 | **COUNCIL-2026-002** | `REQ-002-03` Sub-Brand Orthography & Nomenclature | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
-| **COUNCIL-2026-003** | `REQ-003-01` Pre-Flight Agent Rule Installation | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
-| **COUNCIL-2026-003** | `REQ-003-02` Local Implementation Ledger Setup | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING | ⚪ PENDING |
+| **COUNCIL-2026-003** | `REQ-003-01` Mandatory Pre-Flight Agent Rule Installation | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-003** | `REQ-003-02` Local Implementation Ledger Initialization | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-004** | `REQ-004-01` Edge Telemetry Reporting File & Script | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-004** | `REQ-004-02` Mandatory Offline Readiness Assessment | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **COUNCIL-2026-004** | `REQ-004-03` AI Session Logging & Deployment Diagnostics | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
 
 ---
 
