@@ -446,6 +446,41 @@
           </tbody>
         </table>
       </div>
+
+      <!-- Autonomous Evidence Reconciliation Ledger Panel -->
+      <div style="margin-top: 36px;">
+        <div class="section-hero-split" style="margin-bottom: 16px;">
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #FFF;">
+              Autonomous Edge Challenges & Evidence Reconciliation Ledger
+            </h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+              Individual repositories autonomously challenge and correct central control plane data by presenting verified git commits, HTTP status probes, or migration evidence.
+            </p>
+          </div>
+          <button class="btn btn-secondary" id="btn-trigger-reconcile" title="Run Central Verification on All Edge Challenges">
+            ⚡ Verify & Reconcile Edge Proofs
+          </button>
+        </div>
+
+        <div class="task-table-wrapper">
+          <table class="compliance-table" id="reconciliations-table">
+            <thead>
+              <tr>
+                <th>Date (UTC)</th>
+                <th>Challenging Product</th>
+                <th>Field Disputed</th>
+                <th>Central (Prior)</th>
+                <th>Reconciled (Current)</th>
+                <th>Evidence Type & Validated Proof</th>
+              </tr>
+            </thead>
+            <tbody id="reconciliations-tbody">
+              <!-- Rendered dynamically by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
     <!-- TAB 9: AI SESSIONS -->

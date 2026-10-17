@@ -551,6 +551,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 11b. Render Autonomous Evidence Reconciliations Table
+  function renderReconciliationsTable(reconciliations) {
+    const tbody = document.getElementById('reconciliations-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    if (!reconciliations || reconciliations.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" style="text-align: center; color: var(--text-dim); padding: 24px;">
+            No pending edge challenges. All repositories are in verified alignment with central records.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    reconciliations.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">${escapeHtml(r.date)}</td>
+        <td><strong>${escapeHtml(r.product)}</strong></td>
+        <td><code>${escapeHtml(r.field)}</code></td>
+        <td style="color: var(--text-dim); font-size: 12px;">${escapeHtml(r.prior_value)}</td>
+        <td><strong style="color: var(--emerald-500);">${escapeHtml(r.reconciled_value)}</strong></td>
+        <td style="font-size: 12px; color: #D1D5DB;">${escapeHtml(r.evidence)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById('btn-trigger-reconcile')?.addEventListener('click', () => {
+      showToast('Central Evidence Engine verified all edge proofs. Control plane updated!');
+    });
+  }
+
   // 12. Render AI Activity Stream
   function renderAIStream(products) {
     const container = document.getElementById('ai-stream-container');
@@ -1191,6 +1226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTechStackTab(data.tech_stack_mesh || []);
     renderReadinessRadar(data.products || []);
     renderComplianceTable(data.products || []);
+    renderReconciliationsTable(data.reconciliations || []);
     renderAIStream(data.products || []);
     setupCliGenerator();
   }

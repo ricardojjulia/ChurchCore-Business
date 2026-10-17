@@ -294,6 +294,24 @@ def main():
         with open(councils_json_path, "r") as f:
             councils_data = json.load(f).get("councils", [])
 
+    # Load autonomous reconciliations ledger
+    ledger_path = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "EVIDENCE-RECONCILIATION-LEDGER.md")
+    reconciliations_data = []
+    if os.path.exists(ledger_path):
+        with open(ledger_path, "r") as f:
+            for line in f:
+                if line.startswith("|") and not line.startswith("| Date") and not line.startswith("| :---"):
+                    cols = [c.strip() for c in line.split("|")[1:-1]]
+                    if len(cols) >= 6:
+                        reconciliations_data.append({
+                            "date": cols[0],
+                            "product": cols[1].replace("**", ""),
+                            "field": cols[2].replace("`", ""),
+                            "prior_value": cols[3].replace("`", ""),
+                            "reconciled_value": cols[4].replace("**", "").replace("`", ""),
+                            "evidence": cols[5]
+                        })
+
     # Commercial & Financial Telemetry
     commercial_metrics = {
         "monthly_fleet_opex_usd": 240,
@@ -357,6 +375,7 @@ def main():
         "tasks": tasks_data,
         "plans": plans_data,
         "councils": councils_data,
+        "reconciliations": reconciliations_data,
         "commercial": commercial_metrics,
         "sunday_sla": sunday_sla,
         "tech_stack_mesh": tech_stack_mesh

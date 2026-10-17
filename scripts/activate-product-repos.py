@@ -461,11 +461,16 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
             f.write(ack_content)
         print(f"  [x] Initialized acknowledgment ledger: {ack_file}")
 
-    # 4. Copy scripts/report-telemetry.py & scripts/pull-and-enforce-directives.py into repo
+    # 4. Copy edge scripts (report-telemetry, pull-and-enforce, challenge-central-record)
     scripts_dir = os.path.join(valid_path, "scripts")
     os.makedirs(scripts_dir, exist_ok=True)
     
-    for sname in ["report-telemetry.py", "pull-and-enforce-directives.py"]:
+    edge_scripts = [
+        "report-telemetry.py",
+        "pull-and-enforce-directives.py",
+        "challenge-central-record.py"
+    ]
+    for sname in edge_scripts:
         src_path = os.path.join("/Users/rjulia/ChurchCore-Business/scripts", sname)
         dst_path = os.path.join(scripts_dir, sname)
         if os.path.exists(src_path):
