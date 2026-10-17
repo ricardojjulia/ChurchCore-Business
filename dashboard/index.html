@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261017b">
+  <link rel="stylesheet" href="styles.css?v=20261017c">
 </head>
 <body>
   <div class="app-container">
@@ -272,12 +272,21 @@
           <div class="delib-target-indicator" id="delib-target-text">
             Addressing: <strong id="current-delib-target">High Sovereign Grand Council (All 7 Seats)</strong>
           </div>
-          <button class="btn btn-gold" id="btn-convene-council">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-            </svg>
-            Convene & Deliberate
-          </button>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="btn btn-secondary" id="btn-view-history" style="display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>📜 Council Replies (<span id="delib-history-count">0</span>)</span>
+            </button>
+            <button class="btn btn-gold" id="btn-convene-council">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+              Convene & Deliberate
+            </button>
+          </div>
         </div>
 
         <!-- Live Deliberation Transcript / Synthesis Container -->
@@ -1161,13 +1170,36 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
     </div>
   </div>
 
+  <!-- Council Deliberation History Modal -->
+  <div id="delib-history-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 860px; max-height: 85vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 22px;">📜</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; font-weight: 700; margin: 0;">Council Deliberation & Inquiries Archives</h3>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0 0 0;">Inspect, review, and display previous council replies, directives, and transcripts.</p>
+          </div>
+        </div>
+        <button id="delib-history-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 20px;" id="delib-history-list">
+        <!-- Rendered dynamically -->
+      </div>
+      <div style="padding: 14px 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.5);">
+        <span style="font-size: 12px; color: var(--text-dim);" id="delib-history-footer-stats">Showing 0 deliberations</span>
+        <button class="btn btn-secondary" id="btn-clear-delib-history" style="font-size: 12px; padding: 6px 12px;">Clear History</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification -->
   <div id="toast" class="toast">Action completed successfully</div>
 
   <!-- Load Static Fallback Data First -->
-  <script src="fleet-data.js?v=20261017b"></script>
-  <script src="presos-data.js?v=20261017b"></script>
+  <script src="fleet-data.js?v=20261017c"></script>
+  <script src="presos-data.js?v=20261017c"></script>
   <!-- Main Application Script -->
-  <script src="app.js?v=20261017b"></script>
+  <script src="app.js?v=20261017c"></script>
 </body>
 </html>

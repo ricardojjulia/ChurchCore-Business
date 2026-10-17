@@ -2483,5 +2483,306 @@ body {
   background: #FBBF24;
 }
 
+/* ==========================================================================
+   COUNCIL EXECUTIVE DETERMINATION & ANSWER CARD
+   ========================================================================== */
+.council-answer-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.09) 0%, rgba(14, 21, 36, 0.98) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 158, 11, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.council-answer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-500), #38BDF8, #10B981);
+}
+
+.council-answer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 18px;
+}
+
+.council-answer-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.council-answer-icon {
+  font-size: 26px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 8px 10px;
+  border-radius: 10px;
+  line-height: 1;
+}
+
+.council-answer-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 800;
+  color: #FFF;
+  letter-spacing: -0.01em;
+}
+
+.council-answer-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.council-answer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-council-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: #E2E8F0;
+}
+
+.btn-council-action:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: var(--gold-500);
+  color: #FFF;
+  transform: translateY(-1px);
+}
+
+.btn-council-action.primary {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+  color: #000;
+  font-weight: 700;
+}
+
+.btn-council-action.primary:hover {
+  background: #FBBF24;
+  color: #000;
+}
+
+.council-answer-inquiry-box {
+  background: rgba(15, 23, 42, 0.7);
+  border-left: 3px solid var(--gold-500);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: #CBD5E1;
+}
+
+.council-answer-inquiry-box strong {
+  color: var(--gold-500);
+}
+
+.council-answer-body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #E2E8F0;
+}
+
+.council-answer-body h4 {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: #FBBF24;
+  margin: 16px 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.council-answer-body p {
+  margin-bottom: 12px;
+}
+
+.council-prompt-box {
+  background: #050811;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  margin: 14px 0;
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: #7DD3FC;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.council-prompt-box .btn-copy-inner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--gold-500);
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.council-prompt-box .btn-copy-inner:hover {
+  background: #FBBF24;
+}
+
+.council-cmd-pill {
+  background: #090D1A;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #34D399;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.council-guidance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.council-guidance-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.council-guidance-card strong {
+  color: #FFF;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.council-guidance-card span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.delib-roll-call-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 16px 0;
+  color: var(--text-dim);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.delib-roll-call-divider::before,
+.delib-roll-call-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Deliberation History Modal Items */
+.history-item-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.history-item-card:hover {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(14, 21, 36, 0.9);
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.history-item-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold-500);
+  font-weight: 700;
+}
+
+.history-item-time {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.history-item-query {
+  font-size: 13px;
+  color: #FFF;
+  font-weight: 600;
+  margin-bottom: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 2px solid var(--gold-500);
+}
+
+.history-item-summary {
+  font-size: 12px;
+  color: #94A3B8;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.history-item-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+
 
 

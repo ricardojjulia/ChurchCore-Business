@@ -1,5 +1,5 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-17T21:49:25.127683+00:00",
+  "generated_at": "2026-10-17T21:57:49.440241+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 4,
@@ -14,7 +14,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-chms",
       "repo_name": "ChurchCore",
       "version": "3.5.0",
-      "report_timestamp": "2026-10-17T21:49:25.011721+00:00",
+      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -54,7 +54,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 180,
-        "session_date": "2026-10-17T21:49:25.011721+00:00",
+        "session_date": "2026-10-17T21:57:49.326570+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle."
       },
@@ -83,7 +83,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-lms",
       "repo_name": "ChurchCore-LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-17T21:49:25.011721+00:00",
+      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -124,7 +124,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 120,
-        "session_date": "2026-10-17T21:49:25.011721+00:00",
+        "session_date": "2026-10-17T21:57:49.326570+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
       },
@@ -155,7 +155,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-academy",
       "repo_name": "ChurchCore-Academy",
       "version": "0.10.0",
-      "report_timestamp": "2026-10-17T21:49:25.011721+00:00",
+      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "deployed",
@@ -198,7 +198,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 90,
-        "session_date": "2026-10-17T21:49:25.011721+00:00",
+        "session_date": "2026-10-17T21:57:49.326570+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications."
       },
@@ -227,7 +227,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-care",
       "repo_name": "ChurchCoreCare",
       "version": "7.0.0",
-      "report_timestamp": "2026-10-17T21:49:25.011721+00:00",
+      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -268,7 +268,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 60,
-        "session_date": "2026-10-17T21:49:25.011721+00:00",
+        "session_date": "2026-10-17T21:57:49.326570+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries."
       },
@@ -297,7 +297,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-orthos",
       "repo_name": "ChurchCore-Orthos",
       "version": "0.18.0",
-      "report_timestamp": "2026-10-17T21:49:25.011721+00:00",
+      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "preview",
@@ -340,7 +340,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 75,
-        "session_date": "2026-10-17T21:49:25.011721+00:00",
+        "session_date": "2026-10-17T21:57:49.326570+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls."
       },
@@ -369,7 +369,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-17T21:49:25.011721+00:00",
+      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -408,7 +408,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 105,
-        "session_date": "2026-10-17T21:49:25.011721+00:00",
+        "session_date": "2026-10-17T21:57:49.326570+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel."
       },
@@ -1956,7 +1956,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-17 21:49:25 UTC",
+      "last_synced": "2026-10-17 21:57:49 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2064,7 +2064,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-17 21:49:25 UTC",
+      "last_synced": "2026-10-17 21:57:49 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2172,7 +2172,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-17 21:49:25 UTC",
+      "last_synced": "2026-10-17 21:57:49 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2280,7 +2280,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-17 21:49:25 UTC",
+      "last_synced": "2026-10-17 21:57:49 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2388,7 +2388,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.0.0",
-      "last_synced": "2026-10-17 21:49:25 UTC",
+      "last_synced": "2026-10-17 21:57:49 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2496,7 +2496,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.0",
-      "last_synced": "2026-10-17 21:49:25 UTC",
+      "last_synced": "2026-10-17 21:57:49 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2604,7 +2604,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-17 21:49:25 UTC",
+      "last_synced": "2026-10-17 21:57:49 UTC",
       "slides": [
         {
           "slide_num": 1,
