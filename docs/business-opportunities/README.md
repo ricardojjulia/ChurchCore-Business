@@ -23,15 +23,12 @@ It provides an institutional mechanism for autonomous AI agents, research specia
 ```
 docs/business-opportunities/
 ├── README.md                                          # Master Hub & Prioritization Roadmap
-├── reports/                                           # Formal Evaluated Opportunity Reports
-│   ├── OPP-2026-001-denominational-insurance-underwriting-syndicate.md
-│   ├── OPP-2026-002-theological-curriculum-courseware-marketplace.md
-│   ├── OPP-2026-003-aeth-hispanic-bible-institute-consortium.md
-│   ├── OPP-2026-004-pastoral-wellness-benevolence-network.md
-│   ├── OPP-2026-005-theological-faculty-executive-search-service.md
-│   └── OPP-2026-006-micro-endowments-and-capital-campaign-rail.md
+├── reports/                                           # Archived in ChurchCore-Vault (Private)
 └── intake/                                            # Staging Queue for Future Agent BOP Submissions
 ```
+
+> 🔒 **Notice on Confidential Opportunity Reports:**  
+> Granular business models, financial projections, underwriting syndicates, and consortium agreements for the opportunities below are archived in the private **[ChurchCore-Vault](https://github.com/ricardojjulia/ChurchCore-Vault)** repository.
 
 ---
 
@@ -41,12 +38,12 @@ $$\text{RICE Score} = \frac{\text{Reach} \times \text{Impact} \times \text{Confi
 
 | Rank | Opportunity Code & Title | Primary Pillars | RICE Score | Council Status | ARR Potential | Target Execution |
 |:---:|---|---|:---:|:---:|:---:|:---:|
-| **1** | **[BOP-2026-003: AETH Hispanic Institute Consortium](file:///Users/rjulia/ChurchCore-Business/docs/business-opportunities/reports/OPP-2026-003-aeth-hispanic-bible-institute-consortium.md)** | Academy + LMS + Orthos | **91.2** | **GREENLIT** | $165k+ ARR | **Q4 2026 / Immediate** |
-| **2** | **[BOP-2026-001: Insurance Underwriting Syndicate](file:///Users/rjulia/ChurchCore-Business/docs/business-opportunities/reports/OPP-2026-001-denominational-insurance-underwriting-syndicate.md)** | Orthos + Check-in | **86.4** | **GREENLIT** | $700k+ ARR | **Q1 2027** |
-| **3** | **[BOP-2026-006: Micro-Endowments & Capital Rails](file:///Users/rjulia/ChurchCore-Business/docs/business-opportunities/reports/OPP-2026-006-micro-endowments-and-capital-campaign-rail.md)** | ChMS GL + Stripe | **82.5** | **GREENLIT** | $250k+ ARR | **Q2 2027** |
-| **4** | **[BOP-2026-002: Courseware & Bookstore Marketplace](file:///Users/rjulia/ChurchCore-Business/docs/business-opportunities/reports/OPP-2026-002-theological-curriculum-courseware-marketplace.md)** | LMS Store + Scholars | **78.2** | **INCUBATING**| $180k+ ARR | **Q3 2027** |
-| **5** | **[BOP-2026-004: Pastoral Wellness Benevolence Network](file:///Users/rjulia/ChurchCore-Business/docs/business-opportunities/reports/OPP-2026-004-pastoral-wellness-benevolence-network.md)** | Care + Meet + ChMS | **74.0** | **INCUBATING**| $424k+ ARR | **Q3 2027** |
-| **6** | **[BOP-2026-005: Theological Faculty Search Service](file:///Users/rjulia/ChurchCore-Business/docs/business-opportunities/reports/OPP-2026-005-theological-faculty-executive-search-service.md)** | FaithFullScholars | **67.5** | **INCUBATING**| $375k+ ARR | **Q4 2027** |
+| **1** | **BOP-2026-003: AETH Hispanic Institute Consortium** | Academy + LMS + Orthos | **91.2** | **GREENLIT** | $165k+ ARR | **Q4 2026 / Immediate** |
+| **2** | **BOP-2026-001: Insurance Underwriting Syndicate** | Orthos + Check-in | **86.4** | **GREENLIT** | $700k+ ARR | **Q1 2027** |
+| **3** | **BOP-2026-006: Micro-Endowments & Capital Rails** | ChMS GL + Stripe | **82.5** | **GREENLIT** | $250k+ ARR | **Q2 2027** |
+| **4** | **BOP-2026-002: Courseware & Bookstore Marketplace** | LMS Store + Scholars | **78.2** | **INCUBATING**| $180k+ ARR | **Q3 2027** |
+| **5** | **BOP-2026-004: Pastoral Wellness Benevolence Network** | Care + Meet + ChMS | **74.0** | **INCUBATING**| $424k+ ARR | **Q3 2027** |
+| **6** | **BOP-2026-005: Theological Faculty Search Service** | FaithFullScholars | **67.5** | **INCUBATING**| $375k+ ARR | **Q4 2027** |
 
 ---
 

@@ -1,41 +1,30 @@
-# ChurchCore Financial & Business Operations Command Center
+# ChurchCore Financial Operations & Unit Economics
 
 **Classification:** Strategic Financial & Operational Engine  
 **Governing Council Reference:** [COUNCIL-2026-001](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-001.md)  
 **Status:** ACTIVE  
-**Last Updated:** 2026-10-16  
+**Archive Reference:** [ChurchCore-Vault (Private)](https://github.com/ricardojjulia/ChurchCore-Vault)
 
 ---
 
-## 📁 Financial Operations Directory Navigation
+## 🏛️ Executive Summary
 
-```
-docs/financial-operations/
-├── README.md                                          # Master Directory Hub & Quick Links
-├── 01-cost-structure-and-opex-breakdown.md            # COGS, Server Compute, SMS/Email/AI APIs, Margins
-├── 02-offering-catalog-and-packaging-matrix.md         # What to Give Away vs. What to Charge, SKU Directory
-├── 03-scenario-planning-and-sensitivity-models.md     # Base, Bull, Recession Hedge, Denominational Sweep
-├── 04-operational-playbooks-and-scenarios.md          # Grace Periods, Peak Traffic Surges, Offboarding
-└── 05-multi-year-pnl-and-cash-flow-model.md           # 5-Year Pro-Forma P&L, Break-Even & Cash Flow
-```
+The ChurchCore financial architecture is built on kingdom stewardship, margin discipline, and sustainable recurring revenues without venture debt trap economics:
 
----
+1. **Contribution-Margin Positive:** Every church and school instance is unit-contribution positive from day one.
+2. **Gross Margins:** Blended 80%+ software gross margins across all 6 sovereign platforms.
+3. **Anti-Fragile Positioning:** When economic headwinds press church budgets, congregations consolidate fragmented point solutions (Planning Center, Pushpay, Teachable, FACTS) into the integrated ChurchCore suite to lower overall OpEx.
 
-## 🎯 Quick Links to Key Operational Finance Documents
-
-| Document | Core Focus & Decisions | Strategic Impact |
-|---|---|---|
-| **[Cost Structure & OpEx Breakdown](file:///Users/rjulia/ChurchCore-Business/docs/financial-operations/01-cost-structure-and-opex-breakdown.md)** | Infrastructure costs per metric, compute, APIs, and team OpEx | Establishes our **83%+ blended gross margin** and unit cost to serve |
-| **[Offering Catalog & Packaging](file:///Users/rjulia/ChurchCore-Business/docs/financial-operations/02-offering-catalog-and-packaging-matrix.md)** | Free loss-leaders vs. high-margin tiers & full SKU directory | Defines the viral freemium funnel and prevents module bloat |
-| **[Scenario Planning & Sensitivity](file:///Users/rjulia/ChurchCore-Business/docs/financial-operations/03-scenario-planning-and-sensitivity-models.md)** | Base, Bull, Recession Bear Case, and Denominational Sweeps | Proves ChurchCore is **anti-fragile and counter-cyclical** |
-| **[Operational Playbooks & SOPs](file:///Users/rjulia/ChurchCore-Business/docs/financial-operations/04-operational-playbooks-and-scenarios.md)** | Non-payment grace periods, Easter surges, and offboarding | Enshrines Christian ethics and operational excellence in customer crises |
-| **[5-Year P&L & Cash Flow Model](file:///Users/rjulia/ChurchCore-Business/docs/financial-operations/05-multi-year-pnl-and-cash-flow-model.md)** | 5-Year Pro-Forma P&L, break-even analysis at 86 churches | Details path from **$1.85M ARR (Y1) to $96.2M ARR (Y5)** |
+> 🔒 **Notice on Proprietary Models:**  
+> Detailed 5-Year Pro-Forma P&L spreadsheets, cost-per-metric COGS tables, fintech interchange underwriting formulas, and downside sensitivity projections are confidential enterprise assets. They are archived in the private **[ChurchCore-Vault](https://github.com/ricardojjulia/ChurchCore-Vault)** repository and available to accredited investors and partners under NDA.
 
 ---
 
-## 💡 The Core Financial Invariants
+## 📦 Active Public Offerings
 
-1. **Every Church is Contribution-Margin Positive:** Variable cost to serve a Growth church is **$27.25/mo**, generating **$523.37/mo** in net contribution margin (**95% gross margin**).
-2. **Break-Even at 86 Churches:** We do not burn endless venture capital; fixed launch overhead breaks even at just 86 active growth churches.
-3. **The Anti-Fragile Recession Hedge:** When the economy tightens, churches flee high-cost incumbents (Planning Center, Pushpay, FACTS) to cut costs, accelerating ChurchCore's customer acquisition rate.
-4. **The No-Hostage Covenant:** If a church experiences financial crisis, we never lock their account or hold their data hostage; we downgrade them gracefully to our free tier with dignity.
+- **[02-offering-catalog-and-packaging-matrix.md](02-offering-catalog-and-packaging-matrix.md)** — Public packaging tiers, SKU matrix, and free-to-premium funnel definitions.
+- **[04-operational-playbooks-and-scenarios.md](04-operational-playbooks-and-scenarios.md)** — Compassionate grace period policies, Easter/Christmas peak traffic surge preparedness, and ethical customer offboarding covenants.
+
+---
+
+*Governed by the ChurchCore Executive Council under Constitution Section III.*

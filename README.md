@@ -234,13 +234,13 @@ ChurchCore-Business/
 │   │   ├── 04-churchcore-care.md (Pastoral & Clinical Counseling EHR)
 │   │   ├── 05-churchcore-orthos.md (Governance, Safeguarding & Health Audit)
 │   │   └── 06-faithfull-scholars.md (Theological Higher Ed & Academic Network)
-│   ├── business-models/      # Monetization, Packaging Tiers & Unit Economics
-│   ├── business-opportunities/ # Innovation Engine, BOP Reports & Agent Submission Intake
-│   ├── strategy/             # GTM, Defensible Moats, Competitor Battlecards & TAM/SAM/SOM
-│   ├── pitch/                # Pitch Decks, Executive Narratives & Audience Archetypes
-│   ├── competitive-analysis/ # Detailed Competitor Teardowns by Product & Full Platform
-│   ├── financial-operations/ # Financial Modeling, COGS, OpEx, Offerings & Scenario Playbooks
-│   ├── marketing/            # Marketing Strategies, Collateral & Focused Documentation
+│   ├── business-models/      # Public Monetization & Packaging Tiers (Unit models in Vault)
+│   ├── business-opportunities/ # Innovation Engine, RICE Priorities & Agent Intake
+│   ├── strategy/             # GTM, Defensible Architectural Moats & Advisory Boards
+│   ├── pitch/                # Executive Narrative & Briefs (Pitch decks in Vault)
+│   ├── competitive-analysis/ # Ecosystem Competitive Overview (Battlecards in Vault)
+│   ├── financial-operations/ # Operational Playbooks & Policies (P&L models in Vault)
+│   ├── marketing/            # Marketing Strategies, Brand Voice & Messaging Hierarchy
 │   └── operations/           # Sovereign Isolation, UX Shell, Onboarding & Sunday SLA
 ├── scripts/
 │   ├── control-plane-sync.py # Central Telemetry Aggregator & Autonomous Reconciler
