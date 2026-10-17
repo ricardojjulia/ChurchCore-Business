@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-17T15:27:53.656436+00:00",
+  "generated_at": "2026-10-17T15:33:26.742604+00:00",
   "summary": {
     "total_products": 6,
-    "online_in_production": 3,
-    "average_readiness_score": 86,
-    "average_completion_pct": 84,
+    "online_in_production": 4,
+    "average_readiness_score": 89,
+    "average_completion_pct": 87,
     "sovereign_data_isolation": true
   },
   "products": [
@@ -78,9 +78,9 @@
     },
     {
       "product_id": "churchcore-lms",
-      "repo_name": "ChurchCore-LMS",
+      "repo_name": "ChurchCore LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-17T15:19:19.578297+00:00",
+      "report_timestamp": "2026-10-17T15:32:38.918970+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -118,10 +118,10 @@
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 120,
-        "session_date": "2026-10-17T15:19:19.578297+00:00",
-        "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
+        "session_duration_minutes": 30,
+        "session_date": "2026-10-17T15:32:38.918970+00:00",
+        "session_operator": "Ricardo Julia",
+        "summary_of_work": "Routine development & maintenance"
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -224,28 +224,26 @@
       "version": "7.0.0",
       "report_timestamp": "2026-10-17T15:19:19.578297+00:00",
       "online_status": {
-        "is_online": false,
-        "vercel_status": "pending",
-        "vercel_url": "https://care.churchcore.us",
-        "supabase_status": "local_only",
+        "is_online": true,
+        "vercel_status": "deployed",
+        "vercel_url": "https://churchcore-care.vercel.app",
+        "supabase_status": "connected",
         "supabase_project_ref": "pending-cloud-target",
         "readiness_assessment": {
-          "readiness_score_pct": 74,
-          "blockers": [
-            "Branch feat/faithful-workflows-enhancements pending merge into main",
-            "Mobile Vite lockfile synchronization pending verification (PR #139)"
-          ],
+          "readiness_score_pct": 95,
+          "blockers": [],
           "next_required_actions": [
-            "Merge and verify PR #139 across web and standalone API services",
-            "Run automated launch readiness suite: npm run test:launch-readiness",
-            "Configure automated Vercel frontend / Supabase backend deployment"
+            "Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)",
+            "Run automated smoke test suite: npm run test:smoke"
           ]
-        }
+        },
+        "custom_domain": "https://www.churchcorecare.io"
       },
       "mvp_status": {
-        "phase": "beta",
-        "completion_pct": 75,
+        "phase": "production",
+        "completion_pct": 90,
         "latest_milestones": [
+          "Vercel production deployment verified live at churchcore-care.vercel.app & www.churchcorecare.io",
           "PR #139: Mobile Vite lockfile resolution and dependency alignment",
           "Counseling intake, pastoral notes, and secure consent flows verified",
           "Automated AppSec and nightly security test suites operational"

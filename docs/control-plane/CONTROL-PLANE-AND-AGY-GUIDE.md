@@ -119,14 +119,13 @@ Here is the current audited status of our six sovereign platforms:
 | **ChurchCore ChMS** | `v3.5.0` | 🟢 ONLINE | [churchcore.vercel.app](https://churchcore.vercel.app) | Connected (Prod) | **94%** | `PRODUCTION` (92%) |
 | **ChurchCore LMS** | `v0.47.0` | 🟢 ONLINE | [church-core-lms.vercel.app](https://church-core-lms.vercel.app) | Connected (Prod) | **95%** | `BETA` (88%) |
 | **ChurchCore Academy**| `v0.10.0` | 🟡 STAGING | Pending Credentials | Local Rehearsal | **78%** | `PILOT_READY` (82%) |
-| **ChurchCore Care** | `v7.0.0` | 🟡 STAGING | Cloud Migration Pending | Local Target | **74%** | `BETA` (75%) |
+| **ChurchCore Care** | `v7.0.0` | 🟢 ONLINE | [churchcore-care.vercel.app](https://churchcore-care.vercel.app)<br>`www.churchcorecare.io` | Connected (Prod) | **95%** | `PRODUCTION` (90%) |
 | **ChurchCore Orthos** | `v0.18.0` | 🟡 PREVIEW | [churchcore-orthos.vercel.app](https://churchcore-orthos.vercel.app)| Staging Link | **85%** | `BETA` (85%) |
 | **FaithFull Scholars**| `v0.1.0` | 🟢 ONLINE | [faithfull-scholars.vercel.app](https://faithfull-scholars.vercel.app)| Connected (Prod) | **90%** | `BETA` (85%) |
 
-### What's Blocking the Staging Apps from Reaching 100% Online?
-1. **ChurchCore Academy**: Awaiting production Vercel project credentials and completion of the Colegio Biblos pilot migration seed rehearsal.
-2. **ChurchCore Care**: Awaiting merge of `feat/faithful-workflows-enhancements` and verification of the mobile companion Vite lockfile (`PR #139`).
-3. **ChurchCore Orthos**: Awaiting binding of production Vercel environment variables to the Supabase cloud instance and execution of the `test:omni-council` compliance suite.
+### What's Blocking the Remaining Staging Apps from Reaching 100% Online?
+1. **ChurchCore Academy** (78% Readiness): Awaiting production Vercel project credentials binding and completion of the Colegio Biblos pilot migration seed rehearsal.
+2. **ChurchCore Orthos** (85% Readiness): Awaiting binding of production Vercel environment variables to the Supabase cloud instance and execution of the `test:omni-council` compliance suite.
 
 ---
 

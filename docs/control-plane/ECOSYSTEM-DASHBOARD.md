@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-17 15:27:53 UTC`  
+> **Last Aggregated:** `2026-10-17 15:33:26 UTC`  
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -9,9 +9,9 @@
 | Fleet Metric | Value | Target | Status |
 | :--- | :--- | :--- | :--- |
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
-| **Active Production Online** | `3 / 6` | 6 / 6 | 🟡 Transitioning |
-| **Average Readiness Score** | `86%` | 100% | 🟢 High Readiness |
-| **Portfolio MVP Progress** | `84%` | 100% | 🟢 On Schedule |
+| **Active Production Online** | `4 / 6` | 6 / 6 | 🟡 Transitioning |
+| **Average Readiness Score** | `89%` | 100% | 🟢 High Readiness |
+| **Portfolio MVP Progress** | `87%` | 100% | 🟢 On Schedule |
 | **Cross-App Data Isolation** | `100% Sovereign` | 100% Isolated | 🛡️ Constitutional Invariant Verified |
 
 ## 2. Product Fleet Status Cards
@@ -66,7 +66,7 @@
 
 ---
 
-### ChurchCore-LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
+### ChurchCore LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -104,10 +104,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `120 minutes`
-- **Session Timestamp:** `2026-10-17T15:19:19.578297+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-10-17T15:32:38.918970+00:00`
+- **Session Operator:** `Ricardo Julia`
+- **Session Work Summary:** Routine development & maintenance
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -170,30 +170,28 @@
 
 ---
 
-### ChurchCoreCare (`churchcore-care`) — v7.0.0 | 🟡 OFFLINE / READINESS REVIEW
+### ChurchCoreCare (`churchcore-care`) — v7.0.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
-| **Online Status** | `OFFLINE / PENDING` | Development / Preview Staging |
-| **Vercel Deployment** | `PENDING` | [https://care.churchcore.us](https://care.churchcore.us) |
-| **Supabase Database** | `LOCAL_ONLY` | Dedicated Sovereign Instance (RLS Enforced) |
-| **Readiness Score** | `74%` | Measured against production launch gates |
+| **Online Status** | `ONLINE` | Publicly accessible via Vercel |
+| **Vercel Deployment** | `DEPLOYED` | [https://churchcore-care.vercel.app](https://churchcore-care.vercel.app) |
+| **Supabase Database** | `CONNECTED` | Dedicated Sovereign Instance (RLS Enforced) |
+| **Readiness Score** | `95%` | Measured against production launch gates |
 
 ##### ⚠️ Production Readiness Assessment
-**Active Blockers:**
-- 🔴 Branch feat/faithful-workflows-enhancements pending merge into main
-- 🔴 Mobile Vite lockfile synchronization pending verification (PR #139)
+- 🟢 No critical architecture blockers.
 
 **Immediate Next Required Actions for Online Launch:**
-- 🛠️ Merge and verify PR #139 across web and standalone API services
-- 🛠️ Run automated launch readiness suite: npm run test:launch-readiness
-- 🛠️ Configure automated Vercel frontend / Supabase backend deployment
+- 🛠️ Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)
+- 🛠️ Run automated smoke test suite: npm run test:smoke
 
 #### MVP Development Status & Milestones
-- **Current Phase:** `BETA`
-- **Completion Percentage:** `75%`
+- **Current Phase:** `PRODUCTION`
+- **Completion Percentage:** `90%`
 - **Recent Milestones Delivered:**
+  - ✅ Vercel production deployment verified live at churchcore-care.vercel.app & www.churchcorecare.io
   - ✅ PR #139: Mobile Vite lockfile resolution and dependency alignment
   - ✅ Counseling intake, pastoral notes, and secure consent flows verified
   - ✅ Automated AppSec and nightly security test suites operational

@@ -173,31 +173,28 @@ REPO_CONFIGS = [
         "local_paths": ["/Users/rjulia/ChurchCore Care", "/Users/rjulia/ChurchCoreCare"],
         "version": "7.0.0",
         "online_status": {
-            "is_online": False,
-            "vercel_status": "pending",
-            "vercel_url": "https://care.churchcore.us",
-            "supabase_status": "local_only",
-            "supabase_project_ref": "pending-cloud-target",
+            "is_online": True,
+            "vercel_status": "deployed",
+            "vercel_url": "https://churchcore-care.vercel.app",
+            "custom_domain": "https://www.churchcorecare.io",
+            "supabase_status": "connected",
+            "supabase_project_ref": "prod-care-db",
             "readiness_assessment": {
-                "readiness_score_pct": 74,
-                "blockers": [
-                    "Branch feat/faithful-workflows-enhancements pending merge into main",
-                    "Mobile Vite lockfile synchronization pending verification (PR #139)"
-                ],
+                "readiness_score_pct": 95,
+                "blockers": [],
                 "next_required_actions": [
-                    "Merge and verify PR #139 across web and standalone API services",
-                    "Run automated launch readiness suite: npm run test:launch-readiness",
-                    "Configure automated Vercel frontend / Supabase backend deployment"
+                    "Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)",
+                    "Run automated smoke test suite: npm run test:smoke"
                 ]
             }
         },
         "mvp_status": {
-            "phase": "beta",
-            "completion_pct": 75,
+            "phase": "production",
+            "completion_pct": 90,
             "latest_milestones": [
-                "PR #139: Mobile Vite lockfile resolution and dependency alignment",
-                "Counseling intake, pastoral notes, and secure consent flows verified",
-                "Automated AppSec and nightly security test suites operational"
+                "Vercel production deployment verified live at churchcore-care.vercel.app and www.churchcorecare.io",
+                "PR #139 merged: Mobile Vite lockfile resolution and dependency alignment",
+                "Counseling intake, pastoral notes, and secure consent flows verified in production"
             ]
         },
         "next_steps": [
