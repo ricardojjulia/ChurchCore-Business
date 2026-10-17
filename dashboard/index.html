@@ -36,8 +36,14 @@
 
       <div class="header-right">
         <div class="clock-display" id="clock-display">--:--:-- UTC</div>
+        <button id="btn-dispatch-modal" class="btn btn-gold" title="Dispatch New Council Directive">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Dispatch Directive
+        </button>
         <button id="btn-sync" class="btn btn-primary" title="Trigger Control Plane Sync">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
           </svg>
           Sync Fleet
@@ -61,13 +67,13 @@
 
       <div class="kpi-card">
         <div class="kpi-label">FLEET READINESS SCORE</div>
-        <div class="kpi-val" id="kpi-avg-readiness">86%</div>
+        <div class="kpi-val" id="kpi-avg-readiness">89%</div>
         <div class="kpi-sub">Target: 100% Launch Gate</div>
       </div>
 
       <div class="kpi-card">
         <div class="kpi-label">PORTFOLIO MVP VELOCITY</div>
-        <div class="kpi-val" id="kpi-avg-completion">84%</div>
+        <div class="kpi-val" id="kpi-avg-completion">87%</div>
         <div class="kpi-sub">517 Tables • 423 Routes</div>
       </div>
 
@@ -81,42 +87,78 @@
     <!-- Main Navigation Tabs -->
     <nav class="view-tabs">
       <button class="tab-btn active" data-tab="tab-fleet">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
           <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
         </svg>
-        Product Fleet Grid
+        Fleet Grid
+      </button>
+
+      <button class="tab-btn" data-tab="tab-plans">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/>
+        </svg>
+        Implementation Plans & Directionality
+      </button>
+
+      <button class="tab-btn" data-tab="tab-tasks">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+        </svg>
+        Project Tasks Metadata Base
+        <span class="tab-badge" id="tab-task-count">18 Tasks</span>
       </button>
 
       <button class="tab-btn" data-tab="tab-readiness">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
         Readiness Action Radar
         <span class="tab-badge" id="tab-blocker-count">2 In Review</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-directives">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+      <button class="tab-btn" data-tab="tab-commercial">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
         </svg>
-        Council Directives & Compliance
+        Commercial & OPEX
+      </button>
+
+      <button class="tab-btn" data-tab="tab-sunday">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Sunday SLA Pulse
+      </button>
+
+      <button class="tab-btn" data-tab="tab-tech-mesh">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+        </svg>
+        Tech Stack Mesh
+      </button>
+
+      <button class="tab-btn" data-tab="tab-directives">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        </svg>
+        Council Directives
       </button>
 
       <button class="tab-btn" data-tab="tab-ai-stream">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/>
         </svg>
-        AI Session History & Diagnostics
+        AI Sessions
       </button>
 
       <button class="tab-btn" data-tab="tab-agy-cli">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
         </svg>
-        AgY Fleet Orchestrator
+        AgY Orchestrator
       </button>
     </nav>
 
@@ -139,7 +181,82 @@
       </div>
     </main>
 
-    <!-- TAB 2: READINESS RADAR -->
+    <!-- TAB 2: IMPLEMENTATION PLANS & DIRECTIONALITY -->
+    <section id="tab-plans" class="tab-content">
+      <div class="section-hero">
+        <h2>Product Implementation Plans & Directionality Viewer</h2>
+        <p>Live view into each product's active development plan. Explicitly tracking what items were <strong>Repo-Originated (Edge)</strong> vs. <strong>Control-Plane-Dispatched (Hub)</strong>.</p>
+      </div>
+
+      <div class="plan-controls-bar">
+        <div class="form-group-inline">
+          <label>Select Product Plan:</label>
+          <select id="plan-product-select">
+            <option value="churchcore-chms">ChurchCore ChMS (DEVELOPMENT_PLAN.md)</option>
+            <option value="churchcore-lms">ChurchCore LMS (implementation-plan-2026-q4.md)</option>
+            <option value="churchcore-academy">ChurchCore Academy (competitive-execution-plan.md)</option>
+            <option value="churchcore-care">ChurchCore Care (v7.0.0-RELEASE-SUMMARY.md)</option>
+            <option value="churchcore-orthos">ChurchCore Orthos (omni-council-plan.md)</option>
+            <option value="faithfull-scholars">FaithFull Scholars (FAITHFULL_SCHOLARS_FULL_PLAN.md)</option>
+          </select>
+        </div>
+
+        <div class="directionality-legend-bar">
+          <span class="dir-badge dir-edge">🔵 REPO-ORIGINATED (Edge)</span>
+          <span class="dir-badge dir-hub">🟡 CONTROL-PLANE-DISPATCHED (Hub)</span>
+        </div>
+      </div>
+
+      <div class="plan-board-container" id="plan-board-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 3: PROJECT TASKS METADATA BASE -->
+    <section id="tab-tasks" class="tab-content">
+      <div class="section-hero-split">
+        <div>
+          <h2>Project Management Task Metadata Base</h2>
+          <p>Bidirectional task database synchronized between <code>docs/control-plane/tasks.json</code> and <code>PROJECT_TASKS.md</code>.</p>
+        </div>
+        <button id="btn-add-task" class="btn btn-gold">+ Add New Task</button>
+      </div>
+
+      <div class="task-filter-bar">
+        <div class="filter-group">
+          <button class="filter-chip active" data-task-filter="all">All Tasks (18)</button>
+          <button class="filter-chip" data-task-filter="in_progress">In Progress (4)</button>
+          <button class="filter-chip" data-task-filter="waiting">Waiting (4)</button>
+          <button class="filter-chip" data-task-filter="planned">Planned (2)</button>
+          <button class="filter-chip" data-task-filter="done">Done (8)</button>
+        </div>
+        <div class="search-box">
+          <input type="text" id="task-search" placeholder="Search tasks, assignees, or PRs...">
+        </div>
+      </div>
+
+      <div class="task-table-wrapper">
+        <table class="compliance-table" id="tasks-table">
+          <thead>
+            <tr>
+              <th>Task ID</th>
+              <th>Product</th>
+              <th>Direction</th>
+              <th>Title & Scope</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Assignee</th>
+              <th>Git Reference</th>
+            </tr>
+          </thead>
+          <tbody id="tasks-tbody">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 4: READINESS RADAR -->
     <section id="tab-readiness" class="tab-content">
       <div class="section-hero">
         <h2>Production Readiness Action Radar</h2>
@@ -151,7 +268,73 @@
       </div>
     </section>
 
-    <!-- TAB 3: COUNCIL DIRECTIVES -->
+    <!-- TAB 5: COMMERCIAL & OPEX TELEMETRY -->
+    <section id="tab-commercial" class="tab-content">
+      <div class="section-hero">
+        <h2>Commercial Velocity, Fintech Margins & Fleet OPEX</h2>
+        <p>Strategic financial telemetry tracking unit economics, active pilot revenues, and infrastructure expenditure across the holding company.</p>
+      </div>
+
+      <div class="commercial-kpi-grid" id="commercial-kpi-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="commercial-split-layout">
+        <div class="commercial-card">
+          <h3>Active Institutional Pilot Pipeline</h3>
+          <div id="commercial-pilots-container"></div>
+        </div>
+        <div class="commercial-card">
+          <h3>Fintech Giving Take-Rate & Unit Economics</h3>
+          <div id="commercial-fintech-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: SUNDAY SLA PULSE MONITOR -->
+    <section id="tab-sunday" class="tab-content">
+      <div class="section-hero">
+        <h2>Sunday Morning SLA & Pre-Flight Pulse Monitor</h2>
+        <p>Mission-critical operations safeguarding Sunday worship check-in, live giving pipelines, and pastoral care (OPS-04).</p>
+      </div>
+
+      <div class="sunday-hero-banner" id="sunday-hero-banner">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="sunday-probes-grid" id="sunday-probes-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 7: TECH STACK MESH & VERSION DRIFT -->
+    <section id="tab-tech-mesh" class="tab-content">
+      <div class="section-hero">
+        <h2>Technical Stack Mesh & Version Drift Matrix</h2>
+        <p>Architectural alignment monitoring across Next.js, Node runtimes, TypeScript, RLS mandates, and PostgreSQL extensions.</p>
+      </div>
+
+      <div class="compliance-table-wrapper">
+        <table class="compliance-table" id="tech-mesh-table">
+          <thead>
+            <tr>
+              <th>Product Suite</th>
+              <th>Framework</th>
+              <th>Node Runtime</th>
+              <th>TypeScript</th>
+              <th>Row-Level Security</th>
+              <th>Postgres Extensions</th>
+              <th>Drift Status</th>
+            </tr>
+          </thead>
+          <tbody id="tech-mesh-tbody">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 8: COUNCIL DIRECTIVES -->
     <section id="tab-directives" class="tab-content">
       <div class="section-hero">
         <h2>Council Governance & Central Directives Board</h2>
@@ -179,7 +362,7 @@
       </div>
     </section>
 
-    <!-- TAB 4: AI SESSION STREAM -->
+    <!-- TAB 9: AI SESSIONS -->
     <section id="tab-ai-stream" class="tab-content">
       <div class="section-hero">
         <h2>AI / LLM Session Telemetry & Deployment Diagnostics</h2>
@@ -191,7 +374,7 @@
       </div>
     </section>
 
-    <!-- TAB 5: AGY FLEET ORCHESTRATOR -->
+    <!-- TAB 10: AGY CLI ORCHESTRATOR -->
     <section id="tab-agy-cli" class="tab-content">
       <div class="section-hero">
         <h2>Antigravity CLI (AgY) Command Generator</h2>
@@ -273,8 +456,95 @@ agy --version
     </div>
   </div>
 
+  <!-- Dispatch Directive Modal -->
+  <div id="directive-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Dispatch New Council Directive</h3>
+        <button id="directive-modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Impose a binding architectural requirement across the ChurchCore ecosystem. This writes directly to <code>docs/governance-sync/manifest.json</code> and broadcasts to edge repos.
+        </p>
+        <div class="form-group">
+          <label>Directive Title:</label>
+          <input type="text" id="dir-input-title" placeholder="e.g. Implement Sunday Pre-Flight Synthetic Health Endpoint" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+        </div>
+        <div class="form-group">
+          <label>Requirement Description:</label>
+          <textarea id="dir-input-desc" rows="3" placeholder="Describe the technical requirement and expected behavior..." style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Impacted Products:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; margin-top: 6px;">
+            <label><input type="checkbox" id="chk-chms" checked> ChurchCore (ChMS)</label>
+            <label><input type="checkbox" id="chk-lms" checked> ChurchCore-LMS</label>
+            <label><input type="checkbox" id="chk-acad" checked> ChurchCore-Academy</label>
+            <label><input type="checkbox" id="chk-care" checked> ChurchCoreCare</label>
+            <label><input type="checkbox" id="chk-orth" checked> ChurchCore-Orthos</label>
+            <label><input type="checkbox" id="chk-schl" checked> FaithFullScholars</label>
+          </div>
+        </div>
+        <button id="btn-submit-directive" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Confirm & Dispatch Directive to Fleet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div id="add-task-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Add Project Management Task</h3>
+        <button id="task-modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Task Title:</label>
+          <input type="text" id="task-input-title" placeholder="e.g. Implement OneRoster CSV delivery worker" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+        </div>
+        <div class="form-group">
+          <label>Product Suite:</label>
+          <select id="task-input-product" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+            <option value="churchcore-chms">ChurchCore ChMS</option>
+            <option value="churchcore-lms">ChurchCore LMS</option>
+            <option value="churchcore-academy">ChurchCore Academy</option>
+            <option value="churchcore-care">ChurchCore Care</option>
+            <option value="churchcore-orthos">ChurchCore Orthos</option>
+            <option value="faithfull-scholars">FaithFull Scholars</option>
+            <option value="ecosystem-control-plane">Control Plane Hub</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Directionality:</label>
+          <select id="task-input-dir" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+            <option value="EDGE_REPO">🔵 EDGE: REPO-ORIGINATED (Local Feature / Fix)</option>
+            <option value="CONTROL_PLANE">🟡 HUB: CONTROL-PLANE-DISPATCHED (Central Mandate)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Status & Priority:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <select id="task-input-status" style="padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+              <option value="planned">Planned</option>
+              <option value="in_progress">In Progress</option>
+              <option value="waiting">Waiting</option>
+              <option value="done">Done</option>
+            </select>
+            <select id="task-input-priority" style="padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+              <option value="P0_CRITICAL">P0 Critical</option>
+              <option value="P1_HIGH" selected>P1 High</option>
+              <option value="P2_MEDIUM">P2 Medium</option>
+            </select>
+          </div>
+        </div>
+        <button id="btn-submit-task" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Save Task to Metadata Base</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification -->
-  <div id="toast" class="toast">Action copied to clipboard</div>
+  <div id="toast" class="toast">Action completed successfully</div>
 
   <!-- Load Static Fallback Data First -->
   <script src="fleet-data.js"></script>

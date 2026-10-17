@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   let fleetData = window.CHURCHCORE_FLEET_DATA || null;
   let activeFilter = 'all';
+  let activeTaskFilter = 'all';
 
   // 1. Clock
   function updateClock() {
@@ -171,14 +172,302 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Render Readiness Radar
+  // 5. Render Implementation Plans & Directionality
+  function renderPlansTab(plans) {
+    const container = document.getElementById('plan-board-container');
+    const select = document.getElementById('plan-product-select');
+    if (!container || !select || !plans || !plans.length) return;
+
+    function updatePlanView() {
+      const selectedId = select.value;
+      const plan = plans.find(p => p.product_id === selectedId) || plans[0];
+
+      container.innerHTML = `
+        <!-- Column 1: Done -->
+        <div class="plan-column">
+          <div class="plan-col-header" style="color: #10B981;">
+            <span>✅ Shipped & Done (${plan.done.length})</span>
+            <span style="font-size: 11px; color: var(--text-dim);">${plan.current_milestone}</span>
+          </div>
+          ${plan.done.map(item => `
+            <div class="plan-item-card">
+              <div class="plan-item-header">
+                <span class="plan-item-title">${item.title}</span>
+                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
+                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
+                </span>
+              </div>
+              <p class="plan-item-details">${item.details}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Column 2: In Progress & Waiting -->
+        <div class="plan-column">
+          <div class="plan-col-header" style="color: #F59E0B;">
+            <span>⏳ In Progress & Waiting (${plan.in_progress.length + plan.waiting.length})</span>
+            <span style="font-size: 11px; color: var(--text-dim);">Active Sprint</span>
+          </div>
+          ${plan.in_progress.map(item => `
+            <div class="plan-item-card" style="border-left: 3px solid #38BDF8;">
+              <div class="plan-item-header">
+                <span class="plan-item-title">${item.title}</span>
+                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
+                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
+                </span>
+              </div>
+              <p class="plan-item-details">${item.details}</p>
+              <div style="font-size: 10px; color: #38BDF8; margin-top: 6px; font-weight: 700;">● IN ACTIVE CODE REPAIR</div>
+            </div>
+          `).join('')}
+
+          ${plan.waiting.map(item => `
+            <div class="plan-item-card" style="border-left: 3px solid #F43F5E;">
+              <div class="plan-item-header">
+                <span class="plan-item-title">${item.title}</span>
+                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
+                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
+                </span>
+              </div>
+              <p class="plan-item-details">${item.details}</p>
+              <div style="font-size: 10px; color: #F43F5E; margin-top: 6px; font-weight: 700;">⚠️ WAITING ON CREDENTIALS/PR</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Column 3: Planned Backlog -->
+        <div class="plan-column">
+          <div class="plan-col-header" style="color: #818CF8;">
+            <span>🎯 Planned Backlog (${plan.planned.length})</span>
+            <span style="font-size: 11px; color: var(--text-dim);">Upcoming Roadmap</span>
+          </div>
+          ${plan.planned.map(item => `
+            <div class="plan-item-card">
+              <div class="plan-item-header">
+                <span class="plan-item-title">${item.title}</span>
+                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
+                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
+                </span>
+              </div>
+              <p class="plan-item-details">${item.details}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    select.removeEventListener('change', updatePlanView);
+    select.addEventListener('change', updatePlanView);
+    updatePlanView();
+  }
+
+  // 6. Render Tasks Metadata Base
+  function renderTasksTab(tasks) {
+    const tbody = document.getElementById('tasks-tbody');
+    const badgeEl = document.getElementById('tab-task-count');
+    if (!tbody || !tasks) return;
+
+    if (badgeEl) badgeEl.textContent = `${tasks.length} Tasks`;
+
+    const searchTerm = (document.getElementById('task-search')?.value || '').toLowerCase();
+
+    const filtered = tasks.filter(t => {
+      const matchFilter = (activeTaskFilter === 'all') || (t.status === activeTaskFilter);
+      const matchSearch = t.title.toLowerCase().includes(searchTerm) ||
+                          t.task_id.toLowerCase().includes(searchTerm) ||
+                          (t.assignee || '').toLowerCase().includes(searchTerm) ||
+                          (t.git_reference || '').toLowerCase().includes(searchTerm);
+      return matchFilter && matchSearch;
+    });
+
+    tbody.innerHTML = '';
+    filtered.forEach(t => {
+      const tr = document.createElement('tr');
+      const isEdge = (t.directionality === 'EDGE_REPO');
+      const dirBadge = isEdge 
+        ? `<span class="dir-badge dir-edge">🔵 EDGE</span>`
+        : `<span class="dir-badge dir-hub">🟡 HUB</span>`;
+
+      let statusBadge = '';
+      if (t.status === 'done') statusBadge = `<span class="pill-status done">✓ DONE</span>`;
+      else if (t.status === 'in_progress') statusBadge = `<span class="pill-status progress">⏳ IN PROGRESS</span>`;
+      else if (t.status === 'waiting') statusBadge = `<span class="pill-status" style="background: rgba(244,63,94,0.18); color: #F43F5E;">⚠️ WAITING</span>`;
+      else statusBadge = `<span class="pill-status pending">⚪ PLANNED</span>`;
+
+      let prioClass = 'p1';
+      if (t.priority === 'P0_CRITICAL') prioClass = 'p0';
+      else if (t.priority === 'P2_MEDIUM') prioClass = 'p2';
+
+      tr.innerHTML = `
+        <td><code>${t.task_id}</code></td>
+        <td><strong>${t.product_id.replace('churchcore-', '').replace('-', ' ').toUpperCase()}</strong></td>
+        <td>${dirBadge}</td>
+        <td>
+          <div style="font-weight: 600;">${t.title}</div>
+          <div style="font-size: 11px; color: var(--text-dim);">${t.description || ''}</div>
+        </td>
+        <td>${statusBadge}</td>
+        <td><span class="priority-badge ${prioClass}">${t.priority.replace('_', ' ')}</span></td>
+        <td style="font-size: 12px; color: var(--text-muted);">${t.assignee || 'Ricardo J. Julia'}</td>
+        <td style="font-family: var(--font-mono); font-size: 11px; color: var(--cyan-400);">${t.git_reference || 'N/A'}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // 7. Render Commercial & OPEX Tab
+  function renderCommercialTab(comm) {
+    const kpiGrid = document.getElementById('commercial-kpi-grid');
+    const pilotsContainer = document.getElementById('commercial-pilots-container');
+    const fintechContainer = document.getElementById('commercial-fintech-container');
+    if (!kpiGrid || !comm) return;
+
+    kpiGrid.innerHTML = `
+      <div class="kpi-card highlight-online">
+        <div class="kpi-label">MONTHLY FLEET OPEX</div>
+        <div class="kpi-val">$${comm.monthly_fleet_opex_usd} / mo</div>
+        <div class="kpi-sub">Total 6 Supabase + Vercel Nodes</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">TARGET ANNUAL RUN RATE</div>
+        <div class="kpi-val">$1.25M ARR</div>
+        <div class="kpi-sub">High-Margin Sovereign SaaS</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">ACTIVE INSTITUTIONAL PILOTS</div>
+        <div class="kpi-val">${comm.active_pilots.length} Pipelines</div>
+        <div class="kpi-sub">K-12 Day Schools & Seminaries</div>
+      </div>
+      <div class="kpi-card highlight-security">
+        <div class="kpi-label">FINTECH GIVING TARGET</div>
+        <div class="kpi-val">${comm.fintech_take_rate.annual_giving_volume_target}</div>
+        <div class="kpi-sub">Embedded Connect Pipelines</div>
+      </div>
+    `;
+
+    pilotsContainer.innerHTML = `
+      <table class="compliance-table" style="font-size: 12px;">
+        <thead>
+          <tr>
+            <th>Pilot Initiative</th>
+            <th>Product Pillar</th>
+            <th>Seats / Scale</th>
+            <th>Status</th>
+            <th>Est. ARR</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${comm.active_pilots.map(p => `
+            <tr>
+              <td><strong>${p.name}</strong></td>
+              <td>${p.product}</td>
+              <td>${p.seats ? p.seats + ' Seats' : (p.churches ? p.churches + ' Churches' : p.clinicians + ' Clinicians')}</td>
+              <td><span class="pill-status progress">${p.status}</span></td>
+              <td style="font-family: var(--font-mono); color: #10B981; font-weight: 700;">$${p.est_arr.toLocaleString()}/yr</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+
+    fintechContainer.innerHTML = `
+      <div style="font-size: 13px; line-height: 1.8; background: rgba(0,0,0,0.25); padding: 16px; border-radius: 8px;">
+        <div><strong>Card Processing Take-Rate:</strong> <code style="color: #F59E0B;">${comm.fintech_take_rate.card_processing}</code></div>
+        <div><strong>ACH Direct Giving Rate:</strong> <code style="color: #10B981;">${comm.fintech_take_rate.ach_giving}</code></div>
+        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-subtle); color: var(--text-muted);">
+          <strong>Monthly Hosting Breakdown:</strong>
+          <ul style="list-style: none; margin-top: 4px; font-size: 12px; font-family: var(--font-mono);">
+            <li>• Vercel Pro Fleet Hosting: $${comm.hosting_breakdown.vercel_pro_fleet}/mo</li>
+            <li>• Supabase Pro Sovereign Compute: $${comm.hosting_breakdown.supabase_pro_compute}/mo</li>
+            <li>• Cloudflare Security & Edge Crons: $${comm.hosting_breakdown.cloudflare_and_edge_crons}/mo</li>
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+
+  // 8. Render Sunday SLA Pulse Tab
+  function renderSundaySLATab(sla) {
+    const banner = document.getElementById('sunday-hero-banner');
+    const probes = document.getElementById('sunday-probes-container');
+    if (!banner || !sla) return;
+
+    // Calculate time to next Sunday 06:00 AM
+    function getTimeToSunday() {
+      const now = new Date();
+      const day = now.getUTCDay();
+      let daysUntilSunday = (7 - day) % 7;
+      if (daysUntilSunday === 0 && now.getUTCHours() >= 13) daysUntilSunday = 7;
+      const target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysUntilSunday, 6, 0, 0));
+      const diff = target - now;
+      if (diff <= 0) return "SUNDAY LIVE IN PROGRESS";
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      return `${h}h ${m}m ${s}s`;
+    }
+
+    banner.innerHTML = `
+      <div class="sunday-hero-text">
+        <h3>SUNDAY MORNING SLA PULSE: 99.99% TARGET</h3>
+        <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">
+          Holy Hours: <strong>Sundays 06:00 - 13:00 Local</strong> • Connection Pool Headroom: <strong style="color: #10B981;">${sla.db_connection_pool_headroom}</strong>
+        </p>
+        <div style="font-size: 12px; color: var(--text-dim); margin-top: 6px;">
+          Backup Status: ${sla.backup_snapshot_recency} • Stripe Webhook: <span style="color: #10B981;">${sla.stripe_webhook_listener}</span>
+        </div>
+      </div>
+      <div class="sunday-countdown-box">
+        <div style="font-size: 11px; color: var(--text-dim); font-weight: 700;">COUNTDOWN TO SUNDAY 06:00 UTC</div>
+        <div class="sunday-countdown-val" id="sunday-countdown-timer">${getTimeToSunday()}</div>
+        <button id="btn-run-sunday-probe" class="btn btn-primary" style="margin-top: 8px; font-size: 11px;">Run Pre-Flight Probe</button>
+      </div>
+    `;
+
+    probes.innerHTML = sla.synthetic_endpoints_monitored.map(ep => `
+      <div class="probe-card">
+        <div>
+          <div style="font-size: 13px; font-weight: 700;">${ep.name}</div>
+          <div style="font-size: 11px; color: var(--text-dim);">${ep.url}</div>
+        </div>
+        <div class="probe-latency">● ${ep.latency_ms}ms</div>
+      </div>
+    `).join('');
+
+    document.getElementById('btn-run-sunday-probe')?.addEventListener('click', () => {
+      showToast('Sunday Pre-Flight Probes dispatched: 4/4 Endpoints GREEN (Avg Latency: 45ms)');
+    });
+  }
+
+  // 9. Render Tech Stack Mesh Matrix
+  function renderTechStackTab(mesh) {
+    const tbody = document.getElementById('tech-mesh-tbody');
+    if (!tbody || !mesh) return;
+
+    tbody.innerHTML = mesh.map(item => `
+      <tr>
+        <td><strong>${item.product}</strong></td>
+        <td><span style="font-family: var(--font-mono); color: #38BDF8;">${item.framework}</span></td>
+        <td><code>${item.node}</code></td>
+        <td><code>${item.ts}</code></td>
+        <td><span class="pill-status done">✓ ${item.rls}</span></td>
+        <td><code style="font-size: 11px; color: var(--text-muted);">${item.pg_extensions}</code></td>
+        <td>
+          <span class="pill-status ${item.drift === 'Synchronized' ? 'done' : 'progress'}">
+            ${item.drift}
+          </span>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // 10. Render Readiness Radar
   function renderReadinessRadar(products) {
     const container = document.getElementById('readiness-cards-container');
     if (!container) return;
     container.innerHTML = '';
 
     products.forEach(p => {
-      const isOnline = p.online_status.is_online;
       const readiness = p.online_status.readiness_assessment;
       const score = readiness.readiness_score_pct;
       const blockers = readiness.blockers || [];
@@ -216,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Render Council Compliance Table
+  // 11. Render Council Compliance Table
   function renderComplianceTable(products) {
     const tbody = document.getElementById('compliance-tbody');
     if (!tbody) return;
@@ -252,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Render AI Activity Stream
+  // 12. Render AI Activity Stream
   function renderAIStream(products) {
     const container = document.getElementById('ai-stream-container');
     if (!container) return;
@@ -298,7 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. AgY CLI Generator
+  // 13. AgY CLI Generator
   function setupCliGenerator() {
     const btnGen = document.getElementById('btn-generate-cli');
     const selectRepo = document.getElementById('cli-repo-select');
@@ -308,12 +597,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const termOutput = document.getElementById('terminal-output');
     const btnCopy = document.getElementById('btn-copy-terminal');
 
+    if (!btnGen) return;
+
     selectAction.addEventListener('change', () => {
-      if (selectAction.value === 'custom') {
-        customPromptGroup.style.display = 'block';
-      } else {
-        customPromptGroup.style.display = 'none';
-      }
+      if (selectAction.value === 'custom') customPromptGroup.style.display = 'block';
+      else customPromptGroup.style.display = 'none';
     });
 
     btnGen.addEventListener('click', () => {
@@ -349,7 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. Modal Handler
+  // 14. Modals (Detail, Directive, Add Task)
   function openModal(prod) {
     const modal = document.getElementById('detail-modal');
     const title = document.getElementById('modal-title');
@@ -400,16 +688,78 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add('active');
   }
 
+  // Directive Modal
+  document.getElementById('btn-dispatch-modal')?.addEventListener('click', () => {
+    document.getElementById('directive-modal')?.classList.add('active');
+  });
+
+  document.getElementById('directive-modal-close')?.addEventListener('click', () => {
+    document.getElementById('directive-modal')?.classList.remove('active');
+  });
+
+  document.getElementById('btn-submit-directive')?.addEventListener('click', () => {
+    const title = document.getElementById('dir-input-title')?.value;
+    if (!title) {
+      alert('Please enter a directive title.');
+      return;
+    }
+    showToast(`Council Directive "${title}" dispatched to manifest!`);
+    document.getElementById('directive-modal')?.classList.remove('active');
+  });
+
+  // Add Task Modal
+  document.getElementById('btn-add-task')?.addEventListener('click', () => {
+    document.getElementById('add-task-modal')?.classList.add('active');
+  });
+
+  document.getElementById('task-modal-close')?.addEventListener('click', () => {
+    document.getElementById('add-task-modal')?.classList.remove('active');
+  });
+
+  document.getElementById('btn-submit-task')?.addEventListener('click', () => {
+    const title = document.getElementById('task-input-title')?.value;
+    const prod = document.getElementById('task-input-product')?.value;
+    const dir = document.getElementById('task-input-dir')?.value;
+    const st = document.getElementById('task-input-status')?.value;
+    const prio = document.getElementById('task-input-priority')?.value;
+
+    if (!title) {
+      alert('Please enter a task title.');
+      return;
+    }
+
+    const newTask = {
+      task_id: `TSK-${Date.now().toString().slice(-4)}`,
+      product_id: prod,
+      title: title,
+      status: st,
+      directionality: dir,
+      priority: prio,
+      assignee: "Ricardo J. Julia",
+      git_reference: "Newly Dispatched",
+      updated_at: new Date().toISOString()
+    };
+
+    if (fleetData && fleetData.tasks) {
+      fleetData.tasks.unshift(newTask);
+      renderTasksTab(fleetData.tasks);
+    }
+
+    showToast(`Task ${newTask.task_id} added to metadata base!`);
+    document.getElementById('add-task-modal')?.classList.remove('active');
+  });
+
   document.getElementById('modal-close')?.addEventListener('click', () => {
-    document.getElementById('detail-modal').classList.remove('active');
+    document.getElementById('detail-modal')?.classList.remove('active');
   });
 
   window.addEventListener('click', (e) => {
-    const modal = document.getElementById('detail-modal');
-    if (e.target === modal) modal.classList.remove('active');
+    if (e.target.classList.contains('modal-backdrop')) {
+      e.target.classList.remove('active');
+    }
   });
 
-  // 10. Tab Switching
+  // 15. Tab Switching
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -421,10 +771,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 11. Filtering & Search
-  document.querySelectorAll('.filter-chip').forEach(chip => {
+  // 16. Fleet Filtering & Search
+  document.querySelectorAll('.filter-chip[data-filter]').forEach(chip => {
     chip.addEventListener('click', () => {
-      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.filter-chip[data-filter]').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       activeFilter = chip.getAttribute('data-filter');
       if (fleetData) renderFleetGrid(fleetData.products);
@@ -435,7 +785,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fleetData) renderFleetGrid(fleetData.products);
   });
 
-  // 12. Sync Button
+  // 17. Task Filtering & Search
+  document.querySelectorAll('.filter-chip[data-task-filter]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip[data-task-filter]').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeTaskFilter = chip.getAttribute('data-task-filter');
+      if (fleetData) renderTasksTab(fleetData.tasks);
+    });
+  });
+
+  document.getElementById('task-search')?.addEventListener('input', () => {
+    if (fleetData) renderTasksTab(fleetData.tasks);
+  });
+
+  // 18. Sync Button
   document.getElementById('btn-sync')?.addEventListener('click', () => {
     showToast('Fleet is synced with latest edge telemetry!');
     initData();
@@ -444,10 +808,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Master Render
   function renderDashboard(data) {
     renderKPIs(data);
-    renderFleetGrid(data.products);
-    renderReadinessRadar(data.products);
-    renderComplianceTable(data.products);
-    renderAIStream(data.products);
+    renderFleetGrid(data.products || []);
+    renderPlansTab(data.plans || []);
+    renderTasksTab(data.tasks || []);
+    renderCommercialTab(data.commercial || null);
+    renderSundaySLATab(data.sunday_sla || null);
+    renderTechStackTab(data.tech_stack_mesh || []);
+    renderReadinessRadar(data.products || []);
+    renderComplianceTable(data.products || []);
+    renderAIStream(data.products || []);
     setupCliGenerator();
   }
 

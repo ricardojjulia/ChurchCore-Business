@@ -1,11 +1,13 @@
 {
-  "generated_at": "2026-10-17T15:38:58.428366+00:00",
+  "generated_at": "2026-10-17T15:50:01.563595+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 4,
     "average_readiness_score": 89,
     "average_completion_pct": 87,
-    "sovereign_data_isolation": true
+    "sovereign_data_isolation": true,
+    "total_tasks": 18,
+    "done_tasks": 9
   },
   "products": [
     {
@@ -424,6 +426,722 @@
       },
       "_source_path": "/Users/rjulia/FaithFullScholars/docs/control-plane/telemetry.json",
       "_source_type": "local"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "TSK-CHMS-001",
+      "product_id": "churchcore-chms",
+      "title": "R1d Member Data-Rights Erasure Approval Queue & Lifecycle",
+      "status": "in_progress",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "commit a22c36e & b38636f (branch fix/r1d-erasure-approvals)",
+      "target_milestone": "v3.5.1",
+      "description": "Complete admin approval screens, audit logging, and ensure erasure notices dispatch strictly post-commit.",
+      "verification": "npm run test:e2e:readiness && audit:rls",
+      "updated_at": "2026-10-17T15:30:00Z"
+    },
+    {
+      "task_id": "TSK-CHMS-002",
+      "product_id": "churchcore-chms",
+      "title": "Vercel Cron Automation (shepherd-ai & scheduled communications)",
+      "status": "planned",
+      "directionality": "EDGE_REPO",
+      "priority": "P1_HIGH",
+      "category": "deployment",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "vercel.json crons config",
+      "target_milestone": "v3.6.0",
+      "description": "Verify background cron worker execution on Vercel production edge with Supabase pg_cron fallback.",
+      "verification": "HTTP 200 response on /api/cron/communications-scheduled with valid CRON_SECRET",
+      "updated_at": "2026-10-17T12:00:00Z"
+    },
+    {
+      "task_id": "TSK-CHMS-003",
+      "product_id": "churchcore-chms",
+      "title": "Powered by ChurchCore Trust Badge Integration",
+      "status": "waiting",
+      "directionality": "CONTROL_PLANE",
+      "priority": "P1_HIGH",
+      "category": "governance",
+      "assignee": "Antigravity Agent",
+      "git_reference": "COUNCIL-2026-002 (REQ-002-01)",
+      "target_milestone": "Sprint Q4-M1",
+      "description": "Install official Endorsed Brand trust mark in global portal footer linking to security documentation.",
+      "verification": "components/layout/footer.tsx contains trust mark asset and passes WCAG AAA contrast",
+      "updated_at": "2026-10-17T11:00:00Z"
+    },
+    {
+      "task_id": "TSK-LMS-001",
+      "product_id": "churchcore-lms",
+      "title": "Turbopack use-server SSR Compilation Bug Resolution",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "architecture",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #89 (commit 83933a2)",
+      "target_milestone": "v0.47.0",
+      "description": "Resolved Turbopack build failure on Vercel by converting server action sync exports to explicit async functions.",
+      "verification": "npm run build passes with 0 Turbopack SSR warnings",
+      "updated_at": "2026-10-16T22:00:00Z"
+    },
+    {
+      "task_id": "TSK-LMS-002",
+      "product_id": "churchcore-lms",
+      "title": "Neutral Pre-Auth Gateway & Dynamic Institutional Branding",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P1_HIGH",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #88 (commit fe412f0)",
+      "target_milestone": "v0.47.0",
+      "description": "Implemented unmounted pre-auth sidebar and dynamic tenant logo loader with Powered by ChurchCore badge.",
+      "verification": "Browser test on /login verifies clean isolated branding",
+      "updated_at": "2026-10-16T18:00:00Z"
+    },
+    {
+      "task_id": "TSK-LMS-003",
+      "product_id": "churchcore-lms",
+      "title": "Theological Student Credentialing & PDF Certificate Worker",
+      "status": "in_progress",
+      "directionality": "EDGE_REPO",
+      "priority": "P1_HIGH",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "implementation-plan-2026-q4.md (\u00a72.4)",
+      "target_milestone": "v0.48.0",
+      "description": "Generate immutable cryptographic certificates upon course completion for AETH ministerial certification.",
+      "verification": "npm run test:prod-synthetic verifies certificate signature",
+      "updated_at": "2026-10-17T10:00:00Z"
+    },
+    {
+      "task_id": "TSK-ACAD-001",
+      "product_id": "churchcore-academy",
+      "title": "Colegio Biblos Local Pilot Charter Approval & Preparation",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "pilot",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #247 & PR #248 (commit bed47c2)",
+      "target_milestone": "v0.10.0",
+      "description": "Established legal and technical baseline charter for Colegio Biblos K-12 Christian Day School pilot.",
+      "verification": "docs/pilot/colegio-biblos-charter.md approved",
+      "updated_at": "2026-10-17T08:00:00Z"
+    },
+    {
+      "task_id": "TSK-ACAD-002",
+      "product_id": "churchcore-academy",
+      "title": "OneRoster 1.2 CSV Worker & Pilot Migration Seed Rehearsal",
+      "status": "in_progress",
+      "directionality": "EDGE_REPO",
+      "priority": "P1_HIGH",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "competitive-execution-plan.md (\u00a74.1)",
+      "target_milestone": "v0.10.1",
+      "description": "Ordered seed insertion sequencing and resolved foreign key locks on grade_levels during pilot rehearsal.",
+      "verification": "npm run db:seed:pilot passes with 0 integrity violations",
+      "updated_at": "2026-10-17T11:00:00Z"
+    },
+    {
+      "task_id": "TSK-ACAD-003",
+      "product_id": "churchcore-academy",
+      "title": "Production Vercel Cloud Binding & Domain Provisioning",
+      "status": "waiting",
+      "directionality": "CONTROL_PLANE",
+      "priority": "P0_CRITICAL",
+      "category": "deployment",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "COUNCIL-2026-004 (REQ-004-02)",
+      "target_milestone": "v0.10.2",
+      "description": "Bind Vercel production credentials, connect dedicated Supabase production target, and achieve 100% online status.",
+      "verification": "curl -I https://churchcore-academy.vercel.app returns HTTP 200",
+      "updated_at": "2026-10-17T11:30:00Z"
+    },
+    {
+      "task_id": "TSK-CARE-001",
+      "product_id": "churchcore-care",
+      "title": "Mobile Vite Lockfile Resolution & Dependency Alignment",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "architecture",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #139 (commit 188f9df)",
+      "target_milestone": "v7.0.0",
+      "description": "Resolved root React app and mobile companion Vite dependency collision enabling clean Vercel production build.",
+      "verification": "npm run build passes and deployed to churchcore-care.vercel.app",
+      "updated_at": "2026-10-17T11:20:00Z"
+    },
+    {
+      "task_id": "TSK-CARE-002",
+      "product_id": "churchcore-care",
+      "title": "Clinical EHR & Pastoral Counseling Intake Verification",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "v7.0.0-RELEASE-SUMMARY.md",
+      "target_milestone": "v7.0.0",
+      "description": "Production verification of HIPAA-compliant counseling intake, session notes encryption, and portal sign-in.",
+      "verification": "Live at https://churchcore-care.vercel.app and www.churchcorecare.io",
+      "updated_at": "2026-10-17T11:32:00Z"
+    },
+    {
+      "task_id": "TSK-CARE-003",
+      "product_id": "churchcore-care",
+      "title": "Merge Faithful Workflows Enhancements Branch",
+      "status": "in_progress",
+      "directionality": "EDGE_REPO",
+      "priority": "P1_HIGH",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "branch feat/faithful-workflows-enhancements",
+      "target_milestone": "v7.1.0",
+      "description": "Merge spiritually integrated counseling workflows and practice management modules into main.",
+      "verification": "npm run test:e2e passes across all intake scenarios",
+      "updated_at": "2026-10-17T11:40:00Z"
+    },
+    {
+      "task_id": "TSK-ORTH-001",
+      "product_id": "churchcore-orthos",
+      "title": "Departmental Ministry Governance & Maturity Engine Shipped",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #25 (commit 3296855)",
+      "target_milestone": "v0.18.0",
+      "description": "Delivered ministry governance assessment engine, maturity scoring, and denominational policy audits.",
+      "verification": "npm run test:all passes with 100% assertions",
+      "updated_at": "2026-10-16T16:00:00Z"
+    },
+    {
+      "task_id": "TSK-ORTH-002",
+      "product_id": "churchcore-orthos",
+      "title": "Compensating Safeguarding Controls for Small Churches",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P1_HIGH",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #24 (commit a196eba)",
+      "target_milestone": "v0.18.0",
+      "description": "Implemented automated dual-signoff and board oversight workflows for churches without full accounting staffs.",
+      "verification": "test/compensating-controls.spec.ts passing",
+      "updated_at": "2026-10-15T19:00:00Z"
+    },
+    {
+      "task_id": "TSK-ORTH-003",
+      "product_id": "churchcore-orthos",
+      "title": "Omni-Council Compliance Rehearsal & Cloud Supabase Binding",
+      "status": "waiting",
+      "directionality": "CONTROL_PLANE",
+      "priority": "P0_CRITICAL",
+      "category": "deployment",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "COUNCIL-2026-004 (REQ-004-02)",
+      "target_milestone": "v0.18.1",
+      "description": "Execute npm run test:omni-council, bind production Supabase credentials, and promote from preview to full production.",
+      "verification": "Full green run on npm run test:omni-council",
+      "updated_at": "2026-10-17T11:35:00Z"
+    },
+    {
+      "task_id": "TSK-SCHL-001",
+      "product_id": "faithfull-scholars",
+      "title": "Cloudflare Turnstile CSP Header Directive Resolution",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "security",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #85 (commit c508488)",
+      "target_milestone": "v0.1.0",
+      "description": "Whitelisted challenges.cloudflare.com in Content-Security-Policy headers enabling Turnstile sign-up verification.",
+      "verification": "Sign-up form completes successfully on faithfull-scholars.vercel.app",
+      "updated_at": "2026-10-16T19:00:00Z"
+    },
+    {
+      "task_id": "TSK-SCHL-002",
+      "product_id": "faithfull-scholars",
+      "title": "Honest Launch Surface & Spanish Localization Merged Live",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #86 & PR #87 (commit 5edc51b)",
+      "target_milestone": "v0.1.0",
+      "description": "Delivered bilingual theological faculty research platform, translated auth errors, and production Vercel edge release.",
+      "verification": "Live at https://faithfull-scholars.vercel.app",
+      "updated_at": "2026-10-16T22:30:00Z"
+    },
+    {
+      "task_id": "TSK-HUB-001",
+      "product_id": "ecosystem-control-plane",
+      "title": "Universal AppSwitcher Navigation Shell Standard",
+      "status": "planned",
+      "directionality": "CONTROL_PLANE",
+      "priority": "P1_HIGH",
+      "category": "governance",
+      "assignee": "Antigravity Agent",
+      "git_reference": "OPS-02 & CP-2026-DIR-03",
+      "target_milestone": "2026-11-15",
+      "description": "Standardize top-navigation AppSwitcher component across all 6 applications allowing single-click ecosystem switching.",
+      "verification": "Standard AppSwitcher React component in shared package or template",
+      "updated_at": "2026-10-17T11:40:00Z"
+    }
+  ],
+  "plans": [
+    {
+      "product_id": "churchcore-chms",
+      "repo_name": "ChurchCore ChMS",
+      "source_file": "DEVELOPMENT_PLAN.md (v3.5.0)",
+      "current_milestone": "v3.5.0 (Release 1d Closeout)",
+      "directionality_summary": {
+        "edge_originated_pct": 75,
+        "control_plane_dispatched_pct": 25
+      },
+      "done": [
+        {
+          "title": "Multi-Campus Member Directory & Churchgoer Portal",
+          "directionality": "EDGE_REPO",
+          "details": "High-fidelity directory, household grouping, privacy toggles, and family check-in."
+        },
+        {
+          "title": "Fintech Giving Pipeline & ACH Recurring Batches",
+          "directionality": "EDGE_REPO",
+          "details": "Stripe Connect embedded donor checkout, pledge campaigns, and tax deduction statements."
+        },
+        {
+          "title": "Constitutional PostgreSQL Row-Level Security (RLS)",
+          "directionality": "CONTROL_PLANE",
+          "details": "Enforced tenant isolation across all tables with 0 bypass policies."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Endorsed Brand House Trust Mark in Global Footer",
+          "directionality": "CONTROL_PLANE",
+          "details": "Render Powered by ChurchCore badge linking to security docs (COUNCIL-2026-002)."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "R1d Member Data-Rights Erasure Approval Queue",
+          "directionality": "EDGE_REPO",
+          "details": "Admin queue with audit logging, ensuring erasure notices fire exclusively post-commit."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Automated Vercel Edge Crons (shepherd-ai & scheduled comms)",
+          "directionality": "EDGE_REPO",
+          "details": "Daily AI pastoral digest and queue retry workers running on Vercel crons."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-lms",
+      "repo_name": "ChurchCore LMS",
+      "source_file": "docs/implementation-plan-2026-q4.md",
+      "current_milestone": "v0.47.0 (Sprint 2 - Foundation & Credentialing)",
+      "directionality_summary": {
+        "edge_originated_pct": 70,
+        "control_plane_dispatched_pct": 30
+      },
+      "done": [
+        {
+          "title": "Turbopack SSR Build Export Bug Resolution",
+          "directionality": "EDGE_REPO",
+          "details": "PR #89: Converted sync server actions to async exports resolving Vercel deployment blocker."
+        },
+        {
+          "title": "Neutral Pre-Auth Gateway & Dynamic Tenant Branding",
+          "directionality": "EDGE_REPO",
+          "details": "PR #88: Dynamic institutional logo resolution with Powered by ChurchCore badge live."
+        },
+        {
+          "title": "Supabase pg_net Extension & Webhook Dispatching",
+          "directionality": "EDGE_REPO",
+          "details": "Enabled pg_net extension on Supabase cloud instance for external webhook listeners."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Synthetic Production Test Suite Execution",
+          "directionality": "EDGE_REPO",
+          "details": "Awaiting final green run on npm run test:prod-synthetic."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "Theological Student Credentialing & PDF Certificate Worker",
+          "directionality": "EDGE_REPO",
+          "details": "Cryptographic certificate generation and verification for AETH seminaries."
+        }
+      ],
+      "planned": [
+        {
+          "title": "AETH Ministerial Formation Digital Course Catalog",
+          "directionality": "EDGE_REPO",
+          "details": "Full Spanish/English ministerial formation curriculum and seat allocation engine."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-academy",
+      "repo_name": "ChurchCore Academy",
+      "source_file": "docs/competitive-execution-plan.md",
+      "current_milestone": "v0.10.0 (Colegio Biblos Pilot Phase)",
+      "directionality_summary": {
+        "edge_originated_pct": 65,
+        "control_plane_dispatched_pct": 35
+      },
+      "done": [
+        {
+          "title": "Colegio Biblos Local Pilot Charter Formal Approval",
+          "directionality": "EDGE_REPO",
+          "details": "PR #247: Approved K-12 Christian Day School pilot operational agreement."
+        },
+        {
+          "title": "Colegio Biblos Pilot Data Model & Seed Rehearsal Foundation",
+          "directionality": "EDGE_REPO",
+          "details": "PR #248: Established initial migration seeds and student enrollment structures."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Production Vercel Cloud Binding & Domain Linking",
+          "directionality": "CONTROL_PLANE",
+          "details": "Awaiting binding of Vercel production credentials to achieve 100% online status."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "OneRoster 1.2 CSV Worker & Pilot Seed Sequencing",
+          "directionality": "EDGE_REPO",
+          "details": "Fixing foreign key dependency locks on grade_levels during pilot rehearsal."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Bilingual Spanish Student Gradebook & Attendance",
+          "directionality": "EDGE_REPO",
+          "details": "Gradebook calculation algorithms and daily multi-language attendance tracking."
+        },
+        {
+          "title": "Powered by ChurchCore Trust Mark & AppSwitcher",
+          "directionality": "CONTROL_PLANE",
+          "details": "Implement Endorsed Brand standards and universal navigation shell."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-care",
+      "repo_name": "ChurchCore Care",
+      "source_file": "docs/v7.0.0-RELEASE-SUMMARY.md",
+      "current_milestone": "v7.0.0 (Clinical EHR & Pastoral Care Production)",
+      "directionality_summary": {
+        "edge_originated_pct": 80,
+        "control_plane_dispatched_pct": 20
+      },
+      "done": [
+        {
+          "title": "Mobile Vite Lockfile Resolution & Clean Vercel Build",
+          "directionality": "EDGE_REPO",
+          "details": "PR #139: Resolved React web and mobile companion package collision; deployed live."
+        },
+        {
+          "title": "Clinical EHR Production Release (churchcore-care.vercel.app)",
+          "directionality": "EDGE_REPO",
+          "details": "Verified live at churchcore-care.vercel.app and www.churchcorecare.io with RLS."
+        },
+        {
+          "title": "HIPAA & Clergy-Penitent Privilege Cryptographic Safeguards",
+          "directionality": "CONTROL_PLANE",
+          "details": "Enforced sovereign database isolation preventing any counseling sync to ChMS."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Production Smoke Test Rehearsal on Vercel Surface",
+          "directionality": "EDGE_REPO",
+          "details": "Awaiting execution of npm run test:smoke against live churchcore-care.vercel.app."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "Merge Faithful Workflows Enhancements Branch",
+          "directionality": "EDGE_REPO",
+          "details": "Spiritually integrated counseling workflows and practice management modules."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Translation Worker Container Optimization",
+          "directionality": "EDGE_REPO",
+          "details": "Dedicated Docker worker optimization for high-throughput bilingual clinical intake."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-orthos",
+      "repo_name": "ChurchCore Orthos",
+      "source_file": "docs/omni-council-plan.md",
+      "current_milestone": "v0.18.0 (Ministry Governance & Maturity Engine)",
+      "directionality_summary": {
+        "edge_originated_pct": 70,
+        "control_plane_dispatched_pct": 30
+      },
+      "done": [
+        {
+          "title": "Departmental Ministry Governance Engine (v0.18.0)",
+          "directionality": "EDGE_REPO",
+          "details": "PR #25: Shipped ministry governance evaluation, maturity scoring, and audits."
+        },
+        {
+          "title": "Compensating Safeguarding Controls for Small Churches",
+          "directionality": "EDGE_REPO",
+          "details": "PR #24: Automated board oversight and dual-signoff compensating controls."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Omni-Council Compliance Rehearsal & Cloud Supabase Binding",
+          "directionality": "CONTROL_PLANE",
+          "details": "Awaiting green test:omni-council run to promote from preview to production."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "Audit PDF Preview CSP Header Whitelisting",
+          "directionality": "EDGE_REPO",
+          "details": "Configuring explicit CSP allowlists in vercel.json for audit PDF preview rendering."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Fund Accounting Double-Entry Balance Validator",
+          "directionality": "EDGE_REPO",
+          "details": "Automated ledger balancing check for restricted endowment and missionary funds."
+        },
+        {
+          "title": "Powered by ChurchCore Trust Mark & AppSwitcher",
+          "directionality": "CONTROL_PLANE",
+          "details": "Implement Endorsed Brand standards and universal navigation shell."
+        }
+      ]
+    },
+    {
+      "product_id": "faithfull-scholars",
+      "repo_name": "FaithFull Scholars",
+      "source_file": "docs/FAITHFULL_SCHOLARS_FULL_PLAN.md",
+      "current_milestone": "v0.1.0 (Honest Launch Surface Production)",
+      "directionality_summary": {
+        "edge_originated_pct": 75,
+        "control_plane_dispatched_pct": 25
+      },
+      "done": [
+        {
+          "title": "Cloudflare Turnstile CSP Header Directive Resolution",
+          "directionality": "EDGE_REPO",
+          "details": "PR #85: Whitelisted challenges.cloudflare.com enabling reliable sign-up completion."
+        },
+        {
+          "title": "Honest Launch Surface & Spanish Localization Merged Live",
+          "directionality": "EDGE_REPO",
+          "details": "PR #86 & #87: Bilingual theological scholarship network live on Vercel."
+        },
+        {
+          "title": "Constitutional PostgreSQL Row-Level Security (RLS)",
+          "directionality": "CONTROL_PLANE",
+          "details": "Strict multi-tenant security isolating academic monographs and faculty reviews."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Production Supabase RLS Policy Audit Run",
+          "directionality": "EDGE_REPO",
+          "details": "Awaiting final execution of npm run audit:rls against live database."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "Theological Faculty Monograph Indexing Interface",
+          "directionality": "EDGE_REPO",
+          "details": "Author submission portal and peer-review editorial triage dashboard."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Academic Peer-Review Editorial Workflow",
+          "directionality": "EDGE_REPO",
+          "details": "Blind peer review assignment, commentary threads, and editorial decision queues."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    }
+  ],
+  "commercial": {
+    "monthly_fleet_opex_usd": 240,
+    "hosting_breakdown": {
+      "vercel_pro_fleet": 120,
+      "supabase_pro_compute": 100,
+      "cloudflare_and_edge_crons": 20
+    },
+    "annual_run_rate_target_usd": 1250000,
+    "active_pilots": [
+      {
+        "name": "Colegio Biblos K-12 Pilot",
+        "product": "ChurchCore Academy",
+        "seats": 350,
+        "status": "Charter Approved",
+        "est_arr": 18000
+      },
+      {
+        "name": "AETH Hispanic Seminary Network",
+        "product": "ChurchCore LMS",
+        "seats": 1200,
+        "status": "Accreditation Engine",
+        "est_arr": 45000
+      },
+      {
+        "name": "Regional Pastoral Network Pilot",
+        "product": "ChurchCore ChMS",
+        "churches": 24,
+        "status": "Giving Pipeline",
+        "est_arr": 32000
+      },
+      {
+        "name": "FaithCounseling Christian Practices",
+        "product": "ChurchCore Care",
+        "clinicians": 15,
+        "status": "Live Production",
+        "est_arr": 22500
+      }
+    ],
+    "fintech_take_rate": {
+      "card_processing": "2.60% + $0.30",
+      "ach_giving": "0.85% (capped at $7.50)",
+      "annual_giving_volume_target": "$12,000,000"
+    }
+  },
+  "sunday_sla": {
+    "sla_target_pct": "99.99%",
+    "holy_hours": "Sundays 06:00 - 13:00 Local",
+    "probe_status": "HEALTHY",
+    "db_connection_pool_headroom": "92%",
+    "stripe_webhook_listener": "ACTIVE",
+    "backup_snapshot_recency": "3 hours ago (Automated Daily Snapshot Verified)",
+    "synthetic_endpoints_monitored": [
+      {
+        "name": "ChMS Member Check-in",
+        "url": "https://churchcore.vercel.app/api/health",
+        "latency_ms": 42,
+        "status": "GREEN"
+      },
+      {
+        "name": "LMS Student Auth",
+        "url": "https://church-core-lms.vercel.app/api/health",
+        "latency_ms": 38,
+        "status": "GREEN"
+      },
+      {
+        "name": "Care EHR Portal",
+        "url": "https://churchcore-care.vercel.app/health",
+        "latency_ms": 55,
+        "status": "GREEN"
+      },
+      {
+        "name": "Scholars Monograph API",
+        "url": "https://faithfull-scholars.vercel.app/api/health",
+        "latency_ms": 48,
+        "status": "GREEN"
+      }
+    ]
+  },
+  "tech_stack_mesh": [
+    {
+      "product": "ChurchCore ChMS",
+      "framework": "Next.js 15.2",
+      "node": "v22.x",
+      "ts": "v5.6",
+      "rls": "100% Enforced",
+      "pg_extensions": "pg_cron, uuid-ossp",
+      "drift": "Synchronized"
+    },
+    {
+      "product": "ChurchCore LMS",
+      "framework": "Next.js 15.3",
+      "node": "v22.x",
+      "ts": "v5.6",
+      "rls": "100% Enforced",
+      "pg_extensions": "pg_net, pgcrypto",
+      "drift": "Synchronized"
+    },
+    {
+      "product": "ChurchCore Academy",
+      "framework": "Next.js 15.1",
+      "node": "v20.x",
+      "ts": "v5.5",
+      "rls": "100% Enforced",
+      "pg_extensions": "uuid-ossp",
+      "drift": "Upgrade to Node 22 planned"
+    },
+    {
+      "product": "ChurchCore Care",
+      "framework": "React 18 / Express",
+      "node": "v20.x",
+      "ts": "v5.4",
+      "rls": "100% Enforced",
+      "pg_extensions": "pgcrypto, uuid-ossp",
+      "drift": "Next.js migration planned"
+    },
+    {
+      "product": "ChurchCore Orthos",
+      "framework": "Next.js 15.0",
+      "node": "v22.x",
+      "ts": "v5.6",
+      "rls": "100% Enforced",
+      "pg_extensions": "uuid-ossp",
+      "drift": "Synchronized"
+    },
+    {
+      "product": "FaithFull Scholars",
+      "framework": "Next.js 15.2",
+      "node": "v22.x",
+      "ts": "v5.6",
+      "rls": "100% Enforced",
+      "pg_extensions": "pgvector, pgcrypto",
+      "drift": "Synchronized"
     }
   ]
 }
