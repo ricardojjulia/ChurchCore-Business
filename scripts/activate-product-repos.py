@@ -336,16 +336,16 @@ CONTROL_PLANE_RULE_CONTENT = """# ChurchCore Sovereign Control Plane: Product Ag
 
 At the beginning of **EVERY development, refactoring, or maintenance session** in this repository, you must execute the following Council Pre-Flight sequence:
 
-### Step 1: Ingest Central Directives & Roadmap
-Fetch the latest governance manifest and central roadmap:
+### Step 1: Ingest & Enforce Central Directives
+Run the edge enforcement engine at session start:
 ```bash
-curl -s https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json
-curl -s https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/control-plane/CENTRAL-ROADMAP.md
-# (Or inspect local sibling /Users/rjulia/ChurchCore-Business/ if present)
+python3 scripts/pull-and-enforce-directives.py
+# In CI/CD pipelines: python3 scripts/pull-and-enforce-directives.py --strict
 ```
+This automatically fetches the latest manifest from `ChurchCore-Business`, runs code-level audits (RLS, zero-propagation, telemetry, brand badge), and syncs `docs/council/ACKNOWLEDGMENTS.md`.
 
 ### Step 2: Check Active Requirements for This Product
-1. Verify if any new Council Decisions (`COUNCIL-2026-001` through `004`) or Central Directives (`CP-2026-DIR-*`) are unacknowledged in `docs/council/ACKNOWLEDGMENTS.md`.
+1. Review `docs/council/ACKNOWLEDGMENTS.md` for any pending Council Decisions (`COUNCIL-2026-001` through `004`) or Central Directives.
 2. Inform the operator of pending council items and incorporate them into the session scope.
 
 ---
@@ -408,11 +408,11 @@ def activate_repo(config):
 
     # 2. Update / Append to AGENTS.md if present
     agents_md = os.path.join(valid_path, "AGENTS.md")
-    rule_mention = "\n- **Control Plane & Telemetry Reporting**: This repository reports to `ChurchCore-Business`. Read `.agents/rules/churchcore-control-plane.md` at session start and run `python3 scripts/report-telemetry.py` at session close.\n"
+    rule_mention = "\n- **Control Plane & Directives Enforcement**: This repository adheres to `ChurchCore-Business`. Run `python3 scripts/pull-and-enforce-directives.py` at session start, read `.agents/rules/churchcore-control-plane.md`, and run `python3 scripts/report-telemetry.py` at session close.\n"
     if os.path.exists(agents_md):
         with open(agents_md, "r") as f:
             content = f.read()
-        if "churchcore-control-plane.md" not in content:
+        if "pull-and-enforce-directives.py" not in content:
             with open(agents_md, "a") as f:
                 f.write(rule_mention)
             print(f"  [x] Appended Control Plane directive to AGENTS.md")
@@ -461,16 +461,18 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
             f.write(ack_content)
         print(f"  [x] Initialized acknowledgment ledger: {ack_file}")
 
-    # 4. Copy scripts/report-telemetry.py into repo
+    # 4. Copy scripts/report-telemetry.py & scripts/pull-and-enforce-directives.py into repo
     scripts_dir = os.path.join(valid_path, "scripts")
     os.makedirs(scripts_dir, exist_ok=True)
-    report_script_dst = os.path.join(scripts_dir, "report-telemetry.py")
-    script_src = os.path.join("/Users/rjulia/ChurchCore-Business/scripts/report-telemetry.py")
-    if os.path.exists(script_src):
-        with open(script_src, "r") as src, open(report_script_dst, "w") as dst:
-            dst.write(src.read())
-        os.chmod(report_script_dst, 0o755)
-        print(f"  [x] Installed edge reporting script: {report_script_dst}")
+    
+    for sname in ["report-telemetry.py", "pull-and-enforce-directives.py"]:
+        src_path = os.path.join("/Users/rjulia/ChurchCore-Business/scripts", sname)
+        dst_path = os.path.join(scripts_dir, sname)
+        if os.path.exists(src_path):
+            with open(src_path, "r") as src, open(dst_path, "w") as dst:
+                dst.write(src.read())
+            os.chmod(dst_path, 0o755)
+            print(f"  [x] Installed edge script: {dst_path}")
 
     # 5. Generate docs/control-plane/telemetry.json
     telemetry_dir = os.path.join(valid_path, "docs", "control-plane")
