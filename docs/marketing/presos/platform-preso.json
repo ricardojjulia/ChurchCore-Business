@@ -14,11 +14,11 @@
   "displacement_targets": "Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",
   "live_domain": "https://www.churchcore.io",
   "scale_metrics": "517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars",
-  "screenshot": "dashboard/screenshots/fleet_tab_top_view.png",
+  "screenshot": "screenshots/fleet_tab_top_view.png",
   "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
   "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
   "version": "v1.0.0",
-  "last_synced": "2026-10-17 19:13:24 UTC",
+  "last_synced": "2026-10-17 20:23:37 UTC",
   "slides": [
     {
       "slide_num": 1,
@@ -30,7 +30,7 @@
         "Strategic Replacement: Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",
         "Production Gate: \ud83d\udfe2 Active in Production"
       ],
-      "visual_asset": "dashboard/screenshots/fleet_tab_top_view.png",
+      "visual_asset": "screenshots/fleet_tab_top_view.png",
       "speaker_notes": "Introduce ChurchCore Sovereign Platform. Emphasize that unlike legacy point solutions that were patched together over 15 years, ChurchCore is engineered as a modern, sovereign application on Next.js with complete Row-Level Security."
     },
     {
@@ -43,7 +43,7 @@
         "Data Sovereignty Crisis: Pastoral counseling notes and member giving records are frequently mined or shared without informed consent.",
         "System Fragility: Church staff spend 15+ hours weekly copying data between incompatible spreadsheets and tools."
       ],
-      "visual_asset": "dashboard/screenshots/executive_dashboard_kpis.png",
+      "visual_asset": "screenshots/executive_dashboard_kpis.png",
       "speaker_notes": "Walk the executive buyer through their current pain: disjointed tools, rising subscription costs, and the lack of ethical data boundaries."
     },
     {
@@ -56,7 +56,7 @@
         "Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://www.churchcore.io.",
         "Zero Vendor Lock-in: Automated backup exports, open PostgreSQL schemas, and full exportability."
       ],
-      "visual_asset": "dashboard/screenshots/fleet_tab_top_view.png",
+      "visual_asset": "screenshots/fleet_tab_top_view.png",
       "speaker_notes": "Showcase the actual live application at https://www.churchcore.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty."
     },
     {
@@ -69,7 +69,7 @@
         "Ecosystem Hardening: 100% Row-Level Security verification",
         "Reliability Proof: Automated CI/CD validation and zero-downtime database migrations."
       ],
-      "visual_asset": "dashboard/screenshots/implementation_plans_directionality.png",
+      "visual_asset": "screenshots/implementation_plans_directionality.png",
       "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."
     },
     {
@@ -82,7 +82,7 @@
         "Constitution Section III: Sacred pastoral/clinical boundary that secular SaaS cannot ethically match.",
         "Bilingual & Global: Native Spanish/English i18n support built from the database up."
       ],
-      "visual_asset": "dashboard/screenshots/commercial_opex_margins.png",
+      "visual_asset": "screenshots/commercial_opex_margins.png",
       "speaker_notes": "Emphasize our commercial moat: superior unit economics, lower cost-to-serve, and the deep ecclesial advisory trust that legacy secular vendors lack."
     },
     {
@@ -95,7 +95,7 @@
         "Migration Guarantee: 100% white-glove onboarding and historical data transfer.",
         "The No-Hostage Covenant: If church finances tighten, accounts are never locked; they downgrade gracefully with dignity."
       ],
-      "visual_asset": "dashboard/screenshots/sunday_sla_pulse.png",
+      "visual_asset": "screenshots/sunday_sla_pulse.png",
       "speaker_notes": "Close with confidence. Point the prospect to the live demo, review our transparent pricing tiers, and offer an immediate pilot or migration evaluation."
     }
   ],

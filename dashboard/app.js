@@ -1541,7 +1541,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${bulletsHtml}
           </div>
           <div class="slide-media-preview">
-            <img src="${slide.visual_asset}" alt="${escapeHtml(slide.title)}" onerror="this.src='dashboard/screenshots/fleet_tab_top_view.png'">
+            <img src="${(slide.visual_asset || 'screenshots/fleet_tab_top_view.png').replace(/^dashboard\//, '')}" alt="${escapeHtml(slide.title)}" onerror="this.src='screenshots/fleet_tab_top_view.png'">
             <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 6px; font-size: 10px; color: var(--gold-400); font-weight: 700;">
               VERIFIED ARTIFACT
             </div>

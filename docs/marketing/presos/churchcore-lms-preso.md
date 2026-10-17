@@ -4,7 +4,7 @@
 > **Scale:** 72 Relational Tables • 85 Application Routes • v0.47.0  
 > **Target Buyers:** Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director  
 > **Live URL:** [https://www.churchcorelms.io](https://www.churchcorelms.io)  
-> **Last Synced from Telemetry:** 2026-10-17 19:13:24 UTC
+> **Last Synced from Telemetry:** 2026-10-17 20:23:37 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.47.0 Live)*
 
-- Latest Feature Delivered: Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)
-- Ecosystem Hardening: chore(telemetry): update session epilogue telemetry (e8354b5)
+- Latest Feature Delivered: fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)
+- Ecosystem Hardening: Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)
 - Reliability Proof: [2026-10-16] Converted server action exports to explicit async functions in compliance with Turbopack specifications (PR #89).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubric
 Commercial Pricing: $79–$999/mo (Unlimited Church Discipleship)
 
 Recent Engineering Delivery & Milestones:
+- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)
+- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)
+- feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)
 - Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)
-- chore(telemetry): update session epilogue telemetry (e8354b5)
-- Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)
-- feat(branding): install Powered by ChurchCore trust badge in sidebar tray (COUNCIL-2026-002 REQ-002-01) (d17b0d2)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.
 - Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance
 - Live Site: https://www.churchcorelms.io
 - Pricing: $79–$999/mo (Unlimited Church Discipleship)
-- Latest Features: Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7), chore(telemetry): update session epilogue telemetry (e8354b5), Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)
+- Latest Features: fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc), Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289), feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)
-- chore(telemetry): update session epilogue telemetry (e8354b5)
-- Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)
+- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)
+- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)
+- feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

@@ -33,7 +33,7 @@ PRODUCT_SPECS = [
         "displacement_targets": "Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",
         "live_domain": "https://www.churchcore.io",
         "scale_metrics": "517 Database Tables • 423 Next.js Routes • 6 Sovereign Pillars",
-        "screenshot": "dashboard/screenshots/fleet_tab_top_view.png",
+        "screenshot": "screenshots/fleet_tab_top_view.png",
         "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation • 100% PostgreSQL RLS Silos",
         "pricing_headline": "$199–$499/mo Local Church • $4.5k–$25k/yr Academy • $50k+ Denomination"
     },
@@ -53,7 +53,7 @@ PRODUCT_SPECS = [
         "displacement_targets": "Displaces Planning Center (Services/People/Giving) + Breeze + Realm + Tithe.ly",
         "live_domain": "https://www.churchcore.io",
         "scale_metrics": "133 Relational Tables • 121 Application Routes • v3.5.0",
-        "screenshot": "dashboard/screenshots/fleet_grid_overview.png",
+        "screenshot": "screenshots/fleet_grid_overview.png",
         "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
         "pricing_headline": "$49–$749/mo + 1% Transparent Giving Interchange"
     },
@@ -73,7 +73,7 @@ PRODUCT_SPECS = [
         "displacement_targets": "Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",
         "live_domain": "https://www.churchcorelms.io",
         "scale_metrics": "72 Relational Tables • 85 Application Routes • v0.47.0",
-        "screenshot": "dashboard/screenshots/council_chambers_deliberation.png",
+        "screenshot": "screenshots/council_chambers_deliberation.png",
         "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
         "pricing_headline": "$79–$999/mo (Unlimited Church Discipleship)"
     },
@@ -93,7 +93,7 @@ PRODUCT_SPECS = [
         "displacement_targets": "Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool",
         "live_domain": "https://church-core-academy.vercel.app",
         "scale_metrics": "152 Relational Tables • 105 Application Routes • v0.10.0",
-        "screenshot": "dashboard/screenshots/implementation_plans_directionality.png",
+        "screenshot": "screenshots/implementation_plans_directionality.png",
         "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
         "pricing_headline": "$2,400–$25,000/yr (Based on Student Enrollment)"
     },
@@ -113,7 +113,7 @@ PRODUCT_SPECS = [
         "displacement_targets": "Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory",
         "live_domain": "https://www.churchcorecare.io",
         "scale_metrics": "84 Relational Tables • Deny-All Row-Level Security • v7.0.0",
-        "screenshot": "dashboard/screenshots/sunday_sla_pulse.png",
+        "screenshot": "screenshots/sunday_sla_pulse.png",
         "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
         "pricing_headline": "$59–$399/mo per practitioner"
     },
@@ -133,7 +133,7 @@ PRODUCT_SPECS = [
         "displacement_targets": "Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits",
         "live_domain": "https://church-core-orthos.vercel.app",
         "scale_metrics": "28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0",
-        "screenshot": "dashboard/screenshots/evidence_reconciliation_ledger.png",
+        "screenshot": "screenshots/evidence_reconciliation_ledger.png",
         "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
         "pricing_headline": "$1,200–$50,000/yr (Parish to Diocesan Licensing)"
     },
@@ -153,7 +153,7 @@ PRODUCT_SPECS = [
         "displacement_targets": "Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",
         "live_domain": "https://faith-full-scholars.vercel.app",
         "scale_metrics": "48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0",
-        "screenshot": "dashboard/screenshots/commercial_opex_margins.png",
+        "screenshot": "screenshots/commercial_opex_margins.png",
         "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
         "pricing_headline": "$2,500–$15,000/yr per Institution"
     }
@@ -216,7 +216,7 @@ def generate_slide_deck(spec, telemetry):
                 "Data Sovereignty Crisis: Pastoral counseling notes and member giving records are frequently mined or shared without informed consent.",
                 "System Fragility: Church staff spend 15+ hours weekly copying data between incompatible spreadsheets and tools."
             ],
-            "visual_asset": "dashboard/screenshots/executive_dashboard_kpis.png",
+            "visual_asset": "screenshots/executive_dashboard_kpis.png",
             "speaker_notes": "Walk the executive buyer through their current pain: disjointed tools, rising subscription costs, and the lack of ethical data boundaries."
         },
         {
@@ -242,7 +242,7 @@ def generate_slide_deck(spec, telemetry):
                 f"Ecosystem Hardening: {recent_bullets[1] if len(recent_bullets) > 1 else 'Automated Council Directives sync'}",
                 f"Reliability Proof: {reliability_proof}"
             ],
-            "visual_asset": "dashboard/screenshots/implementation_plans_directionality.png",
+            "visual_asset": "screenshots/implementation_plans_directionality.png",
             "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."
         },
         {
@@ -255,7 +255,7 @@ def generate_slide_deck(spec, telemetry):
                 "Constitution Section III: Sacred pastoral/clinical boundary that secular SaaS cannot ethically match.",
                 "Bilingual & Global: Native Spanish/English i18n support built from the database up."
             ],
-            "visual_asset": "dashboard/screenshots/commercial_opex_margins.png",
+            "visual_asset": "screenshots/commercial_opex_margins.png",
             "speaker_notes": "Emphasize our commercial moat: superior unit economics, lower cost-to-serve, and the deep ecclesial advisory trust that legacy secular vendors lack."
         },
         {
@@ -268,7 +268,7 @@ def generate_slide_deck(spec, telemetry):
                 "Migration Guarantee: 100% white-glove onboarding and historical data transfer.",
                 "The No-Hostage Covenant: If church finances tighten, accounts are never locked; they downgrade gracefully with dignity."
             ],
-            "visual_asset": "dashboard/screenshots/sunday_sla_pulse.png",
+            "visual_asset": "screenshots/sunday_sla_pulse.png",
             "speaker_notes": "Close with confidence. Point the prospect to the live demo, review our transparent pricing tiers, and offer an immediate pilot or migration evaluation."
         }
     ]

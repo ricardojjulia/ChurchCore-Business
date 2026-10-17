@@ -14,11 +14,11 @@
   "displacement_targets": "Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",
   "live_domain": "https://faith-full-scholars.vercel.app",
   "scale_metrics": "48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0",
-  "screenshot": "dashboard/screenshots/commercial_opex_margins.png",
+  "screenshot": "screenshots/commercial_opex_margins.png",
   "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
   "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
   "version": "0.1.0",
-  "last_synced": "2026-10-17 19:13:24 UTC",
+  "last_synced": "2026-10-17 20:23:37 UTC",
   "slides": [
     {
       "slide_num": 1,
@@ -30,7 +30,7 @@
         "Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",
         "Production Gate: \ud83d\udfe2 Active in Production"
       ],
-      "visual_asset": "dashboard/screenshots/commercial_opex_margins.png",
+      "visual_asset": "screenshots/commercial_opex_margins.png",
       "speaker_notes": "Introduce FaithFull Scholars. Emphasize that unlike legacy point solutions that were patched together over 15 years, ChurchCore is engineered as a modern, sovereign application on Next.js with complete Row-Level Security."
     },
     {
@@ -43,7 +43,7 @@
         "Data Sovereignty Crisis: Pastoral counseling notes and member giving records are frequently mined or shared without informed consent.",
         "System Fragility: Church staff spend 15+ hours weekly copying data between incompatible spreadsheets and tools."
       ],
-      "visual_asset": "dashboard/screenshots/executive_dashboard_kpis.png",
+      "visual_asset": "screenshots/executive_dashboard_kpis.png",
       "speaker_notes": "Walk the executive buyer through their current pain: disjointed tools, rising subscription costs, and the lack of ethical data boundaries."
     },
     {
@@ -56,7 +56,7 @@
         "Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://faith-full-scholars.vercel.app.",
         "Zero Vendor Lock-in: Automated backup exports, open PostgreSQL schemas, and full exportability."
       ],
-      "visual_asset": "dashboard/screenshots/commercial_opex_margins.png",
+      "visual_asset": "screenshots/commercial_opex_margins.png",
       "speaker_notes": "Showcase the actual live application at https://faith-full-scholars.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty."
     },
     {
@@ -65,11 +65,11 @@
       "type": "live_telemetry_highlights",
       "subtitle": "Continuous High-Velocity Delivery (0.1.0 Live)",
       "key_takeaways": [
-        "Latest Feature Delivered: fix(legal): documents guard returns OLD on delete; probes prove a row changed (9ff5236)",
-        "Ecosystem Hardening: fix(legal): scope the frozen-document rule to UPDATE; expect the new account FK (c23b0c8)",
+        "Latest Feature Delivered: docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)",
+        "Ecosystem Hardening: A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)",
         "Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85)."
       ],
-      "visual_asset": "dashboard/screenshots/implementation_plans_directionality.png",
+      "visual_asset": "screenshots/implementation_plans_directionality.png",
       "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."
     },
     {
@@ -82,7 +82,7 @@
         "Constitution Section III: Sacred pastoral/clinical boundary that secular SaaS cannot ethically match.",
         "Bilingual & Global: Native Spanish/English i18n support built from the database up."
       ],
-      "visual_asset": "dashboard/screenshots/commercial_opex_margins.png",
+      "visual_asset": "screenshots/commercial_opex_margins.png",
       "speaker_notes": "Emphasize our commercial moat: superior unit economics, lower cost-to-serve, and the deep ecclesial advisory trust that legacy secular vendors lack."
     },
     {
@@ -95,14 +95,14 @@
         "Migration Guarantee: 100% white-glove onboarding and historical data transfer.",
         "The No-Hostage Covenant: If church finances tighten, accounts are never locked; they downgrade gracefully with dignity."
       ],
-      "visual_asset": "dashboard/screenshots/sunday_sla_pulse.png",
+      "visual_asset": "screenshots/sunday_sla_pulse.png",
       "speaker_notes": "Close with confidence. Point the prospect to the live demo, review our transparent pricing tiers, and offer an immediate pilot or migration evaluation."
     }
   ],
   "prompts": {
-    "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://faith-full-scholars.vercel.app\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- fix(legal): documents guard returns OLD on delete; probes prove a row changed (9ff5236)\n- fix(legal): scope the frozen-document rule to UPDATE; expect the new account FK (c23b0c8)\n- fix(audit): match the whole owner-read policy expression and its roles (9411687)\n- fix(legal): nest the preflight hash check so a fresh database can plan it (6f9b962)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-    "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://faith-full-scholars.vercel.app\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: fix(legal): documents guard returns OLD on delete; probes prove a row changed (9ff5236), fix(legal): scope the frozen-document rule to UPDATE; expect the new account FK (c23b0c8), fix(audit): match the whole owner-read policy expression and its roles (9411687)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
-    "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://faith-full-scholars.vercel.app\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- fix(legal): documents guard returns OLD on delete; probes prove a row changed (9ff5236)\n- fix(legal): scope the frozen-document rule to UPDATE; expect the new account FK (c23b0c8)\n- fix(audit): match the whole owner-read policy expression and its roles (9411687)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://faith-full-scholars.vercel.app",
+    "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://faith-full-scholars.vercel.app\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)\n- A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)\n- docs: A1 honest launch surface merged and live (#87) (5edc51b)\n- fix: A1 follow-ups \u2014 server language, translated sign-up errors, honest plan name (#86) (06f4b65)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+    "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://faith-full-scholars.vercel.app\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8), A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410), docs: A1 honest launch surface merged and live (#87) (5edc51b)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
+    "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://faith-full-scholars.vercel.app\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)\n- A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)\n- docs: A1 honest launch surface merged and live (#87) (5edc51b)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://faith-full-scholars.vercel.app",
     "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
   }
 }

@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-17 19:13:24 UTC`  
+> **Last Aggregated:** `2026-10-17 20:23:37 UTC`  
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -10,9 +10,9 @@
 | :--- | :--- | :--- | :--- |
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
 | **Active Production Online** | `4 / 6` | 6 / 6 | 🟡 Transitioning |
-| **Average Readiness Score** | `82%` | 100% | 🟢 High Readiness |
-| **Portfolio MVP Progress** | `90%` | 100% | 🟢 On Schedule |
-| **Cross-App Data Isolation** | `UNVERIFIED` | Evidence from every product | ⚠️ One or more edge reports are unverified |
+| **Average Readiness Score** | `89%` | 100% | 🟢 High Readiness |
+| **Portfolio MVP Progress** | `87%` | 100% | 🟢 On Schedule |
+| **Cross-App Data Isolation** | `VERIFIED` | Evidence from every product | 🛡️ All edge reports verified |
 
 ## 2. Product Fleet Status Cards
 
@@ -66,7 +66,7 @@
 
 ---
 
-### ChurchCore LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
+### ChurchCore-LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -93,10 +93,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)`
+- `Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)`
+- `feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)`
 - `Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)`
-- `chore(telemetry): update session epilogue telemetry (e8354b5)`
-- `Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)`
-- `feat(branding): install Powered by ChurchCore trust badge in sidebar tray (COUNCIL-2026-002 REQ-002-01) (d17b0d2)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
@@ -104,10 +104,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-17T17:32:30.092669+00:00`
-- **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Automated Council Directives Enforcement
+- **Session Duration:** `120 minutes`
+- **Session Timestamp:** `2026-10-17T20:16:16.107136+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -123,51 +123,50 @@
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
 | **Online Status** | `OFFLINE / LOCAL` | No production deployment claimed |
-| **Vercel Deployment** | `NONE` | No URL reported |
-| **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation or RLS verification remains unverified |
-| **Readiness Score** | `33%` | One of three approved local Workstream C gates is complete: preparation passed; participant-browser login and the uncoached session remain. |
+| **Vercel Deployment** | `DEPLOYED` | [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app) |
+| **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation reported and verified |
+| **Readiness Score** | `78%` | No score basis supplied |
 
 ##### ⚠️ Production Readiness Assessment
 **Active Blockers:**
-- 🔴 Participant login has not been verified from the actual Colegio Biblos browser or VM.
-- 🔴 The real uncoached Colegio Biblos pilot session has not occurred.
-- 🔴 Hosted deployment remains owner-deferred and is not authorized by this telemetry.
+- 🔴 Awaiting production Vercel deployment credentials binding
+- 🔴 Colegio Biblos pilot migration seed rehearsal in progress
 
 **Immediate Next Required Actions for Online Launch:**
-- 🛠️ Verify participant login from the approved local/private browser or VM.
-- 🛠️ Run the chartered uncoached session and record sanitized evidence.
-- 🛠️ Use observed pilot needs to select or exclude later integration-validation lanes.
+- 🛠️ Execute npm run verify:pilot-readiness
+- 🛠️ Deploy staging preview to Vercel and bind production Supabase URL
+- 🛠️ Verify OneRoster 1.2 delivery cron worker
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PILOT_READY`
-- **Completion Percentage:** `100%`
+- **Completion Percentage:** `82%`
 - **Recent Milestones Delivered:**
-  - ✅ PR #248 recorded Colegio Biblos local/private pilot preparation.
-  - ✅ PR #247 approved the Colegio Biblos local pilot charter.
-  - ✅ PR #246 completed the technical baseline closeout.
+  - ✅ PR #248: Colegio Biblos local pilot preparation recorded
+  - ✅ PR #247: Colegio Biblos local pilot charter formally approved
+  - ✅ PR #246: Technical baseline closeout completed
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Reconcile control-plane governance evidence (#249) (7fcbe31)`
 - `Record Colegio Biblos local pilot preparation (#248) (bed47c2)`
 - `Approve Colegio Biblos local pilot charter (#247) (f44c6b7)`
 - `Record technical baseline closeout (#246) (4bfe20b)`
-- `Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)`
 
 **Next Engineering Steps:**
-- 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
-- 🎯 Complete the uncoached pilot session before adding feature work.
-- 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
+- 🎯 Complete Colegio Biblos pilot student roster import
+- 🎯 Execute verify:admissions-rls and verify:enrollment-conversion-rls
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `OpenAI Codex`
-- **Session Duration:** `25 minutes`
-- **Session Timestamp:** `2026-10-17T16:05:27.430761+00:00`
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `90 minutes`
+- **Session Timestamp:** `2026-10-17T20:16:16.107136+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Reconciled Academy control-plane governance and evidence-backed telemetry.
+- **Session Work Summary:** Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
+| `[2026-10-16] Local migration seed failed during rehearsal due to foreign key sequence lock on grade_levels.` | `[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.` |
 
 ---
 
@@ -207,7 +206,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `60 minutes`
-- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
+- **Session Timestamp:** `2026-10-17T20:16:16.107136+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries.
 
@@ -248,10 +247,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)`
+- `feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)`
 - `Merge pull request #25 from ricardojjulia/feature/ministry-governance-maturity-engine (3296855)`
 - `feat(ministries): Departmental Ministry Governance & Maturity Engine (v0.18.0) (aa4412c)`
-- `Merge pull request #24 from ricardojjulia/feature/compensating-controls-small-churches (a196eba)`
-- `ci: upgrade workflow node version to 22 for native WebSocket support (9e8f120)`
 
 **Next Engineering Steps:**
 - 🎯 Deploy staging preview build to Vercel
@@ -260,7 +259,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `75 minutes`
-- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
+- **Session Timestamp:** `2026-10-17T20:16:16.107136+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
 
@@ -298,10 +297,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `fix(legal): documents guard returns OLD on delete; probes prove a row changed (9ff5236)`
-- `fix(legal): scope the frozen-document rule to UPDATE; expect the new account FK (c23b0c8)`
-- `fix(audit): match the whole owner-read policy expression and its roles (9411687)`
-- `fix(legal): nest the preflight hash check so a fresh database can plan it (6f9b962)`
+- `docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)`
+- `A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)`
+- `docs: A1 honest launch surface merged and live (#87) (5edc51b)`
+- `fix: A1 follow-ups — server language, translated sign-up errors, honest plan name (#86) (06f4b65)`
 
 **Next Engineering Steps:**
 - 🎯 Complete faculty profile public monograph index
@@ -310,7 +309,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `105 minutes`
-- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
+- **Session Timestamp:** `2026-10-17T20:16:16.107136+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
 

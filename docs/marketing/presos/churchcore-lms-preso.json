@@ -14,11 +14,11 @@
   "displacement_targets": "Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",
   "live_domain": "https://www.churchcorelms.io",
   "scale_metrics": "72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0",
-  "screenshot": "dashboard/screenshots/council_chambers_deliberation.png",
+  "screenshot": "screenshots/council_chambers_deliberation.png",
   "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
   "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
   "version": "0.47.0",
-  "last_synced": "2026-10-17 19:13:24 UTC",
+  "last_synced": "2026-10-17 20:23:37 UTC",
   "slides": [
     {
       "slide_num": 1,
@@ -30,7 +30,7 @@
         "Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",
         "Production Gate: \ud83d\udfe2 Active in Production"
       ],
-      "visual_asset": "dashboard/screenshots/council_chambers_deliberation.png",
+      "visual_asset": "screenshots/council_chambers_deliberation.png",
       "speaker_notes": "Introduce ChurchCore LMS. Emphasize that unlike legacy point solutions that were patched together over 15 years, ChurchCore is engineered as a modern, sovereign application on Next.js with complete Row-Level Security."
     },
     {
@@ -43,7 +43,7 @@
         "Data Sovereignty Crisis: Pastoral counseling notes and member giving records are frequently mined or shared without informed consent.",
         "System Fragility: Church staff spend 15+ hours weekly copying data between incompatible spreadsheets and tools."
       ],
-      "visual_asset": "dashboard/screenshots/executive_dashboard_kpis.png",
+      "visual_asset": "screenshots/executive_dashboard_kpis.png",
       "speaker_notes": "Walk the executive buyer through their current pain: disjointed tools, rising subscription costs, and the lack of ethical data boundaries."
     },
     {
@@ -56,7 +56,7 @@
         "Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://www.churchcorelms.io.",
         "Zero Vendor Lock-in: Automated backup exports, open PostgreSQL schemas, and full exportability."
       ],
-      "visual_asset": "dashboard/screenshots/council_chambers_deliberation.png",
+      "visual_asset": "screenshots/council_chambers_deliberation.png",
       "speaker_notes": "Showcase the actual live application at https://www.churchcorelms.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty."
     },
     {
@@ -65,11 +65,11 @@
       "type": "live_telemetry_highlights",
       "subtitle": "Continuous High-Velocity Delivery (0.47.0 Live)",
       "key_takeaways": [
-        "Latest Feature Delivered: Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)",
-        "Ecosystem Hardening: chore(telemetry): update session epilogue telemetry (e8354b5)",
+        "Latest Feature Delivered: fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)",
+        "Ecosystem Hardening: Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)",
         "Reliability Proof: [2026-10-16] Converted server action exports to explicit async functions in compliance with Turbopack specifications (PR #89)."
       ],
-      "visual_asset": "dashboard/screenshots/implementation_plans_directionality.png",
+      "visual_asset": "screenshots/implementation_plans_directionality.png",
       "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."
     },
     {
@@ -82,7 +82,7 @@
         "Constitution Section III: Sacred pastoral/clinical boundary that secular SaaS cannot ethically match.",
         "Bilingual & Global: Native Spanish/English i18n support built from the database up."
       ],
-      "visual_asset": "dashboard/screenshots/commercial_opex_margins.png",
+      "visual_asset": "screenshots/commercial_opex_margins.png",
       "speaker_notes": "Emphasize our commercial moat: superior unit economics, lower cost-to-serve, and the deep ecclesial advisory trust that legacy secular vendors lack."
     },
     {
@@ -95,14 +95,14 @@
         "Migration Guarantee: 100% white-glove onboarding and historical data transfer.",
         "The No-Hostage Covenant: If church finances tighten, accounts are never locked; they downgrade gracefully with dignity."
       ],
-      "visual_asset": "dashboard/screenshots/sunday_sla_pulse.png",
+      "visual_asset": "screenshots/sunday_sla_pulse.png",
       "speaker_notes": "Close with confidence. Point the prospect to the live demo, review our transparent pricing tiers, and offer an immediate pilot or migration evaluation."
     }
   ],
   "prompts": {
-    "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore LMS.\n</system>\n\n<context>\nProduct: ChurchCore LMS (LMS)\nDomain Category: Discipleship & PWA\nTagline: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nScale & Footprint: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\nTarget Buyer Personas: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director\nCompetitive Replacement Targets: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\nLive Production URL: https://www.churchcorelms.io\nConstitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\nCommercial Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n\nRecent Engineering Delivery & Milestones:\n- Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)\n- chore(telemetry): update session epilogue telemetry (e8354b5)\n- Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)\n- feat(branding): install Powered by ChurchCore trust badge in sidebar tray (COUNCIL-2026-002 REQ-002-01) (d17b0d2)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-    "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.\n\n**Key Context:**\n- Product: ChurchCore LMS (Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA)\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n- Replaces: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\n- Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\n- Live Site: https://www.churchcorelms.io\n- Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Latest Features: Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7), chore(telemetry): update session epilogue telemetry (e8354b5), Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Discipleship Pastor / Christian Education Director requesting a 20-minute live demonstration.",
-    "prezi_gamma": "Title: ChurchCore LMS \u2014 Executive Presentation\nSubtitle: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\n- Live URL: https://www.churchcorelms.io\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)\n- chore(telemetry): update session epilogue telemetry (e8354b5)\n- Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorelms.io",
+    "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore LMS.\n</system>\n\n<context>\nProduct: ChurchCore LMS (LMS)\nDomain Category: Discipleship & PWA\nTagline: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nScale & Footprint: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\nTarget Buyer Personas: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director\nCompetitive Replacement Targets: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\nLive Production URL: https://www.churchcorelms.io\nConstitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\nCommercial Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n\nRecent Engineering Delivery & Milestones:\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)\n- feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)\n- Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+    "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.\n\n**Key Context:**\n- Product: ChurchCore LMS (Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA)\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n- Replaces: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\n- Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\n- Live Site: https://www.churchcorelms.io\n- Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Latest Features: fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc), Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289), feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Discipleship Pastor / Christian Education Director requesting a 20-minute live demonstration.",
+    "prezi_gamma": "Title: ChurchCore LMS \u2014 Executive Presentation\nSubtitle: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\n- Live URL: https://www.churchcorelms.io\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)\n- feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorelms.io",
     "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
   }
 }
