@@ -1,47 +1,221 @@
 # ChurchCore Business & Portfolio Operating System
 
-> **The Sovereign Enterprise Software Ecosystem for the Global Church, Christian Education, and Ministry Operations.**
+> **The Sovereign Enterprise Software Ecosystem for the Global Church, Christian Education, Pastoral Soul-Care, and Academic Ministry Operations.**
 
-[![Council Status](https://img.shields.io/badge/Council_Status-RATIFIED-success?style=for-the-badge&logo=shield)](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-001.md)
-[![Constitution](https://img.shields.io/badge/Constitution-ACTIVE-blue?style=for-the-badge)](file:///Users/rjulia/ChurchCore-Business/docs/constitution/CONSTITUTION.md)
-[![Portfolio Tables](https://img.shields.io/badge/Database_Tables-517_Total-informational?style=for-the-badge)](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/MASTER-PORTFOLIO-MATRIX.md)
-[![Control Plane](https://img.shields.io/badge/Control_Plane-ACTIVE_DASHBOARD-gold?style=for-the-badge&logo=vercel)](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ECOSYSTEM-DASHBOARD.md)
-[![AgY CLI](https://img.shields.io/badge/AgY_CLI-v1.4.0_READY-blueviolet?style=for-the-badge&logo=google)](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md)
+[![Council Status](https://img.shields.io/badge/Council_Status-RATIFIED-success?style=for-the-badge&logo=shield)](docs/council/COUNCIL-2026-001.md)
+[![Constitution](https://img.shields.io/badge/Constitution-ACTIVE_SEC_III-blue?style=for-the-badge)](docs/constitution/CONSTITUTION.md)
+[![Live Fleet](https://img.shields.io/badge/Live_Fleet-4%2F6_ONLINE-brightgreen?style=for-the-badge&logo=vercel)](docs/control-plane/ECOSYSTEM-DASHBOARD.md)
+[![Database Scale](https://img.shields.io/badge/Database_Tables-517_Total-informational?style=for-the-badge&logo=supabase)](docs/portfolio/MASTER-PORTFOLIO-MATRIX.md)
+[![Next.js Scale](https://img.shields.io/badge/Application_Routes-423_Total-orange?style=for-the-badge&logo=nextdotjs)](docs/portfolio/MASTER-PORTFOLIO-MATRIX.md)
+[![Control Plane](https://img.shields.io/badge/Control_Plane-ACTIVE_COCKPIT-gold?style=for-the-badge)](docs/control-plane/ARCHITECTURE.md)
+[![AgY CLI](https://img.shields.io/badge/AgY_CLI-v1.4.0_ORCHESTRATED-blueviolet?style=for-the-badge&logo=google)](docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md)
+[![Git Branches](https://img.shields.io/badge/Branches-MAIN_ONLY-24292e?style=for-the-badge&logo=github)](https://github.com/ricardojjulia/ChurchCore-Business/tree/main)
 
 ---
 
-## 🏛️ Executive Summary & Mission Control
+## 🏛️ Executive Mission Control & Live Dashboard
 
-**ChurchCore-Business** is the executive command center, strategic brain, and sovereign governance repository for the **ChurchCore Ecosystem**. It coordinates six mature, specialized engineering platforms into an integrated, defensible, high-margin commercial enterprise while strictly enforcing **Constitution Section III: Zero Cross-Application Customer Data Propagation**.
+**ChurchCore-Business** is the executive command center, strategic brain, and sovereign governance repository for the entire **ChurchCore Ecosystem**. It orchestrates six mature, mission-critical engineering platforms into an integrated, defensible, and high-margin enterprise while strictly enforcing **Constitution Section III: Zero Cross-Application Customer Data Propagation**.
 
-> 📖 **Read the Master Guide:** [CONTROL-PLANE-AND-AGY-GUIDE.md](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) — The comprehensive operations manual, strategic vision, live fleet status, and complete tutorial for utilizing the **AgY CLI** for autonomous cross-repo development.
+![ChurchCore Sovereign Control Plane Cockpit](dashboard/screenshots/fleet_tab_top_view.png)
 
-### 🚀 Quick Launch: Executive Web Dashboard
-Launch the real-time glassmorphic mission control UI on your machine:
+### 🚀 Quick Launch: Executive Web Cockpit
+Launch the real-time glassmorphic mission control UI locally on port `3333`:
 ```bash
 python3 dashboard/serve.py
-# Opens http://localhost:3333 in your browser
+# Instantly opens http://localhost:3333 in your browser
+```
+
+> 📖 **Read the Master Guide:** [docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md](docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) — The complete operations manual, strategic vision, live fleet status, and full tutorial for utilizing the **AgY CLI** for multi-repo orchestration.
+
+---
+
+## 🌐 Sovereign Architecture & Autonomous Mesh
+
+The ChurchCore ecosystem follows a **Federated Sovereign Architecture**: each product runs on its own isolated Vercel project, independent Supabase PostgreSQL cluster with Row Level Security (RLS), and dedicated git repository. The Control Plane acts as the hub for governance, central roadmaps, and autonomous evidence reconciliation without ever aggregating customer PII.
+
+```mermaid
+flowchart TD
+    subgraph ControlPlane ["🏛️ CHURCHCORE SOVEREIGN CONTROL PLANE (Hub)"]
+        direction TB
+        CP_CORE["📜 docs/constitution/ (7 Invariants)<br>⚖️ docs/council/ (Binding Decisions)<br>🧭 docs/control-plane/CENTRAL-ROADMAP.md (Directives)<br>📊 docs/control-plane/ECOSYSTEM-DASHBOARD.md (Live Status)<br>🛡️ docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md<br>🖥️ dashboard/ (Port 3333 Glassmorphic Cockpit)"]
+    end
+
+    subgraph DirectionalityMesh ["Directionality & Enforcement Engine"]
+        direction LR
+        DISPATCH["⚡ DISPATCH DIRECTIVES<br>(Central Roadmap & Architectural Directives)"]
+        REPORT["📡 TELEMETRY & PROOFS<br>(Autonomous Telemetry & Cryptographic Proofs)"]
+        INVARIANT["🛡️ CONSTITUTION SECTION III<br>Zero Customer/Member/Donor Data Propagation"]
+    end
+
+    ControlPlane --> DISPATCH
+    REPORT --> ControlPlane
+
+    subgraph SovereignFleet ["Sovereign Fleet Repositories (Autonomous Applications)"]
+        direction TB
+        subgraph P1 ["ChurchCore ChMS"]
+            C1["Next.js v3.5.0<br>🌐 www.churchcore.io<br>🗄️ Supabase prod-chms-db<br>🛡️ 133 Tables • RLS Enforced<br>🏛️ 188 Council Records"]
+        end
+        subgraph P2 ["ChurchCore LMS"]
+            C2["Next.js v0.47.0<br>🌐 www.churchcorelms.io<br>🗄️ Supabase prod-lms-db<br>🛡️ 72 Tables • RLS Enforced<br>🏛️ 69 Council Records"]
+        end
+        subgraph P3 ["ChurchCore Academy"]
+            C3["Next.js v0.10.0<br>🌐 church-core-academy.vercel.app<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced<br>🏛️ 57 Council Records"]
+        end
+        subgraph P4 ["ChurchCore Care"]
+            C4["React 18 / Express v7.0.0<br>🌐 www.churchcorecare.io<br>🗄️ Supabase prod-care-db<br>🛡️ 84 Tables • Deny-All RLS<br>🏛️ Dedicated Care Council"]
+        end
+        subgraph P5 ["ChurchCore Orthos"]
+            C5["Next.js v0.18.0<br>🌐 church-core-orthos.vercel.app<br>🗄️ Supabase Staging Link<br>🛡️ 28 Tables • Gemini AI<br>🏛️ 16 Council Records"]
+        end
+        subgraph P6 ["FaithFull Scholars"]
+            C6["Next.js v0.1.0<br>🌐 faith-full-scholars.vercel.app<br>🗄️ Supabase prod-scholars-db<br>🛡️ 48 Tables • pgvector<br>🏛️ 66 Council Records"]
+        end
+    end
+
+    DISPATCH --> P1 & P2 & P3 & P4 & P5 & P6
+    P1 & P2 & P3 & P4 & P5 & P6 --> REPORT
 ```
 
 ---
 
-## 📁 Repository Quick Navigation
+## 💎 The 6 Sovereign Pillars of ChurchCore
+
+| Product | Live Production URL | Domain Category | Tech Version | Scale & Schema | Primary Buyer | Commercial Model |
+|---|:---:|---|:---:|:---:|---|---|
+| **[01. ChurchCore ChMS](docs/portfolio/01-churchcore-chms.md)** | [www.churchcore.io](https://www.churchcore.io) | Core ChMS, Worship, Child Safety & Double-Entry Finance | `v3.5.0` | **133 Tables**, 121 Routes | Senior Pastor, Executive Pastor | $49–$749/mo + 1% Giving |
+| **[02. ChurchCore LMS](docs/portfolio/02-churchcore-lms.md)** | [www.churchcorelms.io](https://www.churchcorelms.io) | Ministry LMS, Discipleship Tracks & PWA | `v0.47.0` | **72 Tables**, 85 Routes | Discipleship Pastor, Dean | $79–$999/mo |
+| **[03. ChurchCore Academy](docs/portfolio/03-churchcore-academy.md)** | [church-core-academy.vercel.app](https://church-core-academy.vercel.app) | K-12 & Higher-Ed SIS & School Operations | `v0.10.0` | **152 Tables**, 105 Routes | Head of School, Principal | $2,400–$25,000/yr |
+| **[04. ChurchCore Care](docs/portfolio/04-churchcore-care.md)** | [www.churchcorecare.io](https://www.churchcorecare.io) | Pastoral & Clinical Counseling EHR + Telehealth | `v7.0.0` | **84 Tables**, Deny-All RLS | Clinical Director, Care Pastor | $59–$399/mo |
+| **[05. ChurchCore Orthos](docs/portfolio/05-churchcore-orthos.md)** | [church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) | Institutional Governance & AI Health Audit | `v0.18.0` | **28 Tables**, 30 Routes | Elder Board, Bishop | $1,200–$50,000/yr |
+| **[06. FaithFull Scholars](docs/portfolio/06-faithfull-scholars.md)** | [faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) | Theological Higher Ed & Confessional Search | `v0.1.0` | **48 Tables**, 53 Routes | Seminary President, Dean | $2,500–$15,000/yr |
+
+*Portfolio Aggregate Totals: **517 Relational Database Tables** • **423 Application Routes** • **396+ Ratified Edge Council Review Records**.*
+
+---
+
+## 📸 Visual Cockpit & Features Gallery
+
+The executive web cockpit (`http://localhost:3333`) provides an ultra-low latency, glassmorphic mission control interface for operations, council chambers, and autonomous challenge tracking.
+
+### 1. Dual-Tier Council Chambers & Deliberation Engine
+*Interactive council session interface enabling queries, governing state audits, and quorum verification across all 6 product councils and 38 guardians.*
+![Council Chambers Deliberation](dashboard/screenshots/council_chambers_deliberation.png)
+
+### 2. Autonomous Edge Evidence Reconciliation Ledger
+*Tracks live challenges submitted by edge repositories disputing central records with cryptographic, git-commit, or schema evidence.*
+![Evidence Reconciliation Ledger](dashboard/screenshots/evidence_reconciliation_ledger.png)
+
+### 3. Implementation Plans & Directionality Matrix
+*Enforces central directives, architecture constraints, and roadmap milestones down to sovereign edge applications.*
+![Implementation Plans & Directionality](dashboard/screenshots/implementation_plans_directionality.png)
+
+### 4. Cross-Portfolio Project Tasks Kanban
+*Real-time task tracking across all six development workstreams with multi-repo status filtering.*
+![Project Tasks Kanban](dashboard/screenshots/project_tasks_kanban.png)
+
+### 5. Sunday SLA Pulse & Disaster Recovery Engine
+*Specialized Sunday service-readiness telemetry, Saturday night rehearsal checklists, and warm failover monitoring.*
+![Sunday SLA Pulse](dashboard/screenshots/sunday_sla_pulse.png)
+
+### 6. Commercial Unit Economics & OPEX Breakdown
+*Real-time SaaS margins, fintech interchange contribution, and multi-year P&L sensitivity modeling.*
+![Commercial OPEX & Margins](dashboard/screenshots/commercial_opex_margins.png)
+
+---
+
+## ⚖️ The Dual-Tier Council Governance Model
+
+All architectural invariants, strategic pivots, and pricing schedules are strictly governed under our **Dual-Tier Council Architecture**:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Edge as Sovereign Edge Repo (e.g. ChurchCore LMS)
+    participant Central as Control Plane Hub (ChurchCore-Business)
+    participant Council as 6-Seat Binding Tribunal
+    participant Ledger as Evidence Reconciliation Ledger
+
+    Note over Edge,Central: Periodic Autonomous Telemetry Sync
+    Edge->>Central: Discovers Central Record is Stale (e.g. Commit hash or Council Count)
+    Edge->>Central: Submits Autonomous Challenge + Cryptographic Proof (GIT_COMMIT_PROOF)
+    Central->>Central: Validates Proof against Edge Git Tree & AST
+    Central->>Ledger: Appends Reconciled Record to EVIDENCE-RECONCILIATION-LEDGER.md
+    Central->>Edge: Emits Verified Acknowledgment & Syncs Manifest
+    Central->>Council: Surfaces Major Divergences for Formal Quorum Ratification
+```
+
+### The Tiers
+1. **The 13 HQ Specialist Personas:** Active ideation workbench covering System Design, Commercial Modeling, Adversarial Critique, Pedagogy, Clinical Ethics, and Capital Strategy ([`.agents/rules/council-charter.md`](.agents/rules/council-charter.md)).
+2. **The 6-Seat Binding Governing Council:** Formal tribunal requiring **6/6 Unanimous Approval** to ratify major ecosystem decisions:
+   - 👑 **Chief Executive / Visionary**
+   - 🧭 **Chief Product & Portfolio Officer**
+   - 💰 **Chief Financial & Revenue Officer**
+   - 🏛️ **Chief Technology Officer / Lead Architect**
+   - 🛡️ **Chief Information Security Officer**
+   - 🚀 **GTM & Ministry Operations Lead**
+3. **The 38 Edge Council Guardians:** Specialized domain councils residing in each edge repository (e.g. Care Clinical Ethics Council, LMS Curriculum Review Council, ChMS Worship Council), with **396+ documented council records** logged to date.
+
+---
+
+## 🤖 AgY CLI Multi-Repository Orchestration
+
+We leverage Google's **AgY CLI** to manage, navigate, and execute multi-repository workflows across the sovereign fleet.
+
+```bash
+# 1. Inspect Ecosystem Architecture and Live Status
+agy -p "Review live status across all 6 products and verify Sunday SLA readiness"
+
+# 2. Dispatch a Central Directive across All Edge Repositories
+agy -p "Audit all edge repositories for compliance with COUNCIL-2026-004 telemetry standard" \
+    --add-dir /Users/rjulia/ChurchCore \
+    --add-dir /Users/rjulia/ChurchCore-LMS \
+    --add-dir /Users/rjulia/ChurchCore-Academy \
+    --add-dir /Users/rjulia/ChurchCore-Care \
+    --add-dir /Users/rjulia/ChurchCore-Orthos \
+    --add-dir /Users/rjulia/FaithFull-Scholars
+
+# 3. Synchronize Autonomous Edge Telemetry & Reconcile Challenges
+python3 scripts/control-plane-sync.py
+```
+
+---
+
+## 🛡️ The 7 Constitutional Invariants
+
+Every product, service, and automation in the ChurchCore portfolio is bound by the **Seven Constitutional Invariants** ([`docs/constitution/CONSTITUTION.md`](docs/constitution/CONSTITUTION.md)):
+
+1. **Ministry Data Sovereignty:** Member data, tithing records, and prayer requests are sacred trusts. They are never sold, mined, or used for unconfessional ad tracking.
+2. **Pastoral / Clinical Separation:** Absolute cryptographic isolation between church membership notes and confidential counseling records.
+3. **Unified Identity, Isolated Data:** Seamless single sign-on (ChurchCore ID) with zero cross-tenant database leakage.
+4. **Dual-Tier Council Ratification:** No unratified strategic pivots or breaking architectural changes without a formal council session.
+5. **Living Documentation & Memory:** Every question, debate, and divergent idea preserved in [`docs/inquiries/`](docs/inquiries/) and [`docs/deliberations/`](docs/deliberations/).
+6. **Kingdom Stewardship & Margin Discipline:** Profitable, sustainable SaaS and fintech unit economics designed for generational permanence.
+7. **Evidence-Based Portfolio:** Every business thesis is anchored in active code, verified migrations, and audited schemas.
+
+---
+
+## 📂 Repository Directory Tree
 
 ```
 ChurchCore-Business/
-├── dashboard/                # Executive Mission Control Web Application
-│   ├── index.html            # Single-Page Cockpit Interface
-│   ├── styles.css            # Dark-Mode Glassmorphism Design System
-│   ├── app.js                # Live Telemetry & AgY Command Dispatcher
-│   └── serve.py              # One-Click Local HTTP Server (Port 3333)
+├── dashboard/                # Executive Mission Control Web Cockpit (Port 3333)
+│   ├── index.html            # Single-Page Cockpit Interface (Dynamic Tabs & Modal Engine)
+│   ├── styles.css            # Dark-Mode Glassmorphism Design System & Palette
+│   ├── app.js                # Telemetry Engine, Council Deliberations & Challenge Dispatcher
+│   ├── serve.py              # Zero-Dependency Local HTTP Server with No-Cache Headers
+│   └── screenshots/          # High-Resolution UI Screenshots & Visual Artifacts
 ├── docs/
 │   ├── control-plane/        # Sovereign Control Plane, Fleet Telemetry & Central Directives
 │   │   ├── CONTROL-PLANE-AND-AGY-GUIDE.md # Master Operations Manual & AgY CLI Tutorial
 │   │   ├── ARCHITECTURE.md   # Control Plane Blueprint & AI Permanent Connection Strategy
 │   │   ├── ECOSYSTEM-DASHBOARD.md # Master Fleet Status, Vercel/Supabase Health & AI Logs
 │   │   ├── CENTRAL-ROADMAP.md # Central Roadmap & Imposed Development Directives
+│   │   ├── EVIDENCE-RECONCILIATION-LEDGER.md # Autonomous Edge Evidence Reconciliation Log
 │   │   ├── TELEMETRY-SPEC.md # Edge Telemetry Reporting Standard & Invariants
 │   │   └── telemetry-schema.json # JSON Schema for Edge Node Telemetry
+│   ├── constitution/         # The 7 Immutable Foundational Invariants
+│   │   └── CONSTITUTION.md
 │   ├── council/              # Binding Ratified Council Decisions (COUNCIL-2026-XXX)
 │   │   ├── COUNCIL-2026-001.md (Inaugural Ecosystem & Commercial Ratification)
 │   │   ├── COUNCIL-2026-002.md (Branding Governance & Sub-Brand Taxonomy Ratification)
@@ -51,9 +225,7 @@ ChurchCore-Business/
 │   │   ├── manifest.json     # Machine-Readable JSON Manifest of Active Directives
 │   │   └── COMPLIANCE-MATRIX.md # Ecosystem-Wide Implementation Tracking Board
 │   ├── deliberations/        # Chronological Executive Session Journals & Debate Transcripts
-│   │   └── SESSION-2026-10-16-FOUNDATIONAL-ARCHITECTURE.md
 │   ├── inquiries/            # Strategic Questions, Debates & Resolved Dilemmas
-│   │   └── INQ-2026-001-unified-identity-strategy.md
 │   ├── portfolio/            # Deep-Dive Product Dossiers (Live Capabilities & Code Audits)
 │   │   ├── MASTER-PORTFOLIO-MATRIX.md (Cross-Suite Architectural & Financial Matrix)
 │   │   ├── 01-churchcore-chms.md (Core ChMS, Worship, Child Safety & Financials)
@@ -63,54 +235,16 @@ ChurchCore-Business/
 │   │   ├── 05-churchcore-orthos.md (Governance, Safeguarding & Health Audit)
 │   │   └── 06-faithfull-scholars.md (Theological Higher Ed & Academic Network)
 │   ├── business-models/      # Monetization, Packaging Tiers & Unit Economics
-│   │   ├── 01-pricing-and-packaging-architecture.md
-│   │   └── 02-unit-economics-and-fintech-monetization.md
 │   ├── business-opportunities/ # Innovation Engine, BOP Reports & Agent Submission Intake
-│   │   ├── README.md         # Master Priority Matrix (RICE Scores) & Opportunities Hub
-│   │   ├── reports/          # Evaluated Opportunity Proposals (Insurance, AETH, Endowments)
-│   │   └── intake/           # Staging Queue for Autonomous Agent Submissions
 │   ├── strategy/             # GTM, Defensible Moats, Competitor Battlecards & TAM/SAM/SOM
-│   │   ├── 01-competitive-battlecards.md
-│   │   ├── 02-architectural-and-business-moats.md
-│   │   └── 03-ecclesial-advisory-board-and-council-of-reference.md
 │   ├── pitch/                # Pitch Decks, Executive Narratives & Audience Archetypes
-│   │   ├── 01-executive-pitch-deck-narrative.md
-│   │   ├── 02-executive-memo-and-investor-brief.md
-│   │   ├── archetypes/       # Tailored Pitch Blueprints by Audience
-│   │   │   ├── 01-single-local-church.md
-│   │   │   ├── 02-council-of-churches-and-denominations.md
-│   │   │   └── 03-theological-association-aeth.md
-│   │   └── templates/
 │   ├── competitive-analysis/ # Detailed Competitor Teardowns by Product & Full Platform
-│   │   ├── README.md         # Competitive Command Center & Comparison Quick Links
-│   │   ├── 00-platform-ecosystem-competitive-landscape.md
-│   │   ├── 01-churchcore-chms-competitors.md (PCO, Breeze, Tithe.ly, Realm)
-│   │   ├── 02-churchcore-lms-competitors.md (Canvas, Teachable, RightNow Media)
-│   │   ├── 03-churchcore-academy-competitors.md (FACTS/RenWeb, Blackbaud K-12)
-│   │   ├── 04-churchcore-care-competitors.md (SimplePractice, TherapyNotes)
-│   │   ├── 05-churchcore-orthos-competitors.md (Protect My Ministry, MinistrySafe)
 │   ├── financial-operations/ # Financial Modeling, COGS, OpEx, Offerings & Scenario Playbooks
-│   │   ├── README.md         # Financial Operations Command Center & Quick Links
-│   │   ├── 01-cost-structure-and-opex-breakdown.md
-│   │   ├── 02-offering-catalog-and-packaging-matrix.md
-│   │   ├── 03-scenario-planning-and-sensitivity-models.md
-│   │   ├── 04-operational-playbooks-and-scenarios.md
-│   │   ├── 05-multi-year-pnl-and-cash-flow-model.md
-│   │   └── 06-fintech-underwriting-and-fraud-risk-policy.md
 │   ├── marketing/            # Marketing Strategies, Collateral & Focused Documentation
-│   │   ├── README.md         # Marketing Command Center & Quick Links
-│   │   ├── brand-and-voice/  # Brand Guidelines, Messaging Hierarchy & Tokens
-│   │   ├── campaigns/        # PCO Conquest & AETH Hispanic Institutes Campaigns
-│   │   ├── collateral/       # 2-Page Executive Product Sheet (PDF/Print)
-│   │   └── market-research/  # Buyer Personas & Ideal Customer Profiles (ICPs)
-│   ├── operations/           # Sovereign Isolation, UX Shell, Onboarding & Sunday SLA
-│   │   ├── README.md         # Operations Command Center & Quick Links
-│   │   ├── 01-sovereign-database-isolation-and-security-architecture.md
-│   │   ├── 02-unified-ux-shell-and-app-switcher.md
-│   │   ├── 03-customer-onboarding-and-migration-playbook.md
-│   │   ├── 04-sunday-readiness-disaster-recovery-and-sla.md
-│   │   └── 05-cross-repo-governance-sync-and-dispatch-standard.md
-│   └── templates/            # Standardized Markdown Templates for Council, Inquiries & Dossiers
+│   └── operations/           # Sovereign Isolation, UX Shell, Onboarding & Sunday SLA
+├── scripts/
+│   ├── control-plane-sync.py # Central Telemetry Aggregator & Autonomous Reconciler
+│   └── test-autonomous-reconciliation.py # Verification Suite for Edge Challenge Protocols
 └── .agents/rules/            # AI Governance Rules & Persona Charters
     ├── council-charter.md    # The 6-Seat Governing Council & 13 HQ Specialist Personas
     ├── branding-governance.md # AI Copywriting, Nomenclature & WCAG AAA Contrast Rules
@@ -119,56 +253,4 @@ ChurchCore-Business/
 
 ---
 
-## 💎 The 6 Pillars of the ChurchCore Suite
-
-| Product | Domain Category | Tech Version | Scale & Maturity | Primary Buyer | Standalone Anchor |
-|---|---|:---:|:---:|---|---|
-| **[01. ChurchCore](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/01-churchcore-chms.md)** | ChMS, Worship, Child Check-in & Double-Entry Finance | `v3.5.0` | 133 Tables, 121 Routes | Senior Pastor, Executive Pastor | $49–$749/mo + 1% Giving |
-| **[02. ChurchCore-LMS](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/02-churchcore-lms.md)** | Ministry LMS, Discipleship Tracks & PWA | `v0.36.1` | 72 Tables, 85 Routes, 46 Council Records | Discipleship Pastor, Bible Institute Dean | $79–$999/mo |
-| **[03. ChurchCore-Academy](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/03-churchcore-academy.md)** | K-12 & Higher-Ed SIS & School Operations | `v0.10.0` | 152 Tables, 105 Routes | Head of School, Academy Principal | $2,400–$25,000/yr |
-| **[04. ChurchCoreCare](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/04-churchcore-care.md)** | Pastoral & Clinical Counseling EHR + Telehealth | `v7.1.0` | 84 Tables, Deny-All RLS | Clinical Director, Care Pastor | $59–$399/mo |
-| **[05. ChurchCore-Orthos](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/05-churchcore-orthos.md)** | Institutional Governance & AI Health Audit | `v0.18.0` | 28 Tables, 30 Routes, Gemini AI | Elder Board, Denominational Bishop | $1,200–$50,000/yr |
-| **[06. FaithFullScholars](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/06-faithfull-scholars.md)** | Theological Higher Ed & Confessional Search | `v0.1.0` | 48 Tables, 53 Routes | Seminary President, Academic Dean | $2,500–$15,000/yr |
-
-*Total Aggregate Codebase Footprint: **517 Relational Database Tables** and **423 Next.js Application Routes**.*
-
----
-
-## ⚖️ The Dual-Tier AI Governance Operating System
-
-All strategic pivots, architectural invariants, and pricing schedules are governed under our **Dual-Tier Council Architecture**:
-
-1. **The 13 HQ Specialist Working Group Personas:** Active ideation workbench covering System Design, Commercial Modeling, Adversarial Critique, Security, Pedagogy, Clinical Ethics, and Capital Strategy.
-2. **The 6-Seat Binding Governing Council:** Formal tribunal requiring **6/6 Unanimous Approval** to ratify major decisions:
-   - 👑 **Chief Executive / Visionary**
-   - 🧭 **Chief Product & Portfolio Officer**
-   - 💰 **Chief Financial & Revenue Officer**
-   - 🏛️ **Chief Technology Officer / Lead Architect**
-   - 🛡️ **Chief Information Security Officer**
-   - 🚀 **GTM & Ministry Operations Lead**
-
-All council deliberations produce permanent records in [`docs/council/`](file:///Users/rjulia/ChurchCore-Business/docs/council/).
-
----
-
-## 🚀 Commercial Bundles & Revenue Model
-
-1. **Local Church Complete ($199–$499/mo + 0.85% Giving):** Replaces Planning Center + Subsplash + Teachable.
-2. **Christian Academy & Day-School Cloud ($4,500–$15,000/yr):** Replaces FACTS / RenWeb & Blackbaud.
-3. **Pastoral & Clinical Wellness ($59/mo per practitioner):** Replaces SimplePractice with Christian soul-care compliance.
-4. **Denominational & Diocese Sovereign Cloud ($50,000–$250,000/yr):** Enterprise multi-tenant deployment for regional associations, dioceses, and church planting networks.
-
----
-
-## 🛡️ The 7 Constitutional Invariants
-
-1. **Ministry Data Sovereignty:** Member data and financial records are never sold, mined, or used for unconfessional ad tracking.
-2. **Pastoral / Clinical Separation:** Absolute cryptographic isolation between church membership notes and confidential counseling records.
-3. **Unified Identity, Isolated Data:** Seamless single sign-on (ChurchCore ID) with zero cross-tenant database leakage.
-4. **Dual-Tier Council Ratification:** No unratified strategic pivots or breaking architectural changes.
-5. **Living Documentation & Memory:** Every question, debate, and divergent idea preserved in [`docs/inquiries/`](file:///Users/rjulia/ChurchCore-Business/docs/inquiries/).
-6. **Kingdom Stewardship & Margin Discipline:** Profitable, sustainable SaaS and fintech unit economics.
-7. **Evidence-Based Portfolio:** Every business thesis is anchored in active code, verified migrations, and audited schemas.
-
----
-*Governed and maintained by the ChurchCore Executive Council.*
+*Governed and maintained by the ChurchCore Executive Council under Constitution Section III.*

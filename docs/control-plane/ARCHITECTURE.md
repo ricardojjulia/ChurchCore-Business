@@ -6,29 +6,47 @@
 
 The Control Plane coordinates ecosystem governance, deployment readiness, development roadmaps, and AI session history across all products while strictly upholding **Section III of the ChurchCore Constitution: Zero Cross-Application Data Propagation**.
 
-```
-                           +-------------------------------------------------------+
-                           |               CHURCHCORE-BUSINESS                     |
-                           |             Executive Control Plane                   |
-                           |                                                       |
-                           |  * docs/constitution/ (Invariants & Guarantees)       |
-                           |  * docs/council/ (Binding Decisions)                  |
-                           |  * docs/control-plane/CENTRAL-ROADMAP.md (Directives) |
-                           |  * docs/control-plane/ECOSYSTEM-DASHBOARD.md (Status) |
-                           +---------------------------+---------------------------+
-                                                       |
-                                 DISPATCH              |      REPORT
-                           Central Roadmaps &          |   Telemetry & Readiness
-                           Governance Directives       |   (No Member/Donor Data!)
-                                                       |
-         +--------------------+------------------------+-------------------+--------------------+
-         |                    |                        |                   |                    |
-+--------v-------+   +--------v-------+       +--------v-------+  +--------v-------+   +--------v-------+
-| ChurchCore ChMS|   | ChurchCore LMS |       |ChurchCore Acad |  |ChurchCore Care |   |ChurchCore Orth |
-| Next.js v3.5.0 |   | Next.js v0.47  |       | Next.js v0.10  |  | React/API v7.0 |   | Next.js v0.18  |
-| Vercel/Supabase|   | Vercel/Supabase|       | Vercel/Supabase|  | Node/Supabase  |   | Vercel/Supabase|
-+----------------+   +----------------+       +----------------+  +----------------+   +----------------+
-```
+```mermaid
+flowchart TD
+    subgraph ControlPlane ["🏛️ CHURCHCORE SOVEREIGN CONTROL PLANE (Hub)"]
+        direction TB
+        CP_DOCS["📜 docs/constitution/ (Invariants)<br>⚖️ docs/council/ (Binding Decisions)<br>🧭 docs/control-plane/CENTRAL-ROADMAP.md (Directives)<br>📊 docs/control-plane/ECOSYSTEM-DASHBOARD.md (Live Status)<br>🛡️ docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md<br>🖥️ dashboard/ (Port 3333 Glassmorphic Cockpit)"]
+    end
+
+    subgraph DirectivesFlow ["Directionality & Enforcement"]
+        direction LR
+        DISPATCH["⚡ DISPATCH DIRECTIVES<br>(Central Roadmap & Architectural Directives)"]
+        REPORT["📡 TELEMETRY & PROOFS<br>(Autonomous Telemetry & Cryptographic Challenges)"]
+        INVARIANT["🛡️ CONSTITUTION SECTION III<br>Zero Customer/Member/Donor Data Propagation"]
+    end
+
+    ControlPlane --> DISPATCH
+    REPORT --> ControlPlane
+
+    subgraph EdgeFleet ["Sovereign Fleet Repositories (Autonomous Applications)"]
+        direction TB
+        subgraph P1 ["ChurchCore ChMS"]
+            C1["Next.js v3.5.0<br>🌐 www.churchcore.io<br>🗄️ Supabase prod-chms-db<br>🛡️ 133 Tables • RLS Enforced"]
+        end
+        subgraph P2 ["ChurchCore LMS"]
+            C2["Next.js v0.47.0<br>🌐 www.churchcorelms.io<br>🗄️ Supabase prod-lms-db<br>🛡️ 72 Tables • RLS Enforced"]
+        end
+        subgraph P3 ["ChurchCore Academy"]
+            C3["Next.js v0.10.0<br>🌐 church-core-academy.vercel.app<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced"]
+        end
+        subgraph P4 ["ChurchCore Care"]
+            C4["React 18 / Express v7.0.0<br>🌐 www.churchcorecare.io<br>🗄️ Supabase prod-care-db<br>🛡️ 84 Tables • Deny-All RLS"]
+        end
+        subgraph P5 ["ChurchCore Orthos"]
+            C5["Next.js v0.18.0<br>🌐 church-core-orthos.vercel.app<br>🗄️ Supabase Staging Link<br>🛡️ 28 Tables • RLS Enforced"]
+        end
+        subgraph P6 ["FaithFull Scholars"]
+            C6["Next.js v0.1.0<br>🌐 faith-full-scholars.vercel.app<br>🗄️ Supabase prod-scholars-db<br>🛡️ 48 Tables • pgvector"]
+        end
+    end
+
+    DISPATCH --> P1 & P2 & P3 & P4 & P5 & P6
+    P1 & P2 & P3 & P4 & P5 & P6 --> REPORT
 
 ---
 
@@ -117,10 +135,15 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
 
 | Path | Purpose |
 | :--- | :--- |
-| `docs/control-plane/ARCHITECTURE.md` | Complete architectural model & AI connection strategy |
-| `docs/control-plane/telemetry-schema.json` | JSON Schema for edge telemetry payloads |
-| `docs/control-plane/TELEMETRY-SPEC.md` | Specification & instructions for developers & agents |
-| `docs/control-plane/CENTRAL-ROADMAP.md` | Central executive sprint directives and roadmaps |
-| `docs/control-plane/ECOSYSTEM-DASHBOARD.md` | Master live status board across all 6 products |
-| `scripts/activate-product-repos.py` | Auto-installs rules, telemetry scripts, and initializes edge repos |
-| `scripts/control-plane-sync.py` | Ingests edge telemetry and compiles the master dashboard |
+| [`dashboard/`](file:///Users/rjulia/ChurchCore-Business/dashboard/) | Executive Mission Control Web UI (Port 3333 Cockpit) |
+| [`docs/control-plane/ARCHITECTURE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ARCHITECTURE.md) | Complete architectural model & AI connection strategy |
+| [`docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) | Master Operations Manual & AgY CLI Tutorial |
+| [`docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md) | Autonomous Edge Challenge & Proof Reconciliation Ledger |
+| [`docs/control-plane/telemetry-schema.json`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/telemetry-schema.json) | JSON Schema for edge telemetry payloads |
+| [`docs/control-plane/TELEMETRY-SPEC.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/TELEMETRY-SPEC.md) | Specification & instructions for developers & agents |
+| [`docs/control-plane/CENTRAL-ROADMAP.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CENTRAL-ROADMAP.md) | Central executive sprint directives and roadmaps |
+| [`docs/control-plane/ECOSYSTEM-DASHBOARD.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ECOSYSTEM-DASHBOARD.md) | Master live status board across all 6 products |
+| [`scripts/activate-product-repos.py`](file:///Users/rjulia/ChurchCore-Business/scripts/activate-product-repos.py) | Auto-installs rules, telemetry scripts, and initializes edge repos |
+| [`scripts/control-plane-sync.py`](file:///Users/rjulia/ChurchCore-Business/scripts/control-plane-sync.py) | Ingests edge telemetry and compiles the master dashboard |
+| [`scripts/pull-and-enforce-directives.py`](file:///Users/rjulia/ChurchCore-Business/scripts/pull-and-enforce-directives.py) | Edge directive enforcement & verification engine |
+| [`scripts/challenge-central-record.py`](file:///Users/rjulia/ChurchCore-Business/scripts/challenge-central-record.py) | Autonomous cryptographic edge challenge CLI |
