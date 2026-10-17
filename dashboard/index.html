@@ -94,6 +94,14 @@
         Fleet Grid
       </button>
 
+      <button class="tab-btn" data-tab="tab-councils">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        Council Chambers
+        <span class="tab-badge" id="tab-council-badge">6 Councils</span>
+      </button>
+
       <button class="tab-btn" data-tab="tab-plans">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
@@ -180,6 +188,84 @@
         <!-- Rendered dynamically by app.js -->
       </div>
     </main>
+
+    <!-- TAB: COUNCIL CHAMBERS & GOVERNANCE MESH -->
+    <section id="tab-councils" class="tab-content">
+      <div class="section-hero">
+        <h2>Council Chambers & Sovereign Governance Mesh</h2>
+        <p>Directly address each app-specific council, verify quorum and governing state, consult individual specialized seats, or convene the Grand Sovereign Assembly for consensus synthesis.</p>
+      </div>
+
+      <!-- Council Selector Bar -->
+      <div class="council-selector-bar" id="council-selector-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Live Council Governing State HUD -->
+      <div class="council-hud-grid" id="council-hud-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Charter Invariants Banner -->
+      <div class="charter-invariants-banner" id="council-invariants-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Council Deliberation Chamber (Interactive Query & Speech) -->
+      <div class="deliberation-chamber-card">
+        <div class="deliberation-chamber-header">
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; font-weight: 700;">Council Deliberations & Inquiries Chamber</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Submit technical inquiries, policy audits, or architectural proposals to the council.</p>
+          </div>
+          <div class="deliberation-modes">
+            <button class="delib-mode-btn active" id="btn-mode-all" data-mode="all">🏛️ Address Council as a Whole</button>
+            <button class="delib-mode-btn" id="btn-mode-member" data-mode="member">👤 Direct Member Consultation</button>
+          </div>
+        </div>
+
+        <!-- Preset Inquiries -->
+        <div class="preset-inquiries-bar" id="preset-inquiries-container">
+          <span style="font-size: 12px; color: var(--text-dim); display: flex; align-items: center; margin-right: 4px;">Fast Inquiries:</span>
+          <button class="preset-inquiry-btn" data-query="Audit compliance with Constitution Section III: Zero Customer Data Propagation and check for any background event brokers or cross-database replication.">🛡️ Audit Zero Data Propagation</button>
+          <button class="preset-inquiry-btn" data-query="Assess Sunday Morning 99.99% SLA readiness, kiosk peak concurrency headroom, and automated database snapshot recency.">⏱️ Assess Sunday Morning SLA</button>
+          <button class="preset-inquiry-btn" data-query="Evaluate confidential pastoral notes encryption and verify PostgreSQL RLS column-level security isolation.">🔒 Evaluate Confidential Notes RLS</button>
+          <button class="preset-inquiry-btn" data-query="Review SpeedGrader and multi-criterion rubrics implementation for zero variable hosting cost and pedagogical efficiency.">📝 Review SpeedGrader & Rubrics</button>
+          <button class="preset-inquiry-btn" data-query="Verify historic confessional cross-links and doctrinal guardrails against theological drift.">📜 Verify Historic Creeds Alignment</button>
+        </div>
+
+        <div class="query-input-wrapper">
+          <textarea class="delib-textarea" id="council-query-input" placeholder="Address the council with an architectural inquiry, policy question, or proposed directive..."></textarea>
+        </div>
+
+        <div class="query-action-row">
+          <div class="delib-target-indicator" id="delib-target-text">
+            Addressing: <strong id="current-delib-target">High Sovereign Grand Council (All 7 Seats)</strong>
+          </div>
+          <button class="btn btn-gold" id="btn-convene-council">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+            Convene & Deliberate
+          </button>
+        </div>
+
+        <!-- Live Deliberation Transcript / Synthesis Container -->
+        <div class="delib-response-container" id="delib-response-container">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- App-Specific Council Member Roster -->
+      <div class="roster-header-bar">
+        <h3 id="roster-section-title">Council Seat Roster & Specialized Guardians</h3>
+        <span style="font-size: 13px; color: var(--text-muted);" id="roster-seat-count">Showing Seats</span>
+      </div>
+
+      <div class="council-members-grid" id="council-members-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
 
     <!-- TAB 2: IMPLEMENTATION PLANS & DIRECTIONALITY -->
     <section id="tab-plans" class="tab-content">

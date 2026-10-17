@@ -274,9 +274,10 @@ def main():
     json_path = os.path.join(dashboard_dir, "fleet-data.json")
     js_path = os.path.join(dashboard_dir, "fleet-data.js")
     
-    # Load tasks and plans metadata bases
+    # Load tasks, plans, and councils metadata bases
     tasks_json_path = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "tasks.json")
     plans_json_path = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "product-plans.json")
+    councils_json_path = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "councils-registry.json")
     
     tasks_data = []
     if os.path.exists(tasks_json_path):
@@ -287,6 +288,11 @@ def main():
     if os.path.exists(plans_json_path):
         with open(plans_json_path, "r") as f:
             plans_data = json.load(f).get("plans", [])
+
+    councils_data = []
+    if os.path.exists(councils_json_path):
+        with open(councils_json_path, "r") as f:
+            councils_data = json.load(f).get("councils", [])
 
     # Commercial & Financial Telemetry
     commercial_metrics = {
@@ -350,6 +356,7 @@ def main():
         "products": telemetry_data,
         "tasks": tasks_data,
         "plans": plans_data,
+        "councils": councils_data,
         "commercial": commercial_metrics,
         "sunday_sla": sunday_sla,
         "tech_stack_mesh": tech_stack_mesh
