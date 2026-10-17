@@ -46,25 +46,111 @@ def detect_product(repo_root):
             return v[0], v[1], '1.0.0'
     return 'churchcore-chms', 'ChurchCore ChMS', '1.0.0'
 
-def fetch_central_record(product_id):
-    """Fetches central record for this product from local hub or remote raw endpoint."""
-    local_path = os.path.join(LOCAL_HUB_PATH, "dashboard", "fleet-data.json")
-    if os.path.exists(local_path):
+def find_local_fleet_data(repo_root=None):
+    """Discovers fleet-data.json in local directories via environment variables, sibling repos, or user home."""
+    candidates = []
+    for env_var in ["CHURCHCORE_BUSINESS_PATH", "CHURCHCORE_HUB_PATH"]:
+        val = os.environ.get(env_var)
+        if val:
+            candidates.append(os.path.join(val, "dashboard", "fleet-data.json"))
+
+    search_roots = []
+    if repo_root:
+        search_roots.append(os.path.abspath(repo_root))
+    search_roots.append(os.path.abspath(os.path.dirname(__file__)))
+    search_roots.append(os.path.abspath(os.getcwd()))
+
+    for sr in search_roots:
+        p = sr
+        while p and p != os.path.dirname(p):
+            cand = os.path.join(p, "dashboard", "fleet-data.json")
+            if os.path.basename(p).lower() in ["churchcore-business", "churchcore business", "churhcore business"]:
+                candidates.append(cand)
+            p = os.path.dirname(p)
+
+        parent = os.path.dirname(sr)
+        for sibling_name in ["ChurchCore-Business", "ChurchCore Business", "ChurhCore Business"]:
+            candidates.append(os.path.join(parent, sibling_name, "dashboard", "fleet-data.json"))
+            candidates.append(os.path.join(os.path.dirname(parent), sibling_name, "dashboard", "fleet-data.json"))
+
+    home = os.path.expanduser("~")
+    for sibling_name in ["ChurchCore-Business", "ChurchCore Business", "ChurhCore Business"]:
+        candidates.append(os.path.join(home, sibling_name, "dashboard", "fleet-data.json"))
+    candidates.append(os.path.join(LOCAL_HUB_PATH, "dashboard", "fleet-data.json"))
+
+    seen = set()
+    for c in candidates:
+        norm = os.path.normpath(c)
+        if norm not in seen:
+            seen.add(norm)
+            if os.path.isfile(norm):
+                try:
+                    with open(norm, "r") as f:
+                        return json.load(f), f"Local Hub ({norm})"
+                except Exception:
+                    pass
+    return None, None
+
+def fetch_central_record(product_id, repo_root=None):
+    """Fetches central record for this product using multi-tier discovery (Local Hub, gh api, GitHub API, Raw URL)."""
+    # Tier 1: Local Hub
+    data, src = find_local_fleet_data(repo_root)
+    if data:
+        for p in data.get("products", []):
+            if p.get("product_id") == product_id:
+                return p, src
+
+    # Tier 2: GitHub CLI (gh api)
+    try:
+        cmd = [
+            "gh", "api",
+            "repos/ricardojjulia/ChurchCore-Business/contents/dashboard/fleet-data.json",
+            "-H", "Accept: application/vnd.github.raw"
+        ]
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=12)
+        if res.returncode == 0 and res.stdout.strip():
+            data = json.loads(res.stdout)
+            for p in data.get("products", []):
+                if p.get("product_id") == product_id:
+                    return p, "GitHub CLI (gh api - authenticated)"
+    except Exception:
+        pass
+
+    # Tier 3: GitHub REST API with Bearer Token
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not token:
         try:
-            with open(local_path, "r") as f:
-                data = json.load(f)
-                for p in data.get("products", []):
-                    if p.get("product_id") == product_id:
-                        return p, f"Local Hub ({local_path})"
+            res = subprocess.run(["gh", "auth", "token"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            if res.returncode == 0 and res.stdout.strip():
+                token = res.stdout.strip()
         except Exception:
             pass
 
-    # Remote fallback
+    if token:
+        try:
+            api_url = "https://api.github.com/repos/ricardojjulia/ChurchCore-Business/contents/dashboard/fleet-data.json"
+            req = urllib.request.Request(
+                api_url,
+                headers={
+                    "User-Agent": "ChurchCore-ChallengeEngine/1.0",
+                    "Authorization": f"Bearer {token}",
+                    "Accept": "application/vnd.github.raw"
+                }
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                for p in data.get("products", []):
+                    if p.get("product_id") == product_id:
+                        return p, "GitHub REST API (Bearer Token)"
+        except Exception:
+            pass
+
+    # Tier 4: Remote Raw URL fallback
     remote_url = f"{REMOTE_HUB_RAW}/dashboard/fleet-data.json"
     try:
-        req = urllib.request.Request(remote_url, headers={'User-Agent': 'ChurchCore-ChallengeEngine'})
+        req = urllib.request.Request(remote_url, headers={"User-Agent": "ChurchCore-ChallengeEngine/1.0"})
         with urllib.request.urlopen(req, timeout=5) as resp:
-            data = json.loads(resp.read().decode('utf-8'))
+            data = json.loads(resp.read().decode("utf-8"))
             for p in data.get("products", []):
                 if p.get("product_id") == product_id:
                     return p, f"Remote Hub ({remote_url})"
@@ -105,7 +191,7 @@ def count_local_migrations(repo_root):
 
 def collect_autonomous_challenges(repo_root):
     product_id, canonical_name, local_version = detect_product(repo_root)
-    central_record, source = fetch_central_record(product_id)
+    central_record, source = fetch_central_record(product_id, repo_root)
 
     challenges = []
     now_iso = datetime.now(timezone.utc).isoformat()

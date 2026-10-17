@@ -44,23 +44,142 @@ def detect_product(repo_root):
             return v
     return ('churchcore-chms', 'ChurchCore')
 
-def fetch_manifest():
-    """Fetches manifest from local sibling hub if available, else remote GitHub raw endpoint."""
-    if os.path.exists(LOCAL_HUB_PATH):
+def find_local_manifest(repo_root=None):
+    """Discovers manifest.json in local directories via environment variables, sibling repos, or user home."""
+    candidates = []
+    
+    # 1. Environment variables
+    for env_var in ["CHURCHCORE_BUSINESS_PATH", "CHURCHCORE_HUB_PATH"]:
+        val = os.environ.get(env_var)
+        if val:
+            candidates.append(os.path.join(val, "docs", "governance-sync", "manifest.json"))
+            candidates.append(val)
+
+    # 2. Relative search from repo_root, script directory, and cwd
+    search_roots = []
+    if repo_root:
+        search_roots.append(os.path.abspath(repo_root))
+    search_roots.append(os.path.abspath(os.path.dirname(__file__)))
+    search_roots.append(os.path.abspath(os.getcwd()))
+
+    for sr in search_roots:
+        # Check parent directories if running inside ChurchCore-Business
+        p = sr
+        while p and p != os.path.dirname(p):
+            cand = os.path.join(p, "docs", "governance-sync", "manifest.json")
+            if os.path.basename(p).lower() in ["churchcore-business", "churchcore business", "churhcore business"]:
+                candidates.append(cand)
+            p = os.path.dirname(p)
+        
+        # Check sibling directories
+        parent = os.path.dirname(sr)
+        for sibling_name in ["ChurchCore-Business", "ChurchCore Business", "ChurhCore Business"]:
+            candidates.append(os.path.join(parent, sibling_name, "docs", "governance-sync", "manifest.json"))
+            candidates.append(os.path.join(os.path.dirname(parent), sibling_name, "docs", "governance-sync", "manifest.json"))
+
+    # 3. User home directory fallbacks
+    home = os.path.expanduser("~")
+    for sibling_name in ["ChurchCore-Business", "ChurchCore Business", "ChurhCore Business"]:
+        candidates.append(os.path.join(home, sibling_name, "docs", "governance-sync", "manifest.json"))
+    candidates.append(LOCAL_HUB_PATH)
+
+    seen = set()
+    for c in candidates:
+        norm = os.path.normpath(c)
+        if norm not in seen:
+            seen.add(norm)
+            if os.path.isfile(norm):
+                try:
+                    with open(norm, "r") as f:
+                        return json.load(f), f"Local Hub ({norm})"
+                except Exception:
+                    pass
+    return None, None
+
+def fetch_manifest_via_gh():
+    """Fetches manifest from private GitHub repo via GitHub CLI (gh api)."""
+    try:
+        cmd = [
+            "gh", "api",
+            "repos/ricardojjulia/ChurchCore-Business/contents/docs/governance-sync/manifest.json",
+            "-H", "Accept: application/vnd.github.raw"
+        ]
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=12)
+        if res.returncode == 0 and res.stdout.strip():
+            return json.loads(res.stdout), "GitHub CLI (gh api - authenticated)"
+    except Exception:
+        pass
+    return None, None
+
+def fetch_manifest_via_api():
+    """Fetches manifest from GitHub API using GITHUB_TOKEN, GH_TOKEN, or gh auth token."""
+    import urllib.request
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not token:
         try:
-            with open(LOCAL_HUB_PATH, 'r') as f:
-                return json.load(f), f"Local Hub ({LOCAL_HUB_PATH})"
+            res = subprocess.run(["gh", "auth", "token"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=5)
+            if res.returncode == 0 and res.stdout.strip():
+                token = res.stdout.strip()
         except Exception:
             pass
 
+    if token:
+        try:
+            api_url = "https://api.github.com/repos/ricardojjulia/ChurchCore-Business/contents/docs/governance-sync/manifest.json"
+            req = urllib.request.Request(
+                api_url,
+                headers={
+                    "User-Agent": "ChurchCore-DirectiveEnforcer/1.0",
+                    "Authorization": f"Bearer {token}",
+                    "Accept": "application/vnd.github.raw"
+                }
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                return json.loads(resp.read().decode("utf-8")), "GitHub REST API (Bearer Token)"
+        except Exception:
+            pass
+    return None, None
+
+def fetch_manifest_via_raw_url():
+    """Fallback fetch from raw GitHub URL."""
     import urllib.request
     try:
-        req = urllib.request.Request(REMOTE_MANIFEST_URL, headers={'User-Agent': 'ChurchCore-DirectiveEnforcer'})
+        req = urllib.request.Request(REMOTE_MANIFEST_URL, headers={"User-Agent": "ChurchCore-DirectiveEnforcer/1.0"})
         with urllib.request.urlopen(req, timeout=5) as resp:
-            return json.loads(resp.read().decode('utf-8')), f"Remote GitHub ({REMOTE_MANIFEST_URL})"
-    except Exception as e:
-        print(f"[-] Error fetching manifest from GitHub: {e}")
-        return None, "Error"
+            return json.loads(resp.read().decode("utf-8")), f"Remote GitHub Raw ({REMOTE_MANIFEST_URL})"
+    except Exception:
+        pass
+    return None, None
+
+def fetch_manifest(repo_root=None):
+    """
+    Fetches the governance manifest using a robust 4-tier discovery strategy:
+    1. Local Hub auto-discovery (relative paths, env var, home directory)
+    2. GitHub CLI (gh api) - seamless for private repository access
+    3. GitHub REST API with Bearer token (via GITHUB_TOKEN or gh auth token)
+    4. Remote raw GitHub URL (fallback)
+    """
+    # Tier 1: Local Hub
+    data, src = find_local_manifest(repo_root)
+    if data:
+        return data, src
+
+    # Tier 2: GitHub CLI (gh api)
+    data, src = fetch_manifest_via_gh()
+    if data:
+        return data, src
+
+    # Tier 3: GitHub REST API with Bearer Token
+    data, src = fetch_manifest_via_api()
+    if data:
+        return data, src
+
+    # Tier 4: Remote Raw URL
+    data, src = fetch_manifest_via_raw_url()
+    if data:
+        return data, src
+
+    return None, "Error: Could not retrieve manifest from local hub, gh CLI, or GitHub API"
 
 def audit_rls(repo_root):
     """Verifies that Row-Level Security is active in migrations or tests."""
@@ -158,7 +277,7 @@ def audit_acknowledgment_ledger(repo_root):
 
 def execute_enforcement(repo_root, strict_mode=False):
     product_id, canonical_name = detect_product(repo_root)
-    manifest, source_desc = fetch_manifest()
+    manifest, source_desc = fetch_manifest(repo_root)
     
     if not manifest:
         print("[-] Fatal: Could not load governance manifest. Aborting.")

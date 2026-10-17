@@ -2,7 +2,7 @@
   "product_id": "churchcore-chms",
   "repo_name": "ChurchCore-Business",
   "version": "0.1.0",
-  "report_timestamp": "2026-10-17T15:58:41.046963+00:00",
+  "report_timestamp": "2026-10-17T17:31:25.757289+00:00",
   "online_status": {
     "is_online": false,
     "vercel_status": "pending",
@@ -24,13 +24,7 @@
       "Core schema and UI foundation completed"
     ]
   },
-  "latest_changes": [
-    "feat(control-plane): implementation plan viewer with directionality, project tasks metadata base, commercial telemetry, Sunday SLA monitor, and tech mesh (7c9718a)",
-    "fix(dashboard): make fleet numbers dynamic with cache-busting, reflecting 4 online and 2 staging (532e97c)",
-    "fix(control-plane): verify ChurchCore Care production deployment at churchcore-care.vercel.app and update fleet metrics to 4/6 online (c90f773)",
-    "feat(control-plane): Executive web dashboard UI and comprehensive operations & AgY CLI mastery manual (3b2a9ef)",
-    "feat(control-plane): Sovereign Control Plane architecture, telemetry ingestion engine, and automated sibling activation (ea86b9e)"
-  ],
+  "latest_changes": "docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)",
   "next_steps": [
     "Execute automated test suite",
     "Verify production deployment"
@@ -38,7 +32,7 @@
   "ai_session_telemetry": {
     "last_model": "gemini-2.5-pro",
     "session_duration_minutes": 30,
-    "session_date": "2026-10-17T15:58:41.046963+00:00",
+    "session_date": "2026-10-17T17:31:25.757289+00:00",
     "session_operator": "Ricardo Julia",
     "summary_of_work": "Automated Council Directives Enforcement"
   },
@@ -55,5 +49,8 @@
     ],
     "brand_house_compliant": true,
     "sovereign_db_isolation_verified": true
+  },
+  "council_governing_state": {
+    "documented_reviews_count": 4
   }
 }

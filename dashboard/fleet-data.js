@@ -1,10 +1,10 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-17T16:34:44.145876+00:00",
+  "generated_at": "2026-10-17T17:32:16.914379+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 4,
-    "average_readiness_score": 89,
-    "average_completion_pct": 87,
+    "average_readiness_score": 82,
+    "average_completion_pct": 90,
     "sovereign_data_isolation": true,
     "total_tasks": 18,
     "done_tasks": 9
@@ -81,9 +81,9 @@ window.CHURCHCORE_FLEET_DATA = {
     },
     {
       "product_id": "churchcore-lms",
-      "repo_name": "ChurchCore-LMS",
+      "repo_name": "ChurchCore LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
+      "report_timestamp": "2026-10-17T17:21:07.787254+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -111,11 +111,11 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "Merge pull request #93 from ricardojjulia/feat/install-powered-by-churchcore-trust-badge (2719e17)",
+        "feat(branding): install Powered by ChurchCore trust badge in sidebar tray (COUNCIL-2026-002 REQ-002-01) (d17b0d2)",
         "Merge pull request #92 from ricardojjulia/feat/add-autonomous-challenge-engine (8a65b30)",
         "feat(control-plane): install autonomous challenge & evidence engine and sync telemetry (9a846a2)",
-        "Merge pull request #91 from ricardojjulia/chore/sync-council-directives-enforcement (bd450a1)",
-        "chore(governance): add automated council directives enforcement script and sync ledger (b53ba7e)",
-        "Merge pull request #90 from ricardojjulia/feat/sync-control-plane-and-telemetry (28eafe2)"
+        "Merge pull request #91 from ricardojjulia/chore/sync-council-directives-enforcement (bd450a1)"
       ],
       "next_steps": [
         "Test course completion webhook integration with local certification service",
@@ -123,10 +123,10 @@ window.CHURCHCORE_FLEET_DATA = {
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 120,
-        "session_date": "2026-10-17T16:33:45.639484+00:00",
-        "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
+        "session_duration_minutes": 30,
+        "session_date": "2026-10-17T17:21:07.787254+00:00",
+        "session_operator": "Ricardo Julia",
+        "summary_of_work": "Installed Powered by ChurchCore trust badge in authenticated sidebar tray (COUNCIL-2026-002 REQ-002-01); 100% Council Directives compliance reached."
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -155,60 +155,62 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-academy",
       "repo_name": "ChurchCore-Academy",
       "version": "0.10.0",
-      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
+      "report_timestamp": "2026-10-17T16:05:27.430761+00:00",
       "online_status": {
         "is_online": false,
-        "vercel_status": "deployed",
-        "vercel_url": "https://church-core-academy.vercel.app",
+        "vercel_status": "none",
+        "vercel_url": "",
         "supabase_status": "local_only",
-        "supabase_project_ref": "pending-provisioning",
+        "supabase_project_ref": "",
         "readiness_assessment": {
-          "readiness_score_pct": 78,
+          "readiness_score_pct": 33,
+          "score_basis": "One of three approved local Workstream C gates is complete: preparation passed; participant-browser login and the uncoached session remain.",
           "blockers": [
-            "Awaiting production Vercel deployment credentials binding",
-            "Colegio Biblos pilot migration seed rehearsal in progress"
+            "Participant login has not been verified from the actual Colegio Biblos browser or VM.",
+            "The real uncoached Colegio Biblos pilot session has not occurred.",
+            "Hosted deployment remains owner-deferred and is not authorized by this telemetry."
           ],
           "next_required_actions": [
-            "Execute npm run verify:pilot-readiness",
-            "Deploy staging preview to Vercel and bind production Supabase URL",
-            "Verify OneRoster 1.2 delivery cron worker"
+            "Verify participant login from the approved local/private browser or VM.",
+            "Run the chartered uncoached session and record sanitized evidence.",
+            "Use observed pilot needs to select or exclude later integration-validation lanes."
           ]
         }
       },
       "mvp_status": {
         "phase": "pilot_ready",
-        "completion_pct": 82,
+        "completion_pct": 100,
+        "completion_basis": "The repository-defined functional MVP is built; this percentage does not represent production readiness or pilot completion.",
         "latest_milestones": [
-          "PR #248: Colegio Biblos local pilot preparation recorded",
-          "PR #247: Colegio Biblos local pilot charter formally approved",
-          "PR #246: Technical baseline closeout completed"
+          "PR #248 recorded Colegio Biblos local/private pilot preparation.",
+          "PR #247 approved the Colegio Biblos local pilot charter.",
+          "PR #246 completed the technical baseline closeout."
         ]
       },
       "latest_changes": [
-        "Reconcile control-plane governance evidence (b948072)",
         "Record Colegio Biblos local pilot preparation (#248) (bed47c2)",
         "Approve Colegio Biblos local pilot charter (#247) (f44c6b7)",
         "Record technical baseline closeout (#246) (4bfe20b)",
-        "Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)"
+        "Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)",
+        "Record completion plan council review (3e96d37)"
       ],
       "next_steps": [
-        "Complete Colegio Biblos pilot student roster import",
-        "Execute verify:admissions-rls and verify:enrollment-conversion-rls"
+        "Verify the actual Colegio Biblos participant login on the approved local/private topology.",
+        "Complete the uncoached pilot session before adding feature work.",
+        "Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk."
       ],
       "ai_session_telemetry": {
-        "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 90,
-        "session_date": "2026-10-17T16:33:45.639484+00:00",
+        "last_model": "OpenAI Codex",
+        "session_duration_minutes": 25,
+        "session_date": "2026-10-17T16:05:27.430761+00:00",
         "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications."
+        "summary_of_work": "Reconciled Academy control-plane governance and evidence-backed telemetry."
       },
       "deployment_diagnostics": {
         "recent_errors": [
-          "[2026-10-16] Local migration seed failed during rehearsal due to foreign key sequence lock on grade_levels."
+          "[2026-10-17] The admissions, enrollment-conversion, and LLIS-consent RLS verification commands could not complete because the local anon/authenticated roles lack required table privileges."
         ],
-        "mitigations_applied": [
-          "[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot."
-        ]
+        "mitigations_applied": []
       },
       "governance_compliance": {
         "council_decisions_acknowledged": [
@@ -217,8 +219,9 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-003",
           "COUNCIL-2026-004"
         ],
-        "brand_house_compliant": true,
-        "sovereign_db_isolation_verified": true
+        "brand_house_compliant": false,
+        "sovereign_db_isolation_verified": false,
+        "verification_note": "Acknowledgment is not implementation. Requirement-level status and evidence are recorded in docs/council/ACKNOWLEDGMENTS.md."
       },
       "_source_path": "/Users/rjulia/ChurchCore Academy/docs/control-plane/telemetry.json",
       "_source_type": "local"
@@ -1779,6 +1782,22 @@ window.CHURCHCORE_FLEET_DATA = {
       "prior_value": "unindexed",
       "reconciled_value": "66",
       "evidence": "`COUNCIL_REVIEW_PROOF`: Verified 66 documented council review markdown records"
+    },
+    {
+      "date": "2026-10-17 17:32:16 UTC",
+      "product": "ChurchCore-Business",
+      "field": "latest_changes",
+      "prior_value": "fix: R1d Council Review 57 backend fixes (exact household-scoped erasure, R2-R8) (879fe2e)",
+      "reconciled_value": "docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)",
+      "evidence": "`GIT_COMMIT_PROOF`: Verified git commit exists in repo: '6c62168 docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix'"
+    },
+    {
+      "date": "2026-10-17 17:32:16 UTC",
+      "product": "ChurchCore-Business",
+      "field": "council_governing_state.documented_reviews_count",
+      "prior_value": "unindexed",
+      "reconciled_value": "4",
+      "evidence": "`COUNCIL_REVIEW_PROOF`: Verified 4 documented council review markdown records"
     }
   ],
   "commercial": {

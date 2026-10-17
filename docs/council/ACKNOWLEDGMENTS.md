@@ -1,7 +1,7 @@
 # ChurchCore - Council Governance & Directive Ledger
 
 > **Central Manifest:** https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json
-> **Last Enforced:** 2026-10-17 15:58:40 UTC
+> **Last Enforced:** 2026-10-17 17:31:25 UTC
 > **Enforcement Engine:** `scripts/pull-and-enforce-directives.py`
 
 ## Active Directives Implementation Ledger
@@ -14,7 +14,7 @@
 | **COUNCIL-2026-002** | `REQ-002-02` | ✅ IMPLEMENTED & VERIFIED | **WCAG AAA Color Contrast Compliance**<br>_Verified_ |
 | **COUNCIL-2026-002** | `REQ-002-03` | ✅ IMPLEMENTED & VERIFIED | **Sub-Brand Orthography & Nomenclature**<br>_Verified (ChurchCore nomenclature matches orthography)_ |
 | **COUNCIL-2026-003** | `REQ-003-01` | 🟡 IN PROGRESS / PENDING | **Mandatory Pre-Flight Agent Rule Installation**<br>_Missing (.agents/rules/churchcore-control-plane.md missing)_ |
-| **COUNCIL-2026-003** | `REQ-003-02` | 🟡 IN PROGRESS / PENDING | **Local Implementation Ledger Initialization**<br>_Missing (docs/council/ACKNOWLEDGMENTS.md missing)_ |
-| **COUNCIL-2026-004** | `REQ-004-01` | 🟡 IN PROGRESS / PENDING | **Edge Telemetry Reporting File & Script**<br>_Missing (docs/control-plane/telemetry.json missing)_ |
-| **COUNCIL-2026-004** | `REQ-004-02` | 🟡 IN PROGRESS / PENDING | **Mandatory Offline Readiness Assessment**<br>_Missing (docs/control-plane/telemetry.json missing)_ |
-| **COUNCIL-2026-004** | `REQ-004-03` | 🟡 IN PROGRESS / PENDING | **AI Session Logging & Deployment Diagnostics**<br>_Missing (docs/control-plane/telemetry.json missing)_ |
+| **COUNCIL-2026-003** | `REQ-003-02` | ✅ IMPLEMENTED & VERIFIED | **Local Implementation Ledger Initialization**<br>_Verified (docs/council/ACKNOWLEDGMENTS.md present)_ |
+| **COUNCIL-2026-004** | `REQ-004-01` | ✅ IMPLEMENTED & VERIFIED | **Edge Telemetry Reporting File & Script**<br>_Verified (v0.1.0 • Online: False)_ |
+| **COUNCIL-2026-004** | `REQ-004-02` | ✅ IMPLEMENTED & VERIFIED | **Mandatory Offline Readiness Assessment**<br>_Verified (v0.1.0 • Online: False)_ |
+| **COUNCIL-2026-004** | `REQ-004-03` | ✅ IMPLEMENTED & VERIFIED | **AI Session Logging & Deployment Diagnostics**<br>_Verified (v0.1.0 • Online: False)_ |
