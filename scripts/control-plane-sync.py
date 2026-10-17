@@ -54,6 +54,37 @@ REPO_SOURCES = [
     }
 ]
 
+REQUIRED_TELEMETRY_FIELDS = {
+    "product_id", "repo_name", "version", "report_timestamp", "online_status",
+    "mvp_status", "latest_changes", "next_steps", "ai_session_telemetry",
+    "deployment_diagnostics", "governance_compliance"
+}
+
+def validate_telemetry(data, expected_product_id):
+    """Validate the control-plane fields consumed below without inventing missing defaults."""
+    missing = sorted(REQUIRED_TELEMETRY_FIELDS - set(data))
+    if missing:
+        return False, f"missing required fields: {', '.join(missing)}"
+    if data.get("product_id") != expected_product_id:
+        return False, f"product_id mismatch: expected {expected_product_id}"
+    online = data.get("online_status")
+    mvp = data.get("mvp_status")
+    if not isinstance(online, dict) or not isinstance(mvp, dict):
+        return False, "online_status and mvp_status must be objects"
+    if not isinstance(online.get("is_online"), bool):
+        return False, "online_status.is_online must be boolean"
+    if online.get("vercel_status") not in {"deployed", "preview", "pending", "none"}:
+        return False, "invalid online_status.vercel_status"
+    if online.get("supabase_status") not in {"connected", "pending", "local_only", "none"}:
+        return False, "invalid online_status.supabase_status"
+    readiness = online.get("readiness_assessment", {}).get("readiness_score_pct")
+    completion = mvp.get("completion_pct")
+    if not isinstance(readiness, int) or not 0 <= readiness <= 100:
+        return False, "readiness_score_pct must be an integer from 0 to 100"
+    if not isinstance(completion, int) or not 0 <= completion <= 100:
+        return False, "completion_pct must be an integer from 0 to 100"
+    return True, "valid"
+
 def load_telemetry(source):
     for p in source["local_paths"]:
         tpath = os.path.join(p, "docs", "control-plane", "telemetry.json")
@@ -61,6 +92,10 @@ def load_telemetry(source):
             try:
                 with open(tpath, "r") as f:
                     data = json.load(f)
+                    valid, reason = validate_telemetry(data, source["product_id"])
+                    if not valid:
+                        print(f"[-] Rejected telemetry {tpath}: {reason}")
+                        continue
                     data["_source_path"] = tpath
                     data["_source_type"] = "local"
                     return data
@@ -74,6 +109,10 @@ def load_telemetry(source):
         req = urllib.request.Request(remote_url, headers={'User-Agent': 'ChurchCore-ControlPlane'})
         with urllib.request.urlopen(req, timeout=3) as resp:
             data = json.loads(resp.read().decode('utf-8'))
+            valid, reason = validate_telemetry(data, source["product_id"])
+            if not valid:
+                print(f"[-] Rejected telemetry {remote_url}: {reason}")
+                return None
             data["_source_path"] = remote_url
             data["_source_type"] = "remote"
             return data
@@ -89,6 +128,10 @@ def generate_dashboard(telemetry_list):
     online_count = sum(1 for t in telemetry_list if t["online_status"]["is_online"])
     avg_readiness = int(sum(t["online_status"]["readiness_assessment"]["readiness_score_pct"] for t in telemetry_list) / max(total_repos, 1))
     avg_completion = int(sum(t["mvp_status"]["completion_pct"] for t in telemetry_list) / max(total_repos, 1))
+    isolation_verified = all(
+        t.get("governance_compliance", {}).get("sovereign_db_isolation_verified") is True
+        for t in telemetry_list
+    )
     
     md = []
     md.append(f"# ChurchCore Ecosystem: Master Control Plane Dashboard\n")
@@ -103,7 +146,9 @@ def generate_dashboard(telemetry_list):
     md.append(f"| **Active Production Online** | `{online_count} / {total_repos}` | 6 / 6 | {'🟡 Transitioning' if online_count < total_repos else '🟢 100% Online'} |")
     md.append(f"| **Average Readiness Score** | `{avg_readiness}%` | 100% | {'🟢 High Readiness' if avg_readiness >= 80 else '🟡 Action Needed'} |")
     md.append(f"| **Portfolio MVP Progress** | `{avg_completion}%` | 100% | 🟢 On Schedule |")
-    md.append(f"| **Cross-App Data Isolation** | `100% Sovereign` | 100% Isolated | 🛡️ Constitutional Invariant Verified |\n")
+    isolation_value = "VERIFIED" if isolation_verified else "UNVERIFIED"
+    isolation_status = "🛡️ All edge reports verified" if isolation_verified else "⚠️ One or more edge reports are unverified"
+    md.append(f"| **Cross-App Data Isolation** | `{isolation_value}` | Evidence from every product | {isolation_status} |\n")
     
     md.append("## 2. Product Fleet Status Cards\n")
 
@@ -127,10 +172,14 @@ def generate_dashboard(telemetry_list):
         md.append("#### Infrastructure & Online Status")
         md.append("| Parameter | Live State | Details |")
         md.append("| :--- | :--- | :--- |")
-        md.append(f"| **Online Status** | `{'ONLINE' if online else 'OFFLINE / PENDING'}` | {'Publicly accessible via Vercel' if online else 'Development / Preview Staging'} |")
-        md.append(f"| **Vercel Deployment** | `{v_status.upper()}` | [{v_url}]({v_url}) |")
-        md.append(f"| **Supabase Database** | `{s_status.upper()}` | Dedicated Sovereign Instance (RLS Enforced) |")
-        md.append(f"| **Readiness Score** | `{readiness['readiness_score_pct']}%` | Measured against production launch gates |\n")
+        md.append(f"| **Online Status** | `{'ONLINE' if online else 'OFFLINE / LOCAL'}` | {'Publicly accessible via Vercel' if online else 'No production deployment claimed'} |")
+        vercel_detail = f"[{v_url}]({v_url})" if v_url else "No URL reported"
+        rls_verified = t.get("governance_compliance", {}).get("sovereign_db_isolation_verified") is True
+        database_detail = "Sovereign isolation reported and verified" if rls_verified else "Sovereign isolation or RLS verification remains unverified"
+        readiness_basis = readiness.get("score_basis", "No score basis supplied")
+        md.append(f"| **Vercel Deployment** | `{v_status.upper()}` | {vercel_detail} |")
+        md.append(f"| **Supabase Database** | `{s_status.upper()}` | {database_detail} |")
+        md.append(f"| **Readiness Score** | `{readiness['readiness_score_pct']}%` | {readiness_basis} |\n")
 
         # Readiness Assessment (if offline or score < 100)
         if not online or readiness["readiness_score_pct"] < 100:

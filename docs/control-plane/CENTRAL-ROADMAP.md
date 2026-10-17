@@ -31,7 +31,7 @@ The Executive Control Plane (`ChurchCore-Business`) establishes central engineer
 
 ### Directive CP-2026-DIR-04: Automated Edge Telemetry & Control Plane Reporting
 - **Authority**: COUNCIL-2026-004.
-- **Mandate**: Every product repository must contain `.agents/rules/control-plane-telemetry.md`, `docs/control-plane/telemetry.json`, and `scripts/report-telemetry.py`. Every AI session must record session duration, model used, deployment errors, and mitigations.
+- **Mandate**: Every product repository must contain `.agents/rules/council-governance-sync.md`, `docs/control-plane/telemetry.json`, and `scripts/report-telemetry.py`. Telemetry must be evidence-backed, non-sensitive, and must distinguish acknowledgment from verified implementation. Session duration, model, errors, and mitigations are recorded only when known; telemetry does not authorize deployment or product work.
 - **Status**: **Active rollout underway.**
 
 ---
@@ -60,10 +60,11 @@ The Executive Control Plane (`ChurchCore-Business`) establishes central engineer
 - **Current Version**: `0.10.0`
 - **Primary Domain**: Christian Day Schools (K-12), Bible institutes, homeschool cooperatives.
 - **Sprint Goals**:
-  1. Execute local pilot preparation for **Colegio Biblos** (Charter approved in PR #247).
-  2. Finalize OneRoster 1.2 delivery cron worker and CSV roster exports.
-  3. Enforce admissions and enrollment conversion RLS verification scripts.
-  4. Complete bilingual student gradebook and attendance tracking.
+  1. Complete the active Colegio Biblos Workstream C gate: verify the actual participant browser/VM login and run the chartered uncoached session.
+  2. Record sanitized pilot findings and re-observe any S0-S2 blockers before the Academy owner accepts residual risk.
+  3. Resolve or formally scope the local-role privilege blockers preventing the admissions, enrollment-conversion, and LLIS-consent RLS verification commands from completing.
+  4. Use observed pilot needs and Academy owner approval to select or exclude later OneRoster/LMS, bilingual, payment, communications, and hosted-validation lanes.
+- **Deployment posture**: Owner-deferred. Control-plane telemetry and roadmap entries do not authorize Vercel, hosted Supabase, billable resources, or live providers.
 
 ### 4. ChurchCore Care (`churchcore-care` / `ChurchCore Care`)
 - **Current Version**: `7.0.0`
