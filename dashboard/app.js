@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamic Filter Chips & Badges
     const badgeEl = document.getElementById('tab-blocker-count');
-    if (badgeEl) badgeEl.textContent = `${stagingCount} In Review`;
+    if (badgeEl) badgeEl.textContent = `${stagingCount}`;
 
     const chipAll = document.getElementById('filter-chip-all');
     if (chipAll) chipAll.textContent = `All (${total})`;

@@ -87,106 +87,93 @@
       </div>
     </section>
 
-    <!-- Main Navigation Tabs -->
-    <nav class="view-tabs">
-      <button class="tab-btn active" data-tab="tab-fleet">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Main Navigation Tabs (Icon-centric Executive Dock with Hover Tooltips) -->
+    <nav class="view-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="tab-fleet" data-tooltip="Fleet Grid — Portfolio Overview" aria-label="Fleet Grid">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
           <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
         </svg>
-        Fleet Grid
       </button>
 
-      <button class="tab-btn" data-tab="tab-councils">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-councils" data-tooltip="Council Chambers — 6 Specialized Seat Councils" aria-label="Council Chambers">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
         </svg>
-        Council Chambers
-        <span class="tab-badge" id="tab-council-badge">6 Councils</span>
+        <span class="tab-badge" id="tab-council-badge">6</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-plans">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-plans" data-tooltip="Implementation Plans & Directionality" aria-label="Implementation Plans & Directionality">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
           <rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/>
         </svg>
-        Implementation Plans & Directionality
       </button>
 
-      <button class="tab-btn" data-tab="tab-tasks">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-tasks" data-tooltip="Project Tasks Metadata Base (18 Active Tasks)" aria-label="Project Tasks Metadata Base">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
           <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
         </svg>
-        Project Tasks Metadata Base
-        <span class="tab-badge" id="tab-task-count">18 Tasks</span>
+        <span class="tab-badge" id="tab-task-count">18</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-readiness">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-readiness" data-tooltip="Readiness Action Radar (2 In Review)" aria-label="Readiness Action Radar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
-        Readiness Action Radar
-        <span class="tab-badge" id="tab-blocker-count">2 In Review</span>
+        <span class="tab-badge" id="tab-blocker-count">2</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-commercial">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-commercial" data-tooltip="Commercial & OPEX Margins" aria-label="Commercial & OPEX">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
         </svg>
-        Commercial & OPEX
       </button>
 
-      <button class="tab-btn" data-tab="tab-sunday">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-sunday" data-tooltip="Sunday Morning 99.99% SLA Pulse" aria-label="Sunday SLA Pulse">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
         </svg>
-        Sunday SLA Pulse
       </button>
 
-      <button class="tab-btn" data-tab="tab-tech-mesh">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-tech-mesh" data-tooltip="Tech Stack & Sovereign RLS Mesh" aria-label="Tech Stack Mesh">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
         </svg>
-        Tech Stack Mesh
       </button>
 
-      <button class="tab-btn" data-tab="tab-directives">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-directives" data-tooltip="Council Directives & Enforcement" aria-label="Council Directives">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
         </svg>
-        Council Directives
       </button>
 
-      <button class="tab-btn" data-tab="tab-challenges">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-challenges" data-tooltip="Evidence & Autonomous Challenges (6 Reconciled)" aria-label="Evidence & Challenges">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           <path d="m9 12 2 2 4-4"/>
         </svg>
-        Evidence & Challenges
-        <span class="tab-badge" id="tab-challenges-badge">6 Reconciled</span>
+        <span class="tab-badge" id="tab-challenges-badge">6</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-ai-stream">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-ai-stream" data-tooltip="AI Sessions & LLM Telemetry" aria-label="AI Sessions">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/>
         </svg>
-        AI Sessions
       </button>
 
-      <button class="tab-btn" data-tab="tab-agy-cli">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn" data-tab="tab-agy-cli" data-tooltip="AgY Terminal Orchestrator" aria-label="AgY Orchestrator">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
         </svg>
-        AgY Orchestrator
       </button>
 
-      <button class="tab-btn highlight-gold-tab" data-tab="tab-manual">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="tab-btn highlight-gold-tab" data-tab="tab-manual" data-tooltip="Operations Manual & AgY Academy" aria-label="Manual & AgY Academy">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
           <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
         </svg>
-        Manual & AgY Academy
       </button>
     </nav>
 
