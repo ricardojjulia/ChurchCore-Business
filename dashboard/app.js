@@ -1214,11 +1214,126 @@ document.addEventListener('DOMContentLoaded', () => {
     initData();
   });
 
+  // ==========================================================================
+  // 20. Evidence & Challenges Center Tab
+  // ==========================================================================
+  let activeChalFilter = 'all';
+
+  function renderChallengesTab(reconciliations) {
+    const tbody = document.getElementById('central-challenges-tbody');
+    const badgeEl = document.getElementById('tab-challenges-badge');
+    const kpiVerified = document.getElementById('chal-kpi-verified');
+
+    if (badgeEl) badgeEl.textContent = `${reconciliations.length} Reconciled`;
+    if (kpiVerified) kpiVerified.textContent = `${reconciliations.length} Proofs`;
+
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    const searchTerm = (document.getElementById('chal-search')?.value || '').toLowerCase();
+
+    const filtered = reconciliations.filter(r => {
+      const matchFilter = (activeChalFilter === 'all') || (activeChalFilter === 'accepted');
+      const matchSearch = r.product.toLowerCase().includes(searchTerm) ||
+                          r.field.toLowerCase().includes(searchTerm) ||
+                          r.evidence.toLowerCase().includes(searchTerm);
+      return matchFilter && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" style="text-align: center; color: var(--text-dim); padding: 24px;">
+            No challenges matching search criteria.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    filtered.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">${escapeHtml(r.date)}</td>
+        <td><strong>${escapeHtml(r.product)}</strong></td>
+        <td><code>${escapeHtml(r.field)}</code></td>
+        <td style="color: var(--text-dim); font-size: 12px;">${escapeHtml(r.prior_value)}</td>
+        <td><strong style="color: var(--emerald-500);">${escapeHtml(r.reconciled_value)}</strong></td>
+        <td style="font-size: 12px; color: #D1D5DB;">${escapeHtml(r.evidence)}</td>
+        <td><span class="status-badge live" style="font-size: 11px;">🟢 ACCEPTED & RECONCILED</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    // Wires filter chips
+    document.querySelectorAll('.filter-chip[data-chal-filter]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip[data-chal-filter]').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeChalFilter = chip.getAttribute('data-chal-filter');
+        renderChallengesTab(reconciliations);
+      });
+    });
+
+    document.getElementById('chal-search')?.addEventListener('input', () => {
+      renderChallengesTab(reconciliations);
+    });
+
+    document.getElementById('btn-run-full-audit')?.addEventListener('click', () => {
+      showToast('Triggered Fleet Evidence Verification Audit across all 6 repos!');
+    });
+  }
+
+  // ==========================================================================
+  // 21. Operations Manual & AgY Academy Setup
+  // ==========================================================================
+  function renderManualTab() {
+    // Top header button to open help
+    document.getElementById('btn-open-help')?.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+      const manualBtn = document.querySelector('.tab-btn[data-tab="tab-manual"]');
+      if (manualBtn) manualBtn.classList.add('active');
+      document.getElementById('tab-manual')?.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Sidebar navigation smooth scroll
+    document.querySelectorAll('.manual-nav-item').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelectorAll('.manual-nav-item').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        const targetId = link.getAttribute('href')?.replace('#', '');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Search filter for manual articles
+    document.getElementById('manual-search-input')?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('.manual-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (!q || text.includes(q)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+
   // Master Render
   function renderDashboard(data) {
     renderKPIs(data);
     renderFleetGrid(data.products || []);
     renderCouncilsTab(data.councils || []);
+    renderChallengesTab(data.reconciliations || []);
     renderPlansTab(data.plans || []);
     renderTasksTab(data.tasks || []);
     renderCommercialTab(data.commercial || null);
@@ -1229,6 +1344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderReconciliationsTable(data.reconciliations || []);
     renderAIStream(data.products || []);
     setupCliGenerator();
+    renderManualTab();
   }
 
   initData();

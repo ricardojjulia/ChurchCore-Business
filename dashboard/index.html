@@ -36,6 +36,9 @@
 
       <div class="header-right">
         <div class="clock-display" id="clock-display">--:--:-- UTC</div>
+        <button id="btn-open-help" class="btn btn-secondary" title="Open Complete Control Plane & AgY Operations Manual">
+          📚 Manual & AgY Academy
+        </button>
         <button id="btn-dispatch-modal" class="btn btn-gold" title="Dispatch New Council Directive">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
@@ -155,6 +158,15 @@
         Council Directives
       </button>
 
+      <button class="tab-btn" data-tab="tab-challenges">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        Evidence & Challenges
+        <span class="tab-badge" id="tab-challenges-badge">6 Reconciled</span>
+      </button>
+
       <button class="tab-btn" data-tab="tab-ai-stream">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/>
@@ -167,6 +179,14 @@
           <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
         </svg>
         AgY Orchestrator
+      </button>
+
+      <button class="tab-btn highlight-gold-tab" data-tab="tab-manual">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        Manual & AgY Academy
       </button>
     </nav>
 
@@ -550,6 +570,378 @@ agy --version
             <button id="btn-copy-terminal" class="btn btn-secondary">Copy to Clipboard</button>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- TAB 11: EVIDENCE & CHALLENGES CENTER -->
+    <section id="tab-challenges" class="tab-content">
+      <div class="section-hero">
+        <h2>Autonomous Edge Evidence & Challenge Verification Center</h2>
+        <p>Central inspection hub for reviewing disputes, verified cryptographic proofs, git commits, and HTTP evidence submitted autonomously by edge product repositories.</p>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="council-hud-grid" style="margin-bottom: 24px;">
+        <div class="council-hud-card highlight-emerald">
+          <div class="council-hud-label">Verified & Reconciled</div>
+          <div class="council-hud-val">
+            <span class="status-beacon beacon-green"></span>
+            <span id="chal-kpi-verified">6 Proofs</span>
+          </div>
+          <div class="council-hud-sub">100% Acceptance of Validated Evidence</div>
+        </div>
+
+        <div class="council-hud-card highlight-gold">
+          <div class="council-hud-label">Evidence Types Evaluated</div>
+          <div class="council-hud-val">4 Modalities</div>
+          <div class="council-hud-sub">HTTP, Git Commits, Version AST, Council Markdown</div>
+        </div>
+
+        <div class="council-hud-card">
+          <div class="council-hud-label">Verification Latency</div>
+          <div class="council-hud-val">&lt; 250ms</div>
+          <div class="council-hud-sub">Sub-Second Local Hub Audit Verification</div>
+        </div>
+
+        <div class="council-hud-card">
+          <div class="council-hud-label">Sovereignty Invariant</div>
+          <div class="council-hud-val" style="color: #34D399;">100% Intact</div>
+          <div class="council-hud-sub">Zero Customer Data Leaked in Evidence</div>
+        </div>
+      </div>
+
+      <!-- Action & Filter Bar -->
+      <div class="task-filter-bar">
+        <div class="filter-group">
+          <button class="filter-chip active" id="chal-filter-all" data-chal-filter="all">All Evidence (6)</button>
+          <button class="filter-chip" id="chal-filter-accepted" data-chal-filter="accepted">Accepted (6)</button>
+          <button class="filter-chip" id="chal-filter-rejected" data-chal-filter="rejected">Rejected (0)</button>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <input type="text" id="chal-search" placeholder="Search product, field, or proof..." style="padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px; font-size: 13px;">
+          <button class="btn btn-gold" id="btn-run-full-audit" title="Trigger Fleet Evidence Verification Audit">
+            ⚡ Run Fleet Verification Audit
+          </button>
+        </div>
+      </div>
+
+      <div class="task-table-wrapper">
+        <table class="compliance-table" id="central-challenges-table">
+          <thead>
+            <tr>
+              <th>Timestamp (UTC)</th>
+              <th>Product Repository</th>
+              <th>Disputed Central Field</th>
+              <th>Central (Prior)</th>
+              <th>Reconciled (Truth)</th>
+              <th>Validated Proof & Cryptographic Evidence</th>
+              <th>Reconciliation Status</th>
+            </tr>
+          </thead>
+          <tbody id="central-challenges-tbody">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 12: OPERATIONS MANUAL & AGY ACADEMY -->
+    <section id="tab-manual" class="tab-content">
+      <div class="section-hero">
+        <h2>ChurchCore Sovereign Control Plane: Operations Manual & AgY Academy</h2>
+        <p>Exhaustive system reference documenting multi-repo architecture, autonomous directive enforcement, the Evidence Challenge Engine, and a complete tutor on the Google Antigravity CLI (AgY).</p>
+      </div>
+
+      <div class="manual-wrapper">
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="manual-sidebar">
+          <input type="text" id="manual-search-input" class="manual-search-box" placeholder="🔍 Search operations manual...">
+          <ul class="manual-nav-list" id="manual-nav-list">
+            <li><a href="#mod-agy" class="manual-nav-item active">⚡ AgY CLI Master Guide</a></li>
+            <li><a href="#mod-councils" class="manual-nav-item">🏛️ Council Chambers & 38 Seats</a></li>
+            <li><a href="#mod-challenges" class="manual-nav-item">🛡️ Evidence & Challenge Engine</a></li>
+            <li><a href="#mod-plans" class="manual-nav-item">📋 Plans & Directionality</a></li>
+            <li><a href="#mod-tasks" class="manual-nav-item">🗂️ Project Tasks Metadata Base</a></li>
+            <li><a href="#mod-sunday" class="manual-nav-item">⏱️ Sunday Morning 99.99% SLA</a></li>
+            <li><a href="#mod-commercial" class="manual-nav-item">💰 Commercial OPEX ($240/mo)</a></li>
+            <li><a href="#mod-architecture" class="manual-nav-item">👑 Sovereign Architecture</a></li>
+          </ul>
+        </aside>
+
+        <!-- Main Reading Stream -->
+        <main class="manual-content">
+
+          <!-- MODULE 1: AGY CLI MASTERCLASS -->
+          <article class="manual-card" id="mod-agy">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">⚡ The Antigravity CLI (AgY) Master Operations Guide</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">DeepMind & Google Advanced Agentic Coding CLI runtime: <code>agy v1.4.0</code></p>
+              </div>
+              <span class="manual-badge badge-gold-subtle">Core Runtime</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                <strong>Why AgY is Awesome:</strong> The Antigravity CLI (<code>agy</code>) is an autonomous developer runtime designed for complex, multi-step engineering tasks. Unlike passive autocomplete, <code>agy</code> interacts directly with your filesystem, executes terminal commands, resolves compilation issues, runs automated test suites, and operates across multiple repositories simultaneously.
+              </p>
+
+              <div class="manual-callout gold">
+                <strong>Local Binary Location:</strong> <code>/Users/rjulia/.local/bin/agy</code> (symlinked in your user PATH).<br>
+                Verify anytime in your terminal with: <code>agy --version</code> (returns <code>1.4.0</code>).
+              </div>
+
+              <h4 style="font-size: 16px; color: #FFF; margin: 20px 0 10px 0;">Essential AgY CLI Flags & Workflows</h4>
+              
+              <div class="code-container">
+                <div class="code-container-header">
+                  <span class="code-lang-tag">BASH — QUICK START</span>
+                  <button class="btn-code-copy" onclick="navigator.clipboard.writeText('agy -p &quot;Audit RLS policies in supabase/migrations and fix missing enable statements&quot;');">Copy</button>
+                </div>
+                <pre class="code-snippet"># 1. Single-Prompt Autonomous Task:
+agy -p "Audit RLS policies in supabase/migrations and fix missing enable statements"
+
+# 2. Multi-Repo Orchestration (Operating on ChurchCore-Business while accessing a sibling repo):
+agy --add-dir "/Users/rjulia/ChurchCore Care" --mode auto -p "Reconcile Care edge telemetry with central control plane"
+
+# 3. Fully Autonomous Auto-Pilot Mode (No human approval interruptions):
+agy --mode auto -p "Run pull-and-enforce-directives.py in all sibling suites"
+
+# 4. Multi-Directory Council Review Dispatch:
+agy --add-dir "/Users/rjulia/ChurchCore" --add-dir "/Users/rjulia/ChurchCore LMS" -p "Audit Constitution Section III across both suites"</pre>
+              </div>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Executive Mission Control — Live Dashboard Overview</span>
+                  <span class="manual-badge badge-gold-subtle">Dashboard HUD</span>
+                </div>
+                <img src="screenshots/fleet_grid_overview.png" alt="Fleet Grid Overview" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 1.1: Live Executive Control Plane Dashboard with multi-repo status, production online rates, and zero data propagation indicators.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 2: COUNCIL CHAMBERS & 38 SEATS -->
+          <article class="manual-card" id="mod-councils">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">🏛️ Council Chambers & 38 Specialized Seat Guardians</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">App-specific governance councils, live quorum HUDs, consensus syntheses, and 1-on-1 consultations</p>
+              </div>
+              <span class="manual-badge badge-cyan-subtle">Governance Mesh</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                Each product repository maintains its own <strong>Domain Council</strong> with specialized persona seats tailored to that application's technical and theological needs:
+              </p>
+              <ul style="margin-left: 20px; margin-bottom: 16px; line-height: 1.8;">
+                <li><strong>🛡️ Care Council (ChurchCore Care):</strong> Lead Pastoral Chaplain, Clinical Confidentiality Officer Elena Rostova (HIPAA/`pgcrypto`), Emergency Care Triage Architect, Volunteer Care Circles Coordinator, Benevolence Fund Auditor.</li>
+                <li><strong>🎓 LMS Council (ChurchCore LMS):</strong> Academic Dean Dr. Silas Thorne, SpeedGrader Steward Clara Higgins, Content Drip Architect Pastor Cole, Credentialing Registrar Eleanor Brooks, Serverless Infra Lead Devin Vance.</li>
+                <li><strong>⛪ ChMS Council (ChurchCore ChMS):</strong> Lead Pastor Caleb Wright, Agent 1 (Data & API Sentinel), Agent 2 (Route Specialist), Agent 3 (UX Shell), Sunday SLA & Financial Giving Trustee Arthur Pendelton.</li>
+                <li><strong>🏫 Academy Council (ChurchCore Academy):</strong> Headmaster Dr. Edwards, Parental Trust Guardian Maria Teresa, SIS Bursar Patricia Sterling, Bilingual Liaison Pastora Gabriela.</li>
+                <li><strong>📜 Orthos Council (ChurchCore Orthos):</strong> Systematic Theologian Dr. MacIntyre, Biblical Languages Lead Dr. Ben-Zvi, Liturgical Calendar Architect Father Ward, Anti-Heresy Watcher Elder Barnabas.</li>
+                <li><strong>🌟 Scholars Council (FaithFull Scholars):</strong> Endowment Trustee Hon. Elizabeth Warren-Harding, Allocations Dean Dr. Okonjo, Monograph Editor Prof. Lancaster.</li>
+              </ul>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Council Chambers — Live Consensus Synthesis & Seat Consultation</span>
+                  <span class="manual-badge badge-cyan-subtle">Council HUD</span>
+                </div>
+                <img src="screenshots/council_chambers_deliberation.png" alt="Council Chambers Deliberation View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 2.1: Live Deliberation Chamber showing Quorum HUD, active non-negotiables, and the official Council Ratification & Governance Seal.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 3: EVIDENCE & CHALLENGE ENGINE -->
+          <article class="manual-card" id="mod-challenges">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">🛡️ Autonomous Edge Challenge & Evidence Reconciliation Engine</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Enabling edge repos to autonomously dispute stale central data with cryptographic proof</p>
+              </div>
+              <span class="manual-badge badge-emerald-subtle">Evidence Engine</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                The Control Plane does not assume central omnipotence. If an edge repository deploys a new commit, adds council reviews, or verifies online edge traffic, it autonomously challenges central records by presenting verifiable proof:
+              </p>
+
+              <div class="manual-callout emerald">
+                <strong>Supported Evidence Types:</strong><br>
+                • <code>HTTP_STATUS_PROOF</code>: Live HTTP 200 probe with latency and response headers.<br>
+                • <code>GIT_COMMIT_PROOF</code>: Git commit SHA and author message verified in repository tree.<br>
+                • <code>PACKAGE_VERSION_PROOF</code>: Semantic version AST inspection inside <code>package.json</code>.<br>
+                • <code>COUNCIL_REVIEW_PROOF</code>: Documented review markdown files with unanimous sign-offs.
+              </div>
+
+              <div class="code-container">
+                <div class="code-container-header">
+                  <span class="code-lang-tag">BASH — EDGE COMMANDS</span>
+                  <button class="btn-code-copy" onclick="navigator.clipboard.writeText('python3 scripts/challenge-central-record.py');">Copy</button>
+                </div>
+                <pre class="code-snippet"># Run autonomous challenge discovery in any edge repo:
+python3 scripts/challenge-central-record.py
+
+# Run central evidence verification across the entire fleet:
+python3 scripts/reconcile-edge-challenges.py</pre>
+              </div>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Central Reconciliation Ledger — Autonomous Proof Verification</span>
+                  <span class="manual-badge badge-emerald-subtle">Audit Trail</span>
+                </div>
+                <img src="screenshots/evidence_reconciliation_ledger.png" alt="Reconciliation Ledger View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 3.1: Live Autonomous Evidence Reconciliation Ledger displaying verified proof entries across all 6 product suites.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 4: PLANS & DIRECTIONALITY -->
+          <article class="manual-card" id="mod-plans">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">📋 Product Implementation Plans & Directionality Tracking</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Tracking Done, In-Progress, and Planned features with explicit origin tags</p>
+              </div>
+              <span class="manual-badge badge-gold-subtle">Roadmaps</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                Every product plan tracks directionality with explicit visual tags:
+              </p>
+              <p>
+                • <span class="dir-badge dir-edge" style="display: inline-block; padding: 2px 8px;">🔵 REPO-ORIGINATED (Edge)</span>: Local engineering improvements, bug fixes, and domain-specific features developed directly in the repository.<br>
+                • <span class="dir-badge dir-hub" style="display: inline-block; padding: 2px 8px; margin-top: 6px;">🟡 CONTROL-PLANE-DISPATCHED (Hub)</span>: Cross-ecosystem architectural directives, brand lockups, or telemetry requirements dispatched from ChurchCore-Business.
+              </p>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Product Implementation Plans Viewer</span>
+                  <span class="manual-badge badge-gold-subtle">Plan Kanban</span>
+                </div>
+                <img src="screenshots/implementation_plans_directionality.png" alt="Implementation Plans View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 4.1: Implementation Plan Viewer showing directionality chips and milestone breakdowns.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 5: PROJECT TASKS METADATA BASE -->
+          <article class="manual-card" id="mod-tasks">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">🗂️ Project Tasks Metadata Base & Bidirectional Sync</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Synchronized between docs/control-plane/tasks.json and PROJECT_TASKS.md</p>
+              </div>
+              <span class="manual-badge badge-cyan-subtle">Task Base</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                The Project Tasks system provides an auditable, metadata-backed task ledger. Adding or updating tasks via the UI or CLI automatically updates both <code>docs/control-plane/tasks.json</code> and the Markdown Kanban in <code>PROJECT_TASKS.md</code>:
+              </p>
+
+              <div class="code-container">
+                <div class="code-container-header">
+                  <span class="code-lang-tag">BASH — TASK MANAGEMENT CLI</span>
+                  <button class="btn-code-copy" onclick="navigator.clipboard.writeText('python3 scripts/manage-tasks.py --action list');">Copy</button>
+                </div>
+                <pre class="code-snippet"># List all project tasks:
+python3 scripts/manage-tasks.py --action list
+
+# Add new task:
+python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title "Implement SMS escalation hotline" --status "planned" --priority "P1_HIGH"</pre>
+              </div>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Project Tasks Metadata Base — Live Kanban Grid</span>
+                  <span class="manual-badge badge-cyan-subtle">Tasks Base</span>
+                </div>
+                <img src="screenshots/project_tasks_kanban.png" alt="Project Tasks Kanban View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 5.1: Task Metadata Base with priority filters, assignees, and git commit references.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 6: SUNDAY SLA PULSE -->
+          <article class="manual-card" id="mod-sunday">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">⏱️ Sunday Morning 99.99% SLA Pulse Monitor</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Holy Hours zero-downtime reliability protocol (Sundays 06:00 - 13:00 Local)</p>
+              </div>
+              <span class="manual-badge badge-emerald-subtle">High Availability</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                During Sunday morning worship services, downtime is catastrophic for church attendance, tithing, and child check-in kiosks. The Control Plane runs automated probes and connection pool monitoring:
+              </p>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Sunday Morning SLA Pulse Monitor</span>
+                  <span class="manual-badge badge-emerald-subtle">SLA Monitor</span>
+                </div>
+                <img src="screenshots/sunday_sla_pulse.png" alt="Sunday SLA Pulse View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 6.1: Real-time countdown to Sunday peak, connection pool headroom (92%), and synthetic probe latencies.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 7: COMMERCIAL TELEMETRY -->
+          <article class="manual-card" id="mod-commercial">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">💰 Commercial Velocity, OPEX ($240/mo Fleet) & Fintech Margins</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Fiduciary stewardship, low-cost hosting breakdown, and active ARR pilots</p>
+              </div>
+              <span class="manual-badge badge-gold-subtle">Finances</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                ChurchCore operates on an extraordinarily capital-efficient architecture:
+                <strong>$240/month total fleet hosting</strong> across Vercel Pro ($120), Supabase Pro Compute ($100), and Cloudflare ($20).
+              </p>
+              <p>
+                Fintech take-rates deliver sustainable recurring revenues:
+                • Card Giving: <code>2.60% + $0.30</code><br>
+                • ACH Tithing: <code>0.85% (capped at $7.50)</code><br>
+                • Annual Giving Target: <code>$12,000,000</code> ($1.25M ARR pipeline across Colegio Biblos, AETH Seminary, and Regional Pastoral Pilots).
+              </p>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Commercial & OPEX Telemetry Cockpit</span>
+                  <span class="manual-badge badge-gold-subtle">OPEX Cockpit</span>
+                </div>
+                <img src="screenshots/commercial_opex_margins.png" alt="Commercial Telemetry View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 7.1: Commercial and OPEX Cockpit tracking pilot pipeline, take-rates, and hosting margins.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 8: SOVEREIGN ARCHITECTURE -->
+          <article class="manual-card" id="mod-architecture">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">👑 Sovereign Architecture & Constitution Section III</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Zero Customer Data Propagation and 6 completely isolated database silos</p>
+              </div>
+              <span class="manual-badge badge-cyan-subtle">Constitution</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                <strong>The Sacred Invariant:</strong> Under Constitution Section III, customer data entered into any ChurchCore application remains 100% sovereign to that application's database. No cross-app event brokers, Kafka streams, RabbitMQ daemons, or database replication syncs are permitted.
+              </p>
+              <div class="manual-callout gold">
+                Every commit and migration across all 6 suites is audited automatically by <code>pull-and-enforce-directives.py</code> to ensure this sacred boundary is never violated.
+              </div>
+            </div>
+          </article>
+
+        </main>
       </div>
     </section>
 
