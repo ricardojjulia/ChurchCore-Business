@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const badgeEl = document.getElementById('tab-task-count');
     if (!tbody || !tasks) return;
 
-    if (badgeEl) badgeEl.textContent = `${tasks.length} Tasks`;
+    if (badgeEl) badgeEl.textContent = `${tasks.length}`;
 
     const searchTerm = (document.getElementById('task-search')?.value || '').toLowerCase();
 
@@ -1224,7 +1224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const badgeEl = document.getElementById('tab-challenges-badge');
     const kpiVerified = document.getElementById('chal-kpi-verified');
 
-    if (badgeEl) badgeEl.textContent = `${reconciliations.length} Reconciled`;
+    if (badgeEl) badgeEl.textContent = `${reconciliations.length}`;
     if (kpiVerified) kpiVerified.textContent = `${reconciliations.length} Proofs`;
 
     if (!tbody) return;

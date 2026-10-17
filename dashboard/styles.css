@@ -6,6 +6,7 @@
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-active: rgba(245, 158, 11, 0.35);
 
+  --gold-400: #FBBF24;
   --gold-500: #F59E0B;
   --gold-600: #D97706;
   --gold-glow: rgba(245, 158, 11, 0.18);
@@ -259,12 +260,12 @@ body {
 .view-tabs {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: rgba(15, 23, 42, 0.7);
+  justify-content: flex-start;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 8px 16px;
+  padding: 10px 14px;
   border-radius: 16px;
   border: 1px solid var(--border-subtle);
   margin-bottom: 28px;
@@ -276,26 +277,38 @@ body {
 .tab-btn {
   position: relative;
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 44px;
+  min-width: 68px;
+  height: 56px;
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-muted);
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  padding: 0;
+  padding: 6px 6px 5px 6px;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
 }
 
 .tab-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   stroke: currentColor;
   stroke-width: 2;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.2s ease;
+}
+
+.tab-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text-dim);
+  margin-top: 4px;
+  line-height: 1;
+  transition: color 0.2s ease;
+  pointer-events: none;
 }
 
 .tab-btn:hover {
@@ -307,7 +320,11 @@ body {
 }
 
 .tab-btn:hover svg {
-  transform: scale(1.12);
+  transform: scale(1.1);
+}
+
+.tab-btn:hover .tab-label {
+  color: #FFFFFF;
 }
 
 .tab-btn.active {
@@ -319,6 +336,11 @@ body {
 
 .tab-btn.active svg {
   stroke: var(--gold-400);
+}
+
+.tab-btn.active .tab-label {
+  color: var(--gold-400);
+  font-weight: 700;
 }
 
 .tab-btn.highlight-gold-tab {
@@ -333,13 +355,17 @@ body {
   color: #FFFFFF;
 }
 
+.tab-btn.highlight-gold-tab .tab-label {
+  color: var(--gold-400);
+}
+
 /* Micro-badge perched on top right corner of icon button */
 .tab-badge {
   position: absolute;
   top: -4px;
   right: -4px;
-  min-width: 17px;
-  height: 17px;
+  min-width: 18px;
+  height: 18px;
   padding: 0 4px;
   display: inline-flex;
   align-items: center;
@@ -349,9 +375,10 @@ body {
   color: #FFFFFF;
   font-size: 10px;
   font-weight: 800;
-  box-shadow: 0 2px 6px rgba(244, 63, 94, 0.45), 0 0 0 2px #0B0F19;
+  box-shadow: 0 2px 6px rgba(244, 63, 94, 0.5), 0 0 0 2px #0B0F19;
   line-height: 1;
   pointer-events: none;
+  z-index: 2;
 }
 
 /* Sleek Hover Tooltip Pop Up */
@@ -361,7 +388,7 @@ body {
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  margin-top: 6px;
+  margin-top: 8px;
   background: rgba(15, 23, 42, 0.96);
   color: #F8FAFC;
   font-family: var(--font-body);
@@ -388,6 +415,7 @@ body {
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
+  margin-top: 2px;
   border-width: 0 5px 6px 5px;
   border-style: solid;
   border-color: transparent transparent rgba(245, 158, 11, 0.45) transparent;
@@ -396,6 +424,20 @@ body {
   pointer-events: none;
   transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s;
   z-index: 1000;
+}
+
+.tab-btn:hover::after,
+.tab-btn:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.tab-btn:hover::before,
+.tab-btn:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 .tab-btn:hover::after,

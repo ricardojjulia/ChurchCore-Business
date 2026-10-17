@@ -17,6 +17,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DASHBOARD_DIR, **kwargs)
 
+    def end_headers(self):
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
+        super().end_headers()
+
 def main():
     os.chdir(DASHBOARD_DIR)
     url = f"http://localhost:{PORT}"
