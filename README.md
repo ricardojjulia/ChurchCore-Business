@@ -5,15 +5,23 @@
 [![Council Status](https://img.shields.io/badge/Council_Status-RATIFIED-success?style=for-the-badge&logo=shield)](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-001.md)
 [![Constitution](https://img.shields.io/badge/Constitution-ACTIVE-blue?style=for-the-badge)](file:///Users/rjulia/ChurchCore-Business/docs/constitution/CONSTITUTION.md)
 [![Portfolio Tables](https://img.shields.io/badge/Database_Tables-517_Total-informational?style=for-the-badge)](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/MASTER-PORTFOLIO-MATRIX.md)
-[![App Routes](https://img.shields.io/badge/App_Routes-423_Total-orange?style=for-the-badge)](file:///Users/rjulia/ChurchCore-Business/docs/portfolio/MASTER-PORTFOLIO-MATRIX.md)
+[![Control Plane](https://img.shields.io/badge/Control_Plane-ACTIVE_DASHBOARD-gold?style=for-the-badge&logo=vercel)](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ECOSYSTEM-DASHBOARD.md)
+[![AgY CLI](https://img.shields.io/badge/AgY_CLI-v1.4.0_READY-blueviolet?style=for-the-badge&logo=google)](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md)
 
 ---
 
-## 🏛️ Executive Summary
+## 🏛️ Executive Summary & Mission Control
 
-**ChurchCore-Business** is the executive command center, strategic brain, and governance repository for the **ChurchCore Ecosystem**. It synthesizes six mature, specialized engineering platforms into an integrated, defensible, high-margin commercial enterprise.
+**ChurchCore-Business** is the executive command center, strategic brain, and sovereign governance repository for the **ChurchCore Ecosystem**. It coordinates six mature, specialized engineering platforms into an integrated, defensible, high-margin commercial enterprise while strictly enforcing **Constitution Section III: Zero Cross-Application Customer Data Propagation**.
 
-Across the ecosystem, ChurchCore replaces fragmented, obsolete legacy software (Planning Center, Pushpay, Subsplash, FACTS, Canvas LMS, SimplePractice) with a modern, secure, beautifully unified software mesh engineered on **Next.js 15/16**, **TypeScript**, and **Supabase PostgreSQL Row-Level Security (RLS)**.
+> 📖 **Read the Master Guide:** [CONTROL-PLANE-AND-AGY-GUIDE.md](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) — The comprehensive operations manual, strategic vision, live fleet status, and complete tutorial for utilizing the **AgY CLI** for autonomous cross-repo development.
+
+### 🚀 Quick Launch: Executive Web Dashboard
+Launch the real-time glassmorphic mission control UI on your machine:
+```bash
+python3 dashboard/serve.py
+# Opens http://localhost:3333 in your browser
+```
 
 ---
 
@@ -21,11 +29,14 @@ Across the ecosystem, ChurchCore replaces fragmented, obsolete legacy software (
 
 ```
 ChurchCore-Business/
+├── dashboard/                # Executive Mission Control Web Application
+│   ├── index.html            # Single-Page Cockpit Interface
+│   ├── styles.css            # Dark-Mode Glassmorphism Design System
+│   ├── app.js                # Live Telemetry & AgY Command Dispatcher
+│   └── serve.py              # One-Click Local HTTP Server (Port 3333)
 ├── docs/
-│   ├── constitution/         # Constitutional Invariants & Institutional Standards
-│   │   ├── CONSTITUTION.md   # The 7 Non-Negotiable Invariants
-│   │   └── BRANDING-GOVERNANCE.md # Brand Architecture, White-Label & Ethical Invariants
 │   ├── control-plane/        # Sovereign Control Plane, Fleet Telemetry & Central Directives
+│   │   ├── CONTROL-PLANE-AND-AGY-GUIDE.md # Master Operations Manual & AgY CLI Tutorial
 │   │   ├── ARCHITECTURE.md   # Control Plane Blueprint & AI Permanent Connection Strategy
 │   │   ├── ECOSYSTEM-DASHBOARD.md # Master Fleet Status, Vercel/Supabase Health & AI Logs
 │   │   ├── CENTRAL-ROADMAP.md # Central Roadmap & Imposed Development Directives

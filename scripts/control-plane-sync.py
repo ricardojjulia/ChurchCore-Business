@@ -219,7 +219,32 @@ def main():
     with open(DASHBOARD_FILE, "w") as f:
         f.write(dashboard_content)
 
+    # Export to dashboard directory for web UI
+    dashboard_dir = os.path.join(WORKSPACE_ROOT, "dashboard")
+    os.makedirs(dashboard_dir, exist_ok=True)
+    json_path = os.path.join(dashboard_dir, "fleet-data.json")
+    js_path = os.path.join(dashboard_dir, "fleet-data.js")
+    
+    fleet_payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "summary": {
+            "total_products": len(telemetry_data),
+            "online_in_production": sum(1 for t in telemetry_data if t['online_status']['is_online']),
+            "average_readiness_score": int(sum(t['online_status']['readiness_assessment']['readiness_score_pct'] for t in telemetry_data) / max(len(telemetry_data), 1)),
+            "average_completion_pct": int(sum(t['mvp_status']['completion_pct'] for t in telemetry_data) / max(len(telemetry_data), 1)),
+            "sovereign_data_isolation": True
+        },
+        "products": telemetry_data
+    }
+
+    with open(json_path, "w") as f:
+        json.dump(fleet_payload, f, indent=2)
+
+    with open(js_path, "w") as f:
+        f.write("window.CHURCHCORE_FLEET_DATA = " + json.dumps(fleet_payload, indent=2) + ";\n")
+
     print(f"\n[+] Master Dashboard compiled successfully: {DASHBOARD_FILE}")
+    print(f"[+] UI Fleet Data generated: {json_path} & {js_path}")
     print(f"    Total Products Tracked: {len(telemetry_data)}")
     print(f"    Online in Production: {sum(1 for t in telemetry_data if t['online_status']['is_online'])} / {len(telemetry_data)}")
     print("================================================================================\n")
