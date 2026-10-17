@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-17 16:15:49 UTC`  
+> **Last Aggregated:** `2026-10-17 16:34:44 UTC`  
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -22,7 +22,7 @@
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
-| **Vercel Deployment** | `DEPLOYED` | [https://churchcore.vercel.app](https://churchcore.vercel.app) |
+| **Vercel Deployment** | `DEPLOYED` | [https://www.churchcore.io](https://www.churchcore.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
 | **Readiness Score** | `94%` | No score basis supplied |
 
@@ -43,10 +43,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `fix: R1d Council Review 57 backend fixes (exact household-scoped erasure, R2-R8) (879fe2e)`
 - `docs: Council Review 57 (R1d re-review) synthesis and agent reports (95433a3)`
 - `fix: R1d frontend for Council Review 56 (finish/resend, i18n errors, recurring gifts, localized member page) (d7ad572)`
 - `fix: R1d Council Review 56 backend fixes (R1-R9, widened erasure) (480559b)`
-- `docs: Council Review 56 (R1d) synthesis and agent reports (56c054e)`
 
 **Next Engineering Steps:**
 - 🎯 Verify send erasure notice only after erasure succeeds in production
@@ -55,7 +55,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `180 minutes`
-- **Session Timestamp:** `2026-10-17T16:13:47.069028+00:00`
+- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle.
 
@@ -72,7 +72,7 @@
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
-| **Vercel Deployment** | `DEPLOYED` | [https://church-core-lms.vercel.app](https://church-core-lms.vercel.app) |
+| **Vercel Deployment** | `DEPLOYED` | [https://www.churchcorelms.io](https://www.churchcorelms.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
 | **Readiness Score** | `95%` | No score basis supplied |
 
@@ -93,8 +93,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `fix(build): resolve Turbopack use-server sync export error and unmount sidebar on auth pages (29a9ca9)`
-- `feat(auth): streamline sign-in redirect flow (e7b231a)`
+- `Merge pull request #92 from ricardojjulia/feat/add-autonomous-challenge-engine (8a65b30)`
+- `feat(control-plane): install autonomous challenge & evidence engine and sync telemetry (9a846a2)`
+- `Merge pull request #91 from ricardojjulia/chore/sync-council-directives-enforcement (bd450a1)`
+- `chore(governance): add automated council directives enforcement script and sync ledger (b53ba7e)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
@@ -103,7 +105,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `120 minutes`
-- **Session Timestamp:** `2026-10-17T16:13:47.069028+00:00`
+- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
 
@@ -121,7 +123,7 @@
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
 | **Online Status** | `OFFLINE / LOCAL` | No production deployment claimed |
-| **Vercel Deployment** | `PENDING` | [https://churchcore-academy.vercel.app](https://churchcore-academy.vercel.app) |
+| **Vercel Deployment** | `DEPLOYED` | [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app) |
 | **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation reported and verified |
 | **Readiness Score** | `78%` | No score basis supplied |
 
@@ -157,7 +159,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `90 minutes`
-- **Session Timestamp:** `2026-10-17T16:13:47.069028+00:00`
+- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications.
 
@@ -174,7 +176,7 @@
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
-| **Vercel Deployment** | `DEPLOYED` | [https://churchcore-care.vercel.app](https://churchcore-care.vercel.app) |
+| **Vercel Deployment** | `DEPLOYED` | [https://www.churchcorecare.io](https://www.churchcorecare.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
 | **Readiness Score** | `95%` | No score basis supplied |
 
@@ -204,7 +206,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `60 minutes`
-- **Session Timestamp:** `2026-10-17T16:13:47.069028+00:00`
+- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries.
 
@@ -221,7 +223,7 @@
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
 | **Online Status** | `OFFLINE / LOCAL` | No production deployment claimed |
-| **Vercel Deployment** | `PREVIEW` | [https://churchcore-orthos.vercel.app](https://churchcore-orthos.vercel.app) |
+| **Vercel Deployment** | `PREVIEW` | [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) |
 | **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation reported and verified |
 | **Readiness Score** | `85%` | No score basis supplied |
 
@@ -257,7 +259,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `75 minutes`
-- **Session Timestamp:** `2026-10-17T16:13:47.069028+00:00`
+- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
 
@@ -274,7 +276,7 @@
 | Parameter | Live State | Details |
 | :--- | :--- | :--- |
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
-| **Vercel Deployment** | `DEPLOYED` | [https://faithfull-scholars.vercel.app](https://faithfull-scholars.vercel.app) |
+| **Vercel Deployment** | `DEPLOYED` | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
 | **Readiness Score** | `90%` | No score basis supplied |
 
@@ -295,10 +297,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `fix(legal): documents guard returns OLD on delete; probes prove a row changed (9ff5236)`
+- `fix(legal): scope the frozen-document rule to UPDATE; expect the new account FK (c23b0c8)`
+- `fix(audit): match the whole owner-read policy expression and its roles (9411687)`
 - `fix(legal): nest the preflight hash check so a fresh database can plan it (6f9b962)`
-- `feat(legal): legal pages, acceptance records, contact and password reset (A3a) (516ee28)`
-- `docs(adr): 0031 legal documents and acceptance records (47eface)`
-- `docs(spec): A3a technical brief (awaiting gate 5) (e5b82f5)`
 
 **Next Engineering Steps:**
 - 🎯 Complete faculty profile public monograph index
@@ -307,7 +309,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `105 minutes`
-- **Session Timestamp:** `2026-10-17T16:13:47.069028+00:00`
+- **Session Timestamp:** `2026-10-17T16:33:45.639484+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
 

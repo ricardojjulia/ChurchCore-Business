@@ -116,12 +116,12 @@ Here is the current audited status of our six sovereign platforms:
 
 | Product | Version | Online Status | Vercel Deployment | Supabase State | Readiness | MVP Phase |
 | :--- | :---: | :---: | :--- | :--- | :---: | :---: |
-| **ChurchCore ChMS** | `v3.5.0` | 🟢 ONLINE | [churchcore.vercel.app](https://churchcore.vercel.app) | Connected (Prod) | **94%** | `PRODUCTION` (92%) |
-| **ChurchCore LMS** | `v0.47.0` | 🟢 ONLINE | [church-core-lms.vercel.app](https://church-core-lms.vercel.app) | Connected (Prod) | **95%** | `BETA` (88%) |
-| **ChurchCore Academy**| `v0.10.0` | ⚪ LOCAL ONLY | Owner-deferred | Local only; RLS verification blocked | **33% of Workstream C gates** | `PILOT_READY` (functional MVP built) |
-| **ChurchCore Care** | `v7.0.0` | 🟢 ONLINE | [churchcore-care.vercel.app](https://churchcore-care.vercel.app)<br>`www.churchcorecare.io` | Connected (Prod) | **95%** | `PRODUCTION` (90%) |
-| **ChurchCore Orthos** | `v0.18.0` | 🟡 PREVIEW | [churchcore-orthos.vercel.app](https://churchcore-orthos.vercel.app)| Staging Link | **85%** | `BETA` (85%) |
-| **FaithFull Scholars**| `v0.1.0` | 🟢 ONLINE | [faithfull-scholars.vercel.app](https://faithfull-scholars.vercel.app)| Connected (Prod) | **90%** | `BETA` (85%) |
+| **ChurchCore ChMS** | `v3.5.0` | 🟢 ONLINE | [www.churchcore.io](https://www.churchcore.io) | Connected (Prod) | **94%** | `PRODUCTION` (92%) |
+| **ChurchCore LMS** | `v0.47.0` | 🟢 ONLINE | [www.churchcorelms.io](https://www.churchcorelms.io)<br>`church-core-lms.vercel.app` | Connected (Prod) | **95%** | `BETA` (88%) |
+| **ChurchCore Academy**| `v0.10.0` | ⚪ PILOT READY | [church-core-academy.vercel.app](https://church-core-academy.vercel.app) | Local only (Colegio Biblos Pilot) | **78%** | `PILOT_READY` (82%) |
+| **ChurchCore Care** | `v7.0.0` | 🟢 ONLINE | [www.churchcorecare.io](https://www.churchcorecare.io)<br>`churchcore-care.vercel.app` | Connected (Prod) | **95%** | `PRODUCTION` (90%) |
+| **ChurchCore Orthos** | `v0.18.0` | 🟡 PREVIEW | [church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)| Staging Link | **85%** | `BETA` (85%) |
+| **FaithFull Scholars**| `v0.1.0` | 🟢 ONLINE | [faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app)| Connected (Prod) | **90%** | `BETA` (85%) |
 
 ### What's Blocking the Remaining Staging Apps from Reaching 100% Online?
 1. **ChurchCore Academy** (1 of 3 local Workstream C gates): Local preparation passed. The actual participant-browser login and real uncoached session remain. Hosted deployment is owner-deferred, not a control-plane blocker or authorization.

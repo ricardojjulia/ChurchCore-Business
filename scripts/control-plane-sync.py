@@ -343,10 +343,10 @@ def main():
         "stripe_webhook_listener": "ACTIVE",
         "backup_snapshot_recency": "3 hours ago (Automated Daily Snapshot Verified)",
         "synthetic_endpoints_monitored": [
-            { "name": "ChMS Member Check-in", "url": "https://churchcore.vercel.app/api/health", "latency_ms": 42, "status": "GREEN" },
-            { "name": "LMS Student Auth", "url": "https://church-core-lms.vercel.app/api/health", "latency_ms": 38, "status": "GREEN" },
-            { "name": "Care EHR Portal", "url": "https://churchcore-care.vercel.app/health", "latency_ms": 55, "status": "GREEN" },
-            { "name": "Scholars Monograph API", "url": "https://faithfull-scholars.vercel.app/api/health", "latency_ms": 48, "status": "GREEN" }
+            { "name": "ChMS Member Check-in", "url": "https://www.churchcore.io/api/health", "latency_ms": 42, "status": "GREEN" },
+            { "name": "LMS Student Auth", "url": "https://www.churchcorelms.io/api/health", "latency_ms": 38, "status": "GREEN" },
+            { "name": "Care EHR Portal", "url": "https://www.churchcorecare.io/health", "latency_ms": 55, "status": "GREEN" },
+            { "name": "Scholars Monograph API", "url": "https://faith-full-scholars.vercel.app/api/health", "latency_ms": 48, "status": "GREEN" }
         ]
     }
 

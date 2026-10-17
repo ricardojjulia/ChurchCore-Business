@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T16:15:49.337162+00:00",
+  "generated_at": "2026-10-17T16:34:44.145876+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 4,
@@ -14,11 +14,12 @@
       "product_id": "churchcore-chms",
       "repo_name": "ChurchCore",
       "version": "3.5.0",
-      "report_timestamp": "2026-10-17T16:13:47.069028+00:00",
+      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
-        "vercel_url": "https://churchcore.vercel.app",
+        "vercel_url": "https://www.churchcore.io",
+        "custom_domain": "https://www.churchcore.io",
         "supabase_status": "connected",
         "supabase_project_ref": "prod-chms-db",
         "readiness_assessment": {
@@ -40,11 +41,11 @@
         ]
       },
       "latest_changes": [
+        "fix: R1d Council Review 57 backend fixes (exact household-scoped erasure, R2-R8) (879fe2e)",
         "docs: Council Review 57 (R1d re-review) synthesis and agent reports (95433a3)",
         "fix: R1d frontend for Council Review 56 (finish/resend, i18n errors, recurring gifts, localized member page) (d7ad572)",
         "fix: R1d Council Review 56 backend fixes (R1-R9, widened erasure) (480559b)",
-        "docs: Council Review 56 (R1d) synthesis and agent reports (56c054e)",
-        "feat: R1d erasure approval screens (queue, member data-rights, e2e) (a22c36e)"
+        "docs: Council Review 56 (R1d) synthesis and agent reports (56c054e)"
       ],
       "next_steps": [
         "Verify send erasure notice only after erasure succeeds in production",
@@ -53,7 +54,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 180,
-        "session_date": "2026-10-17T16:13:47.069028+00:00",
+        "session_date": "2026-10-17T16:33:45.639484+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle."
       },
@@ -75,9 +76,6 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "council_governing_state": {
-        "documented_reviews_count": 188
-      },
       "_source_path": "/Users/rjulia/ChurchCore/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
@@ -85,11 +83,13 @@
       "product_id": "churchcore-lms",
       "repo_name": "ChurchCore-LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-17T16:13:47.069028+00:00",
+      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
-        "vercel_url": "https://church-core-lms.vercel.app",
+        "vercel_url": "https://www.churchcorelms.io",
+        "custom_domain": "https://www.churchcorelms.io",
+        "vercel_alias": "https://church-core-lms.vercel.app",
         "supabase_status": "connected",
         "supabase_project_ref": "prod-lms-db",
         "readiness_assessment": {
@@ -110,7 +110,13 @@
           "Supabase pg_net extension enabled and release build 0.36.1 deployed"
         ]
       },
-      "latest_changes": "Merge pull request #91 from ricardojjulia/chore/sync-council-directives-enforcement (bd450a1)",
+      "latest_changes": [
+        "Merge pull request #92 from ricardojjulia/feat/add-autonomous-challenge-engine (8a65b30)",
+        "feat(control-plane): install autonomous challenge & evidence engine and sync telemetry (9a846a2)",
+        "Merge pull request #91 from ricardojjulia/chore/sync-council-directives-enforcement (bd450a1)",
+        "chore(governance): add automated council directives enforcement script and sync ledger (b53ba7e)",
+        "Merge pull request #90 from ricardojjulia/feat/sync-control-plane-and-telemetry (28eafe2)"
+      ],
       "next_steps": [
         "Test course completion webhook integration with local certification service",
         "Run full synthetic production test suite (npm run test:prod-synthetic)"
@@ -118,7 +124,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 120,
-        "session_date": "2026-10-17T16:13:47.069028+00:00",
+        "session_date": "2026-10-17T16:33:45.639484+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
       },
@@ -142,9 +148,6 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "council_governing_state": {
-        "documented_reviews_count": 69
-      },
       "_source_path": "/Users/rjulia/ChurchCore LMS/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
@@ -152,11 +155,11 @@
       "product_id": "churchcore-academy",
       "repo_name": "ChurchCore-Academy",
       "version": "0.10.0",
-      "report_timestamp": "2026-10-17T16:13:47.069028+00:00",
+      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
       "online_status": {
         "is_online": false,
-        "vercel_status": "pending",
-        "vercel_url": "https://churchcore-academy.vercel.app",
+        "vercel_status": "deployed",
+        "vercel_url": "https://church-core-academy.vercel.app",
         "supabase_status": "local_only",
         "supabase_project_ref": "pending-provisioning",
         "readiness_assessment": {
@@ -195,7 +198,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 90,
-        "session_date": "2026-10-17T16:13:47.069028+00:00",
+        "session_date": "2026-10-17T16:33:45.639484+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications."
       },
@@ -217,9 +220,6 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "council_governing_state": {
-        "documented_reviews_count": 57
-      },
       "_source_path": "/Users/rjulia/ChurchCore Academy/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
@@ -227,12 +227,13 @@
       "product_id": "churchcore-care",
       "repo_name": "ChurchCoreCare",
       "version": "7.0.0",
-      "report_timestamp": "2026-10-17T16:13:47.069028+00:00",
+      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
-        "vercel_url": "https://churchcore-care.vercel.app",
+        "vercel_url": "https://www.churchcorecare.io",
         "custom_domain": "https://www.churchcorecare.io",
+        "vercel_alias": "https://churchcore-care.vercel.app",
         "supabase_status": "connected",
         "supabase_project_ref": "prod-care-db",
         "readiness_assessment": {
@@ -263,7 +264,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 60,
-        "session_date": "2026-10-17T16:13:47.069028+00:00",
+        "session_date": "2026-10-17T16:33:45.639484+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries."
       },
@@ -292,11 +293,11 @@
       "product_id": "churchcore-orthos",
       "repo_name": "ChurchCore-Orthos",
       "version": "0.18.0",
-      "report_timestamp": "2026-10-17T16:13:47.069028+00:00",
+      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "preview",
-        "vercel_url": "https://churchcore-orthos.vercel.app",
+        "vercel_url": "https://church-core-orthos.vercel.app",
         "supabase_status": "local_only",
         "supabase_project_ref": "pending-staging-link",
         "readiness_assessment": {
@@ -335,7 +336,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 75,
-        "session_date": "2026-10-17T16:13:47.069028+00:00",
+        "session_date": "2026-10-17T16:33:45.639484+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls."
       },
@@ -357,9 +358,6 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "council_governing_state": {
-        "documented_reviews_count": 16
-      },
       "_source_path": "/Users/rjulia/ChurchCore Orthos/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
@@ -367,11 +365,11 @@
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-17T16:13:47.069028+00:00",
+      "report_timestamp": "2026-10-17T16:33:45.639484+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
-        "vercel_url": "https://faithfull-scholars.vercel.app",
+        "vercel_url": "https://faith-full-scholars.vercel.app",
         "supabase_status": "connected",
         "supabase_project_ref": "prod-scholars-db",
         "readiness_assessment": {
@@ -393,11 +391,11 @@
         ]
       },
       "latest_changes": [
+        "fix(legal): documents guard returns OLD on delete; probes prove a row changed (9ff5236)",
+        "fix(legal): scope the frozen-document rule to UPDATE; expect the new account FK (c23b0c8)",
+        "fix(audit): match the whole owner-read policy expression and its roles (9411687)",
         "fix(legal): nest the preflight hash check so a fresh database can plan it (6f9b962)",
-        "feat(legal): legal pages, acceptance records, contact and password reset (A3a) (516ee28)",
-        "docs(adr): 0031 legal documents and acceptance records (47eface)",
-        "docs(spec): A3a technical brief (awaiting gate 5) (e5b82f5)",
-        "docs(spec): A3 story (owner-approved, split A3a/A3b) and owner decisions (6789d71)"
+        "feat(legal): legal pages, acceptance records, contact and password reset (A3a) (516ee28)"
       ],
       "next_steps": [
         "Complete faculty profile public monograph index",
@@ -406,7 +404,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 105,
-        "session_date": "2026-10-17T16:13:47.069028+00:00",
+        "session_date": "2026-10-17T16:33:45.639484+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel."
       },
@@ -429,9 +427,6 @@
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
-      },
-      "council_governing_state": {
-        "documented_reviews_count": 66
       },
       "_source_path": "/Users/rjulia/FaithFullScholars/docs/control-plane/telemetry.json",
       "_source_type": "local"
@@ -1840,25 +1835,25 @@
     "synthetic_endpoints_monitored": [
       {
         "name": "ChMS Member Check-in",
-        "url": "https://churchcore.vercel.app/api/health",
+        "url": "https://www.churchcore.io/api/health",
         "latency_ms": 42,
         "status": "GREEN"
       },
       {
         "name": "LMS Student Auth",
-        "url": "https://church-core-lms.vercel.app/api/health",
+        "url": "https://www.churchcorelms.io/api/health",
         "latency_ms": 38,
         "status": "GREEN"
       },
       {
         "name": "Care EHR Portal",
-        "url": "https://churchcore-care.vercel.app/health",
+        "url": "https://www.churchcorecare.io/health",
         "latency_ms": 55,
         "status": "GREEN"
       },
       {
         "name": "Scholars Monograph API",
-        "url": "https://faithfull-scholars.vercel.app/api/health",
+        "url": "https://faith-full-scholars.vercel.app/api/health",
         "latency_ms": 48,
         "status": "GREEN"
       }

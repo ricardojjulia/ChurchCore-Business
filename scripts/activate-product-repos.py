@@ -22,7 +22,8 @@ REPO_CONFIGS = [
         "online_status": {
             "is_online": True,
             "vercel_status": "deployed",
-            "vercel_url": "https://churchcore.vercel.app",
+            "vercel_url": "https://www.churchcore.io",
+            "custom_domain": "https://www.churchcore.io",
             "supabase_status": "connected",
             "supabase_project_ref": "prod-chms-db",
             "readiness_assessment": {
@@ -71,7 +72,9 @@ REPO_CONFIGS = [
         "online_status": {
             "is_online": True,
             "vercel_status": "deployed",
-            "vercel_url": "https://church-core-lms.vercel.app",
+            "vercel_url": "https://www.churchcorelms.io",
+            "custom_domain": "https://www.churchcorelms.io",
+            "vercel_alias": "https://church-core-lms.vercel.app",
             "supabase_status": "connected",
             "supabase_project_ref": "prod-lms-db",
             "readiness_assessment": {
@@ -121,8 +124,8 @@ REPO_CONFIGS = [
         "version": "0.10.0",
         "online_status": {
             "is_online": False,
-            "vercel_status": "pending",
-            "vercel_url": "https://churchcore-academy.vercel.app",
+            "vercel_status": "deployed",
+            "vercel_url": "https://church-core-academy.vercel.app",
             "supabase_status": "local_only",
             "supabase_project_ref": "pending-provisioning",
             "readiness_assessment": {
@@ -175,8 +178,9 @@ REPO_CONFIGS = [
         "online_status": {
             "is_online": True,
             "vercel_status": "deployed",
-            "vercel_url": "https://churchcore-care.vercel.app",
+            "vercel_url": "https://www.churchcorecare.io",
             "custom_domain": "https://www.churchcorecare.io",
+            "vercel_alias": "https://churchcore-care.vercel.app",
             "supabase_status": "connected",
             "supabase_project_ref": "prod-care-db",
             "readiness_assessment": {
@@ -225,7 +229,7 @@ REPO_CONFIGS = [
         "online_status": {
             "is_online": False,
             "vercel_status": "preview",
-            "vercel_url": "https://churchcore-orthos.vercel.app",
+            "vercel_url": "https://church-core-orthos.vercel.app",
             "supabase_status": "local_only",
             "supabase_project_ref": "pending-staging-link",
             "readiness_assessment": {
@@ -278,7 +282,7 @@ REPO_CONFIGS = [
         "online_status": {
             "is_online": True,
             "vercel_status": "deployed",
-            "vercel_url": "https://faithfull-scholars.vercel.app",
+            "vercel_url": "https://faith-full-scholars.vercel.app",
             "supabase_status": "connected",
             "supabase_project_ref": "prod-scholars-db",
             "readiness_assessment": {
