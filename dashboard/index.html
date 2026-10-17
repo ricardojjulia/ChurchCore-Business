@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261017c">
+  <link rel="stylesheet" href="styles.css?v=20261017d">
 </head>
 <body>
   <div class="app-container">
@@ -102,7 +102,7 @@
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
         </svg>
         <span class="tab-label">Councils</span>
-        <span class="tab-badge" id="tab-council-badge">6</span>
+        <span class="tab-badge badge-neutral" id="tab-council-badge">6</span>
       </button>
 
       <button class="tab-btn" data-tab="tab-plans" data-tooltip="Implementation Plans & Directionality" aria-label="Implementation Plans & Directionality">
@@ -113,21 +113,21 @@
         <span class="tab-label">Plans</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-tasks" data-tooltip="Project Tasks Metadata Base (18 Active Tasks)" aria-label="Project Tasks Metadata Base">
+      <button class="tab-btn" data-tab="tab-tasks" data-tooltip="Project Tasks (Actionable Backlog)" aria-label="Project Tasks Metadata Base">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
           <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
         </svg>
         <span class="tab-label">Tasks</span>
-        <span class="tab-badge" id="tab-task-count">18</span>
+        <span class="tab-badge badge-warning" id="tab-task-count">14</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-readiness" data-tooltip="Readiness Action Radar (2 In Review)" aria-label="Readiness Action Radar">
+      <button class="tab-btn" data-tab="tab-readiness" data-tooltip="Readiness Action Radar (2 Staging Blockers)" aria-label="Readiness Action Radar">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
         <span class="tab-label">Radar</span>
-        <span class="tab-badge" id="tab-blocker-count">2</span>
+        <span class="tab-badge badge-danger" id="tab-blocker-count">2</span>
       </button>
 
       <button class="tab-btn" data-tab="tab-commercial" data-tooltip="Commercial Velocity & OPEX Margins" aria-label="Commercial & OPEX">
@@ -158,13 +158,13 @@
         <span class="tab-label">Directives</span>
       </button>
 
-      <button class="tab-btn" data-tab="tab-challenges" data-tooltip="Evidence & Autonomous Challenges (6 Reconciled)" aria-label="Evidence & Challenges">
+      <button class="tab-btn" data-tab="tab-challenges" data-tooltip="Evidence & Compliance (8/8 Verified & Reconciled)" aria-label="Evidence & Challenges">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           <path d="m9 12 2 2 4-4"/>
         </svg>
         <span class="tab-label">Evidence</span>
-        <span class="tab-badge" id="tab-challenges-badge">6</span>
+        <span class="tab-badge badge-success" id="tab-challenges-badge">✓ 8</span>
       </button>
 
       <button class="tab-btn" data-tab="tab-ai-stream" data-tooltip="AI Sessions & LLM Telemetry" aria-label="AI Sessions">
@@ -196,7 +196,7 @@
           <line x1="12" y1="17" x2="12" y2="21"/>
         </svg>
         <span class="tab-label">Presos</span>
-        <span class="tab-badge" id="tab-presos-badge">7</span>
+        <span class="tab-badge badge-gold" id="tab-presos-badge">7</span>
       </button>
     </nav>
 
@@ -1197,9 +1197,9 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
   <div id="toast" class="toast">Action completed successfully</div>
 
   <!-- Load Static Fallback Data First -->
-  <script src="fleet-data.js?v=20261017c"></script>
-  <script src="presos-data.js?v=20261017c"></script>
+  <script src="fleet-data.js?v=20261017d"></script>
+  <script src="presos-data.js?v=20261017d"></script>
   <!-- Main Application Script -->
-  <script src="app.js?v=20261017c"></script>
+  <script src="app.js?v=20261017d"></script>
 </body>
 </html>
