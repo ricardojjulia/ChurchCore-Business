@@ -93,6 +93,15 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
           <span class="label">AgY</span>
         </button>
+
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-feedback">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="label">Feedback</span>
+          <span class="sidebar-badge" id="sidebar-feedback-badge">14</span>
+        </button>
+
       </div>
 
       <!-- LIBRARY -->
@@ -147,6 +156,12 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>
             Daily MVP report
           </button>
+
+          <button id="btn-open-feedback-top" type="button" class="btn-overview-secondary" title="Open Fleet Demo Feedback &amp; Error-Triage Workspace">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Feedback (14)
+          </button>
+
           <button id="btn-dispatch-modal" type="button" class="btn-overview-gold" title="Dispatch New Council Directive">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
             Dispatch directive
@@ -1089,6 +1104,84 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
       </div>
     </section>
 
+        <!-- TAB: FLEET DEMO FEEDBACK & ERROR TRIAGE WORKSPACE -->
+    <section id="tab-feedback" class="tab-content">
+      <div class="section-hero">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2>💬 Fleet Demo Feedback &amp; Error-Triage Workspace</h2>
+            <p>Aggregated field-trial notes, unhandled error-boundary captures, and user bug submissions across all 6 sovereign applications.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="preso-chip green" id="feedback-triage-badge">🟢 14 Reports • 8 Open</span>
+            <button id="btn-refresh-feedback" class="btn btn-secondary" style="padding: 8px 14px; font-size: 12px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Refresh Feedback
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Feedback Summary KPI Cards -->
+      <div class="overview-kpis" style="margin-bottom: 20px;">
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">TOTAL FEEDBACK</span>
+          <span class="kpi-big-number" id="fb-total-count">14</span>
+          <span style="font-size: 11px; color: #98A1AD;">Across 6 applications</span>
+        </div>
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">UNPROCESSED / OPEN</span>
+          <span class="kpi-big-number" style="color: #FBBF24;" id="fb-open-count">8</span>
+          <span style="font-size: 11px; color: #98A1AD;">Needs triage review</span>
+        </div>
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">BUGS &amp; ERRORS</span>
+          <span class="kpi-big-number" style="color: #FF9F8E;" id="fb-bugs-count">7</span>
+          <span style="font-size: 11px; color: #98A1AD;">Deduplicated issues</span>
+        </div>
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">IMPROVEMENTS &amp; UAT</span>
+          <span class="kpi-big-number" style="color: #38BDF8;" id="fb-improvements-count">7</span>
+          <span style="font-size: 11px; color: #98A1AD;">Feature suggestions</span>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar" style="margin-bottom: 20px;">
+        <div class="filter-group" id="feedback-category-filters">
+          <span class="filter-label">Category:</span>
+          <button class="filter-chip active" data-fb-category="all">All (14)</button>
+          <button class="filter-chip" data-fb-category="BUG">Bug (4)</button>
+          <button class="filter-chip" data-fb-category="ERROR">Error (3)</button>
+          <button class="filter-chip" data-fb-category="UNEXPECTED_RESULT">Unexpected (3)</button>
+          <button class="filter-chip" data-fb-category="IMPROVEMENT">Improvement (4)</button>
+        </div>
+        <div class="filter-group" style="margin-left: 8px;">
+          <span class="filter-label">Product:</span>
+          <select id="fb-product-select" style="background: #1C2129; color: #E7E9EC; border: 1px solid #2A303A; padding: 6px 10px; border-radius: 6px; font-size: 12px;">
+            <option value="all">All Products (6)</option>
+            <option value="churchcore-academy">ChurchCore-Academy</option>
+            <option value="churchcore-lms">ChurchCore-LMS</option>
+            <option value="churchcore-orthos">ChurchCore-Orthos</option>
+            <option value="churchcore-care">ChurchCore Care</option>
+            <option value="faithfull-scholars">FaithFullScholars</option>
+            <option value="churchcore-chms">ChurchCore</option>
+          </select>
+        </div>
+        <div class="search-box">
+          <input type="text" id="feedback-search-input" placeholder="Search route, error, user note, or email...">
+        </div>
+      </div>
+
+      <!-- Feedback Items Container -->
+      <div id="feedback-items-container" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+
     <!-- Footer -->
     <footer class="bottom-footer">
       <div>ChurchCore Sovereign Control Plane • Powered by Google Antigravity & DeepMind Advanced Agentic Systems</div>
@@ -1265,6 +1358,7 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
   <script src="fleet-data.js?v=20261017d"></script>
   <script src="presos-data.js?v=20261017d"></script>
   <script src="scripts-data.js?v=20261017d"></script>
+  <script src="feedback-data.js?v=20261017d"></script>
   <!-- Main Application Script -->
   <script src="app.js?v=20261017d"></script>
 </body>

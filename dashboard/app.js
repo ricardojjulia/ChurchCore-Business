@@ -2779,6 +2779,231 @@ OPERATIONAL DIRECTIVES:
     filterAndRender();
   }
 
+
+  // 3.20 Render Fleet Demo Feedback & Error-Triage Workspace
+  function renderFeedbackWorkspace() {
+    const container = document.getElementById('feedback-items-container');
+    if (!container) return;
+
+    let feedbackData = window.CHURCHCORE_FEEDBACK_DATA?.feedback_items || [];
+    
+    // Load local triage overrides from localStorage
+    const TRIAGE_STORAGE_KEY = 'churchcore_feedback_triage_overrides';
+    function getTriageOverrides() {
+      try {
+        const raw = localStorage.getItem(TRIAGE_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveTriageOverride(id, patch) {
+      const overrides = getTriageOverrides();
+      overrides[id] = { ...(overrides[id] || {}), ...patch };
+      localStorage.setItem(TRIAGE_STORAGE_KEY, JSON.stringify(overrides));
+    }
+
+    let activeCategory = 'all';
+    let activeProduct = 'all';
+    let searchQuery = '';
+
+    function filterAndRender() {
+      const overrides = getTriageOverrides();
+      
+      const mergedItems = feedbackData.map(item => {
+        const ov = overrides[item.id] || {};
+        return {
+          ...item,
+          processed: ov.processed !== undefined ? ov.processed : item.processed,
+          action: ov.action !== undefined ? ov.action : item.action,
+          action_label: ov.action_label !== undefined ? ov.action_label : item.action_label
+        };
+      });
+
+      // Update Top Counts
+      const totalCount = mergedItems.length;
+      const openCount = mergedItems.filter(i => !i.processed).length;
+      const bugErrorCount = mergedItems.filter(i => i.category === 'BUG' || i.category === 'ERROR').length;
+      const improvementCount = mergedItems.filter(i => i.category === 'IMPROVEMENT' || i.category === 'UNEXPECTED_RESULT').length;
+
+      document.getElementById('fb-total-count')?.replaceChildren(document.createTextNode(String(totalCount)));
+      document.getElementById('fb-open-count')?.replaceChildren(document.createTextNode(String(openCount)));
+      document.getElementById('fb-bugs-count')?.replaceChildren(document.createTextNode(String(bugErrorCount)));
+      document.getElementById('fb-improvements-count')?.replaceChildren(document.createTextNode(String(improvementCount)));
+
+      const badgeHeader = document.getElementById('feedback-triage-badge');
+      if (badgeHeader) {
+        badgeHeader.textContent = `🟢 ${totalCount} Reports • ${openCount} Open`;
+      }
+      const sidebarBadge = document.getElementById('sidebar-feedback-badge');
+      if (sidebarBadge) {
+        sidebarBadge.textContent = String(openCount);
+      }
+
+      // Filter
+      const filtered = mergedItems.filter(item => {
+        const matchesCat = activeCategory === 'all' || item.category === activeCategory;
+        const matchesProd = activeProduct === 'all' || item.product_id === activeProduct;
+        const q = searchQuery.toLowerCase().trim();
+        const matchesQuery = !q ||
+          item.product_name.toLowerCase().includes(q) ||
+          item.route.toLowerCase().includes(q) ||
+          (item.note && item.note.toLowerCase().includes(q)) ||
+          (item.error_message && item.error_message.toLowerCase().includes(q)) ||
+          (item.user_email && item.user_email.toLowerCase().includes(q));
+        return matchesCat && matchesProd && matchesQuery;
+      });
+
+      if (!filtered.length) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px; background: rgba(30, 41, 59, 0.4); border-radius: 12px; border: 1px dashed var(--border-subtle); color: var(--text-muted);">
+            <div style="font-size: 28px; margin-bottom: 8px;">🔍</div>
+            <div style="font-weight: 700; color: #FFF; font-size: 15px;">No Feedback Records Match Filter</div>
+            <div style="font-size: 12px; margin-top: 4px;">Try selecting "All" or clearing the search box.</div>
+          </div>
+        `;
+        return;
+      }
+
+      const CATEGORY_STYLES = {
+        BUG: { bg: 'rgba(244, 63, 94, 0.15)', color: '#F43F5E', border: 'rgba(244, 63, 94, 0.3)' },
+        ERROR: { bg: 'rgba(249, 115, 22, 0.15)', color: '#FB923C', border: 'rgba(249, 115, 22, 0.3)' },
+        UNEXPECTED_RESULT: { bg: 'rgba(234, 179, 8, 0.15)', color: '#FACC15', border: 'rgba(234, 179, 8, 0.3)' },
+        IMPROVEMENT: { bg: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', border: 'rgba(56, 189, 248, 0.3)' }
+      };
+
+      container.innerHTML = filtered.map(item => {
+        const catStyle = CATEGORY_STYLES[item.category] || CATEGORY_STYLES.IMPROVEMENT;
+        const isResolved = item.processed;
+        const mins = Math.floor((item.session_duration_seconds || 0) / 60);
+        const secs = (item.session_duration_seconds || 0) % 60;
+        const durStr = mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
+
+        return `
+          <div class="kpi-card" style="padding: 16px 20px; border-radius: 12px; background: #13161B; border: 1px solid ${isResolved ? 'rgba(76, 195, 138, 0.2)' : 'var(--border-dark)'}; display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: ${catStyle.bg}; color: ${catStyle.color}; border: 1px solid ${catStyle.border};">
+                  ${item.category}
+                </span>
+                <span style="font-weight: 700; font-size: 14px; color: #FFFFFF;">${escapeHtml(item.product_name)}</span>
+                <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--text-dim);">${escapeHtml(item.demo_version || '')}</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 11px; font-family: 'Geist Mono', monospace; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; color: #94A3B8;">
+                  hit_count: ${item.hit_count || 1}
+                </span>
+                <span style="font-size: 11px; color: var(--text-dim);">${item.created_at ? new Date(item.created_at).toLocaleDateString() : 'recent'}</span>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 12px; margin-bottom: 4px;">
+                <span style="color: #7E8793;">Target Route:</span>
+                <code style="background: rgba(0,0,0,0.4); padding: 1px 6px; border-radius: 4px; color: #F0A63A; font-size: 12px;">${escapeHtml(item.route)}</code>
+              </div>
+              ${item.error_message ? `
+                <div style="background: rgba(244, 63, 94, 0.08); border-left: 3px solid #F43F5E; padding: 8px 12px; border-radius: 4px; font-family: 'Geist Mono', monospace; font-size: 12px; color: #FFB3A6; margin: 6px 0;">
+                  ${escapeHtml(item.error_message)}
+                </div>
+              ` : ''}
+              ${item.note ? `
+                <div style="font-size: 13px; color: #E7E9EC; line-height: 1.5; margin: 6px 0;">
+                  ${escapeHtml(item.note)}
+                </div>
+              ` : ''}
+              ${item.breadcrumbs && item.breadcrumbs.length ? `
+                <div style="font-size: 11px; color: #7E8793; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: 4px;">
+                  <span>Breadcrumbs:</span>
+                  ${item.breadcrumbs.map(b => `<span style="background: rgba(255,255,255,0.05); padding: 1px 5px; border-radius: 3px; color: #94A3B8;">${escapeHtml(b)}</span>`).join(' → ')}
+                </div>
+              ` : ''}
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; margin-top: 4px;">
+              <div style="font-size: 11px; color: #7E8793; display: flex; align-items: center; gap: 12px;">
+                ${item.user_email ? `<span>User: <strong style="color: #C4CAD2;">${escapeHtml(item.user_email)}</strong> (${escapeHtml(item.user_role || 'GUEST')})</span>` : '<span>Anonymous Visitor</span>'}
+                <span>Duration: <strong style="color: #C4CAD2;">${durStr}</strong></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <select class="triage-action-select" data-id="${item.id}" style="background: #1C2129; color: #E7E9EC; border: 1px solid #2A303A; padding: 4px 8px; border-radius: 6px; font-size: 11px;">
+                  <option value="">Set Triage Action...</option>
+                  <option value="bug_fixed" ${item.action === 'bug_fixed' ? 'selected' : ''}>Bug Fixed</option>
+                  <option value="code_fixed" ${item.action === 'code_fixed' ? 'selected' : ''}>Code Fixed</option>
+                  <option value="error_fixed" ${item.action === 'error_fixed' ? 'selected' : ''}>Error Fixed</option>
+                  <option value="suggestion_implemented" ${item.action === 'suggestion_implemented' ? 'selected' : ''}>Suggestion Implemented</option>
+                  <option value="update_applied" ${item.action === 'update_applied' ? 'selected' : ''}>Update Applied</option>
+                  <option value="suggestion_not_implemented" ${item.action === 'suggestion_not_implemented' ? 'selected' : ''}>Suggestion Not Implemented</option>
+                  <option value="received_and_closed" ${item.action === 'received_and_closed' ? 'selected' : ''}>Received & Closed</option>
+                </select>
+                <button type="button" class="btn-toggle-resolve" data-id="${item.id}" data-current="${isResolved}" style="background: ${isResolved ? 'rgba(76, 195, 138, 0.15)' : 'rgba(255,255,255,0.08)'}; color: ${isResolved ? '#6BD6A0' : '#E7E9EC'}; border: 1px solid ${isResolved ? '#2B5A40' : '#2A303A'}; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer;">
+                  ${isResolved ? '✓ Resolved' : 'Mark Resolved'}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Wire Triage Action Selects
+      container.querySelectorAll('.triage-action-select').forEach(sel => {
+        sel.addEventListener('change', (e) => {
+          const id = e.target.dataset.id;
+          const actionVal = e.target.value;
+          const actionText = e.target.options[e.target.selectedIndex].text;
+          saveTriageOverride(id, { action: actionVal, action_label: actionText, processed: !!actionVal });
+          filterAndRender();
+        });
+      });
+
+      // Wire Resolve Toggle Buttons
+      container.querySelectorAll('.btn-toggle-resolve').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = e.target.dataset.id;
+          const cur = e.target.dataset.current === 'true';
+          saveTriageOverride(id, { processed: !cur });
+          filterAndRender();
+        });
+      });
+    }
+
+    // Category filter chips
+    document.querySelectorAll('#feedback-category-filters [data-fb-category]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#feedback-category-filters [data-fb-category]').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCategory = chip.dataset.fbCategory;
+        filterAndRender();
+      });
+    });
+
+    // Product select
+    document.getElementById('fb-product-select')?.addEventListener('change', (e) => {
+      activeProduct = e.target.value;
+      filterAndRender();
+    });
+
+    // Search input
+    document.getElementById('feedback-search-input')?.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      filterAndRender();
+    });
+
+    // Refresh button
+    document.getElementById('btn-refresh-feedback')?.addEventListener('click', () => {
+      filterAndRender();
+      alert('Feedback records refreshed across all 6 applications!');
+    });
+
+    // Top button hook
+    document.getElementById('btn-open-feedback-top')?.addEventListener('click', () => {
+      document.querySelector('.sidebar-nav-btn[data-tab="tab-feedback"]')?.click();
+    });
+
+    filterAndRender();
+  }
+
   // Master Render
   function renderDashboard(data) {
     renderKPIs(data);
@@ -2797,6 +3022,7 @@ OPERATIONAL DIRECTIVES:
     setupCliGenerator();
     renderManualTab();
     renderPresosTab(data.presos || (window.CHURCHCORE_PRESOS_DATA ? window.CHURCHCORE_PRESOS_DATA.decks : []));
+    renderFeedbackWorkspace();
     renderScriptsTab(data.scripts || (window.CHURCHCORE_SCRIPTS_DATA ? window.CHURCHCORE_SCRIPTS_DATA.scripts : []));
   }
 
