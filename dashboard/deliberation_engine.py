@@ -640,6 +640,18 @@ def format_llm_deliberation_response(llm_res, used_model, current_council, targe
 
 ---
 
+### 🤖 Fortified AntiGravity AI Engineering Prompt
+```markdown
+{prompt_text}
+```
+
+**⚡ Direct Terminal Dispatch Command:**
+```bash
+{dispatch_cmd}
+```
+
+---
+
 {challenges_markdown}
 
 ### Council Member Speeches & Recorded Deliberation Transcripts
