@@ -179,6 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const asideRail = document.getElementById('overview-aside-rail');
     if (!products || !products.length) return;
 
+    const totalCount = products.length;
+    const onlineCount = products.filter(p => p.online_status?.is_online).length;
+    const stagingCount = totalCount - onlineCount;
+
     const productPrimaryTasks = {
       'churchcore-orthos': 'Deploy staging preview build to Vercel (PDF preview & fund accounting validator)',
       'faithfull-scholars': 'Complete faculty profile public monograph index and peer-review editorial triage',
@@ -198,10 +202,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderQueueContent() {
       if (!queuePanel) return;
 
+      const searchTerm = (document.getElementById('fleet-search')?.value || '').toLowerCase();
+
       const filtered = activeBacklog.filter(p => {
-        if (activeQueueFilter === 'online') return p.online_status?.is_online;
-        if (activeQueueFilter === 'staging') return !p.online_status?.is_online;
-        return true;
+        const matchFilter = (activeQueueFilter === 'all') || 
+                            (activeQueueFilter === 'online' && p.online_status?.is_online) ||
+                            (activeQueueFilter === 'staging' && !p.online_status?.is_online);
+        const matchSearch = !searchTerm ||
+                            p.repo_name.toLowerCase().includes(searchTerm) ||
+                            p.product_id.toLowerCase().includes(searchTerm);
+        return matchFilter && matchSearch;
       });
 
       queuePanel.innerHTML = `
@@ -228,17 +238,21 @@ document.addEventListener('DOMContentLoaded', () => {
             </li>
           </ol>
           <div class="filter-pills-row" role="group" aria-label="Filter fleet">
-            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'all' ? 'active' : ''}" data-qfilter="all">All <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">6</span></button>
-            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'online' ? 'active' : ''}" data-qfilter="online">Online <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">4</span></button>
-            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'staging' ? 'active' : ''}" data-qfilter="staging">Staging review <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">2</span></button>
+            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'all' ? 'active' : ''}" data-qfilter="all">All <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">${totalCount}</span></button>
+            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'online' ? 'active' : ''}" data-qfilter="online">Online <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">${onlineCount}</span></button>
+            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'staging' ? 'active' : ''}" data-qfilter="staging">Staging review <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">${stagingCount}</span></button>
           </div>
         </div>
 
         <ol class="queue-items-list">
-          ${filtered.map((p, idx) => {
+          ${filtered.length === 0 ? `
+            <li style="padding: 24px; text-align: center; color: #98A1AD; font-size: 13px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed rgba(255,255,255,0.08);">
+              No active backlog items matching "${escapeHtml(activeQueueFilter)}" filter.
+            </li>
+          ` : filtered.map((p, idx) => {
             const pct = p.mvp_status?.completion_pct || 85;
             const rem = Math.max(0, 100 - pct);
-            const isFirst = (idx === 0) && (activeQueueFilter === 'all');
+            const isFirst = (idx === 0) && (activeQueueFilter === 'all') && !searchTerm;
             const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || 'Complete remaining feature backlog';
             const isProd = p.online_status?.is_online;
             const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `/Users/rjulia/${p.repo_name}`;
@@ -278,7 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
       queuePanel.querySelectorAll('[data-qfilter]').forEach(b => {
         b.addEventListener('click', (e) => {
           activeQueueFilter = e.currentTarget.dataset.qfilter;
+          activeFilter = activeQueueFilter;
           renderQueueContent();
+          renderFleetGridCardsOnly(products);
         });
       });
 
@@ -536,10 +552,8 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.add('active');
   }
 
-  // 4. Render Fleet Grid
-  function renderFleetGrid(products) {
-    renderMvpWorkQueueBanner(products);
-
+  // 4. Render Fleet Grid Cards
+  function renderFleetGridCardsOnly(products) {
     const container = document.getElementById('fleet-grid-container');
     if (!container) return;
     container.innerHTML = '';
@@ -558,6 +572,23 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchFilter && matchSearch;
     });
 
+    const countBadge = document.getElementById('fleet-grid-count-badge');
+    if (countBadge) {
+      countBadge.textContent = filtered.length === products.length 
+        ? `All ${products.length} Applications` 
+        : `Showing ${filtered.length} of ${products.length} Applications`;
+    }
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1 / -1; padding: 48px; text-align: center; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 16px; color: #98A1AD;">
+          <div style="font-size: 16px; font-weight: 600; color: #FFF; margin-bottom: 8px;">No applications found</div>
+          <div style="font-size: 13px;">No sovereign products match the current filter "${escapeHtml(activeFilter)}" or search query "${escapeHtml(searchTerm)}".</div>
+        </div>
+      `;
+      return;
+    }
+
     filtered.forEach(p => {
       const isOnline = p.online_status.is_online;
       const statusClass = isOnline ? 'online' : 'staging';
@@ -572,8 +603,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div>
           <div class="card-header">
             <div class="card-title-group">
-              <h3>${p.repo_name}</h3>
-              <div class="card-slug">${p.product_id} • v${p.version}</div>
+              <h3>${escapeHtml(p.repo_name)}</h3>
+              <div class="card-slug">${escapeHtml(p.product_id)} • v${escapeHtml(p.version)}</div>
             </div>
             <span class="status-badge ${statusClass}">
               ● ${statusText}
@@ -584,13 +615,13 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="infra-item">
               <span class="infra-key">Vercel Edge</span>
               <span class="infra-val">
-                ${vUrl !== 'N/A' ? `<a href="${vUrl}" target="_blank">${vUrl.replace('https://', '')}</a>` : 'Pending'}
+                ${vUrl !== 'N/A' ? `<a href="${vUrl}" target="_blank">${escapeHtml(vUrl.replace('https://', ''))}</a>` : 'Pending'}
               </span>
             </div>
             <div class="infra-item">
               <span class="infra-key">Supabase DB</span>
               <span class="infra-val" style="color: #10B981;">
-                ● ${p.online_status.supabase_status.toUpperCase()}
+                ● ${escapeHtml(p.online_status.supabase_status.toUpperCase())}
               </span>
             </div>
           </div>
@@ -605,7 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="meter-header">
-              <span>MVP Completion (${p.mvp_status.phase.toUpperCase()})</span>
+              <span>MVP Completion (${escapeHtml(p.mvp_status.phase.toUpperCase())})</span>
               <span>${completion}%</span>
             </div>
             <div class="progress-track">
@@ -616,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div>
           <div class="card-ai-footer">
-            <span class="ai-meta">Last AI: <strong>${p.ai_session_telemetry.last_model}</strong> (${p.ai_session_telemetry.session_duration_minutes}m)</span>
+            <span class="ai-meta">Last AI: <strong>${escapeHtml(p.ai_session_telemetry.last_model)}</strong> (${p.ai_session_telemetry.session_duration_minutes}m)</span>
             <button class="btn-card-inspect" data-id="${p.product_id}">Inspect &rarr;</button>
           </div>
         </div>
@@ -626,13 +657,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Attach inspect handlers
-    document.querySelectorAll('.btn-card-inspect').forEach(btn => {
+    container.querySelectorAll('.btn-card-inspect').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const pid = e.target.getAttribute('data-id');
+        const pid = e.currentTarget.getAttribute('data-id');
         const prod = products.find(x => x.product_id === pid);
         if (prod) openModal(prod);
       });
     });
+  }
+
+  // 4b. Master Fleet Grid Coordinator
+  function renderFleetGrid(products) {
+    renderMvpWorkQueueBanner(products);
+    renderFleetGridCardsOnly(products);
   }
 
   // 5. Render Implementation Plans & Directionality
