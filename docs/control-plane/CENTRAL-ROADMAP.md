@@ -34,6 +34,15 @@ The Executive Control Plane (`ChurchCore-Business`) establishes central engineer
 - **Mandate**: Every product repository must contain `.agents/rules/council-governance-sync.md`, `docs/control-plane/telemetry.json`, and `scripts/report-telemetry.py`. Telemetry must be evidence-backed, non-sensitive, and must distinguish acknowledgment from verified implementation. Session duration, model, errors, and mitigations are recorded only when known; telemetry does not authorize deployment or product work.
 - **Status**: **Active rollout underway.**
 
+### Directive CP-2026-DIR-05: 100% MVP Feature-Completion & Phased Testing Gating
+- **Authority**: COUNCIL-2026-005.
+- **Mandate**: Enforce strict sequential gating across all six products:
+  1. **Phase 1 (100% Feature Code Complete)**: All programmed features, edge routes, database schemas, and shared AppSwitcher navigation components must be 100% implemented in code before testing starts.
+  2. **Phase 2 (Comprehensive Testing Gate)**: Testing commences *only after* Phase 1 is 100% complete (RLS audit, E2E user journeys, Sunday Morning SLA probes).
+  3. **Phase 3 (Production Vercel Edge Deployment)**: Edge deployment proceeds once Phase 2 tests are 100% green.
+- **Artifacts**: Local roadmap [`docs/mvp-100-plan.md`](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-005.md) distributed to all 6 repos; canonical daily tracking report generated at [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md).
+- **Status**: **100% Ratified & Active across all 6 sibling repositories.**
+
 ---
 
 ## 3. Product-Specific Roadmaps & Sprint Priorities

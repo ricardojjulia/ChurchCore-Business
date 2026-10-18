@@ -143,10 +143,13 @@ This serves the dashboard at **`http://localhost:3333`** and automatically opens
 ### Features of the Dashboard
 1. **Fleet Health Banner**: Instant glance at total sovereign repos, production online count, average readiness, and data isolation verification.
 2. **Product Fleet Grid**: Interactive cards for all 6 products with live status badges, Vercel links, readiness gauges, and an **Inspect** modal.
-3. **Readiness Action Radar**: Deep dive into the exact blockers and next deployment steps for Academy, Care, and Orthos.
-4. **Council Governance Matrix**: Table showing compliance with COUNCIL-2026-001 through 004 across all six platforms.
-5. **AI Activity Stream**: Full log of recent AI sessions, model names (`gemini-2.5-pro`), durations, and deployment bug fixes.
-6. **AgY Fleet Command Generator**: Select any repository and action (e.g., "Resolve Deployment Blockers") and click **Generate** to get an instant, copyable `agy` CLI command!
+3. **Daily MVP 100% Action Priority Queue Banner**: Prominently sits on top of the Fleet tab, dynamically sorting all 6 packages by work remaining to 100% MVP Gate 1, highlighting the farthest behind package (`🔴 FARTHEST BEHIND • START HERE`), and providing one-click terminal quick-connect buttons.
+4. **Interactive Daily MVP Report Modal**: Triggered via the `📊 Daily MVP Report` top-header action or `🎯 View Full Priority Report` button. Delivers complete tabular breakdown, Phase 1 feature checklists, and live sync refreshing.
+5. **Readiness Action Radar**: Deep dive into the exact blockers and next deployment steps for Academy, Care, and Orthos.
+6. **Council Governance Matrix**: Table showing compliance with COUNCIL-2026-001 through 005 across all six platforms.
+7. **AI Activity Stream**: Full log of recent AI sessions, model names (`gemini-2.5-pro`), durations, and deployment bug fixes.
+8. **AgY Fleet Command Generator**: Select any repository and action (e.g., "Resolve Deployment Blockers") and click **Generate** to get an instant, copyable `agy` CLI command!
+9. **Direct Dossier Integration**: Access formatted executive reports (e.g., [`DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md)) served with dark typography and responsive tables.
 
 ---
 
@@ -201,7 +204,32 @@ agy --add-dir "/Users/rjulia/ChurchCore Academy" \
 
 ## 7. Day-to-Day Workflows & "Cheat Sheet" for the Operator
 
-Whenever you sit down to work on ChurchCore, here is your 3-step routine:
+### The Morning Routine: "Farthest Behind" Protocol (COUNCIL-2026-005)
+
+Whenever you sit down in the morning to work on the ChurchCore ecosystem:
+
+1. **Check the Priority Queue**: Open `http://localhost:3333` and click **`📊 Daily MVP Report`** in the top navigation (or run `python3 scripts/daily-fleet-briefing.py` in your terminal).
+2. **Review the Priority Queue (Ranked Most Work to Least Work)**:
+   - **Rank #1 (Start Here):** `ChurchCore Academy` (82% done • 18% remaining)
+   - **Rank #2:** `ChurchCore Orthos` (85% done • 15% remaining)
+   - **Rank #3:** `FaithFullScholars` (85% done • 15% remaining)
+   - **Rank #4:** `ChurchCore LMS` (88% done • 12% remaining)
+   - **Rank #5:** `ChurchCore Care` (90% done • 10% remaining)
+   - **Rank #6:** `ChurchCore ChMS` (92% done • 8% remaining)
+3. **Connect to the #1 Repository**: Click **`📋 Copy cd Cmd`** or run:
+   ```bash
+   cd "/Users/rjulia/ChurchCore Academy" && git status
+   ```
+4. **Follow the Strict 3-Phase Gating Rule**:
+   - **Phase 1 (100% Feature Code Complete First):** Open `docs/mvp-100-plan.md` in that repository and complete all programmed features. *Do not divert time to running full test suites while feature code remains incomplete.*
+   - **Phase 2 (Comprehensive Testing Gate):** Only after all Phase 1 features are 100% written and integrated, run the test suites (`npm run audit:rls`, `npm run test:e2e`, Sunday SLA benchmarks).
+   - **Phase 3 (Production Vercel Edge Deployment):** Only after Phase 2 tests are 100% green, deploy to the live production domain.
+
+---
+
+### Regular Workflow & Routine
+
+Whenever you sit down to work on ChurchCore, here is your routine:
 
 ### Step 1: Open the Control Plane & View Fleet Status
 ```bash
@@ -210,22 +238,22 @@ python3 dashboard/serve.py
 ```
 *(Check `http://localhost:3333` to see which products are green and which have blockers).*
 
-### Step 2: Refresh Fleet Telemetry
+### Step 2: Refresh Fleet Telemetry & Generate Daily Briefing
 Whenever changes are made in any sibling repo, update the control plane with:
 ```bash
-python3 scripts/control-plane-sync.py
+python3 scripts/daily-fleet-briefing.py
 ```
-*(This re-reads all 6 repos and updates both the markdown dashboard and the web UI).*
+*(This re-reads all 6 repos, recalculates the priority queue, and updates both the markdown dashboard and the web UI).*
 
 ### Step 3: Run AI Sessions with Confidence
 Whether you use Antigravity IDE, Claude Code, Cursor, or `agy` CLI:
-- **At session start**: The agent reads the Control Plane manifest and roadmap.
+- **At session start**: The agent reads the Control Plane manifest, roadmap, and `docs/mvp-100-plan.md`.
 - **At session end**: The agent runs `python3 scripts/report-telemetry.py` to record its model, duration, and bug fixes.
 - **Your rule is safe**: Customer data is NEVER copied across databases.
 
 ---
 
 ### In Summary: You Are in Complete Control
-You now have a central executive command center (`ChurchCore-Business`), an automated edge telemetry engine running across all 6 sibling repos, an interactive mission control web dashboard, and the full power of the `agy` CLI. 
+You now have a central executive command center (`ChurchCore-Business`), an automated edge telemetry engine running across all 6 sibling repos, an interactive mission control web dashboard with an automated daily MVP priority queue, and the full power of the `agy` CLI. 
 
 Whenever you need a refresher, just open this file!

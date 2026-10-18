@@ -28,6 +28,25 @@ python3 dashboard/serve.py
 
 > 📖 **Read the Master Guide:** [docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md](docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) — The complete operations manual, strategic vision, live fleet status, and full tutorial for utilizing the **AgY CLI** for multi-repo orchestration.
 
+### 🎯 Daily MVP 100% Progress Report & Morning Priority Queue
+Under **Council Directive [COUNCIL-2026-005](docs/council/COUNCIL-2026-005.md)**, the ecosystem enforces strict sequential gating:  
+**Phase 1 (100% Feature Code Complete First)** ➔ **Phase 2 (Comprehensive Testing Gate)** ➔ **Phase 3 (Production Vercel Deployment)**.
+
+To inspect, sync, and generate the daily fleet ranking from anywhere:
+```bash
+python3 scripts/daily-fleet-briefing.py
+```
+
+* **Interactive Cockpit Modal:** Open `http://localhost:3333` and click **`📊 Daily MVP Report`** in the top bar or inspect the **Action Priority Queue Banner** on the Fleet tab.
+* **Canonical Daily Progress Report:** [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](docs/reports/DAILY-MVP-PROGRESS-REPORT.md)
+* **Morning Priority Queue (Ranked from Most Work to Least Work):**
+  1. 🔴 **ChurchCore-Academy** (82% done • 18% remaining) — `cd "/Users/rjulia/ChurchCore Academy"` **[START HERE]**
+  2. 🟠 **ChurchCore-Orthos** (85% done • 15% remaining) — `cd "/Users/rjulia/ChurchCore Orthos"`
+  3. 🟠 **FaithFullScholars** (85% done • 15% remaining) — `cd "/Users/rjulia/FaithFullScholars"`
+  4. 🟡 **ChurchCore-LMS** (88% done • 12% remaining) — `cd "/Users/rjulia/ChurchCore LMS"`
+  5. 🟡 **ChurchCoreCare** (90% done • 10% remaining) — `cd "/Users/rjulia/ChurchCore Care"`
+  6. 🟢 **ChurchCore (ChMS)** (92% done • 8% remaining) — `cd "/Users/rjulia/ChurchCore"`
+
 ---
 
 ## 🌐 Sovereign Architecture & Autonomous Mesh

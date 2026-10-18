@@ -120,6 +120,18 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
   - Uses a repository secret `CHURCHCORE_CONTROL_PLANE_PAT` to dispatch a repository dispatch event (`control-plane-telemetry-update`) or open a PR/commit to `ricardojjulia/ChurchCore-Business`.
   - Keeps the central dashboard updated in real-time even when developers work outside local IDE sessions.
 
+### Pattern 5: Automated Daily Fleet Briefing & MVP 100% Gating Engine (`scripts/daily-fleet-briefing.py`) — *Active*
+- **Mechanism**: A central multi-repo inspection and reporting engine run daily via CLI or interactive dashboard:
+  ```bash
+  python3 scripts/daily-fleet-briefing.py
+  ```
+- **How it works**:
+  - Ingests git branch state, 24-hour commit ledgers, and edge telemetry from all 6 sovereign product repositories.
+  - Automatically parses Phase 1 checklists from each product's local `docs/mvp-100-plan.md` (mandated by Directive COUNCIL-2026-005).
+  - Calculates the **Work Remaining Delta** (`100% - completion_pct`) and dynamically sorts the fleet into the **Action Priority Queue (Ranked strictly from Farthest Behind #1 to Closest to 100%)**.
+  - Generates the canonical tracking report at [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md) and timestamped historical archives in `docs/control-plane/briefings/`.
+  - Powers the live **Mission Control UI** (`http://localhost:3333/`) with the **Daily MVP 100% Priority Queue Banner**, the `📊 Daily MVP Report` top-bar action, and the interactive `#mvp-report-modal`.
+
 ---
 
 ## 4. The Sacred Sovereignty Invariant: No Customer Data Propagation
@@ -135,7 +147,9 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
 
 | Path | Purpose |
 | :--- | :--- |
-| [`dashboard/`](file:///Users/rjulia/ChurchCore-Business/dashboard/) | Executive Mission Control Web UI (Port 3333 Cockpit) |
+| [`dashboard/`](file:///Users/rjulia/ChurchCore-Business/dashboard/) | Executive Mission Control Web UI (Port 3333 Cockpit with Daily MVP Queue & Modal) |
+| [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md) | Canonical daily progress report & morning priority work queue |
+| [`docs/council/COUNCIL-2026-005.md`](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-005.md) | Directive COUNCIL-2026-005: 100% MVP Feature Completion & Testing Gating |
 | [`docs/control-plane/ARCHITECTURE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ARCHITECTURE.md) | Complete architectural model & AI connection strategy |
 | [`docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) | Master Operations Manual & AgY CLI Tutorial |
 | [`docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md) | Autonomous Edge Challenge & Proof Reconciliation Ledger |
@@ -143,7 +157,9 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
 | [`docs/control-plane/TELEMETRY-SPEC.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/TELEMETRY-SPEC.md) | Specification & instructions for developers & agents |
 | [`docs/control-plane/CENTRAL-ROADMAP.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CENTRAL-ROADMAP.md) | Central executive sprint directives and roadmaps |
 | [`docs/control-plane/ECOSYSTEM-DASHBOARD.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ECOSYSTEM-DASHBOARD.md) | Master live status board across all 6 products |
-| [`scripts/activate-product-repos.py`](file:///Users/rjulia/ChurchCore-Business/scripts/activate-product-repos.py) | Auto-installs rules, telemetry scripts, and initializes edge repos |
+| [`scripts/daily-fleet-briefing.py`](file:///Users/rjulia/ChurchCore-Business/scripts/daily-fleet-briefing.py) | Automated daily fleet briefing & MVP progress report engine |
+| [`scripts/activate-product-repos.py`](file:///Users/rjulia/ChurchCore-Business/scripts/activate-product-repos.py) | Auto-installs rules, telemetry scripts, and generates docs/mvp-100-plan.md |
 | [`scripts/control-plane-sync.py`](file:///Users/rjulia/ChurchCore-Business/scripts/control-plane-sync.py) | Ingests edge telemetry and compiles the master dashboard |
 | [`scripts/pull-and-enforce-directives.py`](file:///Users/rjulia/ChurchCore-Business/scripts/pull-and-enforce-directives.py) | Edge directive enforcement & verification engine |
 | [`scripts/challenge-central-record.py`](file:///Users/rjulia/ChurchCore-Business/scripts/challenge-central-record.py) | Autonomous cryptographic edge challenge CLI |
+
