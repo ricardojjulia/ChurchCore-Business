@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ChurchCore Governance Dispatch Manifest",
   "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "organization": "ChurchCore",
   "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
   "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
-  "last_updated": "2026-10-18T14:10:00Z",
+  "last_updated": "2026-10-18T14:35:10Z",
   "registered_products": [
     {
       "name": "ChurchCore",
@@ -227,8 +227,8 @@
         {
           "req_id": "REQ-006-01",
           "title": "Universal Institutionalization of the Testing Council",
-          "description": "Every product repository must institutionalize the Testing Council protocol within .agents/rules/churchcore-control-plane.md and track execution state in its canonical roadmap (docs/mvp-100-plan.md).",
-          "verification": "Presence and enforcement of Section 2 in .agents/rules/churchcore-control-plane.md and acknowledgment in docs/council/ACKNOWLEDGMENTS.md."
+          "description": "Every product repository must institutionalize the Testing Council protocol within .agents/rules/churchcore-control-plane.md and track execution state in its repository-owned canonical roadmap. Central automation must not create a competing roadmap when the edge repository already designates one.",
+          "verification": "Presence of the Testing Council rule, acknowledgment in docs/council/ACKNOWLEDGMENTS.md, and evidence-backed state in the repository's canonical guide."
         },
         {
           "req_id": "REQ-006-02",
@@ -245,8 +245,8 @@
         {
           "req_id": "REQ-006-04",
           "title": "Closed-Loop Governance Challenge & Non-Stalling Automated Resolution",
-          "description": "Edge repo governance challenges submitted via scripts/challenge-central-record.py are automatically audited and merged in CI within ~30s without human stalling.",
-          "verification": "GitHub Actions workflow reconcile-governance-challenge.yml approves and merges clean evidence PRs."
+          "description": "Edge repo governance challenges submitted via scripts/challenge-central-record.py may be automatically audited and reconciled in ChurchCore-Business without human stalling.",
+          "verification": "Automation is limited to the central governance PR. Any edge repository change still requires that repository's owner approval, Council, Testing Council, pr-review, signature, CI, conversation-resolution, and protected-branch gates."
         }
       ]
     }

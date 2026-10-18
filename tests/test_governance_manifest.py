@@ -58,6 +58,37 @@ class TestGovernanceManifest(unittest.TestCase):
         self.assertIn("npm run verify:pilot-readiness", academy_row)
         self.assertNotIn("test:sis:e2e", academy_row)
 
+    def test_council_006_respects_edge_canonical_guides_and_delivery_gates(self):
+        manifest = load_manifest()
+        council = next(
+            decision
+            for decision in manifest["decisions"]
+            if decision["id"] == "COUNCIL-2026-006"
+        )
+        requirements = {
+            requirement["req_id"]: requirement
+            for requirement in council["requirements"]
+        }
+
+        self.assertIn("repository-owned canonical roadmap", requirements["REQ-006-01"]["description"])
+        self.assertIn("limited to the central governance PR", requirements["REQ-006-04"]["verification"])
+        self.assertIn("pr-review", requirements["REQ-006-04"]["verification"])
+
+    def test_academy_compliance_flags_require_merged_evidence(self):
+        fleet_path = ROOT / "dashboard" / "fleet-data.json"
+        fleet = json.loads(fleet_path.read_text(encoding="utf-8"))
+        academy = next(
+            product
+            for product in fleet["products"]
+            if product["product_id"] == "churchcore-academy"
+        )
+
+        compliance = academy["governance_compliance"]
+        self.assertFalse(compliance["brand_house_compliant"])
+        self.assertFalse(compliance["sovereign_db_isolation_verified"])
+        self.assertNotIn("COUNCIL-2026-006", compliance["council_decisions_acknowledged"])
+        self.assertTrue(academy["online_status"]["readiness_assessment"]["blockers"])
+
 
 if __name__ == "__main__":
     unittest.main()
