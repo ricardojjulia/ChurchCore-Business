@@ -9,6 +9,8 @@ import os
 import sys
 import json
 import glob
+import base64
+import subprocess
 from datetime import datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -123,6 +125,48 @@ def validate_telemetry(data, expected_product_id):
     return True, "valid"
 
 def load_telemetry(source):
+    # Published default-branch telemetry is the control-plane authority. A
+    # sibling checkout may be dirty or on an unrelated feature branch, so it
+    # is only a fallback for offline operation.
+    remote_url = f"https://raw.githubusercontent.com/{source['repo']}/main/docs/control-plane/telemetry.json"
+    try:
+        result = subprocess.run(
+            [
+                "gh", "api",
+                f"repos/{source['repo']}/contents/docs/control-plane/telemetry.json?ref=main",
+                "--jq", ".content",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            data = json.loads(base64.b64decode(result.stdout.strip()).decode("utf-8"))
+            valid, reason = validate_telemetry(data, source["product_id"])
+            if not valid:
+                print(f"[-] Rejected telemetry from {source['repo']} main: {reason}")
+            else:
+                data["_source_path"] = remote_url
+                data["_source_type"] = "remote"
+                return data
+    except Exception:
+        pass
+
+    import urllib.request
+    try:
+        req = urllib.request.Request(remote_url, headers={'User-Agent': 'ChurchCore-ControlPlane'})
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            valid, reason = validate_telemetry(data, source["product_id"])
+            if not valid:
+                print(f"[-] Rejected telemetry {remote_url}: {reason}")
+            else:
+                data["_source_path"] = remote_url
+                data["_source_type"] = "remote"
+                return data
+    except Exception:
+        pass
+
     for p in source["local_paths"]:
         tpath = os.path.join(p, "docs", "control-plane", "telemetry.json")
         if os.path.exists(tpath):
@@ -139,23 +183,6 @@ def load_telemetry(source):
             except Exception as e:
                 print(f"[-] Error reading {tpath}: {e}")
     
-    # Fallback to remote raw GitHub
-    remote_url = f"https://raw.githubusercontent.com/{source['repo']}/main/docs/control-plane/telemetry.json"
-    import urllib.request
-    try:
-        req = urllib.request.Request(remote_url, headers={'User-Agent': 'ChurchCore-ControlPlane'})
-        with urllib.request.urlopen(req, timeout=3) as resp:
-            data = json.loads(resp.read().decode('utf-8'))
-            valid, reason = validate_telemetry(data, source["product_id"])
-            if not valid:
-                print(f"[-] Rejected telemetry {remote_url}: {reason}")
-                return None
-            data["_source_path"] = remote_url
-            data["_source_type"] = "remote"
-            return data
-    except Exception:
-        pass
-
     return None
 
 def generate_dashboard(telemetry_list):
@@ -173,7 +200,7 @@ def generate_dashboard(telemetry_list):
     md = []
     md.append(f"# ChurchCore Ecosystem: Master Control Plane Dashboard\n")
     md.append(f"> **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  ")
-    md.append(f"> **Last Aggregated:** `{now_str}`  ")
+    md.append(f"> **Last Aggregated:** `{now_str}`")
     md.append(f"> **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  \n")
     
     md.append("## 1. Executive Telemetry & Fleet Health KPI\n")
@@ -495,4 +522,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
