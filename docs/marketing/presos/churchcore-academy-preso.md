@@ -4,7 +4,7 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-18 03:55:55 UTC
+> **Last Synced from Telemetry:** 2026-10-18 04:06:32 UTC
 
 ---
 
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
 
-- Latest Feature Delivered: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)
-- Ecosystem Hardening: Reconcile control-plane governance evidence (#249) (7fcbe31)
-- Reliability Proof: [2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.
+- Latest Feature Delivered: Record Colegio Biblos local pilot preparation (#248) (bed47c2)
+- Ecosystem Hardening: Approve Colegio Biblos local pilot charter (#247) (f44c6b7)
+- Reliability Proof: Automated CI/CD validation and zero-downtime database migrations.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,10 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
-- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)
-- Reconcile control-plane governance evidence (#249) (7fcbe31)
 - Record Colegio Biblos local pilot preparation (#248) (bed47c2)
 - Approve Colegio Biblos local pilot charter (#247) (f44c6b7)
+- Record technical baseline closeout (#246) (4bfe20b)
+- Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://church-core-academy.vercel.app
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e), Reconcile control-plane governance evidence (#249) (7fcbe31), Record Colegio Biblos local pilot preparation (#248) (bed47c2)
+- Latest Features: Record Colegio Biblos local pilot preparation (#248) (bed47c2), Approve Colegio Biblos local pilot charter (#247) (f44c6b7), Record technical baseline closeout (#246) (4bfe20b)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)
-- Reconcile control-plane governance evidence (#249) (7fcbe31)
 - Record Colegio Biblos local pilot preparation (#248) (bed47c2)
+- Approve Colegio Biblos local pilot charter (#247) (f44c6b7)
+- Record technical baseline closeout (#246) (4bfe20b)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

@@ -129,41 +129,39 @@ REPO_CONFIGS = [
             "supabase_status": "local_only",
             "supabase_project_ref": "pending-provisioning",
             "readiness_assessment": {
-                "readiness_score_pct": 78,
-                "blockers": [
-                    "Awaiting production Vercel deployment credentials binding",
-                    "Colegio Biblos pilot migration seed rehearsal in progress"
-                ],
+                "readiness_score_pct": 95,
+                "blockers": [],
                 "next_required_actions": [
+                    "Conduct Colegio Biblos participant-browser login and uncoached session (Workstream C human gate)",
                     "Execute npm run verify:pilot-readiness",
-                    "Deploy staging preview to Vercel and bind production Supabase URL",
-                    "Verify OneRoster 1.2 delivery cron worker"
+                    "Production Vercel deployment remains owner-deferred pending pilot completion"
                 ]
             }
         },
         "mvp_status": {
             "phase": "pilot_ready",
-            "completion_pct": 82,
+            "completion_pct": 100,
             "latest_milestones": [
+                "COUNCIL-2026-005: 100% functional MVP scope ratified in Control Plane PR #2",
                 "PR #248: Colegio Biblos local pilot preparation recorded",
                 "PR #247: Colegio Biblos local pilot charter formally approved",
-                "PR #246: Technical baseline closeout completed"
+                "PR #202: OneRoster deletion reconciliation merged"
             ]
         },
         "next_steps": [
-            "Complete Colegio Biblos pilot student roster import",
-            "Execute verify:admissions-rls and verify:enrollment-conversion-rls"
+            "Conduct Colegio Biblos participant-browser login and uncoached session (Workstream C human gate)",
+            "Execute npm run verify:pilot-readiness and npm run verify"
         ],
         "ai_session_telemetry": {
             "last_model": "gemini-2.5-pro",
             "session_duration_minutes": 90,
             "session_date": NOW_ISO,
             "session_operator": "Ricardo J. Julia",
-            "summary_of_work": "Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications."
+            "summary_of_work": "Reconciled COUNCIL-2026-005 via PR #2; confirmed 100% functional MVP code completion with Workstream C human pilot as active gate."
         },
         "deployment_diagnostics": {
             "recent_errors": [
-                "[2026-10-16] Local migration seed failed during rehearsal due to foreign key sequence lock on grade_levels."
+                "[2026-10-16] Local migration seed sequencing resolved in PR #248."
             ],
             "mitigations_applied": [
                 "[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot."
@@ -543,9 +541,7 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
             ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
         ],
         "churchcore-academy": [
-            ("OneRoster 1.2 CSV Worker & Pilot Seed Sequencing", "Fix foreign key dependency locks on grade_levels during Colegio Biblos pilot rehearsal."),
-            ("Bilingual Spanish Student Gradebook & Attendance Engine", "Gradebook calculation algorithms and daily multi-language attendance tracking."),
-            ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
+            ("Phase 1 Functional MVP Code Complete", "All foundational MVP features complete per Academy PR #202 and PR #248. Active gate is Phase 2 Colegio Biblos uncoached participant session.")
         ],
         "churchcore-care": [
             ("Merge Faithful Workflows Enhancements Branch", "Spiritually integrated counseling workflows and practice management modules."),

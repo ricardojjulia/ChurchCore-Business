@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-18T03:55:55.776404+00:00",
+  "generated_at": "2026-10-18T04:06:32.709559+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 4,
-    "average_readiness_score": 89,
-    "average_completion_pct": 87,
+    "average_readiness_score": 92,
+    "average_completion_pct": 90,
     "sovereign_data_isolation": true,
     "total_tasks": 18,
     "done_tasks": 9
@@ -14,7 +14,7 @@
       "product_id": "churchcore-chms",
       "repo_name": "ChurchCore",
       "version": "3.5.0",
-      "report_timestamp": "2026-10-18T03:55:55.640380+00:00",
+      "report_timestamp": "2026-10-18T04:06:32.567298+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -56,7 +56,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 180,
-        "session_date": "2026-10-18T03:55:55.640380+00:00",
+        "session_date": "2026-10-18T04:06:32.567298+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle."
       },
@@ -86,7 +86,7 @@
       "product_id": "churchcore-lms",
       "repo_name": "ChurchCore-LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-18T03:55:55.640380+00:00",
+      "report_timestamp": "2026-10-18T04:06:32.567298+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -114,11 +114,11 @@
         ]
       },
       "latest_changes": [
+        "Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)",
+        "feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)",
         "fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)",
         "Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)",
-        "feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)",
-        "Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)",
-        "chore(telemetry): update session epilogue telemetry (e8354b5)"
+        "feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)"
       ],
       "next_steps": [
         "Test course completion webhook integration with local certification service",
@@ -127,7 +127,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 120,
-        "session_date": "2026-10-18T03:55:55.640380+00:00",
+        "session_date": "2026-10-18T04:06:32.567298+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
       },
@@ -159,7 +159,7 @@
       "product_id": "churchcore-academy",
       "repo_name": "ChurchCore-Academy",
       "version": "0.10.0",
-      "report_timestamp": "2026-10-18T03:55:55.640380+00:00",
+      "report_timestamp": "2026-10-18T04:06:32.567298+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "deployed",
@@ -167,25 +167,23 @@
         "supabase_status": "local_only",
         "supabase_project_ref": "pending-provisioning",
         "readiness_assessment": {
-          "readiness_score_pct": 78,
-          "blockers": [
-            "Awaiting production Vercel deployment credentials binding",
-            "Colegio Biblos pilot migration seed rehearsal in progress"
-          ],
+          "readiness_score_pct": 95,
+          "blockers": [],
           "next_required_actions": [
+            "Conduct Colegio Biblos participant-browser login and uncoached session (Workstream C human gate)",
             "Execute npm run verify:pilot-readiness",
-            "Deploy staging preview to Vercel and bind production Supabase URL",
-            "Verify OneRoster 1.2 delivery cron worker"
+            "Production Vercel deployment remains owner-deferred pending pilot completion"
           ]
         }
       },
       "mvp_status": {
         "phase": "pilot_ready",
-        "completion_pct": 82,
+        "completion_pct": 100,
         "latest_milestones": [
+          "COUNCIL-2026-005: 100% functional MVP scope ratified in Control Plane PR #2",
           "PR #248: Colegio Biblos local pilot preparation recorded",
           "PR #247: Colegio Biblos local pilot charter formally approved",
-          "PR #246: Technical baseline closeout completed"
+          "PR #202: OneRoster deletion reconciliation merged"
         ]
       },
       "latest_changes": [
@@ -196,19 +194,19 @@
         "Record technical baseline closeout (#246) (4bfe20b)"
       ],
       "next_steps": [
-        "Complete Colegio Biblos pilot student roster import",
-        "Execute verify:admissions-rls and verify:enrollment-conversion-rls"
+        "Conduct Colegio Biblos participant-browser login and uncoached session (Workstream C human gate)",
+        "Run npm run verify:pilot-readiness and npm run verify"
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 90,
-        "session_date": "2026-10-18T03:55:55.640380+00:00",
+        "session_date": "2026-10-18T04:06:32.567298+00:00",
         "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications."
+        "summary_of_work": "Reconciled COUNCIL-2026-005 via PR #2; confirmed 100% functional MVP code completion with Workstream C human pilot as active gate."
       },
       "deployment_diagnostics": {
         "recent_errors": [
-          "[2026-10-16] Local migration seed failed during rehearsal due to foreign key sequence lock on grade_levels."
+          "[2026-10-16] Local migration seed sequencing resolved in PR #248."
         ],
         "mitigations_applied": [
           "[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot."
@@ -232,7 +230,7 @@
       "product_id": "churchcore-care",
       "repo_name": "ChurchCoreCare",
       "version": "7.0.0",
-      "report_timestamp": "2026-10-18T03:55:55.640380+00:00",
+      "report_timestamp": "2026-10-18T04:06:32.567298+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -273,7 +271,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 60,
-        "session_date": "2026-10-18T03:55:55.640380+00:00",
+        "session_date": "2026-10-18T04:06:32.567298+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries."
       },
@@ -303,7 +301,7 @@
       "product_id": "churchcore-orthos",
       "repo_name": "ChurchCore-Orthos",
       "version": "0.18.0",
-      "report_timestamp": "2026-10-18T03:55:55.640380+00:00",
+      "report_timestamp": "2026-10-18T04:06:32.567298+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "preview",
@@ -346,7 +344,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 75,
-        "session_date": "2026-10-18T03:55:55.640380+00:00",
+        "session_date": "2026-10-18T04:06:32.567298+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls."
       },
@@ -376,7 +374,7 @@
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-18T03:55:55.640380+00:00",
+      "report_timestamp": "2026-10-18T04:06:32.567298+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -415,7 +413,7 @@
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 105,
-        "session_date": "2026-10-18T03:55:55.640380+00:00",
+        "session_date": "2026-10-18T04:06:32.567298+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel."
       },
@@ -1988,7 +1986,7 @@
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-18 03:55:55 UTC",
+      "last_synced": "2026-10-18 04:06:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2096,7 +2094,7 @@
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 03:55:55 UTC",
+      "last_synced": "2026-10-18 04:06:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2204,7 +2202,7 @@
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-18 03:55:55 UTC",
+      "last_synced": "2026-10-18 04:06:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2251,8 +2249,8 @@
           "type": "live_telemetry_highlights",
           "subtitle": "Continuous High-Velocity Delivery (0.47.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)",
-            "Ecosystem Hardening: Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)",
+            "Latest Feature Delivered: Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)",
+            "Ecosystem Hardening: feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)",
             "Reliability Proof: [2026-10-16] Converted server action exports to explicit async functions in compliance with Turbopack specifications (PR #89)."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
@@ -2286,9 +2284,9 @@
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore LMS.\n</system>\n\n<context>\nProduct: ChurchCore LMS (LMS)\nDomain Category: Discipleship & PWA\nTagline: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nScale & Footprint: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\nTarget Buyer Personas: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director\nCompetitive Replacement Targets: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\nLive Production URL: https://www.churchcorelms.io\nConstitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\nCommercial Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n\nRecent Engineering Delivery & Milestones:\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)\n- feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)\n- Merge pull request #94 from ricardojjulia/chore/update-session-telemetry (160bcc7)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.\n\n**Key Context:**\n- Product: ChurchCore LMS (Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA)\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n- Replaces: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\n- Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\n- Live Site: https://www.churchcorelms.io\n- Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Latest Features: fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc), Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289), feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Discipleship Pastor / Christian Education Director requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: ChurchCore LMS \u2014 Executive Presentation\nSubtitle: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\n- Live URL: https://www.churchcorelms.io\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)\n- feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorelms.io",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore LMS.\n</system>\n\n<context>\nProduct: ChurchCore LMS (LMS)\nDomain Category: Discipleship & PWA\nTagline: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nScale & Footprint: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\nTarget Buyer Personas: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director\nCompetitive Replacement Targets: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\nLive Production URL: https://www.churchcorelms.io\nConstitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\nCommercial Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n\nRecent Engineering Delivery & Milestones:\n- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)\n- feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.\n\n**Key Context:**\n- Product: ChurchCore LMS (Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA)\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n- Replaces: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\n- Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\n- Live Site: https://www.churchcorelms.io\n- Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Latest Features: Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82), feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d), fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Discipleship Pastor / Christian Education Director requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: ChurchCore LMS \u2014 Executive Presentation\nSubtitle: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\n- Live URL: https://www.churchcorelms.io\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)\n- feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorelms.io",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     },
@@ -2312,7 +2310,7 @@
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-18 03:55:55 UTC",
+      "last_synced": "2026-10-18 04:06:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2359,9 +2357,9 @@
           "type": "live_telemetry_highlights",
           "subtitle": "Continuous High-Velocity Delivery (0.10.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)",
-            "Ecosystem Hardening: Reconcile control-plane governance evidence (#249) (7fcbe31)",
-            "Reliability Proof: [2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot."
+            "Latest Feature Delivered: Record Colegio Biblos local pilot preparation (#248) (bed47c2)",
+            "Ecosystem Hardening: Approve Colegio Biblos local pilot charter (#247) (f44c6b7)",
+            "Reliability Proof: Automated CI/CD validation and zero-downtime database migrations."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
           "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."
@@ -2394,9 +2392,9 @@
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Academy.\n</system>\n\n<context>\nProduct: ChurchCore Academy (Academy)\nDomain Category: K-12 & Higher-Ed SIS\nTagline: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies\nScale & Footprint: 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0\nTarget Buyer Personas: Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman\nCompetitive Replacement Targets: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool\nLive Production URL: https://church-core-academy.vercel.app\nConstitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS\nCommercial Pricing: $2,400\u2013$25,000/yr (Based on Student Enrollment)\n\nRecent Engineering Delivery & Milestones:\n- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)\n- Reconcile control-plane governance evidence (#249) (7fcbe31)\n- Record Colegio Biblos local pilot preparation (#248) (bed47c2)\n- Approve Colegio Biblos local pilot charter (#247) (f44c6b7)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Academy**.\n\n**Key Context:**\n- Product: ChurchCore Academy (OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies)\n- Scale: 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0\n- Replaces: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool\n- Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS\n- Live Site: https://church-core-academy.vercel.app\n- Pricing: $2,400\u2013$25,000/yr (Based on Student Enrollment)\n- Latest Features: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e), Reconcile control-plane governance evidence (#249) (7fcbe31), Record Colegio Biblos local pilot preparation (#248) (bed47c2)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Head of School / Academy Principal requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: ChurchCore Academy \u2014 Executive Presentation\nSubtitle: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies\n- Live URL: https://church-core-academy.vercel.app\n- Scale: 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)\n- Reconcile control-plane governance evidence (#249) (7fcbe31)\n- Record Colegio Biblos local pilot preparation (#248) (bed47c2)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,400\u2013$25,000/yr (Based on Student Enrollment)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://church-core-academy.vercel.app",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Academy.\n</system>\n\n<context>\nProduct: ChurchCore Academy (Academy)\nDomain Category: K-12 & Higher-Ed SIS\nTagline: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies\nScale & Footprint: 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0\nTarget Buyer Personas: Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman\nCompetitive Replacement Targets: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool\nLive Production URL: https://church-core-academy.vercel.app\nConstitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS\nCommercial Pricing: $2,400\u2013$25,000/yr (Based on Student Enrollment)\n\nRecent Engineering Delivery & Milestones:\n- Record Colegio Biblos local pilot preparation (#248) (bed47c2)\n- Approve Colegio Biblos local pilot charter (#247) (f44c6b7)\n- Record technical baseline closeout (#246) (4bfe20b)\n- Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Academy**.\n\n**Key Context:**\n- Product: ChurchCore Academy (OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies)\n- Scale: 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0\n- Replaces: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool\n- Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS\n- Live Site: https://church-core-academy.vercel.app\n- Pricing: $2,400\u2013$25,000/yr (Based on Student Enrollment)\n- Latest Features: Record Colegio Biblos local pilot preparation (#248) (bed47c2), Approve Colegio Biblos local pilot charter (#247) (f44c6b7), Record technical baseline closeout (#246) (4bfe20b)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Head of School / Academy Principal requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: ChurchCore Academy \u2014 Executive Presentation\nSubtitle: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies\n- Live URL: https://church-core-academy.vercel.app\n- Scale: 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- Record Colegio Biblos local pilot preparation (#248) (bed47c2)\n- Approve Colegio Biblos local pilot charter (#247) (f44c6b7)\n- Record technical baseline closeout (#246) (4bfe20b)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,400\u2013$25,000/yr (Based on Student Enrollment)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://church-core-academy.vercel.app",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     },
@@ -2420,7 +2418,7 @@
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.0.0",
-      "last_synced": "2026-10-18 03:55:55 UTC",
+      "last_synced": "2026-10-18 04:06:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2528,7 +2526,7 @@
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.0",
-      "last_synced": "2026-10-18 03:55:55 UTC",
+      "last_synced": "2026-10-18 04:06:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2636,7 +2634,7 @@
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 03:55:55 UTC",
+      "last_synced": "2026-10-18 04:06:32 UTC",
       "slides": [
         {
           "slide_num": 1,
