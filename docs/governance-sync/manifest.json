@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ChurchCore Governance Dispatch Manifest",
   "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "organization": "ChurchCore",
   "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
   "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
-  "last_updated": "2026-10-18T03:58:19Z",
+  "last_updated": "2026-10-18T14:10:00Z",
   "registered_products": [
     {
       "name": "ChurchCore",
@@ -206,6 +206,47 @@
           "title": "Control Plane Telemetry Synchronization",
           "description": "Sync edge telemetry.json to reflect the product repository's evidence-backed feature-completion state and list subsequent Phase 2 human-trial or field-pilot workflows.",
           "verification": "docs/control-plane/telemetry.json agrees with the edge repository's canonical plan and distinguishes feature completion from pilot, deployment, and production readiness."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-006",
+      "title": "Sovereign Testing Council Protocol, 3-Phase Verification Lifecycle & Mandatory Inseparable Automated Testing Standard Across All ChurchCore Product Repositories",
+      "ratification_date": "2026-10-18",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-006.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-006-01",
+          "title": "Universal Institutionalization of the Testing Council",
+          "description": "Every product repository must institutionalize the Testing Council protocol within .agents/rules/churchcore-control-plane.md and track execution state in its canonical roadmap (docs/mvp-100-plan.md).",
+          "verification": "Presence and enforcement of Section 2 in .agents/rules/churchcore-control-plane.md and acknowledgment in docs/council/ACKNOWLEDGMENTS.md."
+        },
+        {
+          "req_id": "REQ-006-02",
+          "title": "Inseparable Automated Testing Invariant",
+          "description": "Automated unit, component, integration, and security regression tests must accompany all Phase 1 implementations. Automated tests may never be deferred to Phase 2.",
+          "verification": "Automated test suite (npm test or python3 -m unittest) passes green on all Phase 1 PRs."
+        },
+        {
+          "req_id": "REQ-006-03",
+          "title": "Sovereign Control Plane Split Priority & Gate Architecture",
+          "description": "The Executive Mission Control dashboard shall maintain a split architecture: an in-progress priority queue on the left (ranking by backlog percentage) and a dedicated Phase 2 Testing Gate Spotlight on the right rail.",
+          "verification": "Rendered in http://localhost:3333/ with green Phase 2 testing gate spotlight and live pilot status."
+        },
+        {
+          "req_id": "REQ-006-04",
+          "title": "Closed-Loop Governance Challenge & Non-Stalling Automated Resolution",
+          "description": "Edge repo governance challenges submitted via scripts/challenge-central-record.py are automatically audited and merged in CI within ~30s without human stalling.",
+          "verification": "GitHub Actions workflow reconcile-governance-challenge.yml approves and merges clean evidence PRs."
         }
       ]
     }

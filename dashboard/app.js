@@ -171,86 +171,206 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chipStaging) chipStaging.textContent = `Staging Review (${stagingCount})`;
   }
 
-  // 3.5 Render MVP 100% Work Queue Priority Banner
+  // 3.5 Render Master Portfolio Overview (Daily MVP Priority Queue & Testing Gate Rail)
+  let activeQueueFilter = 'all';
+
   function renderMvpWorkQueueBanner(products) {
-    const banner = document.getElementById('mvp-work-queue-banner');
-    if (!banner || !products || !products.length) return;
+    const queuePanel = document.getElementById('mvp-work-queue-banner');
+    const asideRail = document.getElementById('overview-aside-rail');
+    if (!products || !products.length) return;
 
     const productPrimaryTasks = {
-      'churchcore-academy': 'Colegio Biblos Human Pilot Session (Phase 2 Testing Gate)',
-      'churchcore-orthos': 'Audit PDF Preview CSP Whitelisting & Fund Balance Validator',
-      'faithfull-scholars': 'Theological Faculty Monograph Indexing & Peer-Review Workflow',
-      'churchcore-lms': 'Theological Student Certificate PDF Worker & AETH Course Catalog',
-      'churchcore-care': 'Merge Faithful Workflows branch & Translation Worker container',
-      'churchcore-chms': 'Finalize R1d Data Erasure Queue post-commit dispatch & Edge Crons'
+      'churchcore-orthos': 'Deploy staging preview build to Vercel (PDF preview & fund accounting validator)',
+      'faithfull-scholars': 'Complete faculty profile public monograph index and peer-review editorial triage',
+      'churchcore-lms': 'Test course completion webhook integration with local certification service',
+      'churchcore-care': 'Complete translation worker container optimization & faithful workflows merge',
+      'churchcore-chms': 'Feature 2: Vercel Edge Cron automation (shepherd-ai & scheduled comms)',
+      'churchcore-academy': 'Conduct Colegio Biblos participant-browser login and uncached session testing [WORKSTREAM]'
     };
 
-    // Sort strictly from lowest completion (farthest behind) to highest.
-    // Products at 100% go to the end as Phase 1 complete!
-    const sorted = [...products].sort((a, b) => {
-      const pctA = a.mvp_status?.completion_pct || 0;
-      const pctB = b.mvp_status?.completion_pct || 0;
-      if (pctA >= 100 && pctB < 100) return 1;
-      if (pctB >= 100 && pctA < 100) return -1;
-      return pctA - pctB;
-    });
+    // Split into backlog (<100%) and completed/testing gate (>=100%)
+    const activeBacklog = products
+      .filter(p => (p.mvp_status?.completion_pct || 0) < 100)
+      .sort((a, b) => (a.mvp_status?.completion_pct || 0) - (b.mvp_status?.completion_pct || 0));
 
-    banner.innerHTML = `
-      <div class="mvp-banner-header">
-        <div class="mvp-banner-title-group">
-          <h3>
-            <span>🎯 Daily MVP 100% Action Priority Queue</span>
-            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(251, 191, 36, 0.15); color: #FBBF24; font-weight: 600;">COUNCIL-2026-005 GATING</span>
-          </h3>
-          <p>Strict Phased Execution: <strong>Phase 1 (100% Features + Unit Tests)</strong> ➔ <strong>Phase 2 (Human Trial Testing & Field Pilots)</strong> ➔ <strong>Phase 3 (Vercel Deploy)</strong>. Connect and work from #1 downward.</p>
+    const testingGateApps = products.filter(p => (p.mvp_status?.completion_pct || 0) >= 100);
+
+    function renderQueueContent() {
+      if (!queuePanel) return;
+
+      const filtered = activeBacklog.filter(p => {
+        if (activeQueueFilter === 'online') return p.online_status?.is_online;
+        if (activeQueueFilter === 'staging') return !p.online_status?.is_online;
+        return true;
+      });
+
+      queuePanel.innerHTML = `
+        <div class="queue-panel-header">
+          <div class="queue-header-top">
+            <h2 class="queue-title">Daily MVP priority queue</h2>
+            <span class="gating-pill-badge">COUNCIL-2026-005 gating</span>
+            <a class="view-report-link" id="link-open-report">View full report →</a>
+          </div>
+          <ol class="pipeline-phases-list" aria-label="Execution phases">
+            <li class="pipeline-phase-chip">
+              <span style="font-family: 'Geist Mono', monospace; color: #F0A63A; font-weight: 700;">1</span>
+              <span>Features + unit tests to 100%</span>
+            </li>
+            <li style="color: #7E8793;" aria-hidden="true">→</li>
+            <li class="pipeline-phase-chip" style="color: #C4CAD2;">
+              <span style="font-family: 'Geist Mono', monospace; color: #98A1AD; font-weight: 700;">2</span>
+              <span>Human trials &amp; field pilots</span>
+            </li>
+            <li style="color: #7E8793;" aria-hidden="true">→</li>
+            <li class="pipeline-phase-chip" style="color: #C4CAD2;">
+              <span style="font-family: 'Geist Mono', monospace; color: #98A1AD; font-weight: 700;">3</span>
+              <span>Vercel deploy</span>
+            </li>
+          </ol>
+          <div class="filter-pills-row" role="group" aria-label="Filter fleet">
+            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'all' ? 'active' : ''}" data-qfilter="all">All <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">6</span></button>
+            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'online' ? 'active' : ''}" data-qfilter="online">Online <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">4</span></button>
+            <button type="button" class="filter-pill-btn ${activeQueueFilter === 'staging' ? 'active' : ''}" data-qfilter="staging">Staging review <span style="font-family: 'Geist Mono', monospace; opacity: 0.75;">2</span></button>
+          </div>
         </div>
-        <div style="display: flex; gap: 8px;">
-          <button id="btn-banner-open-report" class="btn btn-gold" style="font-size: 11px; padding: 6px 12px; display: flex; align-items: center; gap: 4px; cursor: pointer;">
-            🎯 View Full Priority Report
-          </button>
-        </div>
-      </div>
 
-      <div class="mvp-queue-grid">
-        ${sorted.map((p, idx) => {
-          const pct = p.mvp_status?.completion_pct || 80;
-          const rem = Math.max(0, 100 - pct);
-          const isComplete = pct >= 100;
-          const isRank1 = (idx === 0) && !isComplete;
-          const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || 'Complete remaining feature backlog';
-          const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
+        <ol class="queue-items-list">
+          ${filtered.map((p, idx) => {
+            const pct = p.mvp_status?.completion_pct || 85;
+            const rem = Math.max(0, 100 - pct);
+            const isFirst = (idx === 0) && (activeQueueFilter === 'all');
+            const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || 'Complete remaining feature backlog';
+            const isProd = p.online_status?.is_online;
+            const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `/Users/rjulia/${p.repo_name}`;
+            const cmd = `cd "${repoPath}" && git status`;
 
-          return `
-            <div class="mvp-queue-card ${isComplete ? 'mvp-card-complete' : (isRank1 ? 'rank-1' : '')}">
-              <div>
-                <div class="mvp-card-top">
-                  <span class="mvp-rank-badge" style="${isComplete ? 'background: rgba(16, 185, 129, 0.2); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.4);' : ''}">
-                    ${isComplete ? '🟢 MVP 100% COMPLETE' : `#${idx + 1} Priority`}
-                  </span>
-                  <div class="mvp-card-pct">${pct}% <span>${isComplete ? '(Testing Gate)' : `(${rem}% left)`}</span></div>
+            return `
+              <li class="queue-item-row ${isFirst ? 'is-first' : ''}">
+                <span class="rank-square-badge ${isFirst ? 'first-badge' : ''}">#${idx + 1}</span>
+                <div class="queue-item-details">
+                  <div class="queue-item-title-row">
+                    <span class="queue-item-name">${escapeHtml(p.repo_name)}</span>
+                    ${isFirst ? '<span class="start-here-tag">Furthest behind · start here</span>' : ''}
+                  </div>
+                  <div class="queue-item-task-line"><span style="color: #7E8793;">Next:</span> ${escapeHtml(task)}</div>
                 </div>
-                <div class="mvp-card-name">${p.repo_name}</div>
-                <div class="mvp-card-task" title="${task}">
-                  <strong>${isComplete ? 'Active Gate:' : 'Next Code Task:'}</strong> ${task}
+                <div class="queue-item-meta">
+                  <div class="queue-progress-box">
+                    <div class="queue-pct-text">
+                      <span style="font-family: 'Geist Mono', monospace; font-weight: 600; color: #E7E9EC;">${pct}%</span>
+                      <span style="color: #98A1AD;">${rem}% left</span>
+                    </div>
+                    <div style="height: 6px; border-radius: 3px; background: #262C35; overflow: hidden;" role="img" aria-label="${pct}% ready">
+                      <div style="height: 100%; border-radius: 3px; width: ${pct}%; background: ${isFirst ? '#F07C6B' : '#F0A63A'};"></div>
+                    </div>
+                  </div>
+                  <span class="env-pill-tag" style="color: ${isProd ? '#8EE0B5' : '#9DC4F5'};"><span class="env-dot" style="background: ${isProd ? '#4CC38A' : '#7AB4F5'};"></span>${isProd ? 'Vercel Prod' : 'Vercel Preview'}</span>
+                  <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ${escapeHtml(p.repo_name)}" onclick="navigator.clipboard.writeText('${cmd}'); alert('Copied quick-connect command for ${p.repo_name} to clipboard!');">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5-5-5M12 19h8"></path></svg>
+                  </button>
                 </div>
-              </div>
-              <div class="mvp-card-actions">
-                <span style="font-size: 10px; color: ${p.online_status?.is_online ? '#10B981' : '#F59E0B'}; font-weight: 600;">
-                  ● ${p.online_status?.is_online ? 'Vercel Prod' : 'Vercel Preview'}
-                </span>
-                <button class="btn-queue-action" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command for ${p.repo_name} to clipboard!');">
-                  📋 Copy cd Cmd
-                </button>
-              </div>
+              </li>
+            `;
+          }).join('')}
+        </ol>
+      `;
+
+      queuePanel.querySelectorAll('[data-qfilter]').forEach(b => {
+        b.addEventListener('click', (e) => {
+          activeQueueFilter = e.currentTarget.dataset.qfilter;
+          renderQueueContent();
+        });
+      });
+
+      document.getElementById('link-open-report')?.addEventListener('click', () => {
+        openMvpReportModal(products);
+      });
+    }
+
+    renderQueueContent();
+
+    // Render Right Rail
+    if (asideRail) {
+      const academy = testingGateApps.find(p => p.product_id === 'churchcore-academy') || {
+        repo_name: 'ChurchCore-Academy',
+        mvp_status: { completion_pct: 100 },
+        online_status: { is_online: false }
+      };
+
+      asideRail.innerHTML = `
+        <section class="testing-gate-box" aria-labelledby="gate-title">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <span class="gate-sub-title">Phase 2 · Testing gate</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #9DC4F5;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #7AB4F5;"></span>
+              Vercel Preview
+            </span>
+          </div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+            <h2 id="gate-title" class="gate-app-heading">${escapeHtml(academy.repo_name)}</h2>
+            <span style="font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; color: #6BD6A0;">100%</span>
+          </div>
+          <div style="height: 6px; border-radius: 3px; background: #4CC38A;" aria-hidden="true"></div>
+          <p style="margin: 0; font-size: 13px; color: #A9B1BC; line-height: 1.5;">
+            MVP feature-complete. <strong style="color: #E7E9EC;">Active gate:</strong> conduct Colegio Biblos participant-browser login and uncached session testing [WORKSTREAM].
+          </p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="btn-pilot-checklist" id="btn-open-pilot-checklist">Open pilot checklist</button>
+            <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ChurchCore-Academy" onclick="navigator.clipboard.writeText('cd &quot;/Users/rjulia/ChurchCore Academy&quot; && git status'); alert('Copied quick-connect command for ChurchCore-Academy to clipboard!');">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5-5-5M12 19h8"></path></svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="needs-attention-box" aria-labelledby="attn-title">
+          <h2 id="attn-title" class="box-title-heading">Needs attention</h2>
+          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-readiness\']')?.click();">
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #3A1D18; color: #FF9F8E;">1</span>
+            <span style="flex: 1; font-size: 13px;">Radar alert</span>
+            <span style="color: #7E8793;" aria-hidden="true">›</span>
+          </div>
+          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-tasks\']')?.click();">
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #2A2113; color: #F5C27A;">9</span>
+            <span style="flex: 1; font-size: 13px;">Open tasks</span>
+            <span style="color: #7E8793;" aria-hidden="true">›</span>
+          </div>
+          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-councils\']')?.click();">
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #262C35; color: #C4CAD2;">7</span>
+            <span style="flex: 1; font-size: 13px;">Council items</span>
+            <span style="color: #7E8793;" aria-hidden="true">›</span>
+          </div>
+        </section>
+
+        <section class="resources-box" aria-labelledby="res-title">
+          <h2 id="res-title" class="box-title-heading">Resources</h2>
+          <div class="resources-grid-2col">
+            <div class="resource-card-tile" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-scripts\']')?.click();">
+              <span style="font-size: 13px; font-weight: 500;">Python scripts</span>
+              <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #98A1AD;">12 scripts</span>
             </div>
-          `;
-        }).join('')}
-      </div>
-    `;
+            <div class="resource-card-tile" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-presos\']')?.click();">
+              <span style="font-size: 13px; font-weight: 500;">Presentations</span>
+              <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #98A1AD;">7 decks</span>
+            </div>
+            <div class="resource-card-tile" style="grid-column: span 2;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-manual\']')?.click();">
+              <span style="font-size: 13px; font-weight: 500;">Manual &amp; AgY Academy</span>
+              <span style="font-size: 12px; color: #98A1AD;">Operator handbook and training</span>
+            </div>
+          </div>
+        </section>
+      `;
 
-    document.getElementById('btn-banner-open-report')?.addEventListener('click', () => {
-      openMvpReportModal(products);
-    });
+      document.getElementById('btn-open-pilot-checklist')?.addEventListener('click', () => {
+        alert(
+          "Colegio Biblos Human Pilot Checklist (ChurchCore Academy Phase 2 Gate):\n\n" +
+          "1. Participant-browser login & authentication (uncoached session)\n" +
+          "2. Uncached student session validation\n" +
+          "3. Run automated verification: npm run verify && npm run test:full -- --reset-db\n" +
+          "4. Verify RLS tenant isolation (audit:rls)\n" +
+          "5. Production Vercel deploy remains owner-deferred pending pilot sign-off"
+        );
+      });
+    }
   }
 
   // 3.6 Render & Open Daily MVP Progress Report Modal
@@ -2118,15 +2238,24 @@ OPERATIONAL DIRECTIVES:
     }
   }
 
-  // 16. Tab Switching
-  document.querySelectorAll('.tab-btn').forEach(btn => {
+  // 16. Tab Switching (Synchronized across Sidebar and Dock tabs)
+  document.querySelectorAll('.tab-btn, .sidebar-nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-      btn.classList.add('active');
       const targetId = btn.getAttribute('data-tab');
+      if (!targetId) return;
+
+      document.querySelectorAll('.tab-btn, .sidebar-nav-btn').forEach(b => {
+        if (b.getAttribute('data-tab') === targetId) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
       document.getElementById(targetId)?.classList.add('active');
+      
+      // Smooth scroll to top of viewport
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 

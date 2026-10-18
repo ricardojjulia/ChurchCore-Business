@@ -4,7 +4,7 @@
 > **Scale:** 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0  
 > **Target Buyers:** Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter  
 > **Live URL:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-18 04:42:11 UTC
+> **Last Synced from Telemetry:** 2026-10-18 14:09:28 UTC
 
 ---
 
@@ -38,10 +38,10 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://church-core-orthos.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (0.18.2 Live)*
+*Continuous High-Velocity Delivery (0.18.0 Live)*
 
-- Latest Feature Delivered: Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)
-- Ecosystem Hardening: feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)
+- Latest Feature Delivered: Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)
+- Ecosystem Hardening: chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad)
 - Reliability Proof: [2026-10-15] Configured explicit CSP allowlists in vercel.json for audit PDF preview rendering.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Omni-Council Compliance Engine: Real-time checks for b
 Commercial Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
 
 Recent Engineering Delivery & Milestones:
+- Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)
+- chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad)
 - Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)
 - feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)
-- Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)
-- docs(governance): synchronize COUNCIL-2026-005 MVP completion plan and telemetry (704f1a2)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Orthos**
 - Core Value: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity
 - Live Site: https://church-core-orthos.vercel.app
 - Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
-- Latest Features: Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567), feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2), Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)
+- Latest Features: Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de), chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad), Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)
+- chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad)
 - Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)
-- feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)
-- Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

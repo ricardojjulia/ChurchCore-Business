@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-18 04:42:11 UTC`  
+> **Last Aggregated:** `2026-10-18 14:09:28 UTC`  
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -57,7 +57,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `180 minutes`
-- **Session Timestamp:** `2026-10-18T04:09:16.075485+00:00`
+- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle.
 
@@ -68,7 +68,7 @@
 
 ---
 
-### ChurchCore LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
+### ChurchCore-LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -95,10 +95,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Merge pull request #99 from ricardojjulia/chore/session-close-telemetry (c8dc009)`
+- `chore(telemetry): session close reporting (e3183be)`
 - `Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)`
 - `chore(telemetry): record release 39095646628 deployment to main (bd179de)`
-- `Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)`
-- `feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
@@ -106,10 +106,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-18T04:29:34.031232+00:00`
-- **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Session close: All Council Directives satisfied (14/14 PASS), Powered by ChurchCore badge linked to https://www.churchcore.io/security, deployed to Vercel production.
+- **Session Duration:** `120 minutes`
+- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -160,7 +160,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `90 minutes`
-- **Session Timestamp:** `2026-10-18T04:09:16.075485+00:00`
+- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Reconciled COUNCIL-2026-005 via PR #2; confirmed 100% functional MVP code completion with Workstream C human pilot as active gate.
 
@@ -210,7 +210,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `60 minutes`
-- **Session Timestamp:** `2026-10-18T04:09:16.075485+00:00`
+- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries.
 
@@ -221,7 +221,7 @@
 
 ---
 
-### ChurchCore Orthos (`churchcore-orthos`) — v0.18.2 | 🟢 ONLINE
+### ChurchCore-Orthos (`churchcore-orthos`) — v0.18.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -251,10 +251,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)`
+- `chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad)`
 - `Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)`
 - `feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)`
-- `Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)`
-- `docs(governance): synchronize COUNCIL-2026-005 MVP completion plan and telemetry (704f1a2)`
 
 **Next Engineering Steps:**
 - 🎯 Deploy staging preview build to Vercel
@@ -262,10 +262,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-18T04:37:16.149275+00:00`
-- **Session Operator:** `Ricardo J Julia`
-- **Session Work Summary:** Automated Council Directives Enforcement
+- **Session Duration:** `75 minutes`
+- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -313,7 +313,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `105 minutes`
-- **Session Timestamp:** `2026-10-18T04:09:16.075485+00:00`
+- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
 

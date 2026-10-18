@@ -352,20 +352,23 @@ This automatically fetches the latest manifest from `ChurchCore-Business`, runs 
 
 ---
 
-## 2. Mandatory 100% MVP Feature-Completion & Phased Testing Gate (COUNCIL-2026-005)
+## 2. Sovereign Testing Council Protocol & Mandatory 3-Phase Gating (COUNCIL-2026-005 & COUNCIL-2026-006)
 
 > [!IMPORTANT]
-> **COUNCIL-2026-005: STRICT SEQUENTIAL PHASED GATING**
+> **COUNCIL-2026-006: SOVEREIGN TESTING COUNCIL INVARIANT & 3-PHASE VERIFICATION LIFECYCLE**
 >
-> 1. **Phase 1: 100% Feature Code Complete + Accompanying Automated Tests**  
+> All development, maintenance, and verification in this repository are strictly bound to the universal 3-phase progression:
+>
+> 1. **Phase 1: 100% Feature Code Complete + Inseparable Automated Tests**  
 >    All programmed features, edge APIs, UI workflows, database schemas, and edge integrations required for MVP must be 100% technically complete and ready for deployment.  
->    *Automated Unit & Regression Tests:* Automated unit tests, integration tests, and regression tests **MUST be created and maintained whenever a new feature is developed or corrected** as standard engineering completeness.  
+>    *The Inseparable Testing Invariant:* Automated unit tests, integration tests, and regression tests **MUST be created and maintained whenever a new feature is developed or corrected** as standard engineering completeness. Automated testing is strictly forbidden from being deferred to Phase 2.  
 >    *Reference your package's roadmap:* `docs/mvp-100-plan.md`.
 >
-> 2. **Phase 2: Comprehensive Human Trial Testing & Field Pilot Gate (The Next Step)**  
->    Human trial testing (human rehearsals, field pilot trials like the uncoached Colegio Biblos human session, user acceptance testing (UAT), and uncoached live simulations) commences **ONLY after** all features and programmed improvements in Phase 1 are 100% technically done. Do not organize or conduct human trial tests while MVP features remain incomplete.
+> 2. **Phase 2: Testing Council Gate (Human Trial Testing, Field Pilots & Security Audits)**  
+>    Human trial testing (human rehearsals, field pilot trials like the uncoached Colegio Biblos human session, user acceptance testing (UAT), and uncoached live simulations) commences **ONLY after** all features and programmed improvements in Phase 1 are 100% technically complete.  
+>    *Testing Council Scope:* Human trials, uncoached user sessions, Row-Level Security leak audits (`npm run audit:rls`), and Sunday Morning SLA latency verification (<50ms). Do not organize or conduct human trial tests while MVP features remain incomplete.
 >
-> 3. **Phase 3: Production Vercel Deployment**  
+> 3. **Phase 3: Production Vercel Deployment & Live Release**  
 >    For packages deploying to Vercel (ChurchCore Academy, Orthos, LMS, Care, ChMS, Scholars), clean build exports (`npm run build`), dependency lockfile resolution, and environment bindings must be verified prior to production launch.
 
 ---
@@ -657,7 +660,8 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
                 "COUNCIL-2026-002",
                 "COUNCIL-2026-003",
                 "COUNCIL-2026-004",
-                "COUNCIL-2026-005"
+                "COUNCIL-2026-005",
+                "COUNCIL-2026-006"
             ],
             "brand_house_compliant": True,
             "sovereign_db_isolation_verified": True

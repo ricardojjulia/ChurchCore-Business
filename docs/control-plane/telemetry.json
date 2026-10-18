@@ -2,7 +2,7 @@
   "product_id": "churchcore-chms",
   "repo_name": "ChurchCore-Business",
   "version": "0.1.0",
-  "report_timestamp": "2026-10-17T21:48:37.645780+00:00",
+  "report_timestamp": "2026-10-18T14:09:24.607856+00:00",
   "online_status": {
     "is_online": false,
     "vercel_status": "pending",
@@ -25,11 +25,11 @@
     ]
   },
   "latest_changes": [
-    "fix(marketing): resolve screenshot relative paths for live slide player and update telemetry (1119bac)",
-    "feat(marketing): launch dynamic Marketing & Business Presos Hub with interactive decks and AI prompt packs (f17127e)",
-    "sec(governance): sequester confidential financial models and battlecards to private ChurchCore-Vault (b96b43f)",
-    "fix(governance): add multi-tier manifest discovery with authenticated gh api and token fallback (5751a7a)",
-    "docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)"
+    "feat(control-plane): sync Orthos v0.18.2 telemetry (100% Phase 1 MVP, pilot_ready) and dynamic local discovery (bdb2842)",
+    "feat(ci): implement autonomous Council challenge review and auto-merge workflow (8ede0bf)",
+    "feat(dashboard): integrate interactive Python Scripts Catalog into Mission Control UI (e2ddbde)",
+    "fix(dashboard): sort 100% complete products to end of priority queue as testing gate champions (4fa0d73)",
+    "feat(ci): add automated governance PR response workflow and reconcile Academy 100% MVP status (99ebab5)"
   ],
   "next_steps": [
     "Execute automated test suite",
@@ -38,7 +38,7 @@
   "ai_session_telemetry": {
     "last_model": "gemini-2.5-pro",
     "session_duration_minutes": 30,
-    "session_date": "2026-10-17T21:48:37.645780+00:00",
+    "session_date": "2026-10-18T14:09:24.607856+00:00",
     "session_operator": "Ricardo Julia",
     "summary_of_work": "Automated Council Directives Enforcement"
   },

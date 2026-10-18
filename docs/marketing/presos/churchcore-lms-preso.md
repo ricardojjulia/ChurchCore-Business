@@ -4,7 +4,7 @@
 > **Scale:** 72 Relational Tables • 85 Application Routes • v0.47.0  
 > **Target Buyers:** Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director  
 > **Live URL:** [https://www.churchcorelms.io](https://www.churchcorelms.io)  
-> **Last Synced from Telemetry:** 2026-10-18 04:42:11 UTC
+> **Last Synced from Telemetry:** 2026-10-18 14:09:28 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.47.0 Live)*
 
-- Latest Feature Delivered: Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)
-- Ecosystem Hardening: chore(telemetry): record release 39095646628 deployment to main (bd179de)
+- Latest Feature Delivered: Merge pull request #99 from ricardojjulia/chore/session-close-telemetry (c8dc009)
+- Ecosystem Hardening: chore(telemetry): session close reporting (e3183be)
 - Reliability Proof: [2026-10-16] Converted server action exports to explicit async functions in compliance with Turbopack specifications (PR #89).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubric
 Commercial Pricing: $79–$999/mo (Unlimited Church Discipleship)
 
 Recent Engineering Delivery & Milestones:
+- Merge pull request #99 from ricardojjulia/chore/session-close-telemetry (c8dc009)
+- chore(telemetry): session close reporting (e3183be)
 - Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)
 - chore(telemetry): record release 39095646628 deployment to main (bd179de)
-- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)
-- feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.
 - Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance
 - Live Site: https://www.churchcorelms.io
 - Pricing: $79–$999/mo (Unlimited Church Discipleship)
-- Latest Features: Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0), chore(telemetry): record release 39095646628 deployment to main (bd179de), Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)
+- Latest Features: Merge pull request #99 from ricardojjulia/chore/session-close-telemetry (c8dc009), chore(telemetry): session close reporting (e3183be), Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- Merge pull request #99 from ricardojjulia/chore/session-close-telemetry (c8dc009)
+- chore(telemetry): session close reporting (e3183be)
 - Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)
-- chore(telemetry): record release 39095646628 deployment to main (bd179de)
-- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

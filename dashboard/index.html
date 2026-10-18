@@ -8,235 +8,202 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261017d">
 </head>
 <body>
-  <div class="app-container">
-    <!-- Top Navigation Header -->
-    <header class="top-header">
-      <div class="header-left">
-        <div class="brand-crest">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L3 7V13C3 18.52 6.84 23.74 12 25C17.16 23.74 21 18.52 21 13V7L12 2Z" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 7V17M8 11H16" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+  <div class="enterprise-layout">
+    <!-- SIDEBAR -->
+    <nav class="app-sidebar" aria-label="Control plane sections">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1205" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"></path>
+            <path d="M12 8v8M9 11h6"></path>
           </svg>
         </div>
-        <div>
-          <div class="brand-title">CHURCHCORE <span class="badge-gold">CONTROL PLANE</span></div>
-          <div class="brand-sub">Sovereign Ecosystem Governance & Fleet Telemetry</div>
-        </div>
-      </div>
-
-      <div class="header-center">
-        <div class="pulse-indicator">
-          <span class="pulse-dot"></span>
-          <span id="live-indicator-text">SYSTEM ACTIVE — ZERO DATA PROPAGATION ENFORCED</span>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">ChurchCore</span>
+          <span class="sidebar-brand-sub">Control Plane</span>
         </div>
       </div>
 
-      <div class="header-right">
-        <div class="clock-display" id="clock-display">--:--:-- UTC</div>
-        <button id="btn-open-mvp-report" class="btn btn-secondary" style="border-color: rgba(251, 191, 36, 0.4); color: #FBBF24;" title="Open Daily MVP 100% Progress Report & Priority Action Queue">
-          📊 Daily MVP Report
+      <!-- PORTFOLIO -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Portfolio</span>
+        <button type="button" class="sidebar-nav-btn active" data-tab="tab-fleet">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>
+          <span class="label">Fleet</span>
         </button>
-        <button id="btn-open-scripts" class="btn btn-secondary" style="border-color: rgba(56, 189, 248, 0.4); color: #38BDF8;" title="Open Python Automation Scripts Catalog (12 Tools)">
-          🐍 Python Scripts (12)
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-councils">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg>
+          <span class="label">Councils</span>
+          <span class="sidebar-badge" id="sidebar-councils-badge">7</span>
         </button>
-        <button id="btn-open-help" class="btn btn-secondary" title="Open Complete Control Plane & AgY Operations Manual">
-          📚 Manual & AgY Academy
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-plans">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M9 13l2 2 4-4"/></svg>
+          <span class="label">Plans</span>
         </button>
-        <button id="btn-dispatch-modal" class="btn btn-gold" title="Dispatch New Council Directive">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-          </svg>
-          Dispatch Directive
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-tasks">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>
+          <span class="label">Tasks</span>
+          <span class="sidebar-badge" id="sidebar-tasks-badge">9</span>
         </button>
-        <button id="btn-sync" class="btn btn-primary" title="Trigger Control Plane Sync">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
-          </svg>
-          Sync Fleet
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-readiness">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/></svg>
+          <span class="label">Radar</span>
+          <span class="sidebar-badge alert" id="sidebar-radar-badge">1</span>
         </button>
       </div>
-    </header>
 
-    <!-- Executive KPI Banner -->
-    <section class="kpi-banner">
-      <div class="kpi-card">
-        <div class="kpi-label">SOVEREIGN FLEET</div>
-        <div class="kpi-val" id="kpi-total-repos">6</div>
-        <div class="kpi-sub">Autonomous Applications</div>
+      <!-- OPERATIONS -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Operations</span>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-commercial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span class="label">OPEX</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-sunday">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          <span class="label">SLA</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-tech-mesh">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h4v4H5zM15 5h4v4h-4zM10 15h4v4h-4zM7 9l5 6M17 9l-5 6"/></svg>
+          <span class="label">Mesh</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-directives">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7l-4-4zM14 3v4h4M9 13h6M9 17h6"/></svg>
+          <span class="label">Directives</span>
+        </button>
       </div>
 
-      <div class="kpi-card highlight-online">
-        <div class="kpi-label">PRODUCTION ONLINE</div>
-        <div class="kpi-val" id="kpi-online-count">4 / 6</div>
-        <div class="kpi-sub" id="kpi-online-sub">67% Fleet on Vercel Edge</div>
+      <!-- ASSURANCE -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Assurance</span>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-challenges">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3zM8.5 12l2.5 2.5 4.5-4.5"/></svg>
+          <span class="label">Evidence</span>
+          <span class="sidebar-badge" id="sidebar-evidence-badge">11</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-ai-stream">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M9 8h6M9 16h6"/></svg>
+          <span class="label">AI</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-agy-cli">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span class="label">AgY</span>
+        </button>
       </div>
 
-      <div class="kpi-card">
-        <div class="kpi-label">FLEET READINESS SCORE</div>
-        <div class="kpi-val" id="kpi-avg-readiness">89%</div>
-        <div class="kpi-sub">Target: 100% Launch Gate</div>
+      <!-- LIBRARY -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Library</span>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-manual">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5zM4 19a2 2 0 012-2h13"/></svg>
+          <span class="label">Manual</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-presos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+          <span class="label">Presos</span>
+          <span class="sidebar-badge" id="sidebar-presos-badge">7</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-scripts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span class="label">Scripts</span>
+          <span class="sidebar-badge" id="sidebar-scripts-badge">12</span>
+        </button>
       </div>
 
-      <div class="kpi-card">
-        <div class="kpi-label">PORTFOLIO MVP VELOCITY</div>
-        <div class="kpi-val" id="kpi-avg-completion">87%</div>
-        <div class="kpi-sub">517 Tables • 423 Routes</div>
+      <!-- STATUS PILL -->
+      <div class="sidebar-status-pill">
+        <div class="status-indicator-live">
+          <span class="status-dot-pulse"></span>
+          System active
+        </div>
+        <span style="font-size: 12px; color: #A7B8AE;">Zero data propagation enforced</span>
       </div>
-
-      <div class="kpi-card highlight-security">
-        <div class="kpi-label">DATA PROPAGATION</div>
-        <div class="kpi-val">0.00%</div>
-        <div class="kpi-sub">🛡️ 100% Sovereign DB Silos</div>
-      </div>
-    </section>
-
-    <!-- Main Navigation Tabs (Executive Dock with Identifiable Micro-Labels & Hover Tooltips) -->
-    <nav class="view-tabs" role="tablist">
-      <button class="tab-btn active" data-tab="tab-fleet" data-tooltip="Fleet Grid — Master Portfolio Overview" aria-label="Fleet Grid">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
-        </svg>
-        <span class="tab-label">Fleet</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-councils" data-tooltip="Council Chambers — 6 Specialized Seat Councils" aria-label="Council Chambers">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-        </svg>
-        <span class="tab-label">Councils</span>
-        <span class="tab-badge badge-neutral" id="tab-council-badge">6</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-plans" data-tooltip="Implementation Plans & Directionality" aria-label="Implementation Plans & Directionality">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
-          <rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 14 2 2 4-4"/>
-        </svg>
-        <span class="tab-label">Plans</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-tasks" data-tooltip="Project Tasks (Actionable Backlog)" aria-label="Project Tasks Metadata Base">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
-          <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
-        </svg>
-        <span class="tab-label">Tasks</span>
-        <span class="tab-badge badge-warning" id="tab-task-count">14</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-readiness" data-tooltip="Readiness Action Radar (2 Staging Blockers)" aria-label="Readiness Action Radar">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-        <span class="tab-label">Radar</span>
-        <span class="tab-badge badge-danger" id="tab-blocker-count">2</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-commercial" data-tooltip="Commercial Velocity & OPEX Margins" aria-label="Commercial & OPEX">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-        </svg>
-        <span class="tab-label">OPEX</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-sunday" data-tooltip="Sunday Morning 99.99% SLA Pulse" aria-label="Sunday SLA Pulse">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-        </svg>
-        <span class="tab-label">SLA</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-tech-mesh" data-tooltip="Tech Stack & Sovereign RLS Mesh" aria-label="Tech Stack Mesh">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
-        </svg>
-        <span class="tab-label">Mesh</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-directives" data-tooltip="Council Directives & Enforcement" aria-label="Council Directives">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-        </svg>
-        <span class="tab-label">Directives</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-challenges" data-tooltip="Evidence & Compliance (8/8 Verified & Reconciled)" aria-label="Evidence & Challenges">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="m9 12 2 2 4-4"/>
-        </svg>
-        <span class="tab-label">Evidence</span>
-        <span class="tab-badge badge-success" id="tab-challenges-badge">✓ 8</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-ai-stream" data-tooltip="AI Sessions & LLM Telemetry" aria-label="AI Sessions">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/>
-        </svg>
-        <span class="tab-label">AI</span>
-      </button>
-
-      <button class="tab-btn" data-tab="tab-agy-cli" data-tooltip="AgY Terminal Orchestrator" aria-label="AgY Orchestrator">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
-        </svg>
-        <span class="tab-label">AgY</span>
-      </button>
-
-      <button class="tab-btn highlight-gold-tab" data-tab="tab-manual" data-tooltip="Operations Manual & AgY Academy" aria-label="Manual & AgY Academy">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-        </svg>
-        <span class="tab-label">Manual</span>
-      </button>
-
-      <button class="tab-btn highlight-gold-tab" data-tab="tab-presos" data-tooltip="Marketing & Business Presos — Dynamic Slide Decks & AI Prompt Packs" aria-label="Marketing & Business Presos">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="2" y="3" width="20" height="14" rx="2"/>
-          <line x1="8" y1="21" x2="16" y2="21"/>
-          <line x1="12" y1="17" x2="12" y2="21"/>
-        </svg>
-        <span class="tab-label">Presos</span>
-        <span class="tab-badge badge-gold" id="tab-presos-badge">7</span>
-      </button>
-
-      <button class="tab-btn highlight-gold-tab" data-tab="tab-scripts" data-tooltip="Python Automation Scripts Catalog (12 Tools)" aria-label="Python Scripts Catalog">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
-        </svg>
-        <span class="tab-label">Scripts</span>
-        <span class="tab-badge badge-gold" id="tab-scripts-badge">12</span>
-      </button>
     </nav>
 
+    <!-- MAIN VIEWPORT -->
+    <main class="main-viewport">
+      <!-- Overview Top Header -->
+      <header class="overview-top-header">
+        <div class="overview-title-group">
+          <span class="overview-subtitle">Sovereign Ecosystem Governance &amp; Fleet Telemetry</span>
+          <h1 class="overview-main-title">Fleet overview</h1>
+        </div>
+        <label class="overview-search-bar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search fleet</span>
+          <input type="search" id="fleet-search" placeholder="Search name, version, tech…">
+        </label>
+        <span class="overview-clock" id="clock-display">--:--:-- UTC</span>
+        <div class="overview-actions">
+          <button id="btn-sync" type="button" class="btn-overview-secondary" title="Trigger Control Plane Sync">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 01-14 5.3M4 12a8 8 0 0114-5.3"></path><path d="M18 3v4h-4M6 21v-4h4"></path></svg>
+            Sync fleet
+          </button>
+          <button id="btn-open-mvp-report" type="button" class="btn-overview-secondary" title="Open Daily MVP 100% Progress Report &amp; Priority Action Queue">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>
+            Daily MVP report
+          </button>
+          <button id="btn-dispatch-modal" type="button" class="btn-overview-gold" title="Dispatch New Council Directive">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+            Dispatch directive
+          </button>
+        </div>
+      </header>
+
+      <!-- 5 KPI Cards -->
+      <section class="overview-kpis" aria-label="Fleet metrics">
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Sovereign fleet</span>
+          <span class="kpi-big-number" id="kpi-total-repos">6</span>
+          <span style="font-size: 12px; color: #98A1AD;">Autonomous applications</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Production online</span>
+          <span class="kpi-big-number" id="kpi-online-count">4<span style="color: #7E8793">/6</span></span>
+          <div class="segmented-bar" aria-hidden="true">
+            <span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #2A303A;"></span><span style="background: #2A303A;"></span>
+          </div>
+          <span style="font-size: 12px; color: #98A1AD;" id="kpi-online-sub">67% of fleet on Vercel Edge</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Fleet readiness</span>
+          <span class="kpi-big-number" id="kpi-avg-readiness">92%</span>
+          <div style="height: 4px; border-radius: 2px; background: #2A303A; overflow: hidden;" aria-hidden="true"><div style="width: 92%; height: 100%; background: #F0A63A;"></div></div>
+          <span style="font-size: 12px; color: #98A1AD;">Target: 100% launch gate</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Portfolio MVP velocity</span>
+          <span class="kpi-big-number" id="kpi-avg-completion">90%</span>
+          <span style="font-size: 12px; color: #98A1AD;">517 tables · 423 routes</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Data propagation</span>
+          <span class="kpi-big-number" style="color: #6BD6A0;">0.00%</span>
+          <span style="font-size: 12px; color: #98A1AD;">100% sovereign DB silos</span>
+        </div>
+      </section>
+
     <!-- TAB 1: FLEET GRID -->
-    <main id="tab-fleet" class="tab-content active">
-      <div class="filter-bar">
-        <div class="filter-group">
-          <span class="filter-label">Filter Fleet:</span>
-          <button class="filter-chip active" id="filter-chip-all" data-filter="all">All (6)</button>
-          <button class="filter-chip" id="filter-chip-online" data-filter="online">Online (4)</button>
-          <button class="filter-chip" id="filter-chip-staging" data-filter="staging">Staging Review (2)</button>
-        </div>
-        <div class="search-box">
-          <input type="text" id="fleet-search" placeholder="Search by name, version, or tech...">
-        </div>
+    <section id="tab-fleet" class="tab-content active">
+      <div class="split-overview-container" id="fleet-master-overview">
+        <!-- Left: Daily MVP Priority Queue Panel -->
+        <section class="queue-main-panel" id="mvp-work-queue-banner">
+          <!-- Rendered dynamically by app.js -->
+        </section>
+
+        <!-- Right: Testing Gate Spotlight + Needs Attention + Resources -->
+        <aside class="overview-aside-rail" id="overview-aside-rail">
+          <!-- Rendered dynamically by app.js -->
+        </aside>
       </div>
 
-      <!-- Daily MVP 100% Action Priority Queue (Ranked Farthest Behind to Most Complete) -->
-      <div class="mvp-work-queue-banner" id="mvp-work-queue-banner">
-        <!-- Rendered dynamically by app.js -->
-      </div>
-
-      <div class="fleet-grid" id="fleet-grid-container">
-        <!-- Rendered dynamically by app.js -->
-      </div>
-    </main>
+      <!-- Preserved fleet grid container for modal bindings -->
+      <div class="fleet-grid" id="fleet-grid-container" style="display: none;"></div>
+    </section>
 
     <!-- TAB: COUNCIL CHAMBERS & GOVERNANCE MESH -->
     <section id="tab-councils" class="tab-content">
@@ -1132,6 +1099,9 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
       </div>
     </footer>
   </div>
+
+    </main><!-- /main-viewport -->
+  </div><!-- /enterprise-layout -->
 
   <!-- Detail Modal -->
   <div id="detail-modal" class="modal-backdrop">
