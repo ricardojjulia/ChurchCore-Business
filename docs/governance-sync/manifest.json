@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ChurchCore Governance Dispatch Manifest",
   "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "organization": "ChurchCore",
   "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
   "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
-  "last_updated": "2026-10-17T15:00:00Z",
+  "last_updated": "2026-10-18T03:58:19Z",
   "registered_products": [
     {
       "name": "ChurchCore",
@@ -185,15 +185,15 @@
       "requirements": [
         {
           "req_id": "REQ-005-01",
-          "title": "Formulate 100% MVP Feature-Completion Plan",
-          "description": "Formulate and maintain docs/mvp-100-plan.md detailing all programmed features and improvements required to reach 100% MVP code completion.",
-          "verification": "Document exists in edge repo with clear technical scopes and verification criteria."
+          "title": "Maintain an Evidence-Backed MVP Completion Plan",
+          "description": "Formulate and maintain docs/mvp-100-plan.md, or the product repository's existing canonical development plan, detailing any programmed features and improvements still required for MVP code completion. A generated plan must not replace a more authoritative, evidence-backed product plan.",
+          "verification": "The edge repository's canonical plan identifies remaining technical scope, if any, with verification criteria and links to completed implementation evidence."
         },
         {
           "req_id": "REQ-005-02",
-          "title": "Phased Execution Gate: Testing Commences Only After 100% Features Done",
-          "description": "Features and programmed improvements must be 100% technically finished before initiating comprehensive test suites and security audits.",
-          "verification": "All MVP feature commits precede testing gate verification commits in git history."
+          "title": "Phased Execution Gate: Human Trials Commence After MVP Code Completion",
+          "description": "Automated unit, regression, authorization, security, and route tests accompany Phase 1 implementation. Comprehensive human trials, field-pilot sessions, and UAT commence after the product's evidence-backed MVP feature scope is technically complete.",
+          "verification": "Phase 1 changes include proportionate automated verification; Phase 2 human-trial evidence begins only after the canonical product plan records MVP feature completion."
         },
         {
           "req_id": "REQ-005-03",
@@ -204,8 +204,8 @@
         {
           "req_id": "REQ-005-04",
           "title": "Control Plane Telemetry Synchronization",
-          "description": "Sync edge telemetry.json reflecting 100% feature completion and list subsequent Phase 2 testing workflows.",
-          "verification": "mvp_status.completion_pct reports 100 in docs/control-plane/telemetry.json."
+          "description": "Sync edge telemetry.json to reflect the product repository's evidence-backed feature-completion state and list subsequent Phase 2 human-trial or field-pilot workflows.",
+          "verification": "docs/control-plane/telemetry.json agrees with the edge repository's canonical plan and distinguishes feature completion from pilot, deployment, and production readiness."
         }
       ]
     }
