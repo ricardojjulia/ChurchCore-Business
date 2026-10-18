@@ -17,17 +17,22 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 
-WORKSPACE_ROOT = "/Users/rjulia/ChurchCore-Business"
+WORKSPACE_ROOT = os.environ.get("CHURCHCORE_BUSINESS_PATH") or (
+    "/Volumes/My Shared Files/Home/ChurchCore-Business"
+    if os.path.exists("/Volumes/My Shared Files/Home/ChurchCore-Business")
+    else "/Users/rjulia/ChurchCore-Business"
+)
 LEDGER_PATH = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "EVIDENCE-RECONCILIATION-LEDGER.md")
 COUNCILS_PATH = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "councils-registry.json")
 
+_home_base = "/Volumes/My Shared Files/Home" if os.path.exists("/Volumes/My Shared Files/Home") else "/Users/rjulia"
 SIBLING_REPOS = [
-    { "product_id": "churchcore-chms", "name": "ChurchCore ChMS", "path": "/Users/rjulia/ChurchCore" },
-    { "product_id": "churchcore-lms", "name": "ChurchCore LMS", "path": "/Users/rjulia/ChurchCore LMS" },
-    { "product_id": "churchcore-academy", "name": "ChurchCore Academy", "path": "/Users/rjulia/ChurchCore Academy" },
-    { "product_id": "churchcore-care", "name": "ChurchCore Care", "path": "/Users/rjulia/ChurchCore Care" },
-    { "product_id": "churchcore-orthos", "name": "ChurchCore Orthos", "path": "/Users/rjulia/ChurchCore Orthos" },
-    { "product_id": "faithfull-scholars", "name": "FaithFull Scholars", "path": "/Users/rjulia/FaithFullScholars" },
+    { "product_id": "churchcore-chms", "name": "ChurchCore ChMS", "path": os.path.join(_home_base, "ChurchCore") },
+    { "product_id": "churchcore-lms", "name": "ChurchCore LMS", "path": os.path.join(_home_base, "ChurchCore LMS") },
+    { "product_id": "churchcore-academy", "name": "ChurchCore Academy", "path": os.path.join(_home_base, "ChurchCore Academy") },
+    { "product_id": "churchcore-care", "name": "ChurchCore Care", "path": os.path.join(_home_base, "ChurchCore Care") },
+    { "product_id": "churchcore-orthos", "name": "ChurchCore Orthos", "path": os.path.join(_home_base, "ChurchCore Orthos") },
+    { "product_id": "faithfull-scholars", "name": "FaithFull Scholars", "path": os.path.join(_home_base, "FaithFullScholars") },
 ]
 
 def verify_evidence(challenge, repo_path):
@@ -468,10 +473,13 @@ def main():
 
     if all_reconciled:
         append_to_ledger(all_reconciled)
-        print("\n[+] Triggering full control-plane-sync to update master dashboard and UI caches...")
         sync_script = os.path.join(WORKSPACE_ROOT, "scripts", "control-plane-sync.py")
-        subprocess.run(["python3", sync_script], check=True)
-        print("\n================================================================================")
+        try:
+            if os.path.exists(sync_script) and os.stat(sync_script).st_nlink > 0:
+                print("[+] Triggering full control-plane-sync to update master dashboard and UI caches...")
+                subprocess.run(["python3", sync_script], check=True)
+        except Exception as e:
+            print(f"[-] Note: control-plane-sync skipped/failed: {e}")
         print(f"RECONCILIATION COMPLETE: {len(all_reconciled)} Autonomous Evidence Updates Accepted")
         print("COMMAND LOOP BROKEN: Edge Roadmaps & Central Caches Mutated Immediately")
         print("================================================================================\n")

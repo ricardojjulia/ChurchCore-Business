@@ -1,9 +1,9 @@
 # ChurchCore Sovereign Fleet: Daily MVP 100% Progress Report
 
-> **Report Timestamp:** 2026-10-18 18:02:47 UTC  
+> **Report Timestamp:** 2026-10-18 22:18:22 UTC  
 > **Council Mandate:** [COUNCIL-2026-005: 100% MVP Feature Completion & Testing Gating](https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-005.md)  
-> **Fleet Operational Health:** 3 / 3 Live in Production  
-> **Average Fleet MVP Completion:** **94%** • **Fleet Readiness:** **96%**  
+> **Fleet Operational Health:** 4 / 6 Live in Production  
+> **Average Fleet MVP Completion:** **87%** • **Fleet Readiness:** **89%**  
 > **Strict Gating Policy:** Phase 1 (100% Features + Unit Tests) ➔ Phase 2 (Human Trial Testing & Field Pilots) ➔ Phase 3 (Vercel Edge Deploy)  
 
 ---
@@ -14,12 +14,12 @@ This table ranks all software packages strictly by work remaining to reach **100
 
 | Rank | Package Pillar | MVP Done | Remaining | Vercel Deployment Target | Phase 1 Status | Primary Morning Action |
 | :---: | :--- | :---: | :---: | :--- | :---: | :--- |
-| **#1** | **ChurchCore-LMS** | **80%** | **20%** | [https://www.churchcorelms.io](https://www.churchcorelms.io) | 🔴 FARTHEST BEHIND | Complete remaining sprint backlog |
-| **#2** | **ChurchCore-Academy** | **80%** | **20%** | [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app) | 🟠 IN HIGH PROGRESS | Complete remaining sprint backlog |
-| **#3** | **FaithFullScholars** | **80%** | **20%** | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) | 🟠 IN HIGH PROGRESS | Feature 1: Theological Faculty Monograph Indexing Interface |
-| **#4** | **ChurchCoreCare** | **90%** | **10%** | [https://church-core-care.vercel.app](https://church-core-care.vercel.app) | 🟢 NEAR COMPLETE | Feature 1: Merge Faithful Workflows Enhancements Branch |
-| **#5** | **ChurchCore (ChMS)** | **92%** | **8%** | [https://www.churchcore.io](https://www.churchcore.io) | 🟢 NEAR COMPLETE | Feature 1: Finalize R1d Data-Rights Erasure Approval Queue *(Reconciled & Accepted: `CHAL-CHURCHCORE-CHMS-REVIEWS-1792295700`)* |
-| **#6** | **ChurchCore-Orthos** | **100%** | **0%** | [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) | 🟢 NEAR COMPLETE | Feature 1: Audit PDF Preview CSP Header Whitelisting |
+| **#1** | **ChurchCore (ChMS)** | **80%** | **20%** | [https://www.churchcore.io](https://www.churchcore.io) | 🔴 FARTHEST BEHIND | Feature 1: Finalize R1d Data-Rights Erasure Approval Queue *(Reconciled & Accepted: `CHAL-CHURCHCORE-CHMS-REVIEWS-1792295700`)* |
+| **#2** | **ChurchCore-LMS** | **80%** | **20%** | [https://www.churchcorelms.io](https://www.churchcorelms.io) | 🟠 IN HIGH PROGRESS | Complete remaining sprint backlog |
+| **#3** | **ChurchCore-Academy** | **80%** | **20%** | [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app) | 🟠 IN HIGH PROGRESS | Complete remaining sprint backlog |
+| **#4** | **ChurchCoreCare** | **80%** | **20%** | [https://church-core-care.vercel.app](https://church-core-care.vercel.app) | 🟠 IN HIGH PROGRESS | Feature 1: Merge Faithful Workflows Enhancements Branch |
+| **#5** | **ChurchCore-Orthos** | **80%** | **20%** | [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) | 🟠 IN HIGH PROGRESS | Feature 1: Audit PDF Preview CSP Header Whitelisting |
+| **#6** | **FaithFullScholars** | **80%** | **20%** | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) | 🟠 IN HIGH PROGRESS | Feature 1: Theological Faculty Monograph Indexing Interface |
 
 ---
 
@@ -27,7 +27,29 @@ This table ranks all software packages strictly by work remaining to reach **100
 
 Use the terminal commands below to connect directly into each repository and implement the remaining features:
 
-### #1: ChurchCore-LMS (80% MVP Done • 20% Work Remaining)
+### #1: ChurchCore (ChMS) (80% MVP Done • 20% Work Remaining)
+
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore`
+- **Current Git Branch:** `fatal: not a git repository (or any parent up to mount point /Volumes)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).` | **Tree Clean:** `Modified files present`
+- **Production/Staging Target:** [https://www.churchcore.io](https://www.churchcore.io) (🟡 STAGING/PREVIEW (Vercel Preview))
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore/docs/mvp-100-plan.md)
+
+#### 🛠️ Phase 1 Programmed Features Required for 100%:
+
+1. **Feature 1: Finalize R1d Data-Rights Erasure Approval Queue *(Reconciled & Accepted: `CHAL-CHURCHCORE-CHMS-REVIEWS-1792295700`)***
+   - *Scope:* Complete admin approval screens, audit logging, and ensure erasure notices dispatch strictly post-commit.
+2. **Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms)**
+   - *Scope:* Daily AI pastoral digest and queue retry workers running on Vercel crons with CRON_SECRET.
+3. **Feature 3: Universal AppSwitcher Navigation Integration**
+   - *Scope:* Install standardized cross-suite navigation component (OPS-02).
+
+#### 🚀 Quick-Connect Command for Tomorrow Morning:
+```bash
+cd "/Volumes/My Shared Files/Home/ChurchCore" && git status
+```
+
+### #2: ChurchCore-LMS (80% MVP Done • 20% Work Remaining)
 
 - **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore LMS`
 - **Current Git Branch:** `fatal: not a git repository (or any parent up to mount point /Volumes)
@@ -44,7 +66,7 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).` | **
 cd "/Volumes/My Shared Files/Home/ChurchCore LMS" && git status
 ```
 
-### #2: ChurchCore-Academy (80% MVP Done • 20% Work Remaining)
+### #3: ChurchCore-Academy (80% MVP Done • 20% Work Remaining)
 
 - **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Academy`
 - **Current Git Branch:** `fatal: unknown error occurred while reading the configuration files` | **Tree Clean:** `Modified files present`
@@ -60,7 +82,51 @@ cd "/Volumes/My Shared Files/Home/ChurchCore LMS" && git status
 cd "/Volumes/My Shared Files/Home/ChurchCore Academy" && git status
 ```
 
-### #3: FaithFullScholars (80% MVP Done • 20% Work Remaining)
+### #4: ChurchCoreCare (80% MVP Done • 20% Work Remaining)
+
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Care`
+- **Current Git Branch:** `gov/council-006-testing-council` | **Tree Clean:** `Modified files present`
+- **Production/Staging Target:** [https://church-core-care.vercel.app](https://church-core-care.vercel.app) (🟡 STAGING/PREVIEW (Vercel Preview))
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore Care/docs/mvp-100-plan.md)
+
+#### 🛠️ Phase 1 Programmed Features Required for 100%:
+
+1. **Feature 1: Merge Faithful Workflows Enhancements Branch**
+   - *Scope:* Spiritually integrated counseling workflows and practice management modules.
+2. **Feature 2: Translation Worker Container Optimization**
+   - *Scope:* Dedicated Docker worker optimization for high-throughput bilingual clinical intake.
+3. **Feature 3: Universal AppSwitcher Navigation Integration**
+   - *Scope:* Install standardized cross-suite navigation component (OPS-02).
+4. **Feature 4: Serverless Vercel Cron Background Scheduler Redesign**
+   - *Scope:* Redesign scheduler worker daemons for Vercel Serverless Cron execution (`/api/cron/scheduler`).
+
+#### 🚀 Quick-Connect Command for Tomorrow Morning:
+```bash
+cd "/Volumes/My Shared Files/Home/ChurchCore Care" && git status
+```
+
+### #5: ChurchCore-Orthos (80% MVP Done • 20% Work Remaining)
+
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Orthos`
+- **Current Git Branch:** `main` | **Tree Clean:** `Yes`
+- **Production/Staging Target:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) (🟡 STAGING/PREVIEW (Vercel Preview))
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore Orthos/docs/mvp-100-plan.md)
+
+#### 🛠️ Phase 1 Programmed Features Required for 100%:
+
+1. **Feature 1: Audit PDF Preview CSP Header Whitelisting**
+   - *Scope:* Configure explicit CSP allowlists in vercel.json for audit PDF preview rendering.
+2. **Feature 2: Fund Accounting Double-Entry Balance Validator**
+   - *Scope:* Automated ledger balancing check for restricted endowment and missionary funds.
+3. **Feature 3: Universal AppSwitcher Navigation Integration**
+   - *Scope:* Install standardized cross-suite navigation component (OPS-02).
+
+#### 🚀 Quick-Connect Command for Tomorrow Morning:
+```bash
+cd "/Volumes/My Shared Files/Home/ChurchCore Orthos" && git status
+```
+
+### #6: FaithFullScholars (80% MVP Done • 20% Work Remaining)
 
 - **Repository Path:** `/Volumes/My Shared Files/Home/FaithFullScholars`
 - **Current Git Branch:** `fatal: not a git repository (or any parent up to mount point /Volumes)
@@ -80,71 +146,6 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).` | **
 #### 🚀 Quick-Connect Command for Tomorrow Morning:
 ```bash
 cd "/Volumes/My Shared Files/Home/FaithFullScholars" && git status
-```
-
-### #4: ChurchCoreCare (90% MVP Done • 10% Work Remaining)
-
-- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Care`
-- **Current Git Branch:** `fatal: not a git repository (or any parent up to mount point /Volumes)
-Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).` | **Tree Clean:** `Modified files present`
-- **Production/Staging Target:** [https://church-core-care.vercel.app](https://church-core-care.vercel.app) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore Care/docs/mvp-100-plan.md)
-
-#### 🛠️ Phase 1 Programmed Features Required for 100%:
-
-1. **Feature 1: Merge Faithful Workflows Enhancements Branch**
-   - *Scope:* Spiritually integrated counseling workflows and practice management modules.
-2. **Feature 2: Translation Worker Container Optimization**
-   - *Scope:* Dedicated Docker worker optimization for high-throughput bilingual clinical intake.
-3. **Feature 3: Universal AppSwitcher Navigation Integration**
-   - *Scope:* Install standardized cross-suite navigation component (OPS-02).
-
-#### 🚀 Quick-Connect Command for Tomorrow Morning:
-```bash
-cd "/Volumes/My Shared Files/Home/ChurchCore Care" && git status
-```
-
-### #5: ChurchCore (ChMS) (92% MVP Done • 8% Work Remaining)
-
-- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore`
-- **Current Git Branch:** `fatal: not a git repository (or any parent up to mount point /Volumes)
-Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).` | **Tree Clean:** `Modified files present`
-- **Production/Staging Target:** [https://www.churchcore.io](https://www.churchcore.io) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore/docs/mvp-100-plan.md)
-
-#### 🛠️ Phase 1 Programmed Features Required for 100%:
-
-1. **Feature 1: Finalize R1d Data-Rights Erasure Approval Queue *(Reconciled & Accepted: `CHAL-CHURCHCORE-CHMS-REVIEWS-1792295700`)***
-   - *Scope:* Complete admin approval screens, audit logging, and ensure erasure notices dispatch strictly post-commit.
-2. **Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms)**
-   - *Scope:* Daily AI pastoral digest and queue retry workers running on Vercel crons with CRON_SECRET.
-3. **Feature 3: Universal AppSwitcher Navigation Integration**
-   - *Scope:* Install standardized cross-suite navigation component (OPS-02).
-
-#### 🚀 Quick-Connect Command for Tomorrow Morning:
-```bash
-cd "/Volumes/My Shared Files/Home/ChurchCore" && git status
-```
-
-### #6: ChurchCore-Orthos (100% MVP Done • 0% Work Remaining)
-
-- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Orthos`
-- **Current Git Branch:** `main` | **Tree Clean:** `Yes`
-- **Production/Staging Target:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore Orthos/docs/mvp-100-plan.md)
-
-#### 🛠️ Phase 1 Programmed Features Required for 100%:
-
-1. **Feature 1: Audit PDF Preview CSP Header Whitelisting**
-   - *Scope:* Configure explicit CSP allowlists in vercel.json for audit PDF preview rendering.
-2. **Feature 2: Fund Accounting Double-Entry Balance Validator**
-   - *Scope:* Automated ledger balancing check for restricted endowment and missionary funds.
-3. **Feature 3: Universal AppSwitcher Navigation Integration**
-   - *Scope:* Install standardized cross-suite navigation component (OPS-02).
-
-#### 🚀 Quick-Connect Command for Tomorrow Morning:
-```bash
-cd "/Volumes/My Shared Files/Home/ChurchCore Orthos" && git status
 ```
 
 ---
