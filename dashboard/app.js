@@ -202,9 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>Strict Phased Execution: <strong>Phase 1 (100% Feature Complete)</strong> ➔ <strong>Phase 2 (Comprehensive Testing)</strong> ➔ <strong>Phase 3 (Vercel Deploy)</strong>. Connect and work from #1 downward.</p>
         </div>
         <div style="display: flex; gap: 8px;">
-          <a href="/docs/reports/DAILY-MVP-PROGRESS-REPORT.md" target="_blank" class="btn btn-gold" style="font-size: 11px; padding: 6px 12px; text-decoration: none; display: flex; align-items: center; gap: 4px;">
-            📄 View Full Daily Report
-          </a>
+          <button id="btn-banner-open-report" class="btn btn-gold" style="font-size: 11px; padding: 6px 12px; display: flex; align-items: center; gap: 4px; cursor: pointer;">
+            🎯 View Full Priority Report
+          </button>
         </div>
       </div>
 
@@ -241,6 +241,168 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('')}
       </div>
     `;
+
+    document.getElementById('btn-banner-open-report')?.addEventListener('click', () => {
+      openMvpReportModal(products);
+    });
+  }
+
+  // 3.6 Render & Open Daily MVP Progress Report Modal
+  function openMvpReportModal(products) {
+    const modal = document.getElementById('mvp-report-modal');
+    const content = document.getElementById('mvp-report-modal-content');
+    if (!modal || !content) return;
+
+    const productPrimaryTasks = {
+      'churchcore-academy': [
+        'OneRoster 1.2 CSV Worker & Pilot Seed Sequencing (Colegio Biblos)',
+        'Bilingual Spanish Student Gradebook & Attendance Engine',
+        'Universal AppSwitcher Navigation Header'
+      ],
+      'churchcore-orthos': [
+        'Audit PDF Preview CSP Whitelisting in vercel.json',
+        'Fund Accounting Double-Entry Balance Validator',
+        'Universal AppSwitcher Navigation Header'
+      ],
+      'faithfull-scholars': [
+        'Theological Faculty Monograph Indexing Interface',
+        'Academic Peer-Review Editorial Workflow',
+        'Universal AppSwitcher Navigation Header'
+      ],
+      'churchcore-lms': [
+        'Theological Student Credentialing & PDF Certificate Worker',
+        'AETH Ministerial Formation Digital Course Catalog',
+        'Universal AppSwitcher Navigation Header'
+      ],
+      'churchcore-care': [
+        'Merge Faithful Workflows branch (feature/faithful-workflows-v1)',
+        'Translation Worker Container Optimization',
+        'Universal AppSwitcher Navigation Header'
+      ],
+      'churchcore-chms': [
+        'Finalize R1d Data-Rights Erasure Approval Queue (Post-Commit Dispatch)',
+        'Vercel Edge Cron Automation (shepherd-ai & scheduled comms)',
+        'Universal AppSwitcher Navigation Header'
+      ]
+    };
+
+    const sorted = [...products].sort((a, b) => {
+      const pctA = a.mvp_status?.completion_pct || 0;
+      const pctB = b.mvp_status?.completion_pct || 0;
+      return pctA - pctB;
+    });
+
+    content.innerHTML = `
+      <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="font-weight: 700; color: #FBBF24; font-size: 15px;">Binding Directive: COUNCIL-2026-005</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+              Strict Phased Execution: <strong>Phase 1 (100% Feature Complete)</strong> ➔ <strong>Phase 2 (Comprehensive Testing)</strong> ➔ <strong>Phase 3 (Vercel Production Edge)</strong>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <div style="text-align: right;">
+              <div style="font-size: 11px; color: var(--text-dim);">AVERAGE MVP</div>
+              <div style="font-size: 18px; font-weight: 800; color: #38BDF8;">87%</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 11px; color: var(--text-dim);">FLEET READINESS</div>
+              <div style="font-size: 18px; font-weight: 800; color: #10B981;">89%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color: #FFF; font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+        <span>📋 Priority Queue: Ranked from Farthest Behind (#1) to Closest to 100%</span>
+      </h4>
+
+      <table class="compliance-table" style="margin-bottom: 24px; font-size: 12px;">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Package Pillar</th>
+            <th>MVP Done</th>
+            <th>Remaining</th>
+            <th>Current Target</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${sorted.map((p, idx) => {
+            const pct = p.mvp_status?.completion_pct || 80;
+            const rem = 100 - pct;
+            const isRank1 = idx === 0;
+            const vUrl = p.online_status?.vercel_url || p.online_status?.custom_domain || 'N/A';
+            const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
+
+            return `
+              <tr style="${isRank1 ? 'background: rgba(239, 68, 68, 0.08);' : ''}">
+                <td style="font-weight: 800; color: ${isRank1 ? '#EF4444' : '#FBBF24'};">#${idx + 1}</td>
+                <td><strong>${p.repo_name}</strong></td>
+                <td><strong style="color: #38BDF8;">${pct}%</strong></td>
+                <td><span style="color: ${rem >= 15 ? '#F87171' : '#FBBF24'}; font-weight: 700;">${rem}% left</span></td>
+                <td><a href="${vUrl}" target="_blank" style="color: #60A5FA;">${vUrl.replace('https://', '')}</a></td>
+                <td>
+                  <span class="status-badge ${p.online_status?.is_online ? 'online' : 'staging'}">
+                    ● ${p.online_status?.is_online ? 'Vercel Prod' : 'Vercel Preview'}
+                  </span>
+                </td>
+                <td>
+                  <button class="btn btn-secondary" style="font-size: 11px; padding: 4px 8px;" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command to clipboard!');">
+                    📋 Copy cd
+                  </button>
+                </td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+
+      <h4 style="color: #FFF; font-size: 14px; margin-bottom: 12px;">🛠️ Package-by-Package Remaining Feature Checklists (Phase 1)</h4>
+      
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        ${sorted.map((p, idx) => {
+          const pct = p.mvp_status?.completion_pct || 80;
+          const rem = 100 - pct;
+          const tasks = productPrimaryTasks[p.product_id] || ['Complete remaining sprint backlog'];
+          const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
+          const isRank1 = idx === 0;
+
+          return `
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid ${isRank1 ? 'rgba(239, 68, 68, 0.5)' : 'var(--border-subtle)'}; border-radius: 8px; padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-weight: 800; font-size: 12px; padding: 2px 8px; border-radius: 4px; background: ${isRank1 ? '#EF4444' : 'rgba(255,255,255,0.1)'}; color: #FFF;">
+                    #${idx + 1} Priority
+                  </span>
+                  <h5 style="color: #FFF; font-size: 15px; margin: 0; font-weight: 700;">${p.repo_name}</h5>
+                  <span style="font-size: 11px; color: var(--text-dim);">(${pct}% Complete • ${rem}% to 100%)</span>
+                </div>
+                <button class="btn btn-secondary" style="font-size: 10px; padding: 3px 8px;" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command for ${p.repo_name} to clipboard!');">
+                  📋 Copy Terminal cd
+                </button>
+              </div>
+
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">
+                <strong>Path:</strong> <code>${repoPath}</code>
+              </div>
+
+              <div style="background: rgba(0, 0, 0, 0.25); border-radius: 6px; padding: 10px 14px;">
+                <div style="font-size: 11px; font-weight: 700; color: #FBBF24; margin-bottom: 6px;">PHASE 1 REQUIRED CODE FEATURES:</div>
+                <ul style="margin: 0; padding-left: 18px; font-size: 12px; color: var(--text-main); line-height: 1.6;">
+                  ${tasks.map(t => `<li><strong>[ ]</strong> ${t}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    modal.classList.add('active');
   }
 
   // 4. Render Fleet Grid
@@ -1275,6 +1437,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target.id === 'delib-history-modal') {
         document.getElementById('delib-history-modal')?.classList.remove('active');
       }
+    });
+
+    // Daily MVP Progress Report Modal Handlers
+    document.getElementById('btn-open-mvp-report')?.addEventListener('click', () => {
+      openMvpReportModal(fleetData?.products || []);
+    });
+
+    document.getElementById('mvp-report-close')?.addEventListener('click', () => {
+      document.getElementById('mvp-report-modal')?.classList.remove('active');
+    });
+
+    document.getElementById('mvp-report-modal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'mvp-report-modal') {
+        document.getElementById('mvp-report-modal')?.classList.remove('active');
+      }
+    });
+
+    document.getElementById('btn-modal-refresh-report')?.addEventListener('click', () => {
+      showToast('Refreshing daily fleet metrics...');
+      document.getElementById('mvp-report-modal')?.classList.remove('active');
+      triggerSync();
     });
 
     document.getElementById('btn-clear-delib-history')?.addEventListener('click', () => {

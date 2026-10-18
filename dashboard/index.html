@@ -36,6 +36,9 @@
 
       <div class="header-right">
         <div class="clock-display" id="clock-display">--:--:-- UTC</div>
+        <button id="btn-open-mvp-report" class="btn btn-secondary" style="border-color: rgba(251, 191, 36, 0.4); color: #FBBF24;" title="Open Daily MVP 100% Progress Report & Priority Action Queue">
+          📊 Daily MVP Report
+        </button>
         <button id="btn-open-help" class="btn btn-secondary" title="Open Complete Control Plane & AgY Operations Manual">
           📚 Manual & AgY Academy
         </button>
@@ -1194,6 +1197,38 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
       <div style="padding: 14px 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.5);">
         <span style="font-size: 12px; color: var(--text-dim);" id="delib-history-footer-stats">Showing 0 deliberations</span>
         <button class="btn btn-secondary" id="btn-clear-delib-history" style="font-size: 12px; padding: 6px 12px;">Clear History</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily MVP 100% Progress Report Modal -->
+  <div id="mvp-report-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 960px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 26px;">🎯</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 19px; color: #FFF; font-weight: 700; margin: 0;">Daily MVP 100% Progress Report & Priority Queue</h3>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 3px 0 0 0;">Strict Phased Gating (COUNCIL-2026-005) • Ranked Farthest Behind to Most Complete</p>
+          </div>
+        </div>
+        <button id="mvp-report-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 24px;" id="mvp-report-modal-content">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div style="padding: 14px 24px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.6);">
+        <span style="font-size: 12px; color: var(--text-dim);">Automated Daily Report • ChurchCore Sovereign Control Plane</span>
+        <div style="display: flex; gap: 10px;">
+          <a href="/docs/reports/DAILY-MVP-PROGRESS-REPORT.md" target="_blank" class="btn btn-secondary" style="font-size: 12px; padding: 6px 14px; text-decoration: none;">
+            📄 Open Raw Markdown
+          </a>
+          <button class="btn btn-gold" id="btn-modal-refresh-report" style="font-size: 12px; padding: 6px 14px;">
+            🔄 Refresh Sync
+          </button>
+        </div>
       </div>
     </div>
   </div>
