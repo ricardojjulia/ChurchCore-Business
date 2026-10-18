@@ -4,7 +4,7 @@
 > **Scale:** 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0  
 > **Target Buyers:** Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter  
 > **Live URL:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-18 17:49:27 UTC
+> **Last Synced from Telemetry:** 2026-10-18 18:02:47 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.18.3 Live)*
 
-- Latest Feature Delivered: Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)
-- Ecosystem Hardening: feat(ministries): implement AI solutioning engine, Sunday SLA prober, and /api/health (COUNCIL-2026-005) (625569e)
+- Latest Feature Delivered: fatal: your current branch 'main' does not have any commits yet
+- Ecosystem Hardening: Automated Council Directives sync
 - Reliability Proof: [2026-10-15] Configured explicit CSP allowlists in vercel.json for audit PDF preview rendering.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,7 @@ Constitutional Invariant: Omni-Council Compliance Engine: Real-time checks for b
 Commercial Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
 
 Recent Engineering Delivery & Milestones:
-- Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)
-- feat(ministries): implement AI solutioning engine, Sunday SLA prober, and /api/health (COUNCIL-2026-005) (625569e)
-- Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)
-- chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad)
+- fatal: your current branch 'main' does not have any commits yet
 </context>
 
 <instructions>
@@ -116,7 +113,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Orthos**
 - Core Value: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity
 - Live Site: https://church-core-orthos.vercel.app
 - Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
-- Latest Features: Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406), feat(ministries): implement AI solutioning engine, Sunday SLA prober, and /api/health (COUNCIL-2026-005) (625569e), Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)
+- Latest Features: fatal: your current branch 'main' does not have any commits yet
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +145,7 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)
-- feat(ministries): implement AI solutioning engine, Sunday SLA prober, and /api/health (COUNCIL-2026-005) (625569e)
-- Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)
+- fatal: your current branch 'main' does not have any commits yet
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
