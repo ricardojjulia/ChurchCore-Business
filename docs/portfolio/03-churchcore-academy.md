@@ -2,6 +2,7 @@
 
 **Repository:** `https://github.com/ricardojjulia/ChurchCore-Academy`  
 **Local Codebase:** `/Users/rjulia/ChurchCore Academy`  
+**Live Production URL:** `https://www.churchcoreacademy.io`  
 **Production / Preview:** Active Staging / Pilot Readiness  
 **Version:** `0.10.0`  
 **Primary Domain Category:** Student Information System (SIS), Academic Administration, K-12 Christian Schools & Bible Colleges  

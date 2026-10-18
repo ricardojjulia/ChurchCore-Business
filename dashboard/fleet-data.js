@@ -165,7 +165,8 @@ window.CHURCHCORE_FLEET_DATA = {
       "online_status": {
         "is_online": false,
         "vercel_status": "deployed",
-        "vercel_url": "https://church-core-academy.vercel.app",
+        "vercel_url": "https://www.churchcoreacademy.io",
+        "custom_domain": "https://www.churchcoreacademy.io",
         "supabase_status": "local_only",
         "supabase_project_ref": "pending-provisioning",
         "readiness_assessment": {
@@ -384,7 +385,8 @@ window.CHURCHCORE_FLEET_DATA = {
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
-        "vercel_url": "https://faith-full-scholars.vercel.app",
+        "vercel_url": "https://www.faithgrid.io",
+        "custom_domain": "https://www.faithgrid.io",
         "supabase_status": "connected",
         "supabase_project_ref": "prod-scholars-db",
         "readiness_assessment": {

@@ -2,6 +2,7 @@
 
 **Repository:** `https://github.com/ricardojjulia/FaithFullScholars`  
 **Local Codebase:** `/Users/rjulia/FaithFullScholars`  
+**Live Production URL:** `https://www.faithgrid.io`  
 **Production / Preview:** In Active Staging / Pilot Readiness  
 **Version:** `0.1.0`  
 **Primary Domain Category:** Academic Network, Faculty Recruitment, Confessional Fit Vetting & Scholarly Publishing  

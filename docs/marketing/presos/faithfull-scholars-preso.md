@@ -3,8 +3,8 @@
 > **Tagline:** Theological Higher-Education Network, Confessional Search & Faculty Placement  
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
-> **Live URL:** [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-18 15:29:38 UTC
+> **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
+> **Last Synced from Telemetry:** 2026-10-18 16:02:00 UTC
 
 ---
 
@@ -82,7 +82,7 @@ Tagline: Theological Higher-Education Network, Confessional Search & Faculty Pla
 Scale & Footprint: 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0
 Target Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director
 Competitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering
-Live Production URL: https://faith-full-scholars.vercel.app
+Live Production URL: https://www.faithgrid.io
 Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
@@ -114,7 +114,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Scale: 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0
 - Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
-- Live Site: https://faith-full-scholars.vercel.app
+- Live Site: https://www.faithgrid.io
 - Pricing: $2,500–$15,000/yr per Institution
 - Latest Features: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be), docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8), A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
 
@@ -134,7 +134,7 @@ Theme: Sovereign Modern Tech • Deep Navy (#0A192F), Celestial Gold (#D4AF37), 
 
 Slide 1: Executive Overview
 - FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement
-- Live URL: https://faith-full-scholars.vercel.app
+- Live URL: https://www.faithgrid.io
 - Scale: 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0
 
 Slide 2: The Ministry Crisis
@@ -161,7 +161,7 @@ Slide 5: Why We Win (The Moat)
 Slide 6: Partnership & Onboarding
 - Transparent Pricing: $2,500–$15,000/yr per Institution
 - Zero-Downtime White-Glove Data Migration
-- Request a Guided Walkthrough: https://faith-full-scholars.vercel.app
+- Request a Guided Walkthrough: https://www.faithgrid.io
 ```
 
 ### 4. PromptAI / Midjourney (Visual Prompts)

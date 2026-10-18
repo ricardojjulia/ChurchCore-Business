@@ -79,7 +79,7 @@ flowchart TD
             C2["Next.js v0.47.0<br>🌐 www.churchcorelms.io<br>🗄️ Supabase prod-lms-db<br>🛡️ 72 Tables • RLS Enforced<br>🏛️ 69 Council Records"]
         end
         subgraph P3 ["ChurchCore Academy"]
-            C3["Next.js v0.10.0<br>🌐 church-core-academy.vercel.app<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced<br>🏛️ 57 Council Records"]
+            C3["Next.js v0.10.0<br>🌐 www.churchcoreacademy.io<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced<br>🏛️ 57 Council Records"]
         end
         subgraph P4 ["ChurchCore Care"]
             C4["React 18 / Express v7.0.0<br>🌐 www.churchcorecare.io<br>🗄️ Supabase prod-care-db<br>🛡️ 84 Tables • Deny-All RLS<br>🏛️ Dedicated Care Council"]
@@ -88,7 +88,7 @@ flowchart TD
             C5["Next.js v0.18.0<br>🌐 church-core-orthos.vercel.app<br>🗄️ Supabase Staging Link<br>🛡️ 28 Tables • Gemini AI<br>🏛️ 16 Council Records"]
         end
         subgraph P6 ["FaithFull Scholars"]
-            C6["Next.js v0.1.0<br>🌐 faith-full-scholars.vercel.app<br>🗄️ Supabase prod-scholars-db<br>🛡️ 48 Tables • pgvector<br>🏛️ 66 Council Records"]
+            C6["Next.js v0.1.0<br>🌐 www.faithgrid.io<br>🗄️ Supabase prod-scholars-db<br>🛡️ 48 Tables • pgvector<br>🏛️ 66 Council Records"]
         end
     end
 
@@ -104,10 +104,10 @@ flowchart TD
 |---|:---:|---|:---:|:---:|---|---|
 | **[01. ChurchCore ChMS](docs/portfolio/01-churchcore-chms.md)** | [www.churchcore.io](https://www.churchcore.io) | Core ChMS, Worship, Child Safety & Double-Entry Finance | `v3.5.0` | **133 Tables**, 121 Routes | Senior Pastor, Executive Pastor | $49–$749/mo + 1% Giving |
 | **[02. ChurchCore LMS](docs/portfolio/02-churchcore-lms.md)** | [www.churchcorelms.io](https://www.churchcorelms.io) | Ministry LMS, Discipleship Tracks & PWA | `v0.47.0` | **72 Tables**, 85 Routes | Discipleship Pastor, Dean | $79–$999/mo |
-| **[03. ChurchCore Academy](docs/portfolio/03-churchcore-academy.md)** | [church-core-academy.vercel.app](https://church-core-academy.vercel.app) | K-12 & Higher-Ed SIS & School Operations | `v0.10.0` | **152 Tables**, 105 Routes | Head of School, Principal | $2,400–$25,000/yr |
+| **[03. ChurchCore Academy](docs/portfolio/03-churchcore-academy.md)** | [www.churchcoreacademy.io](https://www.churchcoreacademy.io) | K-12 & Higher-Ed SIS & School Operations | `v0.10.0` | **152 Tables**, 105 Routes | Head of School, Principal | $2,400–$25,000/yr |
 | **[04. ChurchCore Care](docs/portfolio/04-churchcore-care.md)** | [www.churchcorecare.io](https://www.churchcorecare.io) | Pastoral & Clinical Counseling EHR + Telehealth | `v7.0.0` | **84 Tables**, Deny-All RLS | Clinical Director, Care Pastor | $59–$399/mo |
 | **[05. ChurchCore Orthos](docs/portfolio/05-churchcore-orthos.md)** | [church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) | Institutional Governance & AI Health Audit | `v0.18.0` | **28 Tables**, 30 Routes | Elder Board, Bishop | $1,200–$50,000/yr |
-| **[06. FaithFull Scholars](docs/portfolio/06-faithfull-scholars.md)** | [faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) | Theological Higher Ed & Confessional Search | `v0.1.0` | **48 Tables**, 53 Routes | Seminary President, Dean | $2,500–$15,000/yr |
+| **[06. FaithFull Scholars](docs/portfolio/06-faithfull-scholars.md)** | [www.faithgrid.io](https://www.faithgrid.io) | Theological Higher Ed & Confessional Search | `v0.1.0` | **48 Tables**, 53 Routes | Seminary President, Dean | $2,500–$15,000/yr |
 
 *Portfolio Aggregate Totals: **517 Relational Database Tables** • **423 Application Routes** • **396+ Ratified Edge Council Review Records**.*
 

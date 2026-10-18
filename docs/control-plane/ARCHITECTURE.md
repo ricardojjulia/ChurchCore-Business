@@ -32,7 +32,7 @@ flowchart TD
             C2["Next.js v0.47.0<br>🌐 www.churchcorelms.io<br>🗄️ Supabase prod-lms-db<br>🛡️ 72 Tables • RLS Enforced"]
         end
         subgraph P3 ["ChurchCore Academy"]
-            C3["Next.js v0.10.0<br>🌐 church-core-academy.vercel.app<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced"]
+            C3["Next.js v0.10.0<br>🌐 www.churchcoreacademy.io<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced"]
         end
         subgraph P4 ["ChurchCore Care"]
             C4["React 18 / Express v7.0.0<br>🌐 www.churchcorecare.io<br>🗄️ Supabase prod-care-db<br>🛡️ 84 Tables • Deny-All RLS"]
@@ -41,7 +41,7 @@ flowchart TD
             C5["Next.js v0.18.0<br>🌐 church-core-orthos.vercel.app<br>🗄️ Supabase Staging Link<br>🛡️ 28 Tables • RLS Enforced"]
         end
         subgraph P6 ["FaithFull Scholars"]
-            C6["Next.js v0.1.0<br>🌐 faith-full-scholars.vercel.app<br>🗄️ Supabase prod-scholars-db<br>🛡️ 48 Tables • pgvector"]
+            C6["Next.js v0.1.0<br>🌐 www.faithgrid.io<br>🗄️ Supabase prod-scholars-db<br>🛡️ 48 Tables • pgvector"]
         end
     end
 

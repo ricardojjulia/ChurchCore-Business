@@ -91,7 +91,7 @@ PRODUCT_SPECS = [
             "School Board Chairman"
         ],
         "displacement_targets": "Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool",
-        "live_domain": "https://church-core-academy.vercel.app",
+        "live_domain": "https://www.churchcoreacademy.io",
         "scale_metrics": "152 Relational Tables • 105 Application Routes • v0.10.0",
         "screenshot": "screenshots/implementation_plans_directionality.png",
         "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
@@ -151,7 +151,7 @@ PRODUCT_SPECS = [
             "Doctoral Program Director"
         ],
         "displacement_targets": "Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",
-        "live_domain": "https://faith-full-scholars.vercel.app",
+        "live_domain": "https://www.faithgrid.io",
         "scale_metrics": "48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0",
         "screenshot": "screenshots/commercial_opex_margins.png",
         "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",

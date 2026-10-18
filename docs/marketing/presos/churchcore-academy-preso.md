@@ -3,8 +3,8 @@
 > **Tagline:** OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies  
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
-> **Live URL:** [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-18 15:29:38 UTC
+> **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
+> **Last Synced from Telemetry:** 2026-10-18 16:02:00 UTC
 
 ---
 
@@ -32,10 +32,10 @@
 *Enterprise power built on 152 Relational Tables • 105 Application Routes • v0.10.0*
 
 - Constitutional Protection: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS.
-- Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://church-core-academy.vercel.app.
+- Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://www.churchcoreacademy.io.
 - Zero Vendor Lock-in: Automated backup exports, open PostgreSQL schemas, and full exportability.
 
-> 🗣️ **Speaker Script:** Showcase the actual live application at https://church-core-academy.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
+> 🗣️ **Speaker Script:** Showcase the actual live application at https://www.churchcoreacademy.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
@@ -58,7 +58,7 @@
 ### Slide 6: Commercial Partnership & Immediate Next Steps
 *Accessible Packaging: $2,400–$25,000/yr (Based on Student Enrollment)*
 
-- Explore Live Production Environment: https://church-core-academy.vercel.app
+- Explore Live Production Environment: https://www.churchcoreacademy.io
 - Migration Guarantee: 100% white-glove onboarding and historical data transfer.
 - The No-Hostage Covenant: If church finances tighten, accounts are never locked; they downgrade gracefully with dignity.
 
@@ -82,7 +82,7 @@ Tagline: OneRoster 1.2 School Information System for Christian Day Schools & K-1
 Scale & Footprint: 152 Relational Tables • 105 Application Routes • v0.10.0
 Target Buyer Personas: Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman
 Competitive Replacement Targets: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool
-Live Production URL: https://church-core-academy.vercel.app
+Live Production URL: https://www.churchcoreacademy.io
 Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
@@ -114,7 +114,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Scale: 152 Relational Tables • 105 Application Routes • v0.10.0
 - Replaces: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
-- Live Site: https://church-core-academy.vercel.app
+- Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 - Latest Features: Record Colegio Biblos local pilot preparation (#248) (bed47c2), Approve Colegio Biblos local pilot charter (#247) (f44c6b7), Record technical baseline closeout (#246) (4bfe20b)
 
@@ -134,7 +134,7 @@ Theme: Sovereign Modern Tech • Deep Navy (#0A192F), Celestial Gold (#D4AF37), 
 
 Slide 1: Executive Overview
 - ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies
-- Live URL: https://church-core-academy.vercel.app
+- Live URL: https://www.churchcoreacademy.io
 - Scale: 152 Relational Tables • 105 Application Routes • v0.10.0
 
 Slide 2: The Ministry Crisis
@@ -161,7 +161,7 @@ Slide 5: Why We Win (The Moat)
 Slide 6: Partnership & Onboarding
 - Transparent Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 - Zero-Downtime White-Glove Data Migration
-- Request a Guided Walkthrough: https://church-core-academy.vercel.app
+- Request a Guided Walkthrough: https://www.churchcoreacademy.io
 ```
 
 ### 4. PromptAI / Midjourney (Visual Prompts)
