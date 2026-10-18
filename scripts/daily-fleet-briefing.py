@@ -127,14 +127,17 @@ def get_git_info(repo_path):
     }
 
 def run_sync_engines():
-    print("[1/3] Activating sibling product repositories & verifying MVP 100 plans...")
+    print("[1/4] Activating sibling product repositories & verifying MVP 100 plans...")
     subprocess.run(["python3", os.path.join(WORKSPACE_ROOT, "scripts", "activate-product-repos.py")], stdout=subprocess.DEVNULL)
     
-    print("[2/3] Aggregating edge telemetry and compiling master dashboard...")
+    print("[2/4] Aggregating edge telemetry and compiling master dashboard...")
     subprocess.run(["python3", os.path.join(WORKSPACE_ROOT, "scripts", "control-plane-sync.py")], stdout=subprocess.DEVNULL)
     
-    print("[3/3] Synchronizing marketing presentation slide decks...")
+    print("[3/4] Synchronizing marketing presentation slide decks...")
     subprocess.run(["python3", os.path.join(WORKSPACE_ROOT, "scripts", "generate-marketing-presos.py")], stdout=subprocess.DEVNULL)
+
+    print("[4/4] Updating Python Automation Catalog (docs/control-plane/PYTHON-SCRIPTS-CATALOG.md)...")
+    subprocess.run(["python3", os.path.join(WORKSPACE_ROOT, "scripts", "generate-scripts-catalog.py")], stdout=subprocess.DEVNULL)
 
 def generate_report():
     os.makedirs(BRIEFINGS_DIR, exist_ok=True)

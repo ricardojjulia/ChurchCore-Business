@@ -394,6 +394,14 @@ def main():
     except Exception as pe:
         print(f"[-] Warning: Failed to refresh presentation decks: {pe}")
 
+    # Automatically refresh Python Automation Catalog
+    try:
+        catalog_script = os.path.join(WORKSPACE_ROOT, "scripts", "generate-scripts-catalog.py")
+        if os.path.exists(catalog_script):
+            subprocess.run([sys.executable, catalog_script], check=True, stdout=subprocess.DEVNULL)
+    except Exception as ce:
+        print(f"[-] Warning: Failed to refresh Python automation catalog: {ce}")
+
     with open(json_path, "w") as f:
         json.dump(fleet_payload, f, indent=2)
 

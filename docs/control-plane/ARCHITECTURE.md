@@ -150,6 +150,7 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
 | [`dashboard/`](file:///Users/rjulia/ChurchCore-Business/dashboard/) | Executive Mission Control Web UI (Port 3333 Cockpit with Daily MVP Queue & Modal) |
 | [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md) | Canonical daily progress report & morning priority work queue |
 | [`docs/council/COUNCIL-2026-005.md`](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-005.md) | Directive COUNCIL-2026-005: 100% MVP Feature Completion & Testing Gating |
+| [`docs/control-plane/PYTHON-SCRIPTS-CATALOG.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/PYTHON-SCRIPTS-CATALOG.md) | Comprehensive Python automation catalog and self-documenting CLI registry |
 | [`docs/control-plane/ARCHITECTURE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ARCHITECTURE.md) | Complete architectural model & AI connection strategy |
 | [`docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) | Master Operations Manual & AgY CLI Tutorial |
 | [`docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md) | Autonomous Edge Challenge & Proof Reconciliation Ledger |
@@ -157,6 +158,7 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
 | [`docs/control-plane/TELEMETRY-SPEC.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/TELEMETRY-SPEC.md) | Specification & instructions for developers & agents |
 | [`docs/control-plane/CENTRAL-ROADMAP.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CENTRAL-ROADMAP.md) | Central executive sprint directives and roadmaps |
 | [`docs/control-plane/ECOSYSTEM-DASHBOARD.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ECOSYSTEM-DASHBOARD.md) | Master live status board across all 6 products |
+| [`scripts/generate-scripts-catalog.py`](file:///Users/rjulia/ChurchCore-Business/scripts/generate-scripts-catalog.py) | Automated Python documentation & AST catalog generator |
 | [`scripts/daily-fleet-briefing.py`](file:///Users/rjulia/ChurchCore-Business/scripts/daily-fleet-briefing.py) | Automated daily fleet briefing & MVP progress report engine |
 | [`scripts/activate-product-repos.py`](file:///Users/rjulia/ChurchCore-Business/scripts/activate-product-repos.py) | Auto-installs rules, telemetry scripts, and generates docs/mvp-100-plan.md |
 | [`scripts/control-plane-sync.py`](file:///Users/rjulia/ChurchCore-Business/scripts/control-plane-sync.py) | Ingests edge telemetry and compiles the master dashboard |
