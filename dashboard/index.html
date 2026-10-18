@@ -263,9 +263,16 @@
             <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; font-weight: 700;">Council Deliberations & Inquiries Chamber</h3>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Submit technical inquiries, policy audits, or architectural proposals to the council.</p>
           </div>
-          <div class="deliberation-modes">
-            <button class="delib-mode-btn active" id="btn-mode-all" data-mode="all">🏛️ Address Council as a Whole</button>
-            <button class="delib-mode-btn" id="btn-mode-member" data-mode="member">👤 Direct Member Consultation</button>
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <button class="btn btn-secondary" id="btn-open-gemini-config" style="padding: 6px 12px; font-size: 12px; border: 1px solid rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.12); color: #c4b5fd; border-radius: 8px; display: inline-flex; align-items: center; gap: 7px; cursor: pointer;">
+              <span id="gemini-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #64748b; display: inline-block;"></span>
+              <span id="gemini-status-text" style="font-weight: 600;">⚡ Gemini Dual-Contender Engine</span>
+              <span style="font-size: 10px; opacity: 0.8; background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 4px;">OpenRouter</span>
+            </button>
+            <div class="deliberation-modes">
+              <button class="delib-mode-btn active" id="btn-mode-all" data-mode="all">🏛️ Address Council as a Whole</button>
+              <button class="delib-mode-btn" id="btn-mode-member" data-mode="member">👤 Direct Member Consultation</button>
+            </div>
           </div>
         </div>
 
@@ -1306,6 +1313,113 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
           </div>
         </div>
         <button id="btn-submit-task" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Save Task to Metadata Base</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dual Contending Gemini Engine Configuration Modal -->
+  <div id="gemini-config-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 780px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 26px;">⚡</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 19px; color: #FFF; font-weight: 700; margin: 0;">OpenRouter Gemini Contending Engine</h3>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 3px 0 0 0;">Dual-model dialectic debate: Gemini 2.5 Pro (Advocate) ⚔️ Gemini 2.5 Flash (Auditor)</p>
+          </div>
+        </div>
+        <button id="gemini-config-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 22px;">
+        <!-- Dialectic Architecture Visual -->
+        <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 20px;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #c4b5fd; font-weight: 700; margin-bottom: 10px;">
+            Dual Contending Architecture • Model Fit vs. Cost Optimization
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center;">
+            <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                <span style="font-size: 16px;">🏛️</span>
+                <strong style="color: #60a5fa; font-size: 13px;">Stage 1 &amp; 3: Lead Advocate</strong>
+              </div>
+              <div style="font-size: 12px; color: #cbd5e1; font-weight: 600;" id="cfg-advocate-label">google/gemini-2.5-pro</div>
+              <p style="font-size: 11px; color: var(--text-dim); margin: 6px 0 0 0; line-height: 1.4;">Deep architectural reasoning, production code generation, and hardened AntiGravity directive synthesis.</p>
+            </div>
+            
+            <div style="text-align: center; color: #f59e0b; font-size: 20px; font-weight: 800;">
+              ⚔️
+              <div style="font-size: 10px; color: var(--text-dim); font-weight: 500; margin-top: 2px;">Dialectic Debate</div>
+            </div>
+
+            <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                <span style="font-size: 16px;">🛡️</span>
+                <strong style="color: #f43f5e; font-size: 13px;">Stage 2: Invariant Auditor</strong>
+              </div>
+              <div style="font-size: 12px; color: #cbd5e1; font-weight: 600;" id="cfg-auditor-label">google/gemini-2.5-flash</div>
+              <p style="font-size: 11px; color: var(--text-dim); margin: 6px 0 0 0; line-height: 1.4;">Zero latency penalty, rigorous audit against Constitution Sec III, &lt;50ms Sunday SLA, and COUNCIL-2026-006 testing.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form fields -->
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px;">
+            OpenRouter API Key
+          </label>
+          <div style="position: relative;">
+            <input type="password" id="cfg-openrouter-key" class="delib-textarea" style="height: 42px; padding: 10px 42px 10px 14px; font-family: var(--font-mono); font-size: 13px;" placeholder="sk-or-v1-..." />
+            <button type="button" id="btn-toggle-key-visibility" style="position: absolute; right: 10px; top: 10px; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 15px;">👁️</button>
+          </div>
+          <span style="font-size: 11px; color: var(--text-dim); display: block; margin-top: 5px;" id="cfg-key-hint">
+            Stored in <code>.env</code> locally and browser cache. Never committed to git.
+          </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px;">
+              Model A: Advocate &amp; Synthesizer
+            </label>
+            <input type="text" id="cfg-pro-model" class="delib-textarea" style="height: 42px; padding: 10px 14px; font-family: var(--font-mono); font-size: 12px;" value="google/gemini-2.5-pro" />
+            <span style="font-size: 11px; color: var(--text-dim); display: block; margin-top: 4px;">
+              Default: <code>google/gemini-2.5-pro</code>
+            </span>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px;">
+              Model B: Invariant Auditor
+            </label>
+            <input type="text" id="cfg-flash-model" class="delib-textarea" style="height: 42px; padding: 10px 14px; font-family: var(--font-mono); font-size: 12px;" value="google/gemini-2.5-flash" />
+            <span style="font-size: 11px; color: var(--text-dim); display: block; margin-top: 4px;">
+              Default: <code>google/gemini-2.5-flash</code>
+            </span>
+          </div>
+        </div>
+
+        <!-- Connection Test Box -->
+        <div id="cfg-test-result" style="display: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 18px; font-size: 12px; line-height: 1.4;"></div>
+
+        <div style="background: rgba(30, 41, 59, 0.4); border-radius: 8px; padding: 12px 16px; font-size: 12px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px;">
+          <span style="font-size: 16px; margin-top: 1px;">💡</span>
+          <div>
+            <strong style="color: #e2e8f0;">Why Gemini Dual Contending?</strong>
+            <p style="margin: 3px 0 0 0; line-height: 1.4;">Gemini representative models provide massive context and precision. Rather than accepting a single model's unexamined output, Stage 2 mandates an adversarial challenge against our constitutional non-negotiables, producing provably sound AntiGravity directives.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 14px 22px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.6);">
+        <button class="btn btn-secondary" id="btn-test-engine-conn" style="font-size: 12px; padding: 8px 16px; display: inline-flex; align-items: center; gap: 6px;">
+          <span>⚡ Test Contender Handshake</span>
+        </button>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-secondary" id="btn-cancel-gemini-config" style="font-size: 12px; padding: 8px 16px;">Cancel</button>
+          <button class="btn btn-gold" id="btn-save-gemini-config" style="font-size: 12px; padding: 8px 18px;">
+            Save &amp; Activate
+          </button>
+        </div>
       </div>
     </div>
   </div>

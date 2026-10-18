@@ -1592,6 +1592,9 @@ document.addEventListener('DOMContentLoaded', () => {
       executeCouncilDeliberation(councils);
     });
 
+    // Dual Contending Gemini Engine Handlers
+    initGeminiEngineControls();
+
     // History Archive Button & Modal Handlers
     document.getElementById('btn-view-history')?.addEventListener('click', () => {
       openDelibHistoryModal(councils);
@@ -1649,6 +1652,185 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDeliberationRecordInChamber(existingHistory[0], councils, false);
       }
     }
+  }
+
+  // ==========================================================================
+  // OpenRouter Dual-Contending Gemini Deliberation System
+  // ==========================================================================
+  const OPENROUTER_KEY_STORAGE = 'churchcore_openrouter_key';
+  const OPENROUTER_PRO_STORAGE = 'churchcore_openrouter_pro_model';
+  const OPENROUTER_FLASH_STORAGE = 'churchcore_openrouter_flash_model';
+
+  async function syncEngineStatus() {
+    const dot = document.getElementById('gemini-status-dot');
+    const label = document.getElementById('gemini-status-text');
+    let hasLocalKey = !!localStorage.getItem(OPENROUTER_KEY_STORAGE);
+    let hasEnvKey = false;
+    let masked = '';
+
+    try {
+      const res = await fetch('/api/engine-status');
+      if (res.ok) {
+        const data = await res.json();
+        hasEnvKey = data.has_key;
+        masked = data.masked_key;
+      }
+    } catch (e) {
+      console.warn('Could not fetch /api/engine-status:', e);
+    }
+
+    const isActive = hasLocalKey || hasEnvKey;
+    if (dot) {
+      dot.style.background = isActive ? '#10b981' : '#f59e0b';
+      dot.style.boxShadow = isActive ? '0 0 8px rgba(16, 185, 129, 0.7)' : 'none';
+    }
+    if (label) {
+      label.textContent = isActive ? '⚡ Dual Gemini Contender Active' : '⚡ Gemini Contender: Setup';
+    }
+
+    const keyInput = document.getElementById('cfg-openrouter-key');
+    const proInput = document.getElementById('cfg-pro-model');
+    const flashInput = document.getElementById('cfg-flash-model');
+    const advocateLabel = document.getElementById('cfg-advocate-label');
+    const auditorLabel = document.getElementById('cfg-auditor-label');
+
+    const curPro = localStorage.getItem(OPENROUTER_PRO_STORAGE) || 'google/gemini-2.5-pro';
+    const curFlash = localStorage.getItem(OPENROUTER_FLASH_STORAGE) || 'google/gemini-2.5-flash';
+
+    if (proInput && !proInput.value) proInput.value = curPro;
+    if (flashInput && !flashInput.value) flashInput.value = curFlash;
+    if (advocateLabel) advocateLabel.textContent = curPro;
+    if (auditorLabel) auditorLabel.textContent = curFlash;
+
+    if (keyInput) {
+      const localVal = localStorage.getItem(OPENROUTER_KEY_STORAGE) || '';
+      if (localVal) {
+        keyInput.value = localVal;
+      } else if (hasEnvKey) {
+        keyInput.placeholder = `Active in environment (${masked})`;
+      }
+    }
+  }
+
+  function initGeminiEngineControls() {
+    const modal = document.getElementById('gemini-config-modal');
+    const openBtn = document.getElementById('btn-open-gemini-config');
+    const closeBtn = document.getElementById('gemini-config-close');
+    const cancelBtn = document.getElementById('btn-cancel-gemini-config');
+    const saveBtn = document.getElementById('btn-save-gemini-config');
+    const testBtn = document.getElementById('btn-test-engine-conn');
+    const toggleVisBtn = document.getElementById('btn-toggle-key-visibility');
+    const keyInput = document.getElementById('cfg-openrouter-key');
+    const proInput = document.getElementById('cfg-pro-model');
+    const flashInput = document.getElementById('cfg-flash-model');
+    const testResultEl = document.getElementById('cfg-test-result');
+
+    openBtn?.addEventListener('click', () => {
+      syncEngineStatus();
+      if (testResultEl) testResultEl.style.display = 'none';
+      modal?.classList.add('active');
+    });
+
+    const closeModal = () => modal?.classList.remove('active');
+    closeBtn?.addEventListener('click', closeModal);
+    cancelBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target.id === 'gemini-config-modal') closeModal();
+    });
+
+    toggleVisBtn?.addEventListener('click', () => {
+      if (keyInput) {
+        keyInput.type = keyInput.type === 'password' ? 'text' : 'password';
+      }
+    });
+
+    saveBtn?.addEventListener('click', async () => {
+      const keyVal = keyInput?.value.trim() || '';
+      const proVal = proInput?.value.trim() || 'google/gemini-2.5-pro';
+      const flashVal = flashInput?.value.trim() || 'google/gemini-2.5-flash';
+
+      if (keyVal) {
+        localStorage.setItem(OPENROUTER_KEY_STORAGE, keyVal);
+      }
+      localStorage.setItem(OPENROUTER_PRO_STORAGE, proVal);
+      localStorage.setItem(OPENROUTER_FLASH_STORAGE, flashVal);
+
+      try {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Activating...';
+        await fetch('/api/save-config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            api_key: keyVal,
+            pro_model: proVal,
+            flash_model: flashVal,
+            save_to_env: true
+          })
+        });
+      } catch (err) {
+        console.warn('Could not persist to backend:', err);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save & Activate';
+      }
+
+      await syncEngineStatus();
+      closeModal();
+      showToast('⚡ Dual-Contending Gemini Engine activated!');
+    });
+
+    testBtn?.addEventListener('click', async () => {
+      const keyVal = keyInput?.value.trim() || localStorage.getItem(OPENROUTER_KEY_STORAGE) || '';
+      const proVal = proInput?.value.trim() || 'google/gemini-2.5-pro';
+      const flashVal = flashInput?.value.trim() || 'google/gemini-2.5-flash';
+
+      if (testResultEl) {
+        testResultEl.style.display = 'block';
+        testResultEl.style.background = 'rgba(30, 41, 59, 0.8)';
+        testResultEl.style.border = '1px solid var(--border-subtle)';
+        testResultEl.style.color = '#cbd5e1';
+        testResultEl.innerHTML = '<span class="pulse-dot"></span> Performing test handshake with OpenRouter & Gemini 2.5 Flash...';
+      }
+
+      try {
+        const resp = await fetch('/api/test-connection', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            api_key: keyVal,
+            pro_model: proVal,
+            flash_model: flashVal
+          })
+        });
+
+        const resData = await resp.json();
+        if (resData.success) {
+          testResultEl.style.background = 'rgba(16, 185, 129, 0.15)';
+          testResultEl.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+          testResultEl.style.color = '#34d399';
+          testResultEl.innerHTML = `
+            <strong>🟢 Contender Handshake Verified (${resData.latency_ms}ms)</strong><br>
+            <span>Dialectic Pair: <code>${escapeHtml(resData.pro_model)}</code> (Advocate) ⚔️ <code>${escapeHtml(resData.flash_model)}</code> (Auditor). Handshake ratified.</span>
+          `;
+        } else {
+          testResultEl.style.background = 'rgba(239, 68, 68, 0.15)';
+          testResultEl.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+          testResultEl.style.color = '#f87171';
+          testResultEl.innerHTML = `
+            <strong>🔴 Handshake Failed (${resData.latency_ms || 0}ms)</strong><br>
+            <span>${escapeHtml(resData.error || 'Unknown error contacting OpenRouter.')}</span>
+          `;
+        }
+      } catch (err) {
+        testResultEl.style.background = 'rgba(239, 68, 68, 0.15)';
+        testResultEl.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+        testResultEl.style.color = '#f87171';
+        testResultEl.innerHTML = `<strong>🔴 Network Error:</strong> ${escapeHtml(err.message)}`;
+      }
+    });
+
+    syncEngineStatus();
   }
 
   // ==========================================================================
@@ -1813,6 +1995,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="council-answer-title">${escapeHtml(record.answerTitle || 'Council Executive Advisory & Determination')}</div>
               <div class="council-answer-subtitle">
                 Official Ruling • ${escapeHtml(councilName)} • Reference: <code>${escapeHtml(record.id)}</code> • ${escapeHtml(record.timestamp)}
+                ${record.engine === 'openrouter_dual_gemini' ? `<span style="display: inline-block; margin-left: 8px; background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.45); color: #c4b5fd; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 700;">⚔️ Gemini Contending Consensus Verified</span>` : ''}
               </div>
             </div>
           </div>
@@ -2384,15 +2567,24 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
     const statusEl = document.getElementById('delib-convening-status');
     const progressEl = document.getElementById('delib-progress-bar');
 
+    const storedKey = localStorage.getItem(OPENROUTER_KEY_STORAGE) || '';
+    const storedPro = localStorage.getItem(OPENROUTER_PRO_STORAGE) || 'google/gemini-2.5-pro';
+    const storedFlash = localStorage.getItem(OPENROUTER_FLASH_STORAGE) || 'google/gemini-2.5-flash';
+
     const t1 = setTimeout(() => {
-      if (statusEl) statusEl.textContent = 'Auditing Section III invariants & gathering specialized seat testimony...';
-      if (progressEl) progressEl.style.width = '65%';
-    }, 600);
+      if (statusEl) statusEl.innerHTML = '<span style="color:#60a5fa; font-weight:700;">Stage 1:</span> Gemini 2.5 Pro (Lead Advocate) drafting architectural directive &amp; initial AntiGravity prompt...';
+      if (progressEl) progressEl.style.width = '40%';
+    }, 400);
 
     const t2 = setTimeout(() => {
-      if (statusEl) statusEl.textContent = 'Synthesizing executive consensus & generating AntiGravity directives...';
-      if (progressEl) progressEl.style.width = '90%';
+      if (statusEl) statusEl.innerHTML = '<span style="color:#f43f5e; font-weight:700;">Stage 2 (Dialectic Challenge):</span> Gemini 2.5 Flash (Invariant Auditor) cross-examining against Constitution Sec III &amp; &lt;50ms Sunday SLA...';
+      if (progressEl) progressEl.style.width = '75%';
     }, 1200);
+
+    const t3 = setTimeout(() => {
+      if (statusEl) statusEl.innerHTML = '<span style="color:#fbbf24; font-weight:700;">Stage 3 (Consensus &amp; Fortification):</span> Resolving auditor challenges &amp; issuing ratified sovereign determination...';
+      if (progressEl) progressEl.style.width = '94%';
+    }, 2200);
 
     let record = null;
     try {
@@ -2403,7 +2595,10 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
           council_id: currentCouncil.council_id,
           member_id: selectedMemberId,
           mode: deliberationMode,
-          query: query
+          query: query,
+          openrouter_key: storedKey,
+          openrouter_pro_model: storedPro,
+          openrouter_flash_model: storedFlash
         })
       });
 
@@ -2417,10 +2612,11 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
       console.warn('Backend /api/deliberate endpoint unavailable, falling back to local synthesizer:', err);
     }
 
-    // Authentic deliberation animation delay (minimum 1.6s) to ensure smooth pacing
-    await new Promise(resolve => setTimeout(resolve, 1600));
+    // Authentic deliberation animation delay (minimum 2.0s) for genuine dialectic pacing
+    await new Promise(resolve => setTimeout(resolve, 2000));
     clearTimeout(t1);
     clearTimeout(t2);
+    clearTimeout(t3);
 
     if (!record) {
       record = synthesizeLocalDeliberation(query, currentCouncil, deliberationMode, selectedMemberId);

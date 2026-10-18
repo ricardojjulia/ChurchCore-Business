@@ -13,7 +13,12 @@ import json
 import webbrowser
 import html
 import urllib.parse
-from deliberation_engine import handle_deliberation
+from deliberation_engine import (
+    handle_deliberation,
+    get_engine_status,
+    save_engine_config,
+    test_engine_connection
+)
 
 PORT = 3333
 DASHBOARD_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -285,6 +290,18 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         parsed_url = urllib.parse.urlparse(self.path)
         query_params = urllib.parse.parse_qs(parsed_url.query)
 
+        # Engine status endpoint
+        if clean_path == '/api/engine-status':
+            status = get_engine_status()
+            resp_bytes = json.dumps(status).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Content-Length', str(len(resp_bytes)))
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(resp_bytes)
+            return
+
         # Check if requesting markdown file
         if clean_path.endswith('.md'):
             file_path = self.translate_path(clean_path)
@@ -325,13 +342,23 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         clean_path = self.path.split('?', 1)[0].split('#', 1)[0]
-        if clean_path == '/api/deliberate':
+        if clean_path in ['/api/deliberate', '/api/save-config', '/api/test-connection']:
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
                 body = self.rfile.read(content_length).decode('utf-8')
                 req_data = json.loads(body) if body else {}
 
-                result = handle_deliberation(req_data)
+                if clean_path == '/api/deliberate':
+                    result = handle_deliberation(req_data)
+                elif clean_path == '/api/save-config':
+                    result = save_engine_config(req_data)
+                elif clean_path == '/api/test-connection':
+                    api_key = req_data.get('api_key')
+                    pro_model = req_data.get('pro_model')
+                    flash_model = req_data.get('flash_model')
+                    result = test_engine_connection(api_key, pro_model, flash_model)
+                else:
+                    result = {'success': False, 'error': 'Unknown route'}
 
                 resp_bytes = json.dumps(result).encode('utf-8')
                 self.send_response(200)
