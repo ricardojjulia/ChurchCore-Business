@@ -4,14 +4,14 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-17 21:57:49 UTC
+> **Last Synced from Telemetry:** 2026-10-18 02:55:25 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies
-*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 17, 2026*
+*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 18, 2026*
 
 - Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar
 - Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool

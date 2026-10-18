@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-17 21:57:49 UTC`  
+> **Last Aggregated:** `2026-10-18 02:55:25 UTC`  
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -43,10 +43,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `docs: close out R1d, CP1 and CP1b; plan, changelog and memory up to date (#208) (2d76314)`
+- `fix: CP1b truthful /security page, kiosk badge, single statement footer, security headers, real dependency audit (Council Review 58) (#207) (f7faaf0)`
 - `feat(security): launch /security Trust Center and Powered by ChurchCore badge system (COUNCIL-2026-002 REQ-002-01) (#206) (c28c96c)`
 - `feat: R1d data-erasure approval flow — exact, household-scoped erasure with audit redaction (Council Reviews 55–57) (#205) (840643d)`
-- `fix: R1c UX and small fixes — printing, error pages, scanner-safe unsubscribe, honest push (Council Reviews 52, 55) (#203) (a243af1)`
-- `fix: R1b money correctness — refunds, GL posting, live finance reports, journal integrity (Council Reviews 52, 54) (#202) (0b65ffb)`
 
 **Next Engineering Steps:**
 - 🎯 Verify send erasure notice only after erasure succeeds in production
@@ -55,7 +55,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `180 minutes`
-- **Session Timestamp:** `2026-10-17T21:57:49.326570+00:00`
+- **Session Timestamp:** `2026-10-18T02:55:25.351773+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle.
 
@@ -105,7 +105,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `120 minutes`
-- **Session Timestamp:** `2026-10-17T21:57:49.326570+00:00`
+- **Session Timestamp:** `2026-10-18T02:55:25.351773+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
 
@@ -159,7 +159,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `90 minutes`
-- **Session Timestamp:** `2026-10-17T21:57:49.326570+00:00`
+- **Session Timestamp:** `2026-10-18T02:55:25.351773+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications.
 
@@ -209,7 +209,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `60 minutes`
-- **Session Timestamp:** `2026-10-17T21:57:49.326570+00:00`
+- **Session Timestamp:** `2026-10-18T02:55:25.351773+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries.
 
@@ -262,7 +262,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `75 minutes`
-- **Session Timestamp:** `2026-10-17T21:57:49.326570+00:00`
+- **Session Timestamp:** `2026-10-18T02:55:25.351773+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
 
@@ -312,7 +312,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `105 minutes`
-- **Session Timestamp:** `2026-10-17T21:57:49.326570+00:00`
+- **Session Timestamp:** `2026-10-18T02:55:25.351773+00:00`
 - **Session Operator:** `Ricardo J. Julia`
 - **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
 

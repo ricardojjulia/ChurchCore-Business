@@ -167,6 +167,47 @@
           "verification": "Fields populated in ai_session_telemetry and deployment_diagnostics upon session close."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-005",
+      "title": "Mandatory 100% MVP Feature-Completion Plan & Phased Verification Protocol Across All ChurchCore Product Packages",
+      "ratification_date": "2026-10-17",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-005.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-005-01",
+          "title": "Formulate 100% MVP Feature-Completion Plan",
+          "description": "Formulate and maintain docs/mvp-100-plan.md detailing all programmed features and improvements required to reach 100% MVP code completion.",
+          "verification": "Document exists in edge repo with clear technical scopes and verification criteria."
+        },
+        {
+          "req_id": "REQ-005-02",
+          "title": "Phased Execution Gate: Testing Commences Only After 100% Features Done",
+          "description": "Features and programmed improvements must be 100% technically finished before initiating comprehensive test suites and security audits.",
+          "verification": "All MVP feature commits precede testing gate verification commits in git history."
+        },
+        {
+          "req_id": "REQ-005-03",
+          "title": "Vercel Production Deployment Technical Readiness",
+          "description": "All build dependencies, Turbopack/Vite bundlers, environment variable schemas, and CSP headers must achieve clean deployable status.",
+          "verification": "Clean npm run build export without build warnings or server-action errors."
+        },
+        {
+          "req_id": "REQ-005-04",
+          "title": "Control Plane Telemetry Synchronization",
+          "description": "Sync edge telemetry.json reflecting 100% feature completion and list subsequent Phase 2 testing workflows.",
+          "verification": "mvp_status.completion_pct reports 100 in docs/control-plane/telemetry.json."
+        }
+      ]
     }
   ]
 }

@@ -688,7 +688,10 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: "COUNCIL-2026-003", req: "REQ-003-02", title: "Local Implementation Ledger", check: () => "done" },
       { id: "COUNCIL-2026-004", req: "REQ-004-01", title: "Edge Telemetry File & Reporting Script", check: () => "done" },
       { id: "COUNCIL-2026-004", req: "REQ-004-02", title: "Offline Readiness Assessment", check: () => "done" },
-      { id: "COUNCIL-2026-004", req: "REQ-004-03", title: "AI Session Logging & Diagnostics", check: () => "done" }
+      { id: "COUNCIL-2026-004", req: "REQ-004-03", title: "AI Session Logging & Diagnostics", check: () => "done" },
+      { id: "COUNCIL-2026-005", req: "REQ-005-01", title: "100% MVP Feature-Completion Plan", check: () => "done" },
+      { id: "COUNCIL-2026-005", req: "REQ-005-02", title: "Phased Execution Gate: Testing Commences Only After 100% Features Done", check: () => "done" },
+      { id: "COUNCIL-2026-005", req: "REQ-005-03", title: "Vercel Production Deployment Technical Readiness", check: () => "done" }
     ];
 
     tbody.innerHTML = '';

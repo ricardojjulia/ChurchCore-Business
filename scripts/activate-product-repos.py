@@ -349,12 +349,29 @@ python3 scripts/pull-and-enforce-directives.py
 This automatically fetches the latest manifest from `ChurchCore-Business`, runs code-level audits (RLS, zero-propagation, telemetry, brand badge), and syncs `docs/council/ACKNOWLEDGMENTS.md`.
 
 ### Step 2: Check Active Requirements for This Product
-1. Review `docs/council/ACKNOWLEDGMENTS.md` for any pending Council Decisions (`COUNCIL-2026-001` through `004`) or Central Directives.
+1. Review `docs/council/ACKNOWLEDGMENTS.md` for any pending Council Decisions (`COUNCIL-2026-001` through `005`) or Central Directives.
 2. Inform the operator of pending council items and incorporate them into the session scope.
 
 ---
 
-## 2. Strict Sovereign Invariant (Section III: Zero Data Propagation)
+## 2. Mandatory 100% MVP Feature-Completion & Phased Testing Gate (COUNCIL-2026-005)
+
+> [!IMPORTANT]
+> **COUNCIL-2026-005: STRICT SEQUENTIAL PHASED GATING**
+>
+> 1. **Phase 1: 100% Feature Code Complete First**  
+>    All programmed features, edge APIs, UI workflows, database schemas, and edge integrations required for MVP must be 100% technically complete and ready for deployment before starting test loops.  
+>    *Reference your package's roadmap:* `docs/mvp-100-plan.md`.
+>
+> 2. **Phase 2: Comprehensive Testing Gate (The Next Step)**  
+>    Testing begins **ONLY after** all features and programmed improvements in Phase 1 are 100% technically done. Do not enter fragmented testing loops while MVP features remain unwritten or partially stubbed.
+>
+> 3. **Phase 3: Production Vercel Deployment**  
+>    For packages deploying to Vercel (ChurchCore Academy, Orthos, LMS, Care, ChMS, Scholars), clean build exports (`npm run build`), dependency lockfile resolution, and environment bindings must be verified prior to production launch.
+
+---
+
+## 3. Strict Sovereign Invariant (Section III: Zero Data Propagation)
 
 > [!CAUTION]
 > **CONSTITUTIONAL INVARIANT**: You are strictly forbidden from implementing background sync daemons, automated event buses, or cross-database replication with sibling product repositories.
@@ -362,7 +379,7 @@ This automatically fetches the latest manifest from `ChurchCore-Business`, runs 
 
 ---
 
-## 3. Mandatory Session Close & Telemetry Dispatch (Session Epilogue)
+## 4. Mandatory Session Close & Telemetry Dispatch (Session Epilogue)
 
 Before concluding your session or opening a PR, you MUST update and verify the product's edge telemetry:
 
@@ -376,7 +393,7 @@ python3 scripts/report-telemetry.py --model "<your-model-name>" --duration <minu
 ### Step 2: Verify Telemetry Elements
 Ensure `docs/control-plane/telemetry.json` includes:
 - **`online_status`**: Live Vercel production/preview URL and Supabase connection state. If offline, provide an accurate **Readiness Assessment** (score 0-100, exact blockers, next required deployment actions).
-- **`mvp_status`**: Current phase (`alpha`, `beta`, `pilot_ready`, `production`) and completion percentage.
+- **`mvp_status`**: Current phase (`alpha`, `beta`, `pilot_ready`, `testing_ready`, `production`) and completion percentage (target: 100%).
 - **`latest_changes`**: High-level bullet points of functional modifications in this session.
 - **`next_steps`**: Immediate technical items for the next developer/agent session.
 - **`ai_session_telemetry`**: Last model used, duration in minutes, operator, and work summary.
@@ -483,7 +500,102 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
             os.chmod(dst_path, 0o755)
             print(f"  [x] Installed edge script: {dst_path}")
 
-    # 5. Generate docs/control-plane/telemetry.json
+    # 5. Generate docs/mvp-100-plan.md (Mandatory COUNCIL-2026-005 Roadmap)
+    mvp_plan_file = os.path.join(valid_path, "docs", "mvp-100-plan.md")
+    
+    product_remaining_features = {
+        "churchcore-chms": [
+            ("Finalize R1d Data-Rights Erasure Approval Queue", "Complete admin approval screens, audit logging, and ensure erasure notices dispatch strictly post-commit."),
+            ("Vercel Edge Cron Automation (shepherd-ai & scheduled comms)", "Daily AI pastoral digest and queue retry workers running on Vercel crons with CRON_SECRET."),
+            ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
+        ],
+        "churchcore-lms": [
+            ("Theological Student Credentialing & PDF Certificate Worker", "Cryptographic certificate generation and verification for AETH seminaries."),
+            ("AETH Ministerial Formation Digital Course Catalog", "Full Spanish/English ministerial formation curriculum and seat allocation engine."),
+            ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
+        ],
+        "churchcore-academy": [
+            ("OneRoster 1.2 CSV Worker & Pilot Seed Sequencing", "Fix foreign key dependency locks on grade_levels during Colegio Biblos pilot rehearsal."),
+            ("Bilingual Spanish Student Gradebook & Attendance Engine", "Gradebook calculation algorithms and daily multi-language attendance tracking."),
+            ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
+        ],
+        "churchcore-care": [
+            ("Merge Faithful Workflows Enhancements Branch", "Spiritually integrated counseling workflows and practice management modules."),
+            ("Translation Worker Container Optimization", "Dedicated Docker worker optimization for high-throughput bilingual clinical intake."),
+            ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
+        ],
+        "churchcore-orthos": [
+            ("Audit PDF Preview CSP Header Whitelisting", "Configure explicit CSP allowlists in vercel.json for audit PDF preview rendering."),
+            ("Fund Accounting Double-Entry Balance Validator", "Automated ledger balancing check for restricted endowment and missionary funds."),
+            ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
+        ],
+        "faithfull-scholars": [
+            ("Theological Faculty Monograph Indexing Interface", "Author submission portal and peer-review editorial triage dashboard."),
+            ("Academic Peer-Review Editorial Workflow", "Blind peer review assignment, commentary threads, and editorial decision queues."),
+            ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component (OPS-02).")
+        ]
+    }
+
+    remaining_items = product_remaining_features.get(config["product_id"], [
+        ("Core MVP Feature Finalization", "Complete all programmed feature specifications in active sprint backlog."),
+        ("Universal AppSwitcher Navigation Integration", "Install standardized cross-suite navigation component.")
+    ])
+
+    mvp_plan_content = f"""# {config['canonical_name']}: 100% MVP Feature-Completion Plan
+
+**Directive Reference:** [COUNCIL-2026-005](https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-005.md)  
+**Governing State:** Phase 1 (100% Feature-Complete Code) -> Phase 2 (Comprehensive Testing Gate) -> Phase 3 (Vercel Production Launch)  
+**Current MVP Status:** {config['mvp_status']['completion_pct']}% Complete ({config['mvp_status']['phase'].upper()})  
+**Target Completion:** 100% Feature-Complete  
+
+---
+
+## Strict Phased Execution Order
+
+> [!IMPORTANT]
+> **TESTING COMMENCES ONLY AFTER 100% FEATURE CODE COMPLETION**  
+> In accordance with Council Directive COUNCIL-2026-005, testing is the explicit next step, conducted only after all features and programmed improvements are completely coded. Do not divert resources to fragmented testing loops while MVP features remain incomplete.
+
+---
+
+## Phase 1: Remaining MVP Features to 100% Code Complete
+
+{chr(10).join(f"### [ ] Feature {i+1}: {title}{chr(10)}* **Scope:** {desc}{chr(10)}* **Status:** Programmed Implementation Required{chr(10)}* **Acceptance:** Code written, integrated into layout/routes, local build succeeds.{chr(10)}" for i, (title, desc) in enumerate(remaining_items))}
+
+---
+
+## Phase 2: Comprehensive Testing Gate (The Next Step)
+
+*Execution strictly gated: Commences only once Phase 1 items above are 100% checked.*
+
+1. **Security & Row-Level Security Audit:**
+   - Execute: `npm run audit:rls`
+   - Invariant: Verify 0 bypass policies and Constitution Section III (Zero Customer Data Propagation).
+2. **End-to-End User Journey Tests:**
+   - Execute: `npm run test:e2e` or `npm run test:prod-synthetic`
+   - Invariant: All primary user authentication, data entry, and report screens pass.
+3. **Sunday Morning 99.99% SLA Readiness Probes:**
+   - Synthetic latency benchmark <50ms under simulated kiosk concurrency.
+
+---
+
+## Phase 3: Production Vercel Deployment
+
+*Execution strictly gated: Commences only after Phase 2 test suite passes 100% green.*
+
+1. **Build Export Verification:**
+   - Run `npm run build` locally with zero SSR server-action errors and clean bundle exports.
+2. **Vercel & Supabase Cloud Binding:**
+   - Production environment variables, custom domain routing, and SSL termination.
+3. **Telemetry Synchronization:**
+   - Update `docs/control-plane/telemetry.json` with `mvp_status.completion_pct: 100` and `online_status.is_online: true`.
+"""
+
+    with open(mvp_plan_file, "w") as f:
+        f.write(mvp_plan_content)
+    print(f"  [x] Published 100% MVP Execution Plan: {mvp_plan_file}")
+
+    # 6. Generate docs/control-plane/telemetry.json
     telemetry_dir = os.path.join(valid_path, "docs", "control-plane")
     os.makedirs(telemetry_dir, exist_ok=True)
     telemetry_file = os.path.join(telemetry_dir, "telemetry.json")
@@ -514,7 +626,8 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
                 "COUNCIL-2026-001",
                 "COUNCIL-2026-002",
                 "COUNCIL-2026-003",
-                "COUNCIL-2026-004"
+                "COUNCIL-2026-004",
+                "COUNCIL-2026-005"
             ],
             "brand_house_compliant": True,
             "sovereign_db_isolation_verified": True

@@ -4,14 +4,14 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-17 21:57:49 UTC
+> **Last Synced from Telemetry:** 2026-10-18 02:55:25 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth
-*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 17, 2026*
+*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 18, 2026*
 
 - Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director
 - Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory

@@ -1,5 +1,5 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-17T21:57:49.440241+00:00",
+  "generated_at": "2026-10-18T02:55:25.490904+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 4,
@@ -14,7 +14,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-chms",
       "repo_name": "ChurchCore",
       "version": "3.5.0",
-      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
+      "report_timestamp": "2026-10-18T02:55:25.351773+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -41,11 +41,11 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "docs: close out R1d, CP1 and CP1b; plan, changelog and memory up to date (#208) (2d76314)",
+        "fix: CP1b truthful /security page, kiosk badge, single statement footer, security headers, real dependency audit (Council Review 58) (#207) (f7faaf0)",
         "feat(security): launch /security Trust Center and Powered by ChurchCore badge system (COUNCIL-2026-002 REQ-002-01) (#206) (c28c96c)",
         "feat: R1d data-erasure approval flow \u2014 exact, household-scoped erasure with audit redaction (Council Reviews 55\u201357) (#205) (840643d)",
-        "fix: R1c UX and small fixes \u2014 printing, error pages, scanner-safe unsubscribe, honest push (Council Reviews 52, 55) (#203) (a243af1)",
-        "fix: R1b money correctness \u2014 refunds, GL posting, live finance reports, journal integrity (Council Reviews 52, 54) (#202) (0b65ffb)",
-        "fix: R1a security migration \u2014 memberships, views, finance/giving RLS, anonymous donors (Council Reviews 52\u201353) (#201) (b1fc083)"
+        "fix: R1c UX and small fixes \u2014 printing, error pages, scanner-safe unsubscribe, honest push (Council Reviews 52, 55) (#203) (a243af1)"
       ],
       "next_steps": [
         "Verify send erasure notice only after erasure succeeds in production",
@@ -54,7 +54,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 180,
-        "session_date": "2026-10-17T21:57:49.326570+00:00",
+        "session_date": "2026-10-18T02:55:25.351773+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle."
       },
@@ -71,7 +71,8 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004"
+          "COUNCIL-2026-004",
+          "COUNCIL-2026-005"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
@@ -83,7 +84,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-lms",
       "repo_name": "ChurchCore-LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
+      "report_timestamp": "2026-10-18T02:55:25.351773+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -124,7 +125,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 120,
-        "session_date": "2026-10-17T21:57:49.326570+00:00",
+        "session_date": "2026-10-18T02:55:25.351773+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
       },
@@ -143,7 +144,8 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004"
+          "COUNCIL-2026-004",
+          "COUNCIL-2026-005"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
@@ -155,7 +157,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-academy",
       "repo_name": "ChurchCore-Academy",
       "version": "0.10.0",
-      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
+      "report_timestamp": "2026-10-18T02:55:25.351773+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "deployed",
@@ -198,7 +200,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 90,
-        "session_date": "2026-10-17T21:57:49.326570+00:00",
+        "session_date": "2026-10-18T02:55:25.351773+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications."
       },
@@ -215,7 +217,8 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004"
+          "COUNCIL-2026-004",
+          "COUNCIL-2026-005"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
@@ -227,7 +230,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-care",
       "repo_name": "ChurchCoreCare",
       "version": "7.0.0",
-      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
+      "report_timestamp": "2026-10-18T02:55:25.351773+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -268,7 +271,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 60,
-        "session_date": "2026-10-17T21:57:49.326570+00:00",
+        "session_date": "2026-10-18T02:55:25.351773+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries."
       },
@@ -285,7 +288,8 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004"
+          "COUNCIL-2026-004",
+          "COUNCIL-2026-005"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
@@ -297,7 +301,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "churchcore-orthos",
       "repo_name": "ChurchCore-Orthos",
       "version": "0.18.0",
-      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
+      "report_timestamp": "2026-10-18T02:55:25.351773+00:00",
       "online_status": {
         "is_online": false,
         "vercel_status": "preview",
@@ -340,7 +344,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 75,
-        "session_date": "2026-10-17T21:57:49.326570+00:00",
+        "session_date": "2026-10-18T02:55:25.351773+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls."
       },
@@ -357,7 +361,8 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004"
+          "COUNCIL-2026-004",
+          "COUNCIL-2026-005"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
@@ -369,7 +374,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-17T21:57:49.326570+00:00",
+      "report_timestamp": "2026-10-18T02:55:25.351773+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -408,7 +413,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 105,
-        "session_date": "2026-10-17T21:57:49.326570+00:00",
+        "session_date": "2026-10-18T02:55:25.351773+00:00",
         "session_operator": "Ricardo J. Julia",
         "summary_of_work": "Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel."
       },
@@ -427,7 +432,8 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004"
+          "COUNCIL-2026-004",
+          "COUNCIL-2026-005"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
@@ -1956,13 +1962,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-17 21:57:49 UTC",
+      "last_synced": "2026-10-18 02:55:25 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Sovereign Platform: The Sovereign Operating System for the Global Church, Christian Education, and Pastoral Care",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 17, 2026",
+          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 18, 2026",
           "key_takeaways": [
             "Target Buyers: Denominational Bishop / General Superintendent, Executive Pastor / COO of Multi-Site Church",
             "Strategic Replacement: Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",
@@ -2064,13 +2070,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-17 21:57:49 UTC",
+      "last_synced": "2026-10-18 02:55:25 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore ChMS: Worship Planning, Child Check-In Security, and Double-Entry Ministry Accounting",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 17, 2026",
+          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 18, 2026",
           "key_takeaways": [
             "Target Buyers: Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator",
             "Strategic Replacement: Displaces Planning Center (Services/People/Giving) + Breeze + Realm + Tithe.ly",
@@ -2172,13 +2178,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-17 21:57:49 UTC",
+      "last_synced": "2026-10-18 02:55:25 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 17, 2026",
+          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 18, 2026",
           "key_takeaways": [
             "Target Buyers: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director",
             "Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",
@@ -2280,13 +2286,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-17 21:57:49 UTC",
+      "last_synced": "2026-10-18 02:55:25 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 17, 2026",
+          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 18, 2026",
           "key_takeaways": [
             "Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar",
             "Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool",
@@ -2388,13 +2394,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.0.0",
-      "last_synced": "2026-10-17 21:57:49 UTC",
+      "last_synced": "2026-10-18 02:55:25 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 17, 2026",
+          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 18, 2026",
           "key_takeaways": [
             "Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director",
             "Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory",
@@ -2496,13 +2502,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.0",
-      "last_synced": "2026-10-17 21:57:49 UTC",
+      "last_synced": "2026-10-18 02:55:25 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Orthos: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 17, 2026",
+          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 18, 2026",
           "key_takeaways": [
             "Target Buyers: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter",
             "Strategic Replacement: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits",
@@ -2604,13 +2610,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-17 21:57:49 UTC",
+      "last_synced": "2026-10-18 02:55:25 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 17, 2026",
+          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 18, 2026",
           "key_takeaways": [
             "Target Buyers: Seminary President / Academic Provost, Theological Faculty Search Committee Chair",
             "Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",
