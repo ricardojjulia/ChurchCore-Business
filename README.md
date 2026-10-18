@@ -39,13 +39,13 @@ python3 scripts/daily-fleet-briefing.py
 
 * **Interactive Cockpit Modal:** Open `http://localhost:3333` and click **`📊 Daily MVP Report`** in the top bar or inspect the **Action Priority Queue Banner** on the Fleet tab.
 * **Canonical Daily Progress Report:** [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](docs/reports/DAILY-MVP-PROGRESS-REPORT.md)
-* **Morning Priority Queue (Ranked from Most Work to Least Work):**
-  1. 🔴 **ChurchCore-Academy** (82% done • 18% remaining) — `cd "/Users/rjulia/ChurchCore Academy"` **[START HERE]**
+* **Morning Priority Queue (Ranked Backlog from Most Work to Least Work):**
+  1. 🔴 **FaithFullScholars** (85% done • 15% remaining) — `cd "/Users/rjulia/FaithFullScholars"` **[START HERE]**
   2. 🟠 **ChurchCore-Orthos** (85% done • 15% remaining) — `cd "/Users/rjulia/ChurchCore Orthos"`
-  3. 🟠 **FaithFullScholars** (85% done • 15% remaining) — `cd "/Users/rjulia/FaithFullScholars"`
-  4. 🟡 **ChurchCore-LMS** (88% done • 12% remaining) — `cd "/Users/rjulia/ChurchCore LMS"`
-  5. 🟡 **ChurchCoreCare** (90% done • 10% remaining) — `cd "/Users/rjulia/ChurchCore Care"`
-  6. 🟢 **ChurchCore (ChMS)** (92% done • 8% remaining) — `cd "/Users/rjulia/ChurchCore"`
+  3. 🟡 **ChurchCore-LMS** (88% done • 12% remaining) — `cd "/Users/rjulia/ChurchCore LMS"`
+  4. 🟡 **ChurchCoreCare** (90% done • 10% remaining) — `cd "/Users/rjulia/ChurchCore Care"`
+  5. 🟢 **ChurchCore (ChMS)** (92% done • 8% remaining) — `cd "/Users/rjulia/ChurchCore"`
+  * 🏆 **Phase 2 Testing Gate Champion:** **ChurchCore-Academy** (100% Feature-Complete • Colegio Biblos Human Pilot Trials)
 
 ---
 
@@ -140,6 +140,14 @@ The executive web cockpit (`http://localhost:3333`) provides an ultra-low latenc
 ### 6. Commercial Unit Economics & OPEX Breakdown
 *Real-time SaaS margins, fintech interchange contribution, and multi-year P&L sensitivity modeling.*
 ![Commercial OPEX & Margins](dashboard/screenshots/commercial_opex_margins.png)
+
+### 7. Fleet Demo Feedback & Error-Triage Workspace
+*Direct customer & stakeholder demonstration feedback collector, severity triage matrix, and bug-reporting modal.*
+![Fleet Demo Feedback & Error-Triage Workspace](dashboard/screenshots/feedback_workspace.png)
+
+### 8. Python Scripts & Sovereign Governance Tooling Catalog
+*Interactive control-plane script runner, live simulation terminal, argument guides, and schema auditor.*
+![Python Scripts & Sovereign Governance Tooling Catalog](dashboard/screenshots/scripts_catalog.png)
 
 ---
 

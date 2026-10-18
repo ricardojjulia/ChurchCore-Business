@@ -17,8 +17,8 @@
   "screenshot": "screenshots/evidence_reconciliation_ledger.png",
   "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
   "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
-  "version": "0.18.0",
-  "last_synced": "2026-10-18 14:09:28 UTC",
+  "version": "0.18.3",
+  "last_synced": "2026-10-18 15:29:38 UTC",
   "slides": [
     {
       "slide_num": 1,
@@ -63,7 +63,7 @@
       "slide_num": 4,
       "title": "Fresh Off the Press: Latest Engineering Milestones",
       "type": "live_telemetry_highlights",
-      "subtitle": "Continuous High-Velocity Delivery (0.18.0 Live)",
+      "subtitle": "Continuous High-Velocity Delivery (0.18.3 Live)",
       "key_takeaways": [
         "Latest Feature Delivered: Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)",
         "Ecosystem Hardening: chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad)",

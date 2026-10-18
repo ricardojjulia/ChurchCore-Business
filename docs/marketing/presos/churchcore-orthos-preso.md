@@ -4,7 +4,7 @@
 > **Scale:** 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0  
 > **Target Buyers:** Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter  
 > **Live URL:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-18 14:09:28 UTC
+> **Last Synced from Telemetry:** 2026-10-18 15:29:38 UTC
 
 ---
 
@@ -38,7 +38,7 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://church-core-orthos.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (0.18.0 Live)*
+*Continuous High-Velocity Delivery (0.18.3 Live)*
 
 - Latest Feature Delivered: Merge pull request #30 from ricardojjulia/chore/sync-telemetry-v0-18-2 (36a39de)
 - Ecosystem Hardening: chore(telemetry): sync 100% MVP pilot_ready telemetry and council acknowledgments (v0.18.2) (43229ad)
