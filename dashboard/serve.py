@@ -19,7 +19,9 @@ from deliberation_engine import (
     handle_deliberation,
     get_engine_status,
     save_engine_config,
-    test_engine_connection
+    test_engine_connection,
+    handle_marketing_ai,
+    handle_feedback_council
 )
 
 PORT = 3333
@@ -460,7 +462,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(resp_bytes)
             return
 
-        if clean_path in ['/api/deliberate', '/api/save-config', '/api/test-connection']:
+        if clean_path in ['/api/deliberate', '/api/save-config', '/api/test-connection', '/api/marketing-ai', '/api/feedback-council']:
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
                 body = self.rfile.read(content_length).decode('utf-8')
@@ -475,6 +477,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     pro_model = req_data.get('pro_model')
                     flash_model = req_data.get('flash_model')
                     result = test_engine_connection(api_key, pro_model, flash_model)
+                elif clean_path == '/api/marketing-ai':
+                    result = handle_marketing_ai(req_data)
+                elif clean_path == '/api/feedback-council':
+                    result = handle_feedback_council(req_data)
                 else:
                     result = {'success': False, 'error': 'Unknown route'}
 
@@ -522,7 +528,8 @@ def main():
     print("Press Ctrl+C to stop the server.\n")
 
     socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    http.server.ThreadingHTTPServer.allow_reuse_address = True
+    with http.server.ThreadingHTTPServer(("127.0.0.1", PORT), Handler) as httpd:
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:

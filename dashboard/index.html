@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261017d">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <div class="enterprise-layout">
@@ -1041,6 +1042,45 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
           </div>
         </div>
 
+        <!-- Interactive Gemini Marketing Intelligence & Pitch Generator via OpenRouter -->
+        <div class="kpi-card" style="padding: 22px 24px; background: linear-gradient(135deg, rgba(30, 27, 75, 0.45) 0%, rgba(15, 23, 42, 0.8) 100%); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 14px; position: relative; overflow: hidden; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; display: flex; align-items: center; gap: 8px;">
+                  <span>✨ Gemini Marketing Intelligence &amp; Campaign Synthesizer</span>
+                </h3>
+                <span style="font-size: 11px; font-weight: 700; background: rgba(99, 102, 241, 0.2); border: 1px solid rgba(99, 102, 241, 0.4); color: #C4B5FD; padding: 2px 8px; border-radius: 99px;">
+                  OpenRouter • google/gemini-2.5-pro
+                </span>
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                Directly prompt Gemini 2.5 Pro via OpenRouter to synthesize executive pitch narratives, GTM legacy vendor displacement campaigns, or enhance active slide decks.
+              </p>
+            </div>
+            
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="marketing-ai-objective-chips">
+              <button class="filter-chip active" data-marketing-obj="executive_pitch">🎯 Boardroom Pitch</button>
+              <button class="filter-chip" data-marketing-obj="gtm_campaign">⚡ GTM Displacement</button>
+              <button class="filter-chip" data-marketing-obj="investor_memo">💰 Investor Memo</button>
+              <button class="filter-chip" data-marketing-obj="enhance_slide">✨ Enhance Slide</button>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+            <input type="text" id="marketing-ai-instructions" placeholder="Optional operator guidance: target audience, specific emphasis, or competitor focus..." style="flex: 1; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #FFF;">
+            <button id="btn-trigger-marketing-ai" type="button" class="btn btn-primary" style="background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%); color: #FFF; padding: 10px 18px; font-size: 13px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+              <svg id="marketing-ai-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span id="marketing-ai-btn-text">Synthesize with Gemini</span>
+            </button>
+          </div>
+
+          <!-- Marketing AI Results Viewer -->
+          <div id="marketing-ai-results" style="display: none; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 10px; padding: 18px;">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
         <!-- AI Prompt Packs Section -->
         <div class="ai-packs-wrapper">
           <div class="ai-packs-header">
@@ -1138,8 +1178,12 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
             <h2>💬 Fleet Demo Feedback &amp; Error-Triage Workspace</h2>
             <p>Aggregated field-trial notes, unhandled error-boundary captures, and user bug submissions across all 6 sovereign applications.</p>
           </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
             <span class="preso-chip green" id="feedback-triage-badge">🟢 14 Reports • 8 Open</span>
+            <button id="btn-convene-feedback-council" type="button" class="btn btn-primary" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #000; font-weight: 700; padding: 8px 14px; font-size: 12px; gap: 6px; border: none; cursor: pointer; display: flex; align-items: center;">
+              <svg id="feedback-council-spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>⚖️ Convene Council for Analytics (OpenRouter)</span>
+            </button>
             <button id="btn-refresh-feedback" class="btn btn-secondary" style="padding: 8px 14px; font-size: 12px; gap: 6px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
@@ -1479,6 +1523,33 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
           <button class="btn btn-gold" id="btn-modal-refresh-report" style="font-size: 12px; padding: 6px 14px;">
             🔄 Refresh Sync
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Council Feedback Deliberation Modal -->
+  <div id="feedback-council-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 940px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px;">⚖️</span>
+          <div>
+            <h3 id="feedback-council-modal-title" style="margin: 0; font-size: 16px; font-weight: 700; color: #FFF;">High Sovereign Council: Feedback Deliberation</h3>
+            <span id="feedback-council-modal-subtitle" style="font-size: 11px; color: var(--gold-400);">Adjudicating Reports via OpenRouter Dual Contending Gemini</span>
+          </div>
+        </div>
+        <button id="feedback-council-modal-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 22px;" id="feedback-council-modal-content">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div style="padding: 14px 24px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.6);">
+        <span style="font-size: 12px; color: var(--text-dim);" id="feedback-council-modal-footer-note">Sovereign Governance • Constitution Section III Preserved</span>
+        <div style="display: flex; gap: 10px;" id="feedback-council-modal-actions">
+          <button class="btn btn-secondary" id="btn-close-council-modal-footer" style="font-size: 12px; padding: 6px 14px;">Close</button>
         </div>
       </div>
     </div>

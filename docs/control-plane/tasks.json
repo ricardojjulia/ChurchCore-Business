@@ -2,8 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ChurchCore Ecosystem Project Management Metadata Base",
   "version": "1.0.0",
-  "last_updated": "2026-10-18T17:45:00Z",
-  "total_tasks": 22,
+  "last_updated": "2026-10-18T19:30:00Z",
+  "total_tasks": 23,
   "tasks": [
     {
       "task_id": "TSK-CHMS-001",
@@ -349,6 +349,21 @@
       "description": "Cleared obsolete pilot rehearsal blockers; verified live edge production deployment on www.churchcoreacademy.io and church-core-academy.vercel.app with Supabase connected and 100% Launch Readiness.",
       "verification": "HTTP/2 200 OK probe on https://www.churchcoreacademy.io; telemetry.json verified is_online=true, vercel_status=deployed, readiness_score_pct=100",
       "updated_at": "2026-10-18T17:35:00Z"
+    },
+    {
+      "task_id": "TSK-AI-001",
+      "product_id": "churchcore-business",
+      "title": "Wire Marketing Intelligence & Feedback Council Deliberation to OpenRouter (Gemini 2.5 Pro)",
+      "status": "done",
+      "directionality": "CONTROL_PLANE",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Antigravity Agent",
+      "git_reference": "deliberation_engine.py & serve.py (OpenRouter Gemini Pro)",
+      "target_milestone": "Sprint Q4-M1",
+      "description": "Wired Marketing Presentations Hub to Gemini 2.5 Pro via OpenRouter for executive pitches, GTM displacement campaigns, investor briefings, and slide synthesis; wired Feedback Workspace to OpenRouter council deliberation to adjudicate user error reports and propose binding plans to fix, implement, or deny with Zero Customer Data propagation.",
+      "verification": "POST /api/marketing-ai and POST /api/feedback-council return HTTP 200 with structured Gemini 2.5 Pro output; browser tested and verified in Mission Control Cockpit UI",
+      "updated_at": "2026-10-18T19:30:00Z"
     }
   ]
 }

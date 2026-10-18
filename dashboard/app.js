@@ -2909,6 +2909,139 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
       }
     });
 
+    // 13.1 Wire Marketing AI Synthesizer via OpenRouter (Gemini Pro)
+    let selectedMarketingObj = 'executive_pitch';
+    document.querySelectorAll('#marketing-ai-objective-chips [data-marketing-obj]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#marketing-ai-objective-chips [data-marketing-obj]').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        selectedMarketingObj = chip.dataset.marketingObj;
+        const btnText = document.getElementById('marketing-ai-btn-text');
+        if (btnText) {
+          if (selectedMarketingObj === 'enhance_slide') btnText.textContent = 'Enhance Active Slide with Gemini';
+          else if (selectedMarketingObj === 'gtm_campaign') btnText.textContent = 'Synthesize GTM Battlecard with Gemini';
+          else if (selectedMarketingObj === 'investor_memo') btnText.textContent = 'Synthesize Investor Memo with Gemini';
+          else btnText.textContent = 'Synthesize Boardroom Pitch with Gemini';
+        }
+      });
+    });
+
+    document.getElementById('btn-trigger-marketing-ai')?.addEventListener('click', async () => {
+      const spinner = document.getElementById('marketing-ai-spinner');
+      const btnText = document.getElementById('marketing-ai-btn-text');
+      const resultsDiv = document.getElementById('marketing-ai-results');
+      const instructions = document.getElementById('marketing-ai-instructions')?.value.trim() || '';
+
+      if (spinner) spinner.style.animation = 'spin 1s linear infinite';
+      if (btnText) btnText.textContent = 'Gemini Synthesizing...';
+
+      try {
+        const payload = {
+          deck_id: selectedPresoId,
+          objective: selectedMarketingObj,
+          custom_instructions: instructions,
+          slide_index: currentSlideIndex
+        };
+
+        const resp = await fetch('/api/marketing-ai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const res = await resp.json();
+        if (res.success && res.data) {
+          resultsDiv.style.display = 'block';
+          const d = res.data;
+
+          if (selectedMarketingObj === 'enhance_slide') {
+            resultsDiv.innerHTML = `
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 14px;">✨</span>
+                  <span style="font-weight: 700; color: #FFF; font-size: 14px;">Slide ${currentSlideIndex + 1} Enhanced by Gemini</span>
+                  <span style="font-size: 10px; background: rgba(99,102,241,0.25); color: #C4B5FD; padding: 2px 8px; border-radius: 99px; font-weight: 700;">${escapeHtml(d.badge || 'ENHANCED')}</span>
+                </div>
+                <button id="btn-apply-enhanced-slide" class="btn btn-gold" style="font-size: 11px; padding: 4px 10px; font-weight: 700;">
+                  ✓ Apply to Active Slide
+                </button>
+              </div>
+              <div style="font-size: 15px; font-weight: 700; color: #FFF; margin-bottom: 8px;">${escapeHtml(d.title || '')}</div>
+              <div style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 6px;">
+                ${(d.bullets || []).map(b => `<div style="font-size: 12px; color: #E2E8F0; display: flex; gap: 6px;"><span style="color: var(--gold-400);">✦</span><span>${escapeHtml(b)}</span></div>`).join('')}
+              </div>
+              <div style="background: rgba(0,0,0,0.3); padding: 10px 12px; border-radius: 6px; border-left: 3px solid var(--gold-500); font-size: 12px; color: #94A3B8; font-style: italic;">
+                "${escapeHtml(d.speaker_notes || '')}"
+              </div>
+            `;
+
+            document.getElementById('btn-apply-enhanced-slide')?.addEventListener('click', () => {
+              const currentDeck = presosList.find(dk => dk.id === selectedPresoId) || presosList[0];
+              if (currentDeck && currentDeck.slides && currentDeck.slides[currentSlideIndex]) {
+                const s = currentDeck.slides[currentSlideIndex];
+                if (d.title) s.title = d.title;
+                if (d.bullets) s.key_takeaways = d.bullets;
+                if (d.speaker_notes) s.speaker_notes = d.speaker_notes;
+                if (d.badge) s.type = d.badge.toLowerCase();
+                updateSlideCanvas(currentDeck);
+                showToast(`✓ Slide ${currentSlideIndex + 1} updated with Gemini enhancements!`);
+              }
+            });
+
+          } else {
+            const rawMd = d.synthesis_markdown || '';
+            const htmlContent = (typeof marked !== 'undefined' && marked.parse) ? marked.parse(rawMd) : `<pre style="white-space: pre-wrap; color: #E2E8F0;">${escapeHtml(rawMd)}</pre>`;
+
+            resultsDiv.innerHTML = `
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <div style="font-size: 16px; font-weight: 800; color: #FFF; font-family: var(--font-heading);">${escapeHtml(d.headline || res.deck_name)}</div>
+                  <div style="font-size: 12px; color: var(--gold-400);">${escapeHtml(d.tagline || '')}</div>
+                </div>
+                <button id="btn-copy-marketing-synthesis" class="btn btn-secondary" style="font-size: 11px; padding: 4px 10px;">
+                  📋 Copy Markdown
+                </button>
+              </div>
+
+              ${d.key_takeaways && d.key_takeaways.length ? `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-bottom: 16px;">
+                  ${d.key_takeaways.map(t => `
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: #CBD5E1;">
+                      <strong style="color: #38BDF8;">✦ Takeaway:</strong> ${escapeHtml(t)}
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
+
+              <div class="marketing-markdown-render" style="color: #E2E8F0; font-size: 13px; line-height: 1.6; max-height: 420px; overflow-y: auto; padding-right: 8px;">
+                ${htmlContent}
+              </div>
+
+              ${d.call_to_action ? `
+                <div style="margin-top: 14px; padding: 10px 14px; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 8px; font-size: 12px; color: #C4B5FD; display: flex; align-items: center; gap: 8px;">
+                  <strong>⚡ Recommended Next Action:</strong> ${escapeHtml(d.call_to_action)}
+                </div>
+              ` : ''}
+            `;
+
+            document.getElementById('btn-copy-marketing-synthesis')?.addEventListener('click', () => {
+              navigator.clipboard.writeText(rawMd);
+              showToast('✓ Markdown synthesis copied to clipboard!');
+            });
+          }
+          showToast('✓ Marketing intelligence synthesized via OpenRouter & Gemini!');
+        } else {
+          showToast('Marketing AI notice: ' + (res.error || 'Check server connection'));
+        }
+      } catch (err) {
+        console.error('Marketing AI error:', err);
+        showToast('Error communicating with OpenRouter');
+      } finally {
+        if (spinner) spinner.style.animation = '';
+        if (btnText) btnText.textContent = selectedMarketingObj === 'enhance_slide' ? 'Enhance Active Slide with Gemini' : 'Synthesize with Gemini';
+      }
+    });
+
     // Slide Navigation Buttons
     const btnPrev = document.getElementById('btn-preso-prev');
     const btnNext = document.getElementById('btn-preso-next');
@@ -3364,7 +3497,9 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
                 ${item.user_email ? `<span>User: <strong style="color: #C4CAD2;">${escapeHtml(item.user_email)}</strong> (${escapeHtml(item.user_role || 'GUEST')})</span>` : '<span>Anonymous Visitor</span>'}
                 <span>Duration: <strong style="color: #C4CAD2;">${durStr}</strong></span>
               </div>
-              <div style="display: flex; align-items: center; gap: 8px;">
+                <button type="button" class="btn-feedback-council-item" data-id="${item.id}" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.35); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px;" title="Convene Council to evaluate and render verdict on this report">
+                  <span>⚖️ Council Verdict</span>
+                </button>
                 <select class="triage-action-select" data-id="${item.id}" style="background: #1C2129; color: #E7E9EC; border: 1px solid #2A303A; padding: 4px 8px; border-radius: 6px; font-size: 11px;">
                   <option value="">Set Triage Action...</option>
                   <option value="bug_fixed" ${item.action === 'bug_fixed' ? 'selected' : ''}>Bug Fixed</option>
@@ -3428,11 +3563,273 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
       filterAndRender();
     });
 
-    // Refresh button
-    document.getElementById('btn-refresh-feedback')?.addEventListener('click', () => {
-      filterAndRender();
-      alert('Feedback records refreshed across all 6 applications!');
+    // Wire Individual Council Verdict Buttons
+    container.querySelectorAll('.btn-feedback-council-item').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const id = e.currentTarget.dataset.id;
+        const overrides = getTriageOverrides();
+        const rawItem = feedbackData.find(i => i.id === id);
+        if (rawItem) {
+          const ov = overrides[rawItem.id] || {};
+          const item = { ...rawItem, ...ov };
+          await openFeedbackCouncilModal({ mode: 'single_item', item: item });
+        }
+      });
     });
+
+    // Wire Fleet-Wide Council Deliberation Button
+    document.getElementById('btn-convene-feedback-council')?.addEventListener('click', async () => {
+      const overrides = getTriageOverrides();
+      const mergedItems = feedbackData.map(item => {
+        const ov = overrides[item.id] || {};
+        return {
+          ...item,
+          processed: ov.processed !== undefined ? ov.processed : item.processed,
+          action: ov.action !== undefined ? ov.action : item.action
+        };
+      });
+      await openFeedbackCouncilModal({ mode: 'fleet_analytics', items: mergedItems });
+    });
+
+    // Modal Helper for Council Feedback Adjudication
+    async function openFeedbackCouncilModal({ mode, item, items }) {
+      const modal = document.getElementById('feedback-council-modal');
+      const titleEl = document.getElementById('feedback-council-modal-title');
+      const subtitleEl = document.getElementById('feedback-council-modal-subtitle');
+      const contentEl = document.getElementById('feedback-council-modal-content');
+      const footerActions = document.getElementById('feedback-council-modal-actions');
+
+      if (!modal || !contentEl) return;
+      modal.classList.add('active');
+
+      if (mode === 'single_item' && item) {
+        titleEl.textContent = `Council Adjudication: ${item.id} (${item.product_name})`;
+        subtitleEl.textContent = `Evaluating ${item.category} on ${item.route} via OpenRouter Gemini 2.5 Pro`;
+        contentEl.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px;">
+            <div style="width: 44px; height: 44px; border: 3px solid rgba(245, 158, 11, 0.2); border-top-color: #F59E0B; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px;"></div>
+            <div style="font-weight: 700; color: #FFF; font-size: 15px;">Convening Sovereign Council...</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+              Dual Contending Gemini evaluating root cause, Section III Data Sovereignty, and Sunday SLA invariants.
+            </div>
+          </div>
+        `;
+
+        try {
+          const resp = await fetch('/api/feedback-council', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mode: 'single_item', feedback_item: item })
+          });
+          const res = await resp.json();
+          if (res.success && res.data) {
+            const d = res.data;
+            const badgeBg = d.verdict === 'FIX' ? 'rgba(244, 63, 94, 0.2)' : (d.verdict === 'IMPLEMENT' ? 'rgba(76, 195, 138, 0.2)' : 'rgba(245, 158, 11, 0.2)');
+            const badgeColor = d.verdict === 'FIX' ? '#F43F5E' : (d.verdict === 'IMPLEMENT' ? '#6BD6A0' : '#FBBF24');
+            const badgeBorder = d.verdict === 'FIX' ? '#F43F5E' : (d.verdict === 'IMPLEMENT' ? '#2B5A40' : '#D97706');
+
+            contentEl.innerHTML = `
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <span style="font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 6px; background: ${badgeBg}; color: ${badgeColor}; border: 1px solid ${badgeBorder};">
+                    ${escapeHtml(d.verdict_badge || d.verdict)}
+                  </span>
+                  <div style="font-size: 17px; font-weight: 800; color: #FFF; margin-top: 6px; font-family: var(--font-heading);">
+                    ${escapeHtml(d.product_name)}: ${escapeHtml(item.route)}
+                  </div>
+                </div>
+                <span style="font-size: 11px; color: var(--text-muted); background: rgba(0,0,0,0.4); padding: 4px 8px; border-radius: 6px;">
+                  Confidence: <strong style="color: #6BD6A0;">${d.confidence_score || 95}%</strong> • ${escapeHtml(res.provider || 'Gemini')}
+                </span>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-subtle); padding: 14px; border-radius: 8px; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 800; color: #F59E0B; letter-spacing: 0.5px; margin-bottom: 4px;">COUNCIL FINDING & ROOT CAUSE:</div>
+                <div style="font-size: 13px; color: #E2E8F0; line-height: 1.5;">${escapeHtml(d.finding || '')}</div>
+              </div>
+
+              ${d.constitutional_check ? `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px;">
+                  <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 10px; border-radius: 6px; font-size: 11px;">
+                    <strong style="color: #38BDF8; display: block; margin-bottom: 2px;">🛡️ Data Sovereignty (Sec III)</strong>
+                    <span style="color: #94A3B8;">${escapeHtml(d.constitutional_check.data_sovereignty_section_iii || 'PASS')}</span>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 10px; border-radius: 6px; font-size: 11px;">
+                    <strong style="color: #FBBF24; display: block; margin-bottom: 2px;">⏱️ Sunday 99.99% SLA</strong>
+                    <span style="color: #94A3B8;">${escapeHtml(d.constitutional_check.sunday_sla_impact || 'PASS')}</span>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 10px; border-radius: 6px; font-size: 11px;">
+                    <strong style="color: #A78BFA; display: block; margin-bottom: 2px;">🕊️ Pastoral Integrity</strong>
+                    <span style="color: #94A3B8;">${escapeHtml(d.constitutional_check.theological_liturgical_alignment || 'ALIGNED')}</span>
+                  </div>
+                </div>
+              ` : ''}
+
+              <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                <div style="font-size: 11px; font-weight: 800; color: #C4B5FD; letter-spacing: 0.5px; margin-bottom: 8px;">TECHNICAL ACTION PLAN:</div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                  ${((d.action_plan && d.action_plan.mitigation_steps) || []).map((step, idx) => `
+                    <div style="font-size: 12px; color: #E2E8F0; display: flex; gap: 8px;">
+                      <span style="color: #38BDF8; font-weight: 700;">${idx + 1}.</span>
+                      <span>${escapeHtml(step)}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div style="font-size: 12px; color: #94A3B8; font-style: italic; border-left: 3px solid #F59E0B; padding-left: 12px;">
+                "${escapeHtml(d.council_decree || '')}"
+              </div>
+            `;
+
+            const suggestedAction = d.action_plan?.suggested_triage_action || (d.verdict === 'FIX' ? 'bug_fixed' : (d.verdict === 'IMPLEMENT' ? 'suggestion_implemented' : 'suggestion_not_implemented'));
+            footerActions.innerHTML = `
+              <button class="btn btn-secondary" id="btn-close-council-modal-footer" style="font-size: 12px; padding: 6px 14px;">Close</button>
+              <button class="btn btn-gold" id="btn-apply-council-verdict" style="font-size: 12px; padding: 6px 16px; font-weight: 700;">
+                ✓ Accept &amp; Apply Verdict (${d.verdict})
+              </button>
+            `;
+
+            document.getElementById('btn-apply-council-verdict')?.addEventListener('click', () => {
+              saveTriageOverride(item.id, {
+                action: suggestedAction,
+                action_label: suggestedAction.replace(/_/g, ' ').toUpperCase(),
+                processed: true
+              });
+              modal.classList.remove('active');
+              filterAndRender();
+              showToast(`✓ Council verdict applied: ${item.id} marked as ${suggestedAction}!`);
+            });
+
+            document.getElementById('btn-close-council-modal-footer')?.addEventListener('click', () => modal.classList.remove('active'));
+          } else {
+            contentEl.innerHTML = `<div style="color: #F43F5E; padding: 20px;">Council deliberation notice: ${escapeHtml(res.error || 'Failed to deliberate')}</div>`;
+          }
+        } catch (e) {
+          contentEl.innerHTML = `<div style="color: #F43F5E; padding: 20px;">Deliberation error: ${escapeHtml(String(e))}</div>`;
+        }
+
+      } else {
+        // Fleet Analytics Mode
+        titleEl.textContent = 'High Sovereign Council: Full Fleet Feedback Adjudication';
+        subtitleEl.textContent = `Plenary Session inspecting ${items?.length || 14} Reports across all 6 Products via OpenRouter Gemini`;
+        contentEl.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px;">
+            <div style="width: 44px; height: 44px; border: 3px solid rgba(245, 158, 11, 0.2); border-top-color: #F59E0B; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px;"></div>
+            <div style="font-weight: 700; color: #FFF; font-size: 15px;">Concurring High Sovereign Grand Council in Plenary Session...</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+              Synthesizing root causes, triaging into FIX / IMPLEMENT / DENY, and establishing sprint priorities.
+            </div>
+          </div>
+        `;
+
+        try {
+          const resp = await fetch('/api/feedback-council', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mode: 'fleet_analytics', feedback_items: items })
+          });
+          const res = await resp.json();
+          if (res.success && res.data) {
+            const d = res.data;
+            const vs = d.verdicts_summary || {};
+            const evals = d.item_evaluations || [];
+
+            contentEl.innerHTML = `
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+                <div style="background: rgba(244, 63, 94, 0.12); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; padding: 12px 16px; text-align: center;">
+                  <div style="font-size: 11px; font-weight: 800; color: #F43F5E; letter-spacing: 0.5px;">MANDATORY FIXES</div>
+                  <div style="font-size: 26px; font-weight: 800; color: #FFF; font-family: var(--font-heading); margin-top: 2px;">${vs.fix_count || 0}</div>
+                  <div style="font-size: 11px; color: #94A3B8;">P0/P1 Immediate Hotfixes</div>
+                </div>
+                <div style="background: rgba(76, 195, 138, 0.12); border: 1px solid rgba(76, 195, 138, 0.3); border-radius: 8px; padding: 12px 16px; text-align: center;">
+                  <div style="font-size: 11px; font-weight: 800; color: #6BD6A0; letter-spacing: 0.5px;">ACCEPTED IMPLEMENTATIONS</div>
+                  <div style="font-size: 26px; font-weight: 800; color: #FFF; font-family: var(--font-heading); margin-top: 2px;">${vs.implement_count || 0}</div>
+                  <div style="font-size: 11px; color: #94A3B8;">Approved Roadmap Sprints</div>
+                </div>
+                <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 12px 16px; text-align: center;">
+                  <div style="font-size: 11px; font-weight: 800; color: #FBBF24; letter-spacing: 0.5px;">FORMALLY DENIED</div>
+                  <div style="font-size: 26px; font-weight: 800; color: #FFF; font-family: var(--font-heading); margin-top: 2px;">${vs.deny_count || 0}</div>
+                  <div style="font-size: 11px; color: #94A3B8;">Section III / Policy Invariants</div>
+                </div>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-subtle); padding: 14px; border-radius: 8px; margin-bottom: 20px;">
+                <div style="font-size: 11px; font-weight: 800; color: #F59E0B; letter-spacing: 0.5px; margin-bottom: 4px;">HIGH COUNCIL EXECUTIVE SYNTHESIS:</div>
+                <div style="font-size: 13px; color: #E2E8F0; line-height: 1.6;">${escapeHtml(d.executive_summary || '')}</div>
+              </div>
+
+              <div style="margin-bottom: 20px;">
+                <div style="font-size: 12px; font-weight: 800; color: #FFF; letter-spacing: 0.5px; margin-bottom: 10px;">ITEM-BY-ITEM ADJUDICATION LEDGER (${evals.length} REPORTS):</div>
+                <div style="display: flex; flex-direction: column; gap: 8px; max-height: 280px; overflow-y: auto; padding-right: 6px;">
+                  ${evals.map(ev => {
+                    const badgeBg = ev.verdict === 'FIX' ? 'rgba(244, 63, 94, 0.2)' : (ev.verdict === 'IMPLEMENT' ? 'rgba(76, 195, 138, 0.2)' : 'rgba(245, 158, 11, 0.2)');
+                    const badgeColor = ev.verdict === 'FIX' ? '#F43F5E' : (ev.verdict === 'IMPLEMENT' ? '#6BD6A0' : '#FBBF24');
+                    return `
+                      <div style="padding: 10px 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+                        <div style="flex: 1;">
+                          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                            <span style="font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: ${badgeBg}; color: ${badgeColor};">${ev.verdict}</span>
+                            <span style="font-weight: 700; font-size: 12px; color: #FFF;">${escapeHtml(ev.id)}</span>
+                            <span style="font-size: 11px; color: var(--text-dim);">${escapeHtml(ev.product || '')}</span>
+                            <code style="font-size: 11px; color: #F0A63A;">${escapeHtml(ev.route || '')}</code>
+                          </div>
+                          <div style="font-size: 12px; color: #CBD5E1;">${escapeHtml(ev.finding || ev.plan || '')}</div>
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+
+              ${d.sprint_recommendations && d.sprint_recommendations.length ? `
+                <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 8px; padding: 14px;">
+                  <div style="font-size: 11px; font-weight: 800; color: #C4B5FD; letter-spacing: 0.5px; margin-bottom: 8px;">COUNCIL MANDATED SPRINT ACTIONS:</div>
+                  <div style="display: flex; flex-direction: column; gap: 6px;">
+                    ${d.sprint_recommendations.map((rec, i) => `
+                      <div style="font-size: 12px; color: #E2E8F0; display: flex; gap: 8px;">
+                        <span style="color: var(--gold-400); font-weight: 700;">⚡</span>
+                        <span>${escapeHtml(rec)}</span>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              ` : ''}
+            `;
+
+            footerActions.innerHTML = `
+              <button class="btn btn-secondary" id="btn-close-council-modal-footer" style="font-size: 12px; padding: 6px 14px;">Close</button>
+              <button class="btn btn-gold" id="btn-batch-apply-council-triage" style="font-size: 12px; padding: 6px 16px; font-weight: 700;">
+                ✓ Batch Apply All Council Triage Recommendations (${evals.length})
+              </button>
+            `;
+
+            document.getElementById('btn-batch-apply-council-triage')?.addEventListener('click', () => {
+              evals.forEach(ev => {
+                if (ev.id && ev.suggested_action) {
+                  saveTriageOverride(ev.id, {
+                    action: ev.suggested_action,
+                    action_label: ev.suggested_action.replace(/_/g, ' ').toUpperCase(),
+                    processed: true
+                  });
+                }
+              });
+              modal.classList.remove('active');
+              filterAndRender();
+              showToast(`✓ All ${evals.length} feedback reports triaged per Council Decree!`);
+            });
+
+            document.getElementById('btn-close-council-modal-footer')?.addEventListener('click', () => modal.classList.remove('active'));
+          } else {
+            contentEl.innerHTML = `<div style="color: #F43F5E; padding: 20px;">Plenary session error: ${escapeHtml(res.error || 'Failed')}</div>`;
+          }
+        } catch (e) {
+          contentEl.innerHTML = `<div style="color: #F43F5E; padding: 20px;">Council plenary error: ${escapeHtml(String(e))}</div>`;
+        }
+      }
+
+      document.getElementById('feedback-council-modal-close')?.addEventListener('click', () => modal.classList.remove('active'));
+    }
 
     // Top button hook
     document.getElementById('btn-open-feedback-top')?.addEventListener('click', () => {

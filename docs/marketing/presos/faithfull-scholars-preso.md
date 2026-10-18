@@ -4,7 +4,7 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
-> **Last Synced from Telemetry:** 2026-10-18 18:02:47 UTC
+> **Last Synced from Telemetry:** 2026-10-18 19:17:01 UTC
 
 ---
 
@@ -32,17 +32,17 @@
 *Enterprise power built on 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0*
 
 - Constitutional Protection: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties.
-- Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://www.faithgrid.io.
+- Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://faith-full-scholars.vercel.app.
 - Zero Vendor Lock-in: Automated backup exports, open PostgreSQL schemas, and full exportability.
 
-> 🗣️ **Speaker Script:** Showcase the actual live application at https://www.faithgrid.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
+> 🗣️ **Speaker Script:** Showcase the actual live application at https://faith-full-scholars.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (v1.0.0 Live)*
+*Continuous High-Velocity Delivery (0.1.0 Live)*
 
-- Latest Feature Delivered: Continuous architectural refinement
-- Ecosystem Hardening: 100% Row-Level Security verification
-- Reliability Proof: Automated CI/CD validation and zero-downtime database migrations.
+- Latest Feature Delivered: feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)
+- Ecosystem Hardening: feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)
+- Reliability Proof: [2026-10-18] Encapsulated organization member queries within SECURITY DEFINER function public.is_organization_admin(org_id) to guarantee sub-50ms Sunday SLA.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -58,7 +58,7 @@
 ### Slide 6: Commercial Partnership & Immediate Next Steps
 *Accessible Packaging: $2,500–$15,000/yr per Institution*
 
-- Explore Live Production Environment: https://www.faithgrid.io
+- Explore Live Production Environment: https://faith-full-scholars.vercel.app
 - Migration Guarantee: 100% white-glove onboarding and historical data transfer.
 - The No-Hostage Covenant: If church finances tighten, accounts are never locked; they downgrade gracefully with dignity.
 
@@ -87,7 +87,10 @@ Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matc
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
 Recent Engineering Delivery & Milestones:
-- Continuous verified production releases
+- feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)
+- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)
+- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
+- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
 </context>
 
 <instructions>
@@ -113,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 - Live Site: https://www.faithgrid.io
 - Pricing: $2,500–$15,000/yr per Institution
-- Latest Features: Active Next.js Vercel Production Build
+- Latest Features: feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb), feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47), feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -145,7 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- Production-ready release
+- feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)
+- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)
+- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

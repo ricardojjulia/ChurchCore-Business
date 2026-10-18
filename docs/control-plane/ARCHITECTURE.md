@@ -157,6 +157,15 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
   - **Control Plane Watcher Daemon**: [`scripts/control-plane-sync.py`](file:///Users/rjulia/ChurchCore-Business/scripts/control-plane-sync.py) features a file modification timestamp delta engine and a `--watch` mode. In addition, [`dashboard/serve.py`](file:///Users/rjulia/ChurchCore-Business/dashboard/serve.py) hosts `TelemetryWatcherThread(interval=15)` continuously monitoring edge timestamps and automatically compiling `fleet-data.json` without operator intervention.
   - **Real-Time Client Pulse & One-Click Digest**: [`dashboard/app.js`](file:///Users/rjulia/ChurchCore-Business/dashboard/app.js) executes `pollIncomingTelemetry()` every 15 seconds against `/api/fleet-status`. If new incoming edge telemetry is digested, the UI re-renders immediately with a live toast notification. Operators can also click the `Sync Telemetry` button (`POST /api/sync-telemetry`) for instant on-demand fleet reconciliation.
 
+### Pattern 8: Sovereign AI Intelligence Engine & Feedback Council Deliberation (OpenRouter / Gemini) — *Active*
+- **Mechanism**: Dedicated asynchronous deliberation engine integrated into the Control Plane HTTP layer (`dashboard/deliberation_engine.py` and `dashboard/serve.py` via `ThreadingHTTPServer` on Port 3333), using Google Gemini 2.5 Pro via OpenRouter (`google/gemini-2.5-pro`):
+  - **Marketing Intelligence Hub**: Powers live generation of executive pitches, competitor displacement campaigns (e.g., displacing Planning Center, Canvas LMS, Subsplash, Pushpay), institutional investor briefings, and real-time slide content enhancement directly within the Marketing Presentations Hub (`#tab-presos`).
+  - **Feedback Council Adjudication**: Convenes the Grand High Council to evaluate field error telemetry, triage reports, and feature requests. Adjudicates each item against Constitution Section III and the Sunday Morning SLA, rendering binding verdicts:
+    - `🔴 FIX MANDATE`: Defect violates Sunday SLA, RLS security, or operational reliability. Mandates concrete P0 technical mitigation steps and affected file targets.
+    - `🟢 IMPLEMENT ACCEPTED`: Feature request aligns with sovereign architecture, elevates user trust, and preserves Section III invariants. Dispatches sprint backlog implementation plan.
+    - `⛔ FORMALLY DENIED`: Request violates customer data boundaries, duplicates existing functionality, or compromises architectural integrity. Provides binding denial rationale.
+  - **Zero Customer Data Propagation Guarantee**: Only engineering telemetry, sanitised error stacks, and slide metadata are transmitted to OpenRouter. Customer database records, member identities, and sensitive credentials are strictly excluded per Constitution Section III.
+
 ---
 
 ## 4. The Sacred Sovereignty Invariant: No Customer Data Propagation
