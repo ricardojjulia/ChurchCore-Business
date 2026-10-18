@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-18 17:18:09 UTC",
+  "generated_at": "2026-10-18 17:33:36 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -225,11 +225,15 @@ window.CHURCHCORE_SCRIPTS_DATA = {
     {
       "rel_path": "scripts/report-telemetry.py",
       "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/report-telemetry.py",
-      "title": "ChurchCore Edge Telemetry Reporter",
-      "description": "Updates docs/control-plane/telemetry.json for reporting to ChurchCore-Business Control Plane.",
+      "title": "ChurchCore Sovereign Control Plane: Universal Edge Telemetry Reporter",
+      "description": "Updates docs/control-plane/telemetry.json for reporting to ChurchCore-Business Control Plane.\nCan be executed with explicit flags or with --auto for continuous post-test/post-commit sync.",
       "category": "Edge Telemetry & AI Session Logging",
       "cat_summary": "Standardized session logger for AI agents, recording duration, models, bug fixes, and errors.",
       "cli_flags": [
+        [
+          "--auto",
+          "Autonomously probe live endpoints, detect git commits, and record telemetry"
+        ],
         [
           "--model",
           "AI model name (e.g. gemini-2.5-pro, claude-3-7-sonnet)"
@@ -273,10 +277,22 @@ window.CHURCHCORE_SCRIPTS_DATA = {
         [
           "--supabase-status",
           ""
+        ],
+        [
+          "--score",
+          "Readiness score percentage (0-100)"
+        ],
+        [
+          "--blocker",
+          "Add a specific deployment blocker"
+        ],
+        [
+          "--clear-blockers",
+          "Clear all blockers from readiness assessment"
         ]
       ],
-      "size_bytes": 7239,
-      "line_count": 172
+      "size_bytes": 13033,
+      "line_count": 319
     },
     {
       "rel_path": "scripts/sync-governance.py",

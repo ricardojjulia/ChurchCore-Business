@@ -103,3 +103,27 @@ If any Council Decision requirement was fulfilled, append the entry to `docs/cou
 >    - Upon acceptance, central telemetry (`dashboard/fleet-data.json`, `ECOSYSTEM-DASHBOARD.md`) AND your local roadmap (`docs/mvp-100-plan.md`) are immediately updated.  
 >    - In `docs/mvp-100-plan.md`, the completed feature is checked `[x]` and the **Active Instruction Banner** is automatically advanced to the NEXT pending feature.  
 >    - On your next session or pre-flight check, you will immediately receive the advanced instruction, permanently terminating repetitive command-challenge cycles.
+
+---
+
+## 6. Mandatory Post-Test Telemetry Synchronization (COUNCIL-2026-008)
+
+> [!IMPORTANT]
+> **UNIVERSAL MANDATORY POST-TEST TELEMETRY INVARIANT**  
+> On every successful PR push or commit to the repo, after all automated testing is accepted (`npm test` / `vitest` / `unittest`), each application repository MUST run:
+> ```bash
+> python3 scripts/report-telemetry.py --auto
+> ```
+> Or explicitly record with verified credentials:
+> ```bash
+> python3 scripts/report-telemetry.py \
+>   --online true \
+>   --vercel-url "<canonical-production-url>" \
+>   --phase production \
+>   --completion 100 \
+>   --supabase-status connected \
+>   --summary "Production release verified live on Vercel edge and custom domain"
+> ```
+> This is automatically triggered via `npm run posttest` or `npm run telemetry:report`.
+> This guarantees that the Sovereign Control Plane dashboard always reflects ground-truth live production status, clears obsolete rehearsal blockers, and eliminates telemetry drift.
+

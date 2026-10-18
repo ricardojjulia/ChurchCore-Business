@@ -279,6 +279,35 @@
           "verification": "SQL migration verified against Supabase RLS security audit rules."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-008",
+      "title": "Executive Directive 2026-008: Universal Mandatory Post-Test Telemetry Synchronization Protocol",
+      "ratification_date": "2026-10-18",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-008.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-008-01",
+          "title": "Universal Post-Test Telemetry Synchronization Mandate",
+          "description": "On every successful PR push, merge, or commit to any repository in the ChurchCore ecosystem, after all automated testing is accepted, each repository must execute python3 scripts/report-telemetry.py --auto (or explicit flags) to sync verified status into docs/control-plane/telemetry.json.",
+          "verification": "Presence of npm run telemetry:report in package.json, posttest hook, and online status verified in docs/control-plane/telemetry.json."
+        },
+        {
+          "req_id": "REQ-008-02",
+          "title": "Autonomous Live Endpoint Probing & Blocker Clearance",
+          "description": "report-telemetry.py shall automatically probe canonical production domains (HTTP 200/3xx), automatically set is_online: true, clear obsolete rehearsal blockers, and set readiness_score_pct to 100 upon live confirmation.",
+          "verification": "Execution of python3 scripts/report-telemetry.py --auto returns exit code 0 and records ONLINE status."
+        }
+      ]
     }
   ]
 }
