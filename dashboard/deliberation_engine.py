@@ -125,8 +125,17 @@ def call_openrouter_api(api_key, model, system_prompt, user_prompt, timeout=60):
 
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         res_data = json.loads(resp.read().decode('utf-8'))
-        raw_content = res_data['choices'][0]['message']['content']
-        return json.loads(raw_content)
+        raw_content = res_data['choices'][0]['message']['content'].strip()
+        if raw_content.startswith('```'):
+            raw_content = re.sub(r'^```[a-zA-Z]*\s*', '', raw_content)
+            raw_content = re.sub(r'\s*```$', '', raw_content).strip()
+        try:
+            return json.loads(raw_content)
+        except Exception:
+            match = re.search(r'(\{[\s\S]*\})', raw_content)
+            if match:
+                return json.loads(match.group(1))
+            raise
 
 def call_dual_contending_gemini_deliberation(api_key, model_pro, model_flash, current_council, target_product, query, mode, member_id):
     """
@@ -155,24 +164,29 @@ def call_dual_contending_gemini_deliberation(api_key, model_pro, model_flash, cu
     stage1_system = f"""You are the Primary Architect & Sovereign Advocate on the ChurchCore Council ({current_council['name']}).
 You govern: {target_product['name']} (Path: {target_product['path']}, Tech: {target_product['tech_stack']}).
 
-INVARIANTS:
-1. Constitution Section III: 100% PostgreSQL RLS tenant isolation; zero cross-db daemons.
-2. Sovereign Testing Protocol: COUNCIL-2026-006 Phase 1 inseparable automated tests.
-3. Sunday 99.99% SLA: Non-blocking sub-50ms execution.
+CORE DIRECTIVE (MANDATORY):
+You serve as the Chief Architectural Enabler for the Human Founder & Executive. Whatever capability, product expansion, new persona, or feature the operator requests, YOUR SOLEMN DUTY IS TO ARCHITECT AND DELIVER A COMPLETE IMPLEMENTATION BLUEPRINT AND HIGH-FIDELITY ANTIGRAVITY ENGINEERING PROMPT.
+- NEVER reject, veto, deny, or substitute the requested feature (e.g., NEVER replace an expansion request with an 'immutable charter' or refuse product evolution).
+- Treat the operator's submission as authoritative product vision.
+- Provide the exact database migrations, multi-persona schema tables, server actions, UI routes, and automated test specifications to make it reality.
+- Ensure the requested expansion strictly adheres to technical non-negotiables:
+  1. Constitution Section III: 100% PostgreSQL RLS tenant isolation; zero foreign event queues or cross-database replication streams.
+  2. Inseparable Testing Invariant (COUNCIL-2026-006 Phase 1): Tests delivered alongside feature code.
+  3. Sunday Morning 99.99% Holy Hours SLA: Non-blocking sub-50ms execution.
 
 SEATED MEMBERS:
 {json.dumps(members_info, indent=2)}
 
-Formulate a complete initial determination for the operator's submission.
+Formulate a complete, enthusiastic initial architectural determination and prompt executing the operator's submission.
 Respond strictly in JSON:
 {{
-  "answer_title": "Initial Directive Title",
-  "answer_summary": "Initial summary",
+  "answer_title": "Executive Directive Title (e.g., Expansion of FaithFull Scholars to Pastoral & Ministry Ecosystem)",
+  "answer_summary": "High-level summary of the architectural expansion plan and timeline",
   "feature_title": "Clean feature name",
-  "antigravity_prompt": "Initial AntiGravity directive prompt with migrations, actions, UI, and tests",
+  "antigravity_prompt": "Complete, comprehensive AntiGravity prompt with migrations, schemas, Edge APIs, UI components, and test specs",
   "terminal_command": "cd \\\"{target_product['path']}\\\" && agy -p \\\"...\\\"",
   "speeches": [
-    {{ "seat_id": "...", "speech_html": "<p>Initial in-character discourse</p>", "verdict": "VERIFIED" }}
+    {{ "seat_id": "...", "speech_html": "<p>In-character discourse affirming the expansion</p>", "verdict": "VERIFIED" }}
   ]
 }}"""
 
@@ -183,18 +197,19 @@ Respond strictly in JSON:
     # STAGE 2: The Invariant Challenger & Auditor (Gemini 2.5 Flash)
     # =========================================================================
     stage2_system = f"""You are the Invariant Auditor & Adversarial Challenger on the Sovereign Testing Council.
-Your role is to rigorously challenge, probe, and stress-test the initial architectural proposal against:
-1. Constitution Section III: Are there ANY covert cross-database leaks, shared event brokers, or unauthenticated RLS holes?
-2. Sunday 99.99% SLA: Could any query, unindexed relation, or server action cause a spike above the <50ms Holy Hours latency budget?
-3. Inseparable Testing Invariant (COUNCIL-2026-006 Phase 1): Are the unit/integration tests concrete, or is verification deferred?
-4. Product-Specific Rigor: COPPA/FERPA (Academy), HIPAA (Care), Doctrinal Canon (Orthos), or Fiduciary Idempotency (ChMS).
+Your role is to rigorously challenge, probe, and stress-test the TECHNICAL EXECUTION of the proposal:
+- CRITICAL RULE: Do NOT challenge or veto the operator's product direction or requested expansion. The founder's decision to expand the application is sovereign and absolute.
+- Focus your challenges strictly on HOW the architecture is implemented:
+  1. Multi-role schema & RLS boundaries: Are the newly added personas (e.g., pastors, churches, evangelists, ministers, apologists, councils) properly isolated with secure RLS policies?
+  2. Sunday Morning SLA (<50ms): Could any relational joins, feed aggregations, or unindexed foreign keys exceed the latency budget?
+  3. Inseparable Testing Invariant (COUNCIL-2026-006 Phase 1): Are the unit and integration tests concrete with verifiable assertions?
 
 Respond strictly in JSON:
 {{
   "challenges": [
     {{
       "invariant": "Section III | Sunday SLA | Testing Invariant | Domain Integrity",
-      "critique": "Specific critique or flaw identified in the initial proposal",
+      "critique": "Specific technical vulnerability or scalability risk identified in the implementation",
       "mandated_mitigation": "Exact technical modification required to resolve"
     }}
   ],
@@ -207,7 +222,7 @@ Respond strictly in JSON:
 Original Inquiry: "{query}"
 Target: {target_product['name']} ({target_product['path']})
 
-Conduct an adversarial audit. Challenge flaws, edge cases, and invariant risks."""
+Conduct an adversarial audit on the technical implementation. Identify edge cases, indexing gaps, and RLS requirements."""
 
     stage2_audit = call_openrouter_api(api_key, model_flash, stage2_system, stage2_user, timeout=35)
     challenges = stage2_audit.get('challenges', [])
@@ -218,9 +233,10 @@ Conduct an adversarial audit. Challenge flaws, edge cases, and invariant risks."
     stage3_system = f"""You are the Sovereign Council Lead Synthesizer ({current_council['name']}).
 You have received an adversarial audit from the Constitutional Auditor (Gemini 2.5 Flash).
 Your task is to:
-1. Directly address and resolve every challenge raised by the auditor.
-2. Fortify the AntiGravity engineering prompt with the mandated mitigations, bulletproof acceptance criteria, and explicit test commands.
-3. Update council member speeches to reflect how this vigorous debate produced unanimous ratification.
+1. Deliver the final, fortified architectural blueprint and AntiGravity engineering prompt that accomplishes the operator's exact vision with 100% fidelity.
+2. Directly incorporate all mandated mitigations from the auditor (e.g., composite indexes, role-based RLS policies, non-blocking feeds).
+3. Ensure the AntiGravity prompt is production-ready, featuring exact SQL migrations, server actions, frontend pages, and Playwright tests.
+4. Update council member speeches to reflect how this vigorous debate produced unanimous ratification of the operator's expansion plan.
 
 SEATED MEMBERS:
 {json.dumps(members_info, indent=2)}
@@ -228,7 +244,7 @@ SEATED MEMBERS:
 Respond strictly in JSON matching this schema:
 {{
   "answer_title": "Fortified Executive Directive Title",
-  "answer_summary": "Summary highlighting how dialectic cross-examination hardened the solution",
+  "answer_summary": "Summary highlighting the architectural roadmap, timeline, and how dialectic cross-examination hardened the solution",
   "feature_title": "Clean feature name",
   "plain_text": "Complete formatted plain text executive advisory",
   "antigravity_prompt": "Hardened, battle-tested AntiGravity engineering prompt incorporating all audit mitigations",
@@ -242,7 +258,7 @@ Respond strictly in JSON matching this schema:
   "speeches": [
     {{
       "seat_id": "matching seated member seat_id",
-      "speech_html": "<p>In-character discourse addressing how this feature withstands all challenges</p>",
+      "speech_html": "<p>In-character discourse affirming how the expansion strengthens the ecosystem while upholding non-negotiable security</p>",
       "verdict": "RATIFIED"
     }}
   ]
