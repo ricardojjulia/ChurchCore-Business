@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!banner || !products || !products.length) return;
 
     const productPrimaryTasks = {
-      'churchcore-academy': 'OneRoster 1.2 CSV Worker & Pilot Seed Sequencing (Colegio Biblos)',
+      'churchcore-academy': 'Colegio Biblos Human Pilot Session (Phase 2 Testing Gate)',
       'churchcore-orthos': 'Audit PDF Preview CSP Whitelisting & Fund Balance Validator',
       'faithfull-scholars': 'Theological Faculty Monograph Indexing & Peer-Review Workflow',
       'churchcore-lms': 'Theological Student Certificate PDF Worker & AETH Course Catalog',
@@ -185,10 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
       'churchcore-chms': 'Finalize R1d Data Erasure Queue post-commit dispatch & Edge Crons'
     };
 
-    // Sort strictly from lowest completion (farthest behind) to highest
+    // Sort strictly from lowest completion (farthest behind) to highest.
+    // Products at 100% go to the end as Phase 1 complete!
     const sorted = [...products].sort((a, b) => {
       const pctA = a.mvp_status?.completion_pct || 0;
       const pctB = b.mvp_status?.completion_pct || 0;
+      if (pctA >= 100 && pctB < 100) return 1;
+      if (pctB >= 100 && pctA < 100) return -1;
       return pctA - pctB;
     });
 
@@ -211,21 +214,24 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="mvp-queue-grid">
         ${sorted.map((p, idx) => {
           const pct = p.mvp_status?.completion_pct || 80;
-          const rem = 100 - pct;
-          const isRank1 = idx === 0;
-          const task = productPrimaryTasks[p.product_id] || (p.next_steps && p.next_steps[0]) || 'Complete remaining feature backlog';
+          const rem = Math.max(0, 100 - pct);
+          const isComplete = pct >= 100;
+          const isRank1 = (idx === 0) && !isComplete;
+          const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || 'Complete remaining feature backlog';
           const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
 
           return `
-            <div class="mvp-queue-card ${isRank1 ? 'rank-1' : ''}">
+            <div class="mvp-queue-card ${isComplete ? 'mvp-card-complete' : (isRank1 ? 'rank-1' : '')}">
               <div>
                 <div class="mvp-card-top">
-                  <span class="mvp-rank-badge">#${idx + 1} Priority</span>
-                  <div class="mvp-card-pct">${pct}% <span>(${rem}% left)</span></div>
+                  <span class="mvp-rank-badge" style="${isComplete ? 'background: rgba(16, 185, 129, 0.2); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.4);' : ''}">
+                    ${isComplete ? '🟢 MVP 100% COMPLETE' : `#${idx + 1} Priority`}
+                  </span>
+                  <div class="mvp-card-pct">${pct}% <span>${isComplete ? '(Testing Gate)' : `(${rem}% left)`}</span></div>
                 </div>
                 <div class="mvp-card-name">${p.repo_name}</div>
                 <div class="mvp-card-task" title="${task}">
-                  <strong>Next Code Task:</strong> ${task}
+                  <strong>${isComplete ? 'Active Gate:' : 'Next Code Task:'}</strong> ${task}
                 </div>
               </div>
               <div class="mvp-card-actions">
@@ -255,9 +261,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const productPrimaryTasks = {
       'churchcore-academy': [
-        'OneRoster 1.2 CSV Worker & Pilot Seed Sequencing (Colegio Biblos)',
-        'Bilingual Spanish Student Gradebook & Attendance Engine',
-        'Universal AppSwitcher Navigation Header'
+        'Colegio Biblos uncoached participant session (Workstream C human gate)',
+        'Execute npm run verify:pilot-readiness & npm run verify',
+        'Production Vercel deployment remains owner-deferred pending pilot completion'
       ],
       'churchcore-orthos': [
         'Audit PDF Preview CSP Whitelisting in vercel.json',
@@ -289,6 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sorted = [...products].sort((a, b) => {
       const pctA = a.mvp_status?.completion_pct || 0;
       const pctB = b.mvp_status?.completion_pct || 0;
+      if (pctA >= 100 && pctB < 100) return 1;
+      if (pctB >= 100 && pctA < 100) return -1;
       return pctA - pctB;
     });
 
@@ -304,11 +312,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display: flex; gap: 12px;">
             <div style="text-align: right;">
               <div style="font-size: 11px; color: var(--text-dim);">AVERAGE MVP</div>
-              <div style="font-size: 18px; font-weight: 800; color: #38BDF8;">87%</div>
+              <div style="font-size: 18px; font-weight: 800; color: #38BDF8;">90%</div>
             </div>
             <div style="text-align: right;">
               <div style="font-size: 11px; color: var(--text-dim);">FLEET READINESS</div>
-              <div style="font-size: 18px; font-weight: 800; color: #10B981;">89%</div>
+              <div style="font-size: 18px; font-weight: 800; color: #10B981;">92%</div>
             </div>
           </div>
         </div>
@@ -333,17 +341,20 @@ document.addEventListener('DOMContentLoaded', () => {
         <tbody>
           ${sorted.map((p, idx) => {
             const pct = p.mvp_status?.completion_pct || 80;
-            const rem = 100 - pct;
-            const isRank1 = idx === 0;
+            const rem = Math.max(0, 100 - pct);
+            const isComplete = pct >= 100;
+            const isRank1 = (idx === 0) && !isComplete;
             const vUrl = p.online_status?.vercel_url || p.online_status?.custom_domain || 'N/A';
             const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
 
             return `
-              <tr style="${isRank1 ? 'background: rgba(239, 68, 68, 0.08);' : ''}">
-                <td style="font-weight: 800; color: ${isRank1 ? '#EF4444' : '#FBBF24'};">#${idx + 1}</td>
+              <tr style="${isComplete ? 'background: rgba(16, 185, 129, 0.05);' : (isRank1 ? 'background: rgba(239, 68, 68, 0.08);' : '')}">
+                <td style="font-weight: 800; color: ${isComplete ? '#10B981' : (isRank1 ? '#EF4444' : '#FBBF24')};">
+                  ${isComplete ? '🟢 Done' : `#${idx + 1}`}
+                </td>
                 <td><strong>${p.repo_name}</strong></td>
-                <td><strong style="color: #38BDF8;">${pct}%</strong></td>
-                <td><span style="color: ${rem >= 15 ? '#F87171' : '#FBBF24'}; font-weight: 700;">${rem}% left</span></td>
+                <td><strong style="color: ${isComplete ? '#10B981' : '#38BDF8'};">${pct}%</strong></td>
+                <td><span style="color: ${isComplete ? '#10B981' : (rem >= 15 ? '#F87171' : '#FBBF24')}; font-weight: 700;">${isComplete ? 'Testing Gate' : `${rem}% left`}</span></td>
                 <td><a href="${vUrl}" target="_blank" style="color: #60A5FA;">${vUrl.replace('https://', '')}</a></td>
                 <td>
                   <span class="status-badge ${p.online_status?.is_online ? 'online' : 'staging'}">
