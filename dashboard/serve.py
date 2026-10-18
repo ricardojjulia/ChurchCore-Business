@@ -13,6 +13,8 @@ import json
 import webbrowser
 import html
 import urllib.parse
+import threading
+import time
 from deliberation_engine import (
     handle_deliberation,
     get_engine_status,
@@ -23,6 +25,50 @@ from deliberation_engine import (
 PORT = 3333
 DASHBOARD_DIR = os.path.dirname(os.path.abspath(__file__))
 WORKSPACE_DIR = os.path.dirname(DASHBOARD_DIR)
+
+sys.path.insert(0, os.path.join(WORKSPACE_DIR, 'scripts'))
+import importlib.util
+sync_script = os.path.join(WORKSPACE_DIR, 'scripts', 'control-plane-sync.py')
+try:
+    spec = importlib.util.spec_from_file_location("control_plane_sync", sync_script)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    sync_control_plane = getattr(mod, "sync_control_plane", None)
+    get_edge_timestamps = getattr(mod, "get_edge_timestamps", None)
+except Exception as e:
+    print(f"[-] Warning: Failed to load control-plane-sync: {e}")
+    sync_control_plane = None
+    get_edge_timestamps = None
+
+class TelemetryWatcherThread(threading.Thread):
+    def __init__(self, interval=15):
+        super().__init__(daemon=True)
+        self.interval = interval
+        self.running = True
+        self.last_stamps = {}
+
+    def run(self):
+        if not get_edge_timestamps or not sync_control_plane:
+            return
+        time.sleep(3)  # brief initial delay
+        try:
+            self.last_stamps = get_edge_timestamps()
+        except Exception:
+            self.last_stamps = {}
+
+        while self.running:
+            time.sleep(self.interval)
+            try:
+                curr = get_edge_timestamps()
+                changed = [pid for pid, ts in curr.items() if self.last_stamps.get(pid) != ts]
+                if changed:
+                    print(f"\n[⚡ TELEMETRY WATCHER] Detected new incoming telemetry from: {', '.join(changed)}")
+                    self.last_stamps = curr
+                    sync_control_plane(verbose=False)
+                    print(f"[⚡ TELEMETRY WATCHER] Successfully digested incoming telemetry into fleet-data.json.\n")
+            except Exception as e:
+                pass
+
 
 DOSSIER_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -302,6 +348,54 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(resp_bytes)
             return
 
+        # Fleet Telemetry Ingestion & Status endpoints
+        if clean_path in ['/api/sync-telemetry', '/api/digest-telemetry']:
+            result = {'success': False}
+            if sync_control_plane:
+                try:
+                    payload = sync_control_plane(verbose=False)
+                    result = {
+                        'success': True,
+                        'message': 'Telemetry successfully digested across all 6 product pillars.',
+                        'generated_at': payload.get('generated_at') if payload else None,
+                        'summary': payload.get('summary') if payload else None
+                    }
+                except Exception as e:
+                    result = {'success': False, 'error': str(e)}
+            else:
+                result = {'success': False, 'error': 'Control plane sync engine not loaded'}
+            resp_bytes = json.dumps(result).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Content-Length', str(len(resp_bytes)))
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(resp_bytes)
+            return
+
+        if clean_path == '/api/fleet-status':
+            fleet_file = os.path.join(DASHBOARD_DIR, 'fleet-data.json')
+            status = {'status': 'unknown'}
+            if os.path.exists(fleet_file):
+                try:
+                    with open(fleet_file, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        status = {
+                            'status': 'ok',
+                            'generated_at': data.get('generated_at'),
+                            'summary': data.get('summary', {})
+                        }
+                except Exception as e:
+                    status = {'status': 'error', 'error': str(e)}
+            resp_bytes = json.dumps(status).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Content-Length', str(len(resp_bytes)))
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(resp_bytes)
+            return
+
         # Check if requesting markdown file
         if clean_path.endswith('.md'):
             file_path = self.translate_path(clean_path)
@@ -342,6 +436,30 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_POST(self):
         clean_path = self.path.split('?', 1)[0].split('#', 1)[0]
+        if clean_path in ['/api/sync-telemetry', '/api/digest-telemetry']:
+            result = {'success': False}
+            if sync_control_plane:
+                try:
+                    payload = sync_control_plane(verbose=False)
+                    result = {
+                        'success': True,
+                        'message': 'Telemetry successfully digested across all 6 product pillars.',
+                        'generated_at': payload.get('generated_at') if payload else None,
+                        'summary': payload.get('summary') if payload else None
+                    }
+                except Exception as e:
+                    result = {'success': False, 'error': str(e)}
+            else:
+                result = {'success': False, 'error': 'Control plane sync engine not loaded'}
+            resp_bytes = json.dumps(result).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Content-Length', str(len(resp_bytes)))
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(resp_bytes)
+            return
+
         if clean_path in ['/api/deliberate', '/api/save-config', '/api/test-connection']:
             try:
                 content_length = int(self.headers.get('Content-Length', 0))
@@ -396,6 +514,11 @@ def main():
     print(f"[+] Docs directory linked: {os.path.join(WORKSPACE_DIR, 'docs')}")
     print(f"[+] Local URL: {url}")
     print("=" * 70)
+
+    # Start continuous background telemetry watcher
+    watcher = TelemetryWatcherThread(interval=15)
+    watcher.start()
+    print("[+] Continuous telemetry watcher thread started (15s polling).")
     print("Press Ctrl+C to stop the server.\n")
 
     socketserver.TCPServer.allow_reuse_address = True

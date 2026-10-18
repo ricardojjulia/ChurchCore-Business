@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-18 17:33:36 UTC",
+  "generated_at": "2026-10-18 17:42:04 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -36,8 +36,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Executive Mission Control Cockpit",
       "cat_summary": "Serves the real-time glassmorphic dashboard and documentation dossier viewer at http://localhost:3333.",
       "cli_flags": [],
-      "size_bytes": 14015,
-      "line_count": 410
+      "size_bytes": 19552,
+      "line_count": 533
     },
     {
       "rel_path": "scripts/activate-product-repos.py",
@@ -110,8 +110,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Fleet Telemetry & Cockpit Aggregation",
       "cat_summary": "Ingests edge telemetry from all 6 product repositories and compiles the master ecosystem dashboard.",
       "cli_flags": [],
-      "size_bytes": 23019,
-      "line_count": 455
+      "size_bytes": 24479,
+      "line_count": 498
     },
     {
       "rel_path": "scripts/daily-fleet-briefing.py",

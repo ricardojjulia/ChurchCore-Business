@@ -2682,6 +2682,55 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
     initData();
   });
 
+  // 19.1 Telemetry Digest Trigger & Continuous Background Polling
+  window.triggerTelemetrySync = async function() {
+    const icon = document.getElementById('sync-telemetry-icon');
+    const label = document.getElementById('sync-telemetry-label');
+    if (icon) icon.style.animation = 'spin 1s linear infinite';
+    if (label) label.textContent = 'Syncing...';
+    try {
+      const resp = await fetch('/api/sync-telemetry', { method: 'POST' });
+      const data = await resp.json();
+      if (data.success) {
+        showToast('✓ Incoming telemetry digested from all 6 product pillars!');
+        await initData();
+      } else {
+        showToast('Telemetry digest notice: ' + (data.message || data.error || 'Done'));
+        await initData();
+      }
+    } catch (err) {
+      console.warn('API sync endpoint notice, refreshing local cache:', err);
+      showToast('Telemetry refreshed from local cache');
+      await initData();
+    } finally {
+      if (icon) icon.style.animation = '';
+      if (label) label.textContent = 'Sync Telemetry';
+    }
+  };
+
+  // Continuous Telemetry Pulse Listener (Polls server every 15s for edge telemetry changes)
+  let lastKnownFleetTime = null;
+  async function pollIncomingTelemetry() {
+    try {
+      const resp = await fetch('/api/fleet-status');
+      if (resp.ok) {
+        const status = await resp.json();
+        const genAt = status.generated_at || status.fleet_data_generated_at;
+        if (lastKnownFleetTime && genAt && genAt !== lastKnownFleetTime) {
+          console.log('[Telemetry Watcher] New edge telemetry detected. Refreshing dashboard...', genAt);
+          showToast('⚡ Incoming telemetry digested: Dashboard updated in real-time');
+          await initData();
+        }
+        if (genAt) {
+          lastKnownFleetTime = genAt;
+        }
+      }
+    } catch (e) {
+      // silent background failure fallback
+    }
+  }
+  setInterval(pollIncomingTelemetry, 15000);
+
   // ==========================================================================
   // 20. Evidence & Challenges Center Tab
   // ==========================================================================

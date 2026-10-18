@@ -283,23 +283,37 @@ def generate_dashboard(telemetry_list):
 
     return "\n".join(md)
 
-def main():
-    print("================================================================================")
-    print("   CHURCHCORE SOVEREIGN CONTROL PLANE: TELEMETRY AGGREGATION & SYNC             ")
-    print("================================================================================")
+def get_edge_timestamps():
+    timestamps = {}
+    for src in REPO_SOURCES:
+        for p in src["local_paths"]:
+            tpath = os.path.join(p, "docs", "control-plane", "telemetry.json")
+            if os.path.exists(tpath):
+                timestamps[src["product_id"]] = os.path.getmtime(tpath)
+                break
+    return timestamps
+
+def sync_control_plane(verbose=True):
+    if verbose:
+        print("================================================================================")
+        print("   CHURCHCORE SOVEREIGN CONTROL PLANE: TELEMETRY AGGREGATION & SYNC             ")
+        print("================================================================================")
     
     telemetry_data = []
     for src in REPO_SOURCES:
         data = load_telemetry(src)
         if data:
-            print(f"[+] Ingested telemetry for {src['name']} ({data['_source_type']}: {data['_source_path']})")
+            if verbose:
+                print(f"[+] Ingested telemetry for {src['name']} ({data['_source_type']}: {data['_source_path']})")
             telemetry_data.append(data)
         else:
-            print(f"[-] Could not find telemetry for {src['name']}")
+            if verbose:
+                print(f"[-] Could not find telemetry for {src['name']}")
 
     if not telemetry_data:
-        print("[!] No telemetry data found. Exiting.")
-        sys.exit(1)
+        if verbose:
+            print("[!] No telemetry data found. Exiting.")
+        return None
 
     dashboard_content = generate_dashboard(telemetry_data)
     with open(DASHBOARD_FILE, "w") as f:
@@ -429,7 +443,8 @@ def main():
                 with open(presos_json) as pjf:
                     fleet_payload["presos"] = json.load(pjf).get("decks", [])
     except Exception as pe:
-        print(f"[-] Warning: Failed to refresh presentation decks: {pe}")
+        if verbose:
+            print(f"[-] Warning: Failed to refresh presentation decks: {pe}")
 
     # Automatically refresh Python Automation Catalog
     try:
@@ -437,7 +452,8 @@ def main():
         if os.path.exists(catalog_script):
             subprocess.run([sys.executable, catalog_script], check=True, stdout=subprocess.DEVNULL)
     except Exception as ce:
-        print(f"[-] Warning: Failed to refresh Python automation catalog: {ce}")
+        if verbose:
+            print(f"[-] Warning: Failed to refresh Python automation catalog: {ce}")
 
     with open(json_path, "w") as f:
         json.dump(fleet_payload, f, indent=2)
@@ -445,11 +461,38 @@ def main():
     with open(js_path, "w") as f:
         f.write("window.CHURCHCORE_FLEET_DATA = " + json.dumps(fleet_payload, indent=2) + ";\n")
 
-    print(f"\n[+] Master Dashboard compiled successfully: {DASHBOARD_FILE}")
-    print(f"[+] UI Fleet Data generated: {json_path} & {js_path}")
-    print(f"    Total Products Tracked: {len(telemetry_data)}")
-    print(f"    Online in Production: {sum(1 for t in telemetry_data if t['online_status']['is_online'])} / {len(telemetry_data)}")
-    print("================================================================================\n")
+    if verbose:
+        print(f"\n[+] Master Dashboard compiled successfully: {DASHBOARD_FILE}")
+        print(f"[+] UI Fleet Data generated: {json_path} & {js_path}")
+        print(f"    Total Products Tracked: {len(telemetry_data)}")
+        print(f"    Online in Production: {sum(1 for t in telemetry_data if t['online_status']['is_online'])} / {len(telemetry_data)}")
+        print("================================================================================\n")
+
+    return fleet_payload
+
+def watch_telemetry(poll_interval=10):
+    import time
+    print(f"[⚡] Starting Sovereign Control Plane Telemetry Watcher daemon (Polling every {poll_interval}s)...")
+    last_stamps = get_edge_timestamps()
+    sync_control_plane(verbose=True)
+    try:
+        while True:
+            time.sleep(poll_interval)
+            current_stamps = get_edge_timestamps()
+            changed = [pid for pid, ts in current_stamps.items() if last_stamps.get(pid) != ts]
+            if changed:
+                print(f"\n[⚡ DETECTED] New incoming telemetry from: {', '.join(changed)}")
+                last_stamps = current_stamps
+                sync_control_plane(verbose=True)
+    except KeyboardInterrupt:
+        print("\n[-] Telemetry watcher stopped.")
+
+def main():
+    if "--watch" in sys.argv:
+        watch_telemetry()
+    else:
+        sync_control_plane(verbose=True)
 
 if __name__ == "__main__":
     main()
+
