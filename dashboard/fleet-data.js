@@ -1,13 +1,13 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-18T17:42:04.447344+00:00",
+  "generated_at": "2026-10-18T17:49:27.461761+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
     "average_readiness_score": 100,
     "average_completion_pct": 98,
     "sovereign_data_isolation": true,
-    "total_tasks": 21,
-    "done_tasks": 12
+    "total_tasks": 23,
+    "done_tasks": 14
   },
   "products": [
     {
@@ -770,6 +770,36 @@ window.CHURCHCORE_FLEET_DATA = {
       "description": "Database migration and RLS security hardening expanding the platform to pastors, churches, evangelists, ministers, apologists, and councils with sub-50ms query SLAs.",
       "verification": "supabase/migrations/20261018140000_community_ecosystem.sql with passing RLS audit",
       "updated_at": "2026-10-18T17:00:00Z"
+    },
+    {
+      "task_id": "TSK-GOV-008",
+      "product_id": "churchcore-business",
+      "title": "Universal Sovereign Telemetry Reporting & Real-Time Digest Protocol (COUNCIL-2026-008)",
+      "status": "done",
+      "directionality": "CONTROL_PLANE",
+      "priority": "P0_CRITICAL",
+      "category": "governance",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "COUNCIL-2026-008 (commit 9dfcc2d)",
+      "target_milestone": "Sprint Q4-M1",
+      "description": "Mandated universal edge telemetry auto-reporting via posttest hooks across all 6 product pillars; implemented TelemetryWatcherThread daemon in serve.py, continuous --watch sync engine, REST ingestion endpoints, and dashboard real-time pulse listener.",
+      "verification": "scripts/report-telemetry.py --auto passes across all 6 repos; control-plane-sync.py syncs in 1.4s; curl /api/fleet-status returns HTTP 200 with 6/6 online",
+      "updated_at": "2026-10-18T17:45:00Z"
+    },
+    {
+      "task_id": "TSK-ACAD-002",
+      "product_id": "churchcore-academy",
+      "title": "ChurchCore Academy Production Vercel Edge Alignment & Launch Readiness Proof",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "deployment",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "commit 9cf2246 (branch fix/trust-badge-security-url)",
+      "target_milestone": "v0.10.0",
+      "description": "Cleared obsolete pilot rehearsal blockers; verified live edge production deployment on www.churchcoreacademy.io and church-core-academy.vercel.app with Supabase connected and 100% Launch Readiness.",
+      "verification": "HTTP/2 200 OK probe on https://www.churchcoreacademy.io; telemetry.json verified is_online=true, vercel_status=deployed, readiness_score_pct=100",
+      "updated_at": "2026-10-18T17:35:00Z"
     }
   ],
   "plans": [
@@ -2042,7 +2072,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-18 17:42:04 UTC",
+      "last_synced": "2026-10-18 17:49:27 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2150,7 +2180,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 17:42:04 UTC",
+      "last_synced": "2026-10-18 17:49:27 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2258,7 +2288,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-18 17:42:04 UTC",
+      "last_synced": "2026-10-18 17:49:27 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2366,7 +2396,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-18 17:42:04 UTC",
+      "last_synced": "2026-10-18 17:49:27 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2474,7 +2504,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.1.0",
-      "last_synced": "2026-10-18 17:42:04 UTC",
+      "last_synced": "2026-10-18 17:49:27 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2582,7 +2612,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-18 17:42:04 UTC",
+      "last_synced": "2026-10-18 17:49:27 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2690,7 +2720,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 17:42:04 UTC",
+      "last_synced": "2026-10-18 17:49:27 UTC",
       "slides": [
         {
           "slide_num": 1,

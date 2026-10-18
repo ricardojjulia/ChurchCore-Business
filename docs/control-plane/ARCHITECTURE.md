@@ -32,7 +32,7 @@ flowchart TD
             C2["Next.js v0.47.0<br>🌐 www.churchcorelms.io<br>🗄️ Supabase prod-lms-db<br>🛡️ 72 Tables • RLS Enforced"]
         end
         subgraph P3 ["ChurchCore Academy"]
-            C3["Next.js v0.10.0<br>🌐 www.churchcoreacademy.io<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced"]
+            C3["Next.js v0.10.0<br>🌐 www.churchcoreacademy.io<br>🗄️ Supabase Connected<br>🛡️ 152 Tables • RLS Enforced"]
         end
         subgraph P4 ["ChurchCore Care"]
             C4["React 18 / Express v7.0.0<br>🌐 www.churchcorecare.io<br>🗄️ Supabase prod-care-db<br>🛡️ 84 Tables • Deny-All RLS"]
@@ -47,6 +47,11 @@ flowchart TD
 
     DISPATCH --> P1 & P2 & P3 & P4 & P5 & P6
     P1 & P2 & P3 & P4 & P5 & P6 --> REPORT
+```
+
+### Visual Architecture: Sovereign Governance Model & Telemetry Pipeline
+
+![ChurchCore Sovereign Control Plane Governance Model](../assets/sovereign-governance-model.jpg)
 
 ---
 
@@ -146,6 +151,12 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
      - **Pre-Flight Synchronization**: Records acceptance in edge `docs/council/ACKNOWLEDGMENTS.md` and `docs/control-plane/telemetry.json`.
   4. **Zero Infinite Loops**: When the next agent or human developer opens the edge repo or runs pre-flight, they immediately receive the advanced instruction. Repetitive command-challenge cycles are permanently prevented.
 
+### Pattern 7: Autonomous Edge Telemetry Ingestion & Real-Time Digest Engine (COUNCIL-2026-008) — *Active*
+- **Mechanism**: Integrated three-tier continuous telemetry pipeline across edge product repositories, control plane background daemon, and executive cockpit UI:
+  - **Edge Automated Reporting**: All 6 sovereign product repositories include `scripts/report-telemetry.py` running in `--auto` mode on `"posttest"` and `"verify"`. On each successful test suite completion or git commit, the edge autonomously probes its live production endpoint via HTTP, verifies edge deployment status, and writes `docs/control-plane/telemetry.json`.
+  - **Control Plane Watcher Daemon**: [`scripts/control-plane-sync.py`](file:///Users/rjulia/ChurchCore-Business/scripts/control-plane-sync.py) features a file modification timestamp delta engine and a `--watch` mode. In addition, [`dashboard/serve.py`](file:///Users/rjulia/ChurchCore-Business/dashboard/serve.py) hosts `TelemetryWatcherThread(interval=15)` continuously monitoring edge timestamps and automatically compiling `fleet-data.json` without operator intervention.
+  - **Real-Time Client Pulse & One-Click Digest**: [`dashboard/app.js`](file:///Users/rjulia/ChurchCore-Business/dashboard/app.js) executes `pollIncomingTelemetry()` every 15 seconds against `/api/fleet-status`. If new incoming edge telemetry is digested, the UI re-renders immediately with a live toast notification. Operators can also click the `Sync Telemetry` button (`POST /api/sync-telemetry`) for instant on-demand fleet reconciliation.
+
 ---
 
 ## 4. The Sacred Sovereignty Invariant: No Customer Data Propagation
@@ -164,6 +175,9 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
 | [`dashboard/`](file:///Users/rjulia/ChurchCore-Business/dashboard/) | Executive Mission Control Web UI (Port 3333 Cockpit with Daily MVP Queue & Modal) |
 | [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md) | Canonical daily progress report & morning priority work queue |
 | [`docs/council/COUNCIL-2026-005.md`](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-005.md) | Directive COUNCIL-2026-005: 100% MVP Feature Completion & Testing Gating |
+| [`docs/council/COUNCIL-2026-008.md`](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-008.md) | Directive COUNCIL-2026-008: Sovereign Fleet Autonomous Telemetry Reporting & Real-Time Digest Protocol |
+| [`docs/assets/sovereign-governance-model.jpg`](file:///Users/rjulia/ChurchCore-Business/docs/assets/sovereign-governance-model.jpg) | High-Resolution Infographic of the ChurchCore Sovereign Control Plane Governance Model |
+| [`docs/control-plane/tasks.json`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/tasks.json) | Central Ecosystem Project Management and Directionality Metadata Base |
 | [`docs/control-plane/PYTHON-SCRIPTS-CATALOG.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/PYTHON-SCRIPTS-CATALOG.md) | Comprehensive Python automation catalog and self-documenting CLI registry |
 | [`docs/control-plane/ARCHITECTURE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/ARCHITECTURE.md) | Complete architectural model & AI connection strategy |
 | [`docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md`](file:///Users/rjulia/ChurchCore-Business/docs/control-plane/CONTROL-PLANE-AND-AGY-GUIDE.md) | Master Operations Manual & AgY CLI Tutorial |
