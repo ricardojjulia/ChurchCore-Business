@@ -170,7 +170,10 @@ window.CHURCHCORE_FLEET_DATA = {
         "supabase_project_ref": "pending-provisioning",
         "readiness_assessment": {
           "readiness_score_pct": 95,
-          "blockers": [],
+          "blockers": [
+            "Admissions, enrollment-conversion, and LLIS-consent RLS verification commands remain blocked by local-role privileges pending Academy-scoped security review",
+            "Powered by ChurchCore trust badge remains unmerged in Academy PR #250"
+          ],
           "next_required_actions": [
             "Conduct Colegio Biblos participant-browser login and uncoached session (Workstream C human gate)",
             "Execute npm run verify:pilot-readiness",
@@ -189,7 +192,6 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
-        "feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)",
         "Reconcile control-plane governance evidence (#249) (7fcbe31)",
         "Record Colegio Biblos local pilot preparation (#248) (bed47c2)",
         "Approve Colegio Biblos local pilot charter (#247) (f44c6b7)",
@@ -220,11 +222,10 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
           "COUNCIL-2026-004",
-          "COUNCIL-2026-005",
-          "COUNCIL-2026-006"
+          "COUNCIL-2026-005"
         ],
-        "brand_house_compliant": true,
-        "sovereign_db_isolation_verified": true
+        "brand_house_compliant": false,
+        "sovereign_db_isolation_verified": false
       },
       "_source_path": "/Users/rjulia/ChurchCore Academy/docs/control-plane/telemetry.json",
       "_source_type": "local"
