@@ -11,6 +11,7 @@ Runs automatically on fleet sync and daily briefings.
 import os
 import sys
 import ast
+import json
 import glob
 from datetime import datetime, timezone
 
@@ -190,8 +191,28 @@ def generate_catalog():
     with open(OUTPUT_MD, "w", encoding="utf-8") as f:
         f.write(content)
 
+    # Also export JSON and JS for the web dashboard UI
+    json_path = os.path.join(DASHBOARD_DIR, "scripts-data.json")
+    js_path = os.path.join(DASHBOARD_DIR, "scripts-data.js")
+    
+    catalog_payload = {
+        "generated_at": now_iso,
+        "total_scripts": len(analyzed),
+        "categories": list(categories.keys()),
+        "scripts": analyzed
+    }
+    
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(catalog_payload, f, indent=2)
+        
+    with open(js_path, "w", encoding="utf-8") as f:
+        f.write("/** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */\n")
+        f.write(f"window.CHURCHCORE_SCRIPTS_DATA = {json.dumps(catalog_payload, indent=2)};\n")
+
     print(f"[+] Python automation catalog generated successfully:")
     print(f"    File: {OUTPUT_MD}")
+    print(f"    UI JSON: {json_path}")
+    print(f"    UI JS: {js_path}")
     print(f"    Total Scripts Cataloged: {len(analyzed)}")
     return OUTPUT_MD
 

@@ -2516,6 +2516,140 @@ OPERATIONAL DIRECTIVES:
     }
   }
 
+  // 3.19 Render Python Scripts Catalog Tab
+  function renderScriptsTab(scripts) {
+    if (!scripts || !scripts.length) {
+      if (window.CHURCHCORE_SCRIPTS_DATA && window.CHURCHCORE_SCRIPTS_DATA.scripts) {
+        scripts = window.CHURCHCORE_SCRIPTS_DATA.scripts;
+      }
+    }
+    if (!scripts || !scripts.length) return;
+
+    const countBadge = document.getElementById('scripts-count-badge');
+    const tabBadge = document.getElementById('tab-scripts-badge');
+    if (countBadge) countBadge.textContent = `🟢 ${scripts.length} Tools Registered`;
+    if (tabBadge) tabBadge.textContent = scripts.length;
+
+    const grid = document.getElementById('scripts-catalog-grid');
+    if (!grid) return;
+
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    function filterAndRender() {
+      const filtered = scripts.filter(s => {
+        const matchesCat = activeCategory === 'all' || s.category === activeCategory;
+        const q = searchQuery.toLowerCase().trim();
+        const matchesQuery = !q || 
+          s.rel_path.toLowerCase().includes(q) || 
+          s.title.toLowerCase().includes(q) || 
+          s.description.toLowerCase().includes(q) ||
+          (s.cli_flags && s.cli_flags.some(([flag, desc]) => flag.toLowerCase().includes(q) || desc.toLowerCase().includes(q)));
+        return matchesCat && matchesQuery;
+      });
+
+      if (!filtered.length) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: rgba(30, 41, 59, 0.4); border-radius: 12px; border: 1px dashed var(--border-subtle); color: var(--text-muted);">
+            <div style="font-size: 28px; margin-bottom: 8px;">🔍</div>
+            <div style="font-weight: 700; color: #FFF; font-size: 15px;">No Automation Scripts Match Your Filter</div>
+            <div style="font-size: 12px; margin-top: 4px;">Try searching for a different keyword or selecting "All (${scripts.length})".</div>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(s => {
+        const cmd = `python3 ${s.rel_path}`;
+        const flagsHtml = s.cli_flags && s.cli_flags.length ? `
+          <div style="margin-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 10px;">
+            <div style="font-size: 10px; font-weight: 800; color: #94A3B8; margin-bottom: 6px; letter-spacing: 0.5px;">CLI ARGUMENTS & FLAGS:</div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              ${s.cli_flags.map(([flag, desc]) => `
+                <div style="font-size: 11px; display: flex; gap: 6px; align-items: baseline;">
+                  <code style="background: rgba(0, 0, 0, 0.4); padding: 1px 5px; border-radius: 4px; color: #38BDF8; font-weight: 600; white-space: nowrap;">${escapeHtml(flag)}</code>
+                  <span style="color: #94A3B8; font-size: 11px;">${escapeHtml(desc || '')}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : '';
+
+        return `
+          <div class="kpi-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 18px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-subtle); position: relative;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
+                <span style="font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: rgba(56, 189, 248, 0.15); color: #38BDF8; letter-spacing: 0.3px;">
+                  ${escapeHtml(s.category)}
+                </span>
+                <span style="font-size: 10px; color: var(--text-dim); font-family: monospace;">
+                  ${s.line_count} lines • ${(s.size_bytes / 1024).toFixed(1)} KB
+                </span>
+              </div>
+              <div style="font-size: 15px; font-weight: 700; color: #FFF; font-family: var(--font-heading); margin-bottom: 4px;">
+                ${escapeHtml(s.title)}
+              </div>
+              <div style="font-size: 11px; color: var(--gold-400); font-family: monospace; margin-bottom: 10px;">
+                ${escapeHtml(s.rel_path)}
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px;">
+                ${escapeHtml(s.description || s.cat_summary || '')}
+              </div>
+            </div>
+
+            <div>
+              <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; padding: 8px 10px; display: flex; justify-content: space-between; align-items: center; gap: 6px;">
+                <code style="font-size: 11px; color: #10B981; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${cmd}</code>
+                <button class="btn btn-secondary" style="font-size: 10px; padding: 3px 8px; white-space: nowrap;" onclick="navigator.clipboard.writeText('${cmd}'); alert('Copied command to clipboard: ${cmd}');">
+                  📋 Copy
+                </button>
+              </div>
+              ${flagsHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Set up filter chips
+    document.querySelectorAll('#scripts-category-filters [data-script-filter]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('#scripts-category-filters [data-script-filter]').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCategory = chip.dataset.scriptFilter;
+        filterAndRender();
+      });
+    });
+
+    // Set up search box
+    const searchInput = document.getElementById('scripts-search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        filterAndRender();
+      });
+    }
+
+    // Refresh button
+    document.getElementById('btn-refresh-scripts')?.addEventListener('click', () => {
+      filterAndRender();
+      alert('Rescanned Python automation tools! 12 tools active.');
+    });
+
+    // Top-bar Quick Access Button
+    document.getElementById('btn-open-scripts')?.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      const tabBtn = document.querySelector('.tab-btn[data-tab="tab-scripts"]');
+      const tabPane = document.getElementById('tab-scripts');
+      if (tabBtn) tabBtn.classList.add('active');
+      if (tabPane) tabPane.classList.add('active');
+      tabPane?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    filterAndRender();
+  }
+
   // Master Render
   function renderDashboard(data) {
     renderKPIs(data);
@@ -2534,6 +2668,7 @@ OPERATIONAL DIRECTIVES:
     setupCliGenerator();
     renderManualTab();
     renderPresosTab(data.presos || (window.CHURCHCORE_PRESOS_DATA ? window.CHURCHCORE_PRESOS_DATA.decks : []));
+    renderScriptsTab(data.scripts || (window.CHURCHCORE_SCRIPTS_DATA ? window.CHURCHCORE_SCRIPTS_DATA.scripts : []));
   }
 
   initData();

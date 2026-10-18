@@ -39,6 +39,9 @@
         <button id="btn-open-mvp-report" class="btn btn-secondary" style="border-color: rgba(251, 191, 36, 0.4); color: #FBBF24;" title="Open Daily MVP 100% Progress Report & Priority Action Queue">
           📊 Daily MVP Report
         </button>
+        <button id="btn-open-scripts" class="btn btn-secondary" style="border-color: rgba(56, 189, 248, 0.4); color: #38BDF8;" title="Open Python Automation Scripts Catalog (12 Tools)">
+          🐍 Python Scripts (12)
+        </button>
         <button id="btn-open-help" class="btn btn-secondary" title="Open Complete Control Plane & AgY Operations Manual">
           📚 Manual & AgY Academy
         </button>
@@ -200,6 +203,14 @@
         </svg>
         <span class="tab-label">Presos</span>
         <span class="tab-badge badge-gold" id="tab-presos-badge">7</span>
+      </button>
+
+      <button class="tab-btn highlight-gold-tab" data-tab="tab-scripts" data-tooltip="Python Automation Scripts Catalog (12 Tools)" aria-label="Python Scripts Catalog">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+        </svg>
+        <span class="tab-label">Scripts</span>
+        <span class="tab-badge badge-gold" id="tab-scripts-badge">12</span>
       </button>
     </nav>
 
@@ -1067,6 +1078,50 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
       </div>
     </section>
 
+    <!-- TAB: PYTHON AUTOMATION SCRIPTS CATALOG -->
+    <section id="tab-scripts" class="tab-content">
+      <div class="section-hero">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2>🐍 Python Automation Scripts Catalog</h2>
+            <p>Self-documenting registry of all 12 sovereign automation tools, maintenance daemons, and governance engines across the ecosystem.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="preso-chip green" id="scripts-count-badge">🟢 12 Tools Registered</span>
+            <button id="btn-refresh-scripts" class="btn btn-secondary" style="padding: 8px 14px; font-size: 12px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Rescan Scripts
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-bar" style="margin-bottom: 20px;">
+        <div class="filter-group" id="scripts-category-filters">
+          <span class="filter-label">Category:</span>
+          <button class="filter-chip active" data-script-filter="all">All (12)</button>
+          <button class="filter-chip" data-script-filter="Reporting & Fleet Briefings">Reporting & Briefings</button>
+          <button class="filter-chip" data-script-filter="Fleet Telemetry & Cockpit Aggregation">Fleet Telemetry</button>
+          <button class="filter-chip" data-script-filter="Governance Manifest Discovery">Governance</button>
+          <button class="filter-chip" data-script-filter="Autonomous Edge Challenges">Challenges & Proofs</button>
+          <button class="filter-chip" data-script-filter="Marketing & Business Presentations">Marketing & Presos</button>
+        </div>
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="scripts-search-input" placeholder="Search scripts, CLI flags, or file paths...">
+        </div>
+      </div>
+
+      <!-- Scripts Grid Container -->
+      <div id="scripts-catalog-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bottom-footer">
       <div>ChurchCore Sovereign Control Plane • Powered by Google Antigravity & DeepMind Advanced Agentic Systems</div>
@@ -1239,6 +1294,7 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
   <!-- Load Static Fallback Data First -->
   <script src="fleet-data.js?v=20261017d"></script>
   <script src="presos-data.js?v=20261017d"></script>
+  <script src="scripts-data.js?v=20261017d"></script>
   <!-- Main Application Script -->
   <script src="app.js?v=20261017d"></script>
 </body>
