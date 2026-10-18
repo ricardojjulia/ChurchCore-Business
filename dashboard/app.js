@@ -171,8 +171,82 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chipStaging) chipStaging.textContent = `Staging Review (${stagingCount})`;
   }
 
+  // 3.5 Render MVP 100% Work Queue Priority Banner
+  function renderMvpWorkQueueBanner(products) {
+    const banner = document.getElementById('mvp-work-queue-banner');
+    if (!banner || !products || !products.length) return;
+
+    const productPrimaryTasks = {
+      'churchcore-academy': 'OneRoster 1.2 CSV Worker & Pilot Seed Sequencing (Colegio Biblos)',
+      'churchcore-orthos': 'Audit PDF Preview CSP Whitelisting & Fund Balance Validator',
+      'faithfull-scholars': 'Theological Faculty Monograph Indexing & Peer-Review Workflow',
+      'churchcore-lms': 'Theological Student Certificate PDF Worker & AETH Course Catalog',
+      'churchcore-care': 'Merge Faithful Workflows branch & Translation Worker container',
+      'churchcore-chms': 'Finalize R1d Data Erasure Queue post-commit dispatch & Edge Crons'
+    };
+
+    // Sort strictly from lowest completion (farthest behind) to highest
+    const sorted = [...products].sort((a, b) => {
+      const pctA = a.mvp_status?.completion_pct || 0;
+      const pctB = b.mvp_status?.completion_pct || 0;
+      return pctA - pctB;
+    });
+
+    banner.innerHTML = `
+      <div class="mvp-banner-header">
+        <div class="mvp-banner-title-group">
+          <h3>
+            <span>🎯 Daily MVP 100% Action Priority Queue</span>
+            <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(251, 191, 36, 0.15); color: #FBBF24; font-weight: 600;">COUNCIL-2026-005 GATING</span>
+          </h3>
+          <p>Strict Phased Execution: <strong>Phase 1 (100% Feature Complete)</strong> ➔ <strong>Phase 2 (Comprehensive Testing)</strong> ➔ <strong>Phase 3 (Vercel Deploy)</strong>. Connect and work from #1 downward.</p>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <a href="/docs/reports/DAILY-MVP-PROGRESS-REPORT.md" target="_blank" class="btn btn-gold" style="font-size: 11px; padding: 6px 12px; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+            📄 View Full Daily Report
+          </a>
+        </div>
+      </div>
+
+      <div class="mvp-queue-grid">
+        ${sorted.map((p, idx) => {
+          const pct = p.mvp_status?.completion_pct || 80;
+          const rem = 100 - pct;
+          const isRank1 = idx === 0;
+          const task = productPrimaryTasks[p.product_id] || (p.next_steps && p.next_steps[0]) || 'Complete remaining feature backlog';
+          const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
+
+          return `
+            <div class="mvp-queue-card ${isRank1 ? 'rank-1' : ''}">
+              <div>
+                <div class="mvp-card-top">
+                  <span class="mvp-rank-badge">#${idx + 1} Priority</span>
+                  <div class="mvp-card-pct">${pct}% <span>(${rem}% left)</span></div>
+                </div>
+                <div class="mvp-card-name">${p.repo_name}</div>
+                <div class="mvp-card-task" title="${task}">
+                  <strong>Next Code Task:</strong> ${task}
+                </div>
+              </div>
+              <div class="mvp-card-actions">
+                <span style="font-size: 10px; color: ${p.online_status?.is_online ? '#10B981' : '#F59E0B'}; font-weight: 600;">
+                  ● ${p.online_status?.is_online ? 'Vercel Prod' : 'Vercel Preview'}
+                </span>
+                <button class="btn-queue-action" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command for ${p.repo_name} to clipboard!');">
+                  📋 Copy cd Cmd
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
   // 4. Render Fleet Grid
   function renderFleetGrid(products) {
+    renderMvpWorkQueueBanner(products);
+
     const container = document.getElementById('fleet-grid-container');
     if (!container) return;
     container.innerHTML = '';
