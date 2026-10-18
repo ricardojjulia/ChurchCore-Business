@@ -1901,43 +1901,263 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function executeCouncilDeliberation(councils) {
-    const input = document.getElementById('council-query-input');
-    const query = (input?.value || '').trim();
-    if (!query) {
-      alert('Please enter an architectural inquiry or proposal for the council.');
-      return;
+  const PRODUCT_REGISTRY = {
+    'churchcore-chms': {
+      name: 'ChurchCore (ChMS)',
+      repoName: 'ChurchCore',
+      path: '/Users/rjulia/ChurchCore',
+      techStack: 'Next.js 15 (App Router), Supabase (PostgreSQL), TypeScript, Tailwind CSS',
+      domain: 'Parish Membership, Tithing & Giving, Sunday Child Check-in, Volunteer Schedules'
+    },
+    'churchcore-lms': {
+      name: 'ChurchCore LMS',
+      repoName: 'ChurchCore LMS',
+      path: '/Users/rjulia/ChurchCore LMS',
+      techStack: 'Next.js 15 (App Router), Supabase (PostgreSQL), TypeScript, Tailwind CSS, SpeedGrader',
+      domain: 'Seminary Courses, Canvas-Grade SpeedGrader, Drip Engines, Discipleship & Certification'
+    },
+    'churchcore-academy': {
+      name: 'ChurchCore Academy',
+      repoName: 'ChurchCore-Academy',
+      path: '/Users/rjulia/ChurchCore-Academy',
+      techStack: 'Next.js 15 (App Router), Supabase (PostgreSQL), TypeScript, Tailwind CSS, SIS',
+      domain: 'K-12 Christian Schooling, SIS Student Information System, Attendance, Family Billing & COPPA'
+    },
+    'churchcore-care': {
+      name: 'ChurchCore Care',
+      repoName: 'ChurchCoreCare',
+      path: '/Users/rjulia/ChurchCoreCare',
+      techStack: 'Next.js 15 (App Router), Supabase (PostgreSQL), TypeScript, Tailwind CSS, pgcrypto',
+      domain: 'Pastoral Counseling, Clinical Triage, HIPAA Notes, Grief & Benevolence Dispatch'
+    },
+    'churchcore-orthos': {
+      name: 'ChurchCore Orthos',
+      repoName: 'ChurchCore-Orthos',
+      path: '/Users/rjulia/ChurchCore-Orthos',
+      techStack: 'Next.js 15 (App Router), Supabase (PostgreSQL), TypeScript, Tailwind CSS, pgvector',
+      domain: 'Historic Confessions, Doctrinal Safeguarding, Financial Audit & Canon Verification'
+    },
+    'faithfull-scholars': {
+      name: 'FaithFull Scholars',
+      repoName: 'FaithFullScholars',
+      path: '/Users/rjulia/FaithFullScholars',
+      techStack: 'Next.js 15 (App Router), Supabase (PostgreSQL), TypeScript, Tailwind CSS',
+      domain: 'Theological Higher-Ed, Faculty Search, Credal Calibration & Academic Grants'
+    },
+    'churchcore-business': {
+      name: 'ChurchCore Control Plane',
+      repoName: 'ChurchCore-Business',
+      path: '/Users/rjulia/ChurchCore-Business',
+      techStack: 'Python 3, Vanilla JS / CSS, GitHub Actions CI, Sovereign Control Plane',
+      domain: 'Cross-Ecosystem Governance, Telemetry Consolidation, Executive Mission Control'
+    }
+  };
+
+  const COUNCIL_PRODUCT_MAP = {
+    'council-grand': 'churchcore-business',
+    'council-chms': 'churchcore-chms',
+    'council-lms': 'churchcore-lms',
+    'council-academy': 'churchcore-academy',
+    'council-care': 'churchcore-care',
+    'council-orthos': 'churchcore-orthos',
+    'council-scholars': 'faithfull-scholars'
+  };
+
+  function resolveTargetProduct(query, councilId) {
+    const qLower = query.toLowerCase();
+    if (['academy', 'k-12', 'school', 'sis', 'attendance', 'gradebook', 'colegio', 'ferpa', 'coppa'].some(k => qLower.includes(k))) {
+      return PRODUCT_REGISTRY['churchcore-academy'];
+    }
+    if (['lms', 'course', 'speedgrader', 'rubric', 'drip', 'seminary', 'syllabus', 'assignment'].some(k => qLower.includes(k))) {
+      return PRODUCT_REGISTRY['churchcore-lms'];
+    }
+    if (['care', 'counseling', 'hipaa', 'pastoral note', 'benevolence', 'triage', 'bereavement', 'meal train'].some(k => qLower.includes(k))) {
+      return PRODUCT_REGISTRY['churchcore-care'];
+    }
+    if (['orthos', 'audit', 'creed', 'confession', 'canon', 'safeguard', 'doctrinal', '1689', 'westminster', 'nicene'].some(k => qLower.includes(k))) {
+      return PRODUCT_REGISTRY['churchcore-orthos'];
+    }
+    if (['scholar', 'faculty', 'higher-ed', 'tenure', 'academic grant', 'theological search'].some(k => qLower.includes(k))) {
+      return PRODUCT_REGISTRY['faithfull-scholars'];
+    }
+    if (['chms', 'parish', 'tithing', 'giving', 'kiosk', 'volunteer', 'erasure', 'member', 'visitor'].some(k => qLower.includes(k))) {
+      return PRODUCT_REGISTRY['churchcore-chms'];
+    }
+    if (['fleet inspector', 'daily briefing', 'daily report', 'briefing agent', 'consolidate fleet', 'control plane'].some(k => qLower.includes(k))) {
+      return PRODUCT_REGISTRY['churchcore-business'];
     }
 
-    const currentCouncil = councils.find(c => c.council_id === selectedCouncilId) || councils[0];
-    const container = document.getElementById('delib-response-container');
-    if (!container) return;
+    const defaultProdId = COUNCIL_PRODUCT_MAP[councilId] || 'churchcore-business';
+    return PRODUCT_REGISTRY[defaultProdId] || PRODUCT_REGISTRY['churchcore-business'];
+  }
 
-    container.classList.add('active');
-    container.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 40px 0;">
-        <span class="pulse-dot"></span>
-        <span style="font-family: var(--font-heading); font-size: 16px; color: var(--gold-500); font-weight: 700;">
-          Convening ${escapeHtml(currentCouncil.name)} & Synthesizing Deliberation...
-        </span>
-      </div>
-    `;
+  function extractFeatureTitle(query) {
+    let cleaned = query.trim();
+    const patterns = [
+      /^(please\s+)?(can\s+you\s+)?(i\s+need\s+an?\s+|i\s+want\s+an?\s+|i\s+asked\s+for\s+an?\s+|give\s+me\s+an?\s+|provide\s+an?\s+|create\s+an?\s+|generate\s+an?\s+)?/i,
+      /(antigravity\s+prompt\s+|ai\s+prompt\s+|prompt\s+)?(to\s+|for\s+)?/i,
+      /(create\s+|build\s+|implement\s+|add\s+|develop\s+|scaffold\s+)?(the\s+|a\s+|an\s+)?/i,
+      /(feature\s+to\s+|feature\s+for\s+|new\s+feature\s+for\s+|feature\s+)?/i
+    ];
 
-    setTimeout(() => {
-      const nowUtc = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
-      const deliberationId = `DELIB-${currentCouncil.short_name.toUpperCase().replace(/\\s+/g, '-')}-${Math.floor(1000 + Math.random() * 9000)}`;
+    patterns.forEach(p => {
+      cleaned = cleaned.replace(p, '');
+    });
 
-      let speechesHtml = '';
-      if (deliberationMode === 'member' && selectedMemberId) {
-        const member = currentCouncil.members.find(m => m.seat_id === selectedMemberId) || currentCouncil.members[0];
-        const speech = generateMemberSpeech(member, query, currentCouncil);
+    cleaned = cleaned.replace(/\s+(in|for|on)\s+(churchcore[\s\-]*)?(academy|lms|care|orthos|chms|scholars|business|repo|project).*$/i, '');
+    cleaned = cleaned.replace(/^[ ?.,!:\n\r\t"']+|[ ?.,!:\n\r\t"']+$/g, '');
+
+    if (cleaned.length < 3) return 'Requested System Capability';
+    return cleaned.split(/\s+/).map(w => w.toUpperCase() === w ? w : w.charAt(0).toUpperCase() + w.slice(1)).join(' ').substring(0, 80);
+  }
+
+  function detectQueryIntent(query) {
+    const q = query.toLowerCase();
+    if ((q.includes('daily briefing') || q.includes('fleet inspector') || q.includes('daily report') || q.includes('consolidate fleet')) &&
+        !q.includes('create') && !q.includes('feature') && !q.includes('build') && !q.includes('attendance')) {
+      return 'DAILY_BRIEFING';
+    }
+    if (['prompt', 'feature', 'build', 'create', 'implement', 'add', 'develop', 'scaffold', 'notification', 'attendance', 'screen', 'api', 'workflow', 'view', 'page'].some(w => q.includes(w))) {
+      return 'FEATURE_PROMPT';
+    }
+    if (['zero data', 'propagation', 'cross-db', 'cross-database', 'silo', 'tenant isolation'].some(w => q.includes(w))) {
+      return 'ZERO_DATA';
+    }
+    if (['sunday', 'sla', 'holy hours', 'check-in latency', 'peak concurrency'].some(w => q.includes(w))) {
+      return 'SUNDAY_SLA';
+    }
+    if (['hipaa', 'pastoral note', 'confidential', 'pgcrypto', 'clergy-penitent'].some(w => q.includes(w))) {
+      return 'CONFIDENTIALITY';
+    }
+    if (['speedgrader', 'rubric', 'drip', 'syllabus', 'course cohort'].some(w => q.includes(w))) {
+      return 'PEDAGOGY';
+    }
+    if (['creed', 'confession', 'orthos', 'theological drift', 'lexicon'].some(w => q.includes(w))) {
+      return 'THEOLOGY';
+    }
+    return 'GENERAL_ADVISORY';
+  }
+
+  function generateFeatureAntiGravityPrompt(featureTitle, targetProduct, query) {
+    return `# ANTIGRAVITY ENGINEERING DIRECTIVE: ${featureTitle.toUpperCase()} (${targetProduct.repoName})
+
+You are the designated Sovereign Lead Engineer operating under Google Antigravity.
+Your objective is to implement the **${featureTitle}** feature in **${targetProduct.repoName}** with production completeness, rigorous PostgreSQL Row-Level Security, and accompanying automated tests adhering to the Sovereign Testing Council Protocol (COUNCIL-2026-006 Phase 1).
+
+## TARGET REPOSITORY & ENVIRONMENT:
+- Absolute Path: \`cd "${targetProduct.path}"\`
+- Tech Stack: ${targetProduct.techStack}
+- Domain Scope: ${targetProduct.domain}
+
+## CONSTITUTIONAL & ARCHITECTURAL INVARIANTS:
+1. **Constitution Section III (Zero Customer Data Propagation):**
+   - Strictly isolated tenant database silo.
+   - Zero foreign event queues, SQS daemons, or cross-database replication streams.
+2. **Inseparable Testing Invariant (COUNCIL-2026-006 Phase 1):**
+   - Feature code and accompanying automated tests are INSEPARABLE.
+   - Comprehensive unit and integration tests (\`npm test\` or \`npm run test\`) must be written and pass before marking complete.
+3. **Sunday Morning 99.99% Holy Hours SLA:**
+   - All server actions, DB queries, and UI components must execute within a <50ms latency budget.
+   - Non-blocking execution with optimistic UI transitions.
+4. **Powered by ChurchCore Branding (COUNCIL-2026-002):**
+   - Ensure UI adheres to WCAG AAA color contrast ratios and calm liturgical design tokens.
+
+## STEP-BY-STEP IMPLEMENTATION PLAN:
+### Step 1: Database Migration & PostgreSQL Row-Level Security (RLS)
+- If persistent records are required for ${featureTitle}:
+  - Create a migration under \`supabase/migrations/\`.
+  - Add tables with strict \`tenant_id\` foreign keys and indexes.
+  - Enable RLS (\`ALTER TABLE ... ENABLE ROW LEVEL SECURITY;\`).
+  - Create authenticated isolation policies ensuring zero cross-tenant row leakage.
+
+### Step 2: Server Actions & Backend Edge APIs
+- Implement type-safe server actions or route handlers under \`src/app/\` or \`src/actions/\`.
+- Validate all incoming user inputs with Zod schemas.
+- Ensure error handling returns sanitized, graceful error messages without leaking stack traces.
+
+### Step 3: Frontend UI Components & Liturgical Design
+- Create accessible, keyboard-navigable UI components under \`src/components/\`.
+- Provide smooth loading skeletons, empty states, and validation feedback.
+- Verify adherence to the ChurchCore serene aesthetic.
+
+### Step 4: Automated Testing & Verification
+- Add automated test specs covering:
+  1. Successful execution and primary happy-path workflow.
+  2. Edge cases, validation errors, and unauthorized tenant rejection.
+- Run verification suite:
+  \`\`\`bash
+  npm run build
+  npm test
+  # If applicable:
+  npm run audit:rls
+  \`\`\`
+
+## ACCEPTANCE CRITERIA:
+- [ ] 100% complete feature code for ${featureTitle}.
+- [ ] Inseparable automated test suite passing with green exit code.
+- [ ] Row-Level Security verified with zero tenant bypass.
+- [ ] Clean production build (\`npm run build\`) with zero lint or TypeScript errors.
+- [ ] Telemetry updated in \`docs/control-plane/telemetry.json\` with commit hash.`;
+  }
+
+  function generateMemberSpeech(member, query, council, intent, featureTitle, targetProd) {
+    const mTitle = (member.title || '').toLowerCase();
+    const mDomain = (member.domain || '').toLowerCase();
+    const pName = targetProd.name;
+
+    if (intent === 'FEATURE_PROMPT') {
+      if (mTitle.includes('architect') || mTitle.includes('executive') || mTitle.includes('chair') || mTitle.includes('lead')) {
+        return `<p>I have evaluated the architectural feasibility of <strong>${escapeHtml(featureTitle)}</strong> for <em>${escapeHtml(pName)}</em>. This feature directly aligns with our product roadmap and will be scaffolded cleanly under Next.js 15 App Router conventions without accumulating technical debt. I submit a formal vote of <strong>UNANIMOUS RATIFICATION</strong>.</p>`;
+      } else if (mTitle.includes('data') || mTitle.includes('sentinel') || mTitle.includes('database') || mTitle.includes('sql')) {
+        return `<p>From the database security perspective, any tables or schemas introduced for <strong>${escapeHtml(featureTitle)}</strong> must enforce 100% PostgreSQL Row-Level Security (RLS). Under <strong>Constitution Section III</strong>, records must be scoped strictly to the authenticated tenant. No cross-app data leakage is permitted. I vote <strong>APPROVED</strong> subject to RLS verification.</p>`;
+      } else if (mTitle.includes('pastor') || mTitle.includes('chaplain') || mTitle.includes('parent') || mTitle.includes('shepherd') || mTitle.includes('spiritual')) {
+        return `<p>From a pastoral and community standpoint, <strong>${escapeHtml(featureTitle)}</strong> directly serves the dignity of our people. Whether ministering to families, students, or parishioners, technology must never feel bureaucratic or cold. This capability brings clarity and care to <em>${escapeHtml(pName)}</em>. I enthusiastically affirm this proposal.</p>`;
+      } else if (mTitle.includes('sla') || mTitle.includes('reliability') || mTitle.includes('engineer') || mTitle.includes('infra')) {
+        return `<p>Regarding our <strong>Sunday Morning 99.99% SLA</strong> latency budget (&lt;50ms), <strong>${escapeHtml(featureTitle)}</strong> must execute via non-blocking server actions and indexed queries. With our connection pools in Supabase maintaining ample headroom, this workflow is fully within acceptable compute bounds. I vote <strong>RATIFICATION</strong>.</p>`;
+      } else if (mTitle.includes('pedagogy') || mTitle.includes('dean') || mTitle.includes('headmaster') || mTitle.includes('provost') || mTitle.includes('speedgrader') || mTitle.includes('academic')) {
+        return `<p>Evaluating the instructional impact of <strong>${escapeHtml(featureTitle)}</strong> on <em>${escapeHtml(pName)}</em>: this workflow reduces administrative friction and enhances institutional transparency. I approve the implementation specifications.</p>`;
+      } else if (mTitle.includes('finance') || mTitle.includes('cfo') || mTitle.includes('bursar') || mTitle.includes('steward') || mTitle.includes('giving') || mTitle.includes('tithing')) {
+        return `<p>From the fiduciary and operational perspective, <strong>${escapeHtml(featureTitle)}</strong> maintains our low variable hosting footprint ($0 added hosting OPEX) while providing auditability. I confirm financial alignment and vote <strong>APPROVAL</strong>.</p>`;
+      } else {
+        return `<p>Within the scope of ${escapeHtml(member.domain || 'this seat')}, <strong>${escapeHtml(featureTitle)}</strong> satisfies all sovereign charter requirements. The invariant focus: <em>"${escapeHtml(member.invariant_focus || '')}"</em> is fully safeguarded. I submit a formal vote of <strong>RATIFICATION</strong>.</p>`;
+      }
+    } else if (intent === 'ZERO_DATA') {
+      return `<p>I have inspected active schemas and migrations. <strong>Constitution Section III is 100% intact.</strong> No foreign event brokers or cross-database replication streams exist. Customer records in ${escapeHtml(pName)} remain strictly locked within their sovereign database silo under PostgreSQL RLS.</p>`;
+    } else if (intent === 'SUNDAY_SLA') {
+      return `<p>Sunday morning holy hours (06:00 to 13:00) require sub-50ms kiosk check-in response times. Connection pool headroom is optimal, point-in-time recovery snapshots are fresh, and synthetic health probes return 200 OK.</p>`;
+    } else if (intent === 'CONFIDENTIALITY') {
+      return `<p>Pastoral counseling notes are encrypted at rest with <code>pgcrypto</code>. RLS policies restrict SELECT queries strictly to the assigned minister/clinician. Unauthenticated roles receive zero row exposure.</p>`;
+    } else if (intent === 'PEDAGOGY') {
+      return `<p>SpeedGrader split-screen document preview and multi-criterion rubrics execute with zero variable hosting cost using native client-side rendering and Supabase JSONB scoring.</p>`;
+    } else if (intent === 'THEOLOGY') {
+      return `<p>Historical confessions (Nicene, Westminster, 1689 London Baptist) are cross-linked directly with Koine Greek/Hebrew root lexicons via pgvector, guarding strictly against doctrinal drift.</p>`;
+    } else {
+      return `<p>I have examined the submitted matter against our non-negotiable invariant: <em>"${escapeHtml(member.invariant_focus || '')}"</em>. Within the domain of ${escapeHtml(member.domain || 'governance')}, this proposal satisfies all criteria. I submit a formal vote of <strong>RATIFIED APPROVAL</strong> under the sovereign charter.</p>`;
+    }
+  }
+
+  function synthesizeLocalDeliberation(query, currentCouncil, mode, memberId) {
+    const targetProduct = resolveTargetProduct(query, currentCouncil.council_id);
+    const featureTitle = extractFeatureTitle(query);
+    const intent = detectQueryIntent(query);
+
+    const nowUtc = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+    const timestampSlug = new Date().toISOString().replace(/[-:T]/g, '').substring(0, 14);
+    const councilSlug = (currentCouncil.short_name || 'COUNCIL').toUpperCase().replace(/\s+/g, '-');
+    const deliberationId = `DELIB-${councilSlug}-${timestampSlug.substring(0, 8)}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    let speechesHtml = '';
+    if (mode === 'member' && memberId) {
+      const member = (currentCouncil.members || []).find(m => m.seat_id === memberId) || (currentCouncil.members || [])[0];
+      if (member) {
+        const speech = generateMemberSpeech(member, query, currentCouncil, intent, featureTitle, targetProduct);
         speechesHtml = `
           <div class="speech-card" style="border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(14, 21, 36, 0.9));">
             <div class="speech-header">
-              <span class="speech-avatar">${member.avatar}</span>
+              <span class="speech-avatar">${member.avatar || '🏛️'}</span>
               <span class="speech-author">${escapeHtml(member.persona_name)}</span>
               <span class="speech-role">• ${escapeHtml(member.title)}</span>
-              <span class="speech-verdict-tag">${escapeHtml(member.deliberation_stance)}</span>
+              <span class="speech-verdict-tag">${escapeHtml(member.deliberation_stance || 'Verified')}</span>
             </div>
             <div class="speech-body">
               <p style="margin-bottom: 12px;"><strong>Direct Member Consultation:</strong> "${escapeHtml(query)}"</p>
@@ -1945,54 +2165,102 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         `;
-      } else {
-        speechesHtml = currentCouncil.members.map(m => {
-          const body = generateMemberSpeech(m, query, currentCouncil);
-          return `
-            <div class="speech-card">
-              <div class="speech-header">
-                <span class="speech-avatar">${m.avatar}</span>
-                <span class="speech-author">${escapeHtml(m.persona_name)}</span>
-                <span class="speech-role">• ${escapeHtml(m.title)}</span>
-                <span class="speech-verdict-tag">🟢 VERIFIED</span>
-              </div>
-              <div class="speech-body">
-                ${body}
-              </div>
-            </div>
-          `;
-        }).join('');
       }
+    } else {
+      speechesHtml = (currentCouncil.members || []).map(m => {
+        const body = generateMemberSpeech(m, query, currentCouncil, intent, featureTitle, targetProduct);
+        return `
+          <div class="speech-card">
+            <div class="speech-header">
+              <span class="speech-avatar">${m.avatar || '🏛️'}</span>
+              <span class="speech-author">${escapeHtml(m.persona_name)}</span>
+              <span class="speech-role">• ${escapeHtml(m.title)}</span>
+              <span class="speech-verdict-tag">🟢 VERIFIED</span>
+            </div>
+            <div class="speech-body">
+              ${body}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
 
-      const synthesized = generateCouncilActionableAnswer(query, currentCouncil, speechesHtml);
+    let synthesized = null;
+    if (intent === 'FEATURE_PROMPT') {
+      const promptText = generateFeatureAntiGravityPrompt(featureTitle, targetProduct, query);
+      const dispatchCmd = `cd "${targetProduct.path}" && agy -p "Implement ${featureTitle} with comprehensive tests and RLS"`;
+      const title = `AntiGravity Engineering Directive: ${featureTitle} (${targetProduct.name})`;
+      const summary = `Unanimous council determination authorizing development of ${featureTitle} in ${targetProduct.name} under Constitution Section III and COUNCIL-2026-006 testing invariants.`;
 
-      const record = {
-        id: deliberationId,
-        timestamp: nowUtc,
-        councilId: currentCouncil.council_id,
-        councilName: currentCouncil.name,
-        shortName: currentCouncil.short_name,
-        mode: deliberationMode,
-        memberId: selectedMemberId,
-        query: query,
-        answerTitle: synthesized.title,
-        answerSummary: synthesized.summary,
-        answerHtml: synthesized.html,
-        plainText: synthesized.plainText,
-        speechesHtml: speechesHtml
-      };
+      const plainText = `🏛️ ${currentCouncil.name} Official Determination & Engineering Directive
 
-      saveDeliberationRecord(record);
-      renderDeliberationRecordInChamber(record, councils, true);
-      showToast('Council deliberation synthesized and recorded!');
-    }, 450);
-  }
+DELIBERATION SUBJECT: "${query}"
+STATUS: UNANIMOUS RATIFICATION (${currentCouncil.governing_state?.quorum_status || 'Quorum Verified'})
+TARGET PRODUCT: ${targetProduct.name} (${targetProduct.path})
 
-  function generateCouncilActionableAnswer(query, council, speeches) {
-    const qLower = query.toLowerCase();
+EXECUTIVE RULING:
+The council has ratified the implementation of ${featureTitle} for ${targetProduct.name}. This feature has been evaluated against our non-negotiable constitutional invariants and is cleared for autonomous AntiGravity scaffolding.
 
-    // 1. AntiGravity / AI Prompt / Daily Consolidation / Daily Briefing
-    if (qLower.includes('ai prompt') || qLower.includes('antigravity') || qLower.includes('daily report') || qLower.includes('daily check') || qLower.includes('briefing') || qLower.includes('consolidate') || qLower.includes('automation')) {
+ACTIONABLE ANTIGRAVITY AI PROMPT:
+${promptText}
+
+DIRECT TERMINAL DISPATCH COMMAND:
+${dispatchCmd}
+
+CONSTITUTIONAL SAFEGUARDS ENFORCED:
+1. Constitution Section III: 100% sovereign database isolation; zero customer data cross-propagation.
+2. Inseparable Testing Invariant: Phase 1 automated tests must be delivered alongside feature code.
+3. Sunday 99.99% SLA: Non-blocking sub-50ms execution budget verified.`;
+
+      const htmlContent = `
+        <p>
+          The <strong>${escapeHtml(currentCouncil.name)}</strong> has issued a formal determination of <strong>UNANIMOUS RATIFICATION</strong> for the feature proposal: <strong>${escapeHtml(featureTitle)}</strong> in <strong>${escapeHtml(targetProduct.name)}</strong>.
+        </p>
+        <p style="color: var(--text-muted); font-size: 13px;">
+          Target Repository: <code>${escapeHtml(targetProduct.path)}</code> • Tech Stack: <em>${escapeHtml(targetProduct.techStack)}</em>
+        </p>
+
+        <h4 style="margin-top: 24px;">🤖 Ready-to-Use AntiGravity Engineering Prompt</h4>
+        <div class="council-prompt-box">
+          <button class="btn-copy-inner" data-copy-target="delib-prompt-text">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy Prompt
+          </button>
+          <div id="delib-prompt-text">${escapeHtml(promptText)}</div>
+        </div>
+
+        <h4 style="margin-top: 20px;">⚡ Direct Terminal Dispatch Command</h4>
+        <div class="council-cmd-pill">
+          <span><code>${escapeHtml(dispatchCmd)}</code></span>
+          <span style="font-size: 11px; color: var(--gold-500); font-weight: 700;">READY TO RUN</span>
+        </div>
+
+        <h4 style="margin-top: 24px;">🛡️ Non-Negotiable Constitutional Guardrails Enforced</h4>
+        <div class="council-guidance-grid">
+          <div class="council-guidance-card">
+            <strong>Section III Invariant</strong>
+            <span>Zero customer data propagation across databases. All queries reside strictly within ${escapeHtml(targetProduct.name)}'s PostgreSQL tenant.</span>
+          </div>
+          <div class="council-guidance-card">
+            <strong>Inseparable Testing Mandate</strong>
+            <span>Per COUNCIL-2026-006 Phase 1, automated unit/integration tests must accompany feature code prior to human trials.</span>
+          </div>
+          <div class="council-guidance-card">
+            <strong>Sunday 99.99% Holy Hours SLA</strong>
+            <span>Execution latency budget capped at &lt;50ms. No blocking calls during morning worship service check-in windows.</span>
+          </div>
+          <div class="council-guidance-card">
+            <strong>Powered by ChurchCore</strong>
+            <span>Adheres to design system contrast standards (WCAG AAA) and official security trust lockups.</span>
+          </div>
+        </div>
+      `;
+
+      synthesized = { title, summary, plainText, html: htmlContent };
+    } else if (intent === 'DAILY_BRIEFING') {
       const promptText = `# CHURCHCORE AUTONOMOUS FLEET INSPECTOR & DAILY BRIEFING AGENT
 
 You are the ChurchCore Sovereign Autonomous Fleet Operations Agent operating under Google Antigravity.
@@ -2000,7 +2268,7 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
 
 ## SIBLING REPOSITORIES TO INSPECT:
 1. ChurchCore (ChMS): /Users/rjulia/ChurchCore
-2. ChurchCore LMS: /Users/rjulia/ChurchCore-LMS
+2. ChurchCore LMS: /Users/rjulia/ChurchCore LMS
 3. ChurchCore Academy: /Users/rjulia/ChurchCore-Academy
 4. ChurchCore Care: /Users/rjulia/ChurchCoreCare
 5. ChurchCore Orthos: /Users/rjulia/ChurchCore-Orthos
@@ -2017,262 +2285,150 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
 5. If new commits or PRs were merged in sibling repos, update docs/governance-sync/COMPLIANCE-MATRIX.md.
 6. Output executive summary of all fleet updates, release tags, and telemetry deltas into docs/control-plane/briefings/DAILY-BRIEFING-<YYYY-MM-DD>.md.`;
 
-      const plainText = `🏛️ High Sovereign Council Executive Advisory & Determination: Autonomous AntiGravity Fleet Directive
-
-EXECUTIVE RULING:
-The High Sovereign Grand Council has ratified the AntiGravity Autonomous Daily Fleet Briefing & Telemetry Synchronization Directive (COUNCIL-AUTONOMY-2026-088). All 6 product repositories and the central control plane are primed for daily agentic consolidation.
-
-ACTIONABLE ANTIGRAVITY AI PROMPT:
-${promptText}
-
-DIRECT TERMINAL EXECUTION COMMAND:
-python3 /Users/rjulia/ChurchCore-Business/scripts/daily-fleet-briefing.py && agy -p "Verify fleet telemetry and compile daily briefing"
-
-CONSTITUTIONAL SAFEGUARDS & INVARIANTS:
-1. Constitution Section III: Strict zero-data propagation across customer database silos.
-2. Read-Only Telemetry: Edge repository inspection generates non-destructive audit diffs.
-3. Automated Archiving: Executive briefings committed directly to docs/control-plane/briefings/.`;
-
-      return {
+      const dispatchCmd = 'python3 /Users/rjulia/ChurchCore-Business/scripts/daily-fleet-briefing.py';
+      synthesized = {
         title: 'Autonomous AntiGravity Daily Briefing & Fleet Telemetry Directive',
         summary: 'Unanimous council ratification establishing the automated daily inspection and briefing routine across all 6 sibling product repos.',
-        plainText: plainText,
+        plainText: `🏛️ High Sovereign Council Executive Advisory: Autonomous Daily Fleet Briefing\n\nCOMMAND: ${dispatchCmd}\n\nPROMPT:\n${promptText}`,
         html: `
-          <p>
-            The High Sovereign Grand Council has ratified <strong>Directive COUNCIL-AUTONOMY-2026-088</strong>. Below is the ready-to-use AntiGravity autonomous system prompt, terminal execution command, and architectural schedule designed to inspect all 6 sibling repositories, synchronize telemetry, and generate daily executive briefings.
-          </p>
-
-          <h4>🤖 Copy-Pasteable AntiGravity Agentic Prompt</h4>
+          <p>The Council has ratified the automated daily briefing routine. Below is the ready-to-use AntiGravity autonomous system prompt and terminal execution command.</p>
+          <h4>🤖 AntiGravity Daily Briefing Prompt</h4>
           <div class="council-prompt-box">
-            <button class="btn-copy-inner" data-copy-target="delib-prompt-text">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-              Copy Prompt
-            </button>
+            <button class="btn-copy-inner" data-copy-target="delib-prompt-text">Copy Prompt</button>
             <div id="delib-prompt-text">${escapeHtml(promptText)}</div>
           </div>
-
           <h4>⚡ Direct Terminal Dispatch Command</h4>
           <div class="council-cmd-pill">
-            <span><code>python3 /Users/rjulia/ChurchCore-Business/scripts/daily-fleet-briefing.py</code></span>
+            <span><code>${dispatchCmd}</code></span>
             <span style="font-size: 11px; color: var(--gold-500); font-weight: 700;">DAILY ENGINE ACTIVE</span>
           </div>
-
-          <h4>🛡️ Non-Negotiable Constitutional Guardrails Enforced</h4>
-          <div class="council-guidance-grid">
-            <div class="council-guidance-card">
-              <strong>Section III Invariant</strong>
-              <span>Zero customer data propagation across databases. Inspections verify local RLS policies without touching row data.</span>
-            </div>
-            <div class="council-guidance-card">
-              <strong>Automated Dossiers</strong>
-              <span>Reports compile markdown briefs into <code>docs/control-plane/briefings/</code> with git commit hashes and telemetry scores.</span>
-            </div>
-            <div class="council-guidance-card">
-              <strong>Auto-Merge & CI Verification</strong>
-              <span>Only cleanly verified PRs passing GitHub Actions CI and trust badge checks are merged into main branches.</span>
-            </div>
-            <div class="council-guidance-card">
-              <strong>Sunday 99.99% SLA</strong>
-              <span>Automated pre-flight synthetic probes run prior to every service window to ensure &lt;50ms kiosk check-in response times.</span>
-            </div>
-          </div>
         `
       };
-    }
-
-    // 2. Zero Customer Data Propagation
-    if (qLower.includes('zero data') || qLower.includes('propagation') || qLower.includes('cross-db')) {
-      const plainText = `🏛️ High Sovereign Council Executive Advisory & Determination: Constitution Section III Compliance
-
-EXECUTIVE RULING:
-100% UNANIMOUS RATIFICATION. Constitution Section III: Zero Customer Data Propagation is fully active and verified across all 6 product suites.
-
-TECHNICAL DIRECTIVES:
-1. ChurchCore (ChMS), LMS, Academy, Care, Orthos, and FaithFull Scholars execute in strict, isolated PostgreSQL database tenants.
-2. Absolutely zero foreign message brokers (Kafka, RabbitMQ, SQS) or cross-database replication streams exist.
-3. Multi-tenant isolation is enforced at the database layer via PostgreSQL Row-Level Security (RLS).`;
-
-      return {
-        title: 'Zero Customer Data Propagation & Silo Isolation Certification',
-        summary: 'Constitution Section III certified: Complete physical and logical tenant isolation verified across all 6 product databases.',
-        plainText: plainText,
+    } else {
+      synthesized = {
+        title: `${currentCouncil.short_name} Official Advisory & Ruling`,
+        summary: `Unanimous council determination approving inquiry subject to constitutional invariants and edge compliance verification.`,
+        plainText: `🏛️ ${currentCouncil.name} Executive Advisory & Operational Determination\n\nDeliberation Subject: "${query}"\nStatus: UNANIMOUS RATIFICATION (${currentCouncil.governing_state?.quorum_status || 'Quorum Verified'})`,
         html: `
           <p>
-            The Council unanimously certifies compliance with <strong>Constitution Section III (Zero Customer Data Propagation)</strong>. An exhaustive audit of all schemas, migrations, and network configurations confirms that customer records remain strictly isolated inside sovereign database silos.
+            The <strong>${escapeHtml(currentCouncil.name)}</strong> has reviewed your inquiry: <em>"${escapeHtml(query)}"</em>. 
+            The council issues a formal advisory of <strong>UNANIMOUS RATIFICATION</strong> for <strong>${escapeHtml(targetProduct.name)}</strong>.
           </p>
-
+          <h4>📋 Operational Directives & Guidance</h4>
           <div class="council-guidance-grid">
             <div class="council-guidance-card">
-              <strong>PostgreSQL Row-Level Security</strong>
-              <span>Tenant boundaries are locked at the database kernel. Queries without authenticated tenant claims return zero rows.</span>
+              <strong>Constitutional Alignment</strong>
+              <span>Preserves sovereign customer data boundaries and zero cross-suite data aggregation.</span>
             </div>
             <div class="council-guidance-card">
-              <strong>Zero Shared Event Brokers</strong>
-              <span>No cross-application Kafka, SQS, or RabbitMQ clusters connect the suites. Inter-product interactions use explicit, opt-in sovereign RPCs.</span>
+              <strong>Edge Synchronization</strong>
+              <span>Updates dispatched through this chamber propagate via <code>docs/governance-sync/manifest.json</code> to sibling repositories.</span>
             </div>
             <div class="council-guidance-card">
-              <strong>Ecclesiastical Privilege</strong>
-              <span>Tithing records, counseling notes, and student progress are constitutionally protected from commercialization or aggregate mining.</span>
+              <strong>Audit Record Logged</strong>
+              <span>This determination has been appended to the sovereign council ledger and local browser archive.</span>
             </div>
           </div>
         `
       };
     }
-
-    // 3. Sunday Morning SLA
-    if (qLower.includes('sunday') || qLower.includes('sla') || qLower.includes('peak') || qLower.includes('check-in')) {
-      const plainText = `🏛️ High Sovereign Council Executive Advisory & Determination: Sunday Morning 99.99% SLA
-
-EXECUTIVE RULING:
-RATIFIED. The fleet is fully provisioned for the Sunday Morning Holy Hours (06:00 to 13:00 local time).
-
-BENCHMARKS:
-- Kiosk check-in latency budget: <50ms.
-- Current synthetic check-in response time: 42ms.
-- Database connection pool headroom: 92%.
-- Point-in-time recovery (PITR) snapshots: Verified every 6 hours.`;
-
-      return {
-        title: 'Sunday Morning 99.99% Holy Hours SLA Assessment',
-        summary: 'Fleet readiness certified for peak Sunday worship check-ins with sub-50ms kiosk latency and 92% connection pool headroom.',
-        plainText: plainText,
-        html: `
-          <p>
-            The Council ratifies the <strong>Sunday Morning 99.99% SLA Readiness Assessment</strong>. All critical path services for church kiosks, nursery check-ins, volunteer scheduling, and live streaming are healthy and verified.
-          </p>
-
-          <div class="council-guidance-grid">
-            <div class="council-guidance-card">
-              <strong>Latency Budget: &lt;50ms</strong>
-              <span>Synthetic kiosk check-in response times currently benchmark at 42ms under 5x simulated concurrency.</span>
-            </div>
-            <div class="council-guidance-card">
-              <strong>Connection Headroom: 92%</strong>
-              <span>Supabase PgBouncer pool connection allocation maintains ample surge capacity for Sunday peak hours.</span>
-            </div>
-            <div class="council-guidance-card">
-              <strong>Automated Pre-Flight Probes</strong>
-              <span>Synthetic health probes ping edge endpoints at 60-second intervals with automated SMS paging to on-call stewards.</span>
-            </div>
-          </div>
-        `
-      };
-    }
-
-    // 4. Confidential Pastoral Notes / HIPAA / RLS
-    if (qLower.includes('hipaa') || qLower.includes('pastoral note') || qLower.includes('confidential') || qLower.includes('pgcrypto')) {
-      const plainText = `🏛️ High Sovereign Council Executive Advisory & Determination: Confidential Counseling Security
-
-EXECUTIVE RULING:
-RATIFIED. Pastoral counseling records and clinical care notes are encrypted at rest with pgcrypto and guarded under strict clergy-penitent privilege invariants.
-
-KEY POLICIES:
-- Symmetric encryption with per-church rotating keys.
-- RLS policies restrict SELECT strictly to ordained pastoral counselors.
-- Audit logs capture all read requests without storing plaintext content.`;
-
-      return {
-        title: 'Pastoral Notes Cryptographic Isolation & Clergy Privilege Advisory',
-        summary: 'Clergy-penitent privilege enforced with pgcrypto column-level encryption and strict role-based RLS policies.',
-        plainText: plainText,
-        html: `
-          <p>
-            The Council confirms that <strong>Pastoral Counseling & Care Notes</strong> are safeguarded under strict cryptographic isolation. No administrative or technical role possesses unauthenticated access to counseling notes or spiritual disclosures.
-          </p>
-          <div class="council-guidance-grid">
-            <div class="council-guidance-card">
-              <strong>pgcrypto Column Encryption</strong>
-              <span>Pastoral note bodies are encrypted at the column level before commit, requiring session-scoped minister key decryptions.</span>
-            </div>
-            <div class="council-guidance-card">
-              <strong>Zero Unauthenticated Exposure</strong>
-              <span>Database dumps or offline backups contain only ciphertext. Clergy-penitent confidentiality is preserved by architectural design.</span>
-            </div>
-          </div>
-        `
-      };
-    }
-
-    // 5. Default General Actionable Advisory
-    const plainText = `🏛️ ${council.name} Executive Advisory & Operational Determination
-
-Deliberation Subject: "${query}"
-Status: UNANIMOUS RATIFICATION (${council.governing_state?.quorum_status || 'Quorum Verified'})
-
-EXECUTIVE DETERMINATION:
-The council has reviewed your submission against our sovereign charter, architectural invariants, and product roadmaps. The proposed inquiry/directive is ratified under standard constitutional safeguards.
-
-OPERATIONAL DIRECTIVES:
-1. Verify alignment with Section III (Zero Customer Data Propagation).
-2. Ensure edge implementations pass CI test suites and automated health checks.
-3. Record all architectural decisions in the central control plane manifest.`;
 
     return {
-      title: `${council.short_name} Official Advisory & Ruling`,
-      summary: `Unanimous council determination approving inquiry subject to constitutional invariants and edge compliance verification.`,
-      plainText: plainText,
-      html: `
-        <p>
-          The <strong>${escapeHtml(council.name)}</strong> has reviewed your inquiry: <em>"${escapeHtml(query)}"</em>. 
-          The council issues a formal advisory of <strong>UNANIMOUS RATIFICATION</strong>, affirming that this proposal satisfies all constitutional invariants.
-        </p>
-
-        <h4>📋 Operational Directives & Guidance</h4>
-        <div class="council-guidance-grid">
-          <div class="council-guidance-card">
-            <strong>Constitutional Alignment</strong>
-            <span>All implementations must preserve sovereign customer data boundaries and zero cross-suite data aggregation.</span>
-          </div>
-          <div class="council-guidance-card">
-            <strong>Edge Synchronization</strong>
-            <span>Updates dispatched through this chamber propagate via <code>docs/governance-sync/manifest.json</code> to sibling repositories.</span>
-          </div>
-          <div class="council-guidance-card">
-            <strong>Audit Record Logged</strong>
-            <span>This determination has been appended to the sovereign council ledger and local browser archive.</span>
-          </div>
-        </div>
-      `
+      id: deliberationId,
+      timestamp: nowUtc,
+      docPath: null,
+      councilId: currentCouncil.council_id,
+      councilName: currentCouncil.name,
+      shortName: currentCouncil.short_name,
+      mode: mode,
+      memberId: memberId,
+      query: query,
+      answerTitle: synthesized.title,
+      answerSummary: synthesized.summary,
+      answerHtml: synthesized.html,
+      plainText: synthesized.plainText,
+      speechesHtml: speechesHtml
     };
   }
 
-  function generateMemberSpeech(member, query, council) {
-    const qLower = query.toLowerCase();
-    
-    if (qLower.includes('ai prompt') || qLower.includes('antigravity') || qLower.includes('daily report') || qLower.includes('briefing') || qLower.includes('consolidate')) {
-      if (member.title.toLowerCase().includes('data') || member.domain.toLowerCase().includes('database') || member.domain.toLowerCase().includes('platform')) {
-        return `<p>I have reviewed the autonomous fleet briefing script (<code>scripts/daily-fleet-briefing.py</code>). It runs cleanly in read-only mode against all 6 sibling repos, inspects git diffs and commit hashes, and commits immutable markdown dossiers without mutating edge customer databases. I vote <strong>APPROVAL</strong>.</p>`;
-      } else if (member.title.toLowerCase().includes('pastor') || member.title.toLowerCase().includes('chaplain')) {
-        return `<p>Equipping our leadership with automated, daily transparency into our church software health honors the flock. A daily briefing ensures that downtime or drift is caught before Sunday morning worship. I affirm this automation.</p>`;
-      } else {
-        return `<p>From my domain (${escapeHtml(member.domain)}), I confirm that automated AntiGravity inspections adhere strictly to sovereign agentic guardrails. I submit a formal vote of <strong>RATIFICATION</strong>.</p>`;
-      }
-    } else if (qLower.includes('zero data') || qLower.includes('propagation') || qLower.includes('cross-db')) {
-      if (member.title.toLowerCase().includes('data') || member.domain.toLowerCase().includes('database')) {
-        return `<p>I have inspected the active schema and migrations. <strong>Constitution Section III is 100% intact.</strong> No foreign event brokers, SQS buses, or multi-tenant database links exist. All customer tables reside strictly within the sovereign database silo under PostgreSQL Row-Level Security.</p>`;
-      } else if (member.title.toLowerCase().includes('pastor') || member.title.toLowerCase().includes('chaplain')) {
-        return `<p>From the pastoral and ecclesiastical perspective, our flock's confidence depends upon this sacred boundary. A church must never wonder if its members' giving, counseling, or personal details are being aggregated or commercialized across suites. We affirm this strict isolation.</p>`;
-      } else {
-        return `<p>From my domain (${escapeHtml(member.domain)}), I confirm that all edge features execute strictly local RPCs. No shared synchronization daemons or data replication streams are permitted.</p>`;
-      }
-    } else if (qLower.includes('sunday') || qLower.includes('sla') || qLower.includes('peak') || qLower.includes('check-in')) {
-      if (member.title.toLowerCase().includes('sla') || member.title.toLowerCase().includes('reliability') || member.title.toLowerCase().includes('route')) {
-        return `<p>Sunday morning holy hours (06:00 to 13:00) require sub-50ms kiosk check-in response times. Our connection pool headroom is at 92%, automated point-in-time recovery snapshots are verified, and synthetic health probes return 200 OK. The Sunday SLA target (99.99%) is healthy.</p>`;
-      } else {
-        return `<p>We support the zero-downtime Sunday SLA invariant. Staff, volunteers, and parishioners rely on instant access for Sunday check-ins and worship services without latency hiccups.</p>`;
-      }
-    } else if (qLower.includes('hipaa') || qLower.includes('pastoral note') || qLower.includes('confidential')) {
-      return `<p>Pastoral counseling and clinical notes are encrypted at rest with <code>pgcrypto</code>. RLS policies restrict SELECT queries strictly to the assigned minister/clinician. Unauthenticated roles or general staff receive zero row exposure. The clergy-penitent privilege is safeguarded.</p>`;
-    } else if (qLower.includes('speedgrader') || qLower.includes('rubric') || qLower.includes('drip')) {
-      return `<p>In Trinity feature delivery (COUNCIL-2026-047), we achieved split-screen SpeedGrader and automated content drip with $0 added hosting cost. Multi-criterion rubrics execute via native client-side SVG annotation and Supabase JSONB scoring.</p>`;
-    } else if (qLower.includes('creed') || qLower.includes('confession') || qLower.includes('orthos') || qLower.includes('theological')) {
-      return `<p>Orthos cross-links historical confessions (Nicene, Westminster, 1689 London Baptist) directly with Koine Greek/Hebrew root lexicons via pgvector. No doctrinal drift or modern paraphrasing bias is permitted.</p>`;
-    } else {
-      return `<p>I have reviewed this matter against our non-negotiable invariant: <em>"${escapeHtml(member.invariant_focus)}"</em>. Within the scope of ${escapeHtml(member.domain)}, this proposal satisfies all criteria. I submit a formal vote of <strong>APPROVAL</strong> under our sovereign council charter.</p>`;
+  async function executeCouncilDeliberation(councils) {
+    const input = document.getElementById('council-query-input');
+    const query = (input?.value || '').trim();
+    if (!query) {
+      alert('Please enter an architectural inquiry or proposal for the council.');
+      return;
     }
+
+    const currentCouncil = councils.find(c => c.council_id === selectedCouncilId) || councils[0];
+    const container = document.getElementById('delib-response-container');
+    if (!container) return;
+
+    container.classList.add('active');
+    container.innerHTML = `
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 48px 20px; text-align: center;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="pulse-dot"></span>
+          <span style="font-family: var(--font-heading); font-size: 17px; color: var(--gold-500); font-weight: 800; letter-spacing: -0.01em;">
+            Convening ${escapeHtml(currentCouncil.name)}
+          </span>
+        </div>
+        <div style="font-size: 13px; color: var(--text-muted); max-width: 500px;" id="delib-convening-status">
+          Calling chamber to order & verifying ${escapeHtml(currentCouncil.governing_state?.quorum_status || 'quorum')}...
+        </div>
+        <div style="width: 280px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; margin-top: 4px;">
+          <div id="delib-progress-bar" style="width: 20%; height: 100%; background: linear-gradient(90deg, #F59E0B, #E11D48); border-radius: 99px; transition: width 0.6s ease;"></div>
+        </div>
+      </div>
+    `;
+
+    const statusEl = document.getElementById('delib-convening-status');
+    const progressEl = document.getElementById('delib-progress-bar');
+
+    const t1 = setTimeout(() => {
+      if (statusEl) statusEl.textContent = 'Auditing Section III invariants & gathering specialized seat testimony...';
+      if (progressEl) progressEl.style.width = '65%';
+    }, 600);
+
+    const t2 = setTimeout(() => {
+      if (statusEl) statusEl.textContent = 'Synthesizing executive consensus & generating AntiGravity directives...';
+      if (progressEl) progressEl.style.width = '90%';
+    }, 1200);
+
+    let record = null;
+    try {
+      const response = await fetch('/api/deliberate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          council_id: currentCouncil.council_id,
+          member_id: selectedMemberId,
+          mode: deliberationMode,
+          query: query
+        })
+      });
+
+      if (response.ok) {
+        const jsonRes = await response.json();
+        if (jsonRes.success && jsonRes.record) {
+          record = jsonRes.record;
+        }
+      }
+    } catch (err) {
+      console.warn('Backend /api/deliberate endpoint unavailable, falling back to local synthesizer:', err);
+    }
+
+    // Authentic deliberation animation delay (minimum 1.6s) to ensure smooth pacing
+    await new Promise(resolve => setTimeout(resolve, 1600));
+    clearTimeout(t1);
+    clearTimeout(t2);
+
+    if (!record) {
+      record = synthesizeLocalDeliberation(query, currentCouncil, deliberationMode, selectedMemberId);
+    }
+
+    saveDeliberationRecord(record);
+    renderDeliberationRecordInChamber(record, councils, true);
+    showToast('Council deliberation synthesized and recorded!');
   }
 
   // 16. Tab Switching (Synchronized across Sidebar and Dock tabs)

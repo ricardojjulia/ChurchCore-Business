@@ -9,9 +9,11 @@ import http.server
 import socketserver
 import os
 import sys
+import json
 import webbrowser
 import html
 import urllib.parse
+from deliberation_engine import handle_deliberation
 
 PORT = 3333
 DASHBOARD_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -320,6 +322,35 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     return
 
         super().do_GET()
+
+    def do_POST(self):
+        clean_path = self.path.split('?', 1)[0].split('#', 1)[0]
+        if clean_path == '/api/deliberate':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                req_data = json.loads(body) if body else {}
+
+                result = handle_deliberation(req_data)
+
+                resp_bytes = json.dumps(result).encode('utf-8')
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.send_header('Content-Length', str(len(resp_bytes)))
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(resp_bytes)
+                return
+            except Exception as e:
+                err_bytes = json.dumps({'success': False, 'error': str(e)}).encode('utf-8')
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.send_header('Content-Length', str(len(err_bytes)))
+                self.end_headers()
+                self.wfile.write(err_bytes)
+                return
+
+        self.send_error(404, "Endpoint not found")
 
     def end_headers(self):
         self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
