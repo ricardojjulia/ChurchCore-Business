@@ -359,12 +359,13 @@ This automatically fetches the latest manifest from `ChurchCore-Business`, runs 
 > [!IMPORTANT]
 > **COUNCIL-2026-005: STRICT SEQUENTIAL PHASED GATING**
 >
-> 1. **Phase 1: 100% Feature Code Complete First**  
->    All programmed features, edge APIs, UI workflows, database schemas, and edge integrations required for MVP must be 100% technically complete and ready for deployment before starting test loops.  
+> 1. **Phase 1: 100% Feature Code Complete + Accompanying Automated Tests**  
+>    All programmed features, edge APIs, UI workflows, database schemas, and edge integrations required for MVP must be 100% technically complete and ready for deployment.  
+>    *Automated Unit & Regression Tests:* Automated unit tests, integration tests, and regression tests **MUST be created and maintained whenever a new feature is developed or corrected** as standard engineering completeness.  
 >    *Reference your package's roadmap:* `docs/mvp-100-plan.md`.
 >
-> 2. **Phase 2: Comprehensive Testing Gate (The Next Step)**  
->    Testing begins **ONLY after** all features and programmed improvements in Phase 1 are 100% technically done. Do not enter fragmented testing loops while MVP features remain unwritten or partially stubbed.
+> 2. **Phase 2: Comprehensive Human Trial Testing & Field Pilot Gate (The Next Step)**  
+>    Human trial testing (human rehearsals, field pilot trials like the uncoached Colegio Biblos human session, user acceptance testing (UAT), and uncoached live simulations) commences **ONLY after** all features and programmed improvements in Phase 1 are 100% technically done. Do not organize or conduct human trial tests while MVP features remain incomplete.
 >
 > 3. **Phase 3: Production Vercel Deployment**  
 >    For packages deploying to Vercel (ChurchCore Academy, Orthos, LMS, Care, ChMS, Scholars), clean build exports (`npm run build`), dependency lockfile resolution, and environment bindings must be verified prior to production launch.
@@ -553,35 +554,38 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
 ## Strict Phased Execution Order
 
 > [!IMPORTANT]
-> **TESTING COMMENCES ONLY AFTER 100% FEATURE CODE COMPLETION**  
-> In accordance with Council Directive COUNCIL-2026-005, testing is the explicit next step, conducted only after all features and programmed improvements are completely coded. Do not divert resources to fragmented testing loops while MVP features remain incomplete.
+> **HUMAN TRIAL TESTING & FIELD PILOTS COMMENCE ONLY AFTER 100% FEATURE CODE COMPLETION**  
+> In accordance with Council Directive COUNCIL-2026-005, human trial testing and field pilot rehearsals are the explicit next step, conducted only after all features and programmed improvements are completely coded.  
+> **Note on Automated Testing:** Standard automated unit, component, and regression tests MUST accompany every newly developed feature and bug fix as standard engineering practice.
 
 ---
 
-## Phase 1: Remaining MVP Features to 100% Code Complete
+## Phase 1: Remaining MVP Features to 100% Code Complete (with Automated Tests)
 
-{chr(10).join(f"### [ ] Feature {i+1}: {title}{chr(10)}* **Scope:** {desc}{chr(10)}* **Status:** Programmed Implementation Required{chr(10)}* **Acceptance:** Code written, integrated into layout/routes, local build succeeds.{chr(10)}" for i, (title, desc) in enumerate(remaining_items))}
+{chr(10).join(f"### [ ] Feature {i+1}: {title}{chr(10)}* **Scope:** {desc}{chr(10)}* **Status:** Programmed Implementation Required{chr(10)}* **Acceptance:** Code written, unit/regression tests added, integrated into layout/routes, local build succeeds.{chr(10)}" for i, (title, desc) in enumerate(remaining_items))}
 
 ---
 
-## Phase 2: Comprehensive Testing Gate (The Next Step)
+## Phase 2: Comprehensive Human Trial Testing & Field Pilot Gate (The Next Step)
 
 *Execution strictly gated: Commences only once Phase 1 items above are 100% checked.*
 
-1. **Security & Row-Level Security Audit:**
+1. **Human Trial & Participant Rehearsals:**
+   - Conduct structured uncoached user sessions and human acceptance workflows (e.g. Colegio Biblos pilot session for Academy).
+2. **Security & Row-Level Security Verification:**
    - Execute: `npm run audit:rls`
    - Invariant: Verify 0 bypass policies and Constitution Section III (Zero Customer Data Propagation).
-2. **End-to-End User Journey Tests:**
+3. **End-to-End User Journey Tests:**
    - Execute: `npm run test:e2e` or `npm run test:prod-synthetic`
    - Invariant: All primary user authentication, data entry, and report screens pass.
-3. **Sunday Morning 99.99% SLA Readiness Probes:**
+4. **Sunday Morning 99.99% SLA Readiness Probes:**
    - Synthetic latency benchmark <50ms under simulated kiosk concurrency.
 
 ---
 
 ## Phase 3: Production Vercel Deployment
 
-*Execution strictly gated: Commences only after Phase 2 test suite passes 100% green.*
+*Execution strictly gated: Commences only after Phase 2 trials and test suites pass 100% green.*
 
 1. **Build Export Verification:**
    - Run `npm run build` locally with zero SSR server-action errors and clean bundle exports.

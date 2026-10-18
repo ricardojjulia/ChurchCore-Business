@@ -30,7 +30,7 @@ python3 dashboard/serve.py
 
 ### 🎯 Daily MVP 100% Progress Report & Morning Priority Queue
 Under **Council Directive [COUNCIL-2026-005](docs/council/COUNCIL-2026-005.md)**, the ecosystem enforces strict sequential gating:  
-**Phase 1 (100% Feature Code Complete First)** ➔ **Phase 2 (Comprehensive Testing Gate)** ➔ **Phase 3 (Production Vercel Deployment)**.
+**Phase 1 (100% Feature Code Complete + Unit Tests)** ➔ **Phase 2 (Human Trial Testing & Field Pilots)** ➔ **Phase 3 (Production Vercel Deployment)**.
 
 To inspect, sync, and generate the daily fleet ranking from anywhere:
 ```bash

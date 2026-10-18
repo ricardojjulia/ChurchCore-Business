@@ -1,10 +1,10 @@
 # ChurchCore Sovereign Fleet: Daily MVP 100% Progress Report
 
-> **Report Timestamp:** 2026-10-18 03:44:15 UTC  
+> **Report Timestamp:** 2026-10-18 03:47:40 UTC  
 > **Council Mandate:** [COUNCIL-2026-005: 100% MVP Feature Completion & Testing Gating](https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-005.md)  
 > **Fleet Operational Health:** 4 / 6 Live in Production  
 > **Average Fleet MVP Completion:** **87%** • **Fleet Readiness:** **89%**  
-> **Strict Gating Policy:** Phase 1 (100% Features Done) ➔ Phase 2 (Comprehensive Testing) ➔ Phase 3 (Vercel Edge Deploy)  
+> **Strict Gating Policy:** Phase 1 (100% Features + Unit Tests) ➔ Phase 2 (Human Trial Testing & Field Pilots) ➔ Phase 3 (Vercel Edge Deploy)  
 
 ---
 
@@ -157,14 +157,14 @@ cd "/Users/rjulia/ChurchCore" && git status
 
 ## 3. Strict Phased Execution Order (COUNCIL-2026-005)
 
-1. **Phase 1: 100% Feature Code Completion (Current Phase)**
+1. **Phase 1: 100% Feature Code Completion + Accompanying Automated Tests (Current Phase)**
    - All functional workflows, edge routes, database schemas, and shared AppSwitcher navigation headers must be fully implemented in code.
-   - *Zero test diversion:* Do not get bogged down in testing cycles while features remain incomplete.
-2. **Phase 2: Comprehensive Testing Gate (The Next Step)**
+   - *Automated unit and regression tests:* Standard automated tests (unit tests, integration checks, component tests) **MUST be created and maintained whenever a new feature is developed or corrected** as standard engineering completeness.
+2. **Phase 2: Comprehensive Human Trial Testing & Field Pilot Gate (The Next Step)**
    - Triggers strictly *after* Phase 1 reaches 100% across the package.
-   - Includes: Row-Level Security (RLS) leak audit (`npm run audit:rls`), E2E user journeys, and Sunday Morning SLA latency verification (<50ms).
+   - Includes: Structured human trial rehearsals, uncoached user pilot sessions (e.g. Colegio Biblos for Academy), User Acceptance Testing (UAT), Row-Level Security (RLS) leak audit (`npm run audit:rls`), and Sunday Morning SLA latency verification (<50ms).
 3. **Phase 3: Production Vercel Edge Deployment**
-   - Triggers once Phase 2 test suite passes 100% green.
+   - Triggers once Phase 2 human trials and test suites pass 100% green.
    - Deploys to live production Vercel domain with SSL, edge caching, and automated health checks.
 
 ---

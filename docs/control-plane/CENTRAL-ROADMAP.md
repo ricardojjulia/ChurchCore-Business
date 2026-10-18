@@ -37,9 +37,9 @@ The Executive Control Plane (`ChurchCore-Business`) establishes central engineer
 ### Directive CP-2026-DIR-05: 100% MVP Feature-Completion & Phased Testing Gating
 - **Authority**: COUNCIL-2026-005.
 - **Mandate**: Enforce strict sequential gating across all six products:
-  1. **Phase 1 (100% Feature Code Complete)**: All programmed features, edge routes, database schemas, and shared AppSwitcher navigation components must be 100% implemented in code before testing starts.
-  2. **Phase 2 (Comprehensive Testing Gate)**: Testing commences *only after* Phase 1 is 100% complete (RLS audit, E2E user journeys, Sunday Morning SLA probes).
-  3. **Phase 3 (Production Vercel Edge Deployment)**: Edge deployment proceeds once Phase 2 tests are 100% green.
+  1. **Phase 1 (100% Feature Code Complete + Unit Tests)**: All programmed features, edge routes, database schemas, and shared AppSwitcher navigation components must be 100% implemented in code. Standard automated unit and regression tests MUST accompany every new feature or bug fix.
+  2. **Phase 2 (Comprehensive Human Trial Testing & Field Pilot Gate)**: Human trial testing, field pilot rehearsals (e.g. Colegio Biblos uncoached user sessions), and user acceptance testing commence *only after* Phase 1 is 100% complete.
+  3. **Phase 3 (Production Vercel Edge Deployment)**: Edge deployment proceeds once Phase 2 human trials and security test suites are 100% green.
 - **Artifacts**: Local roadmap [`docs/mvp-100-plan.md`](file:///Users/rjulia/ChurchCore-Business/docs/council/COUNCIL-2026-005.md) distributed to all 6 repos; canonical daily tracking report generated at [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md).
 - **Status**: **100% Ratified & Active across all 6 sibling repositories.**
 

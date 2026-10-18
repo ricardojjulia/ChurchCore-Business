@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>🎯 Daily MVP 100% Action Priority Queue</span>
             <span style="font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(251, 191, 36, 0.15); color: #FBBF24; font-weight: 600;">COUNCIL-2026-005 GATING</span>
           </h3>
-          <p>Strict Phased Execution: <strong>Phase 1 (100% Feature Complete)</strong> ➔ <strong>Phase 2 (Comprehensive Testing)</strong> ➔ <strong>Phase 3 (Vercel Deploy)</strong>. Connect and work from #1 downward.</p>
+          <p>Strict Phased Execution: <strong>Phase 1 (100% Features + Unit Tests)</strong> ➔ <strong>Phase 2 (Human Trial Testing & Field Pilots)</strong> ➔ <strong>Phase 3 (Vercel Deploy)</strong>. Connect and work from #1 downward.</p>
         </div>
         <div style="display: flex; gap: 8px;">
           <button id="btn-banner-open-report" class="btn btn-gold" style="font-size: 11px; padding: 6px 12px; display: flex; align-items: center; gap: 4px; cursor: pointer;">
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>
             <div style="font-weight: 700; color: #FBBF24; font-size: 15px;">Binding Directive: COUNCIL-2026-005</div>
             <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
-              Strict Phased Execution: <strong>Phase 1 (100% Feature Complete)</strong> ➔ <strong>Phase 2 (Comprehensive Testing)</strong> ➔ <strong>Phase 3 (Vercel Production Edge)</strong>
+              Strict Phased Execution: <strong>Phase 1 (100% Features + Unit Tests)</strong> ➔ <strong>Phase 2 (Human Trial Testing & Field Pilots)</strong> ➔ <strong>Phase 3 (Vercel Production Edge)</strong>
             </div>
           </div>
           <div style="display: flex; gap: 12px;">

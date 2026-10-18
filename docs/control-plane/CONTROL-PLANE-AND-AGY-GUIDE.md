@@ -221,9 +221,9 @@ Whenever you sit down in the morning to work on the ChurchCore ecosystem:
    cd "/Users/rjulia/ChurchCore Academy" && git status
    ```
 4. **Follow the Strict 3-Phase Gating Rule**:
-   - **Phase 1 (100% Feature Code Complete First):** Open `docs/mvp-100-plan.md` in that repository and complete all programmed features. *Do not divert time to running full test suites while feature code remains incomplete.*
-   - **Phase 2 (Comprehensive Testing Gate):** Only after all Phase 1 features are 100% written and integrated, run the test suites (`npm run audit:rls`, `npm run test:e2e`, Sunday SLA benchmarks).
-   - **Phase 3 (Production Vercel Edge Deployment):** Only after Phase 2 tests are 100% green, deploy to the live production domain.
+   - **Phase 1 (100% Feature Code Complete + Unit Tests):** Open `docs/mvp-100-plan.md` in that repository and complete all programmed features. Standard automated unit and regression tests MUST accompany every new feature or bug fix.
+   - **Phase 2 (Comprehensive Human Trial Testing & Field Pilot Gate):** Only after all Phase 1 features and automated tests are 100% complete, commence human trial testing, field pilot rehearsals (e.g. the uncoached Colegio Biblos human session), and user acceptance testing (UAT).
+   - **Phase 3 (Production Vercel Edge Deployment):** Only after Phase 2 human trials and security audits are 100% green, deploy to the live production domain.
 
 ---
 
