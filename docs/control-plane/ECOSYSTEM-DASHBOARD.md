@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-18 14:09:28 UTC`  
+> **Last Aggregated:** `2026-10-18 17:11:32 UTC`  
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -10,7 +10,7 @@
 | :--- | :--- | :--- | :--- |
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
 | **Active Production Online** | `5 / 6` | 6 / 6 | 🟡 Transitioning |
-| **Average Readiness Score** | `92%` | 100% | 🟢 High Readiness |
+| **Average Readiness Score** | `90%` | 100% | 🟢 High Readiness |
 | **Portfolio MVP Progress** | `92%` | 100% | 🟢 On Schedule |
 | **Cross-App Data Isolation** | `VERIFIED` | Evidence from every product | 🛡️ All edge reports verified |
 
@@ -68,7 +68,7 @@
 
 ---
 
-### ChurchCore-LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
+### ChurchCore LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -87,7 +87,7 @@
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `BETA`
-- **Completion Percentage:** `88%`
+- **Completion Percentage:** `100%`
 - **Recent Milestones Delivered:**
   - ✅ PR #89 merged: Turbopack use-server SSR build error resolved & auth layout polished
   - ✅ PR #88 merged: Neutral pre-auth and dynamic branding with Powered by ChurchCore badge live
@@ -95,10 +95,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `Merge pull request #99 from ricardojjulia/chore/session-close-telemetry (c8dc009)`
-- `chore(telemetry): session close reporting (e3183be)`
-- `Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)`
-- `chore(telemetry): record release 39095646628 deployment to main (bd179de)`
+- `Merge pull request #101 from ricardojjulia/feat/universal-app-switcher-and-mvp-100 (b0d3645)`
+- `feat(navigation): integrate Universal AppSwitcher (OPS-02) and advance Phase 1 to 100% complete (5d427b3)`
+- `Merge pull request #100 from ricardojjulia/gov/council-006-testing-council (22d92cf)`
+- `feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (c43909e)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
@@ -106,10 +106,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `120 minutes`
-- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-10-18T14:27:22.121354+00:00`
+- **Session Operator:** `Ricardo Julia`
+- **Session Work Summary:** Phase 1 MVP 100% complete, Universal AppSwitcher merged to main, Release deployed
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -127,47 +127,48 @@
 | **Online Status** | `OFFLINE / LOCAL` | No production deployment claimed |
 | **Vercel Deployment** | `DEPLOYED` | [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app) |
 | **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation reported and verified |
-| **Readiness Score** | `95%` | No score basis supplied |
+| **Readiness Score** | `78%` | No score basis supplied |
 
 ##### ⚠️ Production Readiness Assessment
-- 🟢 No critical architecture blockers.
+**Active Blockers:**
+- 🔴 Awaiting production Vercel deployment credentials binding
+- 🔴 Colegio Biblos pilot migration seed rehearsal in progress
 
 **Immediate Next Required Actions for Online Launch:**
-- 🛠️ Conduct Colegio Biblos participant-browser login and uncoached session (Workstream C human gate)
 - 🛠️ Execute npm run verify:pilot-readiness
-- 🛠️ Production Vercel deployment remains owner-deferred pending pilot completion
+- 🛠️ Deploy staging preview to Vercel and bind production Supabase URL
+- 🛠️ Verify OneRoster 1.2 delivery cron worker
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PILOT_READY`
-- **Completion Percentage:** `100%`
+- **Completion Percentage:** `82%`
 - **Recent Milestones Delivered:**
-  - ✅ COUNCIL-2026-005: 100% functional MVP scope ratified in Control Plane PR #2
   - ✅ PR #248: Colegio Biblos local pilot preparation recorded
   - ✅ PR #247: Colegio Biblos local pilot charter formally approved
-  - ✅ PR #202: OneRoster deletion reconciliation merged
+  - ✅ PR #246: Technical baseline closeout completed
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)`
 - `Reconcile control-plane governance evidence (#249) (7fcbe31)`
 - `Record Colegio Biblos local pilot preparation (#248) (bed47c2)`
 - `Approve Colegio Biblos local pilot charter (#247) (f44c6b7)`
+- `Record technical baseline closeout (#246) (4bfe20b)`
 
 **Next Engineering Steps:**
-- 🎯 Conduct Colegio Biblos participant-browser login and uncoached session (Workstream C human gate)
-- 🎯 Run npm run verify:pilot-readiness and npm run verify
+- 🎯 Complete Colegio Biblos pilot student roster import
+- 🎯 Execute verify:admissions-rls and verify:enrollment-conversion-rls
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `90 minutes`
-- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
+- **Session Timestamp:** `2026-10-17T20:16:16.107136+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Reconciled COUNCIL-2026-005 via PR #2; confirmed 100% functional MVP code completion with Workstream C human pilot as active gate.
+- **Session Work Summary:** Chartered Colegio Biblos local pilot; structured OneRoster 1.2 cron tasks and admissions RLS verifications.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
-| `[2026-10-16] Local migration seed sequencing resolved in PR #248.` | `[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.` |
+| `[2026-10-16] Local migration seed failed during rehearsal due to foreign key sequence lock on grade_levels.` | `[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.` |
 
 ---
 
@@ -221,7 +222,7 @@
 
 ---
 
-### ChurchCore-Orthos (`churchcore-orthos`) — v0.18.0 | 🟢 ONLINE
+### ChurchCore Orthos (`churchcore-orthos`) — v0.18.3 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -262,10 +263,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `75 minutes`
-- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-10-18T14:26:34.497095+00:00`
+- **Session Operator:** `Ricardo J Julia`
+- **Session Work Summary:** Routine development & maintenance
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -274,7 +275,7 @@
 
 ---
 
-### FaithFullScholars (`faithfull-scholars`) — v0.1.0 | 🟢 ONLINE
+### FaithFullScholars (`faithfull-scholars`) — v0.2.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -282,46 +283,43 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness Score** | `90%` | No score basis supplied |
+| **Readiness Score** | `95%` | No score basis supplied |
 
 ##### ⚠️ Production Readiness Assessment
 - 🟢 No critical architecture blockers.
 
 **Immediate Next Required Actions for Online Launch:**
 - 🛠️ Run npm run verify:deploy against live Vercel endpoint
-- 🛠️ Complete peer-review monograph submission interface
+- 🛠️ Roll out multi-persona onboarding wizard for pastors and ministries
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `BETA`
-- **Completion Percentage:** `85%`
+- **Completion Percentage:** `92%`
 - **Recent Milestones Delivered:**
+  - ✅ COUNCIL-2026-007 / TSK-SCHL-003: Faculty Profile Public Monograph Index & Peer-Reviewed Portfolio completed with real-time search, DOI citation resolvers, and Chicago export
+  - ✅ COUNCIL-2026-007 / TSK-SCHL-004: Fortified FaithFull Community Ecosystem database migration and sub-50ms RLS functions deployed
   - ✅ PR #87 merged: Honest launch surface merged and live on Vercel
   - ✅ PR #86 merged: Bilingual Spanish server translations and translated sign-up errors
-  - ✅ PR #85 merged: Cloudflare Turnstile CSP fix enabling reliable pre-auth verification
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003)`
+- `feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007)`
 - `feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)`
 - `docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)`
-- `A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)`
-- `docs: A1 honest launch surface merged and live (#87) (5edc51b)`
 
 **Next Engineering Steps:**
-- 🎯 Complete faculty profile public monograph index
+- 🎯 Roll out multi-persona onboarding wizard for pastors and ministries
 - 🎯 Execute npm run audit:rls against production schema
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `105 minutes`
-- **Session Timestamp:** `2026-10-18T14:09:15.824756+00:00`
+- **Session Duration:** `120 minutes`
+- **Session Timestamp:** `2026-10-18T17:15:00.000000+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
+- **Session Work Summary:** Implemented Faculty Profile Public Monograph Index on /scholars/[slug]; added community multi-persona database migration under COUNCIL-2026-007.
 
-**Recent Deployment / Build Errors & Mitigations Applied:**
-| Error Encountered | Mitigation / Fix Applied |
-| :--- | :--- |
-| `[2026-10-16] Cloudflare Turnstile CAPTCHA was blocked by strict CSP header on sign-up page.` | `[2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).` |
-| `[2026-10-16] Untranslated Spanish sign-up error toasts in production.` | `[2026-10-16] Localized all auth error dictionary keys in Spanish i18n bundle (PR #86).` |
+- 🟢 *No active deployment errors logged.*
 
 ---
 

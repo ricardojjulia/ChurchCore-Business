@@ -1,9 +1,9 @@
 # ChurchCore Ecosystem: Central Project Management Task Registry
 
 > **Classification:** Sovereign Ecosystem Task Ledger & Implementation Tracking Base  
-> **Source of Truth:** [`docs/control-plane/tasks.json`](tasks.json)
+> **Source of Truth:** [`docs/control-plane/tasks.json`](tasks.json)  
 > **Governing Body:** Executive Control Plane (`ChurchCore-Business`)  
-> **Last Updated:** 2026-10-17 16:06:15 UTC
+> **Last Updated:** 2026-10-18 17:11:49 UTC  
 
 ---
 
@@ -11,12 +11,12 @@
 
 | Metric | Count | Details |
 | :--- | :---: | :--- |
-| **Total Tracked Tasks** | **18** | Across 6 Product Pillars + Control Plane Hub |
-| **Shipped & Verified (`DONE`)** | **9** | 50% of commitments delivered |
-| **Actively In Development (`IN_PROGRESS`)** | **4** | Immediate coding velocity |
-| **Awaiting Review / Credentials (`WAITING`)** | **3** | Deployment or credential binding gates |
+| **Total Tracked Tasks** | **21** | Across 6 Product Pillars + Control Plane Hub |
+| **Shipped & Verified (`DONE`)** | **12** | 57% of commitments delivered |
+| **Actively In Development (`IN_PROGRESS`)** | **5** | Immediate coding velocity |
+| **Awaiting Review / Credentials (`WAITING`)** | **2** | Deployment or credential binding gates |
 | **Upcoming Architecture Backlog (`PLANNED`)** | **2** | Scheduled for next sprint cycle |
-| **Directionality Ratio** | **83% Edge / 17% Hub** | 15 Repo-Originated • 3 Control-Plane-Dispatched |
+| **Directionality Ratio** | **85% Edge / 15% Hub** | 18 Repo-Originated • 3 Control-Plane-Dispatched |
 
 ### Directionality Legend
 - 🔵 **`[EDGE: REPO-ORIGINATED]`**: Initiated directly within the product codebase.
@@ -32,6 +32,7 @@
 | `TSK-LMS-003` | **LMS** | 🔵 `EDGE` | **Theological Student Credentialing & PDF Certificate Worker**<br>Generate immutable cryptographic certificates upon course completion for AETH ministerial certification. | Ricardo J. Julia | `implementation-plan-2026-q4.md (§2.4)` | `npm run test:prod-synthetic verifies certificate signature` |
 | `TSK-ACAD-002` | **ACADEMY** | 🔵 `EDGE` | **Colegio Biblos Participant Login & Uncoached Session**<br>Local preparation is complete. Verify the actual participant browser or VM, run the real uncoached session, sanitize findings, and re-observe any S0-S2 blockers. | Ricardo J. Julia | `Academy docs/plans/2026-10-16-pilot-to-production-completion-plan.md (Workstream C)` | `Dated sanitized session report and recorded Academy owner residual-risk decision` |
 | `TSK-CARE-003` | **CARE** | 🔵 `EDGE` | **Merge Faithful Workflows Enhancements Branch**<br>Merge spiritually integrated counseling workflows and practice management modules into main. | Ricardo J. Julia | `branch feat/faithful-workflows-enhancements` | `npm run test:e2e passes across all intake scenarios` |
+| `TSK-SCHL-004` | **FAITHFULL-SCHOLARS** | 🔵 `EDGE` | **Fortified FaithFull Community Ecosystem (Multi-Persona Expansion)**<br>Database migration and RLS security hardening expanding the platform to pastors, churches, evangelists, ministers, apologists, and councils with sub-50ms query SLAs. | Ricardo J. Julia | `COUNCIL-2026-007 (REQ-007-01)` | `supabase/migrations/20261018140000_community_ecosystem.sql with passing RLS audit` |
 
 ---
 
@@ -41,7 +42,6 @@
 | :--- | :--- | :---: | :--- | :--- | :--- |
 | `TSK-CHMS-003` | **CHMS** | 🟡 `HUB` | **Powered by ChurchCore Trust Badge Integration** | Install official Endorsed Brand trust mark in global portal footer linking to security documentation. | components/layout/footer.tsx contains trust mark asset and passes WCAG AAA contrast |
 | `TSK-ACAD-003` | **ACADEMY** | 🔵 `EDGE` | **Academy RLS Verification Privilege Blockers** | The admissions, enrollment-conversion, and LLIS-consent RLS commands cannot complete because local anon/authenticated roles lack required table privileges. No grant change is authorized by governance telemetry. | All three repository-owned RLS commands complete successfully after an Academy-scoped security review |
-| `TSK-ORTH-003` | **ORTHOS** | 🟡 `HUB` | **Omni-Council Compliance Rehearsal & Cloud Supabase Binding** | Execute npm run test:omni-council, bind production Supabase credentials, and promote from preview to full production. | Full green run on npm run test:omni-council |
 
 ---
 
@@ -65,5 +65,9 @@
 | `TSK-CARE-002` | **CARE** | 🔵 `EDGE` | **Clinical EHR & Pastoral Counseling Intake Verification** | `v7.0.0-RELEASE-SUMMARY.md` | ✅ VERIFIED |
 | `TSK-ORTH-001` | **ORTHOS** | 🔵 `EDGE` | **Departmental Ministry Governance & Maturity Engine Shipped** | `PR #25 (commit 3296855)` | ✅ VERIFIED |
 | `TSK-ORTH-002` | **ORTHOS** | 🔵 `EDGE` | **Compensating Safeguarding Controls for Small Churches** | `PR #24 (commit a196eba)` | ✅ VERIFIED |
+| `TSK-ORTH-003` | **ORTHOS** | 🟡 `HUB` | **Omni-Council Compliance Rehearsal & Cloud Supabase Binding** | `COUNCIL-2026-004 (REQ-004-02)` | ✅ VERIFIED |
 | `TSK-SCHL-001` | **FAITHFULL-SCHOLARS** | 🔵 `EDGE` | **Cloudflare Turnstile CSP Header Directive Resolution** | `PR #85 (commit c508488)` | ✅ VERIFIED |
 | `TSK-SCHL-002` | **FAITHFULL-SCHOLARS** | 🔵 `EDGE` | **Honest Launch Surface & Spanish Localization Merged Live** | `PR #86 & PR #87 (commit 5edc51b)` | ✅ VERIFIED |
+| `TSK-ORTH-004` | **ORTHOS** | 🔵 `EDGE` | **Phase 1 MVP 100% Completion & Pilot Readiness (v0.18.2)** | `PR #29 (commit 8d63567)` | ✅ VERIFIED |
+| `TSK-SCHL-003` | **FAITHFULL-SCHOLARS** | 🔵 `EDGE` | **Faculty Profile Public Monograph Index & Peer-Reviewed Scholarly Portfolio** | `commit 75c18eb (branch feat/council-007-community-expansion-and-monographs merged to main)` | ✅ VERIFIED |
+

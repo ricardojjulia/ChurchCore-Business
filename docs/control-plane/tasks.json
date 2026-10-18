@@ -2,8 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ChurchCore Ecosystem Project Management Metadata Base",
   "version": "1.0.0",
-  "last_updated": "2026-10-17T15:45:00Z",
-  "total_tasks": 18,
+  "last_updated": "2026-10-18T17:00:00Z",
+  "total_tasks": 20,
   "tasks": [
     {
       "task_id": "TSK-CHMS-001",
@@ -289,6 +289,36 @@
       "description": "Shipped CSP allowlists, GAAP ASC 958 double-entry fund accounting validator, universal 9-dot app switcher, live on Vercel.",
       "verification": "npm run test:all passes with 100% assertions, Vercel HTTP/2 200 response",
       "updated_at": "2026-10-18T04:35:00Z"
+    },
+    {
+      "task_id": "TSK-SCHL-003",
+      "product_id": "faithfull-scholars",
+      "title": "Faculty Profile Public Monograph Index & Peer-Reviewed Scholarly Portfolio",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "commit 75c18eb (branch feat/council-007-community-expansion-and-monographs merged to main)",
+      "target_milestone": "v0.2.0",
+      "description": "Interactive searchable and filterable monograph, book, dissertation, and journal publication index on faculty profile pages (/scholars/[slug]) with Chicago/APA citation copying and DOI outbound verification.",
+      "verification": "components/scholars/scholar-monographs-index.tsx mounted on /scholars/[slug]; 6/6 tests passing in tests/unit/scholar-monographs-index.test.tsx; 78/78 test files passing in suite",
+      "updated_at": "2026-10-18T17:15:00Z"
+    },
+    {
+      "task_id": "TSK-SCHL-004",
+      "product_id": "faithfull-scholars",
+      "title": "Fortified FaithFull Community Ecosystem (Multi-Persona Expansion)",
+      "status": "in_progress",
+      "directionality": "EDGE_REPO",
+      "priority": "P1_HIGH",
+      "category": "architecture",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "COUNCIL-2026-007 (REQ-007-01)",
+      "target_milestone": "v0.3.0",
+      "description": "Database migration and RLS security hardening expanding the platform to pastors, churches, evangelists, ministers, apologists, and councils with sub-50ms query SLAs.",
+      "verification": "supabase/migrations/20261018140000_community_ecosystem.sql with passing RLS audit",
+      "updated_at": "2026-10-18T17:00:00Z"
     }
   ]
 }

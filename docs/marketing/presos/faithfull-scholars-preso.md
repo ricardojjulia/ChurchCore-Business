@@ -4,7 +4,7 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
-> **Last Synced from Telemetry:** 2026-10-18 16:02:00 UTC
+> **Last Synced from Telemetry:** 2026-10-18 17:11:32 UTC
 
 ---
 
@@ -38,11 +38,11 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://faith-full-scholars.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (0.1.0 Live)*
+*Continuous High-Velocity Delivery (0.2.0 Live)*
 
-- Latest Feature Delivered: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
-- Ecosystem Hardening: docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
-- Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).
+- Latest Feature Delivered: feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003)
+- Ecosystem Hardening: feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007)
+- Reliability Proof: [2026-10-18] Encapsulated organization member queries within SECURITY DEFINER function public.is_organization_admin(org_id) to guarantee sub-50ms Sunday SLA.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,10 @@ Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matc
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
 Recent Engineering Delivery & Milestones:
+- feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003)
+- feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007)
 - feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
 - docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
-- A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
-- docs: A1 honest launch surface merged and live (#87) (5edc51b)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 - Live Site: https://www.faithgrid.io
 - Pricing: $2,500–$15,000/yr per Institution
-- Latest Features: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be), docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8), A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
+- Latest Features: feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003), feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007), feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003)
+- feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007)
 - feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
-- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
-- A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

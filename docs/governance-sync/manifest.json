@@ -249,6 +249,36 @@
           "verification": "Automation is limited to the central governance PR. Any edge repository change still requires that repository's owner approval, Council, Testing Council, pr-review, signature, CI, conversation-resolution, and protected-branch gates."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-007",
+      "title": "Executive Directive 2026-007-F: Ratification of the Fortified FaithFull Community Ecosystem & Multi-Persona Architecture",
+      "ratification_date": "2026-10-18",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/deliberations/DELIB-SCHOLARS-COUNCIL-20261018-2262.md",
+      "impacted_products": [
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-007-01",
+          "title": "Multi-Persona Kingdom Community Expansion",
+          "description": "Expand FaithFull Scholars beyond academic theologians to pastors, churches, evangelists, ministers, apologists, and councils while maintaining sovereign database isolation and high-performance Sunday SLA (<50ms).",
+          "verification": "Multi-persona database migration with persona_type enum and organizations table deployed with verified RLS policies."
+        },
+        {
+          "req_id": "REQ-007-02",
+          "title": "Faculty Profile Public Monograph Index & Peer-Reviewed Portfolio",
+          "description": "Implement a public, searchable, filterable scholarly monograph index on scholar profiles featuring peer-reviewed articles, books, dissertations, citations, and DOI linkages.",
+          "verification": "Public monograph index component rendering on /scholars/[slug] with client-side category filtering, keyword search, and passing unit tests."
+        },
+        {
+          "req_id": "REQ-007-03",
+          "title": "Fortified Organization Ownership and SLA Guarantee",
+          "description": "Cryptographically enforce organization owner validation at RLS insert, use SECURITY DEFINER helper public.is_organization_admin(org_id) for sub-50ms query execution, and prevent orphaned records with ON DELETE CASCADE.",
+          "verification": "SQL migration verified against Supabase RLS security audit rules."
+        }
+      ]
     }
   ]
 }

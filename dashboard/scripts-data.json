@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-18 14:09:28 UTC",
-  "total_scripts": 12,
+  "generated_at": "2026-10-18 17:11:32 UTC",
+  "total_scripts": 13,
   "categories": [
+    "General Automation Tools",
     "Executive Mission Control Cockpit",
     "Repository Activation & Roadmapping",
     "Autonomous Edge Challenges",
     "Fleet Telemetry & Cockpit Aggregation",
     "Reporting & Fleet Briefings",
     "Marketing & Business Presentations",
-    "General Automation Tools",
     "Project Management & Task Sync",
     "Governance Enforcement & Ingestion",
     "Central Verification & Evidence",
@@ -17,6 +17,17 @@
   ],
   "scripts": [
     {
+      "rel_path": "dashboard/deliberation_engine.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/dashboard/deliberation_engine.py",
+      "title": "ChurchCore Sovereign Control Plane: Deliberation Engine",
+      "description": "Generates intelligent, context-aware Council determinations, customized AntiGravity prompts,\nand specialized member speeches tailored to the specific product and feature requested.\nPermanently logs ratified executive deliberations into docs/deliberations/.",
+      "category": "General Automation Tools",
+      "cat_summary": "Utility script for sovereign control plane automation.",
+      "cli_flags": [],
+      "size_bytes": 57289,
+      "line_count": 1115
+    },
+    {
       "rel_path": "dashboard/serve.py",
       "abs_path": "/Users/rjulia/ChurchCore-Business/dashboard/serve.py",
       "title": "ChurchCore Sovereign Control Plane: Local Dashboard Server",
@@ -24,8 +35,8 @@
       "category": "Executive Mission Control Cockpit",
       "cat_summary": "Serves the real-time glassmorphic dashboard and documentation dossier viewer at http://localhost:3333.",
       "cli_flags": [],
-      "size_bytes": 11392,
-      "line_count": 352
+      "size_bytes": 14015,
+      "line_count": 410
     },
     {
       "rel_path": "scripts/activate-product-repos.py",
@@ -120,7 +131,7 @@
       "category": "Marketing & Business Presentations",
       "cat_summary": "Generates slide decks and AI prompt packets (Claude, Gemini, Antigravity) from product dossiers.",
       "cli_flags": [],
-      "size_bytes": 24525,
+      "size_bytes": 24505,
       "line_count": 485
     },
     {

@@ -1,5 +1,5 @@
 window.CHURCHCORE_PRESOS_DATA = {
-  "generated_at": "2026-10-18T16:02:00.197804+00:00",
+  "generated_at": "2026-10-18T17:11:32.774048+00:00",
   "total_decks": 7,
   "decks": [
     {
@@ -22,7 +22,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-18 16:02:00 UTC",
+      "last_synced": "2026-10-18 17:11:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -130,7 +130,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 16:02:00 UTC",
+      "last_synced": "2026-10-18 17:11:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -238,7 +238,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-18 16:02:00 UTC",
+      "last_synced": "2026-10-18 17:11:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -346,7 +346,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-18 16:02:00 UTC",
+      "last_synced": "2026-10-18 17:11:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -454,7 +454,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.0.0",
-      "last_synced": "2026-10-18 16:02:00 UTC",
+      "last_synced": "2026-10-18 17:11:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -562,7 +562,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-18 16:02:00 UTC",
+      "last_synced": "2026-10-18 17:11:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -669,8 +669,8 @@ window.CHURCHCORE_PRESOS_DATA = {
       "screenshot": "screenshots/commercial_opex_margins.png",
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
-      "version": "0.1.0",
-      "last_synced": "2026-10-18 16:02:00 UTC",
+      "version": "0.2.0",
+      "last_synced": "2026-10-18 17:11:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -715,11 +715,11 @@ window.CHURCHCORE_PRESOS_DATA = {
           "slide_num": 4,
           "title": "Fresh Off the Press: Latest Engineering Milestones",
           "type": "live_telemetry_highlights",
-          "subtitle": "Continuous High-Velocity Delivery (0.1.0 Live)",
+          "subtitle": "Continuous High-Velocity Delivery (0.2.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)",
-            "Ecosystem Hardening: docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)",
-            "Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85)."
+            "Latest Feature Delivered: feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003)",
+            "Ecosystem Hardening: feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007)",
+            "Reliability Proof: [2026-10-18] Encapsulated organization member queries within SECURITY DEFINER function public.is_organization_admin(org_id) to guarantee sub-50ms Sunday SLA."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
           "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."
@@ -752,9 +752,9 @@ window.CHURCHCORE_PRESOS_DATA = {
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://www.faithgrid.io\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)\n- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)\n- A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)\n- docs: A1 honest launch surface merged and live (#87) (5edc51b)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://www.faithgrid.io\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be), docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8), A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://www.faithgrid.io\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)\n- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)\n- A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.faithgrid.io",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://www.faithgrid.io\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003)\n- feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007)\n- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)\n- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://www.faithgrid.io\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003), feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007), feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://www.faithgrid.io\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- feat(monographs): implement interactive Faculty Profile Public Monograph Index with category filter pills and DOI citations (TSK-SCHL-003)\n- feat(community): deliver fortified community ecosystem schema migration for pastors, churches, evangelists, and councils (COUNCIL-2026-007)\n- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.faithgrid.io",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     }
