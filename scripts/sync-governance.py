@@ -67,10 +67,17 @@ def parse_acknowledgments(content):
         return {}
     results = {}
     
-    # Check table rows like | COUNCIL-2026-001 | REQ-001-01 | ... | ✅ IMPLEMENTED |
-    table_matches = re.findall(r'\|\s*([A-Z0-9\-]+)\s*\|\s*([A-Z0-9\-]+)\s*\|[^|]*\|\s*([^|]+)\s*\|', content)
-    for council_id, req_id, status in table_matches:
-        results[req_id.strip()] = status.strip()
+    # Check evidence tables. Requirement cells may include a human title after
+    # the ID; status is the following cell.
+    for line in content.splitlines():
+        if not line.lstrip().startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 3:
+            continue
+        req_match = re.search(r"REQ-[0-9]+-[0-9]+", cells[1])
+        if req_match:
+            results[req_match.group(0)] = cells[2]
 
     # Check individual section blocks like:
     # ### Acknowledgment: COUNCIL-2026-001 / REQ-001-01 - Title
@@ -85,6 +92,29 @@ def parse_acknowledgments(content):
                 results[rid] = m.group(1).strip()
 
     return results
+
+def normalize_status(raw_status):
+    """Map edge-reported evidence to a fail-closed matrix status."""
+    raw = raw_status.upper()
+    negative_markers = (
+        "BLOCKED",
+        "NOT VERIFIED",
+        "UNVERIFIED",
+        "PENDING",
+        "NOT IMPLEMENTED",
+    )
+    if any(marker in raw for marker in negative_markers):
+        return "⚪ PENDING"
+    if (
+        "IN PROGRESS" in raw
+        or "ACKNOWLEDGED" in raw
+        or "ACCEPTED" in raw
+        or "🟡" in raw
+    ):
+        return "🟡 IN PROGRESS"
+    if raw.startswith("IMPLEMENTED") or "✅" in raw:
+        return "✅ IMPLEMENTED"
+    return "⚪ PENDING"
 
 def main():
     print("=" * 60)
@@ -116,17 +146,8 @@ def main():
             if p_name in d.get("impacted_products", []):
                 for req in d.get("requirements", []):
                     rid = req["req_id"]
-                    # If verified during initial audit in manifest
-                    if rid in ["REQ-001-01", "REQ-001-02", "REQ-002-03"]:
-                        status = "✅ IMPLEMENTED"
-                    elif rid in ack_data:
-                        raw = ack_data[rid].upper()
-                        if "IMPLEMENTED" in raw or "VERIFIED" in raw or "✅" in raw:
-                            status = "✅ IMPLEMENTED"
-                        elif "PROGRESS" in raw or "🟡" in raw:
-                            status = "🟡 IN PROGRESS"
-                        else:
-                            status = "⚪ PENDING"
+                    if rid in ack_data:
+                        status = normalize_status(ack_data[rid])
                     else:
                         status = "⚪ PENDING"
                     compliance[(rid, p_name)] = status

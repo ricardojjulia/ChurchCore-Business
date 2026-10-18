@@ -1,71 +1,82 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-18T19:17:01.189493+00:00",
+  "generated_at": "2026-10-18T19:54:37.533192+00:00",
   "summary": {
     "total_products": 6,
-    "online_in_production": 6,
-    "average_readiness_score": 99,
-    "average_completion_pct": 97,
+    "online_in_production": 5,
+    "average_readiness_score": 77,
+    "average_completion_pct": 85,
     "sovereign_data_isolation": true,
-    "total_tasks": 23,
-    "done_tasks": 14
+    "total_tasks": 24,
+    "done_tasks": 15
   },
   "products": [
     {
       "product_id": "churchcore-chms",
-      "repo_name": "ChurchCore",
+      "repo_name": "cp-wt",
       "version": "3.5.0",
-      "report_timestamp": "2026-10-18T04:09:16.075485+00:00",
+      "report_timestamp": "2026-10-17T23:12:22.708251+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
         "vercel_url": "https://www.churchcore.io",
         "custom_domain": "https://www.churchcore.io",
         "supabase_status": "connected",
-        "supabase_project_ref": "prod-chms-db",
+        "supabase_project_ref": "xsmcurhmgmnxxppkorpq",
         "readiness_assessment": {
-          "readiness_score_pct": 94,
-          "blockers": [],
+          "readiness_score_pct": 95,
+          "blockers": [
+            "Testing Council v6 full run not yet done (last item of R1's definition of done)",
+            "O7: Stripe test-mode run never exercised against real Stripe (incl. charge.refund.updated / refund.updated on the Connect endpoint)",
+            "O15: real pilot export files not yet tested",
+            "O23: security@churchcore.io cannot receive mail (no MX record for churchcore.io)"
+          ],
           "next_required_actions": [
-            "Complete Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms)",
-            "Complete R1d data-rights erasure approval queue e2e verification",
-            "Finalize crons for shepherd-ai and communications scheduled"
+            "Testing Council v6 full run",
+            "R2 release (target 2026-11-06)"
           ]
         }
       },
       "mvp_status": {
-        "phase": "production",
-        "completion_pct": 92,
+        "phase": "pilot_ready",
+        "completion_pct": 95,
+        "release_target": "2026-11-06",
+        "must_rows_merged": "38 of 40",
         "latest_milestones": [
-          "Council Review 56 (R1d) synthesis and agent reports approved",
-          "R1d erasure approval screens (queue, member data-rights, e2e) merged",
-          "Multi-campus volunteer scheduling and donor giving pipelines live"
+          "All five MVP gaps closed",
+          "Council Review 52 whole-app re-baseline: 2 Critical + 5 High found and fixed (R1a #201, R1b #202, R1c #203, R1d #205)",
+          "R1d data-erasure approval flow merged #205 (exact, household-scoped erasure with audit redaction)",
+          "CP1 Powered by ChurchCore badge merged #206; CP1b hotfix #207 rewrote /security to true claims, added security headers and security.txt"
         ]
       },
       "latest_changes": [
-        "docs: close out R1d, CP1 and CP1b; plan, changelog and memory up to date (#208) (2d76314)",
-        "fix: CP1b truthful /security page, kiosk badge, single statement footer, security headers, real dependency audit (Council Review 58) (#207) (f7faaf0)",
-        "feat(security): launch /security Trust Center and Powered by ChurchCore badge system (COUNCIL-2026-002 REQ-002-01) (#206) (c28c96c)",
+        "chore: refresh control-plane files and give the control plane an accurate view (89b7723)",
+        "Merge remote-tracking branch 'origin/main' into cp-refresh (8440c01)",
         "feat: R1d data-erasure approval flow \u2014 exact, household-scoped erasure with audit redaction (Council Reviews 55\u201357) (#205) (840643d)",
+        "chore: add ChurchCore-Business control-plane rule, telemetry script and council ledger (72f4653)",
         "fix: R1c UX and small fixes \u2014 printing, error pages, scanner-safe unsubscribe, honest push (Council Reviews 52, 55) (#203) (a243af1)"
       ],
       "next_steps": [
-        "Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms)",
-        "Verify send erasure notice only after erasure succeeds in production",
-        "Add Powered by ChurchCore trust badge to main footer"
+        "Testing Council v6 full run",
+        "R2 release",
+        "Owner actions O7, O15, O23 (mail), O24 (business repo visibility), O25 (Spanish review), O26 (GHAS)",
+        "Should rows: S89 WCAG AAA, S90 AppSwitcher (target 2026-11-15), S91 enforce CSP after a real Stripe payment"
       ],
       "ai_session_telemetry": {
-        "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 180,
-        "session_date": "2026-10-18T04:09:16.075485+00:00",
-        "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle."
+        "last_model": "claude-opus-5-5",
+        "session_duration_minutes": 600,
+        "session_date": "2026-10-17T23:12:22.708251+00:00",
+        "session_operator": "Ricardo J. Julia (with Claude Code)",
+        "summary_of_work": "R1a-R1d, CP1 and CP1b merged (#201-#203, #205-#207); demo mode turned off in production; /security rewritten to true claims with security headers and security.txt; next: Testing Council v6 full run, then R2."
       },
       "deployment_diagnostics": {
         "recent_errors": [
-          "[2026-10-17] Erasure notice was triggering before DB transaction confirmed in preview environment."
+          "[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success).",
+          "[2026-10-17] PR #206 merged before Council Review 58 finished; the live /security page made ~9 false security claims."
         ],
         "mitigations_applied": [
-          "[2026-10-17] Refactored event emission to fire exclusively in post-commit callback (commit b38636f)."
+          "[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403.",
+          "[2026-10-17] CP1b (#207): /security rewritten so every claim is true of the code (evidence in docs/factory-runs/2026-10-17-cp1b-truthful-security.md); live check: no banned phrases, security headers present, security.txt served.",
+          "[2026-10-17] Migrations 20261016000000, 20261017000000, 20261018000000 applied to hosted before their merges with read-only post-apply checks."
         ]
       },
       "governance_compliance": {
@@ -73,20 +84,24 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004",
-          "COUNCIL-2026-005"
+          "COUNCIL-2026-004"
         ],
         "brand_house_compliant": true,
-        "sovereign_db_isolation_verified": true
+        "sovereign_db_isolation_verified": true,
+        "brand_house_note": "Powered by ChurchCore badge live (REQ-002-01, #206/#207). WCAG AAA (REQ-002-02) not met: Should row S89.",
+        "documented_council_reviews": {
+          "reviews": 58,
+          "files": 193
+        }
       },
-      "_source_path": "/Users/rjulia/ChurchCore/docs/control-plane/telemetry.json",
-      "_source_type": "local"
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote"
     },
     {
       "product_id": "churchcore-lms",
       "repo_name": "ChurchCore LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-18T17:32:29.875723+00:00",
+      "report_timestamp": "2026-10-18T14:27:22.121354+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -96,7 +111,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "supabase_status": "connected",
         "supabase_project_ref": "prod-lms-db",
         "readiness_assessment": {
-          "readiness_score_pct": 100,
+          "readiness_score_pct": 95,
           "blockers": [],
           "next_required_actions": [
             "Verify Turbopack build on Vercel preview branch",
@@ -105,7 +120,7 @@ window.CHURCHCORE_FLEET_DATA = {
         }
       },
       "mvp_status": {
-        "phase": "production",
+        "phase": "beta",
         "completion_pct": 100,
         "latest_milestones": [
           "PR #89 merged: Turbopack use-server SSR build error resolved & auth layout polished",
@@ -114,11 +129,11 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
-        "Merge pull request #102 from ricardojjulia/chore/session-close-100-mvp (b69f222)",
-        "chore(telemetry): record 100% Phase 1 completion and session close (af6675c)",
         "Merge pull request #101 from ricardojjulia/feat/universal-app-switcher-and-mvp-100 (b0d3645)",
         "feat(navigation): integrate Universal AppSwitcher (OPS-02) and advance Phase 1 to 100% complete (5d427b3)",
-        "Merge pull request #100 from ricardojjulia/gov/council-006-testing-council (22d92cf)"
+        "Merge pull request #100 from ricardojjulia/gov/council-006-testing-council (22d92cf)",
+        "feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (c43909e)",
+        "Merge pull request #99 from ricardojjulia/chore/session-close-telemetry (c8dc009)"
       ],
       "next_steps": [
         "Test course completion webhook integration with local certification service",
@@ -127,9 +142,9 @@ window.CHURCHCORE_FLEET_DATA = {
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
         "session_duration_minutes": 30,
-        "session_date": "2026-10-18T17:32:29.875723+00:00",
+        "session_date": "2026-10-18T14:27:22.121354+00:00",
         "session_operator": "Ricardo Julia",
-        "summary_of_work": "Automated post-test edge telemetry synchronization for churchcore-lms."
+        "summary_of_work": "Phase 1 MVP 100% complete, Universal AppSwitcher merged to main, Release deployed"
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -148,70 +163,74 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-003",
           "COUNCIL-2026-004",
           "COUNCIL-2026-005",
-          "COUNCIL-2026-006",
-          "COUNCIL-2026-007",
-          "COUNCIL-2026-008"
+          "COUNCIL-2026-006"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore LMS/docs/control-plane/telemetry.json",
-      "_source_type": "local"
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote"
     },
     {
       "product_id": "churchcore-academy",
-      "repo_name": "ChurchCore Academy",
+      "repo_name": "ChurchCore-Academy",
       "version": "0.10.0",
-      "report_timestamp": "2026-10-18T17:32:30.725826+00:00",
+      "report_timestamp": "2026-10-17T16:05:27.430761+00:00",
       "online_status": {
-        "is_online": true,
-        "vercel_status": "deployed",
-        "vercel_url": "https://www.churchcoreacademy.io",
-        "custom_domain": "https://www.churchcoreacademy.io",
-        "supabase_status": "connected",
-        "supabase_project_ref": "prod-academy-db",
+        "is_online": false,
+        "vercel_status": "none",
+        "vercel_url": "",
+        "supabase_status": "local_only",
+        "supabase_project_ref": "",
         "readiness_assessment": {
-          "readiness_score_pct": 100,
-          "blockers": [],
+          "readiness_score_pct": 33,
+          "score_basis": "One of three approved local Workstream C gates is complete: preparation passed; participant-browser login and the uncoached session remain.",
+          "blockers": [
+            "Participant login has not been verified from the actual Colegio Biblos browser or VM.",
+            "The real uncoached Colegio Biblos pilot session has not occurred.",
+            "Hosted deployment remains owner-deferred and is not authorized by this telemetry."
+          ],
           "next_required_actions": [
-            "Monitor Colegio Biblos live admissions and enrollment conversions",
-            "OneRoster 1.2 scheduled cron worker execution verification"
+            "Verify participant login from the approved local/private browser or VM.",
+            "Run the chartered uncoached session and record sanitized evidence.",
+            "Use observed pilot needs to select or exclude later integration-validation lanes."
           ]
         }
       },
       "mvp_status": {
-        "phase": "production",
+        "phase": "pilot_ready",
         "completion_pct": 100,
+        "completion_basis": "The repository-defined functional MVP is built; this percentage does not represent production readiness or pilot completion.",
         "latest_milestones": [
-          "Production release live at https://www.churchcoreacademy.io and Vercel edge",
-          "PR #249: Reconcile control-plane governance evidence",
-          "PR #248: Colegio Biblos local pilot preparation recorded",
-          "PR #247: Colegio Biblos local pilot charter formally approved"
+          "PR #248 recorded Colegio Biblos local/private pilot preparation.",
+          "PR #247 approved the Colegio Biblos local pilot charter.",
+          "PR #246 completed the technical baseline closeout."
         ]
       },
       "latest_changes": [
-        "chore(telemetry): record verified live production status on Vercel (100% readiness) (9cf2246)",
-        "Revert \"feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006)\" (b855d8a)",
-        "feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (12b53e2)",
-        "feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (016be3e)",
-        "Reconcile control-plane governance evidence (#249) (7fcbe31)"
+        "Record Colegio Biblos local pilot preparation (#248) (bed47c2)",
+        "Approve Colegio Biblos local pilot charter (#247) (f44c6b7)",
+        "Record technical baseline closeout (#246) (4bfe20b)",
+        "Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)",
+        "Record completion plan council review (3e96d37)"
       ],
       "next_steps": [
-        "Verify OneRoster 1.2 delivery cron worker in production",
-        "Execute verify:admissions-rls and verify:enrollment-conversion-rls"
+        "Verify the actual Colegio Biblos participant login on the approved local/private topology.",
+        "Complete the uncoached pilot session before adding feature work.",
+        "Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk."
       ],
       "ai_session_telemetry": {
-        "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 30,
-        "session_date": "2026-10-18T17:32:30.725826+00:00",
-        "session_operator": "Ricardo J Julia",
-        "summary_of_work": "Automated post-test edge telemetry synchronization for churchcore-academy."
+        "last_model": "OpenAI Codex",
+        "session_duration_minutes": 25,
+        "session_date": "2026-10-17T16:05:27.430761+00:00",
+        "session_operator": "Ricardo J. Julia",
+        "summary_of_work": "Reconciled Academy control-plane governance and evidence-backed telemetry."
       },
       "deployment_diagnostics": {
-        "recent_errors": [],
-        "mitigations_applied": [
-          "[2026-10-18] Verified HTTP/2 200 response on www.churchcoreacademy.io and church-core-academy.vercel.app with strict security headers."
-        ]
+        "recent_errors": [
+          "[2026-10-17] The admissions, enrollment-conversion, and LLIS-consent RLS verification commands could not complete because the local anon/authenticated roles lack required table privileges."
+        ],
+        "mitigations_applied": []
       },
       "governance_compliance": {
         "council_decisions_acknowledged": [
@@ -220,21 +239,20 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-003",
           "COUNCIL-2026-004",
           "COUNCIL-2026-005",
-          "COUNCIL-2026-006",
-          "COUNCIL-2026-007",
-          "COUNCIL-2026-008"
+          "COUNCIL-2026-006"
         ],
-        "brand_house_compliant": true,
-        "sovereign_db_isolation_verified": true
+        "brand_house_compliant": false,
+        "sovereign_db_isolation_verified": false,
+        "verification_note": "Acknowledgment is not implementation. Requirement-level status and evidence are recorded in docs/council/ACKNOWLEDGMENTS.md."
       },
-      "_source_path": "/Users/rjulia/ChurchCore Academy/docs/control-plane/telemetry.json",
-      "_source_type": "local"
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote"
     },
     {
       "product_id": "churchcore-care",
-      "repo_name": "ChurchCore Care",
-      "version": "7.1.0",
-      "report_timestamp": "2026-10-18T19:16:56.240241+00:00",
+      "repo_name": "ChurchCoreCare",
+      "version": "7.0.0",
+      "report_timestamp": "2026-10-17T21:47:00.111112+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -244,7 +262,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "supabase_status": "connected",
         "supabase_project_ref": "prod-care-db",
         "readiness_assessment": {
-          "readiness_score_pct": 100,
+          "readiness_score_pct": 95,
           "blockers": [],
           "next_required_actions": [
             "Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)",
@@ -254,7 +272,7 @@ window.CHURCHCORE_FLEET_DATA = {
       },
       "mvp_status": {
         "phase": "production",
-        "completion_pct": 100,
+        "completion_pct": 90,
         "latest_milestones": [
           "Vercel production deployment verified live at churchcore-care.vercel.app and www.churchcorecare.io",
           "PR #139 merged: Mobile Vite lockfile resolution and dependency alignment",
@@ -262,11 +280,11 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
-        "feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b)",
-        "feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544)",
-        "feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (2c2ee1d)",
-        "feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)",
-        "Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)"
+        "Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)",
+        "fix: synchronize Vercel dependency resolution (1fbe989)",
+        "Merge pull request #138 from ricardojjulia/dependabot/npm_and_yarn/fast-uri-3.1.8 (710fc4b)",
+        "Merge branch 'main' into dependabot/npm_and_yarn/fast-uri-3.1.8 (9233546)",
+        "Merge pull request #128 from ricardojjulia/dependabot/npm_and_yarn/vite-8.0.16 (65cdd03)"
       ],
       "next_steps": [
         "Complete translation worker container optimization",
@@ -274,10 +292,10 @@ window.CHURCHCORE_FLEET_DATA = {
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 30,
-        "session_date": "2026-10-18T19:16:56.240241+00:00",
+        "session_duration_minutes": 60,
+        "session_date": "2026-10-17T21:47:00.111112+00:00",
         "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Automated post-test edge telemetry synchronization for churchcore-care."
+        "summary_of_work": "Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries."
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -292,17 +310,13 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004",
-          "COUNCIL-2026-005",
-          "COUNCIL-2026-006",
-          "COUNCIL-2026-007",
-          "COUNCIL-2026-008"
+          "COUNCIL-2026-004"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore Care/docs/control-plane/telemetry.json",
-      "_source_type": "local"
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote"
     },
     {
       "product_id": "churchcore-orthos",
@@ -371,63 +385,77 @@ window.CHURCHCORE_FLEET_DATA = {
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore Orthos/docs/control-plane/telemetry.json",
-      "_source_type": "local"
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote"
     },
     {
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-18T17:32:32.047846+00:00",
+      "report_timestamp": "2026-10-18T04:11:03.586850+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
         "vercel_url": "https://faith-full-scholars.vercel.app",
         "supabase_status": "connected",
-        "supabase_project_ref": "prod-scholars-db",
         "readiness_assessment": {
-          "readiness_score_pct": 100,
-          "blockers": [],
+          "readiness_score_pct": 45,
+          "blockers": [
+            "Phase 1 MVP items open: A3b publishing consent, A4 production gates and Sentry, WCAG AAA contrast, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md \u00a724)",
+            "No real support address (NEXT_PUBLIC_SUPPORT_EMAIL); the legal texts route rights requests to /contact",
+            "Legal texts are v1 drafts with operator name and state placeholders; counsel-reviewed v2 needed before real users",
+            "Custom domain (B1) deferred by the owner; outbound email stays off until then"
+          ],
           "next_required_actions": [
-            "Run npm run verify:deploy against live Vercel endpoint",
-            "Roll out multi-persona onboarding wizard for pastors and ministries"
-          ]
-        },
-        "custom_domain": "https://faith-full-scholars.vercel.app"
+            "Build A3b (publishing consent for declared beliefs, Gemini disclosure)",
+            "Add the axe-core WCAG AAA contrast scan and fix violations (REQ-002-02)",
+            "Owner: set NEXT_PUBLIC_SUPPORT_EMAIL; supply operator name and state for legal v2"
+          ],
+          "readiness_basis": "Council Review 20 baseline score (about 45/100, 2026-10-14), before A1, A2 and A3a shipped; not re-scored since. That review projected about 65 after Phase A."
+        }
       },
       "mvp_status": {
         "phase": "beta",
-        "completion_pct": 92,
+        "completion_pct": 30,
         "latest_milestones": [
-          "COUNCIL-2026-007 / TSK-SCHL-003: Faculty Profile Public Monograph Index & Peer-Reviewed Portfolio completed with real-time search, DOI citation resolvers, and Chicago export",
-          "COUNCIL-2026-007 / TSK-SCHL-004: Fortified FaithFull Community Ecosystem database migration and sub-50ms RLS functions deployed",
-          "PR #87 merged: Honest launch surface merged and live on Vercel",
-          "PR #86 merged: Bilingual Spanish server translations and translated sign-up errors"
+          "A3a legal pages, acceptance records, contact and password reset live (PRs #88, #89; ADR 0031)",
+          "Powered by ChurchCore badge live (PRs #91, #90)",
+          "A1 honest launch surface live (PRs #84-#87)",
+          "A2 example data removed from production (PRs #80-#83)"
         ]
       },
       "latest_changes": [
-        "feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)",
-        "feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)",
-        "feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)",
-        "docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)",
-        "A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)"
+        "feat(brand): badge follow-up: translated title, new-tab note, shared URL, test (#90) (3b3adc7)",
+        "feat(branding): install Powered by ChurchCore badge (#91) (288b2be)",
+        "docs: A3a merged and live (#89) (69ff7c8)",
+        "A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)",
+        "docs: A1 honest launch surface merged and live (#87) (5edc51b)"
       ],
       "next_steps": [
-        "Roll out multi-persona onboarding wizard for pastors and ministries",
-        "Execute npm run audit:rls against production schema"
+        "A3b: consent before publishing declared beliefs (FS019) and the Gemini disclosure",
+        "WCAG AAA contrast: axe-core scan in E2E, then colour fixes",
+        "A4: fail-closed Turnstile, required RATE_LIMIT_SALT, Sentry (ADR 0032)",
+        "Phase 2 (after Phase 1): founding-scholar and one-institution pilot; suites: npm run audit:rls, npm run verify:deploy, E2E"
       ],
       "ai_session_telemetry": {
-        "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 30,
-        "session_date": "2026-10-18T17:32:32.047846+00:00",
-        "session_operator": "Ricardo Julia",
-        "summary_of_work": "Automated post-test edge telemetry synchronization for faithfull-scholars."
+        "last_model": "claude-opus-5-5",
+        "session_duration_minutes": 0,
+        "session_date": "2026-10-18T04:11:03.586850+00:00",
+        "session_operator": "Ricardo J. Julia",
+        "summary_of_work": "A3a shipped (legal pages, acceptance records, contact, reset); badge follow-up; COUNCIL-2026-005 sync: MVP plan, honest ledger and telemetry, enforcement script no longer passes unchecked requirements."
       },
       "deployment_diagnostics": {
-        "recent_errors": [],
+        "recent_errors": [
+          "[2026-10-17] A3a migration preflight failed on a fresh database (PL/pgSQL planned IF ... AND EXISTS before the table existed); caught in CI.",
+          "[2026-10-17] Supabase Site URL pointed at a deployment behind Vercel's login wall (sign-up confirmation emails use it).",
+          "[2026-10-16] Cloudflare Turnstile CAPTCHA was blocked by strict CSP header on sign-up page.",
+          "[2026-10-16] Untranslated Spanish sign-up error toasts in production."
+        ],
         "mitigations_applied": [
-          "[2026-10-18] Encapsulated organization member queries within SECURITY DEFINER function public.is_organization_admin(org_id) to guarantee sub-50ms Sunday SLA.",
-          "[2026-10-18] Cryptographically locked down organization ownership creation at RLS insert."
+          "[2026-10-17] Nested the preflight IF (PR #88, before any release).",
+          "[2026-10-17] Owner set Site URL to https://faith-full-scholars.vercel.app and added /auth/callback to the redirect URLs.",
+          "[2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).",
+          "[2026-10-16] Localized all auth error dictionary keys in Spanish i18n bundle (PR #86)."
         ]
       },
       "governance_compliance": {
@@ -437,15 +465,13 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-003",
           "COUNCIL-2026-004",
           "COUNCIL-2026-005",
-          "COUNCIL-2026-006",
-          "COUNCIL-2026-007",
-          "COUNCIL-2026-008"
+          "COUNCIL-2026-006"
         ],
-        "brand_house_compliant": true,
+        "brand_house_compliant": false,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/FaithFullScholars/docs/control-plane/telemetry.json",
-      "_source_type": "local"
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote"
     }
   ],
   "tasks": [
@@ -793,6 +819,21 @@ window.CHURCHCORE_FLEET_DATA = {
       "description": "Cleared obsolete pilot rehearsal blockers; verified live edge production deployment on www.churchcoreacademy.io and church-core-academy.vercel.app with Supabase connected and 100% Launch Readiness.",
       "verification": "HTTP/2 200 OK probe on https://www.churchcoreacademy.io; telemetry.json verified is_online=true, vercel_status=deployed, readiness_score_pct=100",
       "updated_at": "2026-10-18T17:35:00Z"
+    },
+    {
+      "task_id": "TSK-AI-001",
+      "product_id": "churchcore-business",
+      "title": "Wire Marketing Intelligence & Feedback Council Deliberation to OpenRouter (Gemini 2.5 Pro)",
+      "status": "done",
+      "directionality": "CONTROL_PLANE",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Antigravity Agent",
+      "git_reference": "deliberation_engine.py & serve.py (OpenRouter Gemini Pro)",
+      "target_milestone": "Sprint Q4-M1",
+      "description": "Wired Marketing Presentations Hub to Gemini 2.5 Pro via OpenRouter for executive pitches, GTM displacement campaigns, investor briefings, and slide synthesis; wired Feedback Workspace to OpenRouter council deliberation to adjudicate user error reports and propose binding plans to fix, implement, or deny with Zero Customer Data propagation.",
+      "verification": "POST /api/marketing-ai and POST /api/feedback-council return HTTP 200 with structured Gemini 2.5 Pro output; browser tested and verified in Mission Control Cockpit UI",
+      "updated_at": "2026-10-18T19:30:00Z"
     }
   ],
   "plans": [
@@ -2065,7 +2106,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-18 19:54:37 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2173,7 +2214,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-18 19:54:37 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2281,7 +2322,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-18 19:54:37 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2389,7 +2430,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-18 19:54:37 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2497,7 +2538,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.1.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-18 19:54:37 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2605,7 +2646,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-18 19:54:37 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2713,7 +2754,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-18 19:54:37 UTC",
       "slides": [
         {
           "slide_num": 1,

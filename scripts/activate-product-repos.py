@@ -655,16 +655,12 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
         "ai_session_telemetry": config["ai_session_telemetry"],
         "deployment_diagnostics": config["deployment_diagnostics"],
         "governance_compliance": {
-            "council_decisions_acknowledged": [
-                "COUNCIL-2026-001",
-                "COUNCIL-2026-002",
-                "COUNCIL-2026-003",
-                "COUNCIL-2026-004",
-                "COUNCIL-2026-005",
-                "COUNCIL-2026-006"
-            ],
-            "brand_house_compliant": True,
-            "sovereign_db_isolation_verified": True
+            # Activation installs the reporting surface; it does not prove
+            # product-level governance requirements. Keep claims fail-closed
+            # until the edge repository records evidence.
+            "council_decisions_acknowledged": [],
+            "brand_house_compliant": False,
+            "sovereign_db_isolation_verified": False
         }
     }
 
@@ -680,6 +676,8 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
                 telemetry_payload["mvp_status"] = existing_tdata["mvp_status"]
             if "next_steps" in existing_tdata and existing_tdata["next_steps"]:
                 telemetry_payload["next_steps"] = existing_tdata["next_steps"]
+            if "governance_compliance" in existing_tdata:
+                telemetry_payload["governance_compliance"] = existing_tdata["governance_compliance"]
         except Exception:
             pass
 
