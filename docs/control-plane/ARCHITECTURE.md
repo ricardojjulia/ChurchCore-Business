@@ -132,6 +132,20 @@ To enable seamless, permanent AI interaction where the agent and the operator ca
   - Generates the canonical tracking report at [`docs/reports/DAILY-MVP-PROGRESS-REPORT.md`](file:///Users/rjulia/ChurchCore-Business/docs/reports/DAILY-MVP-PROGRESS-REPORT.md) and timestamped historical archives in `docs/control-plane/briefings/`.
   - Powers the live **Mission Control UI** (`http://localhost:3333/`) with the **Daily MVP 100% Priority Queue Banner**, the `📊 Daily MVP Report` top-bar action, and the interactive `#mvp-report-modal`.
 
+### Pattern 6: Bidirectional Challenge-Acceptance Protocol & Loop-Breaking Instruction Advancement — *Active*
+- **Mechanism**: Pair of autonomous verification engines:
+  - Edge Submission Engine: [`scripts/challenge-central-record.py`](file:///Users/rjulia/ChurchCore-Business/scripts/challenge-central-record.py)
+  - Central Verification & Reconciliation Engine: [`scripts/reconcile-edge-challenges.py`](file:///Users/rjulia/ChurchCore-Business/scripts/reconcile-edge-challenges.py)
+- **The Core Problem**: In command-and-control architectures without bidirectional feedback, edge repositories dispute or complete a directive, but if the central hub does not immediately mutate both central records AND the edge instruction, the hub re-issues the stale command on the next pre-flight sync, trapping agents in an infinite command-and-challenge loop.
+- **The Solution (Loop-Breaker Invariant)**:
+  1. **Evidence-Backed Challenges**: Edge repositories submit verifiable evidence (`GIT_COMMIT_PROOF`, `FILE_EXISTENCE_PROOF`, `TEST_PASS_PROOF`, `HTTP_STATUS_PROOF`, `PACKAGE_VERSION_PROOF`, `FEATURE_COMPLETION_PROOF`).
+  2. **Automated Proof Verification**: The Reconciliation Engine cryptographically/locally verifies the proof against repo git history, test runs, file trees, or live endpoints.
+  3. **Simultaneous Dual Mutation**:
+     - **Central Data Mutation**: Immediately updates `dashboard/fleet-data.json`, `docs/control-plane/ECOSYSTEM-DASHBOARD.md`, and logs into `docs/control-plane/EVIDENCE-RECONCILIATION-LEDGER.md`.
+     - **Edge Instruction Advancement**: Immediately mutates the edge `docs/mvp-100-plan.md`, checks off `[x]` on the completed feature, updates completion %, and advances the `ACTIVE INSTRUCTION FOR NEXT SESSION` banner to the NEXT pending feature.
+     - **Pre-Flight Synchronization**: Records acceptance in edge `docs/council/ACKNOWLEDGMENTS.md` and `docs/control-plane/telemetry.json`.
+  4. **Zero Infinite Loops**: When the next agent or human developer opens the edge repo or runs pre-flight, they immediately receive the advanced instruction. Repetitive command-challenge cycles are permanently prevented.
+
 ---
 
 ## 4. The Sacred Sovereignty Invariant: No Customer Data Propagation

@@ -402,6 +402,33 @@ Ensure `docs/control-plane/telemetry.json` includes:
 
 ### Step 3: Upstream Acknowledgment
 If any Council Decision requirement was fulfilled, append the entry to `docs/council/ACKNOWLEDGMENTS.md` and commit alongside your code.
+
+---
+
+## 5. Bidirectional Challenge & Update Protocol (Breaking Command Loops)
+
+> [!IMPORTANT]
+> **PREVENTING COMMAND-AND-CHALLENGE INFINITE LOOPS**  
+> If central control plane directives, completion percentages, or active tasks do not match the ground truth of this local repository:
+>
+> 1. **DO NOT re-implement already completed work, and DO NOT enter an argument loop.**
+> 2. **Submit an Evidence-Backed Challenge:**  
+>    Submit verifiable evidence (git commit SHA, file existence, test pass, or HTTP check) using:
+>    ```bash
+>    # Mark an MVP roadmap feature complete with proof:
+>    python3 scripts/challenge-central-record.py --complete-feature 1 --commit-sha $(git rev-parse --short HEAD) --rationale "Feature 1 implemented with accompanying tests"
+>
+>    # Challenge a specific telemetry metric (e.g. online status):
+>    python3 scripts/challenge-central-record.py --field "online_status.is_online" --value true --evidence-type HTTP_STATUS_PROOF
+>
+>    # Or run autonomous discrepancy discovery & evidence scanning:
+>    python3 scripts/challenge-central-record.py
+>    ```
+> 3. **Closed-Loop Reconciliation & Immediate Instruction Advancement:**  
+>    - The central control plane automatically verifies the submitted proof.  
+>    - Upon acceptance, central telemetry (`dashboard/fleet-data.json`, `ECOSYSTEM-DASHBOARD.md`) AND your local roadmap (`docs/mvp-100-plan.md`) are immediately updated.  
+>    - In `docs/mvp-100-plan.md`, the completed feature is checked `[x]` and the **Active Instruction Banner** is automatically advanced to the NEXT pending feature.  
+>    - On your next session or pre-flight check, you will immediately receive the advanced instruction, permanently terminating repetitive command-challenge cycles.
 """
 
 def activate_repo(config):
@@ -595,9 +622,12 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
    - Update `docs/control-plane/telemetry.json` with `mvp_status.completion_pct: 100` and `online_status.is_online: true`.
 """
 
-    with open(mvp_plan_file, "w") as f:
-        f.write(mvp_plan_content)
-    print(f"  [x] Published 100% MVP Execution Plan: {mvp_plan_file}")
+    if not os.path.exists(mvp_plan_file):
+        with open(mvp_plan_file, "w") as f:
+            f.write(mvp_plan_content)
+        print(f"  [x] Published 100% MVP Execution Plan: {mvp_plan_file}")
+    else:
+        print(f"  [i] Preserving existing MVP Execution Plan: {mvp_plan_file}")
 
     # 6. Generate docs/control-plane/telemetry.json
     telemetry_dir = os.path.join(valid_path, "docs", "control-plane")
@@ -637,6 +667,21 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
             "sovereign_db_isolation_verified": True
         }
     }
+
+    # If telemetry already exists, preserve reconciled values
+    if os.path.exists(telemetry_file):
+        try:
+            with open(telemetry_file, "r") as f:
+                existing_tdata = json.load(f)
+            # Preserve current online and mvp status if already reconciled
+            if "online_status" in existing_tdata:
+                telemetry_payload["online_status"] = existing_tdata["online_status"]
+            if "mvp_status" in existing_tdata:
+                telemetry_payload["mvp_status"] = existing_tdata["mvp_status"]
+            if "next_steps" in existing_tdata and existing_tdata["next_steps"]:
+                telemetry_payload["next_steps"] = existing_tdata["next_steps"]
+        except Exception:
+            pass
 
     with open(telemetry_file, "w") as f:
         json.dump(telemetry_payload, f, indent=2)
