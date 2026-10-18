@@ -215,7 +215,7 @@
       "product_id": "churchcore-orthos",
       "repo_name": "ChurchCore Orthos",
       "source_file": "docs/omni-council-plan.md",
-      "current_milestone": "v0.18.0 (Ministry Governance & Maturity Engine)",
+      "current_milestone": "v0.18.2 (100% Phase 1 MVP Complete \u2022 Pilot Ready)",
       "directionality_summary": {
         "edge_originated_pct": 70,
         "control_plane_dispatched_pct": 30
@@ -230,23 +230,12 @@
           "title": "Compensating Safeguarding Controls for Small Churches",
           "directionality": "EDGE_REPO",
           "details": "PR #24: Automated board oversight and dual-signoff compensating controls."
-        }
-      ],
-      "waiting": [
-        {
-          "title": "Omni-Council Compliance Rehearsal & Cloud Supabase Binding",
-          "directionality": "CONTROL_PLANE",
-          "details": "Awaiting green test:omni-council run to promote from preview to production."
-        }
-      ],
-      "in_progress": [
+        },
         {
           "title": "Audit PDF Preview CSP Header Whitelisting",
           "directionality": "EDGE_REPO",
           "details": "Configuring explicit CSP allowlists in vercel.json for audit PDF preview rendering."
-        }
-      ],
-      "planned": [
+        },
         {
           "title": "Fund Accounting Double-Entry Balance Validator",
           "directionality": "EDGE_REPO",
@@ -256,6 +245,15 @@
           "title": "Powered by ChurchCore Trust Mark & AppSwitcher",
           "directionality": "CONTROL_PLANE",
           "details": "Implement Endorsed Brand standards and universal navigation shell."
+        }
+      ],
+      "waiting": [],
+      "in_progress": [],
+      "planned": [
+        {
+          "title": "Phase 2: Comprehensive Institutional Safeguarding & Multi-Campus Expansion",
+          "directionality": "EDGE_REPO",
+          "details": "Enterprise diocese-wide multi-campus aggregation, automated incident escalation, and sovereign credential bridges."
         }
       ]
     },

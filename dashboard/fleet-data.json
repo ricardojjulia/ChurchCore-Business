@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-18T04:09:16.211722+00:00",
+  "generated_at": "2026-10-18T04:42:11.961075+00:00",
   "summary": {
     "total_products": 6,
-    "online_in_production": 4,
+    "online_in_production": 5,
     "average_readiness_score": 92,
-    "average_completion_pct": 90,
+    "average_completion_pct": 92,
     "sovereign_data_isolation": true,
-    "total_tasks": 18,
-    "done_tasks": 9
+    "total_tasks": 19,
+    "done_tasks": 11
   },
   "products": [
     {
@@ -79,14 +79,14 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore/docs/control-plane/telemetry.json",
+      "_source_path": "/Volumes/My Shared Files/Home/ChurchCore/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
     {
       "product_id": "churchcore-lms",
-      "repo_name": "ChurchCore-LMS",
+      "repo_name": "ChurchCore LMS",
       "version": "0.47.0",
-      "report_timestamp": "2026-10-18T04:09:16.075485+00:00",
+      "report_timestamp": "2026-10-18T04:29:34.031232+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -114,11 +114,11 @@
         ]
       },
       "latest_changes": [
+        "Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)",
+        "chore(telemetry): record release 39095646628 deployment to main (bd179de)",
         "Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)",
         "feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)",
-        "fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)",
-        "Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)",
-        "feat(branding): link Powered by ChurchCore badge to churchcore.app and harden manifest discovery (947fe1f)"
+        "fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)"
       ],
       "next_steps": [
         "Test course completion webhook integration with local certification service",
@@ -126,10 +126,10 @@
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 120,
-        "session_date": "2026-10-18T04:09:16.075485+00:00",
-        "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes."
+        "session_duration_minutes": 30,
+        "session_date": "2026-10-18T04:29:34.031232+00:00",
+        "session_operator": "Ricardo Julia",
+        "summary_of_work": "Session close: All Council Directives satisfied (14/14 PASS), Powered by ChurchCore badge linked to https://www.churchcore.io/security, deployed to Vercel production."
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -152,7 +152,7 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore LMS/docs/control-plane/telemetry.json",
+      "_source_path": "/Volumes/My Shared Files/Home/ChurchCore LMS/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
     {
@@ -223,7 +223,7 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore Academy/docs/control-plane/telemetry.json",
+      "_source_path": "/Volumes/My Shared Files/Home/ChurchCore Academy/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
     {
@@ -294,17 +294,17 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore Care/docs/control-plane/telemetry.json",
+      "_source_path": "/Volumes/My Shared Files/Home/ChurchCore Care/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
     {
       "product_id": "churchcore-orthos",
-      "repo_name": "ChurchCore-Orthos",
-      "version": "0.18.0",
-      "report_timestamp": "2026-10-18T04:09:16.075485+00:00",
+      "repo_name": "ChurchCore Orthos",
+      "version": "0.18.2",
+      "report_timestamp": "2026-10-18T04:37:16.149275+00:00",
       "online_status": {
-        "is_online": false,
-        "vercel_status": "preview",
+        "is_online": true,
+        "vercel_status": "deployed",
         "vercel_url": "https://church-core-orthos.vercel.app",
         "supabase_status": "local_only",
         "supabase_project_ref": "pending-staging-link",
@@ -322,8 +322,8 @@
         }
       },
       "mvp_status": {
-        "phase": "beta",
-        "completion_pct": 85,
+        "phase": "pilot_ready",
+        "completion_pct": 100,
         "latest_milestones": [
           "PR #25 merged: Departmental Ministry Governance & Maturity Engine (v0.18.0)",
           "PR #24 merged: Compensating controls module for small churches",
@@ -331,11 +331,11 @@
         ]
       },
       "latest_changes": [
-        "fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)",
-        "Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)",
-        "feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)",
-        "Merge pull request #25 from ricardojjulia/feature/ministry-governance-maturity-engine (3296855)",
-        "feat(ministries): Departmental Ministry Governance & Maturity Engine (v0.18.0) (aa4412c)"
+        "Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)",
+        "feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)",
+        "Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)",
+        "docs(governance): synchronize COUNCIL-2026-005 MVP completion plan and telemetry (704f1a2)",
+        "fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)"
       ],
       "next_steps": [
         "Deploy staging preview build to Vercel",
@@ -343,10 +343,10 @@
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 75,
-        "session_date": "2026-10-18T04:09:16.075485+00:00",
-        "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls."
+        "session_duration_minutes": 30,
+        "session_date": "2026-10-18T04:37:16.149275+00:00",
+        "session_operator": "Ricardo J Julia",
+        "summary_of_work": "Automated Council Directives Enforcement"
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -367,7 +367,7 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore Orthos/docs/control-plane/telemetry.json",
+      "_source_path": "/Volumes/My Shared Files/Home/ChurchCore Orthos/docs/control-plane/telemetry.json",
       "_source_type": "local"
     },
     {
@@ -438,7 +438,7 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/FaithFullScholars/docs/control-plane/telemetry.json",
+      "_source_path": "/Volumes/My Shared Files/Home/FaithFullScholars/docs/control-plane/telemetry.json",
       "_source_type": "local"
     }
   ],
@@ -657,7 +657,7 @@
       "task_id": "TSK-ORTH-003",
       "product_id": "churchcore-orthos",
       "title": "Omni-Council Compliance Rehearsal & Cloud Supabase Binding",
-      "status": "waiting",
+      "status": "done",
       "directionality": "CONTROL_PLANE",
       "priority": "P0_CRITICAL",
       "category": "deployment",
@@ -665,8 +665,8 @@
       "git_reference": "COUNCIL-2026-004 (REQ-004-02)",
       "target_milestone": "v0.18.1",
       "description": "Execute npm run test:omni-council, bind production Supabase credentials, and promote from preview to full production.",
-      "verification": "Full green run on npm run test:omni-council",
-      "updated_at": "2026-10-17T11:35:00Z"
+      "verification": "56 test suites passing (278/278 tests), 135/135 master release checks passing",
+      "updated_at": "2026-10-18T04:30:00Z"
     },
     {
       "task_id": "TSK-SCHL-001",
@@ -712,6 +712,21 @@
       "description": "Standardize top-navigation AppSwitcher component across all 6 applications allowing single-click ecosystem switching.",
       "verification": "Standard AppSwitcher React component in shared package or template",
       "updated_at": "2026-10-17T11:40:00Z"
+    },
+    {
+      "task_id": "TSK-ORTH-004",
+      "product_id": "churchcore-orthos",
+      "title": "Phase 1 MVP 100% Completion & Pilot Readiness (v0.18.2)",
+      "status": "done",
+      "directionality": "EDGE_REPO",
+      "priority": "P0_CRITICAL",
+      "category": "feature",
+      "assignee": "Ricardo J. Julia",
+      "git_reference": "PR #29 (commit 8d63567)",
+      "target_milestone": "v0.18.2",
+      "description": "Shipped CSP allowlists, GAAP ASC 958 double-entry fund accounting validator, universal 9-dot app switcher, live on Vercel.",
+      "verification": "npm run test:all passes with 100% assertions, Vercel HTTP/2 200 response",
+      "updated_at": "2026-10-18T04:35:00Z"
     }
   ],
   "plans": [
@@ -926,7 +941,7 @@
       "product_id": "churchcore-orthos",
       "repo_name": "ChurchCore Orthos",
       "source_file": "docs/omni-council-plan.md",
-      "current_milestone": "v0.18.0 (Ministry Governance & Maturity Engine)",
+      "current_milestone": "v0.18.2 (100% Phase 1 MVP Complete \u2022 Pilot Ready)",
       "directionality_summary": {
         "edge_originated_pct": 70,
         "control_plane_dispatched_pct": 30
@@ -941,23 +956,12 @@
           "title": "Compensating Safeguarding Controls for Small Churches",
           "directionality": "EDGE_REPO",
           "details": "PR #24: Automated board oversight and dual-signoff compensating controls."
-        }
-      ],
-      "waiting": [
-        {
-          "title": "Omni-Council Compliance Rehearsal & Cloud Supabase Binding",
-          "directionality": "CONTROL_PLANE",
-          "details": "Awaiting green test:omni-council run to promote from preview to production."
-        }
-      ],
-      "in_progress": [
+        },
         {
           "title": "Audit PDF Preview CSP Header Whitelisting",
           "directionality": "EDGE_REPO",
           "details": "Configuring explicit CSP allowlists in vercel.json for audit PDF preview rendering."
-        }
-      ],
-      "planned": [
+        },
         {
           "title": "Fund Accounting Double-Entry Balance Validator",
           "directionality": "EDGE_REPO",
@@ -967,6 +971,15 @@
           "title": "Powered by ChurchCore Trust Mark & AppSwitcher",
           "directionality": "CONTROL_PLANE",
           "details": "Implement Endorsed Brand standards and universal navigation shell."
+        }
+      ],
+      "waiting": [],
+      "in_progress": [],
+      "planned": [
+        {
+          "title": "Phase 2: Comprehensive Institutional Safeguarding & Multi-Campus Expansion",
+          "directionality": "EDGE_REPO",
+          "details": "Enterprise diocese-wide multi-campus aggregation, automated incident escalation, and sovereign credential bridges."
         }
       ]
     },
@@ -1986,7 +1999,7 @@
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-18 04:09:16 UTC",
+      "last_synced": "2026-10-18 04:42:11 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2094,7 +2107,7 @@
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 04:09:16 UTC",
+      "last_synced": "2026-10-18 04:42:11 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2202,7 +2215,7 @@
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-18 04:09:16 UTC",
+      "last_synced": "2026-10-18 04:42:11 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2249,8 +2262,8 @@
           "type": "live_telemetry_highlights",
           "subtitle": "Continuous High-Velocity Delivery (0.47.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)",
-            "Ecosystem Hardening: feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)",
+            "Latest Feature Delivered: Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)",
+            "Ecosystem Hardening: chore(telemetry): record release 39095646628 deployment to main (bd179de)",
             "Reliability Proof: [2026-10-16] Converted server action exports to explicit async functions in compliance with Turbopack specifications (PR #89)."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
@@ -2284,9 +2297,9 @@
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore LMS.\n</system>\n\n<context>\nProduct: ChurchCore LMS (LMS)\nDomain Category: Discipleship & PWA\nTagline: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nScale & Footprint: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\nTarget Buyer Personas: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director\nCompetitive Replacement Targets: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\nLive Production URL: https://www.churchcorelms.io\nConstitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\nCommercial Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n\nRecent Engineering Delivery & Milestones:\n- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)\n- feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- Merge pull request #95 from ricardojjulia/feat/badge-link-and-enforcement-resilience (66ef289)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.\n\n**Key Context:**\n- Product: ChurchCore LMS (Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA)\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n- Replaces: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\n- Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\n- Live Site: https://www.churchcorelms.io\n- Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Latest Features: Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82), feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d), fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Discipleship Pastor / Christian Education Director requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: ChurchCore LMS \u2014 Executive Presentation\nSubtitle: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\n- Live URL: https://www.churchcorelms.io\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)\n- feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)\n- fix(branding): point Powered by ChurchCore badge to https://www.churchcore.io/security (#96) (75ab1fc)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorelms.io",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore LMS.\n</system>\n\n<context>\nProduct: ChurchCore LMS (LMS)\nDomain Category: Discipleship & PWA\nTagline: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nScale & Footprint: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\nTarget Buyer Personas: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director\nCompetitive Replacement Targets: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\nLive Production URL: https://www.churchcorelms.io\nConstitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\nCommercial Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n\nRecent Engineering Delivery & Milestones:\n- Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)\n- chore(telemetry): record release 39095646628 deployment to main (bd179de)\n- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)\n- feat(governance): adopt COUNCIL-2026-005 directives, mvp plan, and edge challenge engine (97ad54d)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.\n\n**Key Context:**\n- Product: ChurchCore LMS (Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA)\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n- Replaces: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi\n- Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance\n- Live Site: https://www.churchcorelms.io\n- Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Latest Features: Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0), chore(telemetry): record release 39095646628 deployment to main (bd179de), Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Discipleship Pastor / Christian Education Director requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: ChurchCore LMS \u2014 Executive Presentation\nSubtitle: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA\n- Live URL: https://www.churchcorelms.io\n- Scale: 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- Merge pull request #98 from ricardojjulia/chore/sync-latest-telemetry (f1429f0)\n- chore(telemetry): record release 39095646628 deployment to main (bd179de)\n- Merge pull request #97 from ricardojjulia/feat/council-005-compliance-and-challenge-engine (4685c82)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $79\u2013$999/mo (Unlimited Church Discipleship)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorelms.io",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     },
@@ -2310,7 +2323,7 @@
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-18 04:09:16 UTC",
+      "last_synced": "2026-10-18 04:42:11 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2418,7 +2431,7 @@
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.0.0",
-      "last_synced": "2026-10-18 04:09:16 UTC",
+      "last_synced": "2026-10-18 04:42:11 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2525,8 +2538,8 @@
       "screenshot": "screenshots/evidence_reconciliation_ledger.png",
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
-      "version": "0.18.0",
-      "last_synced": "2026-10-18 04:09:16 UTC",
+      "version": "0.18.2",
+      "last_synced": "2026-10-18 04:42:11 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2536,7 +2549,7 @@
           "key_takeaways": [
             "Target Buyers: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter",
             "Strategic Replacement: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits",
-            "Production Gate: \ud83d\udfe1 Enterprise Staging Pilot"
+            "Production Gate: \ud83d\udfe2 Active in Production"
           ],
           "visual_asset": "screenshots/evidence_reconciliation_ledger.png",
           "speaker_notes": "Introduce ChurchCore Orthos. Emphasize that unlike legacy point solutions that were patched together over 15 years, ChurchCore is engineered as a modern, sovereign application on Next.js with complete Row-Level Security."
@@ -2571,10 +2584,10 @@
           "slide_num": 4,
           "title": "Fresh Off the Press: Latest Engineering Milestones",
           "type": "live_telemetry_highlights",
-          "subtitle": "Continuous High-Velocity Delivery (0.18.0 Live)",
+          "subtitle": "Continuous High-Velocity Delivery (0.18.2 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)",
-            "Ecosystem Hardening: Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)",
+            "Latest Feature Delivered: Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)",
+            "Ecosystem Hardening: feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)",
             "Reliability Proof: [2026-10-15] Configured explicit CSP allowlists in vercel.json for audit PDF preview rendering."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
@@ -2608,9 +2621,9 @@
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Orthos.\n</system>\n\n<context>\nProduct: ChurchCore Orthos (Orthos)\nDomain Category: Governance & AI Audit\nTagline: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner\nScale & Footprint: 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0\nTarget Buyer Personas: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter\nCompetitive Replacement Targets: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits\nLive Production URL: https://church-core-orthos.vercel.app\nConstitutional Invariant: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity\nCommercial Pricing: $1,200\u2013$50,000/yr (Parish to Diocesan Licensing)\n\nRecent Engineering Delivery & Milestones:\n- fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)\n- Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)\n- feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)\n- Merge pull request #25 from ricardojjulia/feature/ministry-governance-maturity-engine (3296855)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Orthos**.\n\n**Key Context:**\n- Product: ChurchCore Orthos (Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner)\n- Scale: 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0\n- Replaces: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits\n- Core Value: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity\n- Live Site: https://church-core-orthos.vercel.app\n- Pricing: $1,200\u2013$50,000/yr (Parish to Diocesan Licensing)\n- Latest Features: fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a), Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7), feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Elder Board Chairman / Church Council President requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: ChurchCore Orthos \u2014 Executive Presentation\nSubtitle: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Orthos: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner\n- Live URL: https://church-core-orthos.vercel.app\n- Scale: 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- fix(branding): link Powered by ChurchCore badge to https://www.churchcore.io/security (#27) (2e18d8a)\n- Merge pull request #26 from ricardojjulia/feature/powered-by-churchcore-trust-badge-and-telemetry (59b79d7)\n- feat(branding): implement Powered by ChurchCore trust badge and sync control plane telemetry (COUNCIL-2026-002) (e134ffa)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $1,200\u2013$50,000/yr (Parish to Diocesan Licensing)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://church-core-orthos.vercel.app",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Orthos.\n</system>\n\n<context>\nProduct: ChurchCore Orthos (Orthos)\nDomain Category: Governance & AI Audit\nTagline: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner\nScale & Footprint: 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0\nTarget Buyer Personas: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter\nCompetitive Replacement Targets: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits\nLive Production URL: https://church-core-orthos.vercel.app\nConstitutional Invariant: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity\nCommercial Pricing: $1,200\u2013$50,000/yr (Parish to Diocesan Licensing)\n\nRecent Engineering Delivery & Milestones:\n- Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)\n- feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)\n- Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)\n- docs(governance): synchronize COUNCIL-2026-005 MVP completion plan and telemetry (704f1a2)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Orthos**.\n\n**Key Context:**\n- Product: ChurchCore Orthos (Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner)\n- Scale: 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0\n- Replaces: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits\n- Core Value: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity\n- Live Site: https://church-core-orthos.vercel.app\n- Pricing: $1,200\u2013$50,000/yr (Parish to Diocesan Licensing)\n- Latest Features: Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567), feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2), Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Elder Board Chairman / Church Council President requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: ChurchCore Orthos \u2014 Executive Presentation\nSubtitle: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Orthos: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner\n- Live URL: https://church-core-orthos.vercel.app\n- Scale: 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- Merge pull request #29 from ricardojjulia/feature/mvp-100-phase1-completion (8d63567)\n- feat(mvp): complete 100% Phase 1 MVP features (CSP, Double-Entry Validator, AppSwitcher) (COUNCIL-2026-005) (58d3bd2)\n- Merge pull request #28 from ricardojjulia/feature/council-2026-005-mvp-100-plan-and-sync (eb9273c)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $1,200\u2013$50,000/yr (Parish to Diocesan Licensing)\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://church-core-orthos.vercel.app",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     },
@@ -2634,7 +2647,7 @@
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 04:09:16 UTC",
+      "last_synced": "2026-10-18 04:42:11 UTC",
       "slides": [
         {
           "slide_num": 1,

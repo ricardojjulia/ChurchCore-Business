@@ -12,44 +12,55 @@ import json
 import subprocess
 from datetime import datetime, timezone, timedelta
 
-WORKSPACE_ROOT = "/Users/rjulia/ChurchCore-Business"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_ROOT = os.path.dirname(SCRIPT_DIR)
+WORKSPACE_ROOT = os.environ.get("CHURCHCORE_BUSINESS_ROOT") or (
+    DEFAULT_ROOT if os.path.exists(os.path.join(DEFAULT_ROOT, "docs", "control-plane")) else "/Users/rjulia/ChurchCore-Business"
+)
+PARENT_DIR = os.path.dirname(WORKSPACE_ROOT)
 BRIEFINGS_DIR = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "briefings")
+
+def find_repo_path(candidates):
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    return candidates[0]
 
 REPOS = [
     {
         "id": "churchcore-chms",
         "name": "ChurchCore (ChMS)",
-        "path": "/Users/rjulia/ChurchCore",
+        "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore"), "/Volumes/My Shared Files/Home/ChurchCore", "/Users/rjulia/ChurchCore"]),
         "domain": "https://www.churchcore.io"
     },
     {
         "id": "churchcore-lms",
         "name": "ChurchCore-LMS",
-        "path": "/Users/rjulia/ChurchCore LMS",
+        "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore LMS"), os.path.join(PARENT_DIR, "ChurchCore-LMS"), "/Volumes/My Shared Files/Home/ChurchCore LMS", "/Volumes/My Shared Files/Home/ChurchCore-LMS", "/Users/rjulia/ChurchCore LMS"]),
         "domain": "https://www.churchcorelms.io"
     },
     {
         "id": "churchcore-academy",
         "name": "ChurchCore-Academy",
-        "path": "/Users/rjulia/ChurchCore Academy",
+        "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore Academy"), "/Volumes/My Shared Files/Home/ChurchCore Academy", "/Users/rjulia/ChurchCore Academy"]),
         "domain": "https://church-core-academy.vercel.app"
     },
     {
         "id": "churchcore-care",
         "name": "ChurchCoreCare",
-        "path": "/Users/rjulia/ChurchCore Care",
+        "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore Care"), os.path.join(PARENT_DIR, "ChurchCoreCare"), "/Volumes/My Shared Files/Home/ChurchCore Care", "/Volumes/My Shared Files/Home/ChurchCoreCare", "/Users/rjulia/ChurchCore Care"]),
         "domain": "https://church-core-care.vercel.app"
     },
     {
         "id": "churchcore-orthos",
         "name": "ChurchCore-Orthos",
-        "path": "/Users/rjulia/ChurchCore Orthos",
+        "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore Orthos"), "/Volumes/My Shared Files/Home/ChurchCore Orthos", "/Users/rjulia/ChurchCore Orthos"]),
         "domain": "https://church-core-orthos.vercel.app"
     },
     {
         "id": "faithfull-scholars",
         "name": "FaithFullScholars",
-        "path": "/Users/rjulia/FaithFullScholars",
+        "path": find_repo_path([os.path.join(PARENT_DIR, "FaithFullScholars"), os.path.join(PARENT_DIR, "Faithful Scholars"), "/Volumes/My Shared Files/Home/FaithFullScholars", "/Volumes/My Shared Files/Home/Faithful Scholars", "/Users/rjulia/FaithFullScholars"]),
         "domain": "https://faith-full-scholars.vercel.app"
     }
 ]

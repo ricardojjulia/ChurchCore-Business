@@ -11,7 +11,12 @@ import json
 import glob
 from datetime import datetime, timezone
 
-WORKSPACE_ROOT = "/Users/rjulia/ChurchCore-Business"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_ROOT = os.path.dirname(SCRIPT_DIR)
+WORKSPACE_ROOT = os.environ.get("CHURCHCORE_BUSINESS_ROOT") or (
+    DEFAULT_ROOT if os.path.exists(os.path.join(DEFAULT_ROOT, "docs", "control-plane")) else "/Users/rjulia/ChurchCore-Business"
+)
+PARENT_DIR = os.path.dirname(WORKSPACE_ROOT)
 SCHEMA_FILE = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "telemetry-schema.json")
 DASHBOARD_FILE = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", "ECOSYSTEM-DASHBOARD.md")
 
@@ -20,37 +25,69 @@ REPO_SOURCES = [
         "product_id": "churchcore-chms",
         "name": "ChurchCore ChMS",
         "repo": "ricardojjulia/ChurchCore",
-        "local_paths": ["/Users/rjulia/ChurchCore"]
+        "local_paths": [
+            os.path.join(PARENT_DIR, "ChurchCore"),
+            "/Volumes/My Shared Files/Home/ChurchCore",
+            "/Users/rjulia/ChurchCore"
+        ]
     },
     {
         "product_id": "churchcore-lms",
         "name": "ChurchCore LMS",
         "repo": "ricardojjulia/ChurchCore-LMS",
-        "local_paths": ["/Users/rjulia/ChurchCore LMS", "/Users/rjulia/ChurchCore-LMS"]
+        "local_paths": [
+            os.path.join(PARENT_DIR, "ChurchCore LMS"),
+            os.path.join(PARENT_DIR, "ChurchCore-LMS"),
+            "/Volumes/My Shared Files/Home/ChurchCore LMS",
+            "/Volumes/My Shared Files/Home/ChurchCore-LMS",
+            "/Users/rjulia/ChurchCore LMS",
+            "/Users/rjulia/ChurchCore-LMS"
+        ]
     },
     {
         "product_id": "churchcore-academy",
         "name": "ChurchCore Academy",
         "repo": "ricardojjulia/ChurchCore-Academy",
-        "local_paths": ["/Users/rjulia/ChurchCore Academy"]
+        "local_paths": [
+            os.path.join(PARENT_DIR, "ChurchCore Academy"),
+            "/Volumes/My Shared Files/Home/ChurchCore Academy",
+            "/Users/rjulia/ChurchCore Academy"
+        ]
     },
     {
         "product_id": "churchcore-care",
         "name": "ChurchCore Care",
         "repo": "ricardojjulia/ChurchCoreCare",
-        "local_paths": ["/Users/rjulia/ChurchCore Care", "/Users/rjulia/ChurchCoreCare"]
+        "local_paths": [
+            os.path.join(PARENT_DIR, "ChurchCore Care"),
+            os.path.join(PARENT_DIR, "ChurchCoreCare"),
+            "/Volumes/My Shared Files/Home/ChurchCore Care",
+            "/Volumes/My Shared Files/Home/ChurchCoreCare",
+            "/Users/rjulia/ChurchCore Care",
+            "/Users/rjulia/ChurchCoreCare"
+        ]
     },
     {
         "product_id": "churchcore-orthos",
         "name": "ChurchCore Orthos",
         "repo": "ricardojjulia/ChurchCore-Orthos",
-        "local_paths": ["/Users/rjulia/ChurchCore Orthos"]
+        "local_paths": [
+            os.path.join(PARENT_DIR, "ChurchCore Orthos"),
+            "/Volumes/My Shared Files/Home/ChurchCore Orthos",
+            "/Users/rjulia/ChurchCore Orthos"
+        ]
     },
     {
         "product_id": "faithfull-scholars",
         "name": "FaithFull Scholars",
         "repo": "ricardojjulia/FaithFullScholars",
-        "local_paths": ["/Users/rjulia/FaithFullScholars"]
+        "local_paths": [
+            os.path.join(PARENT_DIR, "FaithFullScholars"),
+            os.path.join(PARENT_DIR, "Faithful Scholars"),
+            "/Volumes/My Shared Files/Home/FaithFullScholars",
+            "/Volumes/My Shared Files/Home/Faithful Scholars",
+            "/Users/rjulia/FaithFullScholars"
+        ]
     }
 ]
 
