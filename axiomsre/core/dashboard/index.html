@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChurchCore Sovereign Control Plane | Executive Mission Control</title>
+  <meta name="description" content="Central Sovereign Control Plane, Fleet Telemetry, and Governance Cockpit for the ChurchCore Ecosystem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261017d">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="enterprise-layout">
+    <!-- SIDEBAR -->
+    <nav class="app-sidebar" aria-label="Control plane sections">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1205" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"></path>
+            <path d="M12 8v8M9 11h6"></path>
+          </svg>
+        </div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-title">ChurchCore</span>
+          <span class="sidebar-brand-sub">Control Plane</span>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Portfolio</span>
+        <button type="button" class="sidebar-nav-btn active" data-tab="tab-fleet">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>
+          <span class="label">Fleet</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-councils">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg>
+          <span class="label">Councils</span>
+          <span class="sidebar-badge" id="sidebar-councils-badge">7</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-plans">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M9 13l2 2 4-4"/></svg>
+          <span class="label">Plans</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-tasks">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>
+          <span class="label">Tasks</span>
+          <span class="sidebar-badge" id="sidebar-tasks-badge">9</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-readiness">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/></svg>
+          <span class="label">Radar</span>
+          <span class="sidebar-badge alert" id="sidebar-radar-badge">1</span>
+        </button>
+      </div>
+
+      <!-- OPERATIONS -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Operations</span>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-commercial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span class="label">OPEX</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-sunday">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          <span class="label">SLA</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-tech-mesh">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h4v4H5zM15 5h4v4h-4zM10 15h4v4h-4zM7 9l5 6M17 9l-5 6"/></svg>
+          <span class="label">Mesh</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-directives">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7l-4-4zM14 3v4h4M9 13h6M9 17h6"/></svg>
+          <span class="label">Directives</span>
+        </button>
+      </div>
+
+      <!-- ASSURANCE -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Assurance</span>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-challenges">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3zM8.5 12l2.5 2.5 4.5-4.5"/></svg>
+          <span class="label">Evidence</span>
+          <span class="sidebar-badge" id="sidebar-evidence-badge">11</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-ai-stream">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M9 8h6M9 16h6"/></svg>
+          <span class="label">AI</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-agy-cli">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span class="label">AgY</span>
+        </button>
+
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-feedback">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span class="label">Feedback</span>
+          <span class="sidebar-badge" id="sidebar-feedback-badge">14</span>
+        </button>
+
+      </div>
+
+      <!-- LIBRARY -->
+      <div class="sidebar-group">
+        <span class="sidebar-group-title">Library</span>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-manual">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5zM4 19a2 2 0 012-2h13"/></svg>
+          <span class="label">Manual</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-presos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+          <span class="label">Presos</span>
+          <span class="sidebar-badge" id="sidebar-presos-badge">7</span>
+        </button>
+        <button type="button" class="sidebar-nav-btn" data-tab="tab-scripts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span class="label">Scripts</span>
+          <span class="sidebar-badge" id="sidebar-scripts-badge">12</span>
+        </button>
+      </div>
+
+      <!-- STATUS PILL -->
+      <div class="sidebar-status-pill">
+        <div class="status-indicator-live">
+          <span class="status-dot-pulse"></span>
+          System active
+        </div>
+        <span style="font-size: 12px; color: #A7B8AE;">Zero data propagation enforced</span>
+      </div>
+    </nav>
+
+    <!-- MAIN VIEWPORT -->
+    <main class="main-viewport">
+      <!-- Overview Top Header -->
+      <header class="overview-top-header">
+        <div class="overview-title-group">
+          <span class="overview-subtitle">Sovereign Ecosystem Governance &amp; Fleet Telemetry</span>
+          <h1 class="overview-main-title">Fleet overview</h1>
+        </div>
+        <label class="overview-search-bar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search fleet</span>
+          <input type="search" id="fleet-search" placeholder="Search name, version, tech…">
+        </label>
+        <span class="overview-clock" id="clock-display">--:--:-- UTC</span>
+        <div class="overview-actions">
+          <button id="btn-sync" type="button" class="btn-overview-secondary" title="Trigger Control Plane Sync">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 01-14 5.3M4 12a8 8 0 0114-5.3"></path><path d="M18 3v4h-4M6 21v-4h4"></path></svg>
+            Sync fleet
+          </button>
+          <button id="btn-open-mvp-report" type="button" class="btn-overview-secondary" title="Open Daily MVP 100% Progress Report &amp; Priority Action Queue">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>
+            Daily MVP report
+          </button>
+
+          <button id="btn-open-feedback-top" type="button" class="btn-overview-secondary" title="Open Fleet Demo Feedback &amp; Error-Triage Workspace">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Feedback (14)
+          </button>
+
+          <button id="btn-sync-telemetry" type="button" class="btn-overview-secondary" onclick="triggerTelemetrySync()" title="Ingest &amp; Digest Incoming Telemetry from Fleet Repositories" style="border-color: rgba(99, 102, 241, 0.4); color: #818CF8;">
+            <svg id="sync-telemetry-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span id="sync-telemetry-label">Sync Telemetry</span>
+          </button>
+
+          <button id="btn-dispatch-modal" type="button" class="btn-overview-gold" title="Dispatch New Council Directive">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+            Dispatch directive
+          </button>
+        </div>
+      </header>
+
+      <!-- 5 KPI Cards -->
+      <section class="overview-kpis" aria-label="Fleet metrics">
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Sovereign fleet</span>
+          <span class="kpi-big-number" id="kpi-total-repos">6</span>
+          <span style="font-size: 12px; color: #98A1AD;">Autonomous applications</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Production online</span>
+          <span class="kpi-big-number" id="kpi-online-count">4<span style="color: #7E8793">/6</span></span>
+          <div class="segmented-bar" aria-hidden="true">
+            <span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #2A303A;"></span><span style="background: #2A303A;"></span>
+          </div>
+          <span style="font-size: 12px; color: #98A1AD;" id="kpi-online-sub">67% of fleet on Vercel Edge</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Fleet readiness</span>
+          <span class="kpi-big-number" id="kpi-avg-readiness">92%</span>
+          <div style="height: 4px; border-radius: 2px; background: #2A303A; overflow: hidden;" aria-hidden="true"><div style="width: 92%; height: 100%; background: #F0A63A;"></div></div>
+          <span style="font-size: 12px; color: #98A1AD;">Target: 100% launch gate</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Portfolio MVP velocity</span>
+          <span class="kpi-big-number" id="kpi-avg-completion">90%</span>
+          <span style="font-size: 12px; color: #98A1AD;">517 tables · 423 routes</span>
+        </div>
+        <div class="overview-kpi-card">
+          <span class="kpi-title-text">Data propagation</span>
+          <span class="kpi-big-number" style="color: #6BD6A0;">0.00%</span>
+          <span style="font-size: 12px; color: #98A1AD;">100% sovereign DB silos</span>
+        </div>
+      </section>
+
+    <!-- TAB 1: FLEET GRID -->
+    <section id="tab-fleet" class="tab-content active">
+      <div class="split-overview-container" id="fleet-master-overview">
+        <!-- Left: Daily MVP Priority Queue Panel -->
+        <section class="queue-main-panel" id="mvp-work-queue-banner">
+          <!-- Rendered dynamically by app.js -->
+        </section>
+
+        <!-- Right: Testing Gate Spotlight + Needs Attention + Resources -->
+        <aside class="overview-aside-rail" id="overview-aside-rail">
+          <!-- Rendered dynamically by app.js -->
+        </aside>
+      </div>
+
+      <!-- Comprehensive Sovereign Fleet Grid -->
+      <div class="fleet-grid-header-banner" style="margin-top: 36px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 28px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: #FFFFFF; margin: 0;">Sovereign Fleet Applications</h2>
+            <span class="gating-pill-badge" id="fleet-grid-count-badge" style="background: rgba(255,255,255,0.06); color: #E7E9EC;">All 6 Applications</span>
+          </div>
+          <p style="font-size: 13px; color: #98A1AD; margin: 4px 0 0 0;">Architecture, telemetry, route inventory, database isolation, and deployment diagnostics for all 6 autonomous products.</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 12px; color: #7E8793;">Click <strong>Inspect →</strong> on any card to view routes, database schemas, and AI telemetry</span>
+        </div>
+      </div>
+
+      <!-- Fleet Grid Cards -->
+      <div class="fleet-grid" id="fleet-grid-container"></div>
+    </section>
+
+    <!-- TAB: COUNCIL CHAMBERS & GOVERNANCE MESH -->
+    <section id="tab-councils" class="tab-content">
+      <div class="section-hero">
+        <h2>Council Chambers & Sovereign Governance Mesh</h2>
+        <p>Directly address each app-specific council, verify quorum and governing state, consult individual specialized seats, or convene the Grand Sovereign Assembly for consensus synthesis.</p>
+      </div>
+
+      <!-- Council Selector Bar -->
+      <div class="council-selector-bar" id="council-selector-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Live Council Governing State HUD -->
+      <div class="council-hud-grid" id="council-hud-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Charter Invariants Banner -->
+      <div class="charter-invariants-banner" id="council-invariants-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Council Deliberation Chamber (Interactive Query & Speech) -->
+      <div class="deliberation-chamber-card">
+        <div class="deliberation-chamber-header">
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; font-weight: 700;">Council Deliberations & Inquiries Chamber</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Submit technical inquiries, policy audits, or architectural proposals to the council.</p>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <button class="btn btn-secondary" id="btn-open-gemini-config" style="padding: 6px 12px; font-size: 12px; border: 1px solid rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.12); color: #c4b5fd; border-radius: 8px; display: inline-flex; align-items: center; gap: 7px; cursor: pointer;">
+              <span id="gemini-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #64748b; display: inline-block;"></span>
+              <span id="gemini-status-text" style="font-weight: 600;">⚡ Gemini Dual-Contender Engine</span>
+              <span style="font-size: 10px; opacity: 0.8; background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 4px;">OpenRouter</span>
+            </button>
+            <div class="deliberation-modes">
+              <button class="delib-mode-btn active" id="btn-mode-all" data-mode="all">🏛️ Address Council as a Whole</button>
+              <button class="delib-mode-btn" id="btn-mode-member" data-mode="member">👤 Direct Member Consultation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preset Inquiries -->
+        <div class="preset-inquiries-bar" id="preset-inquiries-container">
+          <span style="font-size: 12px; color: var(--text-dim); display: flex; align-items: center; margin-right: 4px;">Fast Inquiries:</span>
+          <button class="preset-inquiry-btn" data-query="Audit compliance with Constitution Section III: Zero Customer Data Propagation and check for any background event brokers or cross-database replication.">🛡️ Audit Zero Data Propagation</button>
+          <button class="preset-inquiry-btn" data-query="Assess Sunday Morning 99.99% SLA readiness, kiosk peak concurrency headroom, and automated database snapshot recency.">⏱️ Assess Sunday Morning SLA</button>
+          <button class="preset-inquiry-btn" data-query="Evaluate confidential pastoral notes encryption and verify PostgreSQL RLS column-level security isolation.">🔒 Evaluate Confidential Notes RLS</button>
+          <button class="preset-inquiry-btn" data-query="Review SpeedGrader and multi-criterion rubrics implementation for zero variable hosting cost and pedagogical efficiency.">📝 Review SpeedGrader & Rubrics</button>
+          <button class="preset-inquiry-btn" data-query="Verify historic confessional cross-links and doctrinal guardrails against theological drift.">📜 Verify Historic Creeds Alignment</button>
+        </div>
+
+        <div class="query-input-wrapper">
+          <textarea class="delib-textarea" id="council-query-input" placeholder="Address the council with an architectural inquiry, policy question, or proposed directive..."></textarea>
+        </div>
+
+        <div class="query-action-row">
+          <div class="delib-target-indicator" id="delib-target-text">
+            Addressing: <strong id="current-delib-target">High Sovereign Grand Council (All 7 Seats)</strong>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="btn btn-secondary" id="btn-view-history" style="display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>📜 Council Replies (<span id="delib-history-count">0</span>)</span>
+            </button>
+            <button class="btn btn-gold" id="btn-convene-council">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+              Convene & Deliberate
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Deliberation Transcript / Synthesis Container -->
+        <div class="delib-response-container" id="delib-response-container">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- App-Specific Council Member Roster -->
+      <div class="roster-header-bar">
+        <h3 id="roster-section-title">Council Seat Roster & Specialized Guardians</h3>
+        <span style="font-size: 13px; color: var(--text-muted);" id="roster-seat-count">Showing Seats</span>
+      </div>
+
+      <div class="council-members-grid" id="council-members-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 2: IMPLEMENTATION PLANS & DIRECTIONALITY -->
+    <section id="tab-plans" class="tab-content">
+      <div class="section-hero">
+        <h2>Product Implementation Plans & Directionality Viewer</h2>
+        <p>Live view into each product's active development plan. Explicitly tracking what items were <strong>Repo-Originated (Edge)</strong> vs. <strong>Control-Plane-Dispatched (Hub)</strong>.</p>
+      </div>
+
+      <div class="plan-controls-bar">
+        <div class="form-group-inline">
+          <label>Select Product Plan:</label>
+          <select id="plan-product-select">
+            <option value="churchcore-chms">ChurchCore ChMS (DEVELOPMENT_PLAN.md)</option>
+            <option value="churchcore-lms">ChurchCore LMS (implementation-plan-2026-q4.md)</option>
+            <option value="churchcore-academy">ChurchCore Academy (competitive-execution-plan.md)</option>
+            <option value="churchcore-care">ChurchCore Care (v7.0.0-RELEASE-SUMMARY.md)</option>
+            <option value="churchcore-orthos">ChurchCore Orthos (omni-council-plan.md)</option>
+            <option value="faithfull-scholars">FaithFull Scholars (FAITHFULL_SCHOLARS_FULL_PLAN.md)</option>
+          </select>
+        </div>
+
+        <div class="directionality-legend-bar">
+          <span class="dir-badge dir-edge">🔵 REPO-ORIGINATED (Edge)</span>
+          <span class="dir-badge dir-hub">🟡 CONTROL-PLANE-DISPATCHED (Hub)</span>
+        </div>
+      </div>
+
+      <div class="plan-board-container" id="plan-board-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 3: PROJECT TASKS METADATA BASE -->
+    <section id="tab-tasks" class="tab-content">
+      <div class="section-hero-split">
+        <div>
+          <h2>Project Management Task Metadata Base</h2>
+          <p>Bidirectional task database synchronized between <code>docs/control-plane/tasks.json</code> and <code>PROJECT_TASKS.md</code>.</p>
+        </div>
+        <button id="btn-add-task" class="btn btn-gold">+ Add New Task</button>
+      </div>
+
+      <div class="task-filter-bar">
+        <div class="filter-group">
+          <button class="filter-chip active" data-task-filter="all">All Tasks (18)</button>
+          <button class="filter-chip" data-task-filter="in_progress">In Progress (4)</button>
+          <button class="filter-chip" data-task-filter="waiting">Waiting (4)</button>
+          <button class="filter-chip" data-task-filter="planned">Planned (2)</button>
+          <button class="filter-chip" data-task-filter="done">Done (8)</button>
+        </div>
+        <div class="search-box">
+          <input type="text" id="task-search" placeholder="Search tasks, assignees, or PRs...">
+        </div>
+      </div>
+
+      <div class="task-table-wrapper">
+        <table class="compliance-table" id="tasks-table">
+          <thead>
+            <tr>
+              <th>Task ID</th>
+              <th>Product</th>
+              <th>Direction</th>
+              <th>Title & Scope</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Assignee</th>
+              <th>Git Reference</th>
+            </tr>
+          </thead>
+          <tbody id="tasks-tbody">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 4: READINESS RADAR -->
+    <section id="tab-readiness" class="tab-content">
+      <div class="section-hero">
+        <h2>Production Readiness Action Radar</h2>
+        <p>Continuous evaluation of deployment gates, missing cloud secrets, database migrations, and launch blockers across the fleet.</p>
+      </div>
+
+      <div class="readiness-cards-container" id="readiness-cards-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 5: COMMERCIAL & OPEX TELEMETRY -->
+    <section id="tab-commercial" class="tab-content">
+      <div class="section-hero">
+        <h2>Commercial Velocity, Fintech Margins & Fleet OPEX</h2>
+        <p>Strategic financial telemetry tracking unit economics, active pilot revenues, and infrastructure expenditure across the holding company.</p>
+      </div>
+
+      <div class="commercial-kpi-grid" id="commercial-kpi-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="commercial-split-layout">
+        <div class="commercial-card">
+          <h3>Active Institutional Pilot Pipeline</h3>
+          <div id="commercial-pilots-container"></div>
+        </div>
+        <div class="commercial-card">
+          <h3>Fintech Giving Take-Rate & Unit Economics</h3>
+          <div id="commercial-fintech-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: SUNDAY SLA PULSE MONITOR -->
+    <section id="tab-sunday" class="tab-content">
+      <div class="section-hero">
+        <h2>Sunday Morning SLA & Pre-Flight Pulse Monitor</h2>
+        <p>Mission-critical operations safeguarding Sunday worship check-in, live giving pipelines, and pastoral care (OPS-04).</p>
+      </div>
+
+      <div class="sunday-hero-banner" id="sunday-hero-banner">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="sunday-probes-grid" id="sunday-probes-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 7: TECH STACK MESH & VERSION DRIFT -->
+    <section id="tab-tech-mesh" class="tab-content">
+      <div class="section-hero">
+        <h2>Technical Stack Mesh & Version Drift Matrix</h2>
+        <p>Architectural alignment monitoring across Next.js, Node runtimes, TypeScript, RLS mandates, and PostgreSQL extensions.</p>
+      </div>
+
+      <div class="compliance-table-wrapper">
+        <table class="compliance-table" id="tech-mesh-table">
+          <thead>
+            <tr>
+              <th>Product Suite</th>
+              <th>Framework</th>
+              <th>Node Runtime</th>
+              <th>TypeScript</th>
+              <th>Row-Level Security</th>
+              <th>Postgres Extensions</th>
+              <th>Drift Status</th>
+            </tr>
+          </thead>
+          <tbody id="tech-mesh-tbody">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 8: COUNCIL DIRECTIVES -->
+    <section id="tab-directives" class="tab-content">
+      <div class="section-hero">
+        <h2>Council Governance & Central Directives Board</h2>
+        <p>Centrally ratified architectural requirements dispatched from ChurchCore-Business to edge repositories.</p>
+      </div>
+
+      <div class="compliance-table-wrapper">
+        <table class="compliance-table" id="compliance-table">
+          <thead>
+            <tr>
+              <th>Directive / Council ID</th>
+              <th>Requirement Title & Mandate</th>
+              <th>ChMS</th>
+              <th>LMS</th>
+              <th>Academy</th>
+              <th>Care</th>
+              <th>Orthos</th>
+              <th>Scholars</th>
+            </tr>
+          </thead>
+          <tbody id="compliance-tbody">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Autonomous Evidence Reconciliation Ledger Panel -->
+      <div style="margin-top: 36px;">
+        <div class="section-hero-split" style="margin-bottom: 16px;">
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #FFF;">
+              Autonomous Edge Challenges & Evidence Reconciliation Ledger
+            </h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+              Individual repositories autonomously challenge and correct central control plane data by presenting verified git commits, HTTP status probes, or migration evidence.
+            </p>
+          </div>
+          <button class="btn btn-secondary" id="btn-trigger-reconcile" title="Run Central Verification on All Edge Challenges">
+            ⚡ Verify & Reconcile Edge Proofs
+          </button>
+        </div>
+
+        <div class="task-table-wrapper">
+          <table class="compliance-table" id="reconciliations-table">
+            <thead>
+              <tr>
+                <th>Date (UTC)</th>
+                <th>Challenging Product</th>
+                <th>Field Disputed</th>
+                <th>Central (Prior)</th>
+                <th>Reconciled (Current)</th>
+                <th>Evidence Type & Validated Proof</th>
+              </tr>
+            </thead>
+            <tbody id="reconciliations-tbody">
+              <!-- Rendered dynamically by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 9: AI SESSIONS -->
+    <section id="tab-ai-stream" class="tab-content">
+      <div class="section-hero">
+        <h2>AI / LLM Session Telemetry & Deployment Diagnostics</h2>
+        <p>Chronological trace of AI model contributions, session durations, operator attribution, and bug mitigations applied.</p>
+      </div>
+
+      <div class="ai-stream-timeline" id="ai-stream-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 10: AGY CLI ORCHESTRATOR -->
+    <section id="tab-agy-cli" class="tab-content">
+      <div class="section-hero">
+        <h2>Antigravity CLI (AgY) Command Generator</h2>
+        <p>Leverage the locally installed <code>agy v1.4.0</code> engine to dispatch autonomous agent runs, run test surfaces, and refresh telemetry across sibling repositories.</p>
+      </div>
+
+      <div class="cli-orchestrator-layout">
+        <div class="cli-generator-card">
+          <h3>Generate Fleet Command</h3>
+          <div class="form-group">
+            <label>Select Target Repository:</label>
+            <select id="cli-repo-select">
+              <option value="all">Entire Fleet (All 6 Repositories)</option>
+              <option value="/Users/rjulia/ChurchCore">ChurchCore ChMS (/Users/rjulia/ChurchCore)</option>
+              <option value="/Users/rjulia/ChurchCore LMS">ChurchCore LMS (/Users/rjulia/ChurchCore LMS)</option>
+              <option value="/Users/rjulia/ChurchCore Academy">ChurchCore Academy (/Users/rjulia/ChurchCore Academy)</option>
+              <option value="/Users/rjulia/ChurchCore Care">ChurchCore Care (/Users/rjulia/ChurchCore Care)</option>
+              <option value="/Users/rjulia/ChurchCore Orthos">ChurchCore Orthos (/Users/rjulia/ChurchCore Orthos)</option>
+              <option value="/Users/rjulia/FaithFullScholars">FaithFull Scholars (/Users/rjulia/FaithFullScholars)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Select Pre-Configured Action:</label>
+            <select id="cli-action-select">
+              <option value="audit-governance">Audit Council Directives & Verify ACKNOWLEDGMENTS.md</option>
+              <option value="run-surfaces">Verify Test Surfaces & Update Telemetry</option>
+              <option value="fix-readiness">Resolve Offline Deployment Blockers & Build Checks</option>
+              <option value="custom">Custom Agent Instruction</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="cli-custom-prompt-group" style="display: none;">
+            <label>Custom Agent Prompt:</label>
+            <textarea id="cli-custom-prompt" rows="3" placeholder="Enter instructions for agy..."></textarea>
+          </div>
+
+          <button id="btn-generate-cli" class="btn btn-gold">Generate agy Command</button>
+        </div>
+
+        <div class="cli-terminal-card">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">zsh — agy fleet terminal</span>
+          </div>
+          <pre class="terminal-body" id="terminal-output"># Select an action on the left and click 'Generate agy Command'
+agy --version
+1.4.0</pre>
+          <div class="terminal-footer">
+            <button id="btn-copy-terminal" class="btn btn-secondary">Copy to Clipboard</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 11: EVIDENCE & CHALLENGES CENTER -->
+    <section id="tab-challenges" class="tab-content">
+      <div class="section-hero">
+        <h2>Autonomous Edge Evidence & Challenge Verification Center</h2>
+        <p>Central inspection hub for reviewing disputes, verified cryptographic proofs, git commits, and HTTP evidence submitted autonomously by edge product repositories.</p>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="council-hud-grid" style="margin-bottom: 24px;">
+        <div class="council-hud-card highlight-emerald">
+          <div class="council-hud-label">Verified & Reconciled</div>
+          <div class="council-hud-val">
+            <span class="status-beacon beacon-green"></span>
+            <span id="chal-kpi-verified">6 Proofs</span>
+          </div>
+          <div class="council-hud-sub">100% Acceptance of Validated Evidence</div>
+        </div>
+
+        <div class="council-hud-card highlight-gold">
+          <div class="council-hud-label">Evidence Types Evaluated</div>
+          <div class="council-hud-val">4 Modalities</div>
+          <div class="council-hud-sub">HTTP, Git Commits, Version AST, Council Markdown</div>
+        </div>
+
+        <div class="council-hud-card">
+          <div class="council-hud-label">Verification Latency</div>
+          <div class="council-hud-val">&lt; 250ms</div>
+          <div class="council-hud-sub">Sub-Second Local Hub Audit Verification</div>
+        </div>
+
+        <div class="council-hud-card">
+          <div class="council-hud-label">Sovereignty Invariant</div>
+          <div class="council-hud-val" style="color: #34D399;">100% Intact</div>
+          <div class="council-hud-sub">Zero Customer Data Leaked in Evidence</div>
+        </div>
+      </div>
+
+      <!-- Action & Filter Bar -->
+      <div class="task-filter-bar">
+        <div class="filter-group">
+          <button class="filter-chip active" id="chal-filter-all" data-chal-filter="all">All Evidence (6)</button>
+          <button class="filter-chip" id="chal-filter-accepted" data-chal-filter="accepted">Accepted (6)</button>
+          <button class="filter-chip" id="chal-filter-rejected" data-chal-filter="rejected">Rejected (0)</button>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <input type="text" id="chal-search" placeholder="Search product, field, or proof..." style="padding: 10px 14px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px; font-size: 13px;">
+          <button class="btn btn-gold" id="btn-run-full-audit" title="Trigger Fleet Evidence Verification Audit">
+            ⚡ Run Fleet Verification Audit
+          </button>
+        </div>
+      </div>
+
+      <div class="task-table-wrapper">
+        <table class="compliance-table" id="central-challenges-table">
+          <thead>
+            <tr>
+              <th>Timestamp (UTC)</th>
+              <th>Product Repository</th>
+              <th>Disputed Central Field</th>
+              <th>Central (Prior)</th>
+              <th>Reconciled (Truth)</th>
+              <th>Validated Proof & Cryptographic Evidence</th>
+              <th>Reconciliation Status</th>
+            </tr>
+          </thead>
+          <tbody id="central-challenges-tbody">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 12: OPERATIONS MANUAL & AGY ACADEMY -->
+    <section id="tab-manual" class="tab-content">
+      <div class="section-hero">
+        <h2>ChurchCore Sovereign Control Plane: Operations Manual & AgY Academy</h2>
+        <p>Exhaustive system reference documenting multi-repo architecture, autonomous directive enforcement, the Evidence Challenge Engine, and a complete tutor on the Google Antigravity CLI (AgY).</p>
+      </div>
+
+      <div class="manual-wrapper">
+        <!-- Sticky Sidebar Navigation -->
+        <aside class="manual-sidebar">
+          <input type="text" id="manual-search-input" class="manual-search-box" placeholder="🔍 Search operations manual...">
+          <ul class="manual-nav-list" id="manual-nav-list">
+            <li><a href="#mod-agy" class="manual-nav-item active">⚡ AgY CLI Master Guide</a></li>
+            <li><a href="#mod-councils" class="manual-nav-item">🏛️ Council Chambers & 38 Seats</a></li>
+            <li><a href="#mod-challenges" class="manual-nav-item">🛡️ Evidence & Challenge Engine</a></li>
+            <li><a href="#mod-plans" class="manual-nav-item">📋 Plans & Directionality</a></li>
+            <li><a href="#mod-tasks" class="manual-nav-item">🗂️ Project Tasks Metadata Base</a></li>
+            <li><a href="#mod-sunday" class="manual-nav-item">⏱️ Sunday Morning 99.99% SLA</a></li>
+            <li><a href="#mod-commercial" class="manual-nav-item">💰 Commercial OPEX ($240/mo)</a></li>
+            <li><a href="#mod-architecture" class="manual-nav-item">👑 Sovereign Architecture</a></li>
+          </ul>
+        </aside>
+
+        <!-- Main Reading Stream -->
+        <main class="manual-content">
+
+          <!-- MODULE 1: AGY CLI MASTERCLASS -->
+          <article class="manual-card" id="mod-agy">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">⚡ The Antigravity CLI (AgY) Master Operations Guide</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">DeepMind & Google Advanced Agentic Coding CLI runtime: <code>agy v1.4.0</code></p>
+              </div>
+              <span class="manual-badge badge-gold-subtle">Core Runtime</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                <strong>Why AgY is Awesome:</strong> The Antigravity CLI (<code>agy</code>) is an autonomous developer runtime designed for complex, multi-step engineering tasks. Unlike passive autocomplete, <code>agy</code> interacts directly with your filesystem, executes terminal commands, resolves compilation issues, runs automated test suites, and operates across multiple repositories simultaneously.
+              </p>
+
+              <div class="manual-callout gold">
+                <strong>Local Binary Location:</strong> <code>/Users/rjulia/.local/bin/agy</code> (symlinked in your user PATH).<br>
+                Verify anytime in your terminal with: <code>agy --version</code> (returns <code>1.4.0</code>).
+              </div>
+
+              <h4 style="font-size: 16px; color: #FFF; margin: 20px 0 10px 0;">Essential AgY CLI Flags & Workflows</h4>
+              
+              <div class="code-container">
+                <div class="code-container-header">
+                  <span class="code-lang-tag">BASH — QUICK START</span>
+                  <button class="btn-code-copy" onclick="navigator.clipboard.writeText('agy -p &quot;Audit RLS policies in supabase/migrations and fix missing enable statements&quot;');">Copy</button>
+                </div>
+                <pre class="code-snippet"># 1. Single-Prompt Autonomous Task:
+agy -p "Audit RLS policies in supabase/migrations and fix missing enable statements"
+
+# 2. Multi-Repo Orchestration (Operating on ChurchCore-Business while accessing a sibling repo):
+agy --add-dir "/Users/rjulia/ChurchCore Care" --mode auto -p "Reconcile Care edge telemetry with central control plane"
+
+# 3. Fully Autonomous Auto-Pilot Mode (No human approval interruptions):
+agy --mode auto -p "Run pull-and-enforce-directives.py in all sibling suites"
+
+# 4. Multi-Directory Council Review Dispatch:
+agy --add-dir "/Users/rjulia/ChurchCore" --add-dir "/Users/rjulia/ChurchCore LMS" -p "Audit Constitution Section III across both suites"</pre>
+              </div>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Executive Mission Control — Live Dashboard Overview</span>
+                  <span class="manual-badge badge-gold-subtle">Dashboard HUD</span>
+                </div>
+                <img src="screenshots/fleet_grid_overview.png" alt="Fleet Grid Overview" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 1.1: Live Executive Control Plane Dashboard with multi-repo status, production online rates, and zero data propagation indicators.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 2: COUNCIL CHAMBERS & 38 SEATS -->
+          <article class="manual-card" id="mod-councils">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">🏛️ Council Chambers & 38 Specialized Seat Guardians</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">App-specific governance councils, live quorum HUDs, consensus syntheses, and 1-on-1 consultations</p>
+              </div>
+              <span class="manual-badge badge-cyan-subtle">Governance Mesh</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                Each product repository maintains its own <strong>Domain Council</strong> with specialized persona seats tailored to that application's technical and theological needs:
+              </p>
+              <ul style="margin-left: 20px; margin-bottom: 16px; line-height: 1.8;">
+                <li><strong>🛡️ Care Council (ChurchCore Care):</strong> Lead Pastoral Chaplain, Clinical Confidentiality Officer Elena Rostova (HIPAA/`pgcrypto`), Emergency Care Triage Architect, Volunteer Care Circles Coordinator, Benevolence Fund Auditor.</li>
+                <li><strong>🎓 LMS Council (ChurchCore LMS):</strong> Academic Dean Dr. Silas Thorne, SpeedGrader Steward Clara Higgins, Content Drip Architect Pastor Cole, Credentialing Registrar Eleanor Brooks, Serverless Infra Lead Devin Vance.</li>
+                <li><strong>⛪ ChMS Council (ChurchCore ChMS):</strong> Lead Pastor Caleb Wright, Agent 1 (Data & API Sentinel), Agent 2 (Route Specialist), Agent 3 (UX Shell), Sunday SLA & Financial Giving Trustee Arthur Pendelton.</li>
+                <li><strong>🏫 Academy Council (ChurchCore Academy):</strong> Headmaster Dr. Edwards, Parental Trust Guardian Maria Teresa, SIS Bursar Patricia Sterling, Bilingual Liaison Pastora Gabriela.</li>
+                <li><strong>📜 Orthos Council (ChurchCore Orthos):</strong> Systematic Theologian Dr. MacIntyre, Biblical Languages Lead Dr. Ben-Zvi, Liturgical Calendar Architect Father Ward, Anti-Heresy Watcher Elder Barnabas.</li>
+                <li><strong>🌟 Scholars Council (FaithFull Scholars):</strong> Endowment Trustee Hon. Elizabeth Warren-Harding, Allocations Dean Dr. Okonjo, Monograph Editor Prof. Lancaster.</li>
+              </ul>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Council Chambers — Live Consensus Synthesis & Seat Consultation</span>
+                  <span class="manual-badge badge-cyan-subtle">Council HUD</span>
+                </div>
+                <img src="screenshots/council_chambers_deliberation.png" alt="Council Chambers Deliberation View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 2.1: Live Deliberation Chamber showing Quorum HUD, active non-negotiables, and the official Council Ratification & Governance Seal.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 3: EVIDENCE & CHALLENGE ENGINE -->
+          <article class="manual-card" id="mod-challenges">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">🛡️ Autonomous Edge Challenge & Evidence Reconciliation Engine</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Enabling edge repos to autonomously dispute stale central data with cryptographic proof</p>
+              </div>
+              <span class="manual-badge badge-emerald-subtle">Evidence Engine</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                The Control Plane does not assume central omnipotence. If an edge repository deploys a new commit, adds council reviews, or verifies online edge traffic, it autonomously challenges central records by presenting verifiable proof:
+              </p>
+
+              <div class="manual-callout emerald">
+                <strong>Supported Evidence Types:</strong><br>
+                • <code>HTTP_STATUS_PROOF</code>: Live HTTP 200 probe with latency and response headers.<br>
+                • <code>GIT_COMMIT_PROOF</code>: Git commit SHA and author message verified in repository tree.<br>
+                • <code>PACKAGE_VERSION_PROOF</code>: Semantic version AST inspection inside <code>package.json</code>.<br>
+                • <code>COUNCIL_REVIEW_PROOF</code>: Documented review markdown files with unanimous sign-offs.
+              </div>
+
+              <div class="code-container">
+                <div class="code-container-header">
+                  <span class="code-lang-tag">BASH — EDGE COMMANDS</span>
+                  <button class="btn-code-copy" onclick="navigator.clipboard.writeText('python3 scripts/challenge-central-record.py');">Copy</button>
+                </div>
+                <pre class="code-snippet"># Run autonomous challenge discovery in any edge repo:
+python3 scripts/challenge-central-record.py
+
+# Run central evidence verification across the entire fleet:
+python3 scripts/reconcile-edge-challenges.py</pre>
+              </div>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Central Reconciliation Ledger — Autonomous Proof Verification</span>
+                  <span class="manual-badge badge-emerald-subtle">Audit Trail</span>
+                </div>
+                <img src="screenshots/evidence_reconciliation_ledger.png" alt="Reconciliation Ledger View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 3.1: Live Autonomous Evidence Reconciliation Ledger displaying verified proof entries across all 6 product suites.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 4: PLANS & DIRECTIONALITY -->
+          <article class="manual-card" id="mod-plans">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">📋 Product Implementation Plans & Directionality Tracking</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Tracking Done, In-Progress, and Planned features with explicit origin tags</p>
+              </div>
+              <span class="manual-badge badge-gold-subtle">Roadmaps</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                Every product plan tracks directionality with explicit visual tags:
+              </p>
+              <p>
+                • <span class="dir-badge dir-edge" style="display: inline-block; padding: 2px 8px;">🔵 REPO-ORIGINATED (Edge)</span>: Local engineering improvements, bug fixes, and domain-specific features developed directly in the repository.<br>
+                • <span class="dir-badge dir-hub" style="display: inline-block; padding: 2px 8px; margin-top: 6px;">🟡 CONTROL-PLANE-DISPATCHED (Hub)</span>: Cross-ecosystem architectural directives, brand lockups, or telemetry requirements dispatched from ChurchCore-Business.
+              </p>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Product Implementation Plans Viewer</span>
+                  <span class="manual-badge badge-gold-subtle">Plan Kanban</span>
+                </div>
+                <img src="screenshots/implementation_plans_directionality.png" alt="Implementation Plans View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 4.1: Implementation Plan Viewer showing directionality chips and milestone breakdowns.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 5: PROJECT TASKS METADATA BASE -->
+          <article class="manual-card" id="mod-tasks">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">🗂️ Project Tasks Metadata Base & Bidirectional Sync</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Synchronized between docs/control-plane/tasks.json and PROJECT_TASKS.md</p>
+              </div>
+              <span class="manual-badge badge-cyan-subtle">Task Base</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                The Project Tasks system provides an auditable, metadata-backed task ledger. Adding or updating tasks via the UI or CLI automatically updates both <code>docs/control-plane/tasks.json</code> and the Markdown Kanban in <code>PROJECT_TASKS.md</code>:
+              </p>
+
+              <div class="code-container">
+                <div class="code-container-header">
+                  <span class="code-lang-tag">BASH — TASK MANAGEMENT CLI</span>
+                  <button class="btn-code-copy" onclick="navigator.clipboard.writeText('python3 scripts/manage-tasks.py --action list');">Copy</button>
+                </div>
+                <pre class="code-snippet"># List all project tasks:
+python3 scripts/manage-tasks.py --action list
+
+# Add new task:
+python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title "Implement SMS escalation hotline" --status "planned" --priority "P1_HIGH"</pre>
+              </div>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Project Tasks Metadata Base — Live Kanban Grid</span>
+                  <span class="manual-badge badge-cyan-subtle">Tasks Base</span>
+                </div>
+                <img src="screenshots/project_tasks_kanban.png" alt="Project Tasks Kanban View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 5.1: Task Metadata Base with priority filters, assignees, and git commit references.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 6: SUNDAY SLA PULSE -->
+          <article class="manual-card" id="mod-sunday">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">⏱️ Sunday Morning 99.99% SLA Pulse Monitor</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Holy Hours zero-downtime reliability protocol (Sundays 06:00 - 13:00 Local)</p>
+              </div>
+              <span class="manual-badge badge-emerald-subtle">High Availability</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                During Sunday morning worship services, downtime is catastrophic for church attendance, tithing, and child check-in kiosks. The Control Plane runs automated probes and connection pool monitoring:
+              </p>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Sunday Morning SLA Pulse Monitor</span>
+                  <span class="manual-badge badge-emerald-subtle">SLA Monitor</span>
+                </div>
+                <img src="screenshots/sunday_sla_pulse.png" alt="Sunday SLA Pulse View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 6.1: Real-time countdown to Sunday peak, connection pool headroom (92%), and synthetic probe latencies.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 7: COMMERCIAL TELEMETRY -->
+          <article class="manual-card" id="mod-commercial">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">💰 Commercial Velocity, OPEX ($240/mo Fleet) & Fintech Margins</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Fiduciary stewardship, low-cost hosting breakdown, and active ARR pilots</p>
+              </div>
+              <span class="manual-badge badge-gold-subtle">Finances</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                ChurchCore operates on an extraordinarily capital-efficient architecture:
+                <strong>$240/month total fleet hosting</strong> across Vercel Pro ($120), Supabase Pro Compute ($100), and Cloudflare ($20).
+              </p>
+              <p>
+                Fintech take-rates deliver sustainable recurring revenues:
+                • Card Giving: <code>2.60% + $0.30</code><br>
+                • ACH Tithing: <code>0.85% (capped at $7.50)</code><br>
+                • Annual Giving Target: <code>$12,000,000</code> ($1.25M ARR pipeline across Colegio Biblos, AETH Seminary, and Regional Pastoral Pilots).
+              </p>
+
+              <div class="manual-screenshot-figure">
+                <div class="manual-screenshot-topbar">
+                  <span class="manual-screenshot-title">Commercial & OPEX Telemetry Cockpit</span>
+                  <span class="manual-badge badge-gold-subtle">OPEX Cockpit</span>
+                </div>
+                <img src="screenshots/commercial_opex_margins.png" alt="Commercial Telemetry View" class="manual-screenshot-img">
+                <div class="manual-screenshot-caption">Figure 7.1: Commercial and OPEX Cockpit tracking pilot pipeline, take-rates, and hosting margins.</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- MODULE 8: SOVEREIGN ARCHITECTURE -->
+          <article class="manual-card" id="mod-architecture">
+            <div class="manual-card-header">
+              <div>
+                <h3 class="manual-card-title">👑 Sovereign Architecture & Constitution Section III</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Zero Customer Data Propagation and 6 completely isolated database silos</p>
+              </div>
+              <span class="manual-badge badge-cyan-subtle">Constitution</span>
+            </div>
+            <div class="manual-body">
+              <p>
+                <strong>The Sacred Invariant:</strong> Under Constitution Section III, customer data entered into any ChurchCore application remains 100% sovereign to that application's database. No cross-app event brokers, Kafka streams, RabbitMQ daemons, or database replication syncs are permitted.
+              </p>
+              <div class="manual-callout gold">
+                Every commit and migration across all 6 suites is audited automatically by <code>pull-and-enforce-directives.py</code> to ensure this sacred boundary is never violated.
+              </div>
+            </div>
+          </article>
+
+        </main>
+      </div>
+    </section>
+
+    <!-- TAB 13: MARKETING & BUSINESS PRESENTATIONS (PRESOS) -->
+    <section id="tab-presos" class="tab-content">
+      <div class="section-hero">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2>Marketing & Business Presentations Hub</h2>
+            <p>Dynamic, self-refreshing pitch decks & AI prompt packets synthesized from active telemetry, verified schemas, and live releases.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="preso-chip green" id="presos-sync-badge">🟢 Living Telemetry Synced</span>
+            <button id="btn-refresh-presos" class="btn btn-secondary" style="padding: 8px 14px; font-size: 12px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Refresh Decks
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="presos-container">
+        <!-- Product & General Navigation Filter Bar -->
+        <div class="presos-nav-bar" id="presos-nav-bar">
+          <!-- Dynamically populated via JS: Platform, ChMS, LMS, Academy, Care, Orthos, Scholars -->
+        </div>
+
+        <!-- Hero Presentation Banner -->
+        <div class="preso-hero-banner" id="preso-hero-banner">
+          <!-- Dynamically rendered -->
+        </div>
+
+        <!-- Interactive Slide Deck Player Canvas -->
+        <div class="preso-player-card">
+          <div class="preso-player-header">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="preso-slide-counter" id="preso-slide-counter">Slide 1 of 6</span>
+              <span id="preso-slide-badge" class="badge-tag" style="background: rgba(245, 158, 11, 0.15); color: #FBBF24; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px;">HERO HOOK</span>
+            </div>
+            <div class="preso-controls">
+              <button class="preso-ctrl-btn" id="btn-preso-prev">◀ Prev Slide</button>
+              <button class="preso-ctrl-btn" id="btn-preso-next">Next Slide ▶</button>
+              <button class="preso-ctrl-btn highlight-gold-tab" id="btn-preso-fullscreen" title="Toggle Fullscreen Presenter Mode">⛶ Presenter</button>
+            </div>
+          </div>
+
+          <div class="preso-slide-viewport" id="preso-slide-viewport">
+            <!-- Dynamic Slide Content (Title, Bullets, Real Screenshot, Speaker Notes) -->
+          </div>
+        </div>
+
+        <!-- Interactive Gemini Marketing Intelligence & Pitch Generator via OpenRouter -->
+        <div class="kpi-card" style="padding: 22px 24px; background: linear-gradient(135deg, rgba(30, 27, 75, 0.45) 0%, rgba(15, 23, 42, 0.8) 100%); border: 1px solid rgba(139, 92, 246, 0.35); border-radius: 14px; position: relative; overflow: hidden; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; display: flex; align-items: center; gap: 8px;">
+                  <span>✨ Gemini Marketing Intelligence &amp; Campaign Synthesizer</span>
+                </h3>
+                <span style="font-size: 11px; font-weight: 700; background: rgba(99, 102, 241, 0.2); border: 1px solid rgba(99, 102, 241, 0.4); color: #C4B5FD; padding: 2px 8px; border-radius: 99px;">
+                  OpenRouter • google/gemini-2.5-pro
+                </span>
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                Directly prompt Gemini 2.5 Pro via OpenRouter to synthesize executive pitch narratives, GTM legacy vendor displacement campaigns, or enhance active slide decks.
+              </p>
+            </div>
+            
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="marketing-ai-objective-chips">
+              <button class="filter-chip active" data-marketing-obj="executive_pitch">🎯 Boardroom Pitch</button>
+              <button class="filter-chip" data-marketing-obj="gtm_campaign">⚡ GTM Displacement</button>
+              <button class="filter-chip" data-marketing-obj="investor_memo">💰 Investor Memo</button>
+              <button class="filter-chip" data-marketing-obj="enhance_slide">✨ Enhance Slide</button>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+            <input type="text" id="marketing-ai-instructions" placeholder="Optional operator guidance: target audience, specific emphasis, or competitor focus..." style="flex: 1; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #FFF;">
+            <button id="btn-trigger-marketing-ai" type="button" class="btn btn-primary" style="background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%); color: #FFF; padding: 10px 18px; font-size: 13px; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+              <svg id="marketing-ai-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span id="marketing-ai-btn-text">Synthesize with Gemini</span>
+            </button>
+          </div>
+
+          <!-- Marketing AI Results Viewer -->
+          <div id="marketing-ai-results" style="display: none; background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 10px; padding: 18px;">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+        <!-- AI Prompt Packs Section -->
+        <div class="ai-packs-wrapper">
+          <div class="ai-packs-header">
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; display: flex; align-items: center; gap: 8px;">
+                <span>🤖 Feed to AI: One-Click LLM Presentation Packets</span>
+              </h3>
+              <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                Copy complete, highly-structured context packets ready to paste into Claude, ChatGPT, Prezi AI, or Gamma for on-the-fly slide & marketing generation.
+              </p>
+            </div>
+            <div class="ai-tab-buttons" id="ai-tab-buttons">
+              <button class="ai-tab-btn active" data-ai="claude">Claude 3.7 (Artifacts)</button>
+              <button class="ai-tab-btn" data-ai="chatgpt">ChatGPT 4o (Canvas)</button>
+              <button class="ai-tab-btn" data-ai="prezi_gamma">Prezi AI & Gamma</button>
+              <button class="ai-tab-btn" data-ai="prompt_ai">PromptAI Visuals</button>
+            </div>
+          </div>
+
+          <div class="ai-prompt-display-box" id="ai-prompt-display-box">
+            <button class="btn-copy-prompt" id="btn-copy-ai-prompt">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Prompt
+            </button>
+            <pre id="ai-prompt-code" style="margin: 0; font-family: inherit; font-size: inherit; color: inherit;"></pre>
+          </div>
+        </div>
+
+        <!-- Live Telemetry & Engineering Milestones Card -->
+        <div class="kpi-card" style="padding: 20px 24px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div style="font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: #FFF; display: flex; align-items: center; gap: 8px;">
+              <span>⚡ Live Telemetry & Verified Milestones</span>
+              <span id="preso-version-tag" class="badge-tag" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; font-size: 11px;">v1.0.0</span>
+            </div>
+            <span style="font-size: 11px; color: var(--text-muted);" id="preso-last-synced-label">Synced: Live</span>
+          </div>
+          <div id="preso-live-bullets-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; font-size: 13px; color: var(--text-muted);">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB: PYTHON AUTOMATION SCRIPTS CATALOG -->
+    <section id="tab-scripts" class="tab-content">
+      <div class="section-hero">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2>🐍 Python Automation Scripts Catalog</h2>
+            <p>Self-documenting registry of all 12 sovereign automation tools, maintenance daemons, and governance engines across the ecosystem.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span class="preso-chip green" id="scripts-count-badge">🟢 12 Tools Registered</span>
+            <button id="btn-refresh-scripts" class="btn btn-secondary" style="padding: 8px 14px; font-size: 12px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Rescan Scripts
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-bar" style="margin-bottom: 20px;">
+        <div class="filter-group" id="scripts-category-filters">
+          <span class="filter-label">Category:</span>
+          <button class="filter-chip active" data-script-filter="all">All (12)</button>
+          <button class="filter-chip" data-script-filter="Reporting & Fleet Briefings">Reporting & Briefings</button>
+          <button class="filter-chip" data-script-filter="Fleet Telemetry & Cockpit Aggregation">Fleet Telemetry</button>
+          <button class="filter-chip" data-script-filter="Governance Manifest Discovery">Governance</button>
+          <button class="filter-chip" data-script-filter="Autonomous Edge Challenges">Challenges & Proofs</button>
+          <button class="filter-chip" data-script-filter="Marketing & Business Presentations">Marketing & Presos</button>
+        </div>
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="scripts-search-input" placeholder="Search scripts, CLI flags, or file paths...">
+        </div>
+      </div>
+
+      <!-- Scripts Grid Container -->
+      <div id="scripts-catalog-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </section>
+
+        <!-- TAB: FLEET DEMO FEEDBACK & ERROR TRIAGE WORKSPACE -->
+    <section id="tab-feedback" class="tab-content">
+      <div class="section-hero">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h2>💬 Fleet Demo Feedback &amp; Error-Triage Workspace</h2>
+            <p>Aggregated field-trial notes, unhandled error-boundary captures, and user bug submissions across all 6 sovereign applications.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span class="preso-chip green" id="feedback-triage-badge">🟢 14 Reports • 8 Open</span>
+            <button id="btn-convene-feedback-council" type="button" class="btn btn-primary" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #000; font-weight: 700; padding: 8px 14px; font-size: 12px; gap: 6px; border: none; cursor: pointer; display: flex; align-items: center;">
+              <svg id="feedback-council-spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>⚖️ Convene Council for Analytics (OpenRouter)</span>
+            </button>
+            <button id="btn-refresh-feedback" class="btn btn-secondary" style="padding: 8px 14px; font-size: 12px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Refresh Feedback
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Feedback Summary KPI Cards -->
+      <div class="overview-kpis" style="margin-bottom: 20px;">
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">TOTAL FEEDBACK</span>
+          <span class="kpi-big-number" id="fb-total-count">14</span>
+          <span style="font-size: 11px; color: #98A1AD;">Across 6 applications</span>
+        </div>
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">UNPROCESSED / OPEN</span>
+          <span class="kpi-big-number" style="color: #FBBF24;" id="fb-open-count">8</span>
+          <span style="font-size: 11px; color: #98A1AD;">Needs triage review</span>
+        </div>
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">BUGS &amp; ERRORS</span>
+          <span class="kpi-big-number" style="color: #FF9F8E;" id="fb-bugs-count">7</span>
+          <span style="font-size: 11px; color: #98A1AD;">Deduplicated issues</span>
+        </div>
+        <div class="overview-kpi-card" style="padding: 14px 18px;">
+          <span class="kpi-title-text">IMPROVEMENTS &amp; UAT</span>
+          <span class="kpi-big-number" style="color: #38BDF8;" id="fb-improvements-count">7</span>
+          <span style="font-size: 11px; color: #98A1AD;">Feature suggestions</span>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar" style="margin-bottom: 20px;">
+        <div class="filter-group" id="feedback-category-filters">
+          <span class="filter-label">Category:</span>
+          <button class="filter-chip active" data-fb-category="all">All (14)</button>
+          <button class="filter-chip" data-fb-category="BUG">Bug (4)</button>
+          <button class="filter-chip" data-fb-category="ERROR">Error (3)</button>
+          <button class="filter-chip" data-fb-category="UNEXPECTED_RESULT">Unexpected (3)</button>
+          <button class="filter-chip" data-fb-category="IMPROVEMENT">Improvement (4)</button>
+        </div>
+        <div class="filter-group" style="margin-left: 8px;">
+          <span class="filter-label">Product:</span>
+          <select id="fb-product-select" style="background: #1C2129; color: #E7E9EC; border: 1px solid #2A303A; padding: 6px 10px; border-radius: 6px; font-size: 12px;">
+            <option value="all">All Products (6)</option>
+            <option value="churchcore-academy">ChurchCore-Academy</option>
+            <option value="churchcore-lms">ChurchCore-LMS</option>
+            <option value="churchcore-orthos">ChurchCore-Orthos</option>
+            <option value="churchcore-care">ChurchCore Care</option>
+            <option value="faithfull-scholars">FaithFullScholars</option>
+            <option value="churchcore-chms">ChurchCore</option>
+          </select>
+        </div>
+        <div class="search-box">
+          <input type="text" id="feedback-search-input" placeholder="Search route, error, user note, or email...">
+        </div>
+      </div>
+
+      <!-- Feedback Items Container -->
+      <div id="feedback-items-container" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bottom-footer">
+      <div>ChurchCore Sovereign Control Plane • Powered by Google Antigravity & DeepMind Advanced Agentic Systems</div>
+      <div class="footer-links">
+        <a href="https://github.com/ricardojjulia/ChurchCore-Business" target="_blank">Governance Repository</a>
+        <span>•</span>
+        <span>Constitution Section III Verified (Zero Data Propagation)</span>
+      </div>
+    </footer>
+  </div>
+
+    </main><!-- /main-viewport -->
+  </div><!-- /enterprise-layout -->
+
+  <!-- Detail Modal -->
+  <div id="detail-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title">Product Name</h3>
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Dispatch Directive Modal -->
+  <div id="directive-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Dispatch New Council Directive</h3>
+        <button id="directive-modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Impose a binding architectural requirement across the ChurchCore ecosystem. This writes directly to <code>docs/governance-sync/manifest.json</code> and broadcasts to edge repos.
+        </p>
+        <div class="form-group">
+          <label>Directive Title:</label>
+          <input type="text" id="dir-input-title" placeholder="e.g. Implement Sunday Pre-Flight Synthetic Health Endpoint" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+        </div>
+        <div class="form-group">
+          <label>Requirement Description:</label>
+          <textarea id="dir-input-desc" rows="3" placeholder="Describe the technical requirement and expected behavior..." style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Impacted Products:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; margin-top: 6px;">
+            <label><input type="checkbox" id="chk-chms" checked> ChurchCore (ChMS)</label>
+            <label><input type="checkbox" id="chk-lms" checked> ChurchCore-LMS</label>
+            <label><input type="checkbox" id="chk-acad" checked> ChurchCore-Academy</label>
+            <label><input type="checkbox" id="chk-care" checked> ChurchCoreCare</label>
+            <label><input type="checkbox" id="chk-orth" checked> ChurchCore-Orthos</label>
+            <label><input type="checkbox" id="chk-schl" checked> FaithFullScholars</label>
+          </div>
+        </div>
+        <button id="btn-submit-directive" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Confirm & Dispatch Directive to Fleet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div id="add-task-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Add Project Management Task</h3>
+        <button id="task-modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Task Title:</label>
+          <input type="text" id="task-input-title" placeholder="e.g. Implement OneRoster CSV delivery worker" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+        </div>
+        <div class="form-group">
+          <label>Product Suite:</label>
+          <select id="task-input-product" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+            <option value="churchcore-chms">ChurchCore ChMS</option>
+            <option value="churchcore-lms">ChurchCore LMS</option>
+            <option value="churchcore-academy">ChurchCore Academy</option>
+            <option value="churchcore-care">ChurchCore Care</option>
+            <option value="churchcore-orthos">ChurchCore Orthos</option>
+            <option value="faithfull-scholars">FaithFull Scholars</option>
+            <option value="ecosystem-control-plane">Control Plane Hub</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Directionality:</label>
+          <select id="task-input-dir" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+            <option value="EDGE_REPO">🔵 EDGE: REPO-ORIGINATED (Local Feature / Fix)</option>
+            <option value="CONTROL_PLANE">🟡 HUB: CONTROL-PLANE-DISPATCHED (Central Mandate)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Status & Priority:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <select id="task-input-status" style="padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+              <option value="planned">Planned</option>
+              <option value="in_progress">In Progress</option>
+              <option value="waiting">Waiting</option>
+              <option value="done">Done</option>
+            </select>
+            <select id="task-input-priority" style="padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+              <option value="P0_CRITICAL">P0 Critical</option>
+              <option value="P1_HIGH" selected>P1 High</option>
+              <option value="P2_MEDIUM">P2 Medium</option>
+            </select>
+          </div>
+        </div>
+        <button id="btn-submit-task" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Save Task to Metadata Base</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dual Contending Gemini Engine Configuration Modal -->
+  <div id="gemini-config-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 780px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 26px;">⚡</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 19px; color: #FFF; font-weight: 700; margin: 0;">OpenRouter Gemini Contending Engine</h3>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 3px 0 0 0;">Dual-model dialectic debate: Gemini 2.5 Pro (Advocate) ⚔️ Gemini 2.5 Flash (Auditor)</p>
+          </div>
+        </div>
+        <button id="gemini-config-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 22px;">
+        <!-- Dialectic Architecture Visual -->
+        <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 20px;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #c4b5fd; font-weight: 700; margin-bottom: 10px;">
+            Dual Contending Architecture • Model Fit vs. Cost Optimization
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center;">
+            <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                <span style="font-size: 16px;">🏛️</span>
+                <strong style="color: #60a5fa; font-size: 13px;">Stage 1 &amp; 3: Lead Advocate</strong>
+              </div>
+              <div style="font-size: 12px; color: #cbd5e1; font-weight: 600;" id="cfg-advocate-label">google/gemini-2.5-pro</div>
+              <p style="font-size: 11px; color: var(--text-dim); margin: 6px 0 0 0; line-height: 1.4;">Deep architectural reasoning, production code generation, and hardened AntiGravity directive synthesis.</p>
+            </div>
+            
+            <div style="text-align: center; color: #f59e0b; font-size: 20px; font-weight: 800;">
+              ⚔️
+              <div style="font-size: 10px; color: var(--text-dim); font-weight: 500; margin-top: 2px;">Dialectic Debate</div>
+            </div>
+
+            <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px;">
+              <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                <span style="font-size: 16px;">🛡️</span>
+                <strong style="color: #f43f5e; font-size: 13px;">Stage 2: Invariant Auditor</strong>
+              </div>
+              <div style="font-size: 12px; color: #cbd5e1; font-weight: 600;" id="cfg-auditor-label">google/gemini-2.5-flash</div>
+              <p style="font-size: 11px; color: var(--text-dim); margin: 6px 0 0 0; line-height: 1.4;">Zero latency penalty, rigorous audit against Constitution Sec III, &lt;50ms Sunday SLA, and COUNCIL-2026-006 testing.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form fields -->
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px;">
+            OpenRouter API Key
+          </label>
+          <div style="position: relative;">
+            <input type="password" id="cfg-openrouter-key" class="delib-textarea" style="height: 42px; padding: 10px 42px 10px 14px; font-family: var(--font-mono); font-size: 13px;" placeholder="sk-or-v1-..." />
+            <button type="button" id="btn-toggle-key-visibility" style="position: absolute; right: 10px; top: 10px; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 15px;">👁️</button>
+          </div>
+          <span style="font-size: 11px; color: var(--text-dim); display: block; margin-top: 5px;" id="cfg-key-hint">
+            Stored in <code>.env</code> locally and browser cache. Never committed to git.
+          </span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px;">
+              Model A: Advocate &amp; Synthesizer
+            </label>
+            <input type="text" id="cfg-pro-model" class="delib-textarea" style="height: 42px; padding: 10px 14px; font-family: var(--font-mono); font-size: 12px;" value="google/gemini-2.5-pro" />
+            <span style="font-size: 11px; color: var(--text-dim); display: block; margin-top: 4px;">
+              Default: <code>google/gemini-2.5-pro</code>
+            </span>
+          </div>
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px;">
+              Model B: Invariant Auditor
+            </label>
+            <input type="text" id="cfg-flash-model" class="delib-textarea" style="height: 42px; padding: 10px 14px; font-family: var(--font-mono); font-size: 12px;" value="google/gemini-2.5-flash" />
+            <span style="font-size: 11px; color: var(--text-dim); display: block; margin-top: 4px;">
+              Default: <code>google/gemini-2.5-flash</code>
+            </span>
+          </div>
+        </div>
+
+        <!-- Connection Test Box -->
+        <div id="cfg-test-result" style="display: none; padding: 12px 16px; border-radius: 8px; margin-bottom: 18px; font-size: 12px; line-height: 1.4;"></div>
+
+        <div style="background: rgba(30, 41, 59, 0.4); border-radius: 8px; padding: 12px 16px; font-size: 12px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px;">
+          <span style="font-size: 16px; margin-top: 1px;">💡</span>
+          <div>
+            <strong style="color: #e2e8f0;">Why Gemini Dual Contending?</strong>
+            <p style="margin: 3px 0 0 0; line-height: 1.4;">Gemini representative models provide massive context and precision. Rather than accepting a single model's unexamined output, Stage 2 mandates an adversarial challenge against our constitutional non-negotiables, producing provably sound AntiGravity directives.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 14px 22px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.6);">
+        <button class="btn btn-secondary" id="btn-test-engine-conn" style="font-size: 12px; padding: 8px 16px; display: inline-flex; align-items: center; gap: 6px;">
+          <span>⚡ Test Contender Handshake</span>
+        </button>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-secondary" id="btn-cancel-gemini-config" style="font-size: 12px; padding: 8px 16px;">Cancel</button>
+          <button class="btn btn-gold" id="btn-save-gemini-config" style="font-size: 12px; padding: 8px 18px;">
+            Save &amp; Activate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Council Deliberation History Modal -->
+  <div id="delib-history-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 860px; max-height: 85vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 22px;">📜</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; font-weight: 700; margin: 0;">Council Deliberation & Inquiries Archives</h3>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0 0 0;">Inspect, review, and display previous council replies, directives, and transcripts.</p>
+          </div>
+        </div>
+        <button id="delib-history-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 20px;" id="delib-history-list">
+        <!-- Rendered dynamically -->
+      </div>
+      <div style="padding: 14px 20px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.5);">
+        <span style="font-size: 12px; color: var(--text-dim);" id="delib-history-footer-stats">Showing 0 deliberations</span>
+        <button class="btn btn-secondary" id="btn-clear-delib-history" style="font-size: 12px; padding: 6px 12px;">Clear History</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily MVP 100% Progress Report Modal -->
+  <div id="mvp-report-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 960px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 26px;">🎯</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 19px; color: #FFF; font-weight: 700; margin: 0;">Daily MVP 100% Progress Report & Priority Queue</h3>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 3px 0 0 0;">Strict Phased Gating (COUNCIL-2026-005) • Ranked Farthest Behind to Most Complete</p>
+          </div>
+        </div>
+        <button id="mvp-report-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 24px;" id="mvp-report-modal-content">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div style="padding: 14px 24px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.6);">
+        <span style="font-size: 12px; color: var(--text-dim);">Automated Daily Report • ChurchCore Sovereign Control Plane</span>
+        <div style="display: flex; gap: 10px;">
+          <a href="/docs/reports/DAILY-MVP-PROGRESS-REPORT.md" target="_blank" class="btn btn-secondary" style="font-size: 12px; padding: 6px 14px; text-decoration: none;">
+            📄 Open Raw Markdown
+          </a>
+          <button class="btn btn-gold" id="btn-modal-refresh-report" style="font-size: 12px; padding: 6px 14px;">
+            🔄 Refresh Sync
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Council Feedback Deliberation Modal -->
+  <div id="feedback-council-modal" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 940px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px;">⚖️</span>
+          <div>
+            <h3 id="feedback-council-modal-title" style="margin: 0; font-size: 16px; font-weight: 700; color: #FFF;">High Sovereign Council: Feedback Deliberation</h3>
+            <span id="feedback-council-modal-subtitle" style="font-size: 11px; color: var(--gold-400);">Adjudicating Reports via OpenRouter Dual Contending Gemini</span>
+          </div>
+        </div>
+        <button id="feedback-council-modal-close" class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; flex: 1; padding: 22px;" id="feedback-council-modal-content">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div style="padding: 14px 24px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(14, 21, 36, 0.6);">
+        <span style="font-size: 12px; color: var(--text-dim);" id="feedback-council-modal-footer-note">Sovereign Governance • Constitution Section III Preserved</span>
+        <div style="display: flex; gap: 10px;" id="feedback-council-modal-actions">
+          <button class="btn btn-secondary" id="btn-close-council-modal-footer" style="font-size: 12px; padding: 6px 14px;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Action completed successfully</div>
+
+  <!-- Load Static Fallback Data First -->
+  <script src="fleet-data.js?v=20261017d"></script>
+  <script src="presos-data.js?v=20261017d"></script>
+  <script src="scripts-data.js?v=20261017d"></script>
+  <script src="feedback-data.js?v=20261017d"></script>
+  <!-- Main Application Script -->
+  <script src="app.js?v=20261017d"></script>
+</body>
+</html>

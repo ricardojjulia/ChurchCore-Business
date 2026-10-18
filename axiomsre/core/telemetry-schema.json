@@ -1,0 +1,188 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChurchCoreProductTelemetry",
+  "description": "Standard edge telemetry schema reported by ChurchCore product repositories to the Executive Control Plane (ChurchCore-Business). STRICT PROHIBITION: No customer/member data may be included.",
+  "type": "object",
+  "required": [
+    "product_id",
+    "repo_name",
+    "version",
+    "report_timestamp",
+    "online_status",
+    "mvp_status",
+    "latest_changes",
+    "next_steps",
+    "ai_session_telemetry",
+    "deployment_diagnostics",
+    "governance_compliance"
+  ],
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "enum": [
+        "churchcore-chms",
+        "churchcore-lms",
+        "churchcore-academy",
+        "churchcore-care",
+        "churchcore-orthos",
+        "faithfull-scholars"
+      ]
+    },
+    "repo_name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "report_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "online_status": {
+      "type": "object",
+      "required": [
+        "is_online",
+        "vercel_status",
+        "supabase_status",
+        "readiness_assessment"
+      ],
+      "properties": {
+        "is_online": {
+          "type": "boolean"
+        },
+        "vercel_status": {
+          "type": "string",
+          "enum": ["deployed", "preview", "pending", "none"]
+        },
+        "vercel_url": {
+          "type": "string"
+        },
+        "supabase_status": {
+          "type": "string",
+          "enum": ["connected", "pending", "local_only", "none"]
+        },
+        "supabase_project_ref": {
+          "type": "string"
+        },
+        "readiness_assessment": {
+          "type": "object",
+          "required": [
+            "readiness_score_pct",
+            "blockers",
+            "next_required_actions"
+          ],
+          "properties": {
+            "readiness_score_pct": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "blockers": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "next_required_actions": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "mvp_status": {
+      "type": "object",
+      "required": [
+        "phase",
+        "completion_pct",
+        "latest_milestones"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "enum": ["alpha", "beta", "pilot_ready", "production"]
+        },
+        "completion_pct": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "latest_milestones": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "latest_changes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_steps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "ai_session_telemetry": {
+      "type": "object",
+      "required": [
+        "last_model",
+        "session_duration_minutes",
+        "session_date",
+        "session_operator",
+        "summary_of_work"
+      ],
+      "properties": {
+        "last_model": {
+          "type": "string"
+        },
+        "session_duration_minutes": {
+          "type": "integer"
+        },
+        "session_date": {
+          "type": "string"
+        },
+        "session_operator": {
+          "type": "string"
+        },
+        "summary_of_work": {
+          "type": "string"
+        }
+      }
+    },
+    "deployment_diagnostics": {
+      "type": "object",
+      "required": [
+        "recent_errors",
+        "mitigations_applied"
+      ],
+      "properties": {
+        "recent_errors": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "mitigations_applied": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "governance_compliance": {
+      "type": "object",
+      "required": [
+        "council_decisions_acknowledged",
+        "brand_house_compliant",
+        "sovereign_db_isolation_verified"
+      ],
+      "properties": {
+        "council_decisions_acknowledged": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "brand_house_compliant": {
+          "type": "boolean"
+        },
+        "sovereign_db_isolation_verified": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

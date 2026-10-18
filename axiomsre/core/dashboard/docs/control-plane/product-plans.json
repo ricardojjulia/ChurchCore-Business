@@ -1,0 +1,314 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChurchCore Product Implementation Plans Registry",
+  "version": "1.0.0",
+  "last_updated": "2026-10-17T15:45:00Z",
+  "plans": [
+    {
+      "product_id": "churchcore-chms",
+      "repo_name": "ChurchCore ChMS",
+      "source_file": "DEVELOPMENT_PLAN.md (v3.5.0)",
+      "current_milestone": "v3.5.0 (Release 1d Closeout)",
+      "directionality_summary": {
+        "edge_originated_pct": 75,
+        "control_plane_dispatched_pct": 25
+      },
+      "done": [
+        {
+          "title": "Multi-Campus Member Directory & Churchgoer Portal",
+          "directionality": "EDGE_REPO",
+          "details": "High-fidelity directory, household grouping, privacy toggles, and family check-in."
+        },
+        {
+          "title": "Fintech Giving Pipeline & ACH Recurring Batches",
+          "directionality": "EDGE_REPO",
+          "details": "Stripe Connect embedded donor checkout, pledge campaigns, and tax deduction statements."
+        },
+        {
+          "title": "Constitutional PostgreSQL Row-Level Security (RLS)",
+          "directionality": "CONTROL_PLANE",
+          "details": "Enforced tenant isolation across all tables with 0 bypass policies."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Endorsed Brand House Trust Mark in Global Footer",
+          "directionality": "CONTROL_PLANE",
+          "details": "Render Powered by ChurchCore badge linking to security docs (COUNCIL-2026-002)."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "R1d Member Data-Rights Erasure Approval Queue",
+          "directionality": "EDGE_REPO",
+          "details": "Admin queue with audit logging, ensuring erasure notices fire exclusively post-commit."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Automated Vercel Edge Crons (shepherd-ai & scheduled comms)",
+          "directionality": "EDGE_REPO",
+          "details": "Daily AI pastoral digest and queue retry workers running on Vercel crons."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-lms",
+      "repo_name": "ChurchCore LMS",
+      "source_file": "docs/implementation-plan-2026-q4.md",
+      "current_milestone": "v0.47.0 (Sprint 2 - Foundation & Credentialing)",
+      "directionality_summary": {
+        "edge_originated_pct": 70,
+        "control_plane_dispatched_pct": 30
+      },
+      "done": [
+        {
+          "title": "Turbopack SSR Build Export Bug Resolution",
+          "directionality": "EDGE_REPO",
+          "details": "PR #89: Converted sync server actions to async exports resolving Vercel deployment blocker."
+        },
+        {
+          "title": "Neutral Pre-Auth Gateway & Dynamic Tenant Branding",
+          "directionality": "EDGE_REPO",
+          "details": "PR #88: Dynamic institutional logo resolution with Powered by ChurchCore badge live."
+        },
+        {
+          "title": "Supabase pg_net Extension & Webhook Dispatching",
+          "directionality": "EDGE_REPO",
+          "details": "Enabled pg_net extension on Supabase cloud instance for external webhook listeners."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Synthetic Production Test Suite Execution",
+          "directionality": "EDGE_REPO",
+          "details": "Awaiting final green run on npm run test:prod-synthetic."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "Theological Student Credentialing & PDF Certificate Worker",
+          "directionality": "EDGE_REPO",
+          "details": "Cryptographic certificate generation and verification for AETH seminaries."
+        }
+      ],
+      "planned": [
+        {
+          "title": "AETH Ministerial Formation Digital Course Catalog",
+          "directionality": "EDGE_REPO",
+          "details": "Full Spanish/English ministerial formation curriculum and seat allocation engine."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-academy",
+      "repo_name": "ChurchCore Academy",
+      "source_file": "docs/competitive-execution-plan.md",
+      "current_milestone": "v0.10.0 (Colegio Biblos Pilot Phase)",
+      "directionality_summary": {
+        "edge_originated_pct": 65,
+        "control_plane_dispatched_pct": 35
+      },
+      "done": [
+        {
+          "title": "Colegio Biblos Local Pilot Charter Formal Approval",
+          "directionality": "EDGE_REPO",
+          "details": "PR #247: Approved K-12 Christian Day School pilot operational agreement."
+        },
+        {
+          "title": "Colegio Biblos Pilot Data Model & Seed Rehearsal Foundation",
+          "directionality": "EDGE_REPO",
+          "details": "PR #248: Established initial migration seeds and student enrollment structures."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Production Vercel Cloud Binding & Domain Linking",
+          "directionality": "CONTROL_PLANE",
+          "details": "Awaiting binding of Vercel production credentials to achieve 100% online status."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "OneRoster 1.2 CSV Worker & Pilot Seed Sequencing",
+          "directionality": "EDGE_REPO",
+          "details": "Fixing foreign key dependency locks on grade_levels during pilot rehearsal."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Bilingual Spanish Student Gradebook & Attendance",
+          "directionality": "EDGE_REPO",
+          "details": "Gradebook calculation algorithms and daily multi-language attendance tracking."
+        },
+        {
+          "title": "Powered by ChurchCore Trust Mark & AppSwitcher",
+          "directionality": "CONTROL_PLANE",
+          "details": "Implement Endorsed Brand standards and universal navigation shell."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-care",
+      "repo_name": "ChurchCore Care",
+      "source_file": "docs/v7.0.0-RELEASE-SUMMARY.md",
+      "current_milestone": "v7.0.0 (Clinical EHR & Pastoral Care Production)",
+      "directionality_summary": {
+        "edge_originated_pct": 80,
+        "control_plane_dispatched_pct": 20
+      },
+      "done": [
+        {
+          "title": "Mobile Vite Lockfile Resolution & Clean Vercel Build",
+          "directionality": "EDGE_REPO",
+          "details": "PR #139: Resolved React web and mobile companion package collision; deployed live."
+        },
+        {
+          "title": "Clinical EHR Production Release (churchcore-care.vercel.app)",
+          "directionality": "EDGE_REPO",
+          "details": "Verified live at churchcore-care.vercel.app and www.churchcorecare.io with RLS."
+        },
+        {
+          "title": "HIPAA & Clergy-Penitent Privilege Cryptographic Safeguards",
+          "directionality": "CONTROL_PLANE",
+          "details": "Enforced sovereign database isolation preventing any counseling sync to ChMS."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Production Smoke Test Rehearsal on Vercel Surface",
+          "directionality": "EDGE_REPO",
+          "details": "Awaiting execution of npm run test:smoke against live churchcore-care.vercel.app."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "Merge Faithful Workflows Enhancements Branch",
+          "directionality": "EDGE_REPO",
+          "details": "Spiritually integrated counseling workflows and practice management modules."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Translation Worker Container Optimization",
+          "directionality": "EDGE_REPO",
+          "details": "Dedicated Docker worker optimization for high-throughput bilingual clinical intake."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    },
+    {
+      "product_id": "churchcore-orthos",
+      "repo_name": "ChurchCore Orthos",
+      "source_file": "docs/omni-council-plan.md",
+      "current_milestone": "v0.18.2 (100% Phase 1 MVP Complete \u2022 Pilot Ready)",
+      "directionality_summary": {
+        "edge_originated_pct": 70,
+        "control_plane_dispatched_pct": 30
+      },
+      "done": [
+        {
+          "title": "Departmental Ministry Governance Engine (v0.18.0)",
+          "directionality": "EDGE_REPO",
+          "details": "PR #25: Shipped ministry governance evaluation, maturity scoring, and audits."
+        },
+        {
+          "title": "Compensating Safeguarding Controls for Small Churches",
+          "directionality": "EDGE_REPO",
+          "details": "PR #24: Automated board oversight and dual-signoff compensating controls."
+        },
+        {
+          "title": "Audit PDF Preview CSP Header Whitelisting",
+          "directionality": "EDGE_REPO",
+          "details": "Configuring explicit CSP allowlists in vercel.json for audit PDF preview rendering."
+        },
+        {
+          "title": "Fund Accounting Double-Entry Balance Validator",
+          "directionality": "EDGE_REPO",
+          "details": "Automated ledger balancing check for restricted endowment and missionary funds."
+        },
+        {
+          "title": "Powered by ChurchCore Trust Mark & AppSwitcher",
+          "directionality": "CONTROL_PLANE",
+          "details": "Implement Endorsed Brand standards and universal navigation shell."
+        }
+      ],
+      "waiting": [],
+      "in_progress": [],
+      "planned": [
+        {
+          "title": "Phase 2: Comprehensive Institutional Safeguarding & Multi-Campus Expansion",
+          "directionality": "EDGE_REPO",
+          "details": "Enterprise diocese-wide multi-campus aggregation, automated incident escalation, and sovereign credential bridges."
+        }
+      ]
+    },
+    {
+      "product_id": "faithfull-scholars",
+      "repo_name": "FaithFull Scholars",
+      "source_file": "docs/FAITHFULL_SCHOLARS_FULL_PLAN.md",
+      "current_milestone": "v0.1.0 (Honest Launch Surface Production)",
+      "directionality_summary": {
+        "edge_originated_pct": 75,
+        "control_plane_dispatched_pct": 25
+      },
+      "done": [
+        {
+          "title": "Cloudflare Turnstile CSP Header Directive Resolution",
+          "directionality": "EDGE_REPO",
+          "details": "PR #85: Whitelisted challenges.cloudflare.com enabling reliable sign-up completion."
+        },
+        {
+          "title": "Honest Launch Surface & Spanish Localization Merged Live",
+          "directionality": "EDGE_REPO",
+          "details": "PR #86 & #87: Bilingual theological scholarship network live on Vercel."
+        },
+        {
+          "title": "Constitutional PostgreSQL Row-Level Security (RLS)",
+          "directionality": "CONTROL_PLANE",
+          "details": "Strict multi-tenant security isolating academic monographs and faculty reviews."
+        }
+      ],
+      "waiting": [
+        {
+          "title": "Production Supabase RLS Policy Audit Run",
+          "directionality": "EDGE_REPO",
+          "details": "Awaiting final execution of npm run audit:rls against live database."
+        }
+      ],
+      "in_progress": [
+        {
+          "title": "Theological Faculty Monograph Indexing Interface",
+          "directionality": "EDGE_REPO",
+          "details": "Author submission portal and peer-review editorial triage dashboard."
+        }
+      ],
+      "planned": [
+        {
+          "title": "Academic Peer-Review Editorial Workflow",
+          "directionality": "EDGE_REPO",
+          "details": "Blind peer review assignment, commentary threads, and editorial decision queues."
+        },
+        {
+          "title": "Universal AppSwitcher Navigation Integration",
+          "directionality": "CONTROL_PLANE",
+          "details": "Install standardized cross-suite navigation component (OPS-02)."
+        }
+      ]
+    }
+  ]
+}

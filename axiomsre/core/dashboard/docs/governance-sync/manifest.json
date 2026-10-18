@@ -1,0 +1,313 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChurchCore Governance Dispatch Manifest",
+  "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
+  "version": "1.2.1",
+  "organization": "ChurchCore",
+  "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
+  "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
+  "last_updated": "2026-10-18T14:35:10Z",
+  "registered_products": [
+    {
+      "name": "ChurchCore",
+      "repo": "ricardojjulia/ChurchCore",
+      "domain": "ChMS, Worship & Finance"
+    },
+    {
+      "name": "ChurchCore-LMS",
+      "repo": "ricardojjulia/ChurchCore-LMS",
+      "domain": "Discipleship, Training & PWA"
+    },
+    {
+      "name": "ChurchCore-Academy",
+      "repo": "ricardojjulia/ChurchCore-Academy",
+      "domain": "K-12 & Higher-Ed SIS"
+    },
+    {
+      "name": "ChurchCoreCare",
+      "repo": "ricardojjulia/ChurchCoreCare",
+      "domain": "Pastoral & Clinical Counseling EHR"
+    },
+    {
+      "name": "ChurchCore-Orthos",
+      "repo": "ricardojjulia/ChurchCore-Orthos",
+      "domain": "Governance & Safeguarding Audits"
+    },
+    {
+      "name": "FaithFullScholars",
+      "repo": "ricardojjulia/FaithFullScholars",
+      "domain": "Theological Higher-Ed & Faculty Search"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "COUNCIL-2026-001",
+      "title": "Formal Ratification of ChurchCore Ecosystem Architecture & Commercial Portfolio Strategy",
+      "ratification_date": "2026-10-16",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-001.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-001-01",
+          "title": "Constitutional Row-Level Security (RLS) Mandate",
+          "description": "Enforce 100% PostgreSQL Row-Level Security on all tenant tables with zero service-role bypass in client components.",
+          "verification": "All tables pass automated `audit:rls` or migration lint test suite."
+        },
+        {
+          "req_id": "REQ-001-02",
+          "title": "Zero Cross-Application Data Propagation",
+          "description": "No background event bus or automated synchronization daemon shall copy user records across sovereign application databases.",
+          "verification": "Database schemas and API routes operate as independent sovereign silos."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-002",
+      "title": "Ratification of ChurchCore Ecosystem Branding Governance, Sub-Brand Taxonomy & White-Label Standards",
+      "ratification_date": "2026-10-16",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-002.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-002-01",
+          "title": "Powered by ChurchCore Trust Badge",
+          "description": "Display official 'Powered by ChurchCore' trust badge in application footers linking to security documentation (https://www.churchcore.io/security).",
+          "verification": "Rendered in primary layouts (e.g. `src/components/layout/footer.tsx` or equivalent)."
+        },
+        {
+          "req_id": "REQ-002-02",
+          "title": "WCAG AAA Color Contrast Compliance",
+          "description": "Audit and enforce minimum 7:1 contrast ratio across primary text, buttons, and card surfaces.",
+          "verification": "Automated axe-core / Playwright accessibility scan passes with 0 contrast violations."
+        },
+        {
+          "req_id": "REQ-002-03",
+          "title": "Sub-Brand Orthography & Nomenclature",
+          "description": "Enforce standard naming orthography (ChurchCore, ChurchCore-LMS, ChurchCore-Academy, ChurchCoreCare, ChurchCore-Orthos, FaithFullScholars).",
+          "verification": "Headers, titles, and metadata tags match exact capitalization rules."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-003",
+      "title": "Mandatory Cross-Repository Council Governance Synchronization Protocol across all ChurchCore Software",
+      "ratification_date": "2026-10-16",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-003.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-003-01",
+          "title": "Mandatory Pre-Flight Agent Rule Installation",
+          "description": "Install .agents/rules/council-governance-sync.md in product repo to mandate manifest pre-flight at session start.",
+          "verification": "File exists and passes agent pre-flight checks."
+        },
+        {
+          "req_id": "REQ-003-02",
+          "title": "Local Implementation Ledger Initialization",
+          "description": "Initialize docs/council/ACKNOWLEDGMENTS.md in product repo to log verified requirement implementations.",
+          "verification": "File exists and contains acknowledgment entries with commit hashes and test surfaces."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-004",
+      "title": "Ecosystem Sovereign Control Plane, Automated Telemetry Protocol, and Central Directive Dispatch",
+      "ratification_date": "2026-10-17",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-004.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-004-01",
+          "title": "Edge Telemetry Reporting File & Script",
+          "description": "Maintain docs/control-plane/telemetry.json matching telemetry-schema.json and provide scripts/report-telemetry.py.",
+          "verification": "Telemetry payload validates against schema and reports online/Vercel/Supabase status, MVP progress, and AI session history."
+        },
+        {
+          "req_id": "REQ-004-02",
+          "title": "Mandatory Offline Readiness Assessment",
+          "description": "Provide a comprehensive readiness score, blocking dependencies, and next actions if not live in production.",
+          "verification": "Present in telemetry.json under online_status.readiness_assessment."
+        },
+        {
+          "req_id": "REQ-004-03",
+          "title": "AI Session Logging & Deployment Diagnostics",
+          "description": "Log LLM model used, session duration, deployment errors encountered, and exact mitigations applied.",
+          "verification": "Fields populated in ai_session_telemetry and deployment_diagnostics upon session close."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-005",
+      "title": "Mandatory 100% MVP Feature-Completion Plan & Phased Verification Protocol Across All ChurchCore Product Packages",
+      "ratification_date": "2026-10-17",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-005.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-005-01",
+          "title": "Maintain an Evidence-Backed MVP Completion Plan",
+          "description": "Formulate and maintain docs/mvp-100-plan.md, or the product repository's existing canonical development plan, detailing any programmed features and improvements still required for MVP code completion. A generated plan must not replace a more authoritative, evidence-backed product plan.",
+          "verification": "The edge repository's canonical plan identifies remaining technical scope, if any, with verification criteria and links to completed implementation evidence."
+        },
+        {
+          "req_id": "REQ-005-02",
+          "title": "Phased Execution Gate: Human Trials Commence After MVP Code Completion",
+          "description": "Automated unit, regression, authorization, security, and route tests accompany Phase 1 implementation. Comprehensive human trials, field-pilot sessions, and UAT commence after the product's evidence-backed MVP feature scope is technically complete.",
+          "verification": "Phase 1 changes include proportionate automated verification; Phase 2 human-trial evidence begins only after the canonical product plan records MVP feature completion."
+        },
+        {
+          "req_id": "REQ-005-03",
+          "title": "Vercel Production Deployment Technical Readiness",
+          "description": "All build dependencies, Turbopack/Vite bundlers, environment variable schemas, and CSP headers must achieve clean deployable status.",
+          "verification": "Clean npm run build export without build warnings or server-action errors."
+        },
+        {
+          "req_id": "REQ-005-04",
+          "title": "Control Plane Telemetry Synchronization",
+          "description": "Sync edge telemetry.json to reflect the product repository's evidence-backed feature-completion state and list subsequent Phase 2 human-trial or field-pilot workflows.",
+          "verification": "docs/control-plane/telemetry.json agrees with the edge repository's canonical plan and distinguishes feature completion from pilot, deployment, and production readiness."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-006",
+      "title": "Sovereign Testing Council Protocol, 3-Phase Verification Lifecycle & Mandatory Inseparable Automated Testing Standard Across All ChurchCore Product Repositories",
+      "ratification_date": "2026-10-18",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-006.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-006-01",
+          "title": "Universal Institutionalization of the Testing Council",
+          "description": "Every product repository must institutionalize the Testing Council protocol within .agents/rules/churchcore-control-plane.md and track execution state in its repository-owned canonical roadmap. Central automation must not create a competing roadmap when the edge repository already designates one.",
+          "verification": "Presence of the Testing Council rule, acknowledgment in docs/council/ACKNOWLEDGMENTS.md, and evidence-backed state in the repository's canonical guide."
+        },
+        {
+          "req_id": "REQ-006-02",
+          "title": "Inseparable Automated Testing Invariant",
+          "description": "Automated unit, component, integration, and security regression tests must accompany all Phase 1 implementations. Automated tests may never be deferred to Phase 2.",
+          "verification": "Automated test suite (npm test or python3 -m unittest) passes green on all Phase 1 PRs."
+        },
+        {
+          "req_id": "REQ-006-03",
+          "title": "Sovereign Control Plane Split Priority & Gate Architecture",
+          "description": "The Executive Mission Control dashboard shall maintain a split architecture: an in-progress priority queue on the left (ranking by backlog percentage) and a dedicated Phase 2 Testing Gate Spotlight on the right rail.",
+          "verification": "Rendered in http://localhost:3333/ with green Phase 2 testing gate spotlight and live pilot status."
+        },
+        {
+          "req_id": "REQ-006-04",
+          "title": "Closed-Loop Governance Challenge & Non-Stalling Automated Resolution",
+          "description": "Edge repo governance challenges submitted via scripts/challenge-central-record.py may be automatically audited and reconciled in ChurchCore-Business without human stalling.",
+          "verification": "Automation is limited to the central governance PR. Any edge repository change still requires that repository's owner approval, Council, Testing Council, pr-review, signature, CI, conversation-resolution, and protected-branch gates."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-007",
+      "title": "Executive Directive 2026-007-F: Ratification of the Fortified FaithFull Community Ecosystem & Multi-Persona Architecture",
+      "ratification_date": "2026-10-18",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/deliberations/DELIB-SCHOLARS-COUNCIL-20261018-2262.md",
+      "impacted_products": [
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-007-01",
+          "title": "Multi-Persona Kingdom Community Expansion",
+          "description": "Expand FaithFull Scholars beyond academic theologians to pastors, churches, evangelists, ministers, apologists, and councils while maintaining sovereign database isolation and high-performance Sunday SLA (<50ms).",
+          "verification": "Multi-persona database migration with persona_type enum and organizations table deployed with verified RLS policies."
+        },
+        {
+          "req_id": "REQ-007-02",
+          "title": "Faculty Profile Public Monograph Index & Peer-Reviewed Portfolio",
+          "description": "Implement a public, searchable, filterable scholarly monograph index on scholar profiles featuring peer-reviewed articles, books, dissertations, citations, and DOI linkages.",
+          "verification": "Public monograph index component rendering on /scholars/[slug] with client-side category filtering, keyword search, and passing unit tests."
+        },
+        {
+          "req_id": "REQ-007-03",
+          "title": "Fortified Organization Ownership and SLA Guarantee",
+          "description": "Cryptographically enforce organization owner validation at RLS insert, use SECURITY DEFINER helper public.is_organization_admin(org_id) for sub-50ms query execution, and prevent orphaned records with ON DELETE CASCADE.",
+          "verification": "SQL migration verified against Supabase RLS security audit rules."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-008",
+      "title": "Executive Directive 2026-008: Universal Mandatory Post-Test Telemetry Synchronization Protocol",
+      "ratification_date": "2026-10-18",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-008.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-008-01",
+          "title": "Universal Post-Test Telemetry Synchronization Mandate",
+          "description": "On every successful PR push, merge, or commit to any repository in the ChurchCore ecosystem, after all automated testing is accepted, each repository must execute python3 scripts/report-telemetry.py --auto (or explicit flags) to sync verified status into docs/control-plane/telemetry.json.",
+          "verification": "Presence of npm run telemetry:report in package.json, posttest hook, and online status verified in docs/control-plane/telemetry.json."
+        },
+        {
+          "req_id": "REQ-008-02",
+          "title": "Autonomous Live Endpoint Probing & Blocker Clearance",
+          "description": "report-telemetry.py shall automatically probe canonical production domains (HTTP 200/3xx), automatically set is_online: true, clear obsolete rehearsal blockers, and set readiness_score_pct to 100 upon live confirmation.",
+          "verification": "Execution of python3 scripts/report-telemetry.py --auto returns exit code 0 and records ONLINE status."
+        }
+      ]
+    }
+  ]
+}

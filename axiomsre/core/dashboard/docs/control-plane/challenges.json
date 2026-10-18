@@ -1,0 +1,64 @@
+{
+  "product_id": "churchcore-chms",
+  "canonical_name": "ChurchCore ChMS",
+  "last_challenge_generated": "2026-10-17T17:32:16.840210+00:00",
+  "challenges": [
+    {
+      "challenge_id": "CHAL-CHURCHCORE-CHMS-VER-1792258336",
+      "field_path": "version",
+      "claimed_value": "1.0.0",
+      "central_value": "3.5.0",
+      "evidence_type": "PACKAGE_VERSION_PROOF",
+      "evidence_data": {
+        "package_file": "package.json",
+        "version_key": "1.0.0",
+        "verified_at": "2026-10-17T17:32:15.773020+00:00"
+      },
+      "rationale": "Local package.json specifies version 1.0.0, while central records lag at 3.5.0.",
+      "status": "REJECTED_INSUFFICIENT_EVIDENCE",
+      "submitted_at": "2026-10-17T17:32:15.773020+00:00",
+      "verified_at": "2026-10-17T17:32:16.880671+00:00",
+      "verification_note": "package.json not found in repository"
+    },
+    {
+      "challenge_id": "CHAL-CHURCHCORE-CHMS-GIT-6c62168",
+      "field_path": "latest_changes",
+      "claimed_value": "docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix (6c62168)",
+      "central_value": "fix: R1d Council Review 57 backend fixes (exact household-scoped erasure, R2-R8) (879fe2e)",
+      "evidence_type": "GIT_COMMIT_PROOF",
+      "evidence_data": {
+        "commit_sha": "6c62168",
+        "commit_message": "docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix",
+        "commit_date": "2026-10-17T13:24:31-04:00",
+        "verified_at": "2026-10-17T17:32:15.773020+00:00"
+      },
+      "rationale": "Recent git commit 6c62168 ('docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix') is not yet indexed in central telemetry.",
+      "status": "ACCEPTED_AND_RECONCILED",
+      "submitted_at": "2026-10-17T17:32:15.773020+00:00",
+      "verified_at": "2026-10-17T17:32:16.895183+00:00",
+      "verification_note": "Verified git commit exists in repo: '6c62168 docs: overhaul root README and ARCHITECTURE with visual galleries, Mermaid diagrams, and live fleet matrix'"
+    },
+    {
+      "challenge_id": "CHAL-CHURCHCORE-CHMS-REVIEWS-1792258336",
+      "field_path": "council_governing_state.documented_reviews_count",
+      "claimed_value": 4,
+      "central_value": "unindexed",
+      "evidence_type": "COUNCIL_REVIEW_PROOF",
+      "evidence_data": {
+        "review_count": 4,
+        "latest_review_files": [
+          "COUNCIL-2026-001.md",
+          "COUNCIL-2026-002.md",
+          "COUNCIL-2026-003.md"
+        ],
+        "verified_at": "2026-10-17T17:32:15.773020+00:00"
+      },
+      "rationale": "Repository maintains 4 documented council reviews in docs/council/ or docs/reviews/ proving active domain governance.",
+      "status": "ACCEPTED_AND_RECONCILED",
+      "submitted_at": "2026-10-17T17:32:15.773020+00:00",
+      "verified_at": "2026-10-17T17:32:16.895558+00:00",
+      "verification_note": "Verified 4 documented council review markdown records"
+    }
+  ],
+  "last_reconciliation": "2026-10-17T17:32:16.895672+00:00"
+}

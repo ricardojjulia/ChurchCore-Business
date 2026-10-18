@@ -1,0 +1,609 @@
+{
+  "councils": [
+    {
+      "council_id": "council-grand",
+      "product_id": "all-suites",
+      "name": "High Sovereign Grand Council of ChurchCore",
+      "short_name": "Grand High Council",
+      "badge": "🏛️ Grand Sovereign Assembly",
+      "app_domain": "Cross-Ecosystem Constitutional Invariants, Sovereign Architecture & Strategic Alignment",
+      "governing_state": {
+        "quorum_status": "7/7 Active Quorum",
+        "quorum_seats": 7,
+        "occupied_seats": 7,
+        "last_review_number": 4,
+        "last_review_date": "2026-10-17",
+        "last_ratification": "COUNCIL-2026-004: Fleet Telemetry & Central Control Plane Ingestion",
+        "governing_health": "OPTIMAL",
+        "charter_invariants": [
+          "Constitution Section III: Zero Customer Data Cross-Propagation",
+          "Decentralized Sovereignty: 6 Separate PostgreSQL Databases",
+          "Sunday Morning SLA: Zero Downtime during Holy Hours (06:00-13:00)",
+          "Brand House: Powered by ChurchCore Endorsed Trust Lockup"
+        ],
+        "active_deliberations_count": 1,
+        "ratification_rate_pct": 100
+      },
+      "members": [
+        {
+          "seat_id": "grand-chair",
+          "title": "Sovereign Executive & Principal Architect",
+          "persona_name": "Ricardo J. Julia & Antigravity (AGY)",
+          "avatar": "👑",
+          "domain": "Executive Direction, Fleet Strategy & Architectural Cohesion",
+          "invariant_focus": "Preserving the sacred trust of church sovereignty while scaling world-class software.",
+          "deliberation_stance": "Executive Decision Maker & Sovereign Founder",
+          "bio": "Guiding the ChurchCore vision to equip local churches, seminaries, academies, and ministries with uncompromised sovereign technology."
+        },
+        {
+          "seat_id": "grand-data",
+          "title": "Sovereign Data Guardian",
+          "persona_name": "Archivist Gabriel (Data Sentinel)",
+          "avatar": "🛡️",
+          "domain": "Database Isolation, PostgreSQL Schemas & Zero Cross-App Leakage",
+          "invariant_focus": "Enforcing Constitution Section III across every git commit and migration.",
+          "deliberation_stance": "Zero-Tolerance Isolationist",
+          "bio": "Guarantees that no background daemon or event broker ever breaches the sovereign database boundary of any church."
+        },
+        {
+          "seat_id": "grand-pastoral",
+          "title": "Ecclesiastical & Pastoral Integrity Dean",
+          "persona_name": "Rev. Dr. Thomas Chalmers",
+          "avatar": "🕊️",
+          "domain": "Theological Calibration, Pastoral Care Ethics & Ministry Purpose",
+          "invariant_focus": "Ensuring all product features serve the flock and do not monetize sacred relationships.",
+          "deliberation_stance": "Shepherd-First & Ministry Integrity",
+          "bio": "Pastoral theologian ensuring technology enhances human spiritual fellowship and liturgical dignity."
+        },
+        {
+          "seat_id": "grand-sla",
+          "title": "Sunday Morning 99.99% SLA Steward",
+          "persona_name": "Chief Reliability Engineer Kaelen",
+          "avatar": "⏱️",
+          "domain": "Edge Latency, Vercel/Supabase High-Availability & Disaster Recovery",
+          "invariant_focus": "Zero downtime between 06:00 and 13:00 on Sunday morning across all 6 applications.",
+          "deliberation_stance": "Resilience & Circuit-Breaker Enforcer",
+          "bio": "Monitors connection pooling, synthetic latency probes, and automated point-in-time database snapshots."
+        },
+        {
+          "seat_id": "grand-academic",
+          "title": "Educational & Pedagogical Provost",
+          "persona_name": "Dr. Miriam Al-Haddad",
+          "avatar": "🎓",
+          "domain": "Theological Education, K-12 Accreditation & Scholarship Equity",
+          "invariant_focus": "Academic rigor, rubrics consistency, and barrier-free scholarship disbursements.",
+          "deliberation_stance": "Academic Standards & Pedagogy Specialist",
+          "bio": "Oversees the educational alignment across LMS, Academy, and FaithFull Scholars."
+        },
+        {
+          "seat_id": "grand-fintech",
+          "title": "Stewardship & Financial Compliance Auditor",
+          "persona_name": "CFO Nathan Vance",
+          "avatar": "📊",
+          "domain": "Tithing Pipelines, Tuition ACH, Benevolence & OPEX Efficiency",
+          "invariant_focus": "Preserving low $240/mo fleet hosting cost while delivering enterprise-grade tithing take-rates.",
+          "deliberation_stance": "Fiduciary Responsibility & Transparency",
+          "bio": "Audits Stripe webhook idempotency, PCI compliance, and non-profit tax reporting workflows."
+        },
+        {
+          "seat_id": "grand-ux",
+          "title": "Design System & Liturgical UI Steward",
+          "persona_name": "Maestro Julian Vance",
+          "avatar": "🎨",
+          "domain": "WCAG AAA Accessibility, Liturgical Calm & Design Harmony",
+          "invariant_focus": "Serene, distraction-free interfaces that convey reverence and effortless clarity.",
+          "deliberation_stance": "Human-Centric & Liturgical Dignity",
+          "bio": "Guardian of the ChurchCore Design System across web and mobile surfaces."
+        }
+      ],
+      "recent_reviews": [
+        { "id": "COUNCIL-2026-004", "title": "Fleet Telemetry & Central Control Plane Ingestion", "date": "2026-10-17", "verdict": "RATIFIED (7/7 Unanimous)" },
+        { "id": "COUNCIL-2026-003", "title": "Mandatory Agent Rules & Local Governance Ledger", "date": "2026-10-16", "verdict": "RATIFIED (7/7 Unanimous)" },
+        { "id": "COUNCIL-2026-002", "title": "Brand House & Trust Badge Specifications", "date": "2026-10-16", "verdict": "RATIFIED (7/7 Unanimous)" },
+        { "id": "COUNCIL-2026-001", "title": "Constitutional Row-Level Security & Zero Data Propagation", "date": "2026-10-16", "verdict": "RATIFIED (7/7 Unanimous)" }
+      ]
+    },
+    {
+      "council_id": "council-care",
+      "product_id": "churchcore-care",
+      "name": "ChurchCore Care Confidentiality & Pastoral Council",
+      "short_name": "Care Council",
+      "badge": "🛡️ Care & Confidentiality",
+      "app_domain": "Pastoral Counseling, Clinical Triage, HIPAA Notes, Grief & Benevolence Dispatch",
+      "governing_state": {
+        "quorum_status": "5/5 Active Quorum",
+        "quorum_seats": 5,
+        "occupied_seats": 5,
+        "last_review_number": 14,
+        "last_review_date": "2026-10-16",
+        "last_ratification": "Review 14: Encrypted Pastoral Session Notes & Role-Restricted Visibility",
+        "governing_health": "OPTIMAL",
+        "charter_invariants": [
+          "Absolute Clergy-Penitent Privilege & HIPAA Confidentiality",
+          "Session Notes Encrypted with pgcrypto at rest; no plain-text logs",
+          "Crisis Intervention & Suicide Prevention Hotline fast-action banner",
+          "Benevolence fund disbursements require dual-clergy approval"
+        ],
+        "active_deliberations_count": 1,
+        "ratification_rate_pct": 100
+      },
+      "members": [
+        {
+          "seat_id": "care-chaplain",
+          "title": "Lead Pastoral Care Chaplain",
+          "persona_name": "Rev. Dr. Samuel Kim, D.Min",
+          "avatar": "🕊️",
+          "domain": "Hospital Visitation, Bereavement & Spiritual Crisis Triage",
+          "invariant_focus": "Protecting spiritual intimacy and emotional vulnerability during traumatic trials.",
+          "deliberation_stance": "Compassion & Urgent Shepherd Response",
+          "bio": "25 years of pastoral chaplaincy guiding ICU hospital visits, grief counseling, and prayer vigils."
+        },
+        {
+          "seat_id": "care-hipaa",
+          "title": "Clinical Confidentiality & Legal Compliance Officer",
+          "persona_name": "Elena Rostova, LCSW, JD",
+          "avatar": "🔒",
+          "domain": "HIPAA Privacy, Mandatory Reporting & Counselor Notes Isolation",
+          "invariant_focus": "Ensuring no counseling note is ever exposed to unauthenticated or unauthorized eyes.",
+          "deliberation_stance": "Rigorous Privacy & Legal Safeguard",
+          "bio": "Clinical therapist and healthcare attorney ensuring clinical standards align with pastoral privilege."
+        },
+        {
+          "seat_id": "care-triage",
+          "title": "Emergency Care Triage & Escalation Architect",
+          "persona_name": "Marcus Sterling (Agent Triage)",
+          "avatar": "⚡",
+          "domain": "Automated Escalation Workflows, Crisis Notification & Hotlines",
+          "invariant_focus": "Sub-5-minute alert dispatch to on-call pastors when crisis indicators are flagged.",
+          "deliberation_stance": "Rapid Response & Fail-Safe Routing",
+          "bio": "Engineers workflow pipelines for immediate pastoral mobilization without exposing personal identity."
+        },
+        {
+          "seat_id": "care-volunteer",
+          "title": "Deacon & Volunteer Care Circles Coordinator",
+          "persona_name": "Deaconess Martha Perez",
+          "avatar": "🤝",
+          "domain": "Meal Trains, Homebound Transportation & Congregational Visitation",
+          "invariant_focus": "Dignified volunteer matching that respects recipient privacy and dignity.",
+          "deliberation_stance": "Community Care & Practical Help",
+          "bio": "Coordinates parish volunteers for meal trains, elderly homebound visits, and practical family relief."
+        },
+        {
+          "seat_id": "care-benevolence",
+          "title": "Benevolence & Emergency Fund Auditor",
+          "persona_name": "Elder David Chen, CPA",
+          "avatar": "📊",
+          "domain": "Emergency Financial Assistance, Rent Relief & Audit Trails",
+          "invariant_focus": "Dual-signature disbursements, anti-fraud checks, and transparent elder oversight.",
+          "deliberation_stance": "Fiduciary Accountability & Compassion",
+          "bio": "Oversees emergency relief funds ensuring church charity reaches needy families with complete accountability."
+        }
+      ],
+      "recent_reviews": [
+        { "id": "CARE-REV-014", "title": "Encrypted Pastoral Notes & Multi-Role RLS Scopes", "date": "2026-10-16", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "CARE-REV-013", "title": "Emergency Crisis Dispatch & Pastor SMS Webhooks", "date": "2026-10-10", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "CARE-REV-012", "title": "Dual-Approval Benevolence Grant Workflow", "date": "2026-10-04", "verdict": "RATIFIED (5/5 Unanimous)" }
+      ]
+    },
+    {
+      "council_id": "council-lms",
+      "product_id": "churchcore-lms",
+      "name": "ChurchCore LMS Architecture & Pedagogy Council",
+      "short_name": "LMS Council",
+      "badge": "🎓 LMS Architecture",
+      "app_domain": "Seminary Courses, Canvas-Grade SpeedGrader, Drip Engines, Discipleship & Certification",
+      "governing_state": {
+        "quorum_status": "6/6 Active Quorum",
+        "quorum_seats": 6,
+        "occupied_seats": 6,
+        "last_review_number": 47,
+        "last_review_date": "2026-10-14",
+        "last_ratification": "COUNCIL-2026-047: Trinity Feature Expansion & Vertical Mode Gating",
+        "governing_health": "OPTIMAL",
+        "charter_invariants": [
+          "Zero Third-Party Variable Hosting Cost for Academic Features",
+          "SpeedGrader: Split-Screen Document Preview with Multi-Criterion Rubrics",
+          "Dynamic Drip Engine: 7-day, 21-day, 40-day release automation",
+          "Faith & Vertical Mode Gating (Christian Seminary vs General Education)"
+        ],
+        "active_deliberations_count": 2,
+        "ratification_rate_pct": 100
+      },
+      "members": [
+        {
+          "seat_id": "lms-dean",
+          "title": "Academic Dean & Theological Provost",
+          "persona_name": "Dr. Silas Thorne, Ph.D",
+          "avatar": "🎓",
+          "domain": "ATS & Regional Seminary Accreditation, Syllabus Rigor & Orthodoxy",
+          "invariant_focus": "Ensuring degree-granting seminary standards without sacrificing pastoral warmth.",
+          "deliberation_stance": "Academic Rigor & Doctrinal Soundness",
+          "bio": "Former seminary dean championing accessible, high-standard theological education for global pastors."
+        },
+        {
+          "seat_id": "lms-speedgrader",
+          "title": "SpeedGrader & Assessment Workflow Steward",
+          "persona_name": "Prof. Clara Higgins",
+          "avatar": "📝",
+          "domain": "Canvas-Grade Grading, Multi-Criterion Rubrics & Keyboard Navigation",
+          "invariant_focus": "Instructor grading velocity: under 90 seconds per submission with rich rubric feedback.",
+          "deliberation_stance": "Instructor Workflow & Pedagogical Utility",
+          "bio": "Educational technology specialist optimizing instructor workflow and formative feedback loops."
+        },
+        {
+          "seat_id": "lms-drip",
+          "title": "Discipleship Journey & Content Drip Architect",
+          "persona_name": "Pastor Jeremy Cole",
+          "avatar": "💧",
+          "domain": "Automated Cohort Pacing, 40-Day Lent Journeys & Email Notifications",
+          "invariant_focus": "Paced spiritual formation that prevents student burnout and nurtures daily habits.",
+          "deliberation_stance": "Student Engagement & Spiritual Formation",
+          "bio": "Pioneered cohort-based discipleship tracks that blend digital modules with local church mentors."
+        },
+        {
+          "seat_id": "lms-registrar",
+          "title": "Student Credentialing & Transcripts Registrar",
+          "persona_name": "Eleanor Brooks, Ed.D",
+          "avatar": "🏆",
+          "domain": "Tamper-Evident PDF Transcripts, Micro-Credentials & SIS Records",
+          "invariant_focus": "Cryptographically verifiable transcripts that transfer seamlessly to accredited institutions.",
+          "deliberation_stance": "Accreditation & Record Integrity",
+          "bio": "Registrar overseeing student GPA computation, degree audits, and graduation credentialing."
+        },
+        {
+          "seat_id": "lms-community",
+          "title": "Spiritual Fellowship & Community Moderator",
+          "persona_name": "Brother Lucas Mendez",
+          "avatar": "💬",
+          "domain": "Community Spaces, Spiritual Reactions (🙏 Amen, ✝️ Pray) & Forum Safety",
+          "invariant_focus": "Cultivating edifying student dialogue free from divisive vitriol or toxic spam.",
+          "deliberation_stance": "Spiritual Edification & Community Safety",
+          "bio": "Leads theological community forums fostering mutual encouragement and student prayer circles."
+        },
+        {
+          "seat_id": "lms-infra",
+          "title": "Zero-Cost Serverless & Turbopack Architect",
+          "persona_name": "Devin Vance (Agent LMS-Infra)",
+          "avatar": "⚡",
+          "domain": "Next.js 15 App Router, Server Actions, pg_net & Turbopack SSR Stability",
+          "invariant_focus": "Maintaining $0 added infrastructure cost while supporting thousands of simultaneous exam submissions.",
+          "deliberation_stance": "High Efficiency & Cost-Zero Optimization",
+          "bio": "Solves serverless SSR caching, Turbopack use-server boundaries, and Supabase pg_net webhooks."
+        }
+      ],
+      "recent_reviews": [
+        { "id": "COUNCIL-2026-047", "title": "Trinity Feature Expansion & Vertical Mode Gating", "date": "2026-10-14", "verdict": "RATIFIED (6/6 Unanimous)" },
+        { "id": "COUNCIL-2026-046", "title": "Academic Structure Quality Hardening & Section Capacity", "date": "2026-10-02", "verdict": "RATIFIED (6/6 Unanimous)" },
+        { "id": "COUNCIL-2026-037", "title": "Assignment Rubrics & Multi-Criterion Assessment", "date": "2026-09-28", "verdict": "RATIFIED (6/6 Unanimous)" }
+      ]
+    },
+    {
+      "council_id": "council-chms",
+      "product_id": "churchcore-chms",
+      "name": "ChurchCore Parish Architecture & Governance Council",
+      "short_name": "ChMS Council",
+      "badge": "⛪ ChMS Governance",
+      "app_domain": "Parish Membership, Tithing & Giving, Sunday Child Check-in, Volunteer Schedules & Erasure",
+      "governing_state": {
+        "quorum_status": "5/5 Active Quorum",
+        "quorum_seats": 5,
+        "occupied_seats": 5,
+        "last_review_number": 57,
+        "last_review_date": "2026-10-17",
+        "last_ratification": "Review 57: R1d Member Erasure & Data Rights Re-Review",
+        "governing_health": "OPTIMAL",
+        "charter_invariants": [
+          "Constitutional GDPR / CCPA Member Right to Erasure without ghost records",
+          "Child Safety: Secure parent-child check-in tags with encrypted SMS checkout codes",
+          "Sunday Morning SLA: Sub-50ms check-in kiosk response time during morning peak",
+          "Giving Pipeline: Dual-reconciliation between Stripe transactions and Supabase tithing ledger"
+        ],
+        "active_deliberations_count": 1,
+        "ratification_rate_pct": 99
+      },
+      "members": [
+        {
+          "seat_id": "chms-shepherd",
+          "title": "Lead Pastor & Parish Life Steward",
+          "persona_name": "Pastor Caleb Wright",
+          "avatar": "⛪",
+          "domain": "Member Discipleship Funnel, Multi-Campus Ministries & Visitor Assimilation",
+          "invariant_focus": "Ensuring no visitor slips through the cracks while avoiding robotic impersonal outreach.",
+          "deliberation_stance": "Pastoral Assimilation & Member Care",
+          "bio": "Multi-campus church planter focusing on relational retention and discipleship pathways."
+        },
+        {
+          "seat_id": "chms-agent1",
+          "title": "Agent 1: Sovereign Data & API Architect",
+          "persona_name": "Agent 1 (Data Sentinel)",
+          "avatar": "🛡️",
+          "domain": "Supabase PostgreSQL Migrations, RLS Policies, Data Erasure RPCs & SQL Probes",
+          "invariant_focus": "Zero residual PII in audit copies after GDPR member erasure requests.",
+          "deliberation_stance": "Strict SQL Correctness & Transactional Isolation",
+          "bio": "Verifies row-level security, denial-of-service resilience, and foreign-key cascade consistency."
+        },
+        {
+          "seat_id": "chms-agent2",
+          "title": "Agent 2: Route & High-Concurrency Architect",
+          "persona_name": "Agent 2 (Route Specialist)",
+          "avatar": "⚡",
+          "domain": "Next.js App Router, Server Actions, Check-in Kiosks & Session Buffering",
+          "invariant_focus": "Instant offline-first resilience for Sunday morning tablet check-ins.",
+          "deliberation_stance": "High Availability & Concurrency Optimist",
+          "bio": "Engineers Next.js server actions, parallel routing, and idempotent network retry handlers."
+        },
+        {
+          "seat_id": "chms-agent3",
+          "title": "Agent 3: UX Shell & Accessibility Guardian",
+          "persona_name": "Agent 3 (Design Architect)",
+          "avatar": "🎨",
+          "domain": "Church Staff Workspace, Volunteer Rosters & WCAG AAA Liturgical Theme",
+          "invariant_focus": "Effortless usability for elderly volunteers and non-technical church secretaries.",
+          "deliberation_stance": "Accessible, Calm & Intuitive UI",
+          "bio": "Designs ergonomic dashboards that allow church staff to finish weekly admin in minutes."
+        },
+        {
+          "seat_id": "chms-steward",
+          "title": "Sunday SLA & Financial Giving Trustee",
+          "persona_name": "Treasurer Arthur Pendelton",
+          "avatar": "💰",
+          "domain": "Tithing ACH/Card Batches, Donor Year-End Tax Receipts & Sunday Morning Uptime",
+          "invariant_focus": "100% financial auditability and zero lost tithing transactions on Sunday peak.",
+          "deliberation_stance": "Financial Integrity & Absolute Precision",
+          "bio": "Nonprofit CPA ensuring impeccable donor gift tracking and automated IRS 501(c)(3) receipts."
+        }
+      ],
+      "recent_reviews": [
+        { "id": "CHMS-REV-057", "title": "R1d Member Erasure & Data Rights Re-Review", "date": "2026-10-17", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "CHMS-REV-056", "title": "R1d Synthesis: Erasure Denial & Suppression Queue", "date": "2026-10-16", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "CHMS-REV-055", "title": "Multi-Campus Volunteer Roster Scheduling & SMS Shift Alerts", "date": "2026-10-14", "verdict": "RATIFIED (5/5 Unanimous)" }
+      ]
+    },
+    {
+      "council_id": "council-academy",
+      "product_id": "churchcore-academy",
+      "name": "ChurchCore Academy K-12 Christian Pedagogy Council",
+      "short_name": "Academy Council",
+      "badge": "🏫 Academy Standards",
+      "app_domain": "K-12 Christian Schooling, SIS Student Information System, Attendance, Family Billing & COPPA",
+      "governing_state": {
+        "quorum_status": "5/5 Active Quorum",
+        "quorum_seats": 5,
+        "occupied_seats": 5,
+        "last_review_number": 18,
+        "last_review_date": "2026-10-15",
+        "last_ratification": "Review 18: Colegio Biblos Pilot Prep & Spanish Family Portal",
+        "governing_health": "OPTIMAL",
+        "charter_invariants": [
+          "COPPA & FERPA Student Data Protection; strict guardian access",
+          "Bilingual English/Spanish Family Portal for Hispanic Christian Day Schools",
+          "Emergency Campus Lockdown & Dismissal Notification System",
+          "Zero Third-Party Vendor Tracking on student learning surfaces"
+        ],
+        "active_deliberations_count": 1,
+        "ratification_rate_pct": 100
+      },
+      "members": [
+        {
+          "seat_id": "acad-headmaster",
+          "title": "Headmaster & Christian Curriculum Director",
+          "persona_name": "Dr. Jonathan Edwards, Ed.D",
+          "avatar": "🏫",
+          "domain": "Classical Christian Pedagogy, Biblical Worldview Integration & Faculty Oversight",
+          "invariant_focus": "Forming virtuous young minds rooted in scripture, classical literature, and STEM.",
+          "deliberation_stance": "Biblical Classical Pedagogy Lead",
+          "bio": "20 years of Christian school leadership pioneering classical curriculum frameworks."
+        },
+        {
+          "seat_id": "acad-parent",
+          "title": "Parental Trust & Child Safety Guardian",
+          "persona_name": "Maria Teresa De La Cruz",
+          "avatar": "🛡️",
+          "domain": "Family Portal Usability, Dismissal Security & Parent-Teacher Messaging",
+          "invariant_focus": "Fostering absolute parental transparency and secure campus pickup authorization.",
+          "deliberation_stance": "Parent-First & Family Protection",
+          "bio": "Parent association president and former educator safeguarding family communication channels."
+        },
+        {
+          "seat_id": "acad-bursar",
+          "title": "Tuition Billing & SIS Registrar",
+          "persona_name": "Patricia Sterling, MBA",
+          "avatar": "💳",
+          "domain": "Tuition Payment Plans, Family Multi-Child Discounts & State Voucher Tracking",
+          "invariant_focus": "Predictable school cash-flow, timely bursary relief, and automated billing receipts.",
+          "deliberation_stance": "Operational Efficiency & Family Flexibility",
+          "bio": "Christian academy bursar managing school operating budgets and scholarship funds."
+        },
+        {
+          "seat_id": "acad-tech",
+          "title": "K-12 Student Information Systems Architect",
+          "persona_name": "Carlos Gomez (Agent SIS)",
+          "avatar": "⚡",
+          "domain": "Attendance Rolls, Gradebook GPA Computation & Report Cards PDF",
+          "invariant_focus": "Instant attendance verification and tamper-evident grade storage.",
+          "deliberation_stance": "SIS Data Integrity & Automation",
+          "bio": "Designs lightning-fast attendance rolls for classroom teachers and automated report card runs."
+        },
+        {
+          "seat_id": "acad-spanish",
+          "title": "Hispanic Christian Schooling Liaison",
+          "persona_name": "Pastora Gabriela Fuentes",
+          "avatar": "🌎",
+          "domain": "Bilingual Curriculum Alignment, Latin American Academy Partnerships (Colegio Biblos)",
+          "invariant_focus": "Flawless Spanish orthography and culturally resonant family communication.",
+          "deliberation_stance": "Cultural Bridge & Bilingual Excellence",
+          "bio": "Coordinates Spanish Christian school networks across Puerto Rico, Florida, and Latin America."
+        }
+      ],
+      "recent_reviews": [
+        { "id": "ACAD-REV-018", "title": "Colegio Biblos Pilot Prep & Spanish Family Portal", "date": "2026-10-15", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "ACAD-REV-017", "title": "Dismissal Security: Automated Barcode & PIN Pickup Tags", "date": "2026-10-09", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "ACAD-REV-016", "title": "Tuition Split Billing & Scholarship Deductions Engine", "date": "2026-10-02", "verdict": "RATIFIED (5/5 Unanimous)" }
+      ]
+    },
+    {
+      "council_id": "council-orthos",
+      "product_id": "churchcore-orthos",
+      "name": "ChurchCore Orthos Theological & Liturgical Council",
+      "short_name": "Orthos Council",
+      "badge": "📜 Orthos Theological",
+      "app_domain": "Historic Confessions, Ecumenical Creeds, Exegetical Lexicon, Liturgical Calendar & Doctrinal Integrity",
+      "governing_state": {
+        "quorum_status": "5/5 Active Quorum",
+        "quorum_seats": 5,
+        "occupied_seats": 5,
+        "last_review_number": 12,
+        "last_review_date": "2026-10-12",
+        "last_ratification": "Review 12: Westminster, Heidelberg & 1689 Creeds Cross-Link Engine",
+        "governing_health": "OPTIMAL",
+        "charter_invariants": [
+          "Doctrinal Orthodoxy: Guarding the apostolic faith once delivered to the saints",
+          "Original Hebrew & Greek Scripture Lexicon Fidelity without modern paraphrasing bias",
+          "Historic Liturgical Calendar: Proper readings, lectionaries, and holy day cycles",
+          "Anti-Heresy Guardrails: Identifying and alerting on Christological or Trinitarian distortions"
+        ],
+        "active_deliberations_count": 1,
+        "ratification_rate_pct": 100
+      },
+      "members": [
+        {
+          "seat_id": "orthos-theologian",
+          "title": "Systematic Theologian & Creeds Guardian",
+          "persona_name": "Rev. Dr. Alistair MacIntyre, Th.D",
+          "avatar": "📜",
+          "domain": "Historic Reformed, Lutheran, Anglican & Patristic Confessional Documents",
+          "invariant_focus": "Faithful adherence to the Nicene, Athanasian, and Reformation confessions.",
+          "deliberation_stance": "Confessional Orthodoxy & Historical Fidelity",
+          "bio": "Distinguished professor of historical theology specializing in 16th and 17th century dogmatics."
+        },
+        {
+          "seat_id": "orthos-linguist",
+          "title": "Biblical Languages & Exegetical Integrity Lead",
+          "persona_name": "Dr. Sarah Ben-Zvi, Ph.D",
+          "avatar": "📖",
+          "domain": "Biblical Hebrew, Aramaic, Koine Greek & Manuscript Apparatus",
+          "invariant_focus": "Morphological accuracy, syntactic parsing, and faithful lexical definitions.",
+          "deliberation_stance": "Linguistic Precision & Exegetical Truth",
+          "bio": "Semantics and textual criticism scholar ensuring digital lexicons remain true to the original biblical text."
+        },
+        {
+          "seat_id": "orthos-liturgy",
+          "title": "Liturgical Calendar & Lectionary Architect",
+          "persona_name": "Father Kenneth Ward",
+          "avatar": "🕯️",
+          "domain": "Christian Year Cycles (Advent, Epiphany, Lent, Easter, Pentecost), Daily Office Readings",
+          "invariant_focus": "Rhythmic, prayerful lectionary flows that nurture daily contemplation and reverence.",
+          "deliberation_stance": "Liturgical Dignity & Sacred Rhythm",
+          "bio": "Anglican liturgist advising on historical church cycles and communal morning/evening prayer."
+        },
+        {
+          "seat_id": "orthos-heresy",
+          "title": "Doctrinal Drift & Anti-Heresy Watcher",
+          "persona_name": "Elder Barnabas Vance (Agent Orthos-Watch)",
+          "avatar": "🛡️",
+          "domain": "Automated Theological Guardrails, Cross-Referencing & Confessional Validation",
+          "invariant_focus": "Flagging novel theological errors, modalism, Arianism, or prosperity gospel distortion.",
+          "deliberation_stance": "Doctrinal Sentinel & Biblical Guardian",
+          "bio": "Scans theological texts and curriculum drafts to ensure alignment with historic biblical orthodoxy."
+        },
+        {
+          "seat_id": "orthos-engine",
+          "title": "Semantic Scripture Graph & Vector Architect",
+          "persona_name": "Zachary Taylor (Agent Scriptura)",
+          "avatar": "⚡",
+          "domain": "Supabase pgvector Scripture Embeddings, Cross-Reference Graph & Fast Search",
+          "invariant_focus": "Sub-20ms cross-reference lookups across 31,102 verses of the Holy Bible.",
+          "deliberation_stance": "Sub-Second Semantic Retrieval",
+          "bio": "Builds high-performance graph databases linking biblical passages to historical church commentary."
+        }
+      ],
+      "recent_reviews": [
+        { "id": "ORTHOS-REV-012", "title": "Westminster, Heidelberg & 1689 Creeds Cross-Link Engine", "date": "2026-10-12", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "ORTHOS-REV-011", "title": "Koine Greek Morphological Parser & Strong's Concordance Bridge", "date": "2026-10-06", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "ORTHOS-REV-010", "title": "Ecumenical Creeds Liturgical Display Component", "date": "2026-09-30", "verdict": "RATIFIED (5/5 Unanimous)" }
+      ]
+    },
+    {
+      "council_id": "council-scholars",
+      "product_id": "faithfull-scholars",
+      "name": "FaithFull Scholars Endowment & Research Council",
+      "short_name": "Scholars Council",
+      "badge": "🌟 Scholars Endowment",
+      "app_domain": "Seminary Scholarships, Academic Endowments, Monograph Publishing, Peer Review & Grant Disbursement",
+      "governing_state": {
+        "quorum_status": "5/5 Active Quorum",
+        "quorum_seats": 5,
+        "occupied_seats": 5,
+        "last_review_number": 16,
+        "last_review_date": "2026-10-16",
+        "last_ratification": "Review 16: Endowment Grant Application Engine & Blind Peer Review",
+        "governing_health": "OPTIMAL",
+        "charter_invariants": [
+          "Donor Intent Preservation: Strict adherence to donor gift covenants and restrictions",
+          "Blind Peer Review: Scholarly research evaluated on merit without personal bias",
+          "Needs-Based & Merit Allocation: Transparent rubrics for pastoral scholarship grants",
+          "Monograph Open Access: Distributing theological scholarship freely to developing-world pastors"
+        ],
+        "active_deliberations_count": 1,
+        "ratification_rate_pct": 100
+      },
+      "members": [
+        {
+          "seat_id": "scholars-trustee",
+          "title": "Endowment Fund Trustee & Chair",
+          "persona_name": "Hon. Elizabeth Warren-Harding",
+          "avatar": "🏛️",
+          "domain": "Foundation Grants, Endowment Corpus Preservation & Donor Intent Contracts",
+          "invariant_focus": "Ensuring scholarship funds are never co-mingled or diverted from their sacred educational purpose.",
+          "deliberation_stance": "Fiduciary Stewardship & Legal Integrity",
+          "bio": "Endowment attorney and foundation trustee managing multi-million-dollar academic trust funds."
+        },
+        {
+          "seat_id": "scholars-dean",
+          "title": "Seminary Scholarship Allocations Dean",
+          "persona_name": "Dr. Emmanuel Okonjo, D.D",
+          "avatar": "⚖️",
+          "domain": "Global Majority Pastoral Grants, Need-Based Scoring & Academic Merit",
+          "invariant_focus": "Equipping under-resourced pastors in the Global South with debt-free theological education.",
+          "deliberation_stance": "Global Equity & Pastoral Equipping",
+          "bio": "Former African seminary rector advocating for debt-free pastoral training worldwide."
+        },
+        {
+          "seat_id": "scholars-editor",
+          "title": "Monograph Editor-in-Chief & Peer Review Director",
+          "persona_name": "Prof. Beatrice Lancaster, Litt.D",
+          "avatar": "📚",
+          "domain": "Theological Journal Publishing, Double-Blind Peer Review & Citation Graph",
+          "invariant_focus": "High academic standard in theological publishing, Latin/German/French sources.",
+          "deliberation_stance": "Scholarly Rigor & Publishing Excellence",
+          "bio": "Editor of academic monographs and peer-reviewed journals in theology and church history."
+        },
+        {
+          "seat_id": "scholars-mentorship",
+          "title": "Doctoral Fellowship & Mentorship Lead",
+          "persona_name": "Dr. Timothy Sterling, Ph.D",
+          "avatar": "🧭",
+          "domain": "Postgraduate Mentorship Matching, Dissertation Defense & Faculty Placement",
+          "invariant_focus": "Mentoring future Christian scholars into tenure-track and seminary faculty posts.",
+          "deliberation_stance": "Mentorship & Academic Flourishing",
+          "bio": "Mentors doctoral fellows through dissertation research and academic guild networking."
+        },
+        {
+          "seat_id": "scholars-grants",
+          "title": "Grant Application & Disbursement Architect",
+          "persona_name": "Hannah Abbott (Agent Scholars-Grant)",
+          "avatar": "⚡",
+          "domain": "Automated Stripe Transfer & Wire Disbursement API, Grant Progress Milestones",
+          "invariant_focus": "Instant verification of enrolled credit hours before scholarship tranche release.",
+          "deliberation_stance": "Transparent Milestones & Fast Disbursement",
+          "bio": "Engineers automated milestone verification for grant releases with complete cryptographic receipts."
+        }
+      ],
+      "recent_reviews": [
+        { "id": "SCHOLARS-REV-016", "title": "Endowment Grant Application Engine & Blind Peer Review", "date": "2026-10-16", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "SCHOLARS-REV-015", "title": "Monograph Open-Access Global Reader & PDF Annotation", "date": "2026-10-08", "verdict": "RATIFIED (5/5 Unanimous)" },
+        { "id": "SCHOLARS-REV-014", "title": "Donor Gift Covenant Tracking & Restricted Fund Isolation", "date": "2026-09-29", "verdict": "RATIFIED (5/5 Unanimous)" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "product_id": "churchcore-chms",
+  "repo_name": "ChurchCore-Business",
+  "version": "0.1.0",
+  "report_timestamp": "2026-10-18T14:09:24.607856+00:00",
+  "online_status": {
+    "is_online": false,
+    "vercel_status": "pending",
+    "vercel_url": "",
+    "supabase_status": "local_only",
+    "readiness_assessment": {
+      "readiness_score_pct": 75,
+      "blockers": [],
+      "next_required_actions": [
+        "Deploy production build on Vercel",
+        "Verify Supabase production keys"
+      ]
+    }
+  },
+  "mvp_status": {
+    "phase": "beta",
+    "completion_pct": 80,
+    "latest_milestones": [
+      "Core schema and UI foundation completed"
+    ]
+  },
+  "latest_changes": [
+    "feat(control-plane): sync Orthos v0.18.2 telemetry (100% Phase 1 MVP, pilot_ready) and dynamic local discovery (bdb2842)",
+    "feat(ci): implement autonomous Council challenge review and auto-merge workflow (8ede0bf)",
+    "feat(dashboard): integrate interactive Python Scripts Catalog into Mission Control UI (e2ddbde)",
+    "fix(dashboard): sort 100% complete products to end of priority queue as testing gate champions (4fa0d73)",
+    "feat(ci): add automated governance PR response workflow and reconcile Academy 100% MVP status (99ebab5)"
+  ],
+  "next_steps": [
+    "Execute automated test suite",
+    "Verify production deployment"
+  ],
+  "ai_session_telemetry": {
+    "last_model": "gemini-2.5-pro",
+    "session_duration_minutes": 30,
+    "session_date": "2026-10-18T14:09:24.607856+00:00",
+    "session_operator": "Ricardo Julia",
+    "summary_of_work": "Automated Council Directives Enforcement"
+  },
+  "deployment_diagnostics": {
+    "recent_errors": [],
+    "mitigations_applied": []
+  },
+  "governance_compliance": {
+    "council_decisions_acknowledged": [
+      "COUNCIL-2026-001",
+      "COUNCIL-2026-002",
+      "COUNCIL-2026-003",
+      "COUNCIL-2026-004"
+    ],
+    "brand_house_compliant": true,
+    "sovereign_db_isolation_verified": true
+  }
+}
