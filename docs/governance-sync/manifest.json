@@ -308,6 +308,41 @@
           "verification": "Execution of python3 scripts/report-telemetry.py --auto returns exit code 0 and records ONLINE status."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-010",
+      "title": "Universal AI Gateway Consolidation on OpenRouter & Sustainable Model Evaluator Protocol",
+      "ratification_date": "2026-10-19",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-010.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-010-01",
+          "title": "Universal OpenRouter Gateway Consolidation",
+          "description": "All LLM calls across all software packages must be consolidated through OpenRouter as the unified, sovereign AI gateway (https://openrouter.ai/api/v1/chat/completions) with standardized OPENROUTER_API_KEY, HTTP-Referer, and X-Title headers. Direct raw proprietary vendor SDK bindings are prohibited in production runtimes.",
+          "verification": "AI API integration codebases route exclusively to OpenRouter endpoint with verified privacy headers and data_collection: deny."
+        },
+        {
+          "req_id": "REQ-010-02",
+          "title": "Sovereign Model Evaluator & Dynamic Tier Router",
+          "description": "Every package must implement an AI Model Usage Evaluator that scores incoming prompt workloads and dynamically routes between Tier 1 (High Truthness/Reasoning: Gemini 2.5 Pro, Claude 3.5 Sonnet, DeepSeek R1), Tier 2 (High Efficiency/Balanced: Gemini 2.5 Flash, LLaMA 3.3 70B), and Tier 3 (Ultra-Low-Cost Fast Triage).",
+          "verification": "Presence of model evaluator module and unit tests validating that low-complexity tasks resolve to Tier 2/3 and mission-critical theological/safeguarding checks resolve to Tier 1."
+        },
+        {
+          "req_id": "REQ-010-03",
+          "title": "Cost & Sustainability Guardrails",
+          "description": "Enforce per-request max_tokens caps, multi-model fallback cascades for 99.99% Sunday availability, token usage audit logging, and tenant circuit breakers to prevent runaway token spend.",
+          "verification": "Unit tests verifying fallback cascades, token tracking instrumentation, and rate limits in AI gateway dispatchers."
+        }
+      ]
     }
   ]
 }

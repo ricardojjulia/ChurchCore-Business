@@ -127,3 +127,30 @@ If any Council Decision requirement was fulfilled, append the entry to `docs/cou
 > This is automatically triggered via `npm run posttest` or `npm run telemetry:report`.
 > This guarantees that the Sovereign Control Plane dashboard always reflects ground-truth live production status, clears obsolete rehearsal blockers, and eliminates telemetry drift.
 
+---
+
+## 7. Universal AI Gateway & Sustainable Model Evaluator Standard (COUNCIL-2026-010)
+
+> [!IMPORTANT]
+> **UNIVERSAL OPENROUTER AI GATEWAY & SUSTAINABLE MODEL EVALUATOR DIRECTIVE**  
+> All software packages in the ChurchCore ecosystem (`churchcore-business`, `churchcore-chms`, `churchcore-lms`, `churchcore-orthos`, `churchcore-care`, `churchcore-academy`) MUST route all machine learning and generative LLM interactions exclusively through the OpenRouter gateway (`https://openrouter.ai/api/v1/chat/completions`).
+>
+> 1. **Zero Vendor Fragmentation (`REQ-010-01`)**:
+>    - Direct vendor SDK lock-ins (direct calls to OpenAI, Anthropic, or proprietary APIs bypassing OpenRouter) are strictly prohibited.
+>    - Universal secret: `OPENROUTER_API_KEY`.
+>    - Zero Data Retention header: `HTTP-Referer: https://churchcore.io` and `X-Title: ChurchCore Sovereign Fleet` with telemetry flag `"data_collection": "deny"`.
+>
+> 2. **Sovereign Model Evaluator Quadrant (`REQ-010-02`)**:
+>    - Every package implementing AI features MUST incorporate an automated runtime Model Evaluator that scores tasks across two axes:
+>      - **Truthness & Accuracy** (Theological fidelity, doctrinal orthodoxy, HIPAA/FERPA pastoral safeguarding, clinical accuracy).
+>      - **Efficiency, Latency & Cost** (Token expenditure, latency requirements, operational sustainability).
+>    - **Dynamic Tier Routing Matrix**:
+>      - **Tier 1 (High Truthness & Complex Reasoning)**: `google/gemini-2.5-pro`, `anthropic/claude-3.5-sonnet`, `deepseek/deepseek-r1`. Reserved strictly for safeguarding triage, clinical counseling evaluation, theological doctrine defense, and regulatory audits.
+>      - **Tier 2 (High Efficiency & Balanced Generative)**: `google/gemini-2.5-flash`, `meta-llama/llama-3.3-70b-instruct`. Standard default for sermon summarization, lesson planning, member communications, and liturgical draft generation.
+>      - **Tier 3 (Ultra-Low-Cost Fast Triage)**: `google/gemini-2.5-flash-lite`, `meta-llama/llama-3.1-8b-instruct`. Mandatory for entity classification, routing queries, token pre-filtering, and tag extraction.
+>
+> 3. **Cost, Rate-Limiting & Sustainability Guardrails (`REQ-010-03`)**:
+>    - Never leverage frontier reasoning models without strict `max_tokens` limits (default ≤ 4096 tokens).
+>    - Packages must implement fallback cascade chains (Tier 1 → Tier 2 → graceful degradation).
+>    - Every LLM interaction must be auditable with prompt token count, completion token count, model string, and cost estimate recorded.
+

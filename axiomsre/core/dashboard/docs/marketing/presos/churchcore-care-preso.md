@@ -4,7 +4,7 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-19 20:51:22 UTC
+> **Last Synced from Telemetry:** 2026-10-19 21:01:15 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (7.1.0 Live)*
 
-- Latest Feature Delivered: chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
-- Ecosystem Hardening: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
+- Latest Feature Delivered: chore(telemetry): update next_steps to serverless cron verification (5bc8769)
+- Ecosystem Hardening: chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
 - Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Absolute Cryptographic Isolation: Church membership no
 Commercial Pricing: $59–$399/mo per practitioner
 
 Recent Engineering Delivery & Milestones:
+- chore(telemetry): update next_steps to serverless cron verification (5bc8769)
 - chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
 - feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
 - chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)
-- chore(telemetry): update edge telemetry and governance ledger post-cron-redesign (1ebfffb)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.
 - Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts
 - Live Site: https://www.churchcorecare.io
 - Pricing: $59–$399/mo per practitioner
-- Latest Features: chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb), feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb), chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)
+- Latest Features: chore(telemetry): update next_steps to serverless cron verification (5bc8769), chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb), feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- chore(telemetry): update next_steps to serverless cron verification (5bc8769)
 - chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
 - feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
-- chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

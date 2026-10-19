@@ -1824,7 +1824,11 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: "COUNCIL-2026-004", req: "REQ-004-03", title: "AI Session Logging & Diagnostics", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-004") ? "done" : "progress" },
       { id: "COUNCIL-2026-005", req: "REQ-005-01", title: "100% MVP Feature-Completion Plan", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-005") ? "done" : "progress" },
       { id: "COUNCIL-2026-005", req: "REQ-005-02", title: "Phased Execution Gate: Testing Commences Only After 100% Features Done", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-005") ? "done" : "progress" },
-      { id: "COUNCIL-2026-005", req: "REQ-005-03", title: "Vercel Production Deployment Technical Readiness", check: (p) => p.online_status?.is_online ? "done" : "progress" }
+      { id: "COUNCIL-2026-005", req: "REQ-005-03", title: "Vercel Production Deployment Technical Readiness", check: (p) => p.online_status?.is_online ? "done" : "progress" },
+      { id: "COUNCIL-2026-008", req: "REQ-008-01", title: "Post-Test Telemetry Synchronization Mandate", check: (p) => p.online_status?.is_online ? "done" : "progress" },
+      { id: "COUNCIL-2026-010", req: "REQ-010-01", title: "Universal OpenRouter AI Gateway Consolidation", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-010") ? "done" : "progress" },
+      { id: "COUNCIL-2026-010", req: "REQ-010-02", title: "Sovereign Model Evaluator & Dynamic Tier Router", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-010") ? "done" : "progress" },
+      { id: "COUNCIL-2026-010", req: "REQ-010-03", title: "Cost & Sustainability Guardrails", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-010") ? "done" : "progress" }
     ];
 
     tbody.innerHTML = '';
