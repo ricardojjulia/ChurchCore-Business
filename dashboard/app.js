@@ -280,10 +280,15 @@ document.addEventListener('DOMContentLoaded', () => {
       'churchcore-academy': 'Conduct Colegio Biblos participant-browser login and uncached session testing [WORKSTREAM]'
     };
 
-    // Split into backlog (<100%) and completed/testing gate (>=100%)
-    const activeBacklog = products
-      .filter(p => (p.mvp_status?.completion_pct || 0) < 100)
-      .sort((a, b) => (a.mvp_status?.completion_pct || 0) - (b.mvp_status?.completion_pct || 0));
+    // Sort all products: backlog items (<100%) first by completion asc, then 100% Phase 2 testing champions
+    const sortedProducts = [...products].sort((a, b) => {
+      const aPct = a.mvp_status?.completion_pct || 0;
+      const bPct = b.mvp_status?.completion_pct || 0;
+      if (aPct < 100 && bPct < 100) return aPct - bPct;
+      if (aPct < 100) return -1;
+      if (bPct < 100) return 1;
+      return a.repo_name.localeCompare(b.repo_name);
+    });
 
     const testingGateApps = products.filter(p => (p.mvp_status?.completion_pct || 0) >= 100);
 
@@ -292,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const searchTerm = (document.getElementById('fleet-search')?.value || '').toLowerCase();
 
-      const filtered = activeBacklog.filter(p => {
+      const filtered = sortedProducts.filter(p => {
         const matchFilter = (activeQueueFilter === 'all') || 
                             (activeQueueFilter === 'online' && p.online_status?.is_online) ||
                             (activeQueueFilter === 'staging' && !p.online_status?.is_online);
@@ -335,35 +340,47 @@ document.addEventListener('DOMContentLoaded', () => {
         <ol class="queue-items-list">
           ${filtered.length === 0 ? `
             <li style="padding: 24px; text-align: center; color: #98A1AD; font-size: 13px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px dashed rgba(255,255,255,0.08);">
-              No active backlog items matching "${escapeHtml(activeQueueFilter)}" filter.
+              No active items matching "${escapeHtml(activeQueueFilter)}" filter.
             </li>
           ` : filtered.map((p, idx) => {
             const pct = p.mvp_status?.completion_pct || 85;
+            const is100 = pct >= 100;
             const rem = Math.max(0, 100 - pct);
-            const isFirst = (idx === 0) && (activeQueueFilter === 'all') && !searchTerm;
-            const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || 'Complete remaining feature backlog';
+            const isFirst = (idx === 0) && (activeQueueFilter === 'all') && !searchTerm && !is100;
+            const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || (is100 ? 'Active Phase 2 human pilot & field validation in progress' : 'Complete remaining feature backlog');
             const isProd = p.online_status?.is_online;
             const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `/Users/rjulia/${p.repo_name}`;
             const cmd = `cd "${repoPath}" && git status`;
 
+            let badgeHtml = '';
+            if (isFirst) {
+              badgeHtml = '<span class="start-here-tag">Furthest behind · start here</span>';
+            } else if (is100) {
+              badgeHtml = '<span class="start-here-tag" style="background: rgba(76,195,138,0.15); color: #4CC38A; border: 1px solid rgba(76,195,138,0.3);">Phase 2 · Testing gate</span>';
+            }
+
+            let barBg = '#F0A63A';
+            if (isFirst) barBg = '#F07C6B';
+            else if (is100) barBg = '#4CC38A';
+
             return `
-              <li class="queue-item-row ${isFirst ? 'is-first' : ''}">
-                <span class="rank-square-badge ${isFirst ? 'first-badge' : ''}">#${idx + 1}</span>
+              <li class="queue-item-row ${isFirst ? 'is-first' : ''} ${is100 ? 'is-champion' : ''}">
+                <span class="rank-square-badge ${isFirst ? 'first-badge' : ''}" style="${is100 ? 'background: #14291F; color: #4CC38A; border-color: rgba(76,195,138,0.3);' : ''}">#${idx + 1}</span>
                 <div class="queue-item-details">
                   <div class="queue-item-title-row">
                     <span class="queue-item-name">${escapeHtml(p.repo_name)}</span>
-                    ${isFirst ? '<span class="start-here-tag">Furthest behind · start here</span>' : ''}
+                    ${badgeHtml}
                   </div>
-                  <div class="queue-item-task-line"><span style="color: #7E8793;">Next:</span> ${escapeHtml(task)}</div>
+                  <div class="queue-item-task-line"><span style="color: ${is100 ? '#4CC38A' : '#7E8793'}; font-weight: ${is100 ? '600' : '400'};">${is100 ? 'Gate:' : 'Next:'}</span> ${escapeHtml(task)}</div>
                 </div>
                 <div class="queue-item-meta">
                   <div class="queue-progress-box">
                     <div class="queue-pct-text">
-                      <span style="font-family: 'Geist Mono', monospace; font-weight: 600; color: #E7E9EC;">${pct}%</span>
-                      <span style="color: #98A1AD;">${rem}% left</span>
+                      <span style="font-family: 'Geist Mono', monospace; font-weight: 600; color: ${is100 ? '#4CC38A' : '#E7E9EC'};">${pct}%</span>
+                      <span style="color: #98A1AD;">${is100 ? 'verified' : `${rem}% left`}</span>
                     </div>
                     <div style="height: 6px; border-radius: 3px; background: #262C35; overflow: hidden;" role="img" aria-label="${pct}% ready">
-                      <div style="height: 100%; border-radius: 3px; width: ${pct}%; background: ${isFirst ? '#F07C6B' : '#F0A63A'};"></div>
+                      <div style="height: 100%; border-radius: 3px; width: ${pct}%; background: ${barBg};"></div>
                     </div>
                   </div>
                   <span class="env-pill-tag" style="color: ${isProd ? '#8EE0B5' : '#9DC4F5'};"><span class="env-dot" style="background: ${isProd ? '#4CC38A' : '#7AB4F5'};"></span>${isProd ? 'Vercel Prod' : 'Vercel Preview'}</span>
