@@ -844,88 +844,399 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFleetGridCardsOnly(products);
   }
 
-  // 5. Render Implementation Plans & Directionality
+  // 5. Render Implementation Plans & Directionality (Upgraded per Council Directive COUNCIL-2026-009)
   function renderPlansTab(plans) {
     const container = document.getElementById('plan-board-container');
     const select = document.getElementById('plan-product-select');
+    const kpiBanner = document.getElementById('plan-milestone-kpi-banner');
+    const searchInput = document.getElementById('plan-search-input');
+    const dirChips = document.querySelectorAll('.filter-chip[data-plan-dir]');
+    const addPlanModal = document.getElementById('add-plan-modal');
+    const btnAddPlan = document.getElementById('btn-add-plan-item');
+    const btnCloseModal = document.getElementById('plan-modal-close');
+    const btnSubmitPlan = document.getElementById('btn-submit-plan-item');
+
     if (!container || !select || !plans || !plans.length) return;
+
+    const STORAGE_KEY_OVERRIDES = 'churchcore_plans_state_v2';
+    const STORAGE_KEY_CUSTOM = 'churchcore_custom_plans_v2';
+
+    function getPlanOverrides() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY_OVERRIDES) || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function setPlanOverride(itemKey, newStatus) {
+      const overrides = getPlanOverrides();
+      overrides[itemKey] = newStatus;
+      localStorage.setItem(STORAGE_KEY_OVERRIDES, JSON.stringify(overrides));
+    }
+
+    function getCustomPlans() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY_CUSTOM) || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveCustomPlan(newPlan) {
+      const list = getCustomPlans();
+      list.push(newPlan);
+      localStorage.setItem(STORAGE_KEY_CUSTOM, JSON.stringify(list));
+    }
+
+    let activeDirFilter = 'all';
+    let searchQuery = '';
+
+    // Filter Chips Event Listeners
+    dirChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        dirChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeDirFilter = chip.getAttribute('data-plan-dir') || 'all';
+        updatePlanView();
+      });
+    });
+
+    // Real-time Search Input Listener
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = (e.target.value || '').trim().toLowerCase();
+        updatePlanView();
+      });
+    }
+
+    // Modal Triggers
+    if (btnAddPlan && addPlanModal) {
+      btnAddPlan.addEventListener('click', () => {
+        const titleInput = document.getElementById('plan-input-title');
+        const detailsInput = document.getElementById('plan-input-details');
+        const prodSelect = document.getElementById('plan-input-product');
+        if (titleInput) titleInput.value = '';
+        if (detailsInput) detailsInput.value = '';
+        if (prodSelect) prodSelect.value = select.value || 'churchcore-chms';
+        addPlanModal.classList.add('active');
+      });
+    }
+
+    if (btnCloseModal && addPlanModal) {
+      btnCloseModal.addEventListener('click', () => {
+        addPlanModal.classList.remove('active');
+      });
+    }
+
+    if (btnSubmitPlan && addPlanModal) {
+      btnSubmitPlan.addEventListener('click', () => {
+        const title = (document.getElementById('plan-input-title')?.value || '').trim();
+        const prodId = document.getElementById('plan-input-product')?.value || select.value;
+        const dir = document.getElementById('plan-input-dir')?.value || 'EDGE_REPO';
+        const status = document.getElementById('plan-input-status')?.value || 'planned';
+        const details = (document.getElementById('plan-input-details')?.value || '').trim();
+
+        if (!title) {
+          alert('Please enter a title for the implementation plan initiative.');
+          return;
+        }
+
+        const newPlan = {
+          id: 'PLAN-CUST-' + Date.now().toString(36).toUpperCase(),
+          product_id: prodId,
+          title: title,
+          directionality: dir,
+          details: details || 'No additional scope specifications provided.',
+          status: status,
+          is_custom: true,
+          created_at: new Date().toISOString()
+        };
+
+        saveCustomPlan(newPlan);
+        addPlanModal.classList.remove('active');
+        if (select.value !== prodId) {
+          select.value = prodId;
+        }
+        showToast(`✓ Added plan initiative: "${title}" to roadmap!`);
+        updatePlanView();
+      });
+    }
+
+    function getRepoFolderForProduct(productId) {
+      const map = {
+        'churchcore-chms': 'ChurchCore',
+        'churchcore-lms': 'ChurchCore-LMS',
+        'churchcore-academy': 'ChurchCore Academy',
+        'churchcore-care': 'ChurchCore Care',
+        'churchcore-orthos': 'ChurchCore Orthos',
+        'faithfull-scholars': 'FaithFullScholars'
+      };
+      return map[productId] || 'ChurchCore-Business';
+    }
 
     function updatePlanView() {
       const selectedId = select.value;
-      const plan = plans.find(p => p.product_id === selectedId) || plans[0];
+      const basePlan = plans.find(p => p.product_id === selectedId) || plans[0];
+      const overrides = getPlanOverrides();
+      const customPlans = getCustomPlans().filter(cp => cp.product_id === basePlan.product_id);
+
+      // Collect all raw items and resolve current column based on overrides
+      const allItems = [];
+
+      (basePlan.done || []).forEach(item => {
+        allItems.push({ ...item, baseStatus: 'done' });
+      });
+      (basePlan.in_progress || []).forEach(item => {
+        allItems.push({ ...item, baseStatus: 'in_progress' });
+      });
+      (basePlan.waiting || []).forEach(item => {
+        allItems.push({ ...item, baseStatus: 'waiting' });
+      });
+      (basePlan.planned || []).forEach(item => {
+        allItems.push({ ...item, baseStatus: 'planned' });
+      });
+      customPlans.forEach(item => {
+        allItems.push({ ...item, baseStatus: item.status || 'planned' });
+      });
+
+      // Resolved items with effective status
+      const resolvedItems = allItems.map(item => {
+        const itemKey = item.id || (basePlan.product_id + '::' + item.title);
+        const effectiveStatus = overrides[itemKey] || item.baseStatus;
+        return {
+          ...item,
+          key: itemKey,
+          effectiveStatus: effectiveStatus
+        };
+      });
+
+      // Calculate Milestone KPI Metrics
+      const shippedList = resolvedItems.filter(i => i.effectiveStatus === 'done');
+      const inProgressList = resolvedItems.filter(i => i.effectiveStatus === 'in_progress');
+      const waitingList = resolvedItems.filter(i => i.effectiveStatus === 'waiting');
+      const plannedList = resolvedItems.filter(i => i.effectiveStatus === 'planned');
+
+      const totalItems = resolvedItems.length;
+      const shippedCount = shippedList.length;
+      const activeCount = inProgressList.length + waitingList.length;
+      const plannedCount = plannedList.length;
+      const completionPct = totalItems > 0 ? Math.round((shippedCount / totalItems) * 100) : 0;
+
+      // Render Milestone KPI Banner
+      if (kpiBanner) {
+        kpiBanner.innerHTML = `
+          <div class="plan-kpi-banner-grid">
+            <div class="plan-kpi-card" style="border-top: 3px solid #10B981;">
+              <div class="plan-kpi-label">Milestone Progress</div>
+              <div class="plan-kpi-val" style="color: #10B981;">${completionPct}%</div>
+              <div class="plan-kpi-sub">${basePlan.current_milestone || 'Current Active Milestone'}</div>
+              <div class="plan-kpi-bar-track">
+                <div class="plan-kpi-bar-fill" style="width: ${completionPct}%; background: linear-gradient(90deg, #10B981, #34D399);"></div>
+              </div>
+            </div>
+
+            <div class="plan-kpi-card" style="border-top: 3px solid #F59E0B;">
+              <div class="plan-kpi-label">Active Sprint Initiatives</div>
+              <div class="plan-kpi-val" style="color: #F59E0B;">${activeCount}</div>
+              <div class="plan-kpi-sub">${inProgressList.length} in code repair, ${waitingList.length} waiting</div>
+              <div class="plan-kpi-bar-track">
+                <div class="plan-kpi-bar-fill" style="width: ${totalItems > 0 ? Math.round((activeCount / totalItems) * 100) : 0}%; background: #F59E0B;"></div>
+              </div>
+            </div>
+
+            <div class="plan-kpi-card" style="border-top: 3px solid #38BDF8;">
+              <div class="plan-kpi-label">Shipped & Verified</div>
+              <div class="plan-kpi-val" style="color: #38BDF8;">${shippedCount} / ${totalItems}</div>
+              <div class="plan-kpi-sub">Constitutional RLS & Features Live</div>
+              <div class="plan-kpi-bar-track">
+                <div class="plan-kpi-bar-fill" style="width: ${completionPct}%; background: #38BDF8;"></div>
+              </div>
+            </div>
+
+            <div class="plan-kpi-card" style="border-top: 3px solid #818CF8;">
+              <div class="plan-kpi-label">Planned Roadmap Backlog</div>
+              <div class="plan-kpi-val" style="color: #818CF8;">${plannedCount}</div>
+              <div class="plan-kpi-sub">Upcoming Edge & Hub Dispatches</div>
+              <div class="plan-kpi-bar-track">
+                <div class="plan-kpi-bar-fill" style="width: ${totalItems > 0 ? Math.round((plannedCount / totalItems) * 100) : 0}%; background: #818CF8;"></div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Filter by Directionality and Search
+      function matchesFilters(item) {
+        if (activeDirFilter !== 'all' && item.directionality !== activeDirFilter) {
+          return false;
+        }
+        if (searchQuery) {
+          const t = (item.title || '').toLowerCase();
+          const d = (item.details || '').toLowerCase();
+          if (!t.includes(searchQuery) && !d.includes(searchQuery)) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      const filteredDone = shippedList.filter(matchesFilters);
+      const filteredInProgress = inProgressList.filter(matchesFilters);
+      const filteredWaiting = waitingList.filter(matchesFilters);
+      const filteredPlanned = plannedList.filter(matchesFilters);
+      const filteredActive = [...filteredInProgress, ...filteredWaiting];
+
+      function renderCard(item, colType) {
+        const isCustom = item.is_custom;
+        const repoName = basePlan.repo_name || 'ChurchCore Repository';
+        const repoFolder = getRepoFolderForProduct(basePlan.product_id);
+
+        let borderStyle = '';
+        let badgeSub = '';
+        if (item.effectiveStatus === 'in_progress') {
+          borderStyle = 'border-left: 3px solid #38BDF8;';
+          badgeSub = '<div style="font-size: 10px; color: #38BDF8; margin-top: 6px; font-weight: 700;">● IN ACTIVE CODE REPAIR</div>';
+        } else if (item.effectiveStatus === 'waiting') {
+          borderStyle = 'border-left: 3px solid #F43F5E;';
+          badgeSub = '<div style="font-size: 10px; color: #F43F5E; margin-top: 6px; font-weight: 700;">⚠️ WAITING ON CREDENTIALS/PR</div>';
+        } else if (item.effectiveStatus === 'done') {
+          borderStyle = 'border-left: 3px solid #10B981;';
+        }
+
+        // Action Buttons based on status
+        let lifecycleBtns = '';
+        if (colType === 'planned') {
+          lifecycleBtns = `
+            <button class="btn-plan-sm btn-plan-start" data-key="${escapeHtml(item.key)}" data-status="in_progress" title="Advance to Active Sprint">▶ Start Sprint</button>
+            <button class="btn-plan-sm btn-plan-success" data-key="${escapeHtml(item.key)}" data-status="done" title="Mark as Completed">✓ Shipped</button>
+          `;
+        } else if (colType === 'active') {
+          lifecycleBtns = `
+            <button class="btn-plan-sm btn-plan-success" data-key="${escapeHtml(item.key)}" data-status="done" title="Verify & Mark Shipped">✓ Shipped</button>
+            <button class="btn-plan-sm btn-plan-backlog" data-key="${escapeHtml(item.key)}" data-status="planned" title="Return to Planned Backlog">↩ Backlog</button>
+          `;
+        } else if (colType === 'done') {
+          lifecycleBtns = `
+            <button class="btn-plan-sm btn-plan-backlog" data-key="${escapeHtml(item.key)}" data-status="in_progress" title="Reopen for Refinement">↩ Reopen Sprint</button>
+          `;
+        }
+
+        // Deliberate & Dispatch Data
+        const itemJson = JSON.stringify({
+          id: item.id || ('PLAN-' + Math.random().toString(36).substr(2, 6).toUpperCase()),
+          product_name: repoName,
+          category: 'Implementation Plan Milestone',
+          route: item.title,
+          feedback_text: item.details,
+          sentiment: 'neutral',
+          severity: 'high'
+        }).replace(/"/g, '&quot;');
+
+        const agyPrompt = `cd "/Users/rjulia/${repoFolder}" && agy -p "Execute implementation plan: ${item.title.replace(/"/g, '')}. Scope: ${item.details.replace(/"/g, '')}. Adhere strictly to Section III Data Sovereignty and Sunday 99.99% SLA."`;
+
+        return `
+          <div class="plan-item-card" style="${borderStyle}">
+            <div class="plan-item-header">
+              <span class="plan-item-title">${escapeHtml(item.title)}</span>
+              <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
+                ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
+              </span>
+            </div>
+            <p class="plan-item-details">${escapeHtml(item.details)}</p>
+            ${badgeSub}
+            ${isCustom ? '<div style="font-size: 9px; color: var(--gold-400); margin-top: 4px; font-weight: 700;">★ CUSTOM INITIATIVE</div>' : ''}
+            
+            <div class="plan-card-actions">
+              ${lifecycleBtns}
+              <button class="btn-plan-sm btn-plan-council" data-item="${itemJson}" title="Convene High Sovereign Grand Council to deliberate this plan">
+                ⚖️ Deliberate
+              </button>
+              <button class="btn-plan-sm btn-plan-dispatch" data-dispatch="${escapeHtml(agyPrompt)}" title="Copy AgY execution prompt for this repo">
+                🚀 AgY Dispatch
+              </button>
+            </div>
+          </div>
+        `;
+      }
 
       container.innerHTML = `
         <!-- Column 1: Done -->
         <div class="plan-column">
           <div class="plan-col-header" style="color: #10B981;">
-            <span>✅ Shipped & Done (${plan.done.length})</span>
-            <span style="font-size: 11px; color: var(--text-dim);">${plan.current_milestone}</span>
+            <span>✅ Shipped & Done (${filteredDone.length})</span>
+            <span style="font-size: 11px; color: var(--text-dim);">${basePlan.current_milestone || 'Verified'}</span>
           </div>
-          ${plan.done.map(item => `
-            <div class="plan-item-card">
-              <div class="plan-item-header">
-                <span class="plan-item-title">${item.title}</span>
-                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
-                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
-                </span>
-              </div>
-              <p class="plan-item-details">${item.details}</p>
-            </div>
-          `).join('')}
+          ${filteredDone.length ? filteredDone.map(item => renderCard(item, 'done')).join('') : '<div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px;">No shipped initiatives match filter</div>'}
         </div>
 
         <!-- Column 2: In Progress & Waiting -->
         <div class="plan-column">
           <div class="plan-col-header" style="color: #F59E0B;">
-            <span>⏳ In Progress & Waiting (${plan.in_progress.length + plan.waiting.length})</span>
+            <span>⏳ In Progress & Waiting (${filteredActive.length})</span>
             <span style="font-size: 11px; color: var(--text-dim);">Active Sprint</span>
           </div>
-          ${plan.in_progress.map(item => `
-            <div class="plan-item-card" style="border-left: 3px solid #38BDF8;">
-              <div class="plan-item-header">
-                <span class="plan-item-title">${item.title}</span>
-                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
-                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
-                </span>
-              </div>
-              <p class="plan-item-details">${item.details}</p>
-              <div style="font-size: 10px; color: #38BDF8; margin-top: 6px; font-weight: 700;">● IN ACTIVE CODE REPAIR</div>
-            </div>
-          `).join('')}
-
-          ${plan.waiting.map(item => `
-            <div class="plan-item-card" style="border-left: 3px solid #F43F5E;">
-              <div class="plan-item-header">
-                <span class="plan-item-title">${item.title}</span>
-                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
-                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
-                </span>
-              </div>
-              <p class="plan-item-details">${item.details}</p>
-              <div style="font-size: 10px; color: #F43F5E; margin-top: 6px; font-weight: 700;">⚠️ WAITING ON CREDENTIALS/PR</div>
-            </div>
-          `).join('')}
+          ${filteredActive.length ? filteredActive.map(item => renderCard(item, 'active')).join('') : '<div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px;">No active sprint initiatives match filter</div>'}
         </div>
 
         <!-- Column 3: Planned Backlog -->
         <div class="plan-column">
           <div class="plan-col-header" style="color: #818CF8;">
-            <span>🎯 Planned Backlog (${plan.planned.length})</span>
+            <span>🎯 Planned Backlog (${filteredPlanned.length})</span>
             <span style="font-size: 11px; color: var(--text-dim);">Upcoming Roadmap</span>
           </div>
-          ${plan.planned.map(item => `
-            <div class="plan-item-card">
-              <div class="plan-item-header">
-                <span class="plan-item-title">${item.title}</span>
-                <span class="dir-badge ${item.directionality === 'EDGE_REPO' ? 'dir-edge' : 'dir-hub'}">
-                  ${item.directionality === 'EDGE_REPO' ? '🔵 EDGE' : '🟡 HUB'}
-                </span>
-              </div>
-              <p class="plan-item-details">${item.details}</p>
-            </div>
-          `).join('')}
+          ${filteredPlanned.length ? filteredPlanned.map(item => renderCard(item, 'planned')).join('') : '<div style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 20px;">No backlog initiatives match filter</div>'}
         </div>
       `;
+
+      // Attach Card Action Button Handlers
+      container.querySelectorAll('.btn-plan-start, .btn-plan-success, .btn-plan-backlog').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const key = btn.getAttribute('data-key');
+          const targetStatus = btn.getAttribute('data-status');
+          if (key && targetStatus) {
+            setPlanOverride(key, targetStatus);
+            showToast(`✓ Plan initiative updated to: ${targetStatus.replace('_', ' ').toUpperCase()}`);
+            updatePlanView();
+          }
+        });
+      });
+
+      // Attach Council Deliberation Handlers
+      container.querySelectorAll('.btn-plan-council').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          try {
+            const raw = btn.getAttribute('data-item');
+            const item = JSON.parse(raw);
+            if (window.openCouncilDeliberationForPlan) {
+              window.openCouncilDeliberationForPlan(item.product_name, item.route, item.feedback_text);
+            } else if (typeof window.openFeedbackCouncilModal === 'function') {
+              window.openFeedbackCouncilModal({ mode: 'single_item', item: item });
+            } else {
+              showToast('Council chamber opening...');
+            }
+          } catch (err) {
+            console.error('Deliberation dispatch error:', err);
+          }
+        });
+      });
+
+      // Attach AgY Dispatch Copy Handlers
+      container.querySelectorAll('.btn-plan-dispatch').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const cmd = btn.getAttribute('data-dispatch');
+          if (cmd) {
+            navigator.clipboard.writeText(cmd).then(() => {
+              showToast('🚀 Copied AgY Edge Dispatch command to clipboard!');
+            }).catch(() => {
+              prompt('Copy command:', cmd);
+            });
+          }
+        });
+      });
     }
 
     select.removeEventListener('change', updatePlanView);
@@ -4042,6 +4353,21 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
 
       document.getElementById('feedback-council-modal-close')?.addEventListener('click', () => modal.classList.remove('active'));
     }
+
+    // Expose Council Chamber Modal Globally for Implementation Plans & Workflows
+    window.openFeedbackCouncilModal = openFeedbackCouncilModal;
+    window.openCouncilDeliberationForPlan = function(productName, title, details) {
+      const item = {
+        id: 'PLAN-' + (title || 'ITEM').replace(/[^a-zA-Z0-9]/g, '').substring(0, 10).toUpperCase(),
+        product_name: productName || 'ChurchCore Fleet',
+        category: 'Strategic Implementation Plan',
+        route: title,
+        feedback_text: details || title,
+        sentiment: 'neutral',
+        severity: 'high'
+      };
+      openFeedbackCouncilModal({ mode: 'single_item', item: item });
+    };
 
     // Top button hook
     document.getElementById('btn-open-feedback-top')?.addEventListener('click', () => {

@@ -17,8 +17,8 @@
   "screenshot": "screenshots/sunday_sla_pulse.png",
   "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
   "pricing_headline": "$59\u2013$399/mo per practitioner",
-  "version": "7.0.0",
-  "last_synced": "2026-10-19 20:20:06 UTC",
+  "version": "7.1.0",
+  "last_synced": "2026-10-19 20:32:55 UTC",
   "slides": [
     {
       "slide_num": 1,
@@ -63,7 +63,7 @@
       "slide_num": 4,
       "title": "Fresh Off the Press: Latest Engineering Milestones",
       "type": "live_telemetry_highlights",
-      "subtitle": "Continuous High-Velocity Delivery (7.0.0 Live)",
+      "subtitle": "Continuous High-Velocity Delivery (7.1.0 Live)",
       "key_takeaways": [
         "Latest Feature Delivered: chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)",
         "Ecosystem Hardening: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)",

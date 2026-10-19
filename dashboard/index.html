@@ -336,15 +336,25 @@
 
     <!-- TAB 2: IMPLEMENTATION PLANS & DIRECTIONALITY -->
     <section id="tab-plans" class="tab-content">
-      <div class="section-hero">
-        <h2>Product Implementation Plans & Directionality Viewer</h2>
-        <p>Live view into each product's active development plan. Explicitly tracking what items were <strong>Repo-Originated (Edge)</strong> vs. <strong>Control-Plane-Dispatched (Hub)</strong>.</p>
+      <div class="section-hero-split">
+        <div>
+          <h2>Product Implementation Plans & Steering Engine</h2>
+          <p>Interactive roadmap steering across all 6 sibling products. Track, move, and dispatch initiatives between <strong>Repo-Originated (Edge)</strong> and <strong>Control-Plane-Dispatched (Hub)</strong>.</p>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button id="btn-add-plan-item" class="btn btn-gold">+ Add Plan Initiative</button>
+        </div>
+      </div>
+
+      <!-- Plan Milestone KPI & Progress Banner -->
+      <div id="plan-milestone-kpi-banner">
+        <!-- Rendered dynamically by app.js: Milestone title, progress bar, % shipped -->
       </div>
 
       <div class="plan-controls-bar">
         <div class="form-group-inline">
-          <label>Select Product Plan:</label>
-          <select id="plan-product-select">
+          <label style="font-weight: 700; color: #FFF; font-size: 13px;">Product Suite:</label>
+          <select id="plan-product-select" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #FFF; padding: 8px 12px; border-radius: 6px; font-size: 13px;">
             <option value="churchcore-chms">ChurchCore ChMS (DEVELOPMENT_PLAN.md)</option>
             <option value="churchcore-lms">ChurchCore LMS (implementation-plan-2026-q4.md)</option>
             <option value="churchcore-academy">ChurchCore Academy (competitive-execution-plan.md)</option>
@@ -354,14 +364,19 @@
           </select>
         </div>
 
-        <div class="directionality-legend-bar">
-          <span class="dir-badge dir-edge">🔵 REPO-ORIGINATED (Edge)</span>
-          <span class="dir-badge dir-hub">🟡 CONTROL-PLANE-DISPATCHED (Hub)</span>
+        <div class="plan-filter-group" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <button class="filter-chip active" data-plan-dir="all">All Initiatives</button>
+          <button class="filter-chip" data-plan-dir="EDGE_REPO">🔵 Edge-Originated</button>
+          <button class="filter-chip" data-plan-dir="CONTROL_PLANE">🟡 Hub-Dispatched</button>
+        </div>
+
+        <div class="search-box" style="margin-left: auto;">
+          <input type="text" id="plan-search-input" placeholder="Search initiatives or scope..." style="background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #FFF; padding: 8px 14px; border-radius: 6px; font-size: 13px; min-width: 240px;">
         </div>
       </div>
 
       <div class="plan-board-container" id="plan-board-container">
-        <!-- Rendered dynamically by app.js -->
+        <!-- Rendered dynamically by app.js with interactive controls and Council links -->
       </div>
     </section>
 
@@ -1362,6 +1377,53 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
           </div>
         </div>
         <button id="btn-submit-task" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Save Task to Metadata Base</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Plan Initiative Modal -->
+  <div id="add-plan-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>+ Add Product Plan Initiative</h3>
+        <button id="plan-modal-close" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Initiative Title:</label>
+          <input type="text" id="plan-input-title" placeholder="e.g. Offline-first volunteer kiosk sync" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+        </div>
+        <div class="form-group">
+          <label>Product Suite:</label>
+          <select id="plan-input-product" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+            <option value="churchcore-chms">ChurchCore ChMS</option>
+            <option value="churchcore-lms">ChurchCore LMS</option>
+            <option value="churchcore-academy">ChurchCore Academy</option>
+            <option value="churchcore-care">ChurchCore Care</option>
+            <option value="churchcore-orthos">ChurchCore Orthos</option>
+            <option value="faithfull-scholars">FaithFull Scholars</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Directionality:</label>
+          <select id="plan-input-dir" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+            <option value="EDGE_REPO">🔵 EDGE: REPO-ORIGINATED (Local Feature / Fix)</option>
+            <option value="CONTROL_PLANE">🟡 HUB: CONTROL-PLANE-DISPATCHED (Central Mandate)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Initial Lifecycle Column:</label>
+          <select id="plan-input-status" style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px;">
+            <option value="planned">🎯 Planned Backlog</option>
+            <option value="in_progress">⏳ In Progress (Active Sprint)</option>
+            <option value="done">✅ Shipped & Done</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Technical Scope & Invariants:</label>
+          <textarea id="plan-input-details" rows="3" placeholder="Describe scope, RLS policies, edge routes, or test requirements..." style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px; font-family: inherit; font-size: 13px;"></textarea>
+        </div>
+        <button id="btn-submit-plan-item" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Save Initiative to Roadmap</button>
       </div>
     </div>
   </div>

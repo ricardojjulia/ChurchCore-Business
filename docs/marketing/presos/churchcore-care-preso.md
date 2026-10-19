@@ -4,7 +4,7 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-19 20:20:06 UTC
+> **Last Synced from Telemetry:** 2026-10-19 20:32:55 UTC
 
 ---
 
@@ -38,7 +38,7 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://www.churchcorecare.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (7.0.0 Live)*
+*Continuous High-Velocity Delivery (7.1.0 Live)*
 
 - Latest Feature Delivered: chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
 - Ecosystem Hardening: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)

@@ -1,5 +1,5 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-19T20:20:06.163284+00:00",
+  "generated_at": "2026-10-19T20:32:55.888238+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 5,
@@ -2114,7 +2114,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-19 20:20:06 UTC",
+      "last_synced": "2026-10-19 20:32:55 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2222,7 +2222,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-19 20:20:06 UTC",
+      "last_synced": "2026-10-19 20:32:55 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2330,7 +2330,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-19 20:20:06 UTC",
+      "last_synced": "2026-10-19 20:32:55 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2438,7 +2438,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-19 20:20:06 UTC",
+      "last_synced": "2026-10-19 20:32:55 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2545,8 +2545,8 @@ window.CHURCHCORE_FLEET_DATA = {
       "screenshot": "screenshots/sunday_sla_pulse.png",
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
-      "version": "7.0.0",
-      "last_synced": "2026-10-19 20:20:06 UTC",
+      "version": "7.1.0",
+      "last_synced": "2026-10-19 20:32:55 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2591,7 +2591,7 @@ window.CHURCHCORE_FLEET_DATA = {
           "slide_num": 4,
           "title": "Fresh Off the Press: Latest Engineering Milestones",
           "type": "live_telemetry_highlights",
-          "subtitle": "Continuous High-Velocity Delivery (7.0.0 Live)",
+          "subtitle": "Continuous High-Velocity Delivery (7.1.0 Live)",
           "key_takeaways": [
             "Latest Feature Delivered: chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)",
             "Ecosystem Hardening: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)",
@@ -2654,7 +2654,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.0",
-      "last_synced": "2026-10-19 20:20:06 UTC",
+      "last_synced": "2026-10-19 20:32:55 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2762,7 +2762,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-19 20:20:06 UTC",
+      "last_synced": "2026-10-19 20:32:55 UTC",
       "slides": [
         {
           "slide_num": 1,
