@@ -557,6 +557,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (pctA >= 100 && pctB < 100) return 1;
       if (pctB >= 100 && pctA < 100) return -1;
       return pctA - pctB;
+    });
+
     const totalCount = products.length || 1;
     const avgMvp = Math.round(products.reduce((acc, p) => acc + (p.mvp_status?.completion_pct || 0), 0) / totalCount);
     const avgReadiness = Math.round(products.reduce((acc, p) => acc + (p.online_status?.readiness_assessment?.readiness_score_pct || 0), 0) / totalCount);
