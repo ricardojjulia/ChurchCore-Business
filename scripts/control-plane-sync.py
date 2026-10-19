@@ -490,6 +490,25 @@ def sync_control_plane(verbose=True):
     with open(js_path, "w") as f:
         f.write("window.CHURCHCORE_FLEET_DATA = " + json.dumps(fleet_payload, indent=2) + ";\n")
 
+    # Mirror sync to axiomsre/core/dashboard if present
+    axiomsre_dir = os.path.join(WORKSPACE_ROOT, "axiomsre", "core", "dashboard")
+    if os.path.isdir(axiomsre_dir):
+        import shutil
+        for fname in ["fleet-data.json", "fleet-data.js", "presos-data.json", "presos-data.js", "scripts-data.json", "scripts-data.js"]:
+            src_f = os.path.join(dashboard_dir, fname)
+            if os.path.exists(src_f):
+                shutil.copy2(src_f, os.path.join(axiomsre_dir, fname))
+        axiomsre_presos = os.path.join(axiomsre_dir, "docs", "marketing", "presos")
+        if os.path.isdir(axiomsre_presos):
+            for pf in glob.glob(os.path.join(WORKSPACE_ROOT, "docs", "marketing", "presos", "*")):
+                shutil.copy2(pf, os.path.join(axiomsre_presos, os.path.basename(pf)))
+        axiomsre_cp = os.path.join(axiomsre_dir, "docs", "control-plane")
+        if os.path.isdir(axiomsre_cp):
+            for doc in ["ECOSYSTEM-DASHBOARD.md", "PYTHON-SCRIPTS-CATALOG.md"]:
+                src_doc = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", doc)
+                if os.path.exists(src_doc):
+                    shutil.copy2(src_doc, os.path.join(axiomsre_cp, doc))
+
     if verbose:
         print(f"\n[+] Master Dashboard compiled successfully: {DASHBOARD_FILE}")
         print(f"[+] UI Fleet Data generated: {json_path} & {js_path}")

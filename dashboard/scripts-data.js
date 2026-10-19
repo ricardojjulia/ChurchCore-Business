@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-19 01:45:49 UTC",
+  "generated_at": "2026-10-19 15:50:59 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",

@@ -4,14 +4,14 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-18 19:17:01 UTC
+> **Last Synced from Telemetry:** 2026-10-19 15:50:59 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth
-*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 18, 2026*
+*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 19, 2026*
 
 - Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director
 - Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (7.1.0 Live)*
 
-- Latest Feature Delivered: feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b)
-- Ecosystem Hardening: feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544)
+- Latest Feature Delivered: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
+- Ecosystem Hardening: chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)
 - Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Absolute Cryptographic Isolation: Church membership no
 Commercial Pricing: $59–$399/mo per practitioner
 
 Recent Engineering Delivery & Milestones:
-- feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b)
-- feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544)
-- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (2c2ee1d)
-- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)
+- feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
+- chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)
+- chore(telemetry): update edge telemetry and governance ledger post-cron-redesign (1ebfffb)
+- feat: redesign scheduler worker daemons for Vercel Serverless Cron execution (ce8b53a)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.
 - Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts
 - Live Site: https://www.churchcorecare.io
 - Pricing: $59–$399/mo per practitioner
-- Latest Features: feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b), feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544), feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (2c2ee1d)
+- Latest Features: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb), chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394), chore(telemetry): update edge telemetry and governance ledger post-cron-redesign (1ebfffb)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b)
-- feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544)
-- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (2c2ee1d)
+- feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
+- chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)
+- chore(telemetry): update edge telemetry and governance ledger post-cron-redesign (1ebfffb)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
