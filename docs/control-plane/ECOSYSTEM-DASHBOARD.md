@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-19 21:01:15 UTC`
+> **Last Aggregated:** `2026-10-19 21:02:51 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -24,16 +24,16 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcore.io](https://www.churchcore.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `95%` | No score basis supplied |
+| **Readiness Score** | `95%` | No score basis supplied |
 
-##### ⚠️ Readiness Assessment
+##### ⚠️ Production Readiness Assessment
 **Active Blockers:**
 - 🔴 Testing Council v6 full run not yet done (last item of R1's definition of done)
 - 🔴 O7: Stripe test-mode run never exercised against real Stripe (incl. charge.refund.updated / refund.updated on the Connect endpoint)
 - 🔴 O15: real pilot export files not yet tested
 - 🔴 O23: security@churchcore.io cannot receive mail (no MX record for churchcore.io)
 
-**Immediate Next Required Actions:**
+**Immediate Next Required Actions for Online Launch:**
 - 🛠️ Testing Council v6 full run
 - 🛠️ R2 release (target 2026-11-06)
 
@@ -81,12 +81,12 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcorelms.io](https://www.churchcorelms.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `95%` | No score basis supplied |
+| **Readiness Score** | `95%` | No score basis supplied |
 
-##### ⚠️ Readiness Assessment
+##### ⚠️ Production Readiness Assessment
 - 🟢 No critical architecture blockers.
 
-**Immediate Next Required Actions:**
+**Immediate Next Required Actions for Online Launch:**
 - 🛠️ Verify Turbopack build on Vercel preview branch
 - 🛠️ Conduct student credentialing certificate PDF generation test
 
@@ -132,9 +132,7 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io) |
 | **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation or RLS verification remains unverified |
-| **Phase 1 engineering readiness** | `100%` | The repository-defined functional MVP and its inseparable automated verification are complete. This score is the Phase 1 entry gate for human testing; it is not pilot completion or production authorization. |
-| **Phase 2 Human Validation** | `ENTRY_GATE_PENDING` | Verify participant login from the actual Colegio Biblos browser or VM. |
-| **Phase 3 Production Authorization** | `NOT_GRANTED` | Authenticated Vercel evidence proves a Ready production-target deployment exists; it does not prove an owner-approved Phase 3 production release. |
+| **Readiness Score** | `100%` | The repository-defined functional MVP and its inseparable automated verification are complete. This score is the Phase 1 entry gate for human testing; it is not pilot completion or production authorization. |
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PILOT_READY`
@@ -178,12 +176,12 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcorecare.io](https://www.churchcorecare.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `95%` | No score basis supplied |
+| **Readiness Score** | `95%` | No score basis supplied |
 
-##### ⚠️ Readiness Assessment
+##### ⚠️ Production Readiness Assessment
 - 🟢 No critical architecture blockers.
 
-**Immediate Next Required Actions:**
+**Immediate Next Required Actions for Online Launch:**
 - 🛠️ Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)
 - 🛠️ Run automated smoke test suite: npm run test:smoke
 
@@ -228,7 +226,7 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `100%` | No score basis supplied |
+| **Readiness Score** | `100%` | No score basis supplied |
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PRODUCTION`
@@ -268,16 +266,16 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `45%` | No score basis supplied |
+| **Readiness Score** | `45%` | No score basis supplied |
 
-##### ⚠️ Readiness Assessment
+##### ⚠️ Production Readiness Assessment
 **Active Blockers:**
 - 🔴 Phase 1 MVP items open: A3b publishing consent, A4 production gates and Sentry, WCAG AAA contrast for signed-in areas, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
 - 🔴 No real support address (NEXT_PUBLIC_SUPPORT_EMAIL); the legal texts route rights requests to /contact
 - 🔴 Legal texts are v1 drafts with operator name and state placeholders; counsel-reviewed v2 needed before real users
 - 🔴 Custom domain (B1) deferred by the owner; outbound email stays off until then
 
-**Immediate Next Required Actions:**
+**Immediate Next Required Actions for Online Launch:**
 - 🛠️ Build A3b (publishing consent for declared beliefs, Gemini disclosure)
 - 🛠️ Extend the axe AAA contrast scan to signed-in dashboards (public pages done, ADR 0038)
 - 🛠️ Owner: set NEXT_PUBLIC_SUPPORT_EMAIL; supply operator name and state for legal v2
