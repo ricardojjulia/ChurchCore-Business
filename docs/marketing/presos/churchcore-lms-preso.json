@@ -18,13 +18,13 @@
   "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
   "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
   "version": "0.47.0",
-  "last_synced": "2026-10-18 23:46:18 UTC",
+  "last_synced": "2026-10-19 00:41:01 UTC",
   "slides": [
     {
       "slide_num": 1,
       "title": "ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA",
       "type": "title_hero",
-      "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 18, 2026",
+      "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 19, 2026",
       "key_takeaways": [
         "Target Buyers: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director",
         "Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",

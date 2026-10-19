@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-18 23:46:18 UTC`
+> **Last Aggregated:** `2026-10-19 00:41:01 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -280,14 +280,14 @@
 
 ##### ⚠️ Production Readiness Assessment
 **Active Blockers:**
-- 🔴 Phase 1 MVP items open: A3b publishing consent, A4 production gates and Sentry, WCAG AAA contrast, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
+- 🔴 Phase 1 MVP items open: A3b publishing consent, A4 production gates and Sentry, WCAG AAA contrast for signed-in areas, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
 - 🔴 No real support address (NEXT_PUBLIC_SUPPORT_EMAIL); the legal texts route rights requests to /contact
 - 🔴 Legal texts are v1 drafts with operator name and state placeholders; counsel-reviewed v2 needed before real users
 - 🔴 Custom domain (B1) deferred by the owner; outbound email stays off until then
 
 **Immediate Next Required Actions for Online Launch:**
 - 🛠️ Build A3b (publishing consent for declared beliefs, Gemini disclosure)
-- 🛠️ Add the axe-core WCAG AAA contrast scan and fix violations (REQ-002-02)
+- 🛠️ Extend the axe AAA contrast scan to signed-in dashboards (public pages done, ADR 0038)
 - 🛠️ Owner: set NEXT_PUBLIC_SUPPORT_EMAIL; supply operator name and state for legal v2
 
 #### MVP Development Status & Milestones
@@ -308,7 +308,7 @@
 
 **Next Engineering Steps:**
 - 🎯 A3b: consent before publishing declared beliefs (FS019) and the Gemini disclosure
-- 🎯 WCAG AAA contrast: axe-core scan in E2E, then colour fixes
+- 🎯 WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)
 - 🎯 A4: fail-closed Turnstile, required RATE_LIMIT_SALT, Sentry (ADR 0032)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics

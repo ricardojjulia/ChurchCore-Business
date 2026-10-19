@@ -4,14 +4,14 @@
 > **Scale:** 72 Relational Tables • 85 Application Routes • v0.47.0  
 > **Target Buyers:** Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director  
 > **Live URL:** [https://www.churchcorelms.io](https://www.churchcorelms.io)  
-> **Last Synced from Telemetry:** 2026-10-18 23:46:18 UTC
+> **Last Synced from Telemetry:** 2026-10-19 00:41:01 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA
-*Live Production Architecture • 72 Relational Tables • 85 Application Routes • v0.47.0 • October 18, 2026*
+*Live Production Architecture • 72 Relational Tables • 85 Application Routes • v0.47.0 • October 19, 2026*
 
 - Target Buyers: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director
 - Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi

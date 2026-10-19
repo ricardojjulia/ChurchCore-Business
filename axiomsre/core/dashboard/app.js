@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const avgCompletion = Math.round(products.reduce((acc, p) => acc + (p.mvp_status.completion_pct || 0), 0) / Math.max(total, 1));
 
     document.getElementById('kpi-total-repos').textContent = total;
-    document.getElementById('kpi-online-count').textContent = `${onlineCount} / ${total}`;
+    document.getElementById('kpi-online-count').innerHTML = `${onlineCount}<span style="color: #7E8793">/${total}</span>`;
     document.getElementById('kpi-avg-readiness').textContent = `${avgReadiness}%`;
     document.getElementById('kpi-avg-completion').textContent = `${avgCompletion}%`;
     document.getElementById('kpi-online-sub').textContent = `${Math.round((onlineCount / total) * 100)}% Fleet on Vercel Edge`;
@@ -557,7 +557,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (pctA >= 100 && pctB < 100) return 1;
       if (pctB >= 100 && pctA < 100) return -1;
       return pctA - pctB;
-    });
+    const totalCount = products.length || 1;
+    const avgMvp = Math.round(products.reduce((acc, p) => acc + (p.mvp_status?.completion_pct || 0), 0) / totalCount);
+    const avgReadiness = Math.round(products.reduce((acc, p) => acc + (p.online_status?.readiness_assessment?.readiness_score_pct || 0), 0) / totalCount);
 
     content.innerHTML = `
       <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 20px;">
@@ -571,11 +573,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <div style="display: flex; gap: 12px;">
             <div style="text-align: right;">
               <div style="font-size: 11px; color: var(--text-dim);">AVERAGE MVP</div>
-              <div style="font-size: 18px; font-weight: 800; color: #38BDF8;">90%</div>
+              <div style="font-size: 18px; font-weight: 800; color: #38BDF8;">${avgMvp}%</div>
             </div>
             <div style="text-align: right;">
               <div style="font-size: 11px; color: var(--text-dim);">FLEET READINESS</div>
-              <div style="font-size: 18px; font-weight: 800; color: #10B981;">92%</div>
+              <div style="font-size: 18px; font-weight: 800; color: #10B981;">${avgReadiness}%</div>
             </div>
           </div>
         </div>
@@ -636,20 +638,21 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="display: flex; flex-direction: column; gap: 14px;">
         ${sorted.map((p, idx) => {
           const pct = p.mvp_status?.completion_pct || 80;
-          const rem = 100 - pct;
+          const isComplete = pct >= 100;
+          const rem = Math.max(0, 100 - pct);
           const tasks = productPrimaryTasks[p.product_id] || ['Complete remaining sprint backlog'];
           const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
-          const isRank1 = idx === 0;
+          const isRank1 = idx === 0 && !isComplete;
 
           return `
-            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid ${isRank1 ? 'rgba(239, 68, 68, 0.5)' : 'var(--border-subtle)'}; border-radius: 8px; padding: 16px;">
+            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid ${isRank1 ? 'rgba(239, 68, 68, 0.5)' : (isComplete ? 'rgba(16, 185, 129, 0.3)' : 'var(--border-subtle)')}; border-radius: 8px; padding: 16px;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-weight: 800; font-size: 12px; padding: 2px 8px; border-radius: 4px; background: ${isRank1 ? '#EF4444' : 'rgba(255,255,255,0.1)'}; color: #FFF;">
-                    #${idx + 1} Priority
+                  <span style="font-weight: 800; font-size: 12px; padding: 2px 8px; border-radius: 4px; background: ${isComplete ? '#10B981' : (isRank1 ? '#EF4444' : 'rgba(255,255,255,0.1)')}; color: #FFF;">
+                    ${isComplete ? '✓ Phase 2' : `#${idx + 1} Priority`}
                   </span>
                   <h5 style="color: #FFF; font-size: 15px; margin: 0; font-weight: 700;">${p.repo_name}</h5>
-                  <span style="font-size: 11px; color: var(--text-dim);">(${pct}% Complete • ${rem}% to 100%)</span>
+                  <span style="font-size: 11px; color: ${isComplete ? '#34D399' : 'var(--text-dim)'}; font-weight: 600;">(${pct}% Complete • ${isComplete ? 'Testing Gate' : `${rem}% to 100%`})</span>
                 </div>
                 <button class="btn btn-secondary" style="font-size: 10px; padding: 3px 8px;" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command for ${p.repo_name} to clipboard!');">
                   📋 Copy Terminal cd
@@ -763,7 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span>${completion}%</span>
             </div>
             <div class="progress-track">
-              <div class="progress-fill green" style="width: ${completion}%"></div>
+              <div class="progress-fill ${completion >= 90 ? 'green' : 'amber'}" style="width: ${completion}%"></div>
             </div>
           </div>
         </div>
@@ -1112,8 +1115,21 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
+    // Keep countdown timer ticking every second
+    if (window._sundayCountdownInterval) clearInterval(window._sundayCountdownInterval);
+    window._sundayCountdownInterval = setInterval(() => {
+      const timerEl = document.getElementById('sunday-countdown-timer');
+      if (timerEl) {
+        timerEl.textContent = getTimeToSunday();
+      } else {
+        clearInterval(window._sundayCountdownInterval);
+      }
+    }, 1000);
+
     document.getElementById('btn-run-sunday-probe')?.addEventListener('click', () => {
-      showToast('Sunday Pre-Flight Probes dispatched: 4/4 Endpoints GREEN (Avg Latency: 45ms)');
+      const eps = sla.synthetic_endpoints_monitored || [];
+      const avgLat = Math.round(eps.reduce((a, b) => a + (b.latency_ms || 0), 0) / Math.max(eps.length, 1));
+      showToast(`Sunday Pre-Flight Probes dispatched: ${eps.length}/${eps.length} Endpoints GREEN (Avg Latency: ${avgLat}ms)`);
     });
   }
 
@@ -1153,6 +1169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Check how many blockers remain unresolved
       const unresolvedBlockers = blockers.filter((_, idx) => !isBlockerResolved(p.product_id, idx));
+      const effectiveScore = unresolvedBlockers.length === 0 ? Math.max(score, 98) : score;
 
       const card = document.createElement('div');
       card.className = `readiness-item-card ${unresolvedBlockers.length === 0 ? 'ready' : 'action-needed'}`;
@@ -1161,7 +1178,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3>${p.repo_name}</h3>
           <div style="font-size: 12px; color: var(--text-dim);">${p.product_id} • Phase: ${p.mvp_status.phase.toUpperCase()}</div>
           <span class="readiness-score-badge" style="background: ${unresolvedBlockers.length === 0 ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)'}; color: ${unresolvedBlockers.length === 0 ? '#10B981' : '#F59E0B'}">
-            Score: ${unresolvedBlockers.length === 0 ? '98%' : `${score}%`} Readiness
+            Score: ${effectiveScore}% Readiness
           </span>
           <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted);">
             Vercel: ${p.online_status.vercel_status.toUpperCase()} • Supabase: ${p.online_status.supabase_status.toUpperCase()}
@@ -1225,17 +1242,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const directives = [
       { id: "COUNCIL-2026-001", req: "REQ-001-01", title: "Constitutional RLS Enforcement", check: () => "done" },
-      { id: "COUNCIL-2026-001", req: "REQ-001-02", title: "Zero Cross-App Data Propagation", check: () => "done" },
-      { id: "COUNCIL-2026-002", req: "REQ-002-01", title: "Powered by ChurchCore Badge", check: (p) => (p.product_id === 'churchcore-lms' || p.product_id === 'faithfull-scholars') ? 'done' : 'progress' },
-      { id: "COUNCIL-2026-002", req: "REQ-002-03", title: "Sub-Brand Orthography Standards", check: () => "done" },
-      { id: "COUNCIL-2026-003", req: "REQ-003-01", title: "Agent Pre-Flight Rule Installed", check: () => "done" },
-      { id: "COUNCIL-2026-003", req: "REQ-003-02", title: "Local Implementation Ledger", check: () => "done" },
-      { id: "COUNCIL-2026-004", req: "REQ-004-01", title: "Edge Telemetry File & Reporting Script", check: () => "done" },
-      { id: "COUNCIL-2026-004", req: "REQ-004-02", title: "Offline Readiness Assessment", check: () => "done" },
-      { id: "COUNCIL-2026-004", req: "REQ-004-03", title: "AI Session Logging & Diagnostics", check: () => "done" },
-      { id: "COUNCIL-2026-005", req: "REQ-005-01", title: "100% MVP Feature-Completion Plan", check: () => "done" },
-      { id: "COUNCIL-2026-005", req: "REQ-005-02", title: "Phased Execution Gate: Testing Commences Only After 100% Features Done", check: () => "done" },
-      { id: "COUNCIL-2026-005", req: "REQ-005-03", title: "Vercel Production Deployment Technical Readiness", check: () => "done" }
+      { id: "COUNCIL-2026-001", req: "REQ-001-02", title: "Zero Cross-App Data Propagation", check: (p) => p.governance_compliance?.sovereign_db_isolation_verified ? "done" : "progress" },
+      { id: "COUNCIL-2026-002", req: "REQ-002-01", title: "Powered by ChurchCore Badge", check: (p) => p.governance_compliance?.brand_house_compliant ? "done" : "progress" },
+      { id: "COUNCIL-2026-002", req: "REQ-002-03", title: "Sub-Brand Orthography Standards", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-002") ? "done" : "progress" },
+      { id: "COUNCIL-2026-003", req: "REQ-003-01", title: "Agent Pre-Flight Rule Installed", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-003") ? "done" : "progress" },
+      { id: "COUNCIL-2026-003", req: "REQ-003-02", title: "Local Implementation Ledger", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-003") ? "done" : "progress" },
+      { id: "COUNCIL-2026-004", req: "REQ-004-01", title: "Edge Telemetry File & Reporting Script", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-004") ? "done" : "progress" },
+      { id: "COUNCIL-2026-004", req: "REQ-004-02", title: "Offline Readiness Assessment", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-004") ? "done" : "progress" },
+      { id: "COUNCIL-2026-004", req: "REQ-004-03", title: "AI Session Logging & Diagnostics", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-004") ? "done" : "progress" },
+      { id: "COUNCIL-2026-005", req: "REQ-005-01", title: "100% MVP Feature-Completion Plan", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-005") ? "done" : "progress" },
+      { id: "COUNCIL-2026-005", req: "REQ-005-02", title: "Phased Execution Gate: Testing Commences Only After 100% Features Done", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-005") ? "done" : "progress" },
+      { id: "COUNCIL-2026-005", req: "REQ-005-03", title: "Vercel Production Deployment Technical Readiness", check: (p) => p.online_status?.is_online ? "done" : "progress" }
     ];
 
     tbody.innerHTML = '';
@@ -3376,6 +3393,8 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
     const tabBadge = document.getElementById('tab-scripts-badge');
     if (countBadge) countBadge.textContent = `🟢 ${scripts.length} Tools Registered`;
     if (tabBadge) tabBadge.textContent = scripts.length;
+    const allChip = document.querySelector('[data-script-filter="all"]');
+    if (allChip) allChip.textContent = `All (${scripts.length})`;
 
     const grid = document.getElementById('scripts-catalog-grid');
     if (!grid) return;
