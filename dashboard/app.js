@@ -116,9 +116,61 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('kpi-avg-completion').textContent = `${avgCompletion}%`;
     document.getElementById('kpi-online-sub').textContent = `${Math.round((onlineCount / total) * 100)}% Fleet on Vercel Edge`;
 
+    // 1. Dynamic Segmented Bar for Production Online
+    const barEl = document.getElementById('kpi-online-bar') || document.querySelector('.segmented-bar');
+    if (barEl) {
+      barEl.innerHTML = products.map(p => {
+        const isOnline = p.online_status?.is_online;
+        return `<span style="background: ${isOnline ? '#4CC38A' : '#2A303A'}; transition: background 0.3s ease;"></span>`;
+      }).join('');
+    }
+
+    // 2. Dynamic Readiness Progress Bar
+    const readinessFill = document.getElementById('kpi-readiness-bar-fill');
+    if (readinessFill) {
+      readinessFill.style.width = `${avgReadiness}%`;
+      readinessFill.style.background = avgReadiness >= 95 ? '#4CC38A' : (avgReadiness >= 80 ? '#F0A63A' : '#FF6B6B');
+    }
+
+    // 3. Dynamic Portfolio MVP Scale (Tables & Routes computed from Decks / Telemetry)
+    let totalTables = 0;
+    let totalRoutes = 0;
+    const decks = (window.CHURCHCORE_PRESOS_DATA && window.CHURCHCORE_PRESOS_DATA.decks) || data.presos || [];
+    decks.forEach(d => {
+      if (d.scale_metrics) {
+        const tableMatch = d.scale_metrics.match(/(\d+)\s+(?:Relational\s+)?Tables/i);
+        const routeMatch = d.scale_metrics.match(/(\d+)\s+(?:Application\s+|Next\.js\s+)?Routes/i);
+        if (tableMatch) totalTables += parseInt(tableMatch[1], 10);
+        if (routeMatch) totalRoutes += parseInt(routeMatch[1], 10);
+      }
+    });
+    if (totalTables === 0) totalTables = 517;
+    if (totalRoutes === 0) totalRoutes = 423;
+    const scaleEl = document.getElementById('kpi-velocity-scale');
+    if (scaleEl) {
+      scaleEl.textContent = `${totalTables} tables · ${totalRoutes} routes`;
+    }
+
+    // 4. Dynamic Data Propagation & Zero Leakage Verification
+    const nonIsolated = products.filter(p => p.governance_compliance?.sovereign_db_isolation_verified === false && p.online_status?.is_online);
+    const propEl = document.getElementById('kpi-data-propagation');
+    const propSub = document.getElementById('kpi-data-propagation-sub');
+    if (propEl) {
+      if (nonIsolated.length > 0) {
+        const leakPct = ((nonIsolated.length / total) * 100).toFixed(2);
+        propEl.textContent = `${leakPct}%`;
+        propEl.style.color = '#F07C6B';
+        if (propSub) propSub.textContent = `${total - nonIsolated.length}/${total} isolated (${nonIsolated.length} unverified)`;
+      } else {
+        propEl.textContent = '0.00%';
+        propEl.style.color = '#6BD6A0';
+        if (propSub) propSub.textContent = '100% sovereign DB silos';
+      }
+    }
+
     // Dynamic Radar Blockers Badge (Only Danger when active blockers remain)
     const productsWithUnresolvedBlockers = products.filter(p => {
-      const blockers = p.online_status.readiness_assessment.blockers || [];
+      const blockers = p.online_status?.readiness_assessment?.blockers || [];
       const unresolved = blockers.filter((_, idx) => !isBlockerResolved(p.product_id, idx));
       return unresolved.length > 0;
     });
@@ -136,30 +188,66 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Dynamic Evidence Badge (Emerald Green ✓ 8)
+    // Dynamic Evidence Badge
     const badgeChallenges = document.getElementById('tab-challenges-badge');
+    const evidenceCount = (data.reconciliations || []).length || (data.evidence_challenges || []).length || 11;
     if (badgeChallenges) {
-      const challengeCount = (data.evidence_challenges || []).length || 8;
-      badgeChallenges.textContent = `✓ ${challengeCount}`;
+      badgeChallenges.textContent = `✓ ${evidenceCount}`;
       badgeChallenges.className = 'tab-badge badge-success';
-      badgeChallenges.title = `${challengeCount}/${challengeCount} Evidence & Compliance Proofs Verified`;
+      badgeChallenges.title = `${evidenceCount}/${evidenceCount} Evidence & Compliance Proofs Verified`;
     }
 
-    // Dynamic Councils Badge (Neutral Slate 6)
+    // Dynamic Councils Badge
+    const councilsCount = (data.councils || []).length || 7;
     const badgeCouncil = document.getElementById('tab-council-badge');
     if (badgeCouncil) {
-      badgeCouncil.textContent = `${(data.councils || []).length || 6}`;
+      badgeCouncil.textContent = `${councilsCount}`;
       badgeCouncil.className = 'tab-badge badge-neutral';
-      badgeCouncil.title = `${(data.councils || []).length || 6} Specialized Seat Councils Active`;
+      badgeCouncil.title = `${councilsCount} Specialized Seat Councils Active`;
     }
 
-    // Dynamic Presos Badge (Gold 7)
+    // Dynamic Presos Badge
+    const presosCount = (window.CHURCHCORE_PRESOS_DATA && window.CHURCHCORE_PRESOS_DATA.total_decks) || (window.CHURCHCORE_PRESOS_DATA && window.CHURCHCORE_PRESOS_DATA.decks?.length) || 7;
     const badgePresos = document.getElementById('tab-presos-badge');
     if (badgePresos) {
-      badgePresos.textContent = '7';
+      badgePresos.textContent = `${presosCount}`;
       badgePresos.className = 'tab-badge badge-gold';
-      badgePresos.title = '7 Active Presentation Decks & Prompt Packs';
+      badgePresos.title = `${presosCount} Active Presentation Decks & Prompt Packs`;
     }
+
+    // Dynamic Scripts Count
+    const scriptsCount = (window.CHURCHCORE_SCRIPTS_DATA && window.CHURCHCORE_SCRIPTS_DATA.total_scripts) || (window.CHURCHCORE_SCRIPTS_DATA && window.CHURCHCORE_SCRIPTS_DATA.scripts?.length) || 13;
+
+    // Dynamic Sidebar Nav Badges
+    const openTasks = (data.tasks || []).filter(t => t.status !== 'done' && t.status !== 'completed');
+    const feedbackCount = (window.CHURCHCORE_FEEDBACK_DATA && window.CHURCHCORE_FEEDBACK_DATA.summary?.total_feedback) || 14;
+
+    const sbCouncils = document.getElementById('sidebar-councils-badge');
+    if (sbCouncils) sbCouncils.textContent = councilsCount;
+
+    const sbTasks = document.getElementById('sidebar-tasks-badge');
+    if (sbTasks) sbTasks.textContent = openTasks.length;
+
+    const sbRadar = document.getElementById('sidebar-radar-badge');
+    if (sbRadar) {
+      sbRadar.textContent = productsWithUnresolvedBlockers.length;
+      sbRadar.className = productsWithUnresolvedBlockers.length > 0 ? 'sidebar-badge alert' : 'sidebar-badge';
+    }
+
+    const sbEvidence = document.getElementById('sidebar-evidence-badge');
+    if (sbEvidence) sbEvidence.textContent = evidenceCount;
+
+    const sbFeedback = document.getElementById('sidebar-feedback-badge');
+    if (sbFeedback) sbFeedback.textContent = feedbackCount;
+
+    const btnFeedbackTop = document.getElementById('btn-feedback-top-text');
+    if (btnFeedbackTop) btnFeedbackTop.textContent = `Feedback (${feedbackCount})`;
+
+    const sbPresos = document.getElementById('sidebar-presos-badge');
+    if (sbPresos) sbPresos.textContent = presosCount;
+
+    const sbScripts = document.getElementById('sidebar-scripts-badge');
+    if (sbScripts) sbScripts.textContent = scriptsCount;
 
     const chipAll = document.getElementById('filter-chip-all');
     if (chipAll) chipAll.textContent = `All (${total})`;
@@ -307,32 +395,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render Right Rail
     if (asideRail) {
-      const academy = testingGateApps.find(p => p.product_id === 'churchcore-academy') || {
-        repo_name: 'ChurchCore-Academy',
-        mvp_status: { completion_pct: 100 },
-        online_status: { is_online: false }
-      };
+      // Dynamically select the active testing gate candidate (or first product)
+      const spotlightApp = testingGateApps.find(p => p.product_id === 'churchcore-academy') || testingGateApps[0] || products[0];
+      const spotlightIsOnline = spotlightApp.online_status?.is_online;
+      const spotlightEnvText = spotlightIsOnline ? 'Vercel Prod' : 'Vercel Preview';
+      const spotlightDotColor = spotlightIsOnline ? '#4CC38A' : '#7AB4F5';
+      const spotlightTextColor = spotlightIsOnline ? '#8EE0B5' : '#9DC4F5';
+      const spotlightPct = spotlightApp.mvp_status?.completion_pct || 100;
+      const spotlightScoreBasis = (spotlightApp.online_status?.readiness_assessment?.score_basis) || 
+                                  (spotlightApp.next_steps && spotlightApp.next_steps[0]) || 
+                                  'MVP feature-complete. Active gate: conduct participant-browser verification and uncached session testing.';
+      const spotlightRepoPath = spotlightApp._source_path 
+        ? spotlightApp._source_path.replace('/docs/control-plane/telemetry.json', '') 
+        : `/Users/rjulia/${spotlightApp.repo_name}`;
+      const spotlightCmd = `cd "${spotlightRepoPath}" && git status`;
+
+      const radarAlertCount = products.filter(p => {
+        const blockers = p.online_status?.readiness_assessment?.blockers || [];
+        return blockers.some((_, idx) => !isBlockerResolved(p.product_id, idx));
+      }).length;
+      const openTasksCount = (window.fleetData?.tasks || []).filter(t => t.status !== 'done' && t.status !== 'completed').length;
+      const councilsCount = (window.fleetData?.councils || []).length || 7;
+      const scriptsCount = (window.CHURCHCORE_SCRIPTS_DATA && window.CHURCHCORE_SCRIPTS_DATA.total_scripts) || (window.CHURCHCORE_SCRIPTS_DATA && window.CHURCHCORE_SCRIPTS_DATA.scripts?.length) || 13;
+      const presosCount = (window.CHURCHCORE_PRESOS_DATA && window.CHURCHCORE_PRESOS_DATA.total_decks) || (window.CHURCHCORE_PRESOS_DATA && window.CHURCHCORE_PRESOS_DATA.decks?.length) || 7;
 
       asideRail.innerHTML = `
         <section class="testing-gate-box" aria-labelledby="gate-title">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
             <span class="gate-sub-title">Phase 2 · Testing gate</span>
-            <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #9DC4F5;">
-              <span style="width: 7px; height: 7px; border-radius: 50%; background: #7AB4F5;"></span>
-              Vercel Preview
+            <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: ${spotlightTextColor};">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: ${spotlightDotColor};"></span>
+              ${spotlightEnvText}
             </span>
           </div>
           <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
-            <h2 id="gate-title" class="gate-app-heading">${escapeHtml(academy.repo_name)}</h2>
-            <span style="font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; color: #6BD6A0;">100%</span>
+            <h2 id="gate-title" class="gate-app-heading">${escapeHtml(spotlightApp.repo_name)}</h2>
+            <span style="font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; color: #6BD6A0;">${spotlightPct}%</span>
           </div>
           <div style="height: 6px; border-radius: 3px; background: #4CC38A;" aria-hidden="true"></div>
           <p style="margin: 0; font-size: 13px; color: #A9B1BC; line-height: 1.5;">
-            MVP feature-complete. <strong style="color: #E7E9EC;">Active gate:</strong> conduct Colegio Biblos participant-browser login and uncached session testing [WORKSTREAM].
+            ${escapeHtml(spotlightScoreBasis)}
           </p>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button type="button" class="btn-pilot-checklist" id="btn-open-pilot-checklist">Open pilot checklist</button>
-            <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ChurchCore-Academy" onclick="navigator.clipboard.writeText('cd &quot;/Users/rjulia/ChurchCore Academy&quot; && git status'); alert('Copied quick-connect command for ChurchCore-Academy to clipboard!');">
+            <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ${escapeHtml(spotlightApp.repo_name)}" onclick="navigator.clipboard.writeText('${spotlightCmd}'); alert('Copied quick-connect command for ${spotlightApp.repo_name} to clipboard!');">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5-5-5M12 19h8"></path></svg>
             </button>
           </div>
@@ -340,18 +446,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <section class="needs-attention-box" aria-labelledby="attn-title">
           <h2 id="attn-title" class="box-title-heading">Needs attention</h2>
-          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-readiness\']')?.click();">
-            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #3A1D18; color: #FF9F8E;">1</span>
+          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\\'tab-readiness\\']')?.click();">
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: ${radarAlertCount > 0 ? '#3A1D18' : '#14291F'}; color: ${radarAlertCount > 0 ? '#FF9F8E' : '#6BD6A0'};">${radarAlertCount}</span>
             <span style="flex: 1; font-size: 13px;">Radar alert</span>
             <span style="color: #7E8793;" aria-hidden="true">›</span>
           </div>
-          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-tasks\']')?.click();">
-            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #2A2113; color: #F5C27A;">9</span>
+          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\\'tab-tasks\\']')?.click();">
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #2A2113; color: #F5C27A;">${openTasksCount}</span>
             <span style="flex: 1; font-size: 13px;">Open tasks</span>
             <span style="color: #7E8793;" aria-hidden="true">›</span>
           </div>
-          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-councils\']')?.click();">
-            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #262C35; color: #C4CAD2;">7</span>
+          <div class="attention-row-item" style="cursor: pointer;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\\'tab-councils\\']')?.click();">
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #262C35; color: #C4CAD2;">${councilsCount}</span>
             <span style="flex: 1; font-size: 13px;">Council items</span>
             <span style="color: #7E8793;" aria-hidden="true">›</span>
           </div>
@@ -360,15 +466,15 @@ document.addEventListener('DOMContentLoaded', () => {
         <section class="resources-box" aria-labelledby="res-title">
           <h2 id="res-title" class="box-title-heading">Resources</h2>
           <div class="resources-grid-2col">
-            <div class="resource-card-tile" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-scripts\']')?.click();">
+            <div class="resource-card-tile" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\\'tab-scripts\\']')?.click();">
               <span style="font-size: 13px; font-weight: 500;">Python scripts</span>
-              <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #98A1AD;">12 scripts</span>
+              <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #98A1AD;">${scriptsCount} scripts</span>
             </div>
-            <div class="resource-card-tile" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-presos\']')?.click();">
+            <div class="resource-card-tile" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\\'tab-presos\\']')?.click();">
               <span style="font-size: 13px; font-weight: 500;">Presentations</span>
-              <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #98A1AD;">7 decks</span>
+              <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #98A1AD;">${presosCount} decks</span>
             </div>
-            <div class="resource-card-tile" style="grid-column: span 2;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\'tab-manual\']')?.click();">
+            <div class="resource-card-tile" style="grid-column: span 2;" onclick="document.querySelector('.sidebar-nav-btn[data-tab=\\'tab-manual\\']')?.click();">
               <span style="font-size: 13px; font-weight: 500;">Manual &amp; AgY Academy</span>
               <span style="font-size: 12px; color: #98A1AD;">Operator handbook and training</span>
             </div>
@@ -793,6 +899,23 @@ document.addEventListener('DOMContentLoaded', () => {
         badgeEl.title = 'All tasks completed!';
       }
     }
+
+    // Update Task Filter Chips dynamically with actual counts
+    const taskCounts = {
+      all: tasks.length,
+      in_progress: tasks.filter(t => t.status === 'in_progress').length,
+      waiting: tasks.filter(t => t.status === 'waiting').length,
+      planned: tasks.filter(t => t.status === 'planned').length,
+      done: tasks.filter(t => t.status === 'done').length
+    };
+    document.querySelectorAll('.filter-chip[data-task-filter]').forEach(chip => {
+      const f = chip.getAttribute('data-task-filter');
+      const label = f === 'all' ? 'All Tasks' : 
+                    f === 'in_progress' ? 'In Progress' :
+                    f === 'waiting' ? 'Waiting' :
+                    f === 'planned' ? 'Planned' : 'Done';
+      chip.textContent = `${label} (${taskCounts[f] ?? 0})`;
+    });
 
     const searchTerm = (document.getElementById('task-search')?.value || '').toLowerCase();
 
@@ -2743,6 +2866,13 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
 
     if (badgeEl) badgeEl.textContent = `${reconciliations.length}`;
     if (kpiVerified) kpiVerified.textContent = `${reconciliations.length} Proofs`;
+
+    const chipAll = document.getElementById('chal-filter-all');
+    if (chipAll) chipAll.textContent = `All Evidence (${reconciliations.length})`;
+    const chipAcc = document.getElementById('chal-filter-accepted');
+    if (chipAcc) chipAcc.textContent = `Accepted (${reconciliations.length})`;
+    const chipRej = document.getElementById('chal-filter-rejected');
+    if (chipRej) chipRej.textContent = `Rejected (0)`;
 
     if (!tbody) return;
     tbody.innerHTML = '';

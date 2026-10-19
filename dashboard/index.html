@@ -160,7 +160,7 @@
 
           <button id="btn-open-feedback-top" type="button" class="btn-overview-secondary" title="Open Fleet Demo Feedback &amp; Error-Triage Workspace">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            Feedback (14)
+            <span id="btn-feedback-top-text">Feedback (14)</span>
           </button>
 
           <button id="btn-sync-telemetry" type="button" class="btn-overview-secondary" onclick="triggerTelemetrySync()" title="Ingest &amp; Digest Incoming Telemetry from Fleet Repositories" style="border-color: rgba(99, 102, 241, 0.4); color: #818CF8;">
@@ -180,31 +180,31 @@
         <div class="overview-kpi-card">
           <span class="kpi-title-text">Sovereign fleet</span>
           <span class="kpi-big-number" id="kpi-total-repos">6</span>
-          <span style="font-size: 12px; color: #98A1AD;">Autonomous applications</span>
+          <span style="font-size: 12px; color: #98A1AD;" id="kpi-total-repos-sub">Autonomous applications</span>
         </div>
         <div class="overview-kpi-card">
           <span class="kpi-title-text">Production online</span>
-          <span class="kpi-big-number" id="kpi-online-count">4<span style="color: #7E8793">/6</span></span>
-          <div class="segmented-bar" aria-hidden="true">
-            <span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #2A303A;"></span><span style="background: #2A303A;"></span>
+          <span class="kpi-big-number" id="kpi-online-count">6<span style="color: #7E8793">/6</span></span>
+          <div class="segmented-bar" id="kpi-online-bar" aria-hidden="true">
+            <span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span><span style="background: #4CC38A;"></span>
           </div>
-          <span style="font-size: 12px; color: #98A1AD;" id="kpi-online-sub">67% of fleet on Vercel Edge</span>
+          <span style="font-size: 12px; color: #98A1AD;" id="kpi-online-sub">100% Fleet on Vercel Edge</span>
         </div>
         <div class="overview-kpi-card">
           <span class="kpi-title-text">Fleet readiness</span>
-          <span class="kpi-big-number" id="kpi-avg-readiness">92%</span>
-          <div style="height: 4px; border-radius: 2px; background: #2A303A; overflow: hidden;" aria-hidden="true"><div style="width: 92%; height: 100%; background: #F0A63A;"></div></div>
+          <span class="kpi-big-number" id="kpi-avg-readiness">99%</span>
+          <div style="height: 4px; border-radius: 2px; background: #2A303A; overflow: hidden;" aria-hidden="true"><div id="kpi-readiness-bar-fill" style="width: 99%; height: 100%; background: #4CC38A; transition: width 0.3s ease;"></div></div>
           <span style="font-size: 12px; color: #98A1AD;">Target: 100% launch gate</span>
         </div>
         <div class="overview-kpi-card">
           <span class="kpi-title-text">Portfolio MVP velocity</span>
-          <span class="kpi-big-number" id="kpi-avg-completion">90%</span>
-          <span style="font-size: 12px; color: #98A1AD;">517 tables · 423 routes</span>
+          <span class="kpi-big-number" id="kpi-avg-completion">97%</span>
+          <span style="font-size: 12px; color: #98A1AD;" id="kpi-velocity-scale">517 tables · 423 routes</span>
         </div>
         <div class="overview-kpi-card">
           <span class="kpi-title-text">Data propagation</span>
-          <span class="kpi-big-number" style="color: #6BD6A0;">0.00%</span>
-          <span style="font-size: 12px; color: #98A1AD;">100% sovereign DB silos</span>
+          <span class="kpi-big-number" id="kpi-data-propagation" style="color: #6BD6A0;">0.00%</span>
+          <span style="font-size: 12px; color: #98A1AD;" id="kpi-data-propagation-sub">100% sovereign DB silos</span>
         </div>
       </section>
 
