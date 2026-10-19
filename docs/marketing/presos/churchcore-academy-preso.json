@@ -18,7 +18,7 @@
   "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
   "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
   "version": "0.10.0",
-  "last_synced": "2026-10-19 20:32:55 UTC",
+  "last_synced": "2026-10-19 20:44:51 UTC",
   "slides": [
     {
       "slide_num": 1,
@@ -28,7 +28,7 @@
       "key_takeaways": [
         "Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar",
         "Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool",
-        "Production Gate: \ud83d\udfe1 Enterprise Staging Pilot"
+        "Production Gate: \ud83d\udfe2 Active in Production"
       ],
       "visual_asset": "screenshots/implementation_plans_directionality.png",
       "speaker_notes": "Introduce ChurchCore Academy. Emphasize that unlike legacy point solutions that were patched together over 15 years, ChurchCore is engineered as a modern, sovereign application on Next.js with complete Row-Level Security."
@@ -67,7 +67,7 @@
       "key_takeaways": [
         "Latest Feature Delivered: Record Colegio Biblos local pilot preparation (#248) (bed47c2)",
         "Ecosystem Hardening: Approve Colegio Biblos local pilot charter (#247) (f44c6b7)",
-        "Reliability Proof: Automated CI/CD validation and zero-downtime database migrations."
+        "Reliability Proof: [2026-10-19] Authenticated Vercel CLI inspection verified project churchcore/church-core-academy and Ready deployment dpl_CGgewdcXBDt1Z6RHcdg8eqM5eJiv with the canonical domain aliases."
       ],
       "visual_asset": "screenshots/implementation_plans_directionality.png",
       "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."

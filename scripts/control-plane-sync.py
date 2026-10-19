@@ -224,6 +224,9 @@ def generate_dashboard(telemetry_list):
         v_status = t["online_status"].get("vercel_status", "pending")
         s_status = t["online_status"].get("supabase_status", "local_only")
         readiness = t["online_status"]["readiness_assessment"]
+        readiness_label = readiness.get("score_label", "Readiness")
+        phase_2 = t["online_status"].get("phase_2_human_validation")
+        production_authorization = t["online_status"].get("production_authorization")
         mvp = t["mvp_status"]
         ai = t["ai_session_telemetry"]
         diag = t["deployment_diagnostics"]
@@ -243,11 +246,16 @@ def generate_dashboard(telemetry_list):
         readiness_basis = readiness.get("score_basis", "No score basis supplied")
         md.append(f"| **Vercel Deployment** | `{v_status.upper()}` | {vercel_detail} |")
         md.append(f"| **Supabase Database** | `{s_status.upper()}` | {database_detail} |")
-        md.append(f"| **Readiness Score** | `{readiness['readiness_score_pct']}%` | {readiness_basis} |\n")
+        md.append(f"| **{readiness_label}** | `{readiness['readiness_score_pct']}%` | {readiness_basis} |")
+        if phase_2:
+            md.append(f"| **Phase 2 Human Validation** | `{phase_2.get('status', 'unknown').upper()}` | {phase_2.get('entry_gate', 'No entry gate supplied')} |")
+        if production_authorization:
+            md.append(f"| **Phase 3 Production Authorization** | `{production_authorization.get('status', 'unknown').upper()}` | {production_authorization.get('note', 'No authorization note supplied')} |")
+        md.append("")
 
         # Readiness Assessment (if offline or score < 100)
         if not online or readiness["readiness_score_pct"] < 100:
-            md.append("##### ⚠️ Production Readiness Assessment")
+            md.append(f"##### ⚠️ {readiness_label} Assessment")
             if readiness.get("blockers"):
                 md.append("**Active Blockers:**")
                 for b in readiness["blockers"]:
@@ -255,7 +263,7 @@ def generate_dashboard(telemetry_list):
             else:
                 md.append("- 🟢 No critical architecture blockers.")
                 
-            md.append("\n**Immediate Next Required Actions for Online Launch:**")
+            md.append("\n**Immediate Next Required Actions:**")
             for a in readiness.get("next_required_actions", []):
                 md.append(f"- 🛠️ {a}")
             md.append("")

@@ -1521,12 +1521,13 @@ document.addEventListener('DOMContentLoaded', () => {
     products.forEach(p => {
       const readiness = p.online_status.readiness_assessment;
       const score = readiness.readiness_score_pct;
+      const scoreLabel = readiness.score_label || 'Readiness';
       const blockers = readiness.blockers || [];
       const actions = readiness.next_required_actions || [];
 
       // Check how many blockers remain unresolved
       const unresolvedBlockers = blockers.filter((_, idx) => !isBlockerResolved(p.product_id, idx));
-      const effectiveScore = unresolvedBlockers.length === 0 ? Math.max(score, 98) : score;
+      const effectiveScore = score;
 
       const card = document.createElement('div');
       card.className = `readiness-item-card ${unresolvedBlockers.length === 0 ? 'ready' : 'action-needed'}`;
@@ -1535,7 +1536,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3>${escapeHtml(getAppDisplayName(p))}</h3>
           <div style="font-size: 12px; color: var(--text-dim);">${p.product_id} • Phase: ${p.mvp_status.phase.toUpperCase()}</div>
           <span class="readiness-score-badge" style="background: ${unresolvedBlockers.length === 0 ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)'}; color: ${unresolvedBlockers.length === 0 ? '#10B981' : '#F59E0B'}">
-            Score: ${effectiveScore}% Readiness
+            Score: ${effectiveScore}% ${escapeHtml(scoreLabel)}
           </span>
           <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted);">
             Vercel: ${p.online_status.vercel_status.toUpperCase()} • Supabase: ${p.online_status.supabase_status.toUpperCase()}
@@ -1571,7 +1572,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <div class="readiness-actions-col">
-          <h4>Required Actions to Achieve 100% Launch</h4>
+          <h4>Next Required Actions</h4>
           <ul class="readiness-list">
             ${actions.map(a => `<li>🛠️ ${escapeHtml(a)}</li>`).join('')}
           </ul>
@@ -1799,7 +1800,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="margin-bottom: 10px;">
         <h4 style="font-size: 13px; color: var(--emerald-500); text-transform: uppercase; margin-bottom: 8px;">Readiness Evaluation</h4>
         <div style="font-size: 13px;">
-          <div><strong>Score:</strong> ${prod.online_status.readiness_assessment.readiness_score_pct}% Launch Readiness</div>
+          <div><strong>${escapeHtml(prod.online_status.readiness_assessment.score_label || 'Readiness')}:</strong> ${prod.online_status.readiness_assessment.readiness_score_pct}%</div>
           ${prod.online_status.readiness_assessment.blockers.length ? `
             <div style="margin-top: 6px; color: var(--rose-500);">
               <strong>Blockers:</strong>
