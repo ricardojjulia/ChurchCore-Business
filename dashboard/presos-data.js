@@ -1,5 +1,5 @@
 window.CHURCHCORE_PRESOS_DATA = {
-  "generated_at": "2026-10-19T15:50:59.069861+00:00",
+  "generated_at": "2026-10-19T19:17:28.786388+00:00",
   "total_decks": 7,
   "decks": [
     {
@@ -22,7 +22,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-19 15:50:59 UTC",
+      "last_synced": "2026-10-19 19:17:28 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -130,7 +130,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-19 15:50:59 UTC",
+      "last_synced": "2026-10-19 19:17:28 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -238,7 +238,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-19 15:50:59 UTC",
+      "last_synced": "2026-10-19 19:17:28 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -346,7 +346,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-19 15:50:59 UTC",
+      "last_synced": "2026-10-19 19:17:28 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -454,7 +454,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.1.0",
-      "last_synced": "2026-10-19 15:50:59 UTC",
+      "last_synced": "2026-10-19 19:17:28 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -562,7 +562,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-19 15:50:59 UTC",
+      "last_synced": "2026-10-19 19:17:28 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -670,7 +670,7 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-19 15:50:59 UTC",
+      "last_synced": "2026-10-19 19:17:28 UTC",
       "slides": [
         {
           "slide_num": 1,

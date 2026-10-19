@@ -15,6 +15,39 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, '&#039;');
   }
 
+  function getAppDisplayName(p) {
+    if (!p) return '';
+    if (typeof p === 'string') {
+      return (p === 'cp-wt' || p === 'wt' || p === 'churchcore-chms') ? 'ChurchCore ChMS' : p;
+    }
+    if (p.product_id === 'churchcore-chms' || p.repo_name === 'cp-wt' || p.repo_name === 'wt') {
+      return 'ChurchCore ChMS';
+    }
+    return p.repo_name || p.name || p.product_id;
+  }
+
+  function normalizeFleetData(data) {
+    if (!data) return;
+    if (Array.isArray(data.products)) {
+      data.products.forEach(p => {
+        if (p.product_id === 'churchcore-chms' || p.repo_name === 'cp-wt' || p.repo_name === 'wt') {
+          p.repo_name = 'ChurchCore ChMS';
+        }
+      });
+    }
+    if (Array.isArray(data.plans)) {
+      data.plans.forEach(p => {
+        if (p.product_id === 'churchcore-chms' || p.repo_name === 'cp-wt' || p.repo_name === 'wt') {
+          p.repo_name = 'ChurchCore ChMS';
+        }
+      });
+    }
+  }
+
+  if (window.CHURCHCORE_FLEET_DATA) {
+    normalizeFleetData(window.CHURCHCORE_FLEET_DATA);
+  }
+
   // 1. Clock
   function updateClock() {
     const now = new Date();
@@ -41,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (fleetData) {
+      normalizeFleetData(fleetData);
       renderDashboard(fleetData);
     } else {
       console.error('No fleet data available.');
@@ -287,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (aPct < 100 && bPct < 100) return aPct - bPct;
       if (aPct < 100) return -1;
       if (bPct < 100) return 1;
-      return a.repo_name.localeCompare(b.repo_name);
+      return getAppDisplayName(a).localeCompare(getAppDisplayName(b));
     });
 
     const testingGateApps = products.filter(p => (p.mvp_status?.completion_pct || 0) >= 100);
@@ -302,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             (activeQueueFilter === 'online' && p.online_status?.is_online) ||
                             (activeQueueFilter === 'staging' && !p.online_status?.is_online);
         const matchSearch = !searchTerm ||
-                            p.repo_name.toLowerCase().includes(searchTerm) ||
+                            getAppDisplayName(p).toLowerCase().includes(searchTerm) ||
                             p.product_id.toLowerCase().includes(searchTerm);
         return matchFilter && matchSearch;
       });
@@ -348,9 +382,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const rem = Math.max(0, 100 - pct);
             const isFirst = (idx === 0) && (activeQueueFilter === 'all') && !searchTerm && !is100;
             const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || (is100 ? 'Active Phase 2 human pilot & field validation in progress' : 'Complete remaining feature backlog');
-            const appDisplayName = (p.repo_name === 'cp-wt' || p.product_id === 'churchcore-chms') ? 'ChurchCore ChMS' : p.repo_name;
+            const appDisplayName = getAppDisplayName(p);
             const isProd = p.online_status?.is_online;
-            const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `/Users/rjulia/${p.repo_name}`;
+            const repoPath = p._source_path && !p._source_path.startsWith('http') 
+              ? p._source_path.replace('/docs/control-plane/telemetry.json', '') 
+              : (p.product_id === 'churchcore-chms' ? '/Users/rjulia/ChurchCore' : `/Users/rjulia/${p.repo_name}`);
             const cmd = `cd "${repoPath}" && git status`;
 
             let badgeHtml = '';
@@ -385,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                   </div>
                   <span class="env-pill-tag" style="color: ${isProd ? '#8EE0B5' : '#9DC4F5'};"><span class="env-dot" style="background: ${isProd ? '#4CC38A' : '#7AB4F5'};"></span>${isProd ? 'Vercel Prod' : 'Vercel Preview'}</span>
-                  <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ${escapeHtml(p.repo_name)}" onclick="navigator.clipboard.writeText('${cmd}'); alert('Copied quick-connect command for ${p.repo_name} to clipboard!');">
+                  <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ${escapeHtml(appDisplayName)}" onclick="navigator.clipboard.writeText('${cmd}'); alert('Copied quick-connect command for ${escapeHtml(appDisplayName)} to clipboard!');">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5-5-5M12 19h8"></path></svg>
                   </button>
                 </div>
@@ -423,9 +459,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const spotlightScoreBasis = (spotlightApp.online_status?.readiness_assessment?.score_basis) || 
                                   (spotlightApp.next_steps && spotlightApp.next_steps[0]) || 
                                   'MVP feature-complete. Active gate: conduct participant-browser verification and uncached session testing.';
-      const spotlightRepoPath = spotlightApp._source_path 
+      const spotlightDisplayName = getAppDisplayName(spotlightApp);
+      const spotlightRepoPath = spotlightApp._source_path && !spotlightApp._source_path.startsWith('http')
         ? spotlightApp._source_path.replace('/docs/control-plane/telemetry.json', '') 
-        : `/Users/rjulia/${spotlightApp.repo_name}`;
+        : (spotlightApp.product_id === 'churchcore-chms' ? '/Users/rjulia/ChurchCore' : `/Users/rjulia/${spotlightApp.repo_name}`);
       const spotlightCmd = `cd "${spotlightRepoPath}" && git status`;
 
       const radarAlertCount = products.filter(p => {
@@ -447,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </span>
           </div>
           <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
-            <h2 id="gate-title" class="gate-app-heading">${escapeHtml(spotlightApp.repo_name)}</h2>
+            <h2 id="gate-title" class="gate-app-heading">${escapeHtml(spotlightDisplayName)}</h2>
             <span style="font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; color: #6BD6A0;">${spotlightPct}%</span>
           </div>
           <div style="height: 6px; border-radius: 3px; background: #4CC38A;" aria-hidden="true"></div>
@@ -456,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </p>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button type="button" class="btn-pilot-checklist" id="btn-open-pilot-checklist">Open pilot checklist</button>
-            <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ${escapeHtml(spotlightApp.repo_name)}" onclick="navigator.clipboard.writeText('${spotlightCmd}'); alert('Copied quick-connect command for ${spotlightApp.repo_name} to clipboard!');">
+            <button type="button" class="terminal-copy-icon-btn" title="Copy cd command for ${escapeHtml(spotlightDisplayName)}" onclick="navigator.clipboard.writeText('${spotlightCmd}'); alert('Copied quick-connect command for ${escapeHtml(spotlightDisplayName)} to clipboard!');">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5-5-5M12 19h8"></path></svg>
             </button>
           </div>
@@ -609,14 +646,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const isComplete = pct >= 100;
             const isRank1 = (idx === 0) && !isComplete;
             const vUrl = p.online_status?.vercel_url || p.online_status?.custom_domain || 'N/A';
-            const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
+            const appName = getAppDisplayName(p);
+            const repoPath = p._source_path && !p._source_path.startsWith('http') 
+              ? p._source_path.replace('/docs/control-plane/telemetry.json', '') 
+              : (p.product_id === 'churchcore-chms' ? '../ChurchCore' : `../${p.repo_name}`);
 
             return `
               <tr style="${isComplete ? 'background: rgba(16, 185, 129, 0.05);' : (isRank1 ? 'background: rgba(239, 68, 68, 0.08);' : '')}">
                 <td style="font-weight: 800; color: ${isComplete ? '#10B981' : (isRank1 ? '#EF4444' : '#FBBF24')};">
                   ${isComplete ? '🟢 Done' : `#${idx + 1}`}
                 </td>
-                <td><strong>${p.repo_name}</strong></td>
+                <td><strong>${escapeHtml(appName)}</strong></td>
                 <td><strong style="color: ${isComplete ? '#10B981' : '#38BDF8'};">${pct}%</strong></td>
                 <td><span style="color: ${isComplete ? '#10B981' : (rem >= 15 ? '#F87171' : '#FBBF24')}; font-weight: 700;">${isComplete ? 'Testing Gate' : `${rem}% left`}</span></td>
                 <td><a href="${vUrl}" target="_blank" style="color: #60A5FA;">${vUrl.replace('https://', '')}</a></td>
@@ -626,7 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   </span>
                 </td>
                 <td>
-                  <button class="btn btn-secondary" style="font-size: 11px; padding: 4px 8px;" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command to clipboard!');">
+                  <button class="btn btn-secondary" style="font-size: 11px; padding: 4px 8px;" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command for ${escapeHtml(appName)} to clipboard!');">
                     📋 Copy cd
                   </button>
                 </td>
@@ -644,7 +684,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const isComplete = pct >= 100;
           const rem = Math.max(0, 100 - pct);
           const tasks = productPrimaryTasks[p.product_id] || ['Complete remaining sprint backlog'];
-          const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `../${p.repo_name}`;
+          const appName = getAppDisplayName(p);
+          const repoPath = p._source_path && !p._source_path.startsWith('http') 
+            ? p._source_path.replace('/docs/control-plane/telemetry.json', '') 
+            : (p.product_id === 'churchcore-chms' ? '../ChurchCore' : `../${p.repo_name}`);
           const isRank1 = idx === 0 && !isComplete;
 
           return `
@@ -654,10 +697,10 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span style="font-weight: 800; font-size: 12px; padding: 2px 8px; border-radius: 4px; background: ${isComplete ? '#10B981' : (isRank1 ? '#EF4444' : 'rgba(255,255,255,0.1)')}; color: #FFF;">
                     ${isComplete ? '✓ Phase 2' : `#${idx + 1} Priority`}
                   </span>
-                  <h5 style="color: #FFF; font-size: 15px; margin: 0; font-weight: 700;">${p.repo_name}</h5>
+                  <h5 style="color: #FFF; font-size: 15px; margin: 0; font-weight: 700;">${escapeHtml(appName)}</h5>
                   <span style="font-size: 11px; color: ${isComplete ? '#34D399' : 'var(--text-dim)'}; font-weight: 600;">(${pct}% Complete • ${isComplete ? 'Testing Gate' : `${rem}% to 100%`})</span>
                 </div>
-                <button class="btn btn-secondary" style="font-size: 10px; padding: 3px 8px;" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command for ${p.repo_name} to clipboard!');">
+                <button class="btn btn-secondary" style="font-size: 10px; padding: 3px 8px;" onclick="navigator.clipboard.writeText('cd &quot;${repoPath}&quot; && git status'); alert('Copied quick-connect command for ${escapeHtml(appName)} to clipboard!');">
                   📋 Copy Terminal cd
                 </button>
               </div>
@@ -694,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
                           (activeFilter === 'online' && p.online_status.is_online) ||
                           (activeFilter === 'staging' && !p.online_status.is_online);
 
-      const matchSearch = p.repo_name.toLowerCase().includes(searchTerm) ||
+      const matchSearch = getAppDisplayName(p).toLowerCase().includes(searchTerm) ||
                           p.product_id.toLowerCase().includes(searchTerm) ||
                           p.version.toLowerCase().includes(searchTerm);
 
@@ -732,7 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div>
           <div class="card-header">
             <div class="card-title-group">
-              <h3>${escapeHtml(p.repo_name)}</h3>
+              <h3>${escapeHtml(getAppDisplayName(p))}</h3>
               <div class="card-slug">${escapeHtml(p.product_id)} • v${escapeHtml(p.version)}</div>
             </div>
             <span class="status-badge ${statusClass}">
@@ -1178,7 +1221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = `readiness-item-card ${unresolvedBlockers.length === 0 ? 'ready' : 'action-needed'}`;
       card.innerHTML = `
         <div class="readiness-summary-col">
-          <h3>${p.repo_name}</h3>
+          <h3>${escapeHtml(getAppDisplayName(p))}</h3>
           <div style="font-size: 12px; color: var(--text-dim);">${p.product_id} • Phase: ${p.mvp_status.phase.toUpperCase()}</div>
           <span class="readiness-score-badge" style="background: ${unresolvedBlockers.length === 0 ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)'}; color: ${unresolvedBlockers.length === 0 ? '#10B981' : '#F59E0B'}">
             Score: ${effectiveScore}% Readiness
@@ -1329,7 +1372,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.innerHTML = `
         <div class="ai-stream-header">
           <div>
-            <span class="ai-stream-title">${p.repo_name}</span>
+            <span class="ai-stream-title">${escapeHtml(getAppDisplayName(p))}</span>
             <span style="font-size: 12px; color: var(--text-dim); margin-left: 8px;">Operator: ${ai.session_operator}</span>
           </div>
           <div>
@@ -1414,7 +1457,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = document.getElementById('modal-title');
     const body = document.getElementById('modal-body');
 
-    title.textContent = `${prod.repo_name} (${prod.product_id}) — v${prod.version}`;
+    title.textContent = `${getAppDisplayName(prod)} (${prod.product_id}) — v${prod.version}`;
 
     body.innerHTML = `
       <div style="margin-bottom: 20px;">
