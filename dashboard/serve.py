@@ -68,8 +68,129 @@ class TelemetryWatcherThread(threading.Thread):
                     self.last_stamps = curr
                     sync_control_plane(verbose=False)
                     print(f"[⚡ TELEMETRY WATCHER] Successfully digested incoming telemetry into fleet-data.json.\n")
-            except Exception as e:
+            except Exception:
                 pass
+
+
+PACKAGE_PLAN_REGISTRY = {
+    'churchcore-chms': {
+        'name': 'ChurchCore ChMS',
+        'repo_name': 'ChurchCore',
+        'repo_path': '/Users/rjulia/ChurchCore',
+        'plans': [
+            {'name': 'DEVELOPMENT_PLAN.md', 'title': 'Master Development Plan (v3.5.0)', 'path': '/Users/rjulia/ChurchCore/DEVELOPMENT_PLAN.md'},
+            {'name': 'docs/mvp-100-plan.md', 'title': 'MVP 100 Launch Plan', 'path': '/Users/rjulia/ChurchCore/docs/mvp-100-plan.md'},
+            {'name': 'docs/churchgoer-pastor-execution-plan.md', 'title': 'Churchgoer & Pastor Execution Plan', 'path': '/Users/rjulia/ChurchCore/docs/churchgoer-pastor-execution-plan.md'},
+            {'name': 'docs/security-mitigation-plan.md', 'title': 'Security Mitigation & RLS Plan', 'path': '/Users/rjulia/ChurchCore/docs/security-mitigation-plan.md'}
+        ]
+    },
+    'churchcore-lms': {
+        'name': 'ChurchCore LMS',
+        'repo_name': 'ChurchCore-LMS',
+        'repo_path': '/Users/rjulia/ChurchCore LMS',
+        'plans': [
+            {'name': 'docs/implementation-plan-2026-q4.md', 'title': 'Q4 2026 Implementation Plan', 'path': '/Users/rjulia/ChurchCore LMS/docs/implementation-plan-2026-q4.md'},
+            {'name': 'docs/plans/2026-10-12-trinity-feature-expansion-plan.md', 'title': 'Trinity Feature Expansion Plan', 'path': '/Users/rjulia/ChurchCore LMS/docs/plans/2026-10-12-trinity-feature-expansion-plan.md'},
+            {'name': 'docs/mvp-100-plan.md', 'title': 'MVP 100 Implementation Plan', 'path': '/Users/rjulia/ChurchCore LMS/docs/mvp-100-plan.md'}
+        ]
+    },
+    'churchcore-academy': {
+        'name': 'ChurchCore Academy',
+        'repo_name': 'ChurchCore Academy',
+        'repo_path': '/Users/rjulia/ChurchCore Academy',
+        'plans': [
+            {'name': 'docs/competitive-execution-plan.md', 'title': 'Competitive Execution Plan', 'path': '/Users/rjulia/ChurchCore Academy/docs/competitive-execution-plan.md'},
+            {'name': 'docs/plans/2026-10-16-pilot-to-production-completion-plan.md', 'title': 'Pilot-to-Production Completion Plan', 'path': '/Users/rjulia/ChurchCore Academy/docs/plans/2026-10-16-pilot-to-production-completion-plan.md'},
+            {'name': 'docs/product/faith-based-academy-master-plan.md', 'title': 'Faith-Based Academy Master Plan', 'path': '/Users/rjulia/ChurchCore Academy/docs/product/faith-based-academy-master-plan.md'},
+            {'name': 'docs/mvp-100-plan.md', 'title': 'MVP 100 Readiness Plan', 'path': '/Users/rjulia/ChurchCore Academy/docs/mvp-100-plan.md'}
+        ]
+    },
+    'churchcore-care': {
+        'name': 'ChurchCore Care',
+        'repo_name': 'ChurchCore Care',
+        'repo_path': '/Users/rjulia/ChurchCore Care',
+        'plans': [
+            {'name': 'docs/PRODUCT-PLANS-OVERVIEW.md', 'title': 'Product Plans Overview & Roadmap', 'path': '/Users/rjulia/ChurchCore Care/docs/PRODUCT-PLANS-OVERVIEW.md'},
+            {'name': 'PLANS/PLAN-TRACKER.md', 'title': 'Sprint & Milestone Plan Tracker', 'path': '/Users/rjulia/ChurchCore Care/PLANS/PLAN-TRACKER.md'},
+            {'name': 'docs/STACK-MIGRATION-PLAN.md', 'title': 'Stack Migration Plan', 'path': '/Users/rjulia/ChurchCore Care/docs/STACK-MIGRATION-PLAN.md'},
+            {'name': 'docs/mvp-100-plan.md', 'title': 'MVP 100 Plan', 'path': '/Users/rjulia/ChurchCore Care/docs/mvp-100-plan.md'}
+        ]
+    },
+    'churchcore-orthos': {
+        'name': 'ChurchCore Orthos',
+        'repo_name': 'ChurchCore Orthos',
+        'repo_path': '/Users/rjulia/ChurchCore Orthos',
+        'plans': [
+            {'name': 'docs/mvp-100-plan.md', 'title': 'MVP 100 Execution Plan', 'path': '/Users/rjulia/ChurchCore Orthos/docs/mvp-100-plan.md'},
+            {'name': 'docs/roadmap.md', 'title': 'Multi-Program Product Roadmap', 'path': '/Users/rjulia/ChurchCore Orthos/docs/roadmap.md'},
+            {'name': 'docs/specs/orthos-working-product-specification.md', 'title': 'Working Product Specification', 'path': '/Users/rjulia/ChurchCore Orthos/docs/specs/orthos-working-product-specification.md'},
+            {'name': 'docs/reviews/omni-council-master-audit.md', 'title': 'Omni-Council Master Audit Plan', 'path': '/Users/rjulia/ChurchCore Orthos/docs/reviews/omni-council-master-audit.md'}
+        ]
+    },
+    'faithfull-scholars': {
+        'name': 'FaithFull Scholars',
+        'repo_name': 'FaithFullScholars',
+        'repo_path': '/Users/rjulia/FaithFullScholars',
+        'plans': [
+            {'name': 'docs/FAITHFULL_SCHOLARS_FULL_PLAN.md', 'title': 'Full Master Plan & Academic Architecture', 'path': '/Users/rjulia/FaithFullScholars/docs/FAITHFULL_SCHOLARS_FULL_PLAN.md'},
+            {'name': 'docs/product/master-plan.md', 'title': 'Product Master Plan', 'path': '/Users/rjulia/FaithFullScholars/docs/product/master-plan.md'},
+            {'name': 'docs/mvp-100-plan.md', 'title': 'MVP 100 Execution Plan', 'path': '/Users/rjulia/FaithFullScholars/docs/mvp-100-plan.md'}
+        ]
+    }
+}
+
+def get_package_plan_documents(product_id, doc_index=0):
+    pkg = PACKAGE_PLAN_REGISTRY.get(product_id, PACKAGE_PLAN_REGISTRY['churchcore-chms'])
+    plans_list = []
+    for item in pkg['plans']:
+        path = item['path']
+        if not os.path.exists(path):
+            alt_path = path.replace('ChurchCore LMS', 'ChurchCore-LMS').replace('ChurchCore Care', 'ChurchCoreCare')
+            if os.path.exists(alt_path):
+                path = alt_path
+        exists = os.path.exists(path)
+        size = os.path.getsize(path) if exists else 0
+        plans_list.append({
+            'name': item['name'],
+            'title': item['title'],
+            'path': path,
+            'size': size,
+            'exists': exists
+        })
+    
+    if not plans_list:
+        return {'success': False, 'error': f'No plans registered for {product_id}'}
+    
+    if doc_index < 0 or doc_index >= len(plans_list):
+        doc_index = 0
+        
+    target_plan = plans_list[doc_index]
+    content = ""
+    if target_plan['exists']:
+        try:
+            with open(target_plan['path'], 'r', encoding='utf-8', errors='replace') as f:
+                content = f.read()
+        except Exception as e:
+            content = f"# Error Loading Plan Document\n\nCould not read file at `{target_plan['path']}`: {str(e)}"
+    else:
+        content = f"# Document Not Found\n\nThe plan file `{target_plan['name']}` was not found on disk at `{target_plan['path']}`."
+        
+    return {
+        'success': True,
+        'product_id': product_id,
+        'product_name': pkg['name'],
+        'repo_name': pkg['repo_name'],
+        'repo_path': pkg['repo_path'],
+        'doc_index': doc_index,
+        'plans': plans_list,
+        'active_document': {
+            'name': target_plan['name'],
+            'title': target_plan['title'],
+            'path': target_plan['path'],
+            'size': target_plan['size'],
+            'content': content
+        }
+    }
 
 
 DOSSIER_HTML_TEMPLATE = """<!DOCTYPE html>
@@ -390,6 +511,22 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 except Exception as e:
                     status = {'status': 'error', 'error': str(e)}
             resp_bytes = json.dumps(status).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Content-Length', str(len(resp_bytes)))
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(resp_bytes)
+            return
+
+        if clean_path == '/api/plan-document':
+            product_id = query_params.get('product_id', ['churchcore-chms'])[0]
+            try:
+                doc_index = int(query_params.get('doc_index', [0])[0])
+            except (ValueError, TypeError):
+                doc_index = 0
+            result = get_package_plan_documents(product_id, doc_index)
+            resp_bytes = json.dumps(result).encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.send_header('Content-Length', str(len(resp_bytes)))

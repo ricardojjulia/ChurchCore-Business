@@ -1239,6 +1239,221 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Setup Plan Document Viewer Modal
+    const btnOpenPlanViewer = document.getElementById('btn-open-plan-viewer');
+    const btnQuickReadPlan = document.getElementById('btn-quick-read-plan');
+    const planViewerModal = document.getElementById('plan-viewer-modal');
+    const planViewerClose = document.getElementById('plan-viewer-close');
+    const pkgSelect = document.getElementById('plan-viewer-pkg-select');
+    const docSelect = document.getElementById('plan-viewer-doc-select');
+    const titleEl = document.getElementById('plan-viewer-title');
+    const metaEl = document.getElementById('plan-viewer-meta');
+    const docPathEl = document.getElementById('plan-viewer-doc-path');
+    const docSizeEl = document.getElementById('plan-viewer-doc-size');
+    const renderedBody = document.getElementById('plan-viewer-rendered-body');
+    const rawBody = document.getElementById('plan-viewer-raw-body');
+    const rawWrapper = document.getElementById('plan-viewer-raw-wrapper');
+    const tocList = document.getElementById('plan-viewer-toc-list');
+    const tocCountEl = document.getElementById('plan-viewer-heading-count');
+    const tocFilterInput = document.getElementById('plan-viewer-toc-filter');
+    const searchMatchCountEl = document.getElementById('plan-viewer-search-match-count');
+    const inDocSearchInput = document.getElementById('plan-viewer-in-doc-search');
+    const btnRendered = document.getElementById('btn-plan-view-rendered');
+    const btnRaw = document.getElementById('btn-plan-view-raw');
+    const btnCopyMd = document.getElementById('btn-plan-copy-md');
+    const btnDispatchPrompt = document.getElementById('btn-plan-dispatch-prompt');
+
+    let currentActiveDoc = null;
+    let currentActiveData = null;
+
+    async function loadPlanDocument(productId, docIndex = 0) {
+      if (!renderedBody || !rawBody) return;
+      renderedBody.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px;">
+          <div style="width: 40px; height: 40px; border: 3px solid rgba(245, 158, 11, 0.2); border-top-color: #F59E0B; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px;"></div>
+          <div style="font-weight: 700; color: #FFF; font-size: 15px;">Loading Edge Plan Document...</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Reading markdown source directly from local repository.</div>
+        </div>
+      `;
+      rawBody.value = 'Loading markdown source...';
+      if (tocList) tocList.innerHTML = '<div style="font-size: 11px; color: #64748B; padding: 10px;">Loading outline...</div>';
+
+      try {
+        const resp = await fetch(`/api/plan-document?product_id=${encodeURIComponent(productId)}&doc_index=${docIndex}`);
+        const res = await resp.json();
+        if (!res.success) {
+          renderedBody.innerHTML = `<div style="color: #F43F5E; padding: 20px;">Error loading plan: ${escapeHtml(res.error || 'Failed to fetch')}</div>`;
+          return;
+        }
+
+        currentActiveData = res;
+        const activeDoc = res.active_document || {};
+        currentActiveDoc = activeDoc;
+
+        if (titleEl) titleEl.textContent = `${activeDoc.title || activeDoc.name} — ${res.product_name}`;
+        if (metaEl) metaEl.textContent = `${res.repo_name} • ${activeDoc.name} • Direct Edge Repository Sync`;
+        if (docPathEl) docPathEl.textContent = activeDoc.path || '';
+        if (docSizeEl) docSizeEl.textContent = `${Math.round((activeDoc.size || 0) / 1024)} KB`;
+
+        // Populate doc selector
+        if (docSelect) {
+          docSelect.innerHTML = (res.plans || []).map((p, idx) => `
+            <option value="${idx}" ${idx === res.doc_index ? 'selected' : ''}>${escapeHtml(p.title || p.name)} (${Math.round((p.size || 0) / 1024)} KB)</option>
+          `).join('');
+        }
+
+        // Render Markdown
+        if (window.marked) {
+          renderedBody.innerHTML = window.marked.parse(activeDoc.content || '');
+        } else {
+          renderedBody.textContent = activeDoc.content || '';
+        }
+        rawBody.value = activeDoc.content || '';
+
+        // Generate Table of Contents
+        buildTableOfContents();
+
+      } catch (err) {
+        renderedBody.innerHTML = `<div style="color: #F43F5E; padding: 20px;">Network error loading plan: ${escapeHtml(String(err))}</div>`;
+      }
+    }
+
+    function buildTableOfContents() {
+      if (!tocList || !renderedBody) return;
+      const headings = renderedBody.querySelectorAll('h1, h2, h3, h4');
+      if (tocCountEl) tocCountEl.textContent = `${headings.length} headings`;
+
+      if (!headings.length) {
+        tocList.innerHTML = '<div style="font-size: 11px; color: #64748B; padding: 10px;">No outline headings found in document.</div>';
+        return;
+      }
+
+      tocList.innerHTML = '';
+      headings.forEach((h, idx) => {
+        const id = 'plan-heading-' + idx;
+        h.id = id;
+        const tag = h.tagName.toLowerCase();
+        const levelClass = 'level-' + tag.substring(1);
+        const item = document.createElement('a');
+        item.className = `plan-viewer-toc-item ${levelClass}`;
+        item.textContent = h.textContent.trim();
+        item.href = '#' + id;
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        tocList.appendChild(item);
+      });
+    }
+
+    // TOC Filter
+    if (tocFilterInput) {
+      tocFilterInput.addEventListener('input', (e) => {
+        const q = (e.target.value || '').toLowerCase().trim();
+        const items = tocList?.querySelectorAll('.plan-viewer-toc-item') || [];
+        items.forEach(it => {
+          if (!q || it.textContent.toLowerCase().includes(q)) {
+            it.style.display = 'block';
+          } else {
+            it.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // In-doc search
+    if (inDocSearchInput) {
+      inDocSearchInput.addEventListener('input', (e) => {
+        const q = (e.target.value || '').toLowerCase().trim();
+        if (!q) {
+          if (searchMatchCountEl) searchMatchCountEl.textContent = '';
+          return;
+        }
+        const text = (renderedBody?.innerText || '').toLowerCase();
+        const count = (text.match(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')) || []).length;
+        if (searchMatchCountEl) searchMatchCountEl.textContent = `${count} matches`;
+      });
+    }
+
+    // View Toggles: Rendered vs Raw
+    if (btnRendered && btnRaw && renderedBody && rawWrapper) {
+      btnRendered.addEventListener('click', () => {
+        btnRendered.classList.add('active');
+        btnRaw.classList.remove('active');
+        renderedBody.style.display = 'block';
+        rawWrapper.style.display = 'none';
+      });
+
+      btnRaw.addEventListener('click', () => {
+        btnRaw.classList.add('active');
+        btnRendered.classList.remove('active');
+        renderedBody.style.display = 'none';
+        rawWrapper.style.display = 'block';
+      });
+    }
+
+    // Copy Markdown
+    if (btnCopyMd) {
+      btnCopyMd.addEventListener('click', () => {
+        if (currentActiveDoc && currentActiveDoc.content) {
+          navigator.clipboard.writeText(currentActiveDoc.content).then(() => {
+            showToast('✓ Copied plan markdown to clipboard! 📋');
+          }).catch(() => {
+            prompt('Copy markdown:', currentActiveDoc.content);
+          });
+        }
+      });
+    }
+
+    // AgY Dispatch Prompt
+    if (btnDispatchPrompt) {
+      btnDispatchPrompt.addEventListener('click', () => {
+        if (currentActiveData && currentActiveDoc) {
+          const repo = currentActiveData.repo_path || '/Users/rjulia/ChurchCore-Business';
+          const cmd = `cd "${repo}" && agy -p "Audit and execute roadmap requirements from ${currentActiveDoc.name}. Ensure full compliance with Section III Data Sovereignty and Sunday 99.99% SLA."`;
+          navigator.clipboard.writeText(cmd).then(() => {
+            showToast('🚀 Copied AgY execution command for this plan!');
+          }).catch(() => {
+            prompt('Copy AgY prompt:', cmd);
+          });
+        }
+      });
+    }
+
+    // Modal Triggers
+    function openPlanViewerForCurrentProduct() {
+      const selectedProduct = select.value || 'churchcore-chms';
+      if (pkgSelect) pkgSelect.value = selectedProduct;
+      loadPlanDocument(selectedProduct, 0);
+      if (planViewerModal) planViewerModal.classList.add('active');
+    }
+
+    if (btnOpenPlanViewer) {
+      btnOpenPlanViewer.addEventListener('click', openPlanViewerForCurrentProduct);
+    }
+    if (btnQuickReadPlan) {
+      btnQuickReadPlan.addEventListener('click', openPlanViewerForCurrentProduct);
+    }
+
+    if (planViewerClose && planViewerModal) {
+      planViewerClose.addEventListener('click', () => {
+        planViewerModal.classList.remove('active');
+      });
+    }
+
+    if (pkgSelect) {
+      pkgSelect.addEventListener('change', () => {
+        loadPlanDocument(pkgSelect.value, 0);
+      });
+    }
+
+    if (docSelect) {
+      docSelect.addEventListener('change', () => {
+        const docIdx = parseInt(docSelect.value) || 0;
+        loadPlanDocument(pkgSelect?.value || select.value, docIdx);
+      });
+    }
+
     select.removeEventListener('change', updatePlanView);
     select.addEventListener('change', updatePlanView);
     updatePlanView();

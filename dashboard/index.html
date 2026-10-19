@@ -341,7 +341,11 @@
           <h2>Product Implementation Plans & Steering Engine</h2>
           <p>Interactive roadmap steering across all 6 sibling products. Track, move, and dispatch initiatives between <strong>Repo-Originated (Edge)</strong> and <strong>Control-Plane-Dispatched (Hub)</strong>.</p>
         </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <button id="btn-open-plan-viewer" class="btn btn-secondary" style="display: flex; align-items: center; gap: 6px;" title="Open full markdown plan document reader">
+            <span>📖</span>
+            <span>View Full Source Plan</span>
+          </button>
           <button id="btn-add-plan-item" class="btn btn-gold">+ Add Plan Initiative</button>
         </div>
       </div>
@@ -362,6 +366,9 @@
             <option value="churchcore-orthos">ChurchCore Orthos (omni-council-plan.md)</option>
             <option value="faithfull-scholars">FaithFull Scholars (FAITHFULL_SCHOLARS_FULL_PLAN.md)</option>
           </select>
+          <button id="btn-quick-read-plan" class="btn btn-secondary" style="font-size: 12px; padding: 7px 12px; display: inline-flex; align-items: center; gap: 6px;" title="Read package master plan markdown">
+            📖 Read Package Plan
+          </button>
         </div>
 
         <div class="plan-filter-group" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
@@ -1424,6 +1431,108 @@ python3 scripts/manage-tasks.py --action add --product "churchcore-care" --title
           <textarea id="plan-input-details" rows="3" placeholder="Describe scope, RLS policies, edge routes, or test requirements..." style="width: 100%; padding: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #fff; border-radius: 8px; font-family: inherit; font-size: 13px;"></textarea>
         </div>
         <button id="btn-submit-plan-item" class="btn btn-gold" style="width: 100%; margin-top: 14px;">Save Initiative to Roadmap</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master Product Plan Document Viewer Modal -->
+  <div id="plan-viewer-modal" class="modal-backdrop">
+    <div class="modal-card plan-viewer-modal-card">
+      <div class="plan-viewer-header">
+        <div class="plan-viewer-header-left">
+          <span style="font-size: 20px;">📖</span>
+          <div>
+            <h3 id="plan-viewer-title" style="margin: 0; font-size: 16px; font-weight: 700; color: #FFF; font-family: var(--font-heading);">
+              Master Plan Document Viewer
+            </h3>
+            <div id="plan-viewer-meta" style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+              Direct Edge Repository Synchronization
+            </div>
+          </div>
+
+          <!-- Package Switcher Inside Modal -->
+          <div style="display: flex; gap: 8px; align-items: center; margin-left: 12px;">
+            <label style="font-size: 11px; font-weight: 700; color: #94A3B8;">Package:</label>
+            <select id="plan-viewer-pkg-select" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #FFF; padding: 5px 10px; border-radius: 6px; font-size: 12px;">
+              <option value="churchcore-chms">ChurchCore ChMS</option>
+              <option value="churchcore-lms">ChurchCore LMS</option>
+              <option value="churchcore-academy">ChurchCore Academy</option>
+              <option value="churchcore-care">ChurchCore Care</option>
+              <option value="churchcore-orthos">ChurchCore Orthos</option>
+              <option value="faithfull-scholars">FaithFull Scholars</option>
+            </select>
+          </div>
+
+          <!-- Document Switcher Inside Modal -->
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <label style="font-size: 11px; font-weight: 700; color: #94A3B8;">Plan Doc:</label>
+            <select id="plan-viewer-doc-select" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); color: #FFF; padding: 5px 10px; border-radius: 6px; font-size: 12px; max-width: 260px;">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+        </div>
+
+        <div class="plan-viewer-header-right">
+          <!-- View Toggle: Rendered vs Raw -->
+          <div class="plan-filter-group" style="display: flex; gap: 4px;">
+            <button id="btn-plan-view-rendered" class="filter-chip active" style="font-size: 11px; padding: 4px 10px;">📑 Rendered</button>
+            <button id="btn-plan-view-raw" class="filter-chip" style="font-size: 11px; padding: 4px 10px;">💻 Raw Markdown</button>
+          </div>
+
+          <button id="btn-plan-copy-md" class="btn btn-secondary" style="font-size: 11px; padding: 5px 10px;" title="Copy entire markdown source to clipboard">
+            📋 Copy Markdown
+          </button>
+
+          <button id="btn-plan-dispatch-prompt" class="btn btn-secondary" style="font-size: 11px; padding: 5px 10px; color: #38BDF8; border-color: rgba(56, 189, 248, 0.3);" title="Copy AgY Edge Prompt for this plan">
+            🚀 AgY Dispatch
+          </button>
+
+          <button id="plan-viewer-close" class="modal-close-btn" style="margin-left: 6px;">&times;</button>
+        </div>
+      </div>
+
+      <div class="plan-viewer-layout">
+        <!-- Sidebar Outline / TOC -->
+        <aside class="plan-viewer-toc">
+          <div class="plan-viewer-toc-header">
+            <span>Table of Contents</span>
+            <span id="plan-viewer-heading-count" style="font-size: 10px; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 10px;">0 headings</span>
+          </div>
+          <div style="padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <input type="text" id="plan-viewer-toc-filter" placeholder="Filter sections..." style="width: 100%; padding: 5px 8px; font-size: 11px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: #FFF;">
+          </div>
+          <nav class="plan-viewer-toc-list" id="plan-viewer-toc-list">
+            <!-- Dynamically generated TOC -->
+          </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="plan-viewer-main">
+          <div class="plan-viewer-toolbar">
+            <div style="display: flex; align-items: center; gap: 8px; flex: 1; max-width: 480px;">
+              <span style="font-size: 13px; color: #94A3B8;">🔍</span>
+              <input type="text" id="plan-viewer-in-doc-search" placeholder="Search keywords, sprint numbers, or invariants in plan..." style="flex: 1; padding: 6px 12px; font-size: 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #FFF;">
+              <span id="plan-viewer-search-match-count" style="font-size: 11px; color: var(--gold-400); white-space: nowrap;"></span>
+            </div>
+
+            <div style="font-size: 11px; color: var(--text-muted); display: flex; gap: 12px; align-items: center;">
+              <span id="plan-viewer-doc-path" style="font-family: var(--font-mono); font-size: 10px; color: #64748B;"></span>
+              <span id="plan-viewer-doc-size" style="background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px; font-weight: 600;">0 KB</span>
+            </div>
+          </div>
+
+          <div class="plan-viewer-content-container" id="plan-viewer-scroll-container">
+            <!-- Rendered Markdown Container -->
+            <article class="plan-viewer-rendered" id="plan-viewer-rendered-body">
+              <!-- Rendered by marked.js -->
+            </article>
+
+            <!-- Raw Markdown Textarea (toggled) -->
+            <div id="plan-viewer-raw-wrapper" style="display: none; height: 100%; min-height: 500px;">
+              <textarea class="plan-viewer-raw" id="plan-viewer-raw-body" readonly></textarea>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   </div>
