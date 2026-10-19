@@ -338,17 +338,17 @@
     {
       "task_id": "TSK-ACAD-002",
       "product_id": "churchcore-academy",
-      "title": "ChurchCore Academy Production Vercel Edge Alignment & Launch Readiness Proof",
+      "title": "ChurchCore Academy Vercel Observation And Phase-Gate Reconciliation",
       "status": "done",
       "directionality": "EDGE_REPO",
       "priority": "P0_CRITICAL",
       "category": "deployment",
       "assignee": "Ricardo J. Julia",
-      "git_reference": "commit 9cf2246 (branch fix/trust-badge-security-url)",
+      "git_reference": "ChurchCore-Business#6; Academy PR #253",
       "target_milestone": "v0.10.0",
-      "description": "Cleared obsolete pilot rehearsal blockers; verified live edge production deployment on www.churchcoreacademy.io and church-core-academy.vercel.app with Supabase connected and 100% Launch Readiness.",
-      "verification": "HTTP/2 200 OK probe on https://www.churchcoreacademy.io; telemetry.json verified is_online=true, vercel_status=deployed, readiness_score_pct=100",
-      "updated_at": "2026-10-18T17:35:00Z"
+      "description": "Authenticated Vercel evidence confirms a Ready production-target deployment and canonical aliases. Phase 1 engineering readiness is 100%; Phase 2 human validation remains entry-gate pending, hosted Supabase remains unverified/local-only, and Phase 3 production authorization is not granted.",
+      "verification": "Vercel CLI 64.5.0 authenticated inspection: project prj_lcuoqk7M5gAfD0ElM48DClT5z2Iy, deployment dpl_CGgewdcXBDt1Z6RHcdg8eqM5eJiv Ready, canonical aliases present; governance decision recorded in Academy Council Review 33",
+      "updated_at": "2026-10-19T20:08:22Z"
     },
     {
       "task_id": "TSK-AI-001",
