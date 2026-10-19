@@ -97,7 +97,10 @@ class TestGovernanceManifest(unittest.TestCase):
         self.assertFalse(compliance["brand_house_compliant"])
         self.assertFalse(compliance["sovereign_db_isolation_verified"])
         self.assertIn("COUNCIL-2026-006", compliance["council_decisions_acknowledged"])
-        self.assertTrue(academy["online_status"]["readiness_assessment"]["blockers"])
+        self.assertEqual(
+            academy["online_status"]["production_authorization"]["status"],
+            "not_granted",
+        )
 
     def test_activation_defaults_governance_claims_fail_closed(self):
         script = (ROOT / "scripts" / "activate-product-repos.py").read_text(encoding="utf-8")

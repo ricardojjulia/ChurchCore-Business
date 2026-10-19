@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19 20:44:51 UTC",
+  "generated_at": "2026-10-19 20:51:22 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -18,7 +18,7 @@
   "scripts": [
     {
       "rel_path": "dashboard/deliberation_engine.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/dashboard/deliberation_engine.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/dashboard/deliberation_engine.py",
       "title": "ChurchCore Sovereign Control Plane: Deliberation Engine",
       "description": "Generates intelligent, context-aware Council determinations, customized AntiGravity prompts,\nand specialized member speeches tailored to the specific product and feature requested.\nPermanently logs ratified executive deliberations into docs/deliberations/.",
       "category": "General Automation Tools",
@@ -29,18 +29,18 @@
     },
     {
       "rel_path": "dashboard/serve.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/dashboard/serve.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/dashboard/serve.py",
       "title": "ChurchCore Sovereign Control Plane: Local Dashboard Server",
       "description": "Serves the Executive Cockpit locally at http://localhost:3333,\nincluding live documentation, markdown dossiers, and telemetry files.",
       "category": "Executive Mission Control Cockpit",
       "cat_summary": "Serves the real-time glassmorphic dashboard and documentation dossier viewer at http://localhost:3333.",
       "cli_flags": [],
-      "size_bytes": 19971,
-      "line_count": 540
+      "size_bytes": 27621,
+      "line_count": 677
     },
     {
       "rel_path": "scripts/activate-product-repos.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/activate-product-repos.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/activate-product-repos.py",
       "title": "ChurchCore Sovereign Control Plane: Proactive Repository Activation Engine",
       "description": "Installs governance rules, acknowledgment ledgers, telemetry reporting scripts,\nand initializes factual edge telemetry across all 6 sibling product repositories.",
       "category": "Repository Activation & Roadmapping",
@@ -51,7 +51,7 @@
     },
     {
       "rel_path": "scripts/challenge-central-record.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/challenge-central-record.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/challenge-central-record.py",
       "title": "ChurchCore Sovereign Control Plane: Autonomous Edge Challenge & Evidence Engine",
       "description": "Enables any product repository to autonomously challenge, dispute, or update stale/incorrect\ncentral control plane information or mark MVP roadmap features complete by providing\nverifiable cryptographic, git, HTTP, file, or test evidence.",
       "category": "Autonomous Edge Challenges",
@@ -103,7 +103,7 @@
     },
     {
       "rel_path": "scripts/control-plane-sync.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/control-plane-sync.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/control-plane-sync.py",
       "title": "ChurchCore Sovereign Control Plane: Central Telemetry Aggregator & Dashboard Engine",
       "description": "Ingests edge telemetry from all 6 product repositories, validates against schema,\nand compiles the live master executive dashboard (ECOSYSTEM-DASHBOARD.md).",
       "category": "Fleet Telemetry & Cockpit Aggregation",
@@ -114,7 +114,7 @@
     },
     {
       "rel_path": "scripts/daily-fleet-briefing.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/daily-fleet-briefing.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/daily-fleet-briefing.py",
       "title": "ChurchCore Sovereign Control Plane: Automated Daily Fleet Briefing Engine",
       "description": "Inspects all 6 sibling product repositories, analyzes 24-hour commit logs,\nsynchronizes edge telemetry, verifies governance invariants, and generates\nan executive briefing report.",
       "category": "Reporting & Fleet Briefings",
@@ -125,7 +125,7 @@
     },
     {
       "rel_path": "scripts/generate-marketing-presos.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/generate-marketing-presos.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/generate-marketing-presos.py",
       "title": "ChurchCore Sovereign Control Plane: Marketing & Business Presentation Engine",
       "description": "Generates dynamic, living presentation decks and AI prompt packets (Claude, ChatGPT, Prezi AI, PromptAI)\nsynchronized directly from live repository telemetry, git commit history, schema metrics, and screenshots.",
       "category": "Marketing & Business Presentations",
@@ -136,7 +136,7 @@
     },
     {
       "rel_path": "scripts/generate-scripts-catalog.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/generate-scripts-catalog.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/generate-scripts-catalog.py",
       "title": "ChurchCore Sovereign Control Plane: Automated Python Automation Catalog Generator",
       "description": "Scans scripts/ and dashboard/ for Python scripts, extracts AST docstrings,\nCLI usage patterns, and argument parser definitions, and automatically compiles\ndocs/control-plane/PYTHON-SCRIPTS-CATALOG.md.\n\nRuns automatically on fleet sync and daily briefings.",
       "category": "General Automation Tools",
@@ -147,7 +147,7 @@
     },
     {
       "rel_path": "scripts/manage-tasks.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/manage-tasks.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/manage-tasks.py",
       "title": "ChurchCore Project Management Task CLI",
       "description": "Allows listing, adding, updating, and syncing tasks between tasks.json and PROJECT_TASKS.md.",
       "category": "Project Management & Task Sync",
@@ -187,7 +187,7 @@
     },
     {
       "rel_path": "scripts/pull-and-enforce-directives.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/pull-and-enforce-directives.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/pull-and-enforce-directives.py",
       "title": "ChurchCore Sovereign Control Plane: Edge Directive Ingestion & Enforcement Engine",
       "description": "Runs inside any ChurchCore product repository to pull down central directives,\nexecute automated compliance audits, update ACKNOWLEDGMENTS.md, and enforce governance.",
       "category": "Governance Enforcement & Ingestion",
@@ -207,7 +207,7 @@
     },
     {
       "rel_path": "scripts/reconcile-edge-challenges.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/reconcile-edge-challenges.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/reconcile-edge-challenges.py",
       "title": "ChurchCore Sovereign Control Plane: Central Evidence Verification & Reconciliation Engine",
       "description": "Autonomously verifies evidence provided by edge product repositories challenging central records.\nWhen evidence is validated, updates central telemetry, councils registry, and immediately mutates\nboth central records AND edge repository instructions (docs/mvp-100-plan.md), advancing the active\ndirective to prevent infinite command-and-challenge loops.",
       "category": "Central Verification & Evidence",
@@ -223,7 +223,7 @@
     },
     {
       "rel_path": "scripts/report-telemetry.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/report-telemetry.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/report-telemetry.py",
       "title": "ChurchCore Sovereign Control Plane: Universal Edge Telemetry Reporter",
       "description": "Updates docs/control-plane/telemetry.json for reporting to ChurchCore-Business Control Plane.\nCan be executed with explicit flags or with --auto for continuous post-test/post-commit sync.",
       "category": "Edge Telemetry & AI Session Logging",
@@ -299,7 +299,7 @@
     },
     {
       "rel_path": "scripts/sync-governance.py",
-      "abs_path": "/private/tmp/business-challenge.iNBBAE/scripts/sync-governance.py",
+      "abs_path": "/Users/rjulia/ChurchCore-Business/scripts/sync-governance.py",
       "title": "ChurchCore Governance Sync Engine",
       "description": "---------------------------------\nGeneric cross-repository governance synchronization script.\nReads `docs/governance-sync/manifest.json`, queries product repositories on GitHub\n(or local sibling folders as fallback), parses their `docs/council/ACKNOWLEDGMENTS.md`,\nand updates `docs/governance-sync/COMPLIANCE-MATRIX.md`.",
       "category": "Governance Manifest Discovery",

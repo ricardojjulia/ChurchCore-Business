@@ -4,7 +4,7 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-10-19 20:44:51 UTC
+> **Last Synced from Telemetry:** 2026-10-19 20:51:22 UTC
 
 ---
 
@@ -15,7 +15,7 @@
 
 - Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar
 - Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool
-- Production Gate: 🟢 Active in Production
+- Production Gate: 🟡 Enterprise Staging Pilot
 
 > 🗣️ **Speaker Script:** Introduce ChurchCore Academy. Emphasize that unlike legacy point solutions that were patched together over 15 years, ChurchCore is engineered as a modern, sovereign application on Next.js with complete Row-Level Security.
 
@@ -42,7 +42,7 @@
 
 - Latest Feature Delivered: Record Colegio Biblos local pilot preparation (#248) (bed47c2)
 - Ecosystem Hardening: Approve Colegio Biblos local pilot charter (#247) (f44c6b7)
-- Reliability Proof: [2026-10-19] Authenticated Vercel CLI inspection verified project churchcore/church-core-academy and Ready deployment dpl_CGgewdcXBDt1Z6RHcdg8eqM5eJiv with the canonical domain aliases.
+- Reliability Proof: Automated CI/CD validation and zero-downtime database migrations.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 

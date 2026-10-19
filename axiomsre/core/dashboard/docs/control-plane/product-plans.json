@@ -129,15 +129,14 @@
           "title": "Colegio Biblos Pilot Data Model & Seed Rehearsal Foundation",
           "directionality": "EDGE_REPO",
           "details": "PR #248: Established initial migration seeds and student enrollment structures."
-        }
-      ],
-      "waiting": [
+        },
         {
-          "title": "Production Vercel Cloud Binding & Domain Linking",
+          "title": "Production Vercel Cloud Deployment & Domain Linking",
           "directionality": "CONTROL_PLANE",
-          "details": "Awaiting binding of Vercel production credentials to achieve 100% online status."
+          "details": "Verified Ready via Vercel CLI (dpl_EgByH5cYyT2mEAvuXyXWWxLGU4CC). Canonical domains linked (churchcoreacademy.io, www.churchcoreacademy.io, church-core-academy.vercel.app). Phase 3 production authorization remains a separate gate."
         }
       ],
+      "waiting": [],
       "in_progress": [
         {
           "title": "OneRoster 1.2 CSV Worker & Pilot Seed Sequencing",
