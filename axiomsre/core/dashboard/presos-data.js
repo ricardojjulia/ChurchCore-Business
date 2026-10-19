@@ -1,5 +1,5 @@
 window.CHURCHCORE_PRESOS_DATA = {
-  "generated_at": "2026-10-18T19:17:01.213480+00:00",
+  "generated_at": "2026-10-19T01:45:49.733154+00:00",
   "total_decks": 7,
   "decks": [
     {
@@ -22,13 +22,13 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-19 01:45:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Sovereign Platform: The Sovereign Operating System for the Global Church, Christian Education, and Pastoral Care",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 18, 2026",
+          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 19, 2026",
           "key_takeaways": [
             "Target Buyers: Denominational Bishop / General Superintendent, Executive Pastor / COO of Multi-Site Church",
             "Strategic Replacement: Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",
@@ -130,13 +130,13 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-19 01:45:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore ChMS: Worship Planning, Child Check-In Security, and Double-Entry Ministry Accounting",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 18, 2026",
+          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 19, 2026",
           "key_takeaways": [
             "Target Buyers: Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator",
             "Strategic Replacement: Displaces Planning Center (Services/People/Giving) + Breeze + Realm + Tithe.ly",
@@ -238,13 +238,13 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-19 01:45:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 18, 2026",
+          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 19, 2026",
           "key_takeaways": [
             "Target Buyers: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director",
             "Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",
@@ -346,13 +346,13 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-19 01:45:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 18, 2026",
+          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 19, 2026",
           "key_takeaways": [
             "Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar",
             "Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool",
@@ -454,13 +454,13 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.1.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-19 01:45:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 18, 2026",
+          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 19, 2026",
           "key_takeaways": [
             "Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director",
             "Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory",
@@ -501,8 +501,8 @@ window.CHURCHCORE_PRESOS_DATA = {
           "type": "live_telemetry_highlights",
           "subtitle": "Continuous High-Velocity Delivery (7.1.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b)",
-            "Ecosystem Hardening: feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544)",
+            "Latest Feature Delivered: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)",
+            "Ecosystem Hardening: chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)",
             "Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
@@ -536,9 +536,9 @@ window.CHURCHCORE_PRESOS_DATA = {
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Care.\n</system>\n\n<context>\nProduct: ChurchCore Care (Care)\nDomain Category: Pastoral & Clinical EHR\nTagline: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nScale & Footprint: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\nTarget Buyer Personas: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator\nCompetitive Replacement Targets: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\nLive Production URL: https://www.churchcorecare.io\nConstitutional Invariant: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\nCommercial Pricing: $59\u2013$399/mo per practitioner\n\nRecent Engineering Delivery & Milestones:\n- feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b)\n- feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544)\n- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (2c2ee1d)\n- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.\n\n**Key Context:**\n- Product: ChurchCore Care (Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth)\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n- Replaces: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\n- Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\n- Live Site: https://www.churchcorecare.io\n- Pricing: $59\u2013$399/mo per practitioner\n- Latest Features: feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b), feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544), feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (2c2ee1d)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Clinical Director / Licensed Marriage & Family Therapist requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: ChurchCore Care \u2014 Executive Presentation\nSubtitle: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\n- Live URL: https://www.churchcorecare.io\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- feat(mvp): complete Phase 1 MVP features ratified via Sovereign Council (COUNCIL-2026-005) (e55f39b)\n- feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (2d07544)\n- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (2c2ee1d)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $59\u2013$399/mo per practitioner\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorecare.io",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Care.\n</system>\n\n<context>\nProduct: ChurchCore Care (Care)\nDomain Category: Pastoral & Clinical EHR\nTagline: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nScale & Footprint: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\nTarget Buyer Personas: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator\nCompetitive Replacement Targets: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\nLive Production URL: https://www.churchcorecare.io\nConstitutional Invariant: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\nCommercial Pricing: $59\u2013$399/mo per practitioner\n\nRecent Engineering Delivery & Milestones:\n- feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)\n- chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)\n- chore(telemetry): update edge telemetry and governance ledger post-cron-redesign (1ebfffb)\n- feat: redesign scheduler worker daemons for Vercel Serverless Cron execution (ce8b53a)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.\n\n**Key Context:**\n- Product: ChurchCore Care (Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth)\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n- Replaces: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\n- Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\n- Live Site: https://www.churchcorecare.io\n- Pricing: $59\u2013$399/mo per practitioner\n- Latest Features: feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb), chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394), chore(telemetry): update edge telemetry and governance ledger post-cron-redesign (1ebfffb)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Clinical Director / Licensed Marriage & Family Therapist requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: ChurchCore Care \u2014 Executive Presentation\nSubtitle: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\n- Live URL: https://www.churchcorecare.io\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)\n- chore(governance): synchronize reconciled evidence and advance active roadmap gate (613b394)\n- chore(telemetry): update edge telemetry and governance ledger post-cron-redesign (1ebfffb)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $59\u2013$399/mo per practitioner\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorecare.io",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     },
@@ -562,13 +562,13 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-19 01:45:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Orthos: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 18, 2026",
+          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 19, 2026",
           "key_takeaways": [
             "Target Buyers: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter",
             "Strategic Replacement: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits",
@@ -670,13 +670,13 @@ window.CHURCHCORE_PRESOS_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-18 19:17:01 UTC",
+      "last_synced": "2026-10-19 01:45:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 18, 2026",
+          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 19, 2026",
           "key_takeaways": [
             "Target Buyers: Seminary President / Academic Provost, Theological Faculty Search Committee Chair",
             "Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",

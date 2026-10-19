@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-18 19:17:01 UTC",
+  "generated_at": "2026-10-19 01:45:49 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -25,8 +25,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "General Automation Tools",
       "cat_summary": "Utility script for sovereign control plane automation.",
       "cli_flags": [],
-      "size_bytes": 57289,
-      "line_count": 1115
+      "size_bytes": 80670,
+      "line_count": 1570
     },
     {
       "rel_path": "dashboard/serve.py",
@@ -36,8 +36,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Executive Mission Control Cockpit",
       "cat_summary": "Serves the real-time glassmorphic dashboard and documentation dossier viewer at http://localhost:3333.",
       "cli_flags": [],
-      "size_bytes": 19552,
-      "line_count": 533
+      "size_bytes": 19971,
+      "line_count": 540
     },
     {
       "rel_path": "scripts/activate-product-repos.py",
@@ -47,8 +47,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Repository Activation & Roadmapping",
       "cat_summary": "Proactively injects governance rules, acknowledgment ledgers, edge scripts, and docs/mvp-100-plan.md.",
       "cli_flags": [],
-      "size_bytes": 35941,
-      "line_count": 708
+      "size_bytes": 36084,
+      "line_count": 706
     },
     {
       "rel_path": "scripts/challenge-central-record.py",
@@ -110,8 +110,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Fleet Telemetry & Cockpit Aggregation",
       "cat_summary": "Ingests edge telemetry from all 6 product repositories and compiles the master ecosystem dashboard.",
       "cli_flags": [],
-      "size_bytes": 24479,
-      "line_count": 498
+      "size_bytes": 25727,
+      "line_count": 526
     },
     {
       "rel_path": "scripts/daily-fleet-briefing.py",
@@ -143,7 +143,7 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "General Automation Tools",
       "cat_summary": "Utility script for sovereign control plane automation.",
       "cli_flags": [],
-      "size_bytes": 9908,
+      "size_bytes": 9906,
       "line_count": 220
     },
     {
@@ -219,8 +219,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
           "Specific repo path to reconcile"
         ]
       ],
-      "size_bytes": 22956,
-      "line_count": 483
+      "size_bytes": 23446,
+      "line_count": 491
     },
     {
       "rel_path": "scripts/report-telemetry.py",
@@ -302,8 +302,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Governance Manifest Discovery",
       "cat_summary": "Syncs council decisions, validates manifest discovery, and verifies edge repository alignment.",
       "cli_flags": [],
-      "size_bytes": 7020,
-      "line_count": 175
+      "size_bytes": 7328,
+      "line_count": 196
     }
   ]
 };
