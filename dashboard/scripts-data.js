@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-19 19:17:28 UTC",
+  "generated_at": "2026-10-19 20:20:06 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -231,6 +231,10 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "cat_summary": "Standardized session logger for AI agents, recording duration, models, bug fixes, and errors.",
       "cli_flags": [
         [
+          "--repo",
+          "Path to repository root"
+        ],
+        [
           "--auto",
           "Autonomously probe live endpoints, detect git commits, and record telemetry"
         ],
@@ -291,8 +295,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
           "Clear all blockers from readiness assessment"
         ]
       ],
-      "size_bytes": 13033,
-      "line_count": 319
+      "size_bytes": 13212,
+      "line_count": 321
     },
     {
       "rel_path": "scripts/sync-governance.py",

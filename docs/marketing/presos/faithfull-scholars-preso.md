@@ -4,7 +4,7 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
-> **Last Synced from Telemetry:** 2026-10-19 19:17:28 UTC
+> **Last Synced from Telemetry:** 2026-10-19 20:20:06 UTC
 
 ---
 
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.1.0 Live)*
 
-- Latest Feature Delivered: feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)
-- Ecosystem Hardening: feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)
-- Reliability Proof: [2026-10-18] Encapsulated organization member queries within SECURITY DEFINER function public.is_organization_admin(org_id) to guarantee sub-50ms Sunday SLA.
+- Latest Feature Delivered: feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (3d88457)
+- Ecosystem Hardening: feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)
+- Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,10 @@ Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matc
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
 Recent Engineering Delivery & Milestones:
+- feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (3d88457)
 - feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)
 - feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)
 - feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
-- docs: A3a legal, contact and password reset merged and live (#89) (69ff7c8)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 - Live Site: https://www.faithgrid.io
 - Pricing: $2,500–$15,000/yr per Institution
-- Latest Features: feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb), feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47), feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
+- Latest Features: feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (3d88457), feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb), feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (3d88457)
 - feat(monographs): implement Faculty Profile Public Monograph Index & Community Ecosystem (COUNCIL-2026-007) (75c18eb)
 - feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (1f2fd47)
-- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#91) (288b2be)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

@@ -112,6 +112,7 @@ def get_git_info(repo_root):
 
 def main():
     parser = argparse.ArgumentParser(description="Report edge telemetry to ChurchCore Control Plane")
+    parser.add_argument("--repo", default=None, help="Path to repository root")
     parser.add_argument("--auto", action="store_true", help="Autonomously probe live endpoints, detect git commits, and record telemetry")
     parser.add_argument("--model", default="gemini-2.5-pro", help="AI model name (e.g. gemini-2.5-pro, claude-3-7-sonnet)")
     parser.add_argument("--duration", type=int, default=30, help="Session duration in minutes")
@@ -129,7 +130,7 @@ def main():
     parser.add_argument("--clear-blockers", action="store_true", help="Clear all blockers from readiness assessment")
 
     args = parser.parse_args()
-    repo_root = os.getcwd()
+    repo_root = os.path.abspath(args.repo) if args.repo else os.getcwd()
     product_id, version = detect_product_id(repo_root)
     canonical = CANONICAL_TARGETS.get(product_id, {})
     canonical_domain = canonical.get('domain', '')
@@ -186,8 +187,9 @@ def main():
             online_status["supabase_project_ref"] = canonical["supabase_ref"]
 
         if is_live:
-            readiness["readiness_score_pct"] = 100
-            readiness["blockers"] = []
+            if not readiness.get("blockers"):
+                readiness["readiness_score_pct"] = 100
+                readiness["blockers"] = []
             if not readiness.get("next_required_actions"):
                 readiness["next_required_actions"] = ["Continuous production edge monitoring"]
 
