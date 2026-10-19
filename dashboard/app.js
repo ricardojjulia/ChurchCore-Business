@@ -348,6 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rem = Math.max(0, 100 - pct);
             const isFirst = (idx === 0) && (activeQueueFilter === 'all') && !searchTerm && !is100;
             const task = (p.next_steps && p.next_steps[0]) || productPrimaryTasks[p.product_id] || (is100 ? 'Active Phase 2 human pilot & field validation in progress' : 'Complete remaining feature backlog');
+            const appDisplayName = (p.repo_name === 'cp-wt' || p.product_id === 'churchcore-chms') ? 'ChurchCore ChMS' : p.repo_name;
             const isProd = p.online_status?.is_online;
             const repoPath = p._source_path ? p._source_path.replace('/docs/control-plane/telemetry.json', '') : `/Users/rjulia/${p.repo_name}`;
             const cmd = `cd "${repoPath}" && git status`;
@@ -356,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isFirst) {
               badgeHtml = '<span class="start-here-tag">Furthest behind · start here</span>';
             } else if (is100) {
-              badgeHtml = '<span class="start-here-tag" style="background: rgba(76,195,138,0.15); color: #4CC38A; border: 1px solid rgba(76,195,138,0.3);">Phase 2 · Testing gate</span>';
+              badgeHtml = '<span class="start-here-tag" style="background: rgba(76,195,138,0.15); color: #4CC38A; border-line: 1px solid rgba(76,195,138,0.3); border: 1px solid rgba(76,195,138,0.3);">Phase 2 · Testing gate</span>';
             }
 
             let barBg = '#F0A63A';
@@ -368,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="rank-square-badge ${isFirst ? 'first-badge' : ''}" style="${is100 ? 'background: #14291F; color: #4CC38A; border-color: rgba(76,195,138,0.3);' : ''}">#${idx + 1}</span>
                 <div class="queue-item-details">
                   <div class="queue-item-title-row">
-                    <span class="queue-item-name">${escapeHtml(p.repo_name)}</span>
+                    <span class="queue-item-name">${escapeHtml(appDisplayName)}</span>
                     ${badgeHtml}
                   </div>
                   <div class="queue-item-task-line"><span style="color: ${is100 ? '#4CC38A' : '#7E8793'}; font-weight: ${is100 ? '600' : '400'};">${is100 ? 'Gate:' : 'Next:'}</span> ${escapeHtml(task)}</div>

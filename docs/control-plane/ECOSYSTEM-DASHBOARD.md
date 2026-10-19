@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-19 00:41:01 UTC`
+> **Last Aggregated:** `2026-10-19 01:23:49 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -16,7 +16,7 @@
 
 ## 2. Product Fleet Status Cards
 
-### cp-wt (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
+### ChurchCore ChMS (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |

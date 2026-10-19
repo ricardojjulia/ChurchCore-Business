@@ -330,6 +330,8 @@ def sync_control_plane(verbose=True):
     for src in REPO_SOURCES:
         data = load_telemetry(src)
         if data:
+            if data.get("repo_name") in ("cp-wt", "wt", "") or (data.get("product_id") == "churchcore-chms" and data.get("repo_name") == "cp-wt"):
+                data["repo_name"] = src.get("name", "ChurchCore ChMS")
             if verbose:
                 print(f"[+] Ingested telemetry for {src['name']} ({data['_source_type']}: {data['_source_path']})")
             telemetry_data.append(data)
