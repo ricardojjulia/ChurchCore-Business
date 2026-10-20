@@ -4,14 +4,14 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-19 21:02:51 UTC
+> **Last Synced from Telemetry:** 2026-10-20 15:08:20 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth
-*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 19, 2026*
+*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 20, 2026*
 
 - Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director
 - Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory
@@ -38,7 +38,7 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://www.churchcorecare.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (7.1.0 Live)*
+*Continuous High-Velocity Delivery (7.0.0 Live)*
 
 - Latest Feature Delivered: feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)
 - Ecosystem Hardening: chore(telemetry): update next_steps to serverless cron verification (5bc8769)

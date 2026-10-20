@@ -17,14 +17,14 @@
   "screenshot": "screenshots/sunday_sla_pulse.png",
   "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
   "pricing_headline": "$59\u2013$399/mo per practitioner",
-  "version": "7.1.0",
-  "last_synced": "2026-10-19 21:02:51 UTC",
+  "version": "7.0.0",
+  "last_synced": "2026-10-20 15:08:20 UTC",
   "slides": [
     {
       "slide_num": 1,
       "title": "ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth",
       "type": "title_hero",
-      "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 19, 2026",
+      "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 20, 2026",
       "key_takeaways": [
         "Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director",
         "Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory",
@@ -63,7 +63,7 @@
       "slide_num": 4,
       "title": "Fresh Off the Press: Latest Engineering Milestones",
       "type": "live_telemetry_highlights",
-      "subtitle": "Continuous High-Velocity Delivery (7.1.0 Live)",
+      "subtitle": "Continuous High-Velocity Delivery (7.0.0 Live)",
       "key_takeaways": [
         "Latest Feature Delivered: feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)",
         "Ecosystem Hardening: chore(telemetry): update next_steps to serverless cron verification (5bc8769)",

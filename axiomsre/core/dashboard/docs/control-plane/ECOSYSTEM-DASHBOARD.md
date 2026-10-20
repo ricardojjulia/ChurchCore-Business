@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-19 21:02:51 UTC`
+> **Last Aggregated:** `2026-10-20 15:08:20 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -11,7 +11,7 @@
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
 | **Active Production Online** | `6 / 6` | 6 / 6 | 🟢 100% Online |
 | **Average Readiness Score** | `88%` | 100% | 🟢 High Readiness |
-| **Portfolio MVP Progress** | `85%` | 100% | 🟢 On Schedule |
+| **Portfolio MVP Progress** | `87%` | 100% | 🟢 On Schedule |
 | **Cross-App Data Isolation** | `UNVERIFIED` | Evidence from every product | ⚠️ One or more edge reports are unverified |
 
 ## 2. Product Fleet Status Cards
@@ -24,16 +24,16 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcore.io](https://www.churchcore.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness Score** | `95%` | No score basis supplied |
+| **Readiness** | `95%` | No score basis supplied |
 
-##### ⚠️ Production Readiness Assessment
+##### ⚠️ Readiness Assessment
 **Active Blockers:**
 - 🔴 Testing Council v6 full run not yet done (last item of R1's definition of done)
 - 🔴 O7: Stripe test-mode run never exercised against real Stripe (incl. charge.refund.updated / refund.updated on the Connect endpoint)
 - 🔴 O15: real pilot export files not yet tested
 - 🔴 O23: security@churchcore.io cannot receive mail (no MX record for churchcore.io)
 
-**Immediate Next Required Actions for Online Launch:**
+**Immediate Next Required Actions:**
 - 🛠️ Testing Council v6 full run
 - 🛠️ R2 release (target 2026-11-06)
 
@@ -81,12 +81,12 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcorelms.io](https://www.churchcorelms.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness Score** | `95%` | No score basis supplied |
+| **Readiness** | `95%` | No score basis supplied |
 
-##### ⚠️ Production Readiness Assessment
+##### ⚠️ Readiness Assessment
 - 🟢 No critical architecture blockers.
 
-**Immediate Next Required Actions for Online Launch:**
+**Immediate Next Required Actions:**
 - 🛠️ Verify Turbopack build on Vercel preview branch
 - 🛠️ Conduct student credentialing certificate PDF generation test
 
@@ -132,7 +132,9 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io) |
 | **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation or RLS verification remains unverified |
-| **Readiness Score** | `100%` | The repository-defined functional MVP and its inseparable automated verification are complete. This score is the Phase 1 entry gate for human testing; it is not pilot completion or production authorization. |
+| **Phase 1 engineering readiness** | `100%` | The repository-defined functional MVP and its inseparable automated verification are complete. This score is the Phase 1 entry gate for human testing; it is not pilot completion or production authorization. |
+| **Phase 2 Human Validation** | `ENTRY_GATE_PENDING` | Verify participant login from the actual Colegio Biblos browser or VM. |
+| **Phase 3 Production Authorization** | `NOT_GRANTED` | Authenticated Vercel evidence proves a Ready production-target deployment exists; it does not prove an owner-approved Phase 3 production release. |
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PILOT_READY`
@@ -176,12 +178,12 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcorecare.io](https://www.churchcorecare.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness Score** | `95%` | No score basis supplied |
+| **Readiness** | `95%` | No score basis supplied |
 
-##### ⚠️ Production Readiness Assessment
+##### ⚠️ Readiness Assessment
 - 🟢 No critical architecture blockers.
 
-**Immediate Next Required Actions for Online Launch:**
+**Immediate Next Required Actions:**
 - 🛠️ Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)
 - 🛠️ Run automated smoke test suite: npm run test:smoke
 
@@ -226,7 +228,7 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness Score** | `100%` | No score basis supplied |
+| **Readiness** | `100%` | No score basis supplied |
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PRODUCTION`
@@ -266,28 +268,28 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness Score** | `45%` | No score basis supplied |
+| **Readiness** | `45%` | No score basis supplied |
 
-##### ⚠️ Production Readiness Assessment
+##### ⚠️ Readiness Assessment
 **Active Blockers:**
-- 🔴 Phase 1 MVP items open: A3b publishing consent, A4 production gates and Sentry, WCAG AAA contrast for signed-in areas, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
-- 🔴 No real support address (NEXT_PUBLIC_SUPPORT_EMAIL); the legal texts route rights requests to /contact
-- 🔴 Legal texts are v1 drafts with operator name and state placeholders; counsel-reviewed v2 needed before real users
+- 🔴 Phase 1 MVP items open: A4 production gates and Sentry, WCAG AAA contrast for signed-in areas, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
+- 🔴 Support address chosen (abuse@faithgrid.io) but its domain has no MX records yet, and NEXT_PUBLIC_SUPPORT_EMAIL is not set in Vercel; the legal texts route rights requests to /contact
 - 🔴 Custom domain (B1) deferred by the owner; outbound email stays off until then
+- 🔴 Legal texts are drafts pending legal review (version 3 names the operator and describes consent); counsel review needed before real users
 
-**Immediate Next Required Actions for Online Launch:**
-- 🛠️ Build A3b (publishing consent for declared beliefs, Gemini disclosure)
+**Immediate Next Required Actions:**
 - 🛠️ Extend the axe AAA contrast scan to signed-in dashboards (public pages done, ADR 0038)
-- 🛠️ Owner: set NEXT_PUBLIC_SUPPORT_EMAIL; supply operator name and state for legal v2
+- 🛠️ Owner: add MX records for faithgrid.io, then set NEXT_PUBLIC_SUPPORT_EMAIL=abuse@faithgrid.io in Vercel and redeploy
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `BETA`
-- **Completion Percentage:** `30%`
+- **Completion Percentage:** `40%`
 - **Recent Milestones Delivered:**
+  - ✅ A3b consent to publish declared beliefs live; legal texts v3 (PR #96, ADR 0039)
+  - ✅ Legal texts v2 name the operator (PR #95)
   - ✅ A3a legal pages, acceptance records, contact and password reset live (PRs #88, #89; ADR 0031)
   - ✅ Powered by ChurchCore badge live (PRs #91, #90)
   - ✅ A1 honest launch surface live (PRs #84-#87)
-  - ✅ A2 example data removed from production (PRs #80-#83)
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
@@ -297,9 +299,9 @@
 - `A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)`
 
 **Next Engineering Steps:**
-- 🎯 A3b: consent before publishing declared beliefs (FS019) and the Gemini disclosure
 - 🎯 WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)
 - 🎯 A4: fail-closed Turnstile, required RATE_LIMIT_SALT, Sentry (ADR 0032)
+- 🎯 Phase 2 (after Phase 1): founding-scholar and one-institution pilot; suites: npm run audit:rls, npm run verify:deploy, E2E
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `claude-opus-5-5`
