@@ -225,6 +225,30 @@ class TestGovernanceManifest(unittest.TestCase):
                 self.assertEqual(after["mvp_status"]["completion_pct"], 40, argv)
                 self.assertEqual(after["mvp_status"]["phase"], "beta", argv)
 
+    def test_daily_briefing_prefers_published_main_plan_over_local_checkout(self):
+        """A local checkout's unmerged plan must not drive the daily report (FaithFull, 2026-10-20)."""
+        import base64
+        import importlib.util
+        import tempfile
+
+        spec = importlib.util.spec_from_file_location("daily_fleet_briefing", ROOT / "scripts" / "daily-fleet-briefing.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        published = "## Phase 1: Remaining\n### [ ] B2 Email outbox\n* **Scope:** Resend outbox\n## Phase 2: Trials\n"
+        local = "## Phase 1: Remaining\n### [x] Feature 1: Monograph Index (unmerged)\n## Phase 2: Trials\n"
+        with tempfile.TemporaryDirectory() as repo:
+            (Path(repo) / "docs").mkdir()
+            (Path(repo) / "docs" / "mvp-100-plan.md").write_text(local, encoding="utf-8")
+            ok = mock.MagicMock(returncode=0, stdout=base64.b64encode(published.encode()).decode())
+            with mock.patch.object(module.subprocess, "run", return_value=ok):
+                features = module.parse_mvp_plan(repo, "ricardojjulia/FaithFullScholars")
+            self.assertEqual([f["title"] for f in features], ["B2 Email outbox"])
+            failed = mock.MagicMock(returncode=1, stdout="")
+            with mock.patch.object(module.subprocess, "run", return_value=failed):
+                offline = module.parse_mvp_plan(repo, "ricardojjulia/FaithFullScholars")
+            self.assertEqual([f["title"] for f in offline], ["Feature 1: Monograph Index (unmerged)"])
+        self.assertTrue(all(r.get("repo") for r in module.REPOS))
+
 
 if __name__ == "__main__":
     unittest.main()

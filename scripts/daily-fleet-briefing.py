@@ -9,6 +9,7 @@ an executive briefing report.
 import os
 import sys
 import json
+import base64
 import subprocess
 from datetime import datetime, timezone, timedelta
 
@@ -29,36 +30,42 @@ def find_repo_path(candidates):
 REPOS = [
     {
         "id": "churchcore-chms",
+        "repo": "ricardojjulia/ChurchCore",
         "name": "ChurchCore (ChMS)",
         "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore"), "/Volumes/My Shared Files/Home/ChurchCore", "/Users/rjulia/ChurchCore"]),
         "domain": "https://www.churchcore.io"
     },
     {
         "id": "churchcore-lms",
+        "repo": "ricardojjulia/ChurchCore-LMS",
         "name": "ChurchCore-LMS",
         "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore LMS"), os.path.join(PARENT_DIR, "ChurchCore-LMS"), "/Volumes/My Shared Files/Home/ChurchCore LMS", "/Volumes/My Shared Files/Home/ChurchCore-LMS", "/Users/rjulia/ChurchCore LMS"]),
         "domain": "https://www.churchcorelms.io"
     },
     {
         "id": "churchcore-academy",
+        "repo": "ricardojjulia/ChurchCore-Academy",
         "name": "ChurchCore-Academy",
         "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore Academy"), "/Volumes/My Shared Files/Home/ChurchCore Academy", "/Users/rjulia/ChurchCore Academy"]),
         "domain": "https://church-core-academy.vercel.app"
     },
     {
         "id": "churchcore-care",
+        "repo": "ricardojjulia/ChurchCoreCare",
         "name": "ChurchCoreCare",
         "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore Care"), os.path.join(PARENT_DIR, "ChurchCoreCare"), "/Volumes/My Shared Files/Home/ChurchCore Care", "/Volumes/My Shared Files/Home/ChurchCoreCare", "/Users/rjulia/ChurchCore Care"]),
         "domain": "https://church-core-care.vercel.app"
     },
     {
         "id": "churchcore-orthos",
+        "repo": "ricardojjulia/ChurchCore-Orthos",
         "name": "ChurchCore-Orthos",
         "path": find_repo_path([os.path.join(PARENT_DIR, "ChurchCore Orthos"), "/Volumes/My Shared Files/Home/ChurchCore Orthos", "/Users/rjulia/ChurchCore Orthos"]),
         "domain": "https://church-core-orthos.vercel.app"
     },
     {
         "id": "faithfull-scholars",
+        "repo": "ricardojjulia/FaithFullScholars",
         "name": "FaithFullScholars",
         "path": find_repo_path([os.path.join(PARENT_DIR, "FaithFullScholars"), os.path.join(PARENT_DIR, "Faithful Scholars"), "/Volumes/My Shared Files/Home/FaithFullScholars", "/Volumes/My Shared Files/Home/Faithful Scholars", "/Users/rjulia/FaithFullScholars"]),
         "domain": "https://faith-full-scholars.vercel.app"
@@ -67,43 +74,67 @@ REPOS = [
 
 REPORTS_DIR = os.path.join(WORKSPACE_ROOT, "docs", "reports")
 
-def parse_mvp_plan(repo_path):
-    plan_path = os.path.join(repo_path, "docs", "mvp-100-plan.md")
-    if not os.path.exists(plan_path):
-        return []
+def parse_plan_text(content):
+    """Phase 1 feature headings (### ...) and their Scope lines from an mvp-100-plan.md."""
+    features = []
+    in_phase_1 = False
+    current_title = None
+    current_scope = None
+
+    for line in content.splitlines():
+        if "## Phase 1:" in line:
+            in_phase_1 = True
+            continue
+        if "## Phase 2:" in line:
+            break
+
+        if in_phase_1:
+            if line.startswith("### "):
+                if current_title:
+                    features.append({"title": current_title, "scope": current_scope or ""})
+                current_title = line.replace("### [ ] ", "").replace("### [x] ", "").replace("### ", "").strip()
+                current_scope = None
+            elif line.strip().startswith("* **Scope:**"):
+                current_scope = line.split("* **Scope:**", 1)[1].strip()
+
+    if current_title:
+        features.append({"title": current_title, "scope": current_scope or ""})
+    return features
+
+
+def fetch_published_plan(repo_slug):
+    """The plan on the product's published main branch, or None when it cannot be read."""
+    if not repo_slug:
+        return None
     try:
-        with open(plan_path) as f:
-            content = f.read()
-        
-        # Extract features under Phase 1
-        features = []
-        in_phase_1 = False
-        current_title = None
-        current_scope = None
-
-        for line in content.splitlines():
-            if "## Phase 1:" in line:
-                in_phase_1 = True
-                continue
-            if "## Phase 2:" in line:
-                in_phase_1 = False
-                break
-            
-            if in_phase_1:
-                if line.startswith("### "):
-                    if current_title:
-                        features.append({"title": current_title, "scope": current_scope or ""})
-                    current_title = line.replace("### [ ] ", "").replace("### [x] ", "").replace("### ", "").strip()
-                    current_scope = None
-                elif line.strip().startswith("* **Scope:**"):
-                    current_scope = line.split("* **Scope:**", 1)[1].strip()
-
-        if current_title:
-            features.append({"title": current_title, "scope": current_scope or ""})
-
-        return features
+        result = subprocess.run(
+            ["gh", "api", f"repos/{repo_slug}/contents/docs/mvp-100-plan.md?ref=main", "--jq", ".content"],
+            capture_output=True,
+            text=True,
+            timeout=8,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return base64.b64decode(result.stdout.strip()).decode("utf-8")
     except Exception:
-        return []
+        pass
+    return None
+
+
+def parse_mvp_plan(repo_path, repo_slug=None):
+    """Remaining Phase 1 features. Published main is authoritative: a local checkout may hold unmerged
+    feature-branch work that has not passed the product's review gates. The local file is an offline
+    fallback only."""
+    content = fetch_published_plan(repo_slug)
+    if content is None:
+        plan_path = os.path.join(repo_path, "docs", "mvp-100-plan.md")
+        if not os.path.exists(plan_path):
+            return []
+        try:
+            with open(plan_path) as f:
+                content = f.read()
+        except Exception:
+            return []
+    return parse_plan_text(content)
 
 def get_git_info(repo_path):
     if not os.path.exists(repo_path):
@@ -179,7 +210,7 @@ def generate_report():
         completion_pct = mvp.get("completion_pct", 80)
         remaining_pct = 100 - completion_pct
         git_info = get_git_info(r["path"])
-        remaining_features = parse_mvp_plan(r["path"])
+        remaining_features = parse_mvp_plan(r["path"], r.get("repo"))
         
         ranked_products.append({
             "repo_config": r,
