@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ChurchCore Governance Dispatch Manifest",
   "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "organization": "ChurchCore",
   "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
   "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
@@ -304,8 +304,8 @@
         {
           "req_id": "REQ-008-02",
           "title": "Autonomous Live Endpoint Probing & Blocker Clearance",
-          "description": "report-telemetry.py shall automatically probe canonical production domains (HTTP 200/3xx), automatically set is_online: true, clear obsolete rehearsal blockers, and set readiness_score_pct to 100 upon live confirmation.",
-          "verification": "Execution of python3 scripts/report-telemetry.py --auto returns exit code 0 and records ONLINE status."
+          "description": "report-telemetry.py shall probe canonical production domains (HTTP 200/3xx) and set is_online: true, vercel_status and the live URLs. A reachable URL proves availability, not readiness: the probe never sets readiness_score_pct, completion_pct or phase, and never clears blockers; those come only from the edge repository's canonical plan.",
+          "verification": "python3 scripts/report-telemetry.py --auto exits 0, records ONLINE status, and leaves readiness_score_pct, completion_pct, phase and blockers unchanged."
         }
       ]
     },
