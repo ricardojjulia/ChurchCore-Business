@@ -167,6 +167,64 @@ class TestGovernanceManifest(unittest.TestCase):
         self.assertEqual(loaded["_source_type"], "remote")
         self.assertFalse(loaded["online_status"]["is_online"])
 
+    def test_live_probe_never_sets_readiness_or_clears_blockers(self):
+        """REQ-008-02: a reachable URL proves availability, not readiness (FaithFull challenge 2026-10-20)."""
+        manifest = load_manifest()
+        req = next(
+            requirement
+            for decision in manifest["decisions"]
+            for requirement in decision.get("requirements", [])
+            if requirement["req_id"] == "REQ-008-02"
+        )
+        self.assertNotIn("readiness_score_pct to 100", req["description"])
+        self.assertIn("never sets readiness_score_pct", req["description"])
+        council_text = (ROOT / "docs" / "council" / "COUNCIL-2026-008.md").read_text(encoding="utf-8")
+        self.assertNotIn("is automatically set to `100`", council_text)
+
+    def test_faithfull_rows_follow_the_canonical_plan(self):
+        for name in ("COUNCIL-2026-005.md", "COUNCIL-2026-006.md"):
+            text = (ROOT / "docs" / "council" / name).read_text(encoding="utf-8")
+            row = next(line for line in text.splitlines() if line.startswith("| **FaithFull Scholars**"))
+            self.assertNotIn("85%", row)
+            self.assertNotIn("monograph", row.lower())
+            self.assertIn("40%", row)
+
+    def test_report_telemetry_live_probe_keeps_readiness_and_blockers(self):
+        """A 200 from the live site must not raise readiness, clear blockers, or claim a DB connection."""
+        import importlib.util
+        import sys
+        import tempfile
+
+        spec = importlib.util.spec_from_file_location("report_telemetry", ROOT / "scripts" / "report-telemetry.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as repo:
+            control = Path(repo) / "docs" / "control-plane"
+            control.mkdir(parents=True)
+            before = {
+                "online_status": {
+                    "is_online": False,
+                    "vercel_url": "https://example.invalid",
+                    "supabase_status": "local_only",
+                    "readiness_assessment": {"readiness_score_pct": 45, "blockers": ["six Phase 1 items open"], "next_required_actions": []},
+                },
+                "mvp_status": {"phase": "beta", "completion_pct": 40},
+            }
+            (control / "telemetry.json").write_text(json.dumps(before), encoding="utf-8")
+            for argv in (["--auto"], ["--online", "true"], ["--vercel-url", "https://example.invalid"]):
+                with mock.patch.object(module, "probe_url", return_value=True), mock.patch.object(
+                    sys, "argv", ["report-telemetry.py", "--repo", repo, *argv]
+                ), mock.patch("builtins.print"):
+                    module.main()
+                after = json.loads((control / "telemetry.json").read_text(encoding="utf-8"))
+                readiness = after["online_status"]["readiness_assessment"]
+                self.assertTrue(after["online_status"]["is_online"], argv)
+                self.assertEqual(readiness["readiness_score_pct"], 45, argv)
+                self.assertEqual(readiness["blockers"], ["six Phase 1 items open"], argv)
+                self.assertEqual(after["online_status"]["supabase_status"], "local_only", argv)
+                self.assertEqual(after["mvp_status"]["completion_pct"], 40, argv)
+                self.assertEqual(after["mvp_status"]["phase"], "beta", argv)
+
 
 if __name__ == "__main__":
     unittest.main()

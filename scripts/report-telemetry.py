@@ -34,38 +34,26 @@ CANONICAL_TARGETS = {
     'churchcore-chms': {
         'domain': 'https://www.churchcore.io',
         'supabase_ref': 'prod-chms-db',
-        'default_phase': 'production',
-        'default_completion': 100,
     },
     'churchcore-lms': {
         'domain': 'https://www.churchcorelms.io',
         'supabase_ref': 'prod-lms-db',
-        'default_phase': 'production',
-        'default_completion': 100,
     },
     'churchcore-academy': {
         'domain': 'https://www.churchcoreacademy.io',
         'supabase_ref': 'prod-academy-db',
-        'default_phase': 'production',
-        'default_completion': 100,
     },
     'churchcore-care': {
         'domain': 'https://www.churchcorecare.io',
         'supabase_ref': 'prod-care-db',
-        'default_phase': 'production',
-        'default_completion': 100,
     },
     'churchcore-orthos': {
         'domain': 'https://church-core-orthos.vercel.app',
         'supabase_ref': 'prod-orthos-db',
-        'default_phase': 'production',
-        'default_completion': 100,
     },
     'faithfull-scholars': {
         'domain': 'https://www.faithgrid.io',
         'supabase_ref': 'prod-scholars-db',
-        'default_phase': 'beta',
-        'default_completion': 92,
     },
 }
 
@@ -165,8 +153,10 @@ def main():
         }
     })
 
+    # Readiness comes only from the edge repository's canonical plan or an explicit --score:
+    # a reachable URL proves availability, not readiness (REQ-008-02, amended 2026-10-20).
     readiness = online_status.setdefault("readiness_assessment", {
-        "readiness_score_pct": 100 if online_status.get("is_online") else 80,
+        "readiness_score_pct": None,
         "blockers": [],
         "next_required_actions": []
     })
@@ -182,16 +172,9 @@ def main():
         online_status["vercel_status"] = "deployed" if is_live else "pending"
         online_status["vercel_url"] = target_url or canonical_domain
         online_status["custom_domain"] = target_url or canonical_domain
-        online_status["supabase_status"] = "connected" if is_live else online_status.get("supabase_status", "local_only")
+        # A web probe says nothing about the database; supabase_status changes only on --supabase-status.
         if canonical.get("supabase_ref"):
             online_status["supabase_project_ref"] = canonical["supabase_ref"]
-
-        if is_live:
-            if not readiness.get("blockers"):
-                readiness["readiness_score_pct"] = 100
-                readiness["blockers"] = []
-            if not readiness.get("next_required_actions"):
-                readiness["next_required_actions"] = ["Continuous production edge monitoring"]
 
     # EXPLICIT ARGS
     if args.online is not None:
@@ -199,17 +182,12 @@ def main():
         online_status["is_online"] = is_online
         if is_online:
             online_status["vercel_status"] = "deployed"
-            readiness["readiness_score_pct"] = args.score if args.score is not None else 100
-            if not args.blocker and not readiness.get("blockers"):
-                readiness["blockers"] = []
 
     if args.vercel_url:
         online_status["vercel_url"] = args.vercel_url
         online_status["custom_domain"] = args.vercel_url
         online_status["vercel_status"] = "deployed"
         online_status["is_online"] = True
-        readiness["readiness_score_pct"] = args.score if args.score is not None else 100
-        readiness["blockers"] = []
 
     if args.supabase_status:
         online_status["supabase_status"] = args.supabase_status
@@ -226,24 +204,19 @@ def main():
         if args.blocker not in readiness["blockers"]:
             readiness["blockers"].append(args.blocker)
 
-    # MVP Status
-    default_phase = canonical.get('default_phase', 'production')
-    default_comp = canonical.get('default_completion', 100)
+    # MVP Status: only the edge repository's canonical plan, via explicit --phase / --completion, sets
+    # these. Being online never promotes a product (REQ-008-02, amended 2026-10-20).
     mvp_status = existing.get("mvp_status", {
-        "phase": default_phase,
-        "completion_pct": default_comp,
-        "latest_milestones": ["Core production release live"]
+        "phase": "alpha",
+        "completion_pct": 0,
+        "latest_milestones": []
     })
 
     if args.phase:
         mvp_status["phase"] = args.phase
-    elif args.auto and online_status.get("is_online"):
-        mvp_status["phase"] = default_phase
 
     if args.completion is not None:
         mvp_status["completion_pct"] = args.completion
-    elif args.auto and online_status.get("is_online") and mvp_status.get("completion_pct", 0) < default_comp:
-        mvp_status["completion_pct"] = default_comp
 
     # Diagnostics
     diagnostics = existing.get("deployment_diagnostics", {
