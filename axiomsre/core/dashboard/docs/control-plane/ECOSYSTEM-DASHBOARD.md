@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-20 15:08:20 UTC`
+> **Last Aggregated:** `2026-10-20 16:46:27 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -272,7 +272,7 @@
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
-- 🔴 Phase 1 MVP items open: A4 production gates and Sentry, WCAG AAA contrast for signed-in areas, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
+- 🔴 Phase 1 MVP items open: A4b error monitoring (Sentry; deferred by the owner), WCAG AAA contrast for signed-in areas, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
 - 🔴 Support address chosen (abuse@faithgrid.io) but its domain has no MX records yet, and NEXT_PUBLIC_SUPPORT_EMAIL is not set in Vercel; the legal texts route rights requests to /contact
 - 🔴 Custom domain (B1) deferred by the owner; outbound email stays off until then
 - 🔴 Legal texts are drafts pending legal review (version 3 names the operator and describes consent); counsel review needed before real users
@@ -285,22 +285,22 @@
 - **Current Phase:** `BETA`
 - **Completion Percentage:** `40%`
 - **Recent Milestones Delivered:**
+  - ✅ A4a production gates live: fail-closed Turnstile, build env gate, honest error page (PR #98, ADR 0040)
   - ✅ A3b consent to publish declared beliefs live; legal texts v3 (PR #96, ADR 0039)
   - ✅ Legal texts v2 name the operator (PR #95)
   - ✅ A3a legal pages, acceptance records, contact and password reset live (PRs #88, #89; ADR 0031)
   - ✅ Powered by ChurchCore badge live (PRs #91, #90)
-  - ✅ A1 honest launch surface live (PRs #84-#87)
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(mvp): A4a production gates: fail-closed Turnstile, build env gate (ADR 0040) (#98) (3ac7a71)`
 - `feat(brand): badge follow-up: translated title, new-tab note, shared URL, test (#90) (3b3adc7)`
 - `feat(branding): install Powered by ChurchCore badge (#91) (288b2be)`
 - `docs: A3a merged and live (#89) (69ff7c8)`
-- `A3a: legal pages, acceptance records, contact and password reset (ADR 0031) (#88) (50ac410)`
 
 **Next Engineering Steps:**
+- 🎯 Move the Gemini API key out of the request URL in lib/ai/gemini-cv-extractor.ts and lib/ai/gemini-syllabus-tagger.ts (the matcher was fixed in Council Review 23)
 - 🎯 WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)
-- 🎯 A4: fail-closed Turnstile, required RATE_LIMIT_SALT, Sentry (ADR 0032)
 - 🎯 Phase 2 (after Phase 1): founding-scholar and one-institution pilot; suites: npm run audit:rls, npm run verify:deploy, E2E
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics

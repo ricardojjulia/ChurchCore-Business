@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-20 15:08:20 UTC",
+  "generated_at": "2026-10-20 16:46:27 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -295,8 +295,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
           "Clear all blockers from readiness assessment"
         ]
       ],
-      "size_bytes": 13212,
-      "line_count": 321
+      "size_bytes": 11994,
+      "line_count": 294
     },
     {
       "rel_path": "scripts/sync-governance.py",
