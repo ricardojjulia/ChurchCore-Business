@@ -94,6 +94,8 @@ Other problems with the directive:
 
 **Requested:** treat 010 as a cross-product proposal that each product adopts through its own ADR and privacy review, with no T+7 deadline. Until then, FaithFull keeps the direct Gemini integration that its users were told about.
 
+**Outcome (2026-10-20):** adopted on these terms. ADR 0041, privacy v4 and FaithFull PR #104 are live, with zero data retention enforced per request. See the adoption record in `COUNCIL-2026-010.md`.
+
 ### 6. `.github/workflows/reconcile-governance-challenge.yml`: auto-approve and auto-merge
 
 On any PR touching `docs/council/**`, `docs/governance-sync/**`, `scripts/**` or `tests/**`, the workflow:
