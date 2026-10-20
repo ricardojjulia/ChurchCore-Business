@@ -124,10 +124,22 @@ def validate_telemetry(data, expected_product_id):
         return False, "completion_pct must be an integer from 0 to 100"
     return True, "valid"
 
+def parse_timestamp(ts_str):
+    if not ts_str:
+        return datetime.min.replace(tzinfo=timezone.utc)
+    try:
+        # Handle ISO format with +00:00 or Z
+        clean_ts = ts_str.replace("Z", "+00:00")
+        dt = datetime.fromisoformat(clean_ts)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
+    except Exception:
+        return datetime.min.replace(tzinfo=timezone.utc)
+
 def load_telemetry(source):
-    # Published default-branch telemetry is the control-plane authority. A
-    # sibling checkout may be dirty or on an unrelated feature branch, so it
-    # is only a fallback for offline operation.
+    # Fetch remote candidate (GitHub published default-branch)
+    remote_data = None
     remote_url = f"https://raw.githubusercontent.com/{source['repo']}/main/docs/control-plane/telemetry.json"
     try:
         result = subprocess.run(
@@ -143,30 +155,33 @@ def load_telemetry(source):
         if result.returncode == 0 and result.stdout.strip():
             data = json.loads(base64.b64decode(result.stdout.strip()).decode("utf-8"))
             valid, reason = validate_telemetry(data, source["product_id"])
-            if not valid:
+            if valid:
+                data["_source_path"] = remote_url
+                data["_source_type"] = "remote"
+                remote_data = data
+            else:
                 print(f"[-] Rejected telemetry from {source['repo']} main: {reason}")
-            else:
-                data["_source_path"] = remote_url
-                data["_source_type"] = "remote"
-                return data
     except Exception:
         pass
 
-    import urllib.request
-    try:
-        req = urllib.request.Request(remote_url, headers={'User-Agent': 'ChurchCore-ControlPlane'})
-        with urllib.request.urlopen(req, timeout=3) as resp:
-            data = json.loads(resp.read().decode('utf-8'))
-            valid, reason = validate_telemetry(data, source["product_id"])
-            if not valid:
-                print(f"[-] Rejected telemetry {remote_url}: {reason}")
-            else:
-                data["_source_path"] = remote_url
-                data["_source_type"] = "remote"
-                return data
-    except Exception:
-        pass
+    if not remote_data:
+        import urllib.request
+        try:
+            req = urllib.request.Request(remote_url, headers={'User-Agent': 'ChurchCore-ControlPlane'})
+            with urllib.request.urlopen(req, timeout=3) as resp:
+                data = json.loads(resp.read().decode('utf-8'))
+                valid, reason = validate_telemetry(data, source["product_id"])
+                if valid:
+                    data["_source_path"] = remote_url
+                    data["_source_type"] = "remote"
+                    remote_data = data
+                else:
+                    print(f"[-] Rejected telemetry {remote_url}: {reason}")
+        except Exception:
+            pass
 
+    # Fetch local candidate from sibling repos
+    local_data = None
     for p in source["local_paths"]:
         tpath = os.path.join(p, "docs", "control-plane", "telemetry.json")
         if os.path.exists(tpath):
@@ -179,11 +194,33 @@ def load_telemetry(source):
                         continue
                     data["_source_path"] = tpath
                     data["_source_type"] = "local"
-                    return data
+                    local_data = data
+                    break
             except Exception as e:
                 print(f"[-] Error reading {tpath}: {e}")
+
+    # Arbitrate: if both exist, prefer the candidate with the newer report_timestamp
+    if remote_data and local_data:
+        remote_ts = parse_timestamp(remote_data.get("report_timestamp"))
+        local_ts = parse_timestamp(local_data.get("report_timestamp"))
+        name = source.get("name", source.get("product_id", "unknown"))
+        if local_ts > remote_ts:
+            print(f"[+] Ingested telemetry for {name} (local checkout is newer: {local_data.get('report_timestamp')} > {remote_data.get('report_timestamp')})")
+            return local_data
+        else:
+            print(f"[+] Ingested telemetry for {name} (remote: {remote_url})")
+            return remote_data
+    elif local_data:
+        name = source.get("name", source.get("product_id", "unknown"))
+        print(f"[+] Ingested telemetry for {name} (local fallback: {local_data['_source_path']})")
+        return local_data
+    elif remote_data:
+        name = source.get("name", source.get("product_id", "unknown"))
+        print(f"[+] Ingested telemetry for {name} (remote: {remote_url})")
+        return remote_data
     
     return None
+
 
 def generate_dashboard(telemetry_list):
     now_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
