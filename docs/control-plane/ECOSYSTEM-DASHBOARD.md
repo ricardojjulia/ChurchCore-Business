@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-21 19:54:10 UTC`
+> **Last Aggregated:** `2026-10-21 20:28:41 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -190,10 +190,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `chore(council): record central reconciliation for squash merge commit #142 (#144) (c0722e5)`
-- `feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142) (9552871)`
-- `feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)`
-- `Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)`
+- `fix: ignore Google Drive, cloud storage sync, and filesystem metadata artifacts (#148) (cfb7eff)`
+- `chore(council): record central reconciliation for Next.js unification commit #146 (#147) (6c24335)`
+- `feat(migration): unify full-stack application into Next.js App Router (#146) (bf2f9ae)`
+- `chore(telemetry): force edge telemetry check-in (COUNCIL-2026-008) (#145) (d254d8b)`
 
 **Next Engineering Steps:**
 - 🎯 Verify production serverless cron execution at /api/cron/scheduler
@@ -202,7 +202,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-21T18:59:20.933998+00:00`
+- **Session Timestamp:** `2026-10-21T20:21:38.523039+00:00`
 - **Session Operator:** `Ricardo J Julia`
 - **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-care.
 
@@ -324,3 +324,4 @@
 | **CP-2026-DIR-02** | Endorsed Brand House & Powered by ChurchCore Badge | 🟡 Active Rollout (LMS & Scholars Live) |
 | **CP-2026-DIR-03** | Standardized AppSwitcher Navigation Shell | ⏳ In Planning (Target: 2026-11-15) |
 | **CP-2026-DIR-04** | Automated Edge Telemetry & Control Plane Reporting | 🟢 100% Active Across 6 Repos |
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
