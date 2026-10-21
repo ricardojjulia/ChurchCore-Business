@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-21 20:28:41 UTC`
+> **Last Aggregated:** `2026-10-21 20:36:47 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -16,7 +16,7 @@
 
 ## 2. Product Fleet Status Cards
 
-### ChurchCore (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
+### tel-wt (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -28,19 +28,25 @@
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
-- 🔴 Testing Council v6 full run not yet done (last item of R1's definition of done)
-- 🔴 O7: Stripe test-mode run never exercised against real Stripe (incl. charge.refund.updated / refund.updated on the Connect endpoint)
-- 🔴 O15: real pilot export files not yet tested
-- 🔴 O23: security@churchcore.io cannot receive mail (no MX record for churchcore.io)
+- 🔴 R1 condition 4: local Testing Council fixture teardown (owner-run ./supabase/scripts/setup-e2e.sh --reset from main)
+- 🔴 O30: Vercel git integration stopped auto-building production for merges (#224 needed a CLI deploy)
+- 🔴 Owner actions O23 (churchcore.io mail), O24 (Business repo visibility), O25 (native Spanish review), O26 (GHAS), O27 (Vercel log forensics), O28 (Firewall rule)
+- 🔴 Readiness re-score: the targeted re-run recommends lifting the hold; owner decision
 
 **Immediate Next Required Actions:**
-- 🛠️ Testing Council v6 full run
-- 🛠️ R2 release (target 2026-11-06)
+- 🛠️ Owner-run local reset (re-run condition 4)
+- 🛠️ Resolve O30 (Vercel auto-deploy)
+- 🛠️ Owner re-score of readiness
+- 🛠️ R2 release checklist (target 2026-11-06)
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PILOT_READY`
 - **Completion Percentage:** `95%`
 - **Recent Milestones Delivered:**
+  - ✅ Testing Council v6 full run 2026-10-18: 60 defects; all 4 Critical (#209, #211, #212) and 16 High (B1-B5: #213, #215, #216, #217, #218) fixed and in production
+  - ✅ Targeted Testing Council re-run 2026-10-20/21: every original Critical and High confirmed fixed; follow-ups #220 (crash), #221 (scheduled-send time zone), #222 (contrast) merged
+  - ✅ B3b event approval and ministry-leader owner scope merged #223 (approval publishes; approved events locked)
+  - ✅ B-59 family check-in code on the parent portal merged #224 (signed-in household member; platform client IP for all limiters)
   - ✅ All five MVP gaps closed
   - ✅ Council Review 52 whole-app re-baseline: 2 Critical + 5 High found and fixed (R1a #201, R1b #202, R1c #203, R1d #205)
   - ✅ R1d data-erasure approval flow merged #205 (exact, household-scoped erasure with audit redaction)
@@ -48,26 +54,27 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `docs: Testing Council re-run report, B3b and B-59 close-out, tracker rows B-98–B-118 (#220–#224) (#226) (1dad0d2)`
+- `chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#225) (67b1011)`
 - `feat(portal): B-59 — family check-in code on the parent portal, linked at creation (Council Review 68) (#224) (ceb016b)`
 - `feat(events): B3b — approval publishes, ministry-leader owner scope, approved events locked (Council Reviews 63, 67) (#223) (070dca7)`
-- `fix(a11y): finance account row and elder note panel contrast on the dark theme (Testing Council re-run, OMNI-0020) (#222) (f38177b)`
-- `fix(communications): scheduled sends use the church time zone; phone search ignores emails (Testing Council re-run) (#221) (979aa92)`
 
 **Next Engineering Steps:**
-- 🎯 Testing Council v6 full run
-- 🎯 R2 release
-- 🎯 Owner actions O7, O15, O23 (mail), O24 (business repo visibility), O25 (Spanish review), O26 (GHAS)
+- 🎯 Owner-run local reset to close re-run condition 4
+- 🎯 Resolve O30 (Vercel auto-deploy) and owner actions O23-O28
+- 🎯 Owner readiness re-score, then R2 release (target 2026-11-06)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-21T19:08:30.760406+00:00`
+- **Last AI Model Used:** `claude-opus-5-5`
+- **Session Duration:** `4320 minutes`
+- **Session Timestamp:** `2026-10-21T20:01:26.894556+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-chms.
+- **Session Work Summary:** Testing Council v6 full run (60 defects) and all 4 Critical + 16 High fixes shipped (#209-#218); targeted re-run confirmed them; re-run fixes #220-#222; B3b event approval/owner scope (#223) and B-59 family check-in code (#224) through Council Reviews 59-68; every migration applied to hosted before merge with owner OK.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
+| `[2026-10-21] Vercel stopped auto-building production for merges (#222 delayed, #224 not built after 3h)` | `[2026-10-21] Production deployed by CLI from a clean checkout of main ceb016b with owner OK; O30 opened to investigate the git integration` |
 | `[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success).` | `[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403.` |
 | `[2026-10-17] PR #206 merged before Council Review 58 finished; the live /security page made ~9 false security claims.` | `[2026-10-17] CP1b (#207): /security rewritten so every claim is true of the code (evidence in docs/factory-runs/2026-10-17-cp1b-truthful-security.md); live check: no banned phrases, security headers present, security.txt served.` |
 
@@ -190,10 +197,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb)`
+- `chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)`
+- `chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)`
 - `fix: ignore Google Drive, cloud storage sync, and filesystem metadata artifacts (#148) (cfb7eff)`
-- `chore(council): record central reconciliation for Next.js unification commit #146 (#147) (6c24335)`
-- `feat(migration): unify full-stack application into Next.js App Router (#146) (bf2f9ae)`
-- `chore(telemetry): force edge telemetry check-in (COUNCIL-2026-008) (#145) (d254d8b)`
 
 **Next Engineering Steps:**
 - 🎯 Verify production serverless cron execution at /api/cron/scheduler
@@ -202,9 +209,9 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-21T20:21:38.523039+00:00`
+- **Session Timestamp:** `2026-10-21T20:35:48.030086+00:00`
 - **Session Operator:** `Ricardo J Julia`
-- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-care.
+- **Session Work Summary:** Automated Council Directives Enforcement
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -324,4 +331,3 @@
 | **CP-2026-DIR-02** | Endorsed Brand House & Powered by ChurchCore Badge | 🟡 Active Rollout (LMS & Scholars Live) |
 | **CP-2026-DIR-03** | Standardized AppSwitcher Navigation Shell | ⏳ In Planning (Target: 2026-11-15) |
 | **CP-2026-DIR-04** | Automated Edge Telemetry & Control Plane Reporting | 🟢 100% Active Across 6 Repos |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       

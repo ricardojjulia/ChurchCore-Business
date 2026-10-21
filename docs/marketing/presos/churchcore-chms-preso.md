@@ -4,7 +4,7 @@
 > **Scale:** 133 Relational Tables • 121 Application Routes • v3.5.0  
 > **Target Buyers:** Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator, Children's Ministry Director, Church Treasurer / Stewardship Committee  
 > **Live URL:** [https://www.churchcore.io](https://www.churchcore.io)  
-> **Last Synced from Telemetry:** 2026-10-21 20:28:41 UTC
+> **Last Synced from Telemetry:** 2026-10-21 20:36:47 UTC
 
 ---
 
