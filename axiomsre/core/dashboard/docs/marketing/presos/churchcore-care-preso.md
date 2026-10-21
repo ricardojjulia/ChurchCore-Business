@@ -4,7 +4,7 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-21 20:36:47 UTC
+> **Last Synced from Telemetry:** 2026-10-21 20:39:51 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (7.1.0 Live)*
 
-- Latest Feature Delivered: feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb)
-- Ecosystem Hardening: chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)
+- Latest Feature Delivered: chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)
+- Ecosystem Hardening: chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
 - Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Absolute Cryptographic Isolation: Church membership no
 Commercial Pricing: $59–$399/mo per practitioner
 
 Recent Engineering Delivery & Milestones:
-- feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb)
 - chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)
 - chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
 - fix: ignore Google Drive, cloud storage sync, and filesystem metadata artifacts (#148) (cfb7eff)
+- chore(council): record central reconciliation for Next.js unification commit #146 (#147) (6c24335)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.
 - Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts
 - Live Site: https://www.churchcorecare.io
 - Pricing: $59–$399/mo per practitioner
-- Latest Features: feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb), chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f), chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
+- Latest Features: chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f), chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006), fix: ignore Google Drive, cloud storage sync, and filesystem metadata artifacts (#148) (cfb7eff)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb)
 - chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)
 - chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
+- fix: ignore Google Drive, cloud storage sync, and filesystem metadata artifacts (#148) (cfb7eff)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
