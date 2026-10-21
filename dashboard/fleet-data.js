@@ -1,10 +1,10 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-21T20:39:51.058249+00:00",
+  "generated_at": "2026-10-21T20:54:43.649585+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
     "average_readiness_score": 89,
-    "average_completion_pct": 92,
+    "average_completion_pct": 95,
     "sovereign_data_isolation": true,
     "total_tasks": 24,
     "done_tasks": 15
@@ -579,7 +579,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "readiness_assessment": {
           "readiness_score_pct": 45,
           "blockers": [
-            "Phase 1 MVP items open: A4b error monitoring (Sentry; owner decision pending), WCAG AAA contrast for signed-in areas, B3 and B4 invitations (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md \u00a724)",
+            "Phase 1 MVP items open: A4b error monitoring (Sentry; owner decision pending), WCAG AAA contrast for signed-in areas (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md \u00a724)",
             "Support address abuse@faithgrid.io is live on /contact (2026-10-20), accepted as is: mail bounces until faithgrid.io has MX records, and the legal texts route rights requests there",
             "Custom domain (B1) deferred by the owner; outbound email stays off until then",
             "Legal texts are drafts pending legal review (version 3 names the operator and describes consent); counsel review needed before real users"
@@ -595,24 +595,24 @@ window.CHURCHCORE_FLEET_DATA = {
       },
       "mvp_status": {
         "phase": "beta",
-        "completion_pct": 60,
+        "completion_pct": 80,
         "latest_milestones": [
+          "B3 institution invitations live; membership hole closed; privacy v6 (PR #111, ADR 0034)",
+          "B4 founding-scholar invitations and privacy v7 live (PR #113, ADR 0034)",
           "B5b data export, account deletion with 14-day grace, privacy v5 live (PR #109, ADR 0035)",
           "B2 email outbox live, sending off by design (PR #106, ADR 0033)",
-          "B5a policy re-acceptance prompt live (PR #107, ADR 0035)",
-          "AI matcher on OpenRouter with zero data retention; privacy v4 live (PR #104, ADR 0041)",
-          "Gemini key moved to a header in the CV extractor and syllabus tagger (PR #100)"
+          "B5a policy re-acceptance prompt live (PR #107, ADR 0035)"
         ]
       },
       "latest_changes": [
+        "feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)",
+        "feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)",
         "docs: B5 done and live; progress 6 of 10 (#110) (16f078b)",
         "feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)",
-        "docs: status after B2 and B5a; telemetry 50% with engineering next steps first (#108) (bf5a5ce)",
-        "feat(mvp): B5a policy re-acceptance prompt (ADR 0035) (#107) (2c3c627)",
-        "feat(mvp): B2 transactional email outbox, sending off (ADR 0033) (#106) (d2806a4)"
+        "docs: status after B2 and B5a; telemetry 50% with engineering next steps first (#108) (bf5a5ce)"
       ],
       "next_steps": [
-        "Next: B3 institution invitations and B4 founding-scholar invitations (ADR 0034), then WCAG AAA contrast for signed-in areas",
+        "Next: WCAG AAA contrast for signed-in areas (ADR 0038 extension), the last Phase 1 build item",
         "Re-score readiness with a full Council review once B5b, B3 and B4 land (last score about 45/100 on 2026-10-14, before A1 to A4a, B2 and B5a)",
         "WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)",
         "Phase 2 (after Phase 1): founding-scholar and one-institution pilot; suites: npm run audit:rls, npm run verify:deploy, E2E",
@@ -662,17 +662,17 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 1.5,
+          "age_hours": 1.7,
           "age_display": "1h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-21T19:10:30.854737+00:00"
         },
         "local_git": {
           "detected": true,
-          "path": "/Users/rjulia/FaithFullScholars",
+          "path": "/Volumes/My Shared Files/Home/FaithFullScholars",
           "branch": "main",
-          "is_clean": true,
-          "uncommitted_files": 0,
+          "is_clean": false,
+          "uncommitted_files": 901,
           "ahead": 0,
           "behind": 0,
           "last_commit_sha": "ed5350a",
@@ -682,8 +682,11 @@ window.CHURCHCORE_FLEET_DATA = {
           "telemetry_mtime_display": "2026-10-21 19:10:56 UTC"
         },
         "drift": {
-          "has_drift": false,
-          "reasons": []
+          "has_drift": true,
+          "reasons": [
+            "Local working tree has 901 uncommitted file(s)",
+            "MVP completion divergence: remote=80% vs local=60%"
+          ]
         }
       }
     }
