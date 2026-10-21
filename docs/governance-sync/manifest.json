@@ -343,6 +343,47 @@
           "verification": "Unit tests verifying fallback cascades, token tracking instrumentation, and rate limits in AI gateway dispatchers."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-011",
+      "title": "Universal Localization Governance & OpenRouter Translation Standard",
+      "ratification_date": "2026-10-20",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-011.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-011-01",
+          "title": "Enterprise @localization-governance Framework Adoption",
+          "description": "All application repositories must integrate the standardized @localization-governance framework originating in ChurchCore Care, enforcing the state machine lifecycle (Draft -> Review -> Approved -> Activated -> Stale) and pluggable storage adapters.",
+          "verification": "Presence of @localization-governance modules and valid localization-governance.config.mjs in application root."
+        },
+        {
+          "req_id": "REQ-011-02",
+          "title": "OpenRouter AI Translation Gateway Integration",
+          "description": "Automated catalog translations must route exclusively through OpenRouter (https://openrouter.ai/api/v1/chat/completions) using Tier 2 models (Gemini 2.5 Flash, LLaMA 3.3 70B) with OPENROUTER_API_KEY and mandatory data_collection: deny header.",
+          "verification": "Translation provider config routes to OpenRouter endpoint with verified privacy headers and zero proprietary SDK lock-ins."
+        },
+        {
+          "req_id": "REQ-011-03",
+          "title": "Variable Token {var} Preservation & Domain Glossaries",
+          "description": "Translation engines must enforce strict regex placeholder preservation (/\\{(\\w+)\\}/g) and adhere to application-specific domain glossaries (data/glossaries/<locale>.json) for theological, clinical, and institutional vocabulary.",
+          "verification": "Validation script confirms zero placeholder token mismatches and zero rejected glossary terms in target locales."
+        },
+        {
+          "req_id": "REQ-011-04",
+          "title": "Mandatory Pre-Merge CI Quality Gate",
+          "description": "Every application package must expose npm run audit:i18n and enforce it within CI workflows to prevent missing keys, blank translations, and placeholder mutations from merging to default branches.",
+          "verification": "Presence of npm run audit:i18n in package.json and passing CI gate in GitHub Actions."
+        }
+      ]
     }
   ]
 }

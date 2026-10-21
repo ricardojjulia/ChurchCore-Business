@@ -154,3 +154,28 @@ If any Council Decision requirement was fulfilled, append the entry to `docs/cou
 >    - Packages must implement fallback cascade chains (Tier 1 → Tier 2 → graceful degradation).
 >    - Every LLM interaction must be auditable with prompt token count, completion token count, model string, and cost estimate recorded.
 
+---
+
+## 8. Universal Localization Governance & OpenRouter Translation Standard (COUNCIL-2026-011)
+
+> [!IMPORTANT]
+> **UNIVERSAL LOCALIZATION GOVERNANCE & OPENROUTER TRANSLATION MANDATE**  
+> All software packages in the ChurchCore ecosystem (`churchcore-business`, `churchcore-chms`, `churchcore-lms`, `churchcore-academy`, `churchcore-care`, `churchcore-orthos`, `faithfull-scholars`) MUST standardize on the `@localization-governance` framework (originating in `ChurchCore Care`) for all catalog internationalization and multi-lingual operations.
+>
+> 1. **Framework-Neutral Governance Engine (`REQ-011-01`)**:
+>    - All applications must integrate `@localization-governance/core` and configure `localization-governance.config.mjs`.
+>    - Enforces the strict five-state translation lifecycle: $\text{Draft} \rightarrow \text{Review} \rightarrow \text{Approved} \rightarrow \text{Activated} \rightarrow \text{Stale}$.
+>    - Unapproved machine translations cannot be activated directly in production.
+>
+> 2. **OpenRouter AI Translation Routing (`REQ-011-02`)**:
+>    - In accordance with COUNCIL-2026-010, all automated translation generation must route exclusively through OpenRouter (`https://openrouter.ai/api/v1/chat/completions`) using Tier 2 models (`google/gemini-2.5-flash` or `meta-llama/llama-3.3-70b-instruct`).
+>    - Direct vendor translation APIs (raw Google Translate API keys, OpenAI keys) are deprecated in favor of unified OpenRouter zero-retention headers (`data_collection: "deny"`).
+>
+> 3. **Variable Token `{var}` Preservation & Domain Glossaries (`REQ-011-03`)**:
+>    - Translators and AI translation scripts MUST never translate, mutate, or omit placeholder tokens (e.g. `{userName}`, `{date}`, `{amount}`).
+>    - Packages must maintain vetted domain glossaries in `data/glossaries/<locale>.json` protecting critical theological, clinical, educational, and legal phrasing.
+>
+> 4. **Mandatory Pre-Merge CI Gate (`REQ-011-04`)**:
+>    - Every package must expose `npm run audit:i18n` (or `node ops/translate-locale.mjs --review`) and run it in GitHub Actions CI.
+>    - PRs with missing translation keys, corrupted placeholders, or unapproved terms fail closed before merge.
+

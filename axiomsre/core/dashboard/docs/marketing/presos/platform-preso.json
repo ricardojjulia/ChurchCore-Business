@@ -18,13 +18,13 @@
   "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
   "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
   "version": "v1.0.0",
-  "last_synced": "2026-10-20 18:59:08 UTC",
+  "last_synced": "2026-10-21 01:52:01 UTC",
   "slides": [
     {
       "slide_num": 1,
       "title": "ChurchCore Sovereign Platform: The Sovereign Operating System for the Global Church, Christian Education, and Pastoral Care",
       "type": "title_hero",
-      "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 20, 2026",
+      "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 21, 2026",
       "key_takeaways": [
         "Target Buyers: Denominational Bishop / General Superintendent, Executive Pastor / COO of Multi-Site Church",
         "Strategic Replacement: Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",

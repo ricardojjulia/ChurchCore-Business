@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-20 18:59:08 UTC",
+  "generated_at": "2026-10-21 01:52:01 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -110,8 +110,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Fleet Telemetry & Cockpit Aggregation",
       "cat_summary": "Ingests edge telemetry from all 6 product repositories and compiles the master ecosystem dashboard.",
       "cli_flags": [],
-      "size_bytes": 29009,
-      "line_count": 587
+      "size_bytes": 29182,
+      "line_count": 590
     },
     {
       "rel_path": "scripts/daily-fleet-briefing.py",

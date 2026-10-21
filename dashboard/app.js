@@ -1829,7 +1829,11 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: "COUNCIL-2026-008", req: "REQ-008-01", title: "Post-Test Telemetry Synchronization Mandate", check: (p) => p.online_status?.is_online ? "done" : "progress" },
       { id: "COUNCIL-2026-010", req: "REQ-010-01", title: "Universal OpenRouter AI Gateway Consolidation", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-010") ? "done" : "progress" },
       { id: "COUNCIL-2026-010", req: "REQ-010-02", title: "Sovereign Model Evaluator & Dynamic Tier Router", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-010") ? "done" : "progress" },
-      { id: "COUNCIL-2026-010", req: "REQ-010-03", title: "Cost & Sustainability Guardrails", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-010") ? "done" : "progress" }
+      { id: "COUNCIL-2026-010", req: "REQ-010-03", title: "Cost & Sustainability Guardrails", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-010") ? "done" : "progress" },
+      { id: "COUNCIL-2026-011", req: "REQ-011-01", title: "Enterprise @localization-governance Framework Adoption", check: (p) => (p.product_id === "churchcore-care" || p.product_id === "churchcore-chms" || (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-011")) ? "done" : "progress" },
+      { id: "COUNCIL-2026-011", req: "REQ-011-02", title: "OpenRouter AI Translation Gateway Integration", check: (p) => (p.governance_compliance?.council_decisions_acknowledged || []).includes("COUNCIL-2026-011") ? "done" : "progress" },
+      { id: "COUNCIL-2026-011", req: "REQ-011-03", title: "Variable Token {var} Preservation & Domain Glossaries", check: (p) => (p.product_id === "churchcore-care" ? "done" : "progress") },
+      { id: "COUNCIL-2026-011", req: "REQ-011-04", title: "Mandatory Pre-Merge CI Quality Gate (audit:i18n)", check: (p) => (p.product_id === "churchcore-care" ? "done" : "progress") }
     ];
 
     tbody.innerHTML = '';
