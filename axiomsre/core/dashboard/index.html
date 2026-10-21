@@ -222,6 +222,43 @@
         </aside>
       </div>
 
+      <!-- Fleet Check-in & Freshness Observatory Table -->
+      <div class="observatory-section-wrapper" style="margin-top: 36px; margin-bottom: 28px;">
+        <div class="observatory-header-row" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 14px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <h2 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #FFFFFF; margin: 0;">Fleet Telemetry Check-in &amp; Freshness Observatory</h2>
+              <span class="gating-pill-badge" style="background: rgba(56, 189, 248, 0.12); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3);">COUNCIL-2026-008 Protocol</span>
+            </div>
+            <p style="font-size: 13px; color: #98A1AD; margin: 4px 0 0 0;">Continuous telemetry heartbeat audit: verifies last report timestamp, freshness tiers, local git branch drift, and remote GitHub synchronization across all 6 repositories.</p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="btn-force-checkin-all" type="button" class="btn btn-secondary" style="font-size: 12px; padding: 6px 14px; font-weight: 600; border-color: rgba(99, 102, 241, 0.4); color: #A5B4FC;" title="Trigger automated telemetry check-in across all fleet repositories">
+              ⚡ Trigger Telemetry Sync
+            </button>
+          </div>
+        </div>
+
+        <div class="compliance-table-wrapper">
+          <table class="compliance-table" id="observatory-table">
+            <thead>
+              <tr>
+                <th>Product Package</th>
+                <th>Canonical Remote Repo</th>
+                <th>Last Published Check-in</th>
+                <th>Freshness Status</th>
+                <th>Local Git State</th>
+                <th>Repository Drift</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="observatory-tbody">
+              <!-- Rendered dynamically by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- Comprehensive Sovereign Fleet Grid -->
       <div class="fleet-grid-header-banner" style="margin-top: 36px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 28px;">
         <div>

@@ -869,9 +869,113 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 4a-2. Render Fleet Check-in & Freshness Observatory Table (COUNCIL-2026-008 Protocol)
+  function renderFleetObservatoryTable(products) {
+    const tbody = document.getElementById('observatory-tbody');
+    if (!tbody || !products || !products.length) return;
+
+    tbody.innerHTML = products.map(p => {
+      const prov = p.provenance || {};
+      const fresh = prov.freshness || {};
+      const localGit = prov.local_git || {};
+      const drift = prov.drift || {};
+      const pid = p.product_id;
+      const appName = getAppDisplayName(p);
+      const repoUrl = prov.source_url || `https://github.com/ricardojjulia/${p.repo_name}`;
+      const repoShort = repoUrl.replace('https://raw.githubusercontent.com/', '').replace('/main/docs/control-plane/telemetry.json', '').replace('https://github.com/', '');
+
+      const statusClass = (fresh.status || 'unknown').toLowerCase();
+      const statusIcon = fresh.status === 'FRESH' ? '🟢' : (fresh.status === 'AGING' ? '🟡' : '🔴');
+      const statusText = `${statusIcon} ${fresh.status || 'UNKNOWN'} (${fresh.age_display || 'N/A'})`;
+
+      let gitStateHtml = '<span style="color: var(--text-muted);">None detected</span>';
+      if (localGit.detected) {
+        const cleanPill = localGit.is_clean 
+          ? '<span style="color: #34D399; font-weight: 600;">✓ Clean</span>' 
+          : `<span style="color: #F87171; font-weight: 600;">⚠️ ${localGit.uncommitted_files} dirty</span>`;
+        gitStateHtml = `
+          <div>
+            <code style="color: #38BDF8;">${escapeHtml(localGit.branch || 'main')}</code> ${cleanPill}
+          </div>
+          <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">
+            ${localGit.ahead || 0} ahead, ${localGit.behind || 0} behind
+          </div>
+        `;
+      }
+
+      let driftHtml = '<span style="color: #34D399; font-weight: 600;">✓ Synchronized</span>';
+      if (drift.has_drift && drift.reasons && drift.reasons.length > 0) {
+        const topReason = drift.reasons[0];
+        const allReasons = drift.reasons.join('\n• ');
+        driftHtml = `
+          <span class="pill-drift" title="⚠️ Divergence:\n• ${escapeHtml(allReasons)}">
+            ⚠️ ${drift.reasons.length} Divergence(s)
+          </span>
+          <div style="font-size: 11px; color: #FBBF24; margin-top: 3px; max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(topReason)}">
+            ${escapeHtml(topReason)}
+          </div>
+        `;
+      }
+
+      return `
+        <tr>
+          <td>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <strong>${escapeHtml(appName)}</strong>
+              <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">v${escapeHtml(p.version)}</span>
+            </div>
+            <div style="font-size: 11px; color: var(--text-dim);">${escapeHtml(pid)}</div>
+          </td>
+          <td>
+            <a href="https://github.com/${escapeHtml(repoShort)}" target="_blank" style="color: #38BDF8; font-family: var(--font-mono); font-size: 12px; text-decoration: none;">
+              ${escapeHtml(repoShort)}
+            </a>
+          </td>
+          <td>
+            <div style="font-family: var(--font-mono); font-size: 12px; color: #F1F5F9;">
+              ${p.report_timestamp ? escapeHtml(p.report_timestamp.replace('T', ' ').substring(0, 19) + ' UTC') : 'Never'}
+            </div>
+            <div style="font-size: 11px; color: var(--text-dim); margin-top: 2px;">
+              ${escapeHtml(fresh.age_display || 'Unknown age')}
+            </div>
+          </td>
+          <td>
+            <span class="pill-freshness ${statusClass}">
+              ${statusText}
+            </span>
+          </td>
+          <td>
+            ${gitStateHtml}
+          </td>
+          <td>
+            ${driftHtml}
+          </td>
+          <td style="text-align: right;">
+            <button class="btn btn-secondary btn-card-inspect" data-id="${pid}" style="font-size: 11px; padding: 4px 10px;">
+              Inspect &rarr;
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    tbody.querySelectorAll('.btn-card-inspect').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const pid = e.currentTarget.getAttribute('data-id');
+        const prod = products.find(x => x.product_id === pid);
+        if (prod) openModal(prod);
+      });
+    });
+
+    document.getElementById('btn-force-checkin-all')?.addEventListener('click', () => {
+      if (window.triggerTelemetrySync) window.triggerTelemetrySync();
+    });
+  }
+
   // 4b. Master Fleet Grid Coordinator
   function renderFleetGrid(products) {
     renderMvpWorkQueueBanner(products);
+    renderFleetObservatoryTable(products);
     renderFleetGridCardsOnly(products);
   }
 

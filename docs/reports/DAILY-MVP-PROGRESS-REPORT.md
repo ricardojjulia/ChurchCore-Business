@@ -1,9 +1,9 @@
 # ChurchCore Sovereign Fleet: Daily MVP 100% Progress Report
 
-> **Report Timestamp:** 2026-10-20 18:36:08 UTC  
+> **Report Timestamp:** 2026-10-21 19:03:53 UTC  
 > **Council Mandate:** [COUNCIL-2026-005: 100% MVP Feature Completion & Testing Gating](https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-005.md)  
 > **Fleet Operational Health:** 6 / 6 Live in Production  
-> **Average Fleet MVP Completion:** **98%** • **Fleet Readiness:** **100%**  
+> **Average Fleet MVP Completion:** **92%** • **Fleet Readiness:** **89%**  
 > **Strict Gating Policy:** Phase 1 (100% Features + Unit Tests) ➔ Phase 2 (Human Trial Testing & Field Pilots) ➔ Phase 3 (Vercel Edge Deploy)  
 
 ---
@@ -14,8 +14,8 @@ This table ranks all software packages strictly by work remaining to reach **100
 
 | Rank | Package Pillar | MVP Done | Remaining | Vercel Deployment Target | Phase 1 Status | Primary Morning Action |
 | :---: | :--- | :---: | :---: | :--- | :---: | :--- |
-| **#1** | **FaithFullScholars** | **92%** | **8%** | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) | 🔴 FARTHEST BEHIND | Feature 1: Theological Faculty Monograph Indexing Interface |
-| **#2** | **ChurchCore (ChMS)** | **100%** | **0%** | [https://www.churchcore.io](https://www.churchcore.io) | 🟢 NEAR COMPLETE | Feature 1: Finalize R1d Data-Rights Erasure Approval Queue *(Reconciled & Accepted: `CHAL-CHURCHCORE-CHMS-REVIEWS-1792295700`)* |
+| **#1** | **FaithFullScholars** | **60%** | **40%** | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) | 🔴 FARTHEST BEHIND | Complete remaining sprint backlog |
+| **#2** | **ChurchCore (ChMS)** | **95%** | **5%** | [https://www.churchcore.io](https://www.churchcore.io) | 🟢 NEAR COMPLETE | Feature 1: Finalize R1d Data-Rights Erasure Approval Queue *(Reconciled & Accepted: `CHAL-CHURCHCORE-CHMS-REVIEWS-1792295700`)* |
 | **#3** | **ChurchCore-LMS** | **100%** | **0%** | [https://www.churchcorelms.io](https://www.churchcorelms.io) | 🟢 NEAR COMPLETE | Feature 1: Theological Student Credentialing & PDF Certificate Worker |
 | **#4** | **ChurchCore-Academy** | **100%** | **0%** | [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app) | 🟢 NEAR COMPLETE | Feature 1: Phase 1 Functional MVP Code Complete |
 | **#5** | **ChurchCoreCare** | **100%** | **0%** | [https://church-core-care.vercel.app](https://church-core-care.vercel.app) | 🟢 NEAR COMPLETE | Feature 1: Merge Faithful Workflows Enhancements Branch |
@@ -27,33 +27,29 @@ This table ranks all software packages strictly by work remaining to reach **100
 
 Use the terminal commands below to connect directly into each repository and implement the remaining features:
 
-### #1: FaithFullScholars (92% MVP Done • 8% Work Remaining)
+### #1: FaithFullScholars (60% MVP Done • 40% Work Remaining)
 
-- **Repository Path:** `/Users/rjulia/FaithFullScholars`
-- **Current Git Branch:** `main` | **Tree Clean:** `Modified files present`
+- **Repository Path:** `/Volumes/My Shared Files/Home/FaithFullScholars`
+- **Current Git Branch:** `fatal: not a git repository (or any parent up to mount point /Volumes)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).` | **Tree Clean:** `Modified files present`
 - **Production/Staging Target:** [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Users/rjulia/FaithFullScholars/docs/mvp-100-plan.md)
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/FaithFullScholars/docs/mvp-100-plan.md)
 
 #### 🛠️ Phase 1 Programmed Features Required for 100%:
 
-1. **Feature 1: Theological Faculty Monograph Indexing Interface**
-   - *Scope:* Author submission portal and peer-review editorial triage dashboard.
-2. **Feature 2: Academic Peer-Review Editorial Workflow**
-   - *Scope:* Blind peer review assignment, commentary threads, and editorial decision queues.
-3. **Feature 3: Universal AppSwitcher Navigation Integration**
-   - *Scope:* Install standardized cross-suite navigation component (OPS-02).
+- Review sprint backlog in repository `DEVELOPMENT_PLAN.md`.
 
 #### 🚀 Quick-Connect Command for Tomorrow Morning:
 ```bash
-cd "/Users/rjulia/FaithFullScholars" && git status
+cd "/Volumes/My Shared Files/Home/FaithFullScholars" && git status
 ```
 
-### #2: ChurchCore (ChMS) (100% MVP Done • 0% Work Remaining)
+### #2: ChurchCore (ChMS) (95% MVP Done • 5% Work Remaining)
 
-- **Repository Path:** `/Users/rjulia/ChurchCore`
-- **Current Git Branch:** `gov/council-006-testing-council` | **Tree Clean:** `Modified files present`
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore`
+- **Current Git Branch:** `fatal: unknown error occurred while reading the configuration files` | **Tree Clean:** `Modified files present`
 - **Production/Staging Target:** [https://www.churchcore.io](https://www.churchcore.io) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Users/rjulia/ChurchCore/docs/mvp-100-plan.md)
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore/docs/mvp-100-plan.md)
 
 #### 🛠️ Phase 1 Programmed Features Required for 100%:
 
@@ -66,15 +62,15 @@ cd "/Users/rjulia/FaithFullScholars" && git status
 
 #### 🚀 Quick-Connect Command for Tomorrow Morning:
 ```bash
-cd "/Users/rjulia/ChurchCore" && git status
+cd "/Volumes/My Shared Files/Home/ChurchCore" && git status
 ```
 
 ### #3: ChurchCore-LMS (100% MVP Done • 0% Work Remaining)
 
-- **Repository Path:** `/Users/rjulia/ChurchCore LMS`
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore LMS`
 - **Current Git Branch:** `main` | **Tree Clean:** `Modified files present`
 - **Production/Staging Target:** [https://www.churchcorelms.io](https://www.churchcorelms.io) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Users/rjulia/ChurchCore LMS/docs/mvp-100-plan.md)
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore LMS/docs/mvp-100-plan.md)
 
 #### 🛠️ Phase 1 Programmed Features Required for 100%:
 
@@ -87,15 +83,15 @@ cd "/Users/rjulia/ChurchCore" && git status
 
 #### 🚀 Quick-Connect Command for Tomorrow Morning:
 ```bash
-cd "/Users/rjulia/ChurchCore LMS" && git status
+cd "/Volumes/My Shared Files/Home/ChurchCore LMS" && git status
 ```
 
 ### #4: ChurchCore-Academy (100% MVP Done • 0% Work Remaining)
 
-- **Repository Path:** `/Users/rjulia/ChurchCore Academy`
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Academy`
 - **Current Git Branch:** `fix/trust-badge-security-url` | **Tree Clean:** `Modified files present`
 - **Production/Staging Target:** [https://church-core-academy.vercel.app](https://church-core-academy.vercel.app) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Users/rjulia/ChurchCore Academy/docs/mvp-100-plan.md)
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore Academy/docs/mvp-100-plan.md)
 
 #### 🛠️ Phase 1 Programmed Features Required for 100%:
 
@@ -104,15 +100,16 @@ cd "/Users/rjulia/ChurchCore LMS" && git status
 
 #### 🚀 Quick-Connect Command for Tomorrow Morning:
 ```bash
-cd "/Users/rjulia/ChurchCore Academy" && git status
+cd "/Volumes/My Shared Files/Home/ChurchCore Academy" && git status
 ```
 
 ### #5: ChurchCoreCare (100% MVP Done • 0% Work Remaining)
 
-- **Repository Path:** `/Users/rjulia/ChurchCore Care`
-- **Current Git Branch:** `gov/council-006-testing-council` | **Tree Clean:** `Modified files present`
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Care`
+- **Current Git Branch:** `fatal: not a git repository (or any parent up to mount point /Volumes)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).` | **Tree Clean:** `Modified files present`
 - **Production/Staging Target:** [https://church-core-care.vercel.app](https://church-core-care.vercel.app) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Users/rjulia/ChurchCore Care/docs/mvp-100-plan.md)
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore Care/docs/mvp-100-plan.md)
 
 #### 🛠️ Phase 1 Programmed Features Required for 100%:
 
@@ -127,15 +124,15 @@ cd "/Users/rjulia/ChurchCore Academy" && git status
 
 #### 🚀 Quick-Connect Command for Tomorrow Morning:
 ```bash
-cd "/Users/rjulia/ChurchCore Care" && git status
+cd "/Volumes/My Shared Files/Home/ChurchCore Care" && git status
 ```
 
 ### #6: ChurchCore-Orthos (100% MVP Done • 0% Work Remaining)
 
-- **Repository Path:** `/Users/rjulia/ChurchCore Orthos`
+- **Repository Path:** `/Volumes/My Shared Files/Home/ChurchCore Orthos`
 - **Current Git Branch:** `main` | **Tree Clean:** `Modified files present`
 - **Production/Staging Target:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app) (🟢 ONLINE (Vercel Production))
-- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Users/rjulia/ChurchCore Orthos/docs/mvp-100-plan.md)
+- **MVP Roadmap Document:** [`docs/mvp-100-plan.md`](/Volumes/My Shared Files/Home/ChurchCore Orthos/docs/mvp-100-plan.md)
 
 #### 🛠️ Phase 1 Programmed Features Required for 100%:
 
@@ -148,7 +145,7 @@ cd "/Users/rjulia/ChurchCore Care" && git status
 
 #### 🚀 Quick-Connect Command for Tomorrow Morning:
 ```bash
-cd "/Users/rjulia/ChurchCore Orthos" && git status
+cd "/Volumes/My Shared Files/Home/ChurchCore Orthos" && git status
 ```
 
 ---

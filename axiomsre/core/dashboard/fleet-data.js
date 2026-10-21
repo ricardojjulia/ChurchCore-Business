@@ -1,10 +1,10 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-21T15:36:08.692629+00:00",
+  "generated_at": "2026-10-21T19:05:04.427831+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
-    "average_readiness_score": 88,
-    "average_completion_pct": 90,
+    "average_readiness_score": 89,
+    "average_completion_pct": 92,
     "sovereign_data_isolation": true,
     "total_tasks": 24,
     "done_tasks": 15
@@ -100,31 +100,28 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 88.4,
+          "age_hours": 91.9,
           "age_display": "3d ago",
           "status": "STALE",
           "report_timestamp": "2026-10-17T23:12:22.708251+00:00"
         },
         "local_git": {
           "detected": true,
-          "path": "/Users/rjulia/ChurchCore",
-          "branch": "gov/council-006-testing-council",
-          "is_clean": false,
-          "uncommitted_files": 4,
-          "ahead": 2,
-          "behind": 15,
-          "last_commit_sha": "097bcab",
-          "last_commit_date": "2026-10-18T13:33:46-04:00",
-          "last_commit_msg": "feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008)",
+          "path": "/Volumes/My Shared Files/Home/ChurchCore",
+          "branch": "unknown",
+          "is_clean": true,
+          "uncommitted_files": 0,
+          "ahead": 0,
+          "behind": 0,
+          "last_commit_sha": null,
+          "last_commit_date": null,
+          "last_commit_msg": null,
           "telemetry_mtime": "2026-10-20T18:36:05.222936+00:00",
           "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
         },
         "drift": {
           "has_drift": true,
           "reasons": [
-            "Local checkout on non-main branch 'gov/council-006-testing-council'",
-            "Local checkout is 2 commit(s) ahead of origin/main (unpushed)",
-            "Local working tree has 4 uncommitted file(s)",
             "Telemetry timestamp divergence: remote main (2026-10-17T23:12:22.708251+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
             "Readiness score divergence: remote=95% vs local=100%",
             "MVP completion divergence: remote=95% vs local=100%"
@@ -209,17 +206,17 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 73.1,
+          "age_hours": 76.6,
           "age_display": "3d ago",
           "status": "STALE",
           "report_timestamp": "2026-10-18T14:27:22.121354+00:00"
         },
         "local_git": {
           "detected": true,
-          "path": "/Users/rjulia/ChurchCore LMS",
+          "path": "/Volumes/My Shared Files/Home/ChurchCore LMS",
           "branch": "main",
           "is_clean": false,
-          "uncommitted_files": 3,
+          "uncommitted_files": 1255,
           "ahead": 4,
           "behind": 0,
           "last_commit_sha": "0190e54",
@@ -232,7 +229,7 @@ window.CHURCHCORE_FLEET_DATA = {
           "has_drift": true,
           "reasons": [
             "Local checkout is 4 commit(s) ahead of origin/main (unpushed)",
-            "Local working tree has 3 uncommitted file(s)",
+            "Local working tree has 1255 uncommitted file(s)",
             "Telemetry timestamp divergence: remote main (2026-10-18T14:27:22.121354+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
             "Readiness score divergence: remote=95% vs local=100%"
           ]
@@ -329,17 +326,17 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 43.5,
-          "age_display": "1.8d ago",
+          "age_hours": 46.9,
+          "age_display": "2.0d ago",
           "status": "AGING",
           "report_timestamp": "2026-10-19T20:08:22+00:00"
         },
         "local_git": {
           "detected": true,
-          "path": "/Users/rjulia/ChurchCore Academy",
+          "path": "/Volumes/My Shared Files/Home/ChurchCore Academy",
           "branch": "fix/trust-badge-security-url",
           "is_clean": false,
-          "uncommitted_files": 5,
+          "uncommitted_files": 1856,
           "ahead": 5,
           "behind": 2,
           "last_commit_sha": "abfd029",
@@ -353,7 +350,7 @@ window.CHURCHCORE_FLEET_DATA = {
           "reasons": [
             "Local checkout on non-main branch 'fix/trust-badge-security-url'",
             "Local checkout is 5 commit(s) ahead of origin/main (unpushed)",
-            "Local working tree has 5 uncommitted file(s)",
+            "Local working tree has 1856 uncommitted file(s)",
             "Telemetry timestamp divergence: remote main (2026-10-19T20:08:22+00:00) vs local (2026-10-20T18:36:05.207051+00:00)"
           ]
         }
@@ -361,9 +358,9 @@ window.CHURCHCORE_FLEET_DATA = {
     },
     {
       "product_id": "churchcore-care",
-      "repo_name": "ChurchCoreCare",
-      "version": "7.0.0",
-      "report_timestamp": "2026-10-17T21:47:00.111112+00:00",
+      "repo_name": "ChurchCore Care",
+      "version": "7.1.0",
+      "report_timestamp": "2026-10-21T18:59:20.933998+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -373,7 +370,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "supabase_status": "connected",
         "supabase_project_ref": "prod-care-db",
         "readiness_assessment": {
-          "readiness_score_pct": 95,
+          "readiness_score_pct": 100,
           "blockers": [],
           "next_required_actions": [
             "Verify HIPAA counseling intake workflow in production (churchcore-care.vercel.app)",
@@ -383,7 +380,7 @@ window.CHURCHCORE_FLEET_DATA = {
       },
       "mvp_status": {
         "phase": "production",
-        "completion_pct": 90,
+        "completion_pct": 100,
         "latest_milestones": [
           "Vercel production deployment verified live at churchcore-care.vercel.app and www.churchcorecare.io",
           "PR #139 merged: Mobile Vite lockfile resolution and dependency alignment",
@@ -391,22 +388,22 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "chore(council): record central reconciliation for squash merge commit #142 (#144) (c0722e5)",
+        "feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142) (9552871)",
+        "feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)",
         "Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)",
-        "fix: synchronize Vercel dependency resolution (1fbe989)",
-        "Merge pull request #138 from ricardojjulia/dependabot/npm_and_yarn/fast-uri-3.1.8 (710fc4b)",
-        "Merge branch 'main' into dependabot/npm_and_yarn/fast-uri-3.1.8 (9233546)",
-        "Merge pull request #128 from ricardojjulia/dependabot/npm_and_yarn/vite-8.0.16 (65cdd03)"
+        "fix: synchronize Vercel dependency resolution (1fbe989)"
       ],
       "next_steps": [
-        "Complete translation worker container optimization",
+        "Verify production serverless cron execution at /api/cron/scheduler",
         "Execute test:load:auth and test:load:intake under simulated 500 concurrent sessions"
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
-        "session_duration_minutes": 60,
-        "session_date": "2026-10-17T21:47:00.111112+00:00",
-        "session_operator": "Ricardo J. Julia",
-        "summary_of_work": "Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries."
+        "session_duration_minutes": 30,
+        "session_date": "2026-10-21T18:59:20.933998+00:00",
+        "session_operator": "Ricardo J Julia",
+        "summary_of_work": "Automated post-test edge telemetry synchronization for churchcore-care."
       },
       "deployment_diagnostics": {
         "recent_errors": [
@@ -421,7 +418,11 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-001",
           "COUNCIL-2026-002",
           "COUNCIL-2026-003",
-          "COUNCIL-2026-004"
+          "COUNCIL-2026-004",
+          "COUNCIL-2026-005",
+          "COUNCIL-2026-006",
+          "COUNCIL-2026-007",
+          "COUNCIL-2026-008"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
@@ -432,34 +433,29 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 89.8,
-          "age_display": "3d ago",
-          "status": "STALE",
-          "report_timestamp": "2026-10-17T21:47:00.111112+00:00"
+          "age_hours": 0.1,
+          "age_display": "5m ago",
+          "status": "FRESH",
+          "report_timestamp": "2026-10-21T18:59:20.933998+00:00"
         },
         "local_git": {
           "detected": true,
-          "path": "/Users/rjulia/ChurchCore Care",
-          "branch": "gov/council-006-testing-council",
-          "is_clean": false,
-          "uncommitted_files": 3,
-          "ahead": 10,
+          "path": "/Volumes/My Shared Files/Home/ChurchCore Care",
+          "branch": "unknown",
+          "is_clean": true,
+          "uncommitted_files": 0,
+          "ahead": 0,
           "behind": 0,
-          "last_commit_sha": "4c03636",
-          "last_commit_date": "2026-10-19T16:59:38-04:00",
-          "last_commit_msg": "feat(ai): wire AI functions to OpenRouter with dynamic model evaluation",
-          "telemetry_mtime": "2026-10-20T18:36:05.295660+00:00",
-          "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
+          "last_commit_sha": null,
+          "last_commit_date": null,
+          "last_commit_msg": null,
+          "telemetry_mtime": "2026-10-21T19:04:42.708732+00:00",
+          "telemetry_mtime_display": "2026-10-21 19:04:42 UTC"
         },
         "drift": {
           "has_drift": true,
           "reasons": [
-            "Local checkout on non-main branch 'gov/council-006-testing-council'",
-            "Local checkout is 10 commit(s) ahead of origin/main (unpushed)",
-            "Local working tree has 3 uncommitted file(s)",
-            "Telemetry timestamp divergence: remote main (2026-10-17T21:47:00.111112+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
-            "Readiness score divergence: remote=95% vs local=100%",
-            "MVP completion divergence: remote=90% vs local=100%"
+            "Telemetry timestamp divergence: remote main (2026-10-21T18:59:20.933998+00:00) vs local (2026-10-21T19:04:42.423577+00:00)"
           ]
         }
       }
@@ -537,17 +533,17 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 69.6,
-          "age_display": "2.9d ago",
-          "status": "AGING",
+          "age_hours": 73.1,
+          "age_display": "3d ago",
+          "status": "STALE",
           "report_timestamp": "2026-10-18T18:01:10.365584+00:00"
         },
         "local_git": {
           "detected": true,
-          "path": "/Users/rjulia/ChurchCore Orthos",
+          "path": "/Volumes/My Shared Files/Home/ChurchCore Orthos",
           "branch": "main",
           "is_clean": false,
-          "uncommitted_files": 5,
+          "uncommitted_files": 356,
           "ahead": 3,
           "behind": 0,
           "last_commit_sha": "23f8796",
@@ -560,7 +556,7 @@ window.CHURCHCORE_FLEET_DATA = {
           "has_drift": true,
           "reasons": [
             "Local checkout is 3 commit(s) ahead of origin/main (unpushed)",
-            "Local working tree has 5 uncommitted file(s)",
+            "Local working tree has 356 uncommitted file(s)",
             "Telemetry timestamp divergence: remote main (2026-10-18T18:01:10.365584+00:00) vs local (2026-10-20T18:36:05.207051+00:00)"
           ]
         }
@@ -658,33 +654,28 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 83.4,
+          "age_hours": 86.9,
           "age_display": "3d ago",
           "status": "STALE",
           "report_timestamp": "2026-10-18T04:11:03.586850+00:00"
         },
         "local_git": {
           "detected": true,
-          "path": "/Users/rjulia/FaithFullScholars",
-          "branch": "main",
+          "path": "/Volumes/My Shared Files/Home/FaithFullScholars",
+          "branch": "unknown",
           "is_clean": true,
           "uncommitted_files": 0,
-          "ahead": 8,
+          "ahead": 0,
           "behind": 0,
-          "last_commit_sha": "e3ae1e3",
-          "last_commit_date": "2026-10-20T14:59:17-04:00",
-          "last_commit_msg": "merge: reconcile origin/main with local FaithFullScholars council implementation",
-          "telemetry_mtime": "2026-10-20T18:58:58.058735+00:00",
-          "telemetry_mtime_display": "2026-10-20 18:58:58 UTC"
+          "last_commit_sha": null,
+          "last_commit_date": null,
+          "last_commit_msg": null,
+          "telemetry_mtime": "2026-10-20T18:36:05.323429+00:00",
+          "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
         },
         "drift": {
-          "has_drift": true,
-          "reasons": [
-            "Local checkout is 8 commit(s) ahead of origin/main (unpushed)",
-            "Telemetry timestamp divergence: remote main (2026-10-18T04:11:03.586850+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
-            "Readiness score divergence: remote=45% vs local=100%",
-            "MVP completion divergence: remote=60% vs local=92%"
-          ]
+          "has_drift": false,
+          "reasons": []
         }
       }
     }
@@ -2179,6 +2170,70 @@ window.CHURCHCORE_FLEET_DATA = {
       "prior_value": "Awaiting binding of Vercel production credentials to achieve 100% online status.",
       "reconciled_value": "Production Vercel Cloud Deployment & Domain Linking Complete (dpl_EgByH5cYyT2mEAvuXyXWWxLGU4CC)",
       "evidence": "`VERCEL_CLI_PROOF`: Verified deployment Ready, canonical domains linked (churchcoreacademy.io, www.churchcoreacademy.io, church-core-academy.vercel.app)"
+    },
+    {
+      "date": "2026-10-21 18:48:08 UTC",
+      "product": "ChurchCore Care",
+      "field": "version",
+      "prior_value": "7.0.0",
+      "reconciled_value": "7.1.0",
+      "evidence": "`PACKAGE_VERSION_PROOF`: Verified version 7.1.0 directly inside package.json"
+    },
+    {
+      "date": "2026-10-21 18:48:08 UTC",
+      "product": "ChurchCore Care",
+      "field": "latest_changes",
+      "prior_value": "Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)",
+      "reconciled_value": "feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)",
+      "evidence": "`GIT_COMMIT_PROOF`: Verified git commit exists in repo: 'cb260fb feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture'"
+    },
+    {
+      "date": "2026-10-21 18:48:08 UTC",
+      "product": "ChurchCore Care",
+      "field": "version",
+      "prior_value": "7.0.0",
+      "reconciled_value": "7.1.0",
+      "evidence": "`PACKAGE_VERSION_PROOF`: Verified version 7.1.0 directly inside package.json"
+    },
+    {
+      "date": "2026-10-21 18:48:08 UTC",
+      "product": "ChurchCore Care",
+      "field": "latest_changes",
+      "prior_value": "Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)",
+      "reconciled_value": "chore(telemetry): update next_steps to serverless cron verification (5bc8769)",
+      "evidence": "`GIT_COMMIT_PROOF`: Verified git commit exists in repo: '5bc8769 chore(telemetry): update next_steps to serverless cron verification'"
+    },
+    {
+      "date": "2026-10-21 18:48:08 UTC",
+      "product": "ChurchCore Care",
+      "field": "version",
+      "prior_value": "7.0.0",
+      "reconciled_value": "7.1.0",
+      "evidence": "`PACKAGE_VERSION_PROOF`: Verified version 7.1.0 directly inside package.json"
+    },
+    {
+      "date": "2026-10-21 18:48:08 UTC",
+      "product": "ChurchCore Care",
+      "field": "latest_changes",
+      "prior_value": "Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)",
+      "reconciled_value": "chore(telemetry): update session telemetry for pull request #142 verification (40857a6)",
+      "evidence": "`GIT_COMMIT_PROOF`: Verified git commit exists in repo: '40857a6 chore(telemetry): update session telemetry for pull request #142 verification'"
+    },
+    {
+      "date": "2026-10-21 18:53:27 UTC",
+      "product": "ChurchCore Care",
+      "field": "version",
+      "prior_value": "7.0.0",
+      "reconciled_value": "7.1.0",
+      "evidence": "`PACKAGE_VERSION_PROOF`: Verified version 7.1.0 directly inside package.json"
+    },
+    {
+      "date": "2026-10-21 18:53:27 UTC",
+      "product": "ChurchCore Care",
+      "field": "latest_changes",
+      "prior_value": "Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)",
+      "reconciled_value": "feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142) (9552871)",
+      "evidence": "`GIT_COMMIT_PROOF`: Verified git commit exists in repo: '9552871 feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142)'"
     }
   ],
   "commercial": {
@@ -2336,7 +2391,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-21 15:36:08 UTC",
+      "last_synced": "2026-10-21 19:05:04 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2444,7 +2499,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-21 15:36:08 UTC",
+      "last_synced": "2026-10-21 19:05:04 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2552,7 +2607,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-21 15:36:08 UTC",
+      "last_synced": "2026-10-21 19:05:04 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2660,7 +2715,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-21 15:36:08 UTC",
+      "last_synced": "2026-10-21 19:05:04 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2767,8 +2822,8 @@ window.CHURCHCORE_FLEET_DATA = {
       "screenshot": "screenshots/sunday_sla_pulse.png",
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
-      "version": "7.0.0",
-      "last_synced": "2026-10-21 15:36:08 UTC",
+      "version": "7.1.0",
+      "last_synced": "2026-10-21 19:05:04 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2813,10 +2868,10 @@ window.CHURCHCORE_FLEET_DATA = {
           "slide_num": 4,
           "title": "Fresh Off the Press: Latest Engineering Milestones",
           "type": "live_telemetry_highlights",
-          "subtitle": "Continuous High-Velocity Delivery (7.0.0 Live)",
+          "subtitle": "Continuous High-Velocity Delivery (7.1.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)",
-            "Ecosystem Hardening: chore(telemetry): update next_steps to serverless cron verification (5bc8769)",
+            "Latest Feature Delivered: fatal: not a git repository (or any parent up to mount point /Volumes)",
+            "Ecosystem Hardening: Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
             "Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
@@ -2850,9 +2905,9 @@ window.CHURCHCORE_FLEET_DATA = {
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Care.\n</system>\n\n<context>\nProduct: ChurchCore Care (Care)\nDomain Category: Pastoral & Clinical EHR\nTagline: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nScale & Footprint: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\nTarget Buyer Personas: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator\nCompetitive Replacement Targets: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\nLive Production URL: https://www.churchcorecare.io\nConstitutional Invariant: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\nCommercial Pricing: $59\u2013$399/mo per practitioner\n\nRecent Engineering Delivery & Milestones:\n- feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)\n- chore(telemetry): update next_steps to serverless cron verification (5bc8769)\n- chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)\n- feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.\n\n**Key Context:**\n- Product: ChurchCore Care (Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth)\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n- Replaces: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\n- Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\n- Live Site: https://www.churchcorecare.io\n- Pricing: $59\u2013$399/mo per practitioner\n- Latest Features: feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636), chore(telemetry): update next_steps to serverless cron verification (5bc8769), chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Clinical Director / Licensed Marriage & Family Therapist requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: ChurchCore Care \u2014 Executive Presentation\nSubtitle: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\n- Live URL: https://www.churchcorecare.io\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)\n- chore(telemetry): update next_steps to serverless cron verification (5bc8769)\n- chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $59\u2013$399/mo per practitioner\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorecare.io",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for ChurchCore Care.\n</system>\n\n<context>\nProduct: ChurchCore Care (Care)\nDomain Category: Pastoral & Clinical EHR\nTagline: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nScale & Footprint: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\nTarget Buyer Personas: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator\nCompetitive Replacement Targets: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\nLive Production URL: https://www.churchcorecare.io\nConstitutional Invariant: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\nCommercial Pricing: $59\u2013$399/mo per practitioner\n\nRecent Engineering Delivery & Milestones:\n- fatal: not a git repository (or any parent up to mount point /Volumes)\n- Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.\n\n**Key Context:**\n- Product: ChurchCore Care (Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth)\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n- Replaces: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory\n- Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts\n- Live Site: https://www.churchcorecare.io\n- Pricing: $59\u2013$399/mo per practitioner\n- Latest Features: fatal: not a git repository (or any parent up to mount point /Volumes), Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Clinical Director / Licensed Marriage & Family Therapist requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: ChurchCore Care \u2014 Executive Presentation\nSubtitle: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth\n- Live URL: https://www.churchcorecare.io\n- Scale: 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- fatal: not a git repository (or any parent up to mount point /Volumes)\n- Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $59\u2013$399/mo per practitioner\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.churchcorecare.io",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     },
@@ -2876,7 +2931,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.0",
-      "last_synced": "2026-10-21 15:36:08 UTC",
+      "last_synced": "2026-10-21 19:05:04 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2983,8 +3038,8 @@ window.CHURCHCORE_FLEET_DATA = {
       "screenshot": "screenshots/commercial_opex_margins.png",
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
-      "version": "0.1.0",
-      "last_synced": "2026-10-21 15:36:08 UTC",
+      "version": "v1.0.0",
+      "last_synced": "2026-10-21 19:05:04 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -3019,21 +3074,21 @@ window.CHURCHCORE_FLEET_DATA = {
           "subtitle": "Enterprise power built on 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0",
           "key_takeaways": [
             "Constitutional Protection: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties.",
-            "Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://faith-full-scholars.vercel.app.",
+            "Instant Edge Performance: Deployed on Vercel Edge with sub-100ms global latency at https://www.faithgrid.io.",
             "Zero Vendor Lock-in: Automated backup exports, open PostgreSQL schemas, and full exportability."
           ],
           "visual_asset": "screenshots/commercial_opex_margins.png",
-          "speaker_notes": "Showcase the actual live application at https://faith-full-scholars.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty."
+          "speaker_notes": "Showcase the actual live application at https://www.faithgrid.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty."
         },
         {
           "slide_num": 4,
           "title": "Fresh Off the Press: Latest Engineering Milestones",
           "type": "live_telemetry_highlights",
-          "subtitle": "Continuous High-Velocity Delivery (0.1.0 Live)",
+          "subtitle": "Continuous High-Velocity Delivery (v1.0.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: chore(telemetry): automated morning edge telemetry sync [skip ci] (66c481c)",
-            "Ecosystem Hardening: chore(telemetry): automated morning edge telemetry sync [skip ci] (2350532)",
-            "Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85)."
+            "Latest Feature Delivered: Continuous architectural refinement",
+            "Ecosystem Hardening: 100% Row-Level Security verification",
+            "Reliability Proof: Automated CI/CD validation and zero-downtime database migrations."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
           "speaker_notes": "This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly."
@@ -3057,7 +3112,7 @@ window.CHURCHCORE_FLEET_DATA = {
           "type": "commercial_call_to_action",
           "subtitle": "Accessible Packaging: $2,500\u2013$15,000/yr per Institution",
           "key_takeaways": [
-            "Explore Live Production Environment: https://faith-full-scholars.vercel.app",
+            "Explore Live Production Environment: https://www.faithgrid.io",
             "Migration Guarantee: 100% white-glove onboarding and historical data transfer.",
             "The No-Hostage Covenant: If church finances tighten, accounts are never locked; they downgrade gracefully with dignity."
           ],
@@ -3066,9 +3121,9 @@ window.CHURCHCORE_FLEET_DATA = {
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://www.faithgrid.io\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- chore(telemetry): automated morning edge telemetry sync [skip ci] (66c481c)\n- chore(telemetry): automated morning edge telemetry sync [skip ci] (2350532)\n- chore(telemetry): automated morning edge telemetry sync [skip ci] (78189bc)\n- feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008) (3d88457)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://www.faithgrid.io\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: chore(telemetry): automated morning edge telemetry sync [skip ci] (66c481c), chore(telemetry): automated morning edge telemetry sync [skip ci] (2350532), chore(telemetry): automated morning edge telemetry sync [skip ci] (78189bc)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://www.faithgrid.io\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- chore(telemetry): automated morning edge telemetry sync [skip ci] (66c481c)\n- chore(telemetry): automated morning edge telemetry sync [skip ci] (2350532)\n- chore(telemetry): automated morning edge telemetry sync [skip ci] (78189bc)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.faithgrid.io",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://www.faithgrid.io\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- Continuous verified production releases\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://www.faithgrid.io\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: Active Next.js Vercel Production Build\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://www.faithgrid.io\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- Production-ready release\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.faithgrid.io",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     }

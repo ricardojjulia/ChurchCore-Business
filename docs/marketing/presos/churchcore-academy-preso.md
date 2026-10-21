@@ -4,7 +4,7 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-10-21 15:36:08 UTC
+> **Last Synced from Telemetry:** 2026-10-21 19:05:04 UTC
 
 ---
 

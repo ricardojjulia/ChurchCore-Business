@@ -4,7 +4,7 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-21 15:36:08 UTC
+> **Last Synced from Telemetry:** 2026-10-21 19:05:04 UTC
 
 ---
 
@@ -38,10 +38,10 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://www.churchcorecare.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (7.0.0 Live)*
+*Continuous High-Velocity Delivery (7.1.0 Live)*
 
-- Latest Feature Delivered: feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)
-- Ecosystem Hardening: chore(telemetry): update next_steps to serverless cron verification (5bc8769)
+- Latest Feature Delivered: fatal: not a git repository (or any parent up to mount point /Volumes)
+- Ecosystem Hardening: Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 - Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,8 @@ Constitutional Invariant: Absolute Cryptographic Isolation: Church membership no
 Commercial Pricing: $59–$399/mo per practitioner
 
 Recent Engineering Delivery & Milestones:
-- feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)
-- chore(telemetry): update next_steps to serverless cron verification (5bc8769)
-- chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
-- feat(infra): permanently eliminate all Docker dependencies and definitions in favor of Vercel serverless architecture (cb260fb)
+- fatal: not a git repository (or any parent up to mount point /Volumes)
+- Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 </context>
 
 <instructions>
@@ -116,7 +114,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.
 - Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts
 - Live Site: https://www.churchcorecare.io
 - Pricing: $59–$399/mo per practitioner
-- Latest Features: feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636), chore(telemetry): update next_steps to serverless cron verification (5bc8769), chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
+- Latest Features: fatal: not a git repository (or any parent up to mount point /Volumes), Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +146,8 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(ai): wire AI functions to OpenRouter with dynamic model evaluation (4c03636)
-- chore(telemetry): update next_steps to serverless cron verification (5bc8769)
-- chore(governance): synchronize edge telemetry and council directives after Docker elimination (5f5b9eb)
+- fatal: not a git repository (or any parent up to mount point /Volumes)
+- Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
