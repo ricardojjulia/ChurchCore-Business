@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-21 19:27:42 UTC`
+> **Last Aggregated:** `2026-10-21 19:54:10 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -16,7 +16,7 @@
 
 ## 2. Product Fleet Status Cards
 
-### ChurchCore ChMS (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
+### ChurchCore (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -48,10 +48,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `chore: refresh control-plane files and give the control plane an accurate view (89b7723)`
-- `Merge remote-tracking branch 'origin/main' into cp-refresh (8440c01)`
-- `feat: R1d data-erasure approval flow — exact, household-scoped erasure with audit redaction (Council Reviews 55–57) (#205) (840643d)`
-- `chore: add ChurchCore-Business control-plane rule, telemetry script and council ledger (72f4653)`
+- `feat(portal): B-59 — family check-in code on the parent portal, linked at creation (Council Review 68) (#224) (ceb016b)`
+- `feat(events): B3b — approval publishes, ministry-leader owner scope, approved events locked (Council Reviews 63, 67) (#223) (070dca7)`
+- `fix(a11y): finance account row and elder note panel contrast on the dark theme (Testing Council re-run, OMNI-0020) (#222) (f38177b)`
+- `fix(communications): scheduled sends use the church time zone; phone search ignores emails (Testing Council re-run) (#221) (979aa92)`
 
 **Next Engineering Steps:**
 - 🎯 Testing Council v6 full run
@@ -59,11 +59,11 @@
 - 🎯 Owner actions O7, O15, O23 (mail), O24 (business repo visibility), O25 (Spanish review), O26 (GHAS)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `claude-opus-5-5`
-- **Session Duration:** `600 minutes`
-- **Session Timestamp:** `2026-10-17T23:12:22.708251+00:00`
-- **Session Operator:** `Ricardo J. Julia (with Claude Code)`
-- **Session Work Summary:** R1a-R1d, CP1 and CP1b merged (#201-#203, #205-#207); demo mode turned off in production; /security rewritten to true claims with security headers and security.txt; next: Testing Council v6 full run, then R2.
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-10-21T19:08:30.760406+00:00`
+- **Session Operator:** `Ricardo Julia`
+- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-chms.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -124,7 +124,7 @@
 
 ---
 
-### ChurchCore-Academy (`churchcore-academy`) — v0.10.0 | 🟢 ONLINE
+### ChurchCore Academy (`churchcore-academy`) — v0.10.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -146,10 +146,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `Record Colegio Biblos local pilot preparation (#248) (bed47c2)`
-- `Approve Colegio Biblos local pilot charter (#247) (f44c6b7)`
-- `Record technical baseline closeout (#246) (4bfe20b)`
-- `Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)`
+- `Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)`
+- `Refresh the Academy admin dashboard (#252) (737525c)`
+- `Reconcile Testing Council consent with Academy governance (#251) (443f0be)`
+- `Reconcile control-plane governance evidence (#249) (7fcbe31)`
 
 **Next Engineering Steps:**
 - 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
@@ -157,11 +157,11 @@
 - 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `OpenAI Codex`
-- **Session Duration:** `25 minutes`
-- **Session Timestamp:** `2026-10-17T16:05:27.430761+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Reconciled Academy control-plane governance and evidence-backed telemetry.
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-10-21T19:09:08.658011+00:00`
+- **Session Operator:** `Ricardo J Julia`
+- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-academy.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
