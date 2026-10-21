@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T15:10:04.815922+00:00",
+  "generated_at": "2026-10-21T15:36:08.692629+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
@@ -95,7 +95,42 @@
         }
       },
       "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
-      "_source_type": "remote"
+      "_source_type": "remote",
+      "provenance": {
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
+        "freshness": {
+          "age_hours": 88.4,
+          "age_display": "3d ago",
+          "status": "STALE",
+          "report_timestamp": "2026-10-17T23:12:22.708251+00:00"
+        },
+        "local_git": {
+          "detected": true,
+          "path": "/Users/rjulia/ChurchCore",
+          "branch": "gov/council-006-testing-council",
+          "is_clean": false,
+          "uncommitted_files": 4,
+          "ahead": 2,
+          "behind": 15,
+          "last_commit_sha": "097bcab",
+          "last_commit_date": "2026-10-18T13:33:46-04:00",
+          "last_commit_msg": "feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008)",
+          "telemetry_mtime": "2026-10-20T18:36:05.222936+00:00",
+          "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
+        },
+        "drift": {
+          "has_drift": true,
+          "reasons": [
+            "Local checkout on non-main branch 'gov/council-006-testing-council'",
+            "Local checkout is 2 commit(s) ahead of origin/main (unpushed)",
+            "Local working tree has 4 uncommitted file(s)",
+            "Telemetry timestamp divergence: remote main (2026-10-17T23:12:22.708251+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
+            "Readiness score divergence: remote=95% vs local=100%",
+            "MVP completion divergence: remote=95% vs local=100%"
+          ]
+        }
+      }
     },
     {
       "product_id": "churchcore-lms",
@@ -169,7 +204,40 @@
         "sovereign_db_isolation_verified": true
       },
       "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
-      "_source_type": "remote"
+      "_source_type": "remote",
+      "provenance": {
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
+        "freshness": {
+          "age_hours": 73.1,
+          "age_display": "3d ago",
+          "status": "STALE",
+          "report_timestamp": "2026-10-18T14:27:22.121354+00:00"
+        },
+        "local_git": {
+          "detected": true,
+          "path": "/Users/rjulia/ChurchCore LMS",
+          "branch": "main",
+          "is_clean": false,
+          "uncommitted_files": 3,
+          "ahead": 4,
+          "behind": 0,
+          "last_commit_sha": "0190e54",
+          "last_commit_date": "2026-10-20T12:46:14-04:00",
+          "last_commit_msg": "chore(telemetry): automated morning edge telemetry sync [skip ci]",
+          "telemetry_mtime": "2026-10-20T18:36:05.247292+00:00",
+          "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
+        },
+        "drift": {
+          "has_drift": true,
+          "reasons": [
+            "Local checkout is 4 commit(s) ahead of origin/main (unpushed)",
+            "Local working tree has 3 uncommitted file(s)",
+            "Telemetry timestamp divergence: remote main (2026-10-18T14:27:22.121354+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
+            "Readiness score divergence: remote=95% vs local=100%"
+          ]
+        }
+      }
     },
     {
       "product_id": "churchcore-academy",
@@ -256,7 +324,40 @@
         "verification_note": "Acknowledgment is not implementation. Requirement-level status and evidence are recorded in docs/council/ACKNOWLEDGMENTS.md."
       },
       "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
-      "_source_type": "remote"
+      "_source_type": "remote",
+      "provenance": {
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
+        "freshness": {
+          "age_hours": 43.5,
+          "age_display": "1.8d ago",
+          "status": "AGING",
+          "report_timestamp": "2026-10-19T20:08:22+00:00"
+        },
+        "local_git": {
+          "detected": true,
+          "path": "/Users/rjulia/ChurchCore Academy",
+          "branch": "fix/trust-badge-security-url",
+          "is_clean": false,
+          "uncommitted_files": 5,
+          "ahead": 5,
+          "behind": 2,
+          "last_commit_sha": "abfd029",
+          "last_commit_date": "2026-10-18T13:33:47-04:00",
+          "last_commit_msg": "feat(telemetry): mandate post-test telemetry sync (COUNCIL-2026-008)",
+          "telemetry_mtime": "2026-10-20T18:36:05.281163+00:00",
+          "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
+        },
+        "drift": {
+          "has_drift": true,
+          "reasons": [
+            "Local checkout on non-main branch 'fix/trust-badge-security-url'",
+            "Local checkout is 5 commit(s) ahead of origin/main (unpushed)",
+            "Local working tree has 5 uncommitted file(s)",
+            "Telemetry timestamp divergence: remote main (2026-10-19T20:08:22+00:00) vs local (2026-10-20T18:36:05.207051+00:00)"
+          ]
+        }
+      }
     },
     {
       "product_id": "churchcore-care",
@@ -326,7 +427,42 @@
         "sovereign_db_isolation_verified": true
       },
       "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
-      "_source_type": "remote"
+      "_source_type": "remote",
+      "provenance": {
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
+        "freshness": {
+          "age_hours": 89.8,
+          "age_display": "3d ago",
+          "status": "STALE",
+          "report_timestamp": "2026-10-17T21:47:00.111112+00:00"
+        },
+        "local_git": {
+          "detected": true,
+          "path": "/Users/rjulia/ChurchCore Care",
+          "branch": "gov/council-006-testing-council",
+          "is_clean": false,
+          "uncommitted_files": 3,
+          "ahead": 10,
+          "behind": 0,
+          "last_commit_sha": "4c03636",
+          "last_commit_date": "2026-10-19T16:59:38-04:00",
+          "last_commit_msg": "feat(ai): wire AI functions to OpenRouter with dynamic model evaluation",
+          "telemetry_mtime": "2026-10-20T18:36:05.295660+00:00",
+          "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
+        },
+        "drift": {
+          "has_drift": true,
+          "reasons": [
+            "Local checkout on non-main branch 'gov/council-006-testing-council'",
+            "Local checkout is 10 commit(s) ahead of origin/main (unpushed)",
+            "Local working tree has 3 uncommitted file(s)",
+            "Telemetry timestamp divergence: remote main (2026-10-17T21:47:00.111112+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
+            "Readiness score divergence: remote=95% vs local=100%",
+            "MVP completion divergence: remote=90% vs local=100%"
+          ]
+        }
+      }
     },
     {
       "product_id": "churchcore-orthos",
@@ -396,7 +532,39 @@
         "sovereign_db_isolation_verified": true
       },
       "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
-      "_source_type": "remote"
+      "_source_type": "remote",
+      "provenance": {
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
+        "freshness": {
+          "age_hours": 69.6,
+          "age_display": "2.9d ago",
+          "status": "AGING",
+          "report_timestamp": "2026-10-18T18:01:10.365584+00:00"
+        },
+        "local_git": {
+          "detected": true,
+          "path": "/Users/rjulia/ChurchCore Orthos",
+          "branch": "main",
+          "is_clean": false,
+          "uncommitted_files": 5,
+          "ahead": 3,
+          "behind": 0,
+          "last_commit_sha": "23f8796",
+          "last_commit_date": "2026-10-20T12:46:17-04:00",
+          "last_commit_msg": "chore(telemetry): automated morning edge telemetry sync [skip ci]",
+          "telemetry_mtime": "2026-10-20T18:36:05.309249+00:00",
+          "telemetry_mtime_display": "2026-10-20 18:36:05 UTC"
+        },
+        "drift": {
+          "has_drift": true,
+          "reasons": [
+            "Local checkout is 3 commit(s) ahead of origin/main (unpushed)",
+            "Local working tree has 5 uncommitted file(s)",
+            "Telemetry timestamp divergence: remote main (2026-10-18T18:01:10.365584+00:00) vs local (2026-10-20T18:36:05.207051+00:00)"
+          ]
+        }
+      }
     },
     {
       "product_id": "faithfull-scholars",
@@ -485,7 +653,40 @@
         "sovereign_db_isolation_verified": true
       },
       "_source_path": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
-      "_source_type": "remote"
+      "_source_type": "remote",
+      "provenance": {
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
+        "freshness": {
+          "age_hours": 83.4,
+          "age_display": "3d ago",
+          "status": "STALE",
+          "report_timestamp": "2026-10-18T04:11:03.586850+00:00"
+        },
+        "local_git": {
+          "detected": true,
+          "path": "/Users/rjulia/FaithFullScholars",
+          "branch": "main",
+          "is_clean": true,
+          "uncommitted_files": 0,
+          "ahead": 8,
+          "behind": 0,
+          "last_commit_sha": "e3ae1e3",
+          "last_commit_date": "2026-10-20T14:59:17-04:00",
+          "last_commit_msg": "merge: reconcile origin/main with local FaithFullScholars council implementation",
+          "telemetry_mtime": "2026-10-20T18:58:58.058735+00:00",
+          "telemetry_mtime_display": "2026-10-20 18:58:58 UTC"
+        },
+        "drift": {
+          "has_drift": true,
+          "reasons": [
+            "Local checkout is 8 commit(s) ahead of origin/main (unpushed)",
+            "Telemetry timestamp divergence: remote main (2026-10-18T04:11:03.586850+00:00) vs local (2026-10-20T18:36:05.207051+00:00)",
+            "Readiness score divergence: remote=45% vs local=100%",
+            "MVP completion divergence: remote=60% vs local=92%"
+          ]
+        }
+      }
     }
   ],
   "tasks": [
@@ -2135,7 +2336,7 @@
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-21 01:57:55 UTC",
+      "last_synced": "2026-10-21 15:36:08 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2243,7 +2444,7 @@
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-21 01:57:55 UTC",
+      "last_synced": "2026-10-21 15:36:08 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2351,7 +2552,7 @@
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-21 01:57:55 UTC",
+      "last_synced": "2026-10-21 15:36:08 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2459,7 +2660,7 @@
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-21 01:57:55 UTC",
+      "last_synced": "2026-10-21 15:36:08 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2567,7 +2768,7 @@
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.0.0",
-      "last_synced": "2026-10-21 01:57:55 UTC",
+      "last_synced": "2026-10-21 15:36:08 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2675,7 +2876,7 @@
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.0",
-      "last_synced": "2026-10-21 01:57:55 UTC",
+      "last_synced": "2026-10-21 15:36:08 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2783,7 +2984,7 @@
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-21 01:57:55 UTC",
+      "last_synced": "2026-10-21 15:36:08 UTC",
       "slides": [
         {
           "slide_num": 1,

@@ -137,6 +137,150 @@ def parse_timestamp(ts_str):
     except Exception:
         return datetime.min.replace(tzinfo=timezone.utc)
 
+def compute_freshness(report_timestamp_str):
+    if not report_timestamp_str:
+        return {"age_hours": None, "age_display": "Unknown", "status": "UNKNOWN", "report_timestamp": None}
+    try:
+        ts = parse_timestamp(report_timestamp_str)
+        now = datetime.now(timezone.utc)
+        age_seconds = max(0, (now - ts).total_seconds())
+        age_hours = round(age_seconds / 3600.0, 1)
+
+        if age_hours < 1:
+            age_display = f"{max(1, int(age_seconds // 60))}m ago"
+        elif age_hours < 24:
+            age_display = f"{int(age_hours)}h ago"
+        elif age_hours < 72:
+            days = round(age_hours / 24.0, 1)
+            age_display = f"{days}d ago"
+        else:
+            days = int(age_hours // 24)
+            age_display = f"{days}d ago"
+
+        if age_hours < 24:
+            status = "FRESH"
+        elif age_hours < 72:
+            status = "AGING"
+        else:
+            status = "STALE"
+
+        return {
+            "age_hours": age_hours,
+            "age_display": age_display,
+            "status": status,
+            "report_timestamp": report_timestamp_str
+        }
+    except Exception:
+        return {"age_hours": None, "age_display": "Invalid date", "status": "UNKNOWN", "report_timestamp": report_timestamp_str}
+
+
+def harvest_git_and_fs_metadata(local_path):
+    if not local_path or not os.path.exists(local_path):
+        return None
+
+    meta = {
+        "detected": True,
+        "path": local_path,
+        "branch": "unknown",
+        "is_clean": True,
+        "uncommitted_files": 0,
+        "ahead": 0,
+        "behind": 0,
+        "last_commit_sha": None,
+        "last_commit_date": None,
+        "last_commit_msg": None,
+        "telemetry_mtime": None,
+        "telemetry_mtime_display": None,
+    }
+
+    try:
+        r = subprocess.run(["git", "-C", local_path, "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True, timeout=2)
+        if r.returncode == 0:
+            meta["branch"] = r.stdout.strip()
+    except Exception:
+        pass
+
+    try:
+        r = subprocess.run(["git", "-C", local_path, "status", "--porcelain"], capture_output=True, text=True, timeout=2)
+        if r.returncode == 0:
+            lines = [l for l in r.stdout.strip().splitlines() if l.strip()]
+            meta["uncommitted_files"] = len(lines)
+            meta["is_clean"] = (len(lines) == 0)
+    except Exception:
+        pass
+
+    try:
+        r = subprocess.run(["git", "-C", local_path, "rev-list", "--left-right", "--count", "origin/main...HEAD"], capture_output=True, text=True, timeout=2)
+        if r.returncode == 0:
+            parts = r.stdout.strip().split()
+            if len(parts) >= 2:
+                meta["behind"] = int(parts[0])
+                meta["ahead"] = int(parts[1])
+    except Exception:
+        pass
+
+    try:
+        r = subprocess.run(["git", "-C", local_path, "log", "-1", "--format=%h|%cI|%s"], capture_output=True, text=True, timeout=2)
+        if r.returncode == 0 and r.stdout.strip():
+            tokens = r.stdout.strip().split("|", 2)
+            meta["last_commit_sha"] = tokens[0] if len(tokens) > 0 else None
+            meta["last_commit_date"] = tokens[1] if len(tokens) > 1 else None
+            meta["last_commit_msg"] = tokens[2] if len(tokens) > 2 else None
+    except Exception:
+        pass
+
+    tpath = os.path.join(local_path, "docs", "control-plane", "telemetry.json")
+    if os.path.exists(tpath):
+        try:
+            mtime = os.path.getmtime(tpath)
+            dt = datetime.fromtimestamp(mtime, tz=timezone.utc)
+            meta["telemetry_mtime"] = dt.isoformat()
+            meta["telemetry_mtime_display"] = dt.strftime("%Y-%m-%d %H:%M:%S UTC")
+        except Exception:
+            pass
+
+    return meta
+
+
+def evaluate_drift(remote_data, local_data, local_git_meta):
+    reasons = []
+    if not local_git_meta:
+        return {"has_drift": False, "reasons": []}
+
+    branch = local_git_meta.get("branch")
+    if branch and branch not in {"main", "master", "unknown"}:
+        reasons.append(f"Local checkout on non-main branch '{branch}'")
+
+    ahead = local_git_meta.get("ahead", 0)
+    if ahead > 0:
+        reasons.append(f"Local checkout is {ahead} commit(s) ahead of origin/main (unpushed)")
+
+    uncommitted = local_git_meta.get("uncommitted_files", 0)
+    if uncommitted > 0:
+        reasons.append(f"Local working tree has {uncommitted} uncommitted file(s)")
+
+    if remote_data and local_data:
+        r_ts = remote_data.get("report_timestamp")
+        l_ts = local_data.get("report_timestamp")
+        if r_ts and l_ts and r_ts != l_ts:
+            reasons.append(f"Telemetry timestamp divergence: remote main ({r_ts}) vs local ({l_ts})")
+
+        r_score = remote_data.get("online_status", {}).get("readiness_assessment", {}).get("readiness_score_pct")
+        l_score = local_data.get("online_status", {}).get("readiness_assessment", {}).get("readiness_score_pct")
+        if r_score is not None and l_score is not None and r_score != l_score:
+            reasons.append(f"Readiness score divergence: remote={r_score}% vs local={l_score}%")
+
+        r_mvp = remote_data.get("mvp_status", {}).get("completion_pct")
+        l_mvp = local_data.get("mvp_status", {}).get("completion_pct")
+        if r_mvp is not None and l_mvp is not None and r_mvp != l_mvp:
+            reasons.append(f"MVP completion divergence: remote={r_mvp}% vs local={l_mvp}%")
+
+    return {
+        "has_drift": len(reasons) > 0,
+        "reasons": reasons
+    }
+
+
 def load_telemetry(source):
     # Fetch remote candidate (GitHub published default-branch)
     remote_data = None
@@ -182,14 +326,13 @@ def load_telemetry(source):
 
     # Fetch local candidate from sibling repos
     local_data = None
-    local_branch = None
+    matched_local_path = None
     for p in source["local_paths"]:
+        if os.path.exists(p) and not matched_local_path:
+            matched_local_path = p
         tpath = os.path.join(p, "docs", "control-plane", "telemetry.json")
         if os.path.exists(tpath):
             try:
-                res = subprocess.run(["git", "-C", p, "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True, timeout=2)
-                if res.returncode == 0:
-                    local_branch = res.stdout.strip()
                 with open(tpath, "r") as f:
                     data = json.load(f)
                     valid, reason = validate_telemetry(data, source["product_id"])
@@ -199,21 +342,35 @@ def load_telemetry(source):
                     data["_source_path"] = tpath
                     data["_source_type"] = "local"
                     local_data = data
+                    matched_local_path = p
                     break
             except Exception as e:
                 print(f"[-] Error reading {tpath}: {e}")
 
     # Arbitrate: published remote main is canonical authority; local checkout is fallback
-    if remote_data:
-        name = source.get("name", source.get("product_id", "unknown"))
+    chosen = remote_data or local_data
+    if not chosen:
+        return None
+
+    local_meta = None
+    if matched_local_path:
+        local_meta = harvest_git_and_fs_metadata(matched_local_path)
+
+    chosen["provenance"] = {
+        "source_origin": "remote_github" if chosen.get("_source_type") == "remote" else "local_filesystem",
+        "source_url": chosen.get("_source_path"),
+        "freshness": compute_freshness(chosen.get("report_timestamp")),
+        "local_git": local_meta,
+        "drift": evaluate_drift(remote_data, local_data, local_meta)
+    }
+
+    name = source.get("name", source.get("product_id", "unknown"))
+    if chosen.get("_source_type") == "remote":
         print(f"[+] Ingested telemetry for {name} (remote: {remote_url})")
-        return remote_data
-    elif local_data:
-        name = source.get("name", source.get("product_id", "unknown"))
-        print(f"[+] Ingested telemetry for {name} (local fallback: {local_data['_source_path']})")
-        return local_data
-    
-    return None
+    else:
+        print(f"[+] Ingested telemetry for {name} (local fallback: {chosen['_source_path']})")
+
+    return chosen
 
 
 def generate_dashboard(telemetry_list):

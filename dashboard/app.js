@@ -400,6 +400,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isFirst) barBg = '#F07C6B';
             else if (is100) barBg = '#4CC38A';
 
+            const readinessScore = p.online_status?.readiness_assessment?.readiness_score_pct || 0;
+
             return `
               <li class="queue-item-row ${isFirst ? 'is-first' : ''} ${is100 ? 'is-champion' : ''}">
                 <span class="rank-square-badge ${isFirst ? 'first-badge' : ''}" style="${is100 ? 'background: #14291F; color: #4CC38A; border-color: rgba(76,195,138,0.3);' : ''}">#${idx + 1}</span>
@@ -407,6 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <div class="queue-item-title-row">
                     <span class="queue-item-name">${escapeHtml(appDisplayName)}</span>
                     ${badgeHtml}
+                    <span class="pill-dual-metric" title="Feature Code Completion vs Operational Launch Readiness" style="margin-left: 6px;">Features: <strong>${pct}%</strong> · Launch: <strong>${readinessScore}%</strong></span>
                   </div>
                   <div class="queue-item-task-line"><span style="color: ${is100 ? '#4CC38A' : '#7E8793'}; font-weight: ${is100 ? '600' : '400'};">${is100 ? 'Gate:' : 'Next:'}</span> ${escapeHtml(task)}</div>
                 </div>
@@ -414,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <div class="queue-progress-box">
                     <div class="queue-pct-text">
                       <span style="font-family: 'Geist Mono', monospace; font-weight: 600; color: ${is100 ? '#4CC38A' : '#E7E9EC'};">${pct}%</span>
-                      <span style="color: #98A1AD;">${is100 ? 'verified' : `${rem}% left`}</span>
+                      <span style="color: #98A1AD;">${is100 ? 'code verified' : `${rem}% backlog left`}</span>
                     </div>
                     <div style="height: 6px; border-radius: 3px; background: #262C35; overflow: hidden;" role="img" aria-label="${pct}% ready">
                       <div style="height: 100%; border-radius: 3px; width: ${pct}%; background: ${barBg};"></div>
@@ -769,6 +772,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const completion = p.mvp_status.completion_pct;
       const vUrl = p.online_status.vercel_url || 'N/A';
 
+      const prov = p.provenance || {};
+      const fresh = prov.freshness || {};
+      const drift = prov.drift || {};
+      const isRemote = prov.source_origin === 'remote_github';
+      const freshStatus = (fresh.status || 'unknown').toLowerCase();
+      const freshLabel = fresh.age_display || 'Unknown';
+      const sourceLabel = isRemote ? '🌐 Remote main' : '💻 Local checkout';
+
+      let driftBadgeHtml = '';
+      if (drift.has_drift && drift.reasons && drift.reasons.length > 0) {
+        const allReasons = drift.reasons.join('\n• ');
+        driftBadgeHtml = `
+          <span class="pill-drift" title="⚠️ Divergence:\n• ${escapeHtml(allReasons)}">
+            ⚠️ Divergence (${drift.reasons.length})
+          </span>
+        `;
+      }
+
       const card = document.createElement('div');
       card.className = 'product-card';
       card.innerHTML = `
@@ -781,6 +802,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="status-badge ${statusClass}">
               ● ${statusText}
             </span>
+          </div>
+
+          <div class="card-provenance-bar">
+            <span class="pill-origin" title="Source: ${escapeHtml(prov.source_url || '')}">
+              ${sourceLabel}
+            </span>
+            <span class="pill-freshness ${freshStatus}" title="Reported: ${escapeHtml(p.report_timestamp || 'N/A')}">
+              ● ${escapeHtml(freshLabel)}
+            </span>
+            ${driftBadgeHtml}
           </div>
 
           <div class="card-infra-grid">
@@ -800,7 +831,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div class="card-meters">
             <div class="meter-header">
-              <span>Readiness Launch Score</span>
+              <span title="Operational launch & security gates">Launch Readiness (Operational)</span>
               <span>${readiness}%</span>
             </div>
             <div class="progress-track">
@@ -808,7 +839,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="meter-header">
-              <span>MVP Completion (${escapeHtml(p.mvp_status.phase.toUpperCase())})</span>
+              <span title="COUNCIL-2026-005 Phase 1 feature code + test gate">Feature Backlog (Code Gate)</span>
               <span>${completion}%</span>
             </div>
             <div class="progress-track">
@@ -1753,6 +1784,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="readiness-score-badge" style="background: ${unresolvedBlockers.length === 0 ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)'}; color: ${unresolvedBlockers.length === 0 ? '#10B981' : '#F59E0B'}">
             Score: ${effectiveScore}% ${escapeHtml(scoreLabel)}
           </span>
+          <div style="margin-top: 8px;">
+            <span class="pill-dual-metric" title="Launch Readiness vs Phase 1 Feature Code">
+              Launch: <strong>${effectiveScore}%</strong> · Features: <strong>${p.mvp_status.completion_pct}%</strong>
+            </span>
+          </div>
           <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted);">
             Vercel: ${p.online_status.vercel_status.toUpperCase()} • Supabase: ${p.online_status.supabase_status.toUpperCase()}
           </div>
@@ -1994,7 +2030,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     title.textContent = `${getAppDisplayName(prod)} (${prod.product_id}) — v${prod.version}`;
 
+    const prov = prod.provenance || {};
+    const fresh = prov.freshness || {};
+    const localGit = prov.local_git || {};
+    const drift = prov.drift || {};
+
+    let driftHtml = '';
+    if (drift.has_drift && drift.reasons && drift.reasons.length > 0) {
+      driftHtml = `
+        <div class="drift-warning-box">
+          <div class="drift-warning-title">
+            ⚠️ Disparity &amp; Drift Detected (${drift.reasons.length})
+          </div>
+          <ul class="drift-warning-list">
+            ${drift.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
     body.innerHTML = `
+      <!-- Metric Disambiguation -->
+      <div class="metric-disambiguation-card">
+        <div class="metric-box launch">
+          <div class="metric-box-title">Launch Readiness Score</div>
+          <div class="metric-box-val">${prod.online_status.readiness_assessment.readiness_score_pct}%</div>
+          <div class="metric-box-desc">Operational, DNS MX, Turnstile, and legal review gates. Governs live user onboarding safety.</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-box-title">MVP Feature Backlog</div>
+          <div class="metric-box-val">${prod.mvp_status.completion_pct}%</div>
+          <div class="metric-box-desc">COUNCIL-2026-005 Phase 1 feature code + automated unit test pass rate. Gated at 100% before human pilot trials.</div>
+        </div>
+      </div>
+
+      ${driftHtml}
+
+      <!-- Provenance & Freshness Deep Inspection -->
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 13px; color: #38BDF8; text-transform: uppercase; margin-bottom: 8px;">Telemetry Provenance &amp; Repository State</h4>
+        <div class="provenance-info-grid">
+          <div class="provenance-info-item">
+            <div class="provenance-info-key">Data Source Origin</div>
+            <div class="provenance-info-val">${prov.source_origin === 'remote_github' ? '🌐 GitHub Remote (main)' : '💻 Local Checkout'}</div>
+          </div>
+          <div class="provenance-info-item">
+            <div class="provenance-info-key">Telemetry Freshness</div>
+            <div class="provenance-info-val">
+              <span class="pill-freshness ${(fresh.status || 'unknown').toLowerCase()}">● ${escapeHtml(fresh.status || 'UNKNOWN')} (${escapeHtml(fresh.age_display || 'N/A')})</span>
+            </div>
+          </div>
+          <div class="provenance-info-item">
+            <div class="provenance-info-key">Telemetry Report Date</div>
+            <div class="provenance-info-val" style="font-size: 11px;">${escapeHtml(prod.report_timestamp || 'N/A')}</div>
+          </div>
+          <div class="provenance-info-item">
+            <div class="provenance-info-key">Local Git Branch</div>
+            <div class="provenance-info-val">${escapeHtml(localGit.branch || 'None detected')} ${localGit.is_clean ? '✓ Clean' : '⚠️ ' + (localGit.uncommitted_files || 0) + ' dirty file(s)'}</div>
+          </div>
+          <div class="provenance-info-item">
+            <div class="provenance-info-key">Local Git Ahead / Behind</div>
+            <div class="provenance-info-val">${localGit.ahead || 0} ahead, ${localGit.behind || 0} behind remote</div>
+          </div>
+          <div class="provenance-info-item">
+            <div class="provenance-info-key">Local Telemetry File mtime</div>
+            <div class="provenance-info-val" style="font-size: 11px;">${escapeHtml(localGit.telemetry_mtime_display || 'None')}</div>
+          </div>
+        </div>
+      </div>
+
       <div style="margin-bottom: 20px;">
         <h4 style="font-size: 13px; color: var(--gold-500); text-transform: uppercase; margin-bottom: 8px;">Recent Git Commits</h4>
         <ul style="list-style: none; font-family: var(--font-mono); font-size: 12px;">

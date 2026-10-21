@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-21 01:57:55 UTC`
+> **Last Aggregated:** `2026-10-21 15:36:08 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -11,7 +11,7 @@
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
 | **Active Production Online** | `6 / 6` | 6 / 6 | 🟢 100% Online |
 | **Average Readiness Score** | `88%` | 100% | 🟢 High Readiness |
-| **Portfolio MVP Progress** | `87%` | 100% | 🟢 On Schedule |
+| **Portfolio MVP Progress** | `90%` | 100% | 🟢 On Schedule |
 | **Cross-App Data Isolation** | `UNVERIFIED` | Evidence from every product | ⚠️ One or more edge reports are unverified |
 
 ## 2. Product Fleet Status Cards
@@ -272,7 +272,7 @@
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
-- 🔴 Phase 1 MVP items open: A4b error monitoring (Sentry; deferred by the owner), WCAG AAA contrast for signed-in areas, B2 email outbox, B3 and B4 invitations, B5 deletion and export (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
+- 🔴 Phase 1 MVP items open: A4b error monitoring (Sentry; owner decision pending), WCAG AAA contrast for signed-in areas, B3 and B4 invitations (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
 - 🔴 Support address abuse@faithgrid.io is live on /contact (2026-10-20), accepted as is: mail bounces until faithgrid.io has MX records, and the legal texts route rights requests there
 - 🔴 Custom domain (B1) deferred by the owner; outbound email stays off until then
 - 🔴 Legal texts are drafts pending legal review (version 3 names the operator and describes consent); counsel review needed before real users
@@ -283,25 +283,25 @@
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `BETA`
-- **Completion Percentage:** `40%`
+- **Completion Percentage:** `60%`
 - **Recent Milestones Delivered:**
+  - ✅ B5b data export, account deletion with 14-day grace, privacy v5 live (PR #109, ADR 0035)
+  - ✅ B2 email outbox live, sending off by design (PR #106, ADR 0033)
+  - ✅ B5a policy re-acceptance prompt live (PR #107, ADR 0035)
   - ✅ AI matcher on OpenRouter with zero data retention; privacy v4 live (PR #104, ADR 0041)
   - ✅ Gemini key moved to a header in the CV extractor and syllabus tagger (PR #100)
-  - ✅ A4a production gates live: fail-closed Turnstile, build env gate, honest error page (PR #98, ADR 0040)
-  - ✅ A3b consent to publish declared beliefs live; legal texts v3 (PR #96, ADR 0039)
-  - ✅ Legal texts v2 name the operator (PR #95)
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)`
+- `feat(mvp): B2 transactional email outbox, sending off (ADR 0033) (#106) (d2806a4)`
+- `feat(mvp): B5a policy re-acceptance prompt (ADR 0035) (#107) (2c3c627)`
 - `feat(ai): OpenRouter as the only AI gateway, zero data retention; privacy v4 (ADR 0041) (#104) (9e9725f)`
-- `fix(security): Gemini key in a header for the CV extractor and syllabus tagger (#100) (36f83c0)`
-- `feat(mvp): A4a production gates: fail-closed Turnstile, build env gate (ADR 0040) (#98) (3ac7a71)`
-- `feat(brand): badge follow-up: translated title, new-tab note, shared URL, test (#90) (3b3adc7)`
 
 **Next Engineering Steps:**
-- 🎯 Owner: confirm in an institution faculty search that the matcher label reads 'Google Gemini via OpenRouter' (it reads 'built-in matcher' if OPENROUTER_API_KEY is missing or no zero-retention endpoint answers)
-- 🎯 Owner: add MX records for faithgrid.io (for example ImprovMX forwarding) so mail to abuse@faithgrid.io is delivered
-- 🎯 Owner decision: PR #101 (COUNCIL-2026-007 monograph index and community migration) fails three data-isolation gates and sets telemetry to 92%/readiness 100; it conflicts with the 2026-10-20 challenge (ChurchCore-Business #9)
+- 🎯 Next: B3 institution invitations and B4 founding-scholar invitations (ADR 0034), then WCAG AAA contrast for signed-in areas
+- 🎯 Re-score readiness with a full Council review once B5b, B3 and B4 land (last score about 45/100 on 2026-10-14, before A1 to A4a, B2 and B5a)
+- 🎯 WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `claude-opus-5-5`

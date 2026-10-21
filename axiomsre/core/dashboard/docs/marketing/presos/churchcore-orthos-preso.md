@@ -4,7 +4,7 @@
 > **Scale:** 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0  
 > **Target Buyers:** Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter  
 > **Live URL:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-21 01:57:55 UTC
+> **Last Synced from Telemetry:** 2026-10-21 15:36:08 UTC
 
 ---
 
