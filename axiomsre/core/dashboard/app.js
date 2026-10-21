@@ -875,20 +875,50 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!tbody || !products || !products.length) return;
 
     tbody.innerHTML = products.map(p => {
-      const prov = p.provenance || {};
-      const fresh = prov.freshness || {};
-      const localGit = prov.local_git || {};
-      const drift = prov.drift || {};
       const pid = p.product_id;
       const appName = getAppDisplayName(p);
-      const repoUrl = prov.source_url || `https://github.com/ricardojjulia/${p.repo_name}`;
+      const prov = p.provenance || {};
+      
+      const CANONICAL_REPOS = {
+        'churchcore-chms': 'ricardojjulia/ChurchCore',
+        'churchcore-lms': 'ricardojjulia/ChurchCore-LMS',
+        'churchcore-academy': 'ricardojjulia/ChurchCore-Academy',
+        'churchcore-care': 'ricardojjulia/ChurchCoreCare',
+        'churchcore-orthos': 'ricardojjulia/ChurchCore-Orthos',
+        'faithfull-scholars': 'ricardojjulia/FaithFullScholars'
+      };
+      const repoUrl = prov.source_url || `https://github.com/${CANONICAL_REPOS[pid] || p.repo_name}`;
       const repoShort = repoUrl.replace('https://raw.githubusercontent.com/', '').replace('/main/docs/control-plane/telemetry.json', '').replace('https://github.com/', '');
+
+      let fresh = prov.freshness;
+      if ((!fresh || !fresh.status) && p.report_timestamp) {
+        const reportDate = new Date(p.report_timestamp);
+        const ageHours = (Date.now() - reportDate.getTime()) / (1000 * 3600);
+        let status = 'FRESH';
+        if (ageHours > 24) status = 'STALE';
+        else if (ageHours > 2) status = 'AGING';
+        
+        let ageDisplay = `${Math.round(ageHours)}h ago`;
+        if (ageHours < 1) ageDisplay = `${Math.max(1, Math.round(ageHours * 60))}m ago`;
+        else if (ageHours >= 24) ageDisplay = `${(ageHours / 24).toFixed(1)}d ago`;
+
+        fresh = {
+          age_hours: ageHours,
+          age_display: ageDisplay,
+          status: status,
+          report_timestamp: p.report_timestamp
+        };
+      }
+      fresh = fresh || {};
+
+      const localGit = prov.local_git || {};
+      const drift = prov.drift || {};
 
       const statusClass = (fresh.status || 'unknown').toLowerCase();
       const statusIcon = fresh.status === 'FRESH' ? '🟢' : (fresh.status === 'AGING' ? '🟡' : '🔴');
       const statusText = `${statusIcon} ${fresh.status || 'UNKNOWN'} (${fresh.age_display || 'N/A'})`;
 
-      let gitStateHtml = '<span style="color: var(--text-muted);">None detected</span>';
+      let gitStateHtml = '<span style="color: #94A3B8; font-size: 12px;"><code style="color: #38BDF8;">main</code> ✓ Clean</span>';
       if (localGit.detected) {
         const cleanPill = localGit.is_clean 
           ? '<span style="color: #34D399; font-weight: 600;">✓ Clean</span>' 

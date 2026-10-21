@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-21 19:15:23 UTC",
+  "generated_at": "2026-10-21 19:27:42 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -36,8 +36,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Executive Mission Control Cockpit",
       "cat_summary": "Serves the real-time glassmorphic dashboard and documentation dossier viewer at http://localhost:3333.",
       "cli_flags": [],
-      "size_bytes": 27621,
-      "line_count": 677
+      "size_bytes": 27873,
+      "line_count": 689
     },
     {
       "rel_path": "scripts/activate-product-repos.py",

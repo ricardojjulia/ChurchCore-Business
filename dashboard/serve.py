@@ -30,17 +30,29 @@ WORKSPACE_DIR = os.path.dirname(DASHBOARD_DIR)
 
 sys.path.insert(0, os.path.join(WORKSPACE_DIR, 'scripts'))
 import importlib.util
-sync_script = os.path.join(WORKSPACE_DIR, 'scripts', 'control-plane-sync.py')
-try:
-    spec = importlib.util.spec_from_file_location("control_plane_sync", sync_script)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    sync_control_plane = getattr(mod, "sync_control_plane", None)
-    get_edge_timestamps = getattr(mod, "get_edge_timestamps", None)
-except Exception as e:
-    print(f"[-] Warning: Failed to load control-plane-sync: {e}")
-    sync_control_plane = None
-    get_edge_timestamps = None
+
+def _get_sync_module():
+    sync_script = os.path.join(WORKSPACE_DIR, 'scripts', 'control-plane-sync.py')
+    try:
+        spec = importlib.util.spec_from_file_location("control_plane_sync", sync_script)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+    except Exception as e:
+        print(f"[-] Warning: Failed to load control-plane-sync: {e}")
+        return None
+
+def sync_control_plane(verbose=False):
+    mod = _get_sync_module()
+    if mod and hasattr(mod, "sync_control_plane"):
+        return mod.sync_control_plane(verbose=verbose)
+    return None
+
+def get_edge_timestamps():
+    mod = _get_sync_module()
+    if mod and hasattr(mod, "get_edge_timestamps"):
+        return mod.get_edge_timestamps()
+    return {}
 
 class TelemetryWatcherThread(threading.Thread):
     def __init__(self, interval=15):
