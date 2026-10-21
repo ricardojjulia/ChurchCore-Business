@@ -4,7 +4,7 @@
 > **Scale:** 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0  
 > **Target Buyers:** Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter  
 > **Live URL:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-21 19:05:04 UTC
+> **Last Synced from Telemetry:** 2026-10-21 19:15:23 UTC
 
 ---
 
@@ -38,10 +38,10 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://church-core-orthos.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (0.18.0 Live)*
+*Continuous High-Velocity Delivery (0.18.3 Live)*
 
-- Latest Feature Delivered: chore(telemetry): automated morning edge telemetry sync [skip ci] (23f8796)
-- Ecosystem Hardening: chore(telemetry): automated morning edge telemetry sync [skip ci] (471c2e1)
+- Latest Feature Delivered: Merge pull request #33 from ricardojjulia/chore/council-008-sync (940e8d9)
+- Ecosystem Hardening: chore(governance): implement COUNCIL-2026-008 automated telemetry reporting and ledger sync (v0.18.3) (737f2cd)
 - Reliability Proof: [2026-10-15] Configured explicit CSP allowlists in vercel.json for audit PDF preview rendering.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Omni-Council Compliance Engine: Real-time checks for b
 Commercial Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
 
 Recent Engineering Delivery & Milestones:
-- chore(telemetry): automated morning edge telemetry sync [skip ci] (23f8796)
-- chore(telemetry): automated morning edge telemetry sync [skip ci] (471c2e1)
-- chore(telemetry): automated morning edge telemetry sync [skip ci] (f7b2f1b)
 - Merge pull request #33 from ricardojjulia/chore/council-008-sync (940e8d9)
+- chore(governance): implement COUNCIL-2026-008 automated telemetry reporting and ledger sync (v0.18.3) (737f2cd)
+- Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)
+- feat(ministries): implement AI solutioning engine, Sunday SLA prober, and /api/health (COUNCIL-2026-005) (625569e)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Orthos**
 - Core Value: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity
 - Live Site: https://church-core-orthos.vercel.app
 - Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
-- Latest Features: chore(telemetry): automated morning edge telemetry sync [skip ci] (23f8796), chore(telemetry): automated morning edge telemetry sync [skip ci] (471c2e1), chore(telemetry): automated morning edge telemetry sync [skip ci] (f7b2f1b)
+- Latest Features: Merge pull request #33 from ricardojjulia/chore/council-008-sync (940e8d9), chore(governance): implement COUNCIL-2026-008 automated telemetry reporting and ledger sync (v0.18.3) (737f2cd), Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- chore(telemetry): automated morning edge telemetry sync [skip ci] (23f8796)
-- chore(telemetry): automated morning edge telemetry sync [skip ci] (471c2e1)
-- chore(telemetry): automated morning edge telemetry sync [skip ci] (f7b2f1b)
+- Merge pull request #33 from ricardojjulia/chore/council-008-sync (940e8d9)
+- chore(governance): implement COUNCIL-2026-008 automated telemetry reporting and ledger sync (v0.18.3) (737f2cd)
+- Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

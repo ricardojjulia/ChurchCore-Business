@@ -38,12 +38,12 @@ REPO_SOURCES = [
         "name": "ChurchCore LMS",
         "repo": "ricardojjulia/ChurchCore-LMS",
         "local_paths": [
-            os.path.join(PARENT_DIR, "ChurchCore LMS"),
             os.path.join(PARENT_DIR, "ChurchCore-LMS"),
-            "/Volumes/My Shared Files/Home/ChurchCore LMS",
+            os.path.join(PARENT_DIR, "ChurchCore LMS"),
             "/Volumes/My Shared Files/Home/ChurchCore-LMS",
-            "/Users/rjulia/ChurchCore LMS",
-            "/Users/rjulia/ChurchCore-LMS"
+            "/Volumes/My Shared Files/Home/ChurchCore LMS",
+            "/Users/rjulia/ChurchCore-LMS",
+            "/Users/rjulia/ChurchCore LMS"
         ]
     },
     {

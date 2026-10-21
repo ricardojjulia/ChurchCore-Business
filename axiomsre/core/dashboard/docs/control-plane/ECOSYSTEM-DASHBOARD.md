@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-21 19:05:04 UTC`
+> **Last Aggregated:** `2026-10-21 19:15:23 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -73,7 +73,7 @@
 
 ---
 
-### ChurchCore LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
+### ChurchCore-LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -100,10 +100,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Merge pull request #102 from ricardojjulia/chore/session-close-100-mvp (b69f222)`
+- `chore(telemetry): record 100% Phase 1 completion and session close (af6675c)`
 - `Merge pull request #101 from ricardojjulia/feat/universal-app-switcher-and-mvp-100 (b0d3645)`
 - `feat(navigation): integrate Universal AppSwitcher (OPS-02) and advance Phase 1 to 100% complete (5d427b3)`
-- `Merge pull request #100 from ricardojjulia/gov/council-006-testing-council (22d92cf)`
-- `feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (c43909e)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
@@ -112,9 +112,9 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-18T14:27:22.121354+00:00`
+- **Session Timestamp:** `2026-10-21T19:07:50.587388+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Phase 1 MVP 100% complete, Universal AppSwitcher merged to main, Release deployed
+- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-lms.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -233,7 +233,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `fatal: your current branch 'main' does not have any commits yet`
+- `Merge pull request #33 from ricardojjulia/chore/council-008-sync (940e8d9)`
+- `chore(governance): implement COUNCIL-2026-008 automated telemetry reporting and ledger sync (v0.18.3) (737f2cd)`
+- `Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)`
+- `feat(ministries): implement AI solutioning engine, Sunday SLA prober, and /api/health (COUNCIL-2026-005) (625569e)`
 
 **Next Engineering Steps:**
 - 🎯 Deploy staging preview build to Vercel
@@ -242,7 +245,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-18T18:01:10.365584+00:00`
+- **Session Timestamp:** `2026-10-21T19:09:41.288991+00:00`
 - **Session Operator:** `Ricardo J Julia`
 - **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-orthos.
 
@@ -286,10 +289,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `docs: B5 done and live; progress 6 of 10 (#110) (16f078b)`
 - `feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)`
-- `feat(mvp): B2 transactional email outbox, sending off (ADR 0033) (#106) (d2806a4)`
+- `docs: status after B2 and B5a; telemetry 50% with engineering next steps first (#108) (bf5a5ce)`
 - `feat(mvp): B5a policy re-acceptance prompt (ADR 0035) (#107) (2c3c627)`
-- `feat(ai): OpenRouter as the only AI gateway, zero data retention; privacy v4 (ADR 0041) (#104) (9e9725f)`
 
 **Next Engineering Steps:**
 - 🎯 Next: B3 institution invitations and B4 founding-scholar invitations (ADR 0034), then WCAG AAA contrast for signed-in areas
@@ -297,11 +300,11 @@
 - 🎯 WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `claude-opus-5-5`
-- **Session Duration:** `0 minutes`
-- **Session Timestamp:** `2026-10-18T04:11:03.586850+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** A3a shipped (legal pages, acceptance records, contact, reset); badge follow-up; COUNCIL-2026-005 sync: MVP plan, honest ledger and telemetry, enforcement script no longer passes unchecked requirements.
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-10-21T19:10:30.854737+00:00`
+- **Session Operator:** `Ricardo Julia`
+- **Session Work Summary:** Automated post-test edge telemetry synchronization for faithfull-scholars.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
