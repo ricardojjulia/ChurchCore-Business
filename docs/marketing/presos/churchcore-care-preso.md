@@ -4,7 +4,7 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-21 19:54:10 UTC
+> **Last Synced from Telemetry:** 2026-10-21 20:28:41 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (7.1.0 Live)*
 
-- Latest Feature Delivered: chore(council): record central reconciliation for squash merge commit #142 (#144) (c0722e5)
-- Ecosystem Hardening: feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142) (9552871)
+- Latest Feature Delivered: chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
+- Ecosystem Hardening: Automated Council Directives sync
 - Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,7 @@ Constitutional Invariant: Absolute Cryptographic Isolation: Church membership no
 Commercial Pricing: $59–$399/mo per practitioner
 
 Recent Engineering Delivery & Milestones:
-- chore(council): record central reconciliation for squash merge commit #142 (#144) (c0722e5)
-- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142) (9552871)
-- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)
-- Merge pull request #139 from ricardojjulia/fix/mobile-vite-lockfile (188f9df)
+- chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
 </context>
 
 <instructions>
@@ -116,7 +113,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.
 - Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts
 - Live Site: https://www.churchcorecare.io
 - Pricing: $59–$399/mo per practitioner
-- Latest Features: chore(council): record central reconciliation for squash merge commit #142 (#144) (c0722e5), feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142) (9552871), feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)
+- Latest Features: chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +145,7 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- chore(council): record central reconciliation for squash merge commit #142 (#144) (c0722e5)
-- feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#142) (9552871)
-- feat(branding): install Powered by ChurchCore badge linking to https://www.churchcore.io/security (#141) (3f77da6)
+- chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
