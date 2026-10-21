@@ -1,6 +1,6 @@
 /** ChurchCore Sovereign Control Plane: Automated Python Automation Registry */
 window.CHURCHCORE_SCRIPTS_DATA = {
-  "generated_at": "2026-10-21 01:52:01 UTC",
+  "generated_at": "2026-10-21 01:57:55 UTC",
   "total_scripts": 13,
   "categories": [
     "General Automation Tools",
@@ -110,8 +110,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Fleet Telemetry & Cockpit Aggregation",
       "cat_summary": "Ingests edge telemetry from all 6 product repositories and compiles the master ecosystem dashboard.",
       "cli_flags": [],
-      "size_bytes": 29182,
-      "line_count": 590
+      "size_bytes": 28841,
+      "line_count": 584
     },
     {
       "rel_path": "scripts/daily-fleet-briefing.py",
@@ -121,8 +121,8 @@ window.CHURCHCORE_SCRIPTS_DATA = {
       "category": "Reporting & Fleet Briefings",
       "cat_summary": "Automated daily fleet status, MVP 100% progress tracking, and morning priority queue generation.",
       "cli_flags": [],
-      "size_bytes": 15061,
-      "line_count": 329
+      "size_bytes": 16304,
+      "line_count": 360
     },
     {
       "rel_path": "scripts/generate-marketing-presos.py",

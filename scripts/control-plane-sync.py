@@ -182,10 +182,14 @@ def load_telemetry(source):
 
     # Fetch local candidate from sibling repos
     local_data = None
+    local_branch = None
     for p in source["local_paths"]:
         tpath = os.path.join(p, "docs", "control-plane", "telemetry.json")
         if os.path.exists(tpath):
             try:
+                res = subprocess.run(["git", "-C", p, "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True, timeout=2)
+                if res.returncode == 0:
+                    local_branch = res.stdout.strip()
                 with open(tpath, "r") as f:
                     data = json.load(f)
                     valid, reason = validate_telemetry(data, source["product_id"])
@@ -199,25 +203,15 @@ def load_telemetry(source):
             except Exception as e:
                 print(f"[-] Error reading {tpath}: {e}")
 
-    # Arbitrate: if both exist, prefer the candidate with the newer report_timestamp
-    if remote_data and local_data:
-        remote_ts = parse_timestamp(remote_data.get("report_timestamp"))
-        local_ts = parse_timestamp(local_data.get("report_timestamp"))
+    # Arbitrate: published remote main is canonical authority; local checkout is fallback
+    if remote_data:
         name = source.get("name", source.get("product_id", "unknown"))
-        if local_ts > remote_ts:
-            print(f"[+] Ingested telemetry for {name} (local checkout is newer: {local_data.get('report_timestamp')} > {remote_data.get('report_timestamp')})")
-            return local_data
-        else:
-            print(f"[+] Ingested telemetry for {name} (remote: {remote_url})")
-            return remote_data
+        print(f"[+] Ingested telemetry for {name} (remote: {remote_url})")
+        return remote_data
     elif local_data:
         name = source.get("name", source.get("product_id", "unknown"))
         print(f"[+] Ingested telemetry for {name} (local fallback: {local_data['_source_path']})")
         return local_data
-    elif remote_data:
-        name = source.get("name", source.get("product_id", "unknown"))
-        print(f"[+] Ingested telemetry for {name} (remote: {remote_url})")
-        return remote_data
     
     return None
 
