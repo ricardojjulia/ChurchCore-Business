@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-21T02:21:11.741427+00:00",
+  "generated_at": "2026-10-21T15:10:04.813983+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
     "average_readiness_score": 88,
-    "average_completion_pct": 89,
+    "average_completion_pct": 90,
     "sovereign_data_isolation": true,
     "total_tasks": 24,
     "done_tasks": 15
@@ -411,7 +411,7 @@
         "readiness_assessment": {
           "readiness_score_pct": 45,
           "blockers": [
-            "Phase 1 MVP items open: A4b error monitoring (Sentry; owner decision pending), WCAG AAA contrast for signed-in areas, B3 and B4 invitations, B5b deletion and export (B5a done) (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md \u00a724)",
+            "Phase 1 MVP items open: A4b error monitoring (Sentry; owner decision pending), WCAG AAA contrast for signed-in areas, B3 and B4 invitations (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md \u00a724)",
             "Support address abuse@faithgrid.io is live on /contact (2026-10-20), accepted as is: mail bounces until faithgrid.io has MX records, and the legal texts route rights requests there",
             "Custom domain (B1) deferred by the owner; outbound email stays off until then",
             "Legal texts are drafts pending legal review (version 3 names the operator and describes consent); counsel review needed before real users"
@@ -425,25 +425,24 @@
       },
       "mvp_status": {
         "phase": "beta",
-        "completion_pct": 50,
+        "completion_pct": 60,
         "latest_milestones": [
+          "B5b data export, account deletion with 14-day grace, privacy v5 live (PR #109, ADR 0035)",
           "B2 email outbox live, sending off by design (PR #106, ADR 0033)",
           "B5a policy re-acceptance prompt live (PR #107, ADR 0035)",
           "AI matcher on OpenRouter with zero data retention; privacy v4 live (PR #104, ADR 0041)",
-          "Gemini key moved to a header in the CV extractor and syllabus tagger (PR #100)",
-          "A4a production gates live: fail-closed Turnstile, build env gate, honest error page (PR #98, ADR 0040)"
+          "Gemini key moved to a header in the CV extractor and syllabus tagger (PR #100)"
         ]
       },
       "latest_changes": [
+        "feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)",
         "feat(mvp): B2 transactional email outbox, sending off (ADR 0033) (#106) (d2806a4)",
         "feat(mvp): B5a policy re-acceptance prompt (ADR 0035) (#107) (2c3c627)",
         "feat(ai): OpenRouter as the only AI gateway, zero data retention; privacy v4 (ADR 0041) (#104) (9e9725f)",
-        "fix(security): Gemini key in a header for the CV extractor and syllabus tagger (#100) (36f83c0)",
-        "feat(mvp): A4a production gates: fail-closed Turnstile, build env gate (ADR 0040) (#98) (3ac7a71)"
+        "fix(security): Gemini key in a header for the CV extractor and syllabus tagger (#100) (36f83c0)"
       ],
       "next_steps": [
-        "B5b in progress: self-service data export, account deletion with a 14-day grace period, privacy v5 (ADR 0035)",
-        "Then B3 institution invitations and B4 founding-scholar invitations (ADR 0034), then WCAG AAA contrast for signed-in areas",
+        "Next: B3 institution invitations and B4 founding-scholar invitations (ADR 0034), then WCAG AAA contrast for signed-in areas",
         "Re-score readiness with a full Council review once B5b, B3 and B4 land (last score about 45/100 on 2026-10-14, before A1 to A4a, B2 and B5a)",
         "WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)",
         "Phase 2 (after Phase 1): founding-scholar and one-institution pilot; suites: npm run audit:rls, npm run verify:deploy, E2E",
