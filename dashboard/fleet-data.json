@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-22T14:02:07.325204+00:00",
+  "generated_at": "2026-10-22T14:24:57.575154+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
     "average_readiness_score": 89,
-    "average_completion_pct": 97,
+    "average_completion_pct": 99,
     "sovereign_data_isolation": true,
     "total_tasks": 24,
     "done_tasks": 15
@@ -579,7 +579,7 @@
         "readiness_assessment": {
           "readiness_score_pct": 45,
           "blockers": [
-            "Phase 1 MVP items open: A4b error monitoring (Sentry; owner decision pending) (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md \u00a724)",
+            "Phase 2 launch gates open: counsel-reviewed legal texts (Privacy v7, Terms v3 are drafts) and a support address that receives mail (faithgrid.io has no MX records)",
             "Support address abuse@faithgrid.io is live on /contact (2026-10-20), accepted as is: mail bounces until faithgrid.io has MX records, and the legal texts route rights requests there",
             "Custom domain (B1) deferred by the owner; outbound email stays off until then",
             "Legal texts are drafts pending legal review (version 3 names the operator and describes consent); counsel review needed before real users"
@@ -595,13 +595,13 @@
       },
       "mvp_status": {
         "phase": "beta",
-        "completion_pct": 90,
+        "completion_pct": 100,
         "latest_milestones": [
+          "Phase 1 launch plan complete, 10 of 10 (Sentry withdrawn by the owner; monitoring later via Dynatrace or Vercel)",
           "WCAG AAA text contrast on signed-in areas live; all Phase 1 build items done (PR #115, ADR 0038)",
           "B3 institution invitations live; membership hole closed; privacy v6 (PR #111, ADR 0034)",
           "B4 founding-scholar invitations and privacy v7 live (PR #113, ADR 0034)",
-          "B5b data export, account deletion with 14-day grace, privacy v5 live (PR #109, ADR 0035)",
-          "B2 email outbox live, sending off by design (PR #106, ADR 0033)"
+          "B5b data export, account deletion with 14-day grace, privacy v5 live (PR #109, ADR 0035)"
         ]
       },
       "latest_changes": [
@@ -612,14 +612,15 @@
         "feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)"
       ],
       "next_steps": [
-        "Owner decisions to close Phase 1: Sentry (A4b) in or out; then a full Council readiness re-score; then faithgrid.io mail (MX) and a sending domain",
+        "Full Council readiness re-score now that Phase 1 is complete (last score about 45/100 on 2026-10-14)",
+        "Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on",
+        "Owner: monitoring via Dynatrace or Vercel when ready (not a Phase 1 item)",
         "Re-score readiness with a full Council review once B5b, B3 and B4 land (last score about 45/100 on 2026-10-14, before A1 to A4a, B2 and B5a)",
         "WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)",
         "Phase 2 (after Phase 1): founding-scholar and one-institution pilot; suites: npm run audit:rls, npm run verify:deploy, E2E",
         "Owner: confirm in an institution faculty search that the matcher label reads 'Google Gemini via OpenRouter' (it reads 'built-in matcher' if OPENROUTER_API_KEY is missing or no zero-retention endpoint answers)",
         "Owner: add MX records for faithgrid.io (for example ImprovMX forwarding) so mail to abuse@faithgrid.io is delivered",
-        "Owner decision: PR #101 (COUNCIL-2026-007 monograph index and community migration) fails three data-isolation gates and sets telemetry to 92%/readiness 100; it conflicts with the 2026-10-20 challenge (ChurchCore-Business #9)",
-        "Owner decisions saved for last: Sentry (A4b) and the faithgrid.io mail and sending-domain DNS"
+        "Owner decision: PR #101 (COUNCIL-2026-007 monograph index and community migration) fails three data-isolation gates and sets telemetry to 92%/readiness 100; it conflicts with the 2026-10-20 challenge (ChurchCore-Business #9)"
       ],
       "ai_session_telemetry": {
         "last_model": "gemini-2.5-pro",
@@ -662,8 +663,8 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 18.9,
-          "age_display": "18h ago",
+          "age_hours": 19.2,
+          "age_display": "19h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-21T19:10:30.854737+00:00"
         },
@@ -685,7 +686,7 @@
           "has_drift": true,
           "reasons": [
             "Local working tree has 901 uncommitted file(s)",
-            "MVP completion divergence: remote=90% vs local=60%"
+            "MVP completion divergence: remote=100% vs local=60%"
           ]
         }
       }
