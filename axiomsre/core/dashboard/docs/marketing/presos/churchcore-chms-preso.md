@@ -4,14 +4,14 @@
 > **Scale:** 133 Relational Tables • 121 Application Routes • v3.5.0  
 > **Target Buyers:** Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator, Children's Ministry Director, Church Treasurer / Stewardship Committee  
 > **Live URL:** [https://www.churchcore.io](https://www.churchcore.io)  
-> **Last Synced from Telemetry:** 2026-10-21 20:39:51 UTC
+> **Last Synced from Telemetry:** 2026-10-22 14:59:26 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore ChMS: Worship Planning, Child Check-In Security, and Double-Entry Ministry Accounting
-*Live Production Architecture • 133 Relational Tables • 121 Application Routes • v3.5.0 • October 21, 2026*
+*Live Production Architecture • 133 Relational Tables • 121 Application Routes • v3.5.0 • October 22, 2026*
 
 - Target Buyers: Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator
 - Strategic Replacement: Displaces Planning Center (Services/People/Giving) + Breeze + Realm + Tithe.ly

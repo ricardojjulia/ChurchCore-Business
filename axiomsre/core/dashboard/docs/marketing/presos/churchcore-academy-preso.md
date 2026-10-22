@@ -4,18 +4,18 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-10-21 20:39:51 UTC
+> **Last Synced from Telemetry:** 2026-10-22 14:59:26 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies
-*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 21, 2026*
+*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 22, 2026*
 
 - Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar
 - Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool
-- Production Gate: 🟡 Enterprise Staging Pilot
+- Production Gate: 🟢 Active in Production
 
 > 🗣️ **Speaker Script:** Introduce ChurchCore Academy. Emphasize that unlike legacy point solutions that were patched together over 15 years, ChurchCore is engineered as a modern, sovereign application on Next.js with complete Row-Level Security.
 
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
 
-- Latest Feature Delivered: Record Colegio Biblos local pilot preparation (#248) (bed47c2)
-- Ecosystem Hardening: Approve Colegio Biblos local pilot charter (#247) (f44c6b7)
-- Reliability Proof: Automated CI/CD validation and zero-downtime database migrations.
+- Latest Feature Delivered: Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)
+- Ecosystem Hardening: Refresh the Academy admin dashboard (#252) (737525c)
+- Reliability Proof: [2026-10-19] Authenticated Vercel CLI inspection verified project churchcore/church-core-academy and Ready deployment dpl_CGgewdcXBDt1Z6RHcdg8eqM5eJiv with the canonical domain aliases.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,10 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
-- Record Colegio Biblos local pilot preparation (#248) (bed47c2)
-- Approve Colegio Biblos local pilot charter (#247) (f44c6b7)
-- Record technical baseline closeout (#246) (4bfe20b)
-- Merge pull request #245 from ricardojjulia/docs/pilot-to-production-completion-plan (dca2d25)
+- Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)
+- Refresh the Academy admin dashboard (#252) (737525c)
+- Reconcile Testing Council consent with Academy governance (#251) (443f0be)
+- Reconcile control-plane governance evidence (#249) (7fcbe31)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: Record Colegio Biblos local pilot preparation (#248) (bed47c2), Approve Colegio Biblos local pilot charter (#247) (f44c6b7), Record technical baseline closeout (#246) (4bfe20b)
+- Latest Features: Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc), Refresh the Academy admin dashboard (#252) (737525c), Reconcile Testing Council consent with Academy governance (#251) (443f0be)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- Record Colegio Biblos local pilot preparation (#248) (bed47c2)
-- Approve Colegio Biblos local pilot charter (#247) (f44c6b7)
-- Record technical baseline closeout (#246) (4bfe20b)
+- Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)
+- Refresh the Academy admin dashboard (#252) (737525c)
+- Reconcile Testing Council consent with Academy governance (#251) (443f0be)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
