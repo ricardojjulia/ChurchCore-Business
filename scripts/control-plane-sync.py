@@ -627,14 +627,28 @@ def sync_control_plane(verbose=True):
     }
 
     # Tech Stack Mesh Matrix
-    tech_stack_mesh = [
-        { "product": "ChurchCore ChMS", "framework": "Next.js 15.2", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pg_cron, uuid-ossp", "drift": "Synchronized" },
-        { "product": "ChurchCore LMS", "framework": "Next.js 15.3", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pg_net, pgcrypto", "drift": "Synchronized" },
-        { "product": "ChurchCore Academy", "framework": "Next.js 15.1", "node": "v20.x", "ts": "v5.5", "rls": "100% Enforced", "pg_extensions": "uuid-ossp", "drift": "Upgrade to Node 22 planned" },
-        { "product": "ChurchCore Care", "framework": "React 18 / Express", "node": "v20.x", "ts": "v5.4", "rls": "100% Enforced", "pg_extensions": "pgcrypto, uuid-ossp", "drift": "Next.js migration planned" },
-        { "product": "ChurchCore Orthos", "framework": "Next.js 15.0", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "uuid-ossp", "drift": "Synchronized" },
-        { "product": "FaithFull Scholars", "framework": "Next.js 15.2", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pgvector, pgcrypto", "drift": "Synchronized" }
+    telemetry_by_id = {t.get("product_id"): t for t in telemetry_data}
+    tech_stack_defaults = [
+        { "product_id": "churchcore-chms", "product": "ChurchCore ChMS", "framework": "Next.js 15.2", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pg_cron, uuid-ossp", "drift": "Synchronized" },
+        { "product_id": "churchcore-lms", "product": "ChurchCore LMS", "framework": "Next.js 15.3", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pg_net, pgcrypto", "drift": "Synchronized" },
+        { "product_id": "churchcore-academy", "product": "ChurchCore Academy", "framework": "Next.js 15.1", "node": "v20.x", "ts": "v5.5", "rls": "100% Enforced", "pg_extensions": "uuid-ossp", "drift": "Upgrade to Node 22 planned" },
+        { "product_id": "churchcore-care", "product": "ChurchCore Care", "framework": "Next.js 16.4", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pgcrypto, uuid-ossp", "drift": "Synchronized" },
+        { "product_id": "churchcore-orthos", "product": "ChurchCore Orthos", "framework": "Next.js 15.0", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "uuid-ossp", "drift": "Synchronized" },
+        { "product_id": "faithfull-scholars", "product": "FaithFull Scholars", "framework": "Next.js 15.2", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pgvector, pgcrypto", "drift": "Synchronized" }
     ]
+
+    tech_stack_mesh = []
+    for default_item in tech_stack_defaults:
+        pid = default_item.get("product_id")
+        t = telemetry_by_id.get(pid, {})
+        edge_stack = t.get("tech_stack", {})
+        item = dict(default_item)
+        if edge_stack:
+            for k in ["framework", "node", "ts", "rls", "pg_extensions", "drift"]:
+                if edge_stack.get(k):
+                    item[k] = edge_stack[k]
+        del item["product_id"]
+        tech_stack_mesh.append(item)
 
     fleet_payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),

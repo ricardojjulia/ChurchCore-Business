@@ -18,13 +18,13 @@
   "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
   "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
   "version": "0.1.0",
-  "last_synced": "2026-10-21 20:39:51 UTC",
+  "last_synced": "2026-10-22 14:59:26 UTC",
   "slides": [
     {
       "slide_num": 1,
       "title": "ChurchCore ChMS: Worship Planning, Child Check-In Security, and Double-Entry Ministry Accounting",
       "type": "title_hero",
-      "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 21, 2026",
+      "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 22, 2026",
       "key_takeaways": [
         "Target Buyers: Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator",
         "Strategic Replacement: Displaces Planning Center (Services/People/Giving) + Breeze + Realm + Tithe.ly",

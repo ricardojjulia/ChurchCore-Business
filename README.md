@@ -82,7 +82,7 @@ flowchart TD
             C3["Next.js v0.10.0<br>🌐 www.churchcoreacademy.io<br>🗄️ Local (Colegio Biblos Pilot)<br>🛡️ 152 Tables • RLS Enforced<br>🏛️ 57 Council Records"]
         end
         subgraph P4 ["ChurchCore Care"]
-            C4["React 18 / Express v7.0.0<br>🌐 www.churchcorecare.io<br>🗄️ Supabase prod-care-db<br>🛡️ 84 Tables • Deny-All RLS<br>🏛️ Dedicated Care Council"]
+            C4["Next.js 16 App Router v7.1.0<br>🌐 www.churchcorecare.io<br>🗄️ Supabase prod-care-db<br>🛡️ 83 Tables • Deny-All RLS<br>🏛️ Dedicated Care Council"]
         end
         subgraph P5 ["ChurchCore Orthos"]
             C5["Next.js v0.18.0<br>🌐 church-core-orthos.vercel.app<br>🗄️ Supabase Staging Link<br>🛡️ 28 Tables • Gemini AI<br>🏛️ 16 Council Records"]

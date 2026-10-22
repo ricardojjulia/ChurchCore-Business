@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-21 20:39:51 UTC`
+> **Last Aggregated:** `2026-10-22 14:59:26 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -11,12 +11,12 @@
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
 | **Active Production Online** | `6 / 6` | 6 / 6 | 🟢 100% Online |
 | **Average Readiness Score** | `89%` | 100% | 🟢 High Readiness |
-| **Portfolio MVP Progress** | `92%` | 100% | 🟢 On Schedule |
+| **Portfolio MVP Progress** | `99%` | 100% | 🟢 On Schedule |
 | **Cross-App Data Isolation** | `UNVERIFIED` | Evidence from every product | ⚠️ One or more edge reports are unverified |
 
 ## 2. Product Fleet Status Cards
 
-### tel-wt (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
+### ChurchCore (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -28,21 +28,17 @@
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
-- 🔴 R1 condition 4: local Testing Council fixture teardown (owner-run ./supabase/scripts/setup-e2e.sh --reset from main)
-- 🔴 O30: Vercel git integration stopped auto-building production for merges (#224 needed a CLI deploy)
 - 🔴 Owner actions O23 (churchcore.io mail), O24 (Business repo visibility), O25 (native Spanish review), O26 (GHAS), O27 (Vercel log forensics), O28 (Firewall rule)
-- 🔴 Readiness re-score: the targeted re-run recommends lifting the hold; owner decision
 
 **Immediate Next Required Actions:**
-- 🛠️ Owner-run local reset (re-run condition 4)
-- 🛠️ Resolve O30 (Vercel auto-deploy)
-- 🛠️ Owner re-score of readiness
 - 🛠️ R2 release checklist (target 2026-11-06)
+- 🛠️ Owner actions O23-O28
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PILOT_READY`
 - **Completion Percentage:** `95%`
 - **Recent Milestones Delivered:**
+  - ✅ R1 closed 2026-10-21: whole-app Council re-baseline, Testing Council full run and targeted re-run, all 4 Critical and 16 High fixed; readiness hold lifted at 95
   - ✅ Testing Council v6 full run 2026-10-18: 60 defects; all 4 Critical (#209, #211, #212) and 16 High (B1-B5: #213, #215, #216, #217, #218) fixed and in production
   - ✅ Targeted Testing Council re-run 2026-10-20/21: every original Critical and High confirmed fixed; follow-ups #220 (crash), #221 (scheduled-send time zone), #222 (contrast) merged
   - ✅ B3b event approval and ministry-leader owner scope merged #223 (approval publishes; approved events locked)
@@ -54,29 +50,29 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `chore(control-plane): report current status to the control plane (2026-10-21) (#227) (3dc64ab)`
+- `feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#210) (ab65cf6)`
 - `docs: Testing Council re-run report, B3b and B-59 close-out, tracker rows B-98–B-118 (#220–#224) (#226) (1dad0d2)`
 - `chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#225) (67b1011)`
-- `feat(portal): B-59 — family check-in code on the parent portal, linked at creation (Council Review 68) (#224) (ceb016b)`
-- `feat(events): B3b — approval publishes, ministry-leader owner scope, approved events locked (Council Reviews 63, 67) (#223) (070dca7)`
 
 **Next Engineering Steps:**
-- 🎯 Owner-run local reset to close re-run condition 4
-- 🎯 Resolve O30 (Vercel auto-deploy) and owner actions O23-O28
-- 🎯 Owner readiness re-score, then R2 release (target 2026-11-06)
+- 🎯 R2 release checklist (target 2026-11-06)
+- 🎯 Owner actions O23-O28
+- 🎯 Should rows: S89 WCAG AAA, S90 AppSwitcher, B-112 family-code delivery, B-117 code-failure admin alert, REQ-011-04 audit:i18n gate, REQ-008-02 live endpoint probing in report-telemetry
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `claude-opus-5-5`
-- **Session Duration:** `4320 minutes`
-- **Session Timestamp:** `2026-10-21T20:01:26.894556+00:00`
+- **Session Duration:** `4440 minutes`
+- **Session Timestamp:** `2026-10-21T20:36:52.440541+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Testing Council v6 full run (60 defects) and all 4 Critical + 16 High fixes shipped (#209-#218); targeted re-run confirmed them; re-run fixes #220-#222; B3b event approval/owner scope (#223) and B-59 family check-in code (#224) through Council Reviews 59-68; every migration applied to hosted before merge with owner OK.
+- **Session Work Summary:** Control-plane sync 2026-10-21: R1 closed (Testing Council full run + targeted re-run; all 4 Critical and 16 High fixed; B3b #223, B-59 #224; local teardown done by owner); readiness hold lifted at 95; ledger statuses set from evidence; next is R2.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
-| `[2026-10-21] Vercel stopped auto-building production for merges (#222 delayed, #224 not built after 3h)` | `[2026-10-21] Production deployed by CLI from a clean checkout of main ceb016b with owner OK; O30 opened to investigate the git integration` |
-| `[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success).` | `[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403.` |
-| `[2026-10-17] PR #206 merged before Council Review 58 finished; the live /security page made ~9 false security claims.` | `[2026-10-17] CP1b (#207): /security rewritten so every claim is true of the code (evidence in docs/factory-runs/2026-10-17-cp1b-truthful-security.md); live check: no banned phrases, security headers present, security.txt served.` |
+| `[2026-10-21] Vercel stopped auto-building production for merges (#222 delayed, #224 not built after 3h)` | `[2026-10-21] O30 closed: owner checked the Vercel git integration` |
+| `[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success).` | `[2026-10-21] Production deployed by CLI from a clean checkout of main ceb016b with owner OK; O30 opened to investigate the git integration` |
+| `[2026-10-17] PR #206 merged before Council Review 58 finished; the live /security page made ~9 false security claims.` | `[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403.` |
 
 ---
 
@@ -209,7 +205,7 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-21T20:35:48.030086+00:00`
+- **Session Timestamp:** `2026-10-22T14:56:19.768308+00:00`
 - **Session Operator:** `Ricardo J Julia`
 - **Session Work Summary:** Automated Council Directives Enforcement
 
@@ -275,7 +271,7 @@
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
-- 🔴 Phase 1 MVP items open: A4b error monitoring (Sentry; owner decision pending), WCAG AAA contrast for signed-in areas, B3 and B4 invitations (docs/FAITHFULL_SCHOLARS_FULL_PLAN.md §24)
+- 🔴 Phase 2 launch gates open: counsel-reviewed legal texts (Privacy v7, Terms v3 are drafts) and a support address that receives mail (faithgrid.io has no MX records)
 - 🔴 Support address abuse@faithgrid.io is live on /contact (2026-10-20), accepted as is: mail bounces until faithgrid.io has MX records, and the legal texts route rights requests there
 - 🔴 Custom domain (B1) deferred by the owner; outbound email stays off until then
 - 🔴 Legal texts are drafts pending legal review (version 3 names the operator and describes consent); counsel review needed before real users
@@ -286,25 +282,25 @@
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `BETA`
-- **Completion Percentage:** `60%`
+- **Completion Percentage:** `100%`
 - **Recent Milestones Delivered:**
+  - ✅ Phase 1 launch plan complete, 10 of 10 (Sentry withdrawn by the owner; monitoring later via Dynatrace or Vercel)
+  - ✅ WCAG AAA text contrast on signed-in areas live; all Phase 1 build items done (PR #115, ADR 0038)
+  - ✅ B3 institution invitations live; membership hole closed; privacy v6 (PR #111, ADR 0034)
+  - ✅ B4 founding-scholar invitations and privacy v7 live (PR #113, ADR 0034)
   - ✅ B5b data export, account deletion with 14-day grace, privacy v5 live (PR #109, ADR 0035)
-  - ✅ B2 email outbox live, sending off by design (PR #106, ADR 0033)
-  - ✅ B5a policy re-acceptance prompt live (PR #107, ADR 0035)
-  - ✅ AI matcher on OpenRouter with zero data retention; privacy v4 live (PR #104, ADR 0041)
-  - ✅ Gemini key moved to a header in the CV extractor and syllabus tagger (PR #100)
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)`
+- `feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)`
+- `feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)`
 - `docs: B5 done and live; progress 6 of 10 (#110) (16f078b)`
-- `feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)`
-- `docs: status after B2 and B5a; telemetry 50% with engineering next steps first (#108) (bf5a5ce)`
-- `feat(mvp): B5a policy re-acceptance prompt (ADR 0035) (#107) (2c3c627)`
 
 **Next Engineering Steps:**
-- 🎯 Next: B3 institution invitations and B4 founding-scholar invitations (ADR 0034), then WCAG AAA contrast for signed-in areas
-- 🎯 Re-score readiness with a full Council review once B5b, B3 and B4 land (last score about 45/100 on 2026-10-14, before A1 to A4a, B2 and B5a)
-- 🎯 WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)
+- 🎯 Full Council readiness re-score now that Phase 1 is complete (last score about 45/100 on 2026-10-14)
+- 🎯 Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on
+- 🎯 Owner: monitoring via Dynatrace or Vercel when ready (not a Phase 1 item)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
