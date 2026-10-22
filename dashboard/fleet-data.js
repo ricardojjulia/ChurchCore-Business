@@ -1,5 +1,5 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-22T14:59:26.337537+00:00",
+  "generated_at": "2026-10-22T15:01:32.373698+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
@@ -333,7 +333,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 19.8,
+          "age_hours": 19.9,
           "age_display": "19h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-21T19:09:08.658011+00:00"
@@ -446,7 +446,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
         "freshness": {
           "age_hours": 0.1,
-          "age_display": "3m ago",
+          "age_display": "5m ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-22T14:56:19.768308+00:00"
         },
@@ -547,7 +547,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 19.8,
+          "age_hours": 19.9,
           "age_display": "19h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-21T19:09:41.288991+00:00"
@@ -671,7 +671,7 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 19.8,
+          "age_hours": 19.9,
           "age_display": "19h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-21T19:10:30.854737+00:00"
@@ -2451,7 +2451,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-22 14:59:26 UTC",
+      "last_synced": "2026-10-22 15:01:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2559,7 +2559,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-22 14:59:26 UTC",
+      "last_synced": "2026-10-22 15:01:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2667,7 +2667,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-22 14:59:26 UTC",
+      "last_synced": "2026-10-22 15:01:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2775,7 +2775,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-22 14:59:26 UTC",
+      "last_synced": "2026-10-22 15:01:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2883,7 +2883,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.1.0",
-      "last_synced": "2026-10-22 14:59:26 UTC",
+      "last_synced": "2026-10-22 15:01:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2991,7 +2991,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-22 14:59:26 UTC",
+      "last_synced": "2026-10-22 15:01:32 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -3099,7 +3099,7 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-22 14:59:26 UTC",
+      "last_synced": "2026-10-22 15:01:32 UTC",
       "slides": [
         {
           "slide_num": 1,
