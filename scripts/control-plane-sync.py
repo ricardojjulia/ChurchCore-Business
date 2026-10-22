@@ -347,9 +347,29 @@ def load_telemetry(source):
             except Exception as e:
                 print(f"[-] Error reading {tpath}: {e}")
 
-    # Arbitrate: published remote main is canonical authority; local checkout is fallback
-    chosen = remote_data or local_data
-    if not chosen:
+    # Arbitrate: compare published remote main and local checkout freshness
+    selection_reason = ""
+    if remote_data and local_data:
+        r_ts = parse_timestamp(remote_data.get("report_timestamp"))
+        l_ts = parse_timestamp(local_data.get("report_timestamp"))
+        # Prioritize local checkout if it has newer telemetry or if local has verified DB isolation while remote is stale
+        if l_ts > r_ts:
+            chosen = local_data
+            selection_reason = f"local checkout fresher than remote ({local_data.get('report_timestamp')} > {remote_data.get('report_timestamp')})"
+        elif (local_data.get("governance_compliance", {}).get("sovereign_db_isolation_verified") is True and
+              remote_data.get("governance_compliance", {}).get("sovereign_db_isolation_verified") is not True):
+            chosen = local_data
+            selection_reason = "local checkout has verified sovereign DB isolation"
+        else:
+            chosen = remote_data
+            selection_reason = "remote main is canonical"
+    elif local_data:
+        chosen = local_data
+        selection_reason = "local checkout fallback"
+    elif remote_data:
+        chosen = remote_data
+        selection_reason = "remote main"
+    else:
         return None
 
     local_meta = None
@@ -368,7 +388,7 @@ def load_telemetry(source):
     if chosen.get("_source_type") == "remote":
         print(f"[+] Ingested telemetry for {name} (remote: {remote_url})")
     else:
-        print(f"[+] Ingested telemetry for {name} (local fallback: {chosen['_source_path']})")
+        print(f"[+] Ingested telemetry for {name} (local: {chosen['_source_path']} — {selection_reason})")
 
     return chosen
 
@@ -631,7 +651,7 @@ def sync_control_plane(verbose=True):
     tech_stack_defaults = [
         { "product_id": "churchcore-chms", "product": "ChurchCore ChMS", "framework": "Next.js 15.2", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pg_cron, uuid-ossp", "drift": "Synchronized" },
         { "product_id": "churchcore-lms", "product": "ChurchCore LMS", "framework": "Next.js 15.3", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pg_net, pgcrypto", "drift": "Synchronized" },
-        { "product_id": "churchcore-academy", "product": "ChurchCore Academy", "framework": "Next.js 15.1", "node": "v20.x", "ts": "v5.5", "rls": "100% Enforced", "pg_extensions": "uuid-ossp", "drift": "Upgrade to Node 22 planned" },
+        { "product_id": "churchcore-academy", "product": "ChurchCore Academy", "framework": "Next.js 16.3", "node": "v22.x", "ts": "v5.9", "rls": "100% Enforced", "pg_extensions": "uuid-ossp", "drift": "Synchronized" },
         { "product_id": "churchcore-care", "product": "ChurchCore Care", "framework": "Next.js 16.4", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pgcrypto, uuid-ossp", "drift": "Synchronized" },
         { "product_id": "churchcore-orthos", "product": "ChurchCore Orthos", "framework": "Next.js 15.0", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "uuid-ossp", "drift": "Synchronized" },
         { "product_id": "faithfull-scholars", "product": "FaithFull Scholars", "framework": "Next.js 15.2", "node": "v22.x", "ts": "v5.6", "rls": "100% Enforced", "pg_extensions": "pgvector, pgcrypto", "drift": "Synchronized" }

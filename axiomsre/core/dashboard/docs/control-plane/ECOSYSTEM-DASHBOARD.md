@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-22 14:59:26 UTC`
+> **Last Aggregated:** `2026-10-22 20:48:26 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -12,11 +12,11 @@
 | **Active Production Online** | `6 / 6` | 6 / 6 | 🟢 100% Online |
 | **Average Readiness Score** | `89%` | 100% | 🟢 High Readiness |
 | **Portfolio MVP Progress** | `99%` | 100% | 🟢 On Schedule |
-| **Cross-App Data Isolation** | `UNVERIFIED` | Evidence from every product | ⚠️ One or more edge reports are unverified |
+| **Cross-App Data Isolation** | `VERIFIED` | Evidence from every product | 🛡️ All edge reports verified |
 
 ## 2. Product Fleet Status Cards
 
-### ChurchCore (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
+### ChurchCore (`churchcore-chms`) — v4.0.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -24,55 +24,56 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcore.io](https://www.churchcore.io) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `95%` | No score basis supplied |
+| **Readiness** | `96%` | No score basis supplied |
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
+- 🔴 External validation (O15): a pilot church and a real Planning Center / Breeze export dry run
 - 🔴 Owner actions O23 (churchcore.io mail), O24 (Business repo visibility), O25 (native Spanish review), O26 (GHAS), O27 (Vercel log forensics), O28 (Firewall rule)
 
 **Immediate Next Required Actions:**
-- 🛠️ R2 release checklist (target 2026-11-06)
-- 🛠️ Owner actions O23-O28
+- 🛠️ Owner: smoke:preview against production (APP_URL=https://www.churchcore.io) and the RELEASE_CHECKLIST.md post-deploy checks
+- 🛠️ Recruit a pilot church; run a real-export migration dry run (O15)
+- 🛠️ Post-MVP Should/B rows (e.g. S94 volunteer action localization, S95 shift links, B-119 test timer, B-120 vendor spec cleanup)
 
 #### MVP Development Status & Milestones
-- **Current Phase:** `PILOT_READY`
-- **Completion Percentage:** `95%`
+- **Current Phase:** `PRODUCTION`
+- **Completion Percentage:** `96%`
 - **Recent Milestones Delivered:**
+  - ✅ MVP released as 4.0.0 on 2026-10-22 (release PR #235, signed tag v4.0.0), readiness 96/100
+  - ✅ All five Stretch rows merged: G1.9 #230, G1.10 #231, G3.4 #232, G2.3 #233, G4.3 #234 (Council Reviews 69-73)
   - ✅ R1 closed 2026-10-21: whole-app Council re-baseline, Testing Council full run and targeted re-run, all 4 Critical and 16 High fixed; readiness hold lifted at 95
   - ✅ Testing Council v6 full run 2026-10-18: 60 defects; all 4 Critical (#209, #211, #212) and 16 High (B1-B5: #213, #215, #216, #217, #218) fixed and in production
   - ✅ Targeted Testing Council re-run 2026-10-20/21: every original Critical and High confirmed fixed; follow-ups #220 (crash), #221 (scheduled-send time zone), #222 (contrast) merged
   - ✅ B3b event approval and ministry-leader owner scope merged #223 (approval publishes; approved events locked)
-  - ✅ B-59 family check-in code on the parent portal merged #224 (signed-in household member; platform client IP for all limiters)
-  - ✅ All five MVP gaps closed
-  - ✅ Council Review 52 whole-app re-baseline: 2 Critical + 5 High found and fixed (R1a #201, R1b #202, R1c #203, R1d #205)
-  - ✅ R1d data-erasure approval flow merged #205 (exact, household-scoped erasure with audit redaction)
-  - ✅ CP1 Powered by ChurchCore badge merged #206; CP1b hotfix #207 rewrote /security to true claims, added security headers and security.txt
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `chore(control-plane): report current status to the control plane (2026-10-21) (#227) (3dc64ab)`
-- `feat(governance): standardize Testing Council protocol and 3-phase gating (COUNCIL-2026-006) (#210) (ab65cf6)`
-- `docs: Testing Council re-run report, B3b and B-59 close-out, tracker rows B-98–B-118 (#220–#224) (#226) (1dad0d2)`
-- `chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#225) (67b1011)`
+- `release: ChurchCore 4.0.0 — the MVP (R2) (#235) (b08d3a0)`
+- `feat(imports): guided migration flow (G4.3) (#234) (0e18517)`
+- `feat(member): offline member schedule; cached pages cleared at sign-in (G2.3) (#233) (e6617f1)`
+- `feat(giving): pledges and campaigns (G3.4) (#232) (8c25abe)`
 
 **Next Engineering Steps:**
-- 🎯 R2 release checklist (target 2026-11-06)
-- 🎯 Owner actions O23-O28
-- 🎯 Should rows: S89 WCAG AAA, S90 AppSwitcher, B-112 family-code delivery, B-117 code-failure admin alert, REQ-011-04 audit:i18n gate, REQ-008-02 live endpoint probing in report-telemetry
+- 🎯 Owner: smoke:preview against production (APP_URL=https://www.churchcore.io) and the RELEASE_CHECKLIST.md post-deploy checks
+- 🎯 Recruit a pilot church; run a real-export migration dry run (O15)
+- 🎯 Post-MVP Should/B rows (e.g. S94 volunteer action localization, S95 shift links, B-119 test timer, B-120 vendor spec cleanup)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `claude-opus-5-5`
-- **Session Duration:** `4440 minutes`
-- **Session Timestamp:** `2026-10-21T20:36:52.440541+00:00`
+- **Session Duration:** `1680 minutes`
+- **Session Timestamp:** `2026-10-22T16:41:18.527404+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Control-plane sync 2026-10-21: R1 closed (Testing Council full run + targeted re-run; all 4 Critical and 16 High fixed; B3b #223, B-59 #224; local teardown done by owner); readiness hold lifted at 95; ledger statuses set from evidence; next is R2.
+- **Session Work Summary:** ChurchCore 4.0.0 (the MVP) released 2026-10-22, ahead of the Nov 6 target, readiness 96/100 (owner re-score). All five Stretch rows built through Council Reviews 69-73 and merged (#230 G1.9 transactional assign, #231 G1.10 recurring blockouts, #232 G3.4 pledges and campaigns, #233 G2.3 offline member schedule, #234 G4.3 guided migration flow); migrations 20261025-20261028 applied to hosted before each merge; release PR #235, signed tag v4.0.0, GitHub release; production deploys confirmed. Also: control-plane sync #228, role-access matrix #229, i18n provider stability fix, service-worker cache narrowed to the schedule (privacy).
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
-| `[2026-10-21] Vercel stopped auto-building production for merges (#222 delayed, #224 not built after 3h)` | `[2026-10-21] O30 closed: owner checked the Vercel git integration` |
-| `[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success).` | `[2026-10-21] Production deployed by CLI from a clean checkout of main ceb016b with owner OK; O30 opened to investigate the git integration` |
-| `[2026-10-17] PR #206 merged before Council Review 58 finished; the live /security page made ~9 false security claims.` | `[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403.` |
+| `[2026-10-22] G4.3 e2e: CI DB user cannot set session_replication_role; spec keeps its church and deletes only its own rows` | `[2026-10-22] Production deploys confirmed for #230-#235 via the deployments API` |
+| `[2026-10-22] G3.4 e2e: pages never reached network idle; I18nProvider recreated t each render; memoized per locale` | `[2026-10-22] Service worker caches only /portal and /app/member/schedule; cached pages cleared at sign-in (privacy)` |
+| `[2026-10-22] CI e2e setup hit Docker Hub 'toomanyrequests' twice; re-ran the failed job` | `[2026-10-21] O30 closed: owner checked the Vercel git integration` |
+| `[2026-10-21] Vercel stopped auto-building production for merges (#222 delayed, #224 not built after 3h)` | `[2026-10-21] Production deployed by CLI from a clean checkout of main ceb016b with owner OK; O30 opened to investigate the git integration` |
+| `[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success).` | `[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403.` |
 
 ---
 
@@ -134,7 +135,7 @@
 | :--- | :--- | :--- |
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io) |
-| **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation or RLS verification remains unverified |
+| **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation reported and verified |
 | **Phase 1 engineering readiness** | `100%` | The repository-defined functional MVP and its inseparable automated verification are complete. This score is the Phase 1 entry gate for human testing; it is not pilot completion or production authorization. |
 | **Phase 2 Human Validation** | `ENTRY_GATE_PENDING` | Verify participant login from the actual Colegio Biblos browser or VM. |
 | **Phase 3 Production Authorization** | `NOT_GRANTED` | Authenticated Vercel evidence proves a Ready production-target deployment exists; it does not prove an owner-approved Phase 3 production release. |
@@ -149,10 +150,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)`
-- `Refresh the Academy admin dashboard (#252) (737525c)`
-- `Reconcile Testing Council consent with Academy governance (#251) (443f0be)`
-- `Reconcile control-plane governance evidence (#249) (7fcbe31)`
+- `docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)`
+- `chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)`
+- `fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)`
+- `chore(telemetry): record Node 22 LTS stack synchronization (1ac22f4)`
 
 **Next Engineering Steps:**
 - 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
@@ -160,16 +161,13 @@
 - 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-21T19:09:08.658011+00:00`
-- **Session Operator:** `Ricardo J Julia`
-- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-academy.
+- **Last AI Model Used:** `antigravity`
+- **Session Duration:** `5 minutes`
+- **Session Timestamp:** `2026-10-22T19:30:40.144751+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Recorded Council Review 34 and factory run report for RLS table privileges fix
 
-**Recent Deployment / Build Errors & Mitigations Applied:**
-| Error Encountered | Mitigation / Fix Applied |
-| :--- | :--- |
-| `[2026-10-17] The admissions, enrollment-conversion, and LLIS-consent RLS verification commands could not complete because the local anon/authenticated roles lack required table privileges.` | `[2026-10-19] Authenticated Vercel CLI inspection verified project churchcore/church-core-academy and Ready deployment dpl_CGgewdcXBDt1Z6RHcdg8eqM5eJiv with the canonical domain aliases.` |
+- 🟢 *No active deployment errors logged.*
 
 ---
 

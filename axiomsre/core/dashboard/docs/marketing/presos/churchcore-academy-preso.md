@@ -4,7 +4,7 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-10-22 14:59:26 UTC
+> **Last Synced from Telemetry:** 2026-10-22 20:48:26 UTC
 
 ---
 
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
 
-- Latest Feature Delivered: Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)
-- Ecosystem Hardening: Refresh the Academy admin dashboard (#252) (737525c)
-- Reliability Proof: [2026-10-19] Authenticated Vercel CLI inspection verified project churchcore/church-core-academy and Ready deployment dpl_CGgewdcXBDt1Z6RHcdg8eqM5eJiv with the canonical domain aliases.
+- Latest Feature Delivered: docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)
+- Ecosystem Hardening: chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)
+- Reliability Proof: [2026-10-22] Additive migration 20261022160000_grant_admissions_conversion_rls_privileges.sql provisions table grants to anon and authenticated roles for admissions, conversion, audit, and LLIS tables.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,10 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
-- Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)
-- Refresh the Academy admin dashboard (#252) (737525c)
-- Reconcile Testing Council consent with Academy governance (#251) (443f0be)
-- Reconcile control-plane governance evidence (#249) (7fcbe31)
+- docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)
+- chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)
+- fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)
+- chore(telemetry): record Node 22 LTS stack synchronization (1ac22f4)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc), Refresh the Academy admin dashboard (#252) (737525c), Reconcile Testing Council consent with Academy governance (#251) (443f0be)
+- Latest Features: docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c), chore(telemetry): record session telemetry for RLS table privileges fix (a296aff), fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)
-- Refresh the Academy admin dashboard (#252) (737525c)
-- Reconcile Testing Council consent with Academy governance (#251) (443f0be)
+- docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)
+- chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)
+- fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

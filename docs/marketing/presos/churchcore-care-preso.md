@@ -4,7 +4,7 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-22 14:59:26 UTC
+> **Last Synced from Telemetry:** 2026-10-22 20:48:26 UTC
 
 ---
 

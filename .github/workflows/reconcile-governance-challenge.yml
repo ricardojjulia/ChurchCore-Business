@@ -11,6 +11,10 @@ on:
       - 'tests/**'
       - 'scripts/**'
 
+concurrency:
+  group: challenge-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
   pull-requests: write

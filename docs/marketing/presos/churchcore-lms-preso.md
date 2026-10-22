@@ -4,7 +4,7 @@
 > **Scale:** 72 Relational Tables • 85 Application Routes • v0.47.0  
 > **Target Buyers:** Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director  
 > **Live URL:** [https://www.churchcorelms.io](https://www.churchcorelms.io)  
-> **Last Synced from Telemetry:** 2026-10-22 14:59:26 UTC
+> **Last Synced from Telemetry:** 2026-10-22 20:48:26 UTC
 
 ---
 

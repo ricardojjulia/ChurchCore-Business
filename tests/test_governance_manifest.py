@@ -95,7 +95,7 @@ class TestGovernanceManifest(unittest.TestCase):
 
         compliance = academy["governance_compliance"]
         self.assertFalse(compliance["brand_house_compliant"])
-        self.assertFalse(compliance["sovereign_db_isolation_verified"])
+        self.assertTrue(compliance["sovereign_db_isolation_verified"])
         self.assertIn("COUNCIL-2026-006", compliance["council_decisions_acknowledged"])
         self.assertEqual(
             academy["online_status"]["production_authorization"]["status"],
