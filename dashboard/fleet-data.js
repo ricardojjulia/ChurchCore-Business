@@ -1,5 +1,5 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-23T18:34:34.537655+00:00",
+  "generated_at": "2026-10-23T20:36:51.986218+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
@@ -630,6 +630,7 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "feat(account): export own feedback and received invitations; 12-month feedback retention; migration 20261023130000 applied by Release 2026-10-23 (#126) (e47c41d)",
         "feat(export): contracts, milestones and licensing in the scholar data export; migration 20261023120000 applied by Release 2026-10-23 (#124) (a674c85)",
         "fix(security): scholars cannot see or act on drafts; drafts don't block scholar deletion (ADR 0042 amendment) (#123) (a538af2)",
         "feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)",
@@ -638,11 +639,10 @@ window.CHURCHCORE_FLEET_DATA = {
         "docs: Council Review 33 readiness re-score (about 64/100) (#118) (b93b7ab)",
         "feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)",
         "feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)",
-        "feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)",
-        "docs: B5 done and live; progress 6 of 10 (#110) (16f078b)"
+        "feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)"
       ],
       "next_steps": [
-        "Owner decisions F1+F2 (Council Review 37) built on branch feat/export-feedback-invitations, pending merge: own pilot_feedback and invitations addressed to or accepted by the person are in the data export, and pilot_feedback is deleted after 12 months by the daily cron. Owner must run Release (dry run unticked) immediately after merge to apply migration 20261023130000; until then the export shows those parts empty with a notice and the cron reports the retention step failed. Next: fix the contract-list queries that select missing columns (current_title, city), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Follow-up: account_id on pilot_feedback (Council Review 38). Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events",
+        "Owner decisions F1+F2 (Council Review 37) are live (PR #126; migration 20261023130000 applied 2026-10-23). The contract-list queries that selected missing columns (current_title, city) are fixed on branch fix/contract-list-columns, pending merge (with a repo-wide static select-column guard and the public dossier endorsements fix; Council Review 39). Prompt F: a scholar contract detail page. Next: account_id on pilot_feedback (root-cause, Council Review 38), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events",
         "Follow-ups from Council Review 36: Prompt B adds a scholar read policy and an export section for endorsements institutions wrote about the scholar (the export README says they are not included yet); export-completeness CI gate built (npm run audit:export), pilot_feedback flagged as an unexported table needing an owner decision; a readable HTML summary of the export; privacy v8 (Prompt G) items in the CR36 synthesis",
         "Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F",
         "Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on",
