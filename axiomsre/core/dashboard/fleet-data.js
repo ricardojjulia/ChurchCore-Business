@@ -1,9 +1,9 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-22T20:48:26.937880+00:00",
+  "generated_at": "2026-10-23T13:37:41.403212+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
-    "average_readiness_score": 89,
+    "average_readiness_score": 92,
     "average_completion_pct": 99,
     "sovereign_data_isolation": true,
     "total_tasks": 24,
@@ -110,8 +110,8 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 4.1,
-          "age_display": "4h ago",
+          "age_hours": 20.9,
+          "age_display": "20h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-22T16:41:18.527404+00:00"
         },
@@ -214,8 +214,8 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 25.7,
-          "age_display": "1.1d ago",
+          "age_hours": 42.5,
+          "age_display": "1.8d ago",
           "status": "AGING",
           "report_timestamp": "2026-10-21T19:07:50.587388+00:00"
         },
@@ -339,8 +339,8 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "local_filesystem",
         "source_url": "/Users/rjulia/ChurchCore Academy/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 1.3,
-          "age_display": "1h ago",
+          "age_hours": 18.1,
+          "age_display": "18h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-22T19:30:40.144751+00:00"
         },
@@ -350,11 +350,11 @@ window.CHURCHCORE_FLEET_DATA = {
           "branch": "fix/grant-rls-table-privileges",
           "is_clean": true,
           "uncommitted_files": 0,
-          "ahead": 7,
+          "ahead": 8,
           "behind": 0,
-          "last_commit_sha": "984292e",
-          "last_commit_date": "2026-10-22T16:09:22-04:00",
-          "last_commit_msg": "fix(deps): remove obsolete postcss override to restore npm 10 ci resolution",
+          "last_commit_sha": "2d5a33b",
+          "last_commit_date": "2026-10-22T17:36:37-04:00",
+          "last_commit_msg": "fix(ci): restrict pull_request triggers to main and prevent duplicate execution",
           "telemetry_mtime": "2026-10-22T19:36:40.853961+00:00",
           "telemetry_mtime_display": "2026-10-22 19:36:40 UTC"
         },
@@ -362,7 +362,7 @@ window.CHURCHCORE_FLEET_DATA = {
           "has_drift": true,
           "reasons": [
             "Local checkout on non-main branch 'fix/grant-rls-table-privileges'",
-            "Local checkout is 7 commit(s) ahead of origin/main (unpushed)",
+            "Local checkout is 8 commit(s) ahead of origin/main (unpushed)",
             "Telemetry timestamp divergence: remote main (2026-10-21T19:09:08.658011+00:00) vs local (2026-10-22T19:30:40.144751+00:00)"
           ]
         }
@@ -453,8 +453,8 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 5.9,
-          "age_display": "5h ago",
+          "age_hours": 22.7,
+          "age_display": "22h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-22T14:56:19.768308+00:00"
         },
@@ -464,11 +464,11 @@ window.CHURCHCORE_FLEET_DATA = {
           "branch": "chore/standardize-node-22-workflows",
           "is_clean": true,
           "uncommitted_files": 0,
-          "ahead": 1,
+          "ahead": 2,
           "behind": 0,
-          "last_commit_sha": "ffe9696",
-          "last_commit_date": "2026-10-22T11:10:24-04:00",
-          "last_commit_msg": "chore(ci): standardize remaining workflows to Node 22 LTS",
+          "last_commit_sha": "b7d3820",
+          "last_commit_date": "2026-10-22T17:38:00-04:00",
+          "last_commit_msg": "fix(ci): add concurrency cancel-in-progress to prevent redundant runs",
           "telemetry_mtime": "2026-10-22T14:58:12.110503+00:00",
           "telemetry_mtime_display": "2026-10-22 14:58:12 UTC"
         },
@@ -476,7 +476,7 @@ window.CHURCHCORE_FLEET_DATA = {
           "has_drift": true,
           "reasons": [
             "Local checkout on non-main branch 'chore/standardize-node-22-workflows'",
-            "Local checkout is 1 commit(s) ahead of origin/main (unpushed)"
+            "Local checkout is 2 commit(s) ahead of origin/main (unpushed)"
           ]
         }
       }
@@ -558,8 +558,8 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 25.6,
-          "age_display": "1.1d ago",
+          "age_hours": 42.5,
+          "age_display": "1.8d ago",
           "status": "AGING",
           "report_timestamp": "2026-10-21T19:09:41.288991+00:00"
         },
@@ -587,14 +587,14 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-21T19:10:30.854737+00:00",
+      "report_timestamp": "2026-10-22T23:45:14.372501+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
         "vercel_url": "https://faith-full-scholars.vercel.app",
         "supabase_status": "connected",
         "readiness_assessment": {
-          "readiness_score_pct": 45,
+          "readiness_score_pct": 65,
           "blockers": [
             "Phase 2 launch gates open: counsel-reviewed legal texts (Privacy v7, Terms v3 are drafts) and a support address that receives mail (faithgrid.io has no MX records)",
             "Support address abuse@faithgrid.io is live on /contact (2026-10-20), accepted as is: mail bounces until faithgrid.io has MX records, and the legal texts route rights requests there",
@@ -605,7 +605,7 @@ window.CHURCHCORE_FLEET_DATA = {
             "Extend the axe AAA contrast scan to signed-in dashboards (public pages done, ADR 0038)",
             "Owner: add MX records for faithgrid.io, then set NEXT_PUBLIC_SUPPORT_EMAIL=abuse@faithgrid.io in Vercel and redeploy"
           ],
-          "readiness_basis": "Council Review 20 baseline score (about 45/100, 2026-10-14), before A1, A2 and A3a shipped; not re-scored since. That review projected about 65 after Phase A."
+          "readiness_basis": "Council Review 33 (2026-10-22), full audit of main: about 64/100 (was about 45 in Council Review 20); about 65/100 after institution write permissions (ADR 0042, Council Review 34). Council Review 35 (scholar draft visibility) does not change the score. Pilot: not ready until the support address receives mail and the pilot notification gap is covered; see docs/reviews/2026-10-22-council-review-33-synthesis.md."
         },
         "custom_domain": "https://faith-full-scholars.vercel.app",
         "supabase_project_ref": "prod-scholars-db"
@@ -622,17 +622,21 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)",
+        "fix(security): upgrade Next.js to 16.4.2 and Vitest to 5.0.5 (#120) (07622e3)",
+        "fix(ci): restrict push trigger to main and add concurrency to prevent duplicate runs (#119) (c8cc383)",
+        "docs: Council Review 33 readiness re-score (about 64/100) (#118) (b93b7ab)",
         "feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)",
         "feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)",
         "feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)",
-        "docs: B5 done and live; progress 6 of 10 (#110) (16f078b)",
-        "feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)"
+        "docs: B5 done and live; progress 6 of 10 (#110) (16f078b)"
       ],
       "next_steps": [
-        "Full Council readiness re-score now that Phase 1 is complete (last score about 45/100 on 2026-10-14)",
+        "Owner: run Release (dry run unticked) to apply migration 20261023090000 (scholar draft visibility)",
+        "Next: separate PR to add contracts, milestones and licensing to the scholar data export (lib/account/export.ts); then fix the contract list queries that select missing columns (current_title, city)",
+        "Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F",
         "Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on",
         "Owner: monitoring via Dynatrace or Vercel when ready (not a Phase 1 item)",
-        "Re-score readiness with a full Council review once B5b, B3 and B4 land (last score about 45/100 on 2026-10-14, before A1 to A4a, B2 and B5a)",
         "WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)",
         "Phase 2 (after Phase 1): founding-scholar and one-institution pilot; suites: npm run audit:rls, npm run verify:deploy, E2E",
         "Owner: confirm in an institution faculty search that the matcher label reads 'Google Gemini via OpenRouter' (it reads 'built-in matcher' if OPENROUTER_API_KEY is missing or no zero-retention endpoint answers)",
@@ -680,10 +684,10 @@ window.CHURCHCORE_FLEET_DATA = {
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 25.6,
-          "age_display": "1.1d ago",
-          "status": "AGING",
-          "report_timestamp": "2026-10-21T19:10:30.854737+00:00"
+          "age_hours": 13.9,
+          "age_display": "13h ago",
+          "status": "FRESH",
+          "report_timestamp": "2026-10-22T23:45:14.372501+00:00"
         },
         "local_git": {
           "detected": true,
@@ -693,16 +697,17 @@ window.CHURCHCORE_FLEET_DATA = {
           "uncommitted_files": 0,
           "ahead": 0,
           "behind": 0,
-          "last_commit_sha": "ed5350a",
-          "last_commit_date": "2026-10-21T15:10:41-04:00",
-          "last_commit_msg": "chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#112)",
-          "telemetry_mtime": "2026-10-21T19:10:56.862552+00:00",
-          "telemetry_mtime_display": "2026-10-21 19:10:56 UTC"
+          "last_commit_sha": "3a8d3b9",
+          "last_commit_date": "2026-10-22T10:24:32-04:00",
+          "last_commit_msg": "docs: withdraw Sentry (A4b) per owner; Phase 1 launch plan 10 of 10 (#117)",
+          "telemetry_mtime": "2026-10-22T21:37:03.159852+00:00",
+          "telemetry_mtime_display": "2026-10-22 21:37:03 UTC"
         },
         "drift": {
           "has_drift": true,
           "reasons": [
-            "MVP completion divergence: remote=100% vs local=60%"
+            "Telemetry timestamp divergence: remote main (2026-10-22T23:45:14.372501+00:00) vs local (2026-10-21T19:10:30.854737+00:00)",
+            "Readiness score divergence: remote=65% vs local=45%"
           ]
         }
       }
@@ -2491,13 +2496,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-22 20:48:26 UTC",
+      "last_synced": "2026-10-23 13:37:41 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Sovereign Platform: The Sovereign Operating System for the Global Church, Christian Education, and Pastoral Care",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 22, 2026",
+          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 23, 2026",
           "key_takeaways": [
             "Target Buyers: Denominational Bishop / General Superintendent, Executive Pastor / COO of Multi-Site Church",
             "Strategic Replacement: Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",
@@ -2599,13 +2604,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-22 20:48:26 UTC",
+      "last_synced": "2026-10-23 13:37:41 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore ChMS: Worship Planning, Child Check-In Security, and Double-Entry Ministry Accounting",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 22, 2026",
+          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 23, 2026",
           "key_takeaways": [
             "Target Buyers: Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator",
             "Strategic Replacement: Displaces Planning Center (Services/People/Giving) + Breeze + Realm + Tithe.ly",
@@ -2707,13 +2712,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-22 20:48:26 UTC",
+      "last_synced": "2026-10-23 13:37:41 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 22, 2026",
+          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 23, 2026",
           "key_takeaways": [
             "Target Buyers: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director",
             "Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",
@@ -2815,13 +2820,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-22 20:48:26 UTC",
+      "last_synced": "2026-10-23 13:37:41 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 22, 2026",
+          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 23, 2026",
           "key_takeaways": [
             "Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar",
             "Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool",
@@ -2923,13 +2928,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.1.0",
-      "last_synced": "2026-10-22 20:48:26 UTC",
+      "last_synced": "2026-10-23 13:37:41 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 22, 2026",
+          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 23, 2026",
           "key_takeaways": [
             "Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director",
             "Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory",
@@ -3031,13 +3036,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-22 20:48:26 UTC",
+      "last_synced": "2026-10-23 13:37:41 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Orthos: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 22, 2026",
+          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 23, 2026",
           "key_takeaways": [
             "Target Buyers: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter",
             "Strategic Replacement: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits",
@@ -3139,13 +3144,13 @@ window.CHURCHCORE_FLEET_DATA = {
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-22 20:48:26 UTC",
+      "last_synced": "2026-10-23 13:37:41 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 22, 2026",
+          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 23, 2026",
           "key_takeaways": [
             "Target Buyers: Seminary President / Academic Provost, Theological Faculty Search Committee Chair",
             "Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",
@@ -3186,8 +3191,8 @@ window.CHURCHCORE_FLEET_DATA = {
           "type": "live_telemetry_highlights",
           "subtitle": "Continuous High-Velocity Delivery (0.1.0 Live)",
           "key_takeaways": [
-            "Latest Feature Delivered: docs: B5 done and live; progress 6 of 10 (#110) (16f078b)",
-            "Ecosystem Hardening: feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)",
+            "Latest Feature Delivered: feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)",
+            "Ecosystem Hardening: feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)",
             "Reliability Proof: [2026-10-17] Nested the preflight IF (PR #88, before any release)."
           ],
           "visual_asset": "screenshots/implementation_plans_directionality.png",
@@ -3221,9 +3226,9 @@ window.CHURCHCORE_FLEET_DATA = {
         }
       ],
       "prompts": {
-        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://www.faithgrid.io\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- docs: B5 done and live; progress 6 of 10 (#110) (16f078b)\n- feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)\n- docs: status after B2 and B5a; telemetry 50% with engineering next steps first (#108) (bf5a5ce)\n- feat(mvp): B5a policy re-acceptance prompt (ADR 0035) (#107) (2c3c627)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
-        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://www.faithgrid.io\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: docs: B5 done and live; progress 6 of 10 (#110) (16f078b), feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341), docs: status after B2 and B5a; telemetry 50% with engineering next steps first (#108) (bf5a5ce)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
-        "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://www.faithgrid.io\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- docs: B5 done and live; progress 6 of 10 (#110) (16f078b)\n- feat(mvp): B5b data export, account deletion and privacy v5 (ADR 0035) (#109) (3267341)\n- docs: status after B2 and B5a; telemetry 50% with engineering next steps first (#108) (bf5a5ce)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.faithgrid.io",
+        "claude": "<system>\nYou are the Chief Strategy Officer and Lead Product Evangelist for the ChurchCore Ecosystem.\nGenerate an authoritative, compelling, and aesthetically stunning executive presentation deck and speaking manuscript for FaithFull Scholars.\n</system>\n\n<context>\nProduct: FaithFull Scholars (Scholars)\nDomain Category: Theological Network\nTagline: Theological Higher-Education Network, Confessional Search & Faculty Placement\nScale & Footprint: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\nTarget Buyer Personas: Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director\nCompetitive Replacement Targets: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\nLive Production URL: https://www.faithgrid.io\nConstitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\nCommercial Pricing: $2,500\u2013$15,000/yr per Institution\n\nRecent Engineering Delivery & Milestones:\n- feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)\n- feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)\n- feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)\n- docs: B5 done and live; progress 6 of 10 (#110) (16f078b)\n</context>\n\n<instructions>\n1. Produce an exhaustive, slide-by-slide executive presentation manuscript (6 to 8 slides).\n2. For each slide provide:\n   - Slide Title & Subtitle\n   - Key Strategic Bullet Points (maximum 3, crisp and punchy)\n   - Visual Layout Suggestion (diagram, KPI counter, UI screen)\n   - Verbatim Speaker Script for the Presenter (persuasive, warm, authoritative, respectful of Christian ministry)\n3. Conclude with an FAQ section tackling the top 3 objections from church boards or school administrators.\n</instructions>",
+        "chatgpt": "Act as a Tier-1 SaaS Product Marketing Director specializing in Christian enterprise software.\nCreate a high-converting, 6-slide executive pitch deck for **FaithFull Scholars**.\n\n**Key Context:**\n- Product: FaithFull Scholars (Theological Higher-Education Network, Confessional Search & Faculty Placement)\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n- Replaces: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering\n- Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties\n- Live Site: https://www.faithgrid.io\n- Pricing: $2,500\u2013$15,000/yr per Institution\n- Latest Features: feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970), feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314), feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)\n\n**Output Requirements:**\n1. Generate Slide 1 to Slide 6 with:\n   - Catchy Title\n   - 3 High-Impact Bullets\n   - Presenter Script\n2. Write a 1-page executive email summary pitch to send to a Seminary President / Academic Provost requesting a 20-minute live demonstration.",
+        "prezi_gamma": "Title: FaithFull Scholars \u2014 Executive Presentation\nSubtitle: Theological Higher-Education Network, Confessional Search & Faculty Placement\nTheme: Sovereign Modern Tech \u2022 Deep Navy (#0A192F), Celestial Gold (#D4AF37), Slate (#1E293B)\n\nSlide 1: Executive Overview\n- FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement\n- Live URL: https://www.faithgrid.io\n- Scale: 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0\n\nSlide 2: The Ministry Crisis\n- The High Cost of Fragmented Software (Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering)\n- Data Leakage & Secular Exploitation Risks\n- Administrative Burnout: 15+ Hours Lost Weekly\n\nSlide 3: The Sovereign ChurchCore Solution\n- 100% Database Sovereignty (Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties)\n- Built for Kingdom Longevity with Open Standards\n- Ultra-low Latency on Vercel Global Edge\n\nSlide 4: Verified Capabilities & Recent Milestones\n- feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)\n- feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)\n- feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)\n- High-Performance Database Architecture\n\nSlide 5: Why We Win (The Moat)\n- 40-60% Savings Compared to Incumbents\n- Built-in Confessional & Safeguarding Standards\n- Native Bilingual Architecture (English & Spanish)\n\nSlide 6: Partnership & Onboarding\n- Transparent Pricing: $2,500\u2013$15,000/yr per Institution\n- Zero-Downtime White-Glove Data Migration\n- Request a Guided Walkthrough: https://www.faithgrid.io",
         "prompt_ai": "Prompt for Slide Backgrounds & Midjourney Visuals:\n1. Title Hero Slide:\n   \"An inspiring, ultra-modern glassmorphic software dashboard interface displaying church analytics, warm cinematic lighting, dark sanctuary navy #0A192F background, subtle celestial gold accents #D4AF37, clean UI cards, 8k resolution, photorealistic, modern enterprise SaaS aesthetic --ar 16:9\"\n\n2. Architecture & Data Sovereignty Slide:\n   \"Abstract representation of an impregnable cryptographic digital fortress protecting sacred church documents, glowing golden lines of network security, clean isometric view, minimalist dark slate background, high tech, elegance, integrity --ar 16:9\"\n\n3. Live Operations & Speed Slide:\n   \"Futuristic executive command center interface showing real-time global telemetry, pulse waves, clean typography, glassmorphism, gold and emerald green status lights, sleek professional design --ar 16:9\"\n"
       }
     }

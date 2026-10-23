@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-22 20:48:26 UTC`
+> **Last Aggregated:** `2026-10-23 13:37:41 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -10,7 +10,7 @@
 | :--- | :--- | :--- | :--- |
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
 | **Active Production Online** | `6 / 6` | 6 / 6 | 🟢 100% Online |
-| **Average Readiness Score** | `89%` | 100% | 🟢 High Readiness |
+| **Average Readiness Score** | `92%` | 100% | 🟢 High Readiness |
 | **Portfolio MVP Progress** | `99%` | 100% | 🟢 On Schedule |
 | **Cross-App Data Isolation** | `VERIFIED` | Evidence from every product | 🛡️ All edge reports verified |
 
@@ -265,7 +265,7 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `45%` | No score basis supplied |
+| **Readiness** | `65%` | No score basis supplied |
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
@@ -290,15 +290,15 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)`
-- `feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)`
-- `feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)`
-- `docs: B5 done and live; progress 6 of 10 (#110) (16f078b)`
+- `feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)`
+- `fix(security): upgrade Next.js to 16.4.2 and Vitest to 5.0.5 (#120) (07622e3)`
+- `fix(ci): restrict push trigger to main and add concurrency to prevent duplicate runs (#119) (c8cc383)`
+- `docs: Council Review 33 readiness re-score (about 64/100) (#118) (b93b7ab)`
 
 **Next Engineering Steps:**
-- 🎯 Full Council readiness re-score now that Phase 1 is complete (last score about 45/100 on 2026-10-14)
-- 🎯 Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on
-- 🎯 Owner: monitoring via Dynatrace or Vercel when ready (not a Phase 1 item)
+- 🎯 Owner: run Release (dry run unticked) to apply migration 20261023090000 (scholar draft visibility)
+- 🎯 Next: separate PR to add contracts, milestones and licensing to the scholar data export (lib/account/export.ts); then fix the contract list queries that select missing columns (current_title, city)
+- 🎯 Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
