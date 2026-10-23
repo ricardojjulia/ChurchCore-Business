@@ -10,6 +10,7 @@ and updates `docs/governance-sync/COMPLIANCE-MATRIX.md`.
 
 import json
 import os
+import sys
 import re
 import subprocess
 import urllib.request
@@ -128,16 +129,26 @@ def main():
     
     compliance = {} # (req_id, prod_name) -> status
     
+    prefer_local = "--prefer-local" in sys.argv or "--local" in sys.argv or os.environ.get("CHURCHCORE_SYNC_LOCAL") == "1"
     for prod in products:
         p_name = prod["name"]
         p_repo = prod["repo"]
         print(f"Checking {p_name} ({p_repo})...")
         
-        content = fetch_remote_acknowledgment(p_repo)
-        source = "GitHub Remote"
-        if not content:
+        content = None
+        source = "None"
+        if prefer_local:
             content = fetch_local_acknowledgment(p_name)
-            source = "Local Sibling" if content else "None"
+            if content:
+                source = "Local Sibling"
+        if not content:
+            content = fetch_remote_acknowledgment(p_repo)
+            if content:
+                source = "GitHub Remote"
+        if not content and not prefer_local:
+            content = fetch_local_acknowledgment(p_name)
+            if content:
+                source = "Local Sibling"
         
         print(f"  Source: {source}")
         ack_data = parse_acknowledgments(content) if content else {}

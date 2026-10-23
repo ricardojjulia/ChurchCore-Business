@@ -4,7 +4,7 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-10-23 13:37:41 UTC
+> **Last Synced from Telemetry:** 2026-10-23 18:15:32 UTC
 
 ---
 
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
 
-- Latest Feature Delivered: docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)
-- Ecosystem Hardening: chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)
+- Latest Feature Delivered: feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092)
+- Ecosystem Hardening: fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b)
 - Reliability Proof: [2026-10-22] Additive migration 20261022160000_grant_admissions_conversion_rls_privileges.sql provisions table grants to anon and authenticated roles for admissions, conversion, audit, and LLIS tables.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
-- docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)
-- chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)
-- fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)
-- chore(telemetry): record Node 22 LTS stack synchronization (1ac22f4)
+- feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092)
+- fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b)
+- fix(deps): remove obsolete postcss override to restore npm 10 ci resolution (984292e)
+- chore(telemetry): update latest changes with Council Review 34 record (f50b4ce)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c), chore(telemetry): record session telemetry for RLS table privileges fix (a296aff), fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)
+- Latest Features: feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092), fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b), fix(deps): remove obsolete postcss override to restore npm 10 ci resolution (984292e)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)
-- chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)
-- fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)
+- feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092)
+- fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b)
+- fix(deps): remove obsolete postcss override to restore npm 10 ci resolution (984292e)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

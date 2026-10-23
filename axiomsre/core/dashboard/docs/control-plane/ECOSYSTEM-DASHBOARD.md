@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-23 13:37:41 UTC`
+> **Last Aggregated:** `2026-10-23 18:15:32 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -150,10 +150,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `docs(council): record Council Review 34 and factory run for RLS table privileges fix (3c6e19c)`
-- `chore(telemetry): record session telemetry for RLS table privileges fix (a296aff)`
-- `fix(security): grant table-level privileges for admissions, conversion, audit, and LLIS tables (a781f52)`
-- `chore(telemetry): record Node 22 LTS stack synchronization (1ac22f4)`
+- `feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092)`
+- `fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b)`
+- `fix(deps): remove obsolete postcss override to restore npm 10 ci resolution (984292e)`
+- `chore(telemetry): update latest changes with Council Review 34 record (f50b4ce)`
 
 **Next Engineering Steps:**
 - 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
@@ -161,11 +161,11 @@
 - 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `antigravity`
-- **Session Duration:** `5 minutes`
-- **Session Timestamp:** `2026-10-22T19:30:40.144751+00:00`
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `45 minutes`
+- **Session Timestamp:** `2026-10-23T17:08:28.000001+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Recorded Council Review 34 and factory run report for RLS table privileges fix
+- **Session Work Summary:** Reconciled Control Plane compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02..03
 
 - 🟢 *No active deployment errors logged.*
 
@@ -265,7 +265,7 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `65%` | No score basis supplied |
+| **Readiness** | `66%` | No score basis supplied |
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
@@ -290,14 +290,14 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(export): contracts, milestones and licensing in the scholar data export; migration 20261023120000 applied by Release 2026-10-23 (#124) (a674c85)`
+- `fix(security): scholars cannot see or act on drafts; drafts don't block scholar deletion (ADR 0042 amendment) (#123) (a538af2)`
 - `feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)`
 - `fix(security): upgrade Next.js to 16.4.2 and Vitest to 5.0.5 (#120) (07622e3)`
-- `fix(ci): restrict push trigger to main and add concurrency to prevent duplicate runs (#119) (c8cc383)`
-- `docs: Council Review 33 readiness re-score (about 64/100) (#118) (b93b7ab)`
 
 **Next Engineering Steps:**
-- 🎯 Owner: run Release (dry run unticked) to apply migration 20261023090000 (scholar draft visibility)
-- 🎯 Next: separate PR to add contracts, milestones and licensing to the scholar data export (lib/account/export.ts); then fix the contract list queries that select missing columns (current_title, city)
+- 🎯 Owner decisions F1+F2 (Council Review 37) built on branch feat/export-feedback-invitations, pending merge: own pilot_feedback and invitations addressed to or accepted by the person are in the data export, and pilot_feedback is deleted after 12 months by the daily cron. Owner must run Release (dry run unticked) immediately after merge to apply migration 20261023130000; until then the export shows those parts empty with a notice and the cron reports the retention step failed. Next: fix the contract-list queries that select missing columns (current_title, city), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Follow-up: account_id on pilot_feedback (Council Review 38). Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events
+- 🎯 Follow-ups from Council Review 36: Prompt B adds a scholar read policy and an export section for endorsements institutions wrote about the scholar (the export README says they are not included yet); export-completeness CI gate built (npm run audit:export), pilot_feedback flagged as an unexported table needing an owner decision; a readable HTML summary of the export; privacy v8 (Prompt G) items in the CR36 synthesis
 - 🎯 Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
