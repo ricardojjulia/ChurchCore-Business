@@ -586,3 +586,79 @@ graph TD
 > **Decision Evidence Summary:**  
 > The financial evaluation conclusively demonstrates that the proposed embedded security architecture is **fully absorptive within existing operating margins (>97%)**, carries **negligible fiscal friction (+10.4% hosting OPEX under Scenario A)**, and provides **disproportionately high risk protection** for our ministry partners and church treasuries. The Council ratifies this analysis as formal evidence supporting the decision to adopt embedded security.
 
+---
+
+## 11. Product-by-Product Impact Analysis & Targeted Rollout Roadmap
+
+Not all products face the same threat vectors. Deploying embedded security across the entire fleet simultaneously creates unnecessary operational noise. Instead, implementation follows a prioritized, risk-weighted sequence across our 6 applications:
+
+```mermaid
+timeline
+    title Targeted Product Rollout Sequence
+    Wave 1 (Vanguard) : ChurchCore ChMS : Public Giving (Card-Testing Defense) & Sunday Check-in SLA
+    Wave 2 (High-Assurance) : ChurchCore Care : Clinical EHR & Pastoral Privilege Guardrails
+                           : ChurchCore Academy : Student/Minor PII & Colegio Biblos Admissions
+    Wave 3 (Wallet Protection) : ChurchCore LMS : AI Grading & Token-Bucket Rate Limiting
+                              : ChurchCore Orthos : Liturgical AI Reasoning Endpoints
+```
+
+### 11.1 Fleet Threat Surface & Impact Matrix
+
+| Product | Primary Threat Vectors | Business & Operational Impact | Embedded Guardrails Applied | Rollout Priority |
+| :--- | :--- | :--- | :--- | :--- |
+| **ChurchCore (ChMS)** | Card-testing botnets on public giving; scraper storms on Sunday check-in | Stripe merchant dispute fees; physical lobby kiosk latency spikes (>50ms); donor trust erosion | Arcjet Bot Shield; sliding-window IP rate limiting on `/api/giving/*`; Stripe webhook HMAC verification | **Wave 1 (P0)** |
+| **ChurchCore Care** | SQLi / IDOR on confidential counseling notes; clinician account brute-force | Legal liability; catastrophic breach of pastoral/counselor confidentiality; HIPAA-adjacent exposure | In-process WASM payload inspection; strict 5-attempt sliding window on clinician auth; RLS isolation audit | **Wave 2 (P1)** |
+| **ChurchCore Academy** | Application spam; minor student directory scraping; student portal credential stuffing | Colegio Biblos pilot disruption; minor privacy compliance violations; admissions denial-of-service | Bot detection on public admissions forms; sliding-window brute-force limits on student/parent sessions | **Wave 2 (P1)** |
+| **ChurchCore LMS** | Runaway AI grading loops; automated prompt spam on tutor agents; student scraping | Exhaustion of third-party LLM API credit wallets (OpenAI/Anthropic/Gemini); serverless billing spikes | Token-bucket rate limiting per student account; AI action wrappers; payload size bounds | **Wave 3 (P2)** |
+| **ChurchCore Orthos** | Automated fuzzing of confessional alignment checks; high-frequency evaluation spam | Compute resource exhaustion on doctrinal evaluation engines | Action wrapper rate limits on evaluation routes | **Wave 3 (P2)** |
+| **Control Plane** | Unauthorized telemetry spoofing; stale status injection | Corruption of executive mission control dashboard metrics | Cryptographic sync tokens; constant-time bearer authentication | **Baseline Gate** |
+
+---
+
+### 11.2 Deep-Dive: Priority Product Justifications
+
+#### 1. Wave 1 Vanguard: ChurchCore (ChMS) — *Maximum Financial & Operational Risk*
+* **The Threat:** Public donation forms are the single largest target for automated botnets executing **card testing** (testing thousands of stolen credit card numbers with $1.00 micro-transactions). A single card-testing wave can generate thousands of dollars in Stripe decline penalties and trigger merchant account suspension.
+* **Sunday Morning Holy Hours (06:00–13:00):** During worship services, hundreds of families check in children simultaneously. Uncontrolled web scrapers or distributed crawler traffic during this window exhaust Vercel serverless concurrency and Supabase connection pools, causing lobby tablet timeouts.
+* **The Fix:** Arcjet’s WASM bot detection and edge rate limiting block botnets before requests ever touch Stripe or execute Supabase queries, guaranteeing sub-50ms check-in responsiveness.
+
+#### 2. Wave 2 High-Assurance: ChurchCore Care — *Maximum Confidentiality & Legal Liability*
+* **The Threat:** Care holds mental health intake forms, pastoral counseling logs, and clinical records for practicing therapists (such as the FaithCounseling pilot). A compromise of pastoral privilege or clinical records carries existential reputational and legal consequences.
+* **The Fix:** In-process WASM payload inspection screens for SQL injection, cross-site scripting, and structural payload anomalies before database execution. Combined with our 100% RLS policy stack, this guarantees defense-in-depth even if an application route logic bug occurs.
+
+#### 3. Wave 2 High-Assurance: ChurchCore Academy — *Minor Safety & Academic Integrity*
+* **The Threat:** As ChurchCore Academy advances the Colegio Biblos pilot (350 seats), public student admissions portals, parent communication channels, and OneRoster gradebook endpoints become accessible over the web. Form spam, directory harvesting, and brute-force student account access must be prevented.
+* **The Fix:** Transparent bot protection on public admissions routes, coupled with strict session isolation and rate limiting on gradebook updates.
+
+#### 4. Wave 3 Wallet Protection: ChurchCore LMS — *Denial-of-Wallet AI Guardrails*
+* **The Threat:** ChurchCore LMS integrates automated AI grading, rubric evaluations, and interactive tutor agents for seminary students across the AETH network (1,200 seats). A malicious script or a student running automated prompts in a loop can exhaust thousands of dollars in LLM API credits within hours.
+* **The Fix:** Arcjet’s `tokenBucket` algorithm tracks and enforces credit limits per student session, immediately shutting down runaway prompt loops at the application edge.
+
+---
+
+### 11.3 Execution Roadmap & Verification Gates
+
+```
+[Phase 1: Local & Staging Rehearsals (Free Tier)]
+   │
+   ├── Step 1.1: Install @arcjet/next in ChurchCore (ChMS) staging branch
+   ├── Step 1.2: Implement action-wrapper on `/api/giving/checkout` & `/api/checkin`
+   ├── Step 1.3: Run `npm test` with Vitest mock suite & verify zero false positives
+   │
+[Phase 2: Wave 1 Go-Live — ChurchCore ChMS Production (Shared Pro Key $25/mo)]
+   │
+   ├── Step 2.1: Add `ARCJET_KEY` to Vercel ChMS Production environment
+   ├── Step 2.2: Monitor Sunday Morning Holy Hours telemetry (latency < 50ms, 0 bot blocks on real donors)
+   │
+[Phase 3: Wave 2 Rollout — Care & Academy]
+   │
+   ├── Step 3.1: Deploy Care clinician auth brute-force limits & counseling note WASM shields
+   ├── Step 3.2: Deploy Academy admissions form protection ahead of Colegio Biblos live trial
+   │
+[Phase 4: Wave 3 Rollout — LMS & Orthos]
+   └── Step 4.1: Deploy token-bucket limits on AI grading and tutor agent endpoints
+```
+
+This staged rollout ensures that **the highest-risk payment and Sunday-critical routes are secured first**, while keeping operational overhead and false-positive risk strictly contained.
+
+
