@@ -661,4 +661,125 @@ timeline
 
 This staged rollout ensures that **the highest-risk payment and Sunday-critical routes are secured first**, while keeping operational overhead and false-positive risk strictly contained.
 
+---
+
+## 12. Ordered Directive Governance Protocol: Wave-Gating & Autonomous Challenges
+
+### 12.1 The Governance Innovation: Distributed Sequential Consensus
+
+Historically, Council Directives dispatched by the Sovereign Control Plane are received and implemented in parallel across all 6 product repositories. 
+
+For the **Embedded Security Architecture**, parallel adoption is explicitly prohibited to prevent configuration fragmentation, premature dependency churn, and operational noise during active institutional pilots. Instead, this marks the **first use of an Ordered Wave-Gated Directive Protocol** in ChurchCore governance.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor CP as Sovereign Control Plane
+    participant W1 as Wave 1: ChurchCore (ChMS)
+    participant W2 as Wave 2: Care & Academy
+    participant W3 as Wave 3: LMS & Orthos
+
+    CP->>W1: Broadcast Directive (DIR-2026-SEC-001) [Wave 1 Assigned]
+    CP->>W2: Broadcast Directive (DIR-2026-SEC-001) [Wave 2 Assigned]
+    CP->>W3: Broadcast Directive (DIR-2026-SEC-001) [Wave 3 Assigned]
+
+    Note over W1: Checks Place: WAVE 1 (Immediate)<br/>Status: Eligible
+    W1->>W1: Implements Action Wrapper & Vitest Suite
+    
+    Note over W2: Checks Place: WAVE 2<br/>Prerequisite: Wave 1 != VERIFIED
+    W2-->>CP: Autonomous Challenge: PREREQUISITE_WAVE_PENDING<br/>(Postpones implementation, schedules recheck)
+
+    Note over W3: Checks Place: WAVE 3<br/>Prerequisites: Waves 1 & 2 != VERIFIED
+    W3-->>CP: Autonomous Challenge: PREREQUISITE_WAVE_PENDING<br/>(Postpones implementation, schedules recheck)
+
+    W1->>CP: Submits Verification Evidence (Telemetry < 50ms, 0 false blocks)
+    CP->>CP: Certifies Wave 1 as VERIFIED_PRODUCTION
+
+    Note over W2: Next Sync Cycle: Wave 1 is VERIFIED!
+    W2->>W2: Unlocks Implementation (Wave 2 Active)
+```
+
+---
+
+### 12.2 Directive Contract Schema (`ordered_execution_waves`)
+
+When the Council ratifies and publishes this directive, the directive payload dispatched to edge packages contains explicit dependency ordering:
+
+```json
+{
+  "directive_id": "DIR-2026-EMBEDDED-SEC-001",
+  "title": "Embedded Security Guardrails (Next.js 16 + Arcjet + Webhooks)",
+  "execution_mode": "ORDERED_WAVE_GATED",
+  "waves": {
+    "1": {
+      "products": ["churchcore"],
+      "prerequisites": [],
+      "verification_criteria": [
+        "vitest_guardrail_suite_passing",
+        "sunday_sla_giving_latency_sub_50ms",
+        "zero_false_positive_donor_blocks"
+      ]
+    },
+    "2": {
+      "products": ["churchcore-care", "churchcore-academy"],
+      "prerequisites": ["wave_1_verified"],
+      "verification_criteria": [
+        "care_clinician_brute_force_verified",
+        "academy_admissions_bot_shield_verified",
+        "colegio_biblos_human_gate_unimpacted"
+      ]
+    },
+    "3": {
+      "products": ["churchcore-lms", "churchcore-orthos"],
+      "prerequisites": ["wave_1_verified", "wave_2_verified"],
+      "verification_criteria": [
+        "token_bucket_ai_credit_exhaustion_prevented",
+        "doctrinal_engine_fuzzing_blocked"
+      ]
+    }
+  }
+}
+```
+
+---
+
+### 12.3 Autonomous Package Behavior & Challenge Emission
+
+When a repository runs its autonomous synchronization script (`scripts/challenge-central-record.py` / `control-plane-sync.py`), it evaluates the directive against its local standing:
+
+1. **Self-Inspection of Wave Position:** The repository reads its own identifier (e.g., `churchcore-care`) and checks the `waves` dictionary in the central directive.
+2. **Upstream Gate Verification:** 
+   * If the package is **Wave 1 (`churchcore`)**, it has zero prerequisites. It proceeds with local branch creation, Vitest execution, and canary rollout.
+   * If the package is **Wave 2** or **Wave 3**, it queries the central fleet record for upstream completion status.
+3. **Autonomous Challenge Generation (Postponement):**
+   * If the prerequisite wave is **NOT** yet certified as `VERIFIED_PRODUCTION`, the repository **strictly refrains from modifying application code or installing dependencies**.
+   * It writes an autonomous challenge to `control/challenges.json`:
+
+```json
+{
+  "challenge_id": "CHAL-CARE-DIRECTIVE-ORDER-WAVE2-PENDING",
+  "directive_id": "DIR-2026-EMBEDDED-SEC-001",
+  "type": "DIRECTIVE_EXECUTION_POSTPONEMENT",
+  "assigned_wave": 2,
+  "blocking_wave": 1,
+  "blocking_product": "churchcore",
+  "status": "POSTPONED_PREREQUISITE_GATE_LOCKED",
+  "rationale": "Sovereign Wave Order Invariant Enforced: ChurchCore Care is assigned to Wave 2. Wave 1 (churchcore ChMS) implementation is currently IN_PROGRESS and has not yet satisfied production SLA verification. In compliance with Council Directive ordering, Care has safely deferred implementation.",
+  "action_taken": "NO_CODE_CHANGES_APPLIED",
+  "recheck_on": "NEXT_CONTROL_PLANE_SYNC"
+}
+```
+
+---
+
+### 12.4 Control Plane Reconciliation & Recheck Mechanics
+
+1. **Reconciliation Without Drift Penalty:** The Control Plane (`scripts/reconcile-edge-challenges.py`) recognizes `DIRECTIVE_EXECUTION_POSTPONEMENT` as an **orderly, compliant standing**, not a compliance failure or drift violation.
+2. **Automated Release on Prerequisite Certification:**
+   * When Wave 1 passes Sunday Morning Holy Hours verification, its telemetry reconciler marks `wave_1_status = "VERIFIED_PRODUCTION"`.
+   * On the subsequent sync, Wave 2 packages (`churchcore-care` and `churchcore-academy`) detect that the gate has lifted.
+   * The challenge is automatically resolved (`status = "PREREQUISITE_SATISFIED"`), and the packages transition their directive state to `READY_FOR_EXECUTION`.
+3. **Preservation of Sovereign Independence:** No package is forced into simultaneous changes. Each team or autonomous subagent executes within its bounded wave, ensuring that learnings and telemetry from Wave 1 (e.g. false-positive rule adjustments) harden the templates before Wave 2 touches a single production file.
+
+
 
