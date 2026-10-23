@@ -16,7 +16,9 @@ docs/operations/
 ├── 01-sovereign-database-isolation-and-security-architecture.md # Zero Data Propagation, Isolated Silos, RLS
 ├── 02-unified-ux-shell-and-app-switcher.md                   # 9-Dot App Switcher & Navigation Contract
 ├── 03-customer-onboarding-and-migration-playbook.md          # 14-Day Sprint to a Flawless First Sunday
-└── 04-sunday-readiness-disaster-recovery-and-sla.md          # Sunday Peak Concurrency, PWA Offline, RTO/RPO
+├── 04-sunday-readiness-disaster-recovery-and-sla.md          # Sunday Peak Concurrency, PWA Offline, RTO/RPO
+├── 05-cross-repo-governance-sync-and-dispatch-standard.md     # Cross-Repo Governance Sync & Dispatch
+└── 06-vercel-firewall-emergency-mitigation-playbook.md       # Vercel Firewall as an Emergency Security Stopgap
 ```
 
 ---
@@ -29,6 +31,7 @@ docs/operations/
 | **[Unified UX Shell & App Switcher](file:///Users/rjulia/ChurchCore-Business/docs/operations/02-unified-ux-shell-and-app-switcher.md)** | The 9-dot application switcher navigation shell | Delivers the seamless "Google Workspace" user experience without database coupling |
 | **[Customer Onboarding Playbook](file:///Users/rjulia/ChurchCore-Business/docs/operations/03-customer-onboarding-and-migration-playbook.md)** | Step-by-step 14-day customer onboarding and migration | Ensures every new church experiences a triumphant first Sunday morning |
 | **[Sunday Readiness & Disaster Recovery](file:///Users/rjulia/ChurchCore-Business/docs/operations/04-sunday-readiness-disaster-recovery-and-sla.md)** | Sunday 9am–12pm peak concurrency, PWA offline kiosk caching, RPO/RTO | Guarantees zero downtime during the golden 3 hours of Sunday worship |
+| **[Vercel Firewall Emergency Mitigation](file:///Users/rjulia/ChurchCore-Business/docs/operations/06-vercel-firewall-emergency-mitigation-playbook.md)** | Block an exploitable request pattern at the edge (WAF custom rule, CLI or dashboard), verify it from outside, retire it after the code fix | Contains a live security defect within minutes while the real fix goes through Council and CI |
 
 ---
 
