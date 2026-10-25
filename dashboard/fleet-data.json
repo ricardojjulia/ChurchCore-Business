@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T18:34:34.537655+00:00",
+  "generated_at": "2026-10-25T18:32:49.289142+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
@@ -14,7 +14,7 @@
       "product_id": "churchcore-chms",
       "repo_name": "ChurchCore",
       "version": "4.0.0",
-      "report_timestamp": "2026-10-22T16:41:18.527404+00:00",
+      "report_timestamp": "2026-10-25T18:29:40.354831+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
@@ -26,12 +26,13 @@
           "readiness_score_pct": 96,
           "blockers": [
             "External validation (O15): a pilot church and a real Planning Center / Breeze export dry run",
-            "Owner actions O23 (churchcore.io mail), O24 (Business repo visibility), O25 (native Spanish review), O26 (GHAS), O27 (Vercel log forensics), O28 (Firewall rule)"
+            "Owner actions O23 (churchcore.io mail), O24 (Business repo visibility), O25 (native Spanish review), O26 (GHAS), O27 (Vercel log forensics), O28 (Firewall rule)",
+            "Post-deploy checks for 4.0.0 not yet completed by the owner (sign-in, test email/SMS, Stripe test webhook); runtime logs were clean for 12 h after release"
           ],
           "next_required_actions": [
-            "Owner: smoke:preview against production (APP_URL=https://www.churchcore.io) and the RELEASE_CHECKLIST.md post-deploy checks",
-            "Recruit a pilot church; run a real-export migration dry run (O15)",
-            "Post-MVP Should/B rows (e.g. S94 volunteer action localization, S95 shift links, B-119 test timer, B-120 vendor spec cleanup)"
+            "Owner: RELEASE_CHECKLIST.md post-deploy checks still pending: sign in and reach /app/church-admin/readiness; send a test email and SMS; fire a Stripe test webhook (then verify the rows read-only)",
+            "Recruit a pilot church; run a real Planning Center / Breeze export migration dry run (O15)",
+            "Optional new row: whole-screen localization of staff pages (thrown errors and static labels stay English by design today)"
           ]
         }
       },
@@ -39,49 +40,55 @@
         "phase": "production",
         "completion_pct": 96,
         "release_target": "2026-11-06",
-        "must_rows_merged": "63 of 63 (R2 done: MVP released as 4.0.0 on 2026-10-22)",
+        "must_rows_merged": "63 of 63 (MVP released as 4.0.0 on 2026-10-22); post-release Should/B rows S94, S95, S96, S96b, B-119, B-120, B-121 merged",
         "latest_milestones": [
+          "Localization of returned refusal messages complete (S94 #239, S96 #242, S96b #244 and #245): every module that returns user-visible refusals has codes and en/es/es-PR text (Council Reviews 74-77)",
+          "Security patches deployed: Next.js 16.4.3 critical advisories (#240), undici/zod/fast-uri lockfile patch (#243)",
+          "CI: concurrency cancel-in-progress for pull requests only, pull_request triggers restricted to main (#237); test flakes B-119, B-120, B-121 fixed (#238, #241)",
+          "Post-release: smoke routes 200, Vercel runtime logs clean for 12 h after 4.0.0",
           "MVP released as 4.0.0 on 2026-10-22 (release PR #235, signed tag v4.0.0), readiness 96/100",
-          "All five Stretch rows merged: G1.9 #230, G1.10 #231, G3.4 #232, G2.3 #233, G4.3 #234 (Council Reviews 69-73)",
-          "R1 closed 2026-10-21: whole-app Council re-baseline, Testing Council full run and targeted re-run, all 4 Critical and 16 High fixed; readiness hold lifted at 95",
-          "Testing Council v6 full run 2026-10-18: 60 defects; all 4 Critical (#209, #211, #212) and 16 High (B1-B5: #213, #215, #216, #217, #218) fixed and in production",
-          "Targeted Testing Council re-run 2026-10-20/21: every original Critical and High confirmed fixed; follow-ups #220 (crash), #221 (scheduled-send time zone), #222 (contrast) merged",
-          "B3b event approval and ministry-leader owner scope merged #223 (approval publishes; approved events locked)"
+          "All five Stretch rows merged: G1.9 #230, G1.10 #231, G3.4 #232, G2.3 #233, G4.3 #234 (Council Reviews 69-73)"
         ]
       },
       "latest_changes": [
-        "release: ChurchCore 4.0.0 \u2014 the MVP (R2) (#235) (b08d3a0)",
-        "feat(imports): guided migration flow (G4.3) (#234) (0e18517)",
-        "feat(member): offline member schedule; cached pages cleared at sign-in (G2.3) (#233) (e6617f1)",
-        "feat(giving): pledges and campaigns (G3.4) (#232) (8c25abe)",
-        "feat(volunteers): recurring blockouts \u2014 weekly, every 2 weeks, monthly Nth weekday (G1.10) (#231) (d055317)"
+        "feat(i18n): localized staff messages \u2014 church admin, operations, elders, giving admin (S96b part 2) (#245) (cddc803)",
+        "feat(i18n): localized portal, communications, groups and data-rights messages (S96b part 1) (#244) (c28dcb0)",
+        "fix(security): patch undici, zod and fast-uri advisories (lockfile only) (#243) (9a050d0)",
+        "feat(i18n): localized member giving, registration and check-in messages (S96 batch 1) (#242) (04973a5)",
+        "test: grace period before jsdom teardown so Mantine exit timers can't fail the run (B-121) (#241) (55adb93)",
+        "fix(security): Next.js 16.4.3 \u2014 critical advisories (RCE, Server Actions DoS) (#240) (ffcd262)",
+        "feat(volunteers): localized planner refusals and linked already-scheduled shifts (S94, S95) (#239) (def471e)",
+        "fix(ci): add concurrency cancel-in-progress and restrict pull_request triggers to main (#237) (a25d5c9)",
+        "test: no Mantine exit timers after teardown; vendor spec keeps its second church (B-119, B-120) (#238) (0b69952)",
+        "chore(control-plane): full status report \u2014 MVP released as 4.0.0 (2026-10-22) (#236) (bc3ec8a)"
       ],
       "next_steps": [
-        "Owner: smoke:preview against production (APP_URL=https://www.churchcore.io) and the RELEASE_CHECKLIST.md post-deploy checks",
-        "Recruit a pilot church; run a real-export migration dry run (O15)",
-        "Post-MVP Should/B rows (e.g. S94 volunteer action localization, S95 shift links, B-119 test timer, B-120 vendor spec cleanup)"
+        "Owner: RELEASE_CHECKLIST.md post-deploy checks still pending: sign in and reach /app/church-admin/readiness; send a test email and SMS; fire a Stripe test webhook (then verify the rows read-only)",
+        "Recruit a pilot church; run a real Planning Center / Breeze export migration dry run (O15)",
+        "Owner actions O23-O28, including the O25 native Spanish review (e.g. 'ofrendante' vs 'donante', 'registro de asistencia')",
+        "Optional new row: whole-screen localization of staff pages (thrown errors and static labels stay English by design today)"
       ],
       "ai_session_telemetry": {
         "last_model": "claude-opus-5-5",
-        "session_duration_minutes": 1680,
-        "session_date": "2026-10-22T16:41:18.527404+00:00",
+        "session_duration_minutes": 4428,
+        "session_date": "2026-10-25T18:29:40.354831+00:00",
         "session_operator": "Ricardo Julia",
-        "summary_of_work": "ChurchCore 4.0.0 (the MVP) released 2026-10-22, ahead of the Nov 6 target, readiness 96/100 (owner re-score). All five Stretch rows built through Council Reviews 69-73 and merged (#230 G1.9 transactional assign, #231 G1.10 recurring blockouts, #232 G3.4 pledges and campaigns, #233 G2.3 offline member schedule, #234 G4.3 guided migration flow); migrations 20261025-20261028 applied to hosted before each merge; release PR #235, signed tag v4.0.0, GitHub release; production deploys confirmed. Also: control-plane sync #228, role-access matrix #229, i18n provider stability fix, service-worker cache narrowed to the schedule (privacy)."
+        "summary_of_work": "Reconciled edge challenge CHAL-CHURCHCORE-CHMS-FEAT2-def471e: feature_completion -> Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms) Complete. Advanced active instruction to Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms)."
       },
       "deployment_diagnostics": {
         "recent_errors": [
-          "[2026-10-22] G4.3 e2e: CI DB user cannot set session_replication_role; spec keeps its church and deletes only its own rows",
-          "[2026-10-22] G3.4 e2e: pages never reached network idle; I18nProvider recreated t each render; memoized per locale",
-          "[2026-10-22] CI e2e setup hit Docker Hub 'toomanyrequests' twice; re-ran the failed job",
-          "[2026-10-21] Vercel stopped auto-building production for merges (#222 delayed, #224 not built after 3h)",
-          "[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success)."
+          "[2026-10-25] PR #245 e2e: member data-rights page kept a hidden copy of the previous render, so a strict text locator matched twice",
+          "[2026-10-24/25] CI e2e setup hit Docker Hub 'toomanyrequests' (rate and data limits) on several runs",
+          "[2026-10-23] Mantine transition timers fired after jsdom teardown and failed unrelated vitest runs (B-119, B-121)",
+          "[2026-10-23] Next.js and transitive dependency security advisories (critical RCE / Server Actions DoS in Next; undici, zod, fast-uri)",
+          "[2026-10-22] G4.3 e2e: CI DB user cannot set session_replication_role"
         ],
         "mitigations_applied": [
-          "[2026-10-22] Production deploys confirmed for #230-#235 via the deployments API",
-          "[2026-10-22] Service worker caches only /portal and /app/member/schedule; cached pages cleared at sign-in (privacy)",
-          "[2026-10-21] O30 closed: owner checked the Vercel git integration",
-          "[2026-10-21] Production deployed by CLI from a clean checkout of main ceb016b with owner OK; O30 opened to investigate the git integration",
-          "[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403."
+          "[2026-10-25] Locator matches the visible element only (same fix as the guided-migration spec in #238)",
+          "[2026-10-24/25] Re-ran the failed e2e jobs; all green before merge",
+          "[2026-10-23] 400 ms grace period in vitest.setup.ts afterAll before jsdom teardown (#241)",
+          "[2026-10-23] Next.js 16.4.3 (#240) and targeted lockfile patches (#243); production deploys confirmed",
+          "[2026-10-22] Spec keeps its church and deletes only its own rows"
         ]
       },
       "governance_compliance": {
@@ -93,27 +100,33 @@
           "COUNCIL-2026-005",
           "COUNCIL-2026-006",
           "COUNCIL-2026-007",
-          "COUNCIL-2026-008"
+          "COUNCIL-2026-008",
+          "COUNCIL-2026-010",
+          "COUNCIL-2026-011"
         ],
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true,
         "brand_house_note": "Powered by ChurchCore badge live (REQ-002-01, #206/#207). WCAG AAA (REQ-002-02) not met: Should row S89.",
         "documented_council_reviews": {
-          "reviews": 58,
-          "files": 193
+          "reviews": 77,
+          "files": 214
         },
         "sovereign_db_isolation_note": "This repo has no cross-application sync bus; ChurchCore itself is one shared tenant database with layered isolation (ADR 0028). Other products' separation is verifiable only from their repos (Council Review 58). See docs/council/ACKNOWLEDGMENTS.md REQ-001-02."
       },
-      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
-      "_source_type": "remote",
+      "council_governing_state": {
+        "documented_reviews_count": 211
+      },
+      "feature_completion": "Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms) Complete",
+      "_source_path": "/Volumes/My Shared Files/Home/ChurchCore/docs/control-plane/telemetry.json",
+      "_source_type": "local",
       "provenance": {
-        "source_origin": "remote_github",
-        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
+        "source_origin": "local_filesystem",
+        "source_url": "/Volumes/My Shared Files/Home/ChurchCore/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 25.9,
-          "age_display": "1.1d ago",
-          "status": "AGING",
-          "report_timestamp": "2026-10-22T16:41:18.527404+00:00"
+          "age_hours": 0.1,
+          "age_display": "3m ago",
+          "status": "FRESH",
+          "report_timestamp": "2026-10-25T18:29:40.354831+00:00"
         },
         "local_git": {
           "detected": true,
@@ -126,12 +139,14 @@
           "last_commit_sha": null,
           "last_commit_date": null,
           "last_commit_msg": null,
-          "telemetry_mtime": "2026-10-22T17:42:52.579932+00:00",
-          "telemetry_mtime_display": "2026-10-22 17:42:52 UTC"
+          "telemetry_mtime": "2026-10-25T18:30:46.225078+00:00",
+          "telemetry_mtime_display": "2026-10-25 18:30:46 UTC"
         },
         "drift": {
-          "has_drift": false,
-          "reasons": []
+          "has_drift": true,
+          "reasons": [
+            "Telemetry timestamp divergence: remote main (2026-10-22T16:41:18.527404+00:00) vs local (2026-10-25T18:29:40.354831+00:00)"
+          ]
         }
       }
     },
@@ -214,9 +229,9 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 47.4,
-          "age_display": "2.0d ago",
-          "status": "AGING",
+          "age_hours": 95.4,
+          "age_display": "3d ago",
+          "status": "STALE",
           "report_timestamp": "2026-10-21T19:07:50.587388+00:00"
         },
         "local_git": {
@@ -337,39 +352,34 @@
         "sovereign_db_isolation_verified": true,
         "verification_note": "Acknowledgment is not implementation. Requirement-level status and evidence are recorded in docs/council/ACKNOWLEDGMENTS.md."
       },
-      "_source_path": "/Volumes/My Shared Files/Home/ChurchCore Academy/docs/control-plane/telemetry.json",
-      "_source_type": "local",
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote",
       "provenance": {
-        "source_origin": "local_filesystem",
-        "source_url": "/Volumes/My Shared Files/Home/ChurchCore Academy/docs/control-plane/telemetry.json",
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 0.3,
-          "age_display": "19m ago",
-          "status": "FRESH",
+          "age_hours": 48.3,
+          "age_display": "2.0d ago",
+          "status": "AGING",
           "report_timestamp": "2026-10-23T18:15:00.000000+00:00"
         },
         "local_git": {
           "detected": true,
           "path": "/Volumes/My Shared Files/Home/ChurchCore Academy",
-          "branch": "feat/control-plane-compliance-alignment",
-          "is_clean": false,
-          "uncommitted_files": 1870,
-          "ahead": 10,
+          "branch": "main",
+          "is_clean": true,
+          "uncommitted_files": 0,
+          "ahead": 0,
           "behind": 0,
-          "last_commit_sha": "3b23506",
-          "last_commit_date": "2026-10-23T14:17:45-04:00",
-          "last_commit_msg": "fix(telemetry): set brand_house_compliant and acknowledge COUNCIL-2026-010 and COUNCIL-2026-011",
-          "telemetry_mtime": "2026-10-23T18:34:19.731808+00:00",
-          "telemetry_mtime_display": "2026-10-23 18:34:19 UTC"
+          "last_commit_sha": "6270f53",
+          "last_commit_date": "2026-10-25T14:32:25-04:00",
+          "last_commit_msg": "feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256)",
+          "telemetry_mtime": "2026-10-25T18:32:28.364778+00:00",
+          "telemetry_mtime_display": "2026-10-25 18:32:28 UTC"
         },
         "drift": {
-          "has_drift": true,
-          "reasons": [
-            "Local checkout on non-main branch 'feat/control-plane-compliance-alignment'",
-            "Local checkout is 10 commit(s) ahead of origin/main (unpushed)",
-            "Local working tree has 1870 uncommitted file(s)",
-            "Telemetry timestamp divergence: remote main (2026-10-21T19:09:08.658011+00:00) vs local (2026-10-23T18:15:00.000000+00:00)"
-          ]
+          "has_drift": false,
+          "reasons": []
         }
       }
     },
@@ -458,9 +468,9 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 27.6,
-          "age_display": "1.2d ago",
-          "status": "AGING",
+          "age_hours": 75.6,
+          "age_display": "3d ago",
+          "status": "STALE",
           "report_timestamp": "2026-10-22T14:56:19.768308+00:00"
         },
         "local_git": {
@@ -564,9 +574,9 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 47.4,
-          "age_display": "2.0d ago",
-          "status": "AGING",
+          "age_hours": 95.4,
+          "age_display": "3d ago",
+          "status": "STALE",
           "report_timestamp": "2026-10-21T19:09:41.288991+00:00"
         },
         "local_git": {
@@ -630,6 +640,7 @@
         ]
       },
       "latest_changes": [
+        "feat(account): export own feedback and received invitations; 12-month feedback retention; migration 20261023130000 applied by Release 2026-10-23 (#126) (e47c41d)",
         "feat(export): contracts, milestones and licensing in the scholar data export; migration 20261023120000 applied by Release 2026-10-23 (#124) (a674c85)",
         "fix(security): scholars cannot see or act on drafts; drafts don't block scholar deletion (ADR 0042 amendment) (#123) (a538af2)",
         "feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)",
@@ -638,11 +649,10 @@
         "docs: Council Review 33 readiness re-score (about 64/100) (#118) (b93b7ab)",
         "feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)",
         "feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)",
-        "feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)",
-        "docs: B5 done and live; progress 6 of 10 (#110) (16f078b)"
+        "feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)"
       ],
       "next_steps": [
-        "Owner decisions F1+F2 (Council Review 37) built on branch feat/export-feedback-invitations, pending merge: own pilot_feedback and invitations addressed to or accepted by the person are in the data export, and pilot_feedback is deleted after 12 months by the daily cron. Owner must run Release (dry run unticked) immediately after merge to apply migration 20261023130000; until then the export shows those parts empty with a notice and the cron reports the retention step failed. Next: fix the contract-list queries that select missing columns (current_title, city), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Follow-up: account_id on pilot_feedback (Council Review 38). Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events",
+        "Owner decisions F1+F2 (Council Review 37) are live (PR #126; migration 20261023130000 applied 2026-10-23). The contract-list queries that selected missing columns (current_title, city) are fixed on branch fix/contract-list-columns, pending merge (with a repo-wide static select-column guard and the public dossier endorsements fix; Council Review 39). Prompt F: a scholar contract detail page. Next: account_id on pilot_feedback (root-cause, Council Review 38), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events",
         "Follow-ups from Council Review 36: Prompt B adds a scholar read policy and an export section for endorsements institutions wrote about the scholar (the export README says they are not included yet); export-completeness CI gate built (npm run audit:export), pilot_feedback flagged as an unexported table needing an owner decision; a readable HTML summary of the export; privacy v8 (Prompt G) items in the CR36 synthesis",
         "Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F",
         "Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on",
@@ -694,9 +704,9 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 18.8,
-          "age_display": "18h ago",
-          "status": "FRESH",
+          "age_hours": 66.8,
+          "age_display": "2.8d ago",
+          "status": "AGING",
           "report_timestamp": "2026-10-22T23:45:14.372501+00:00"
         },
         "local_git": {
@@ -2350,6 +2360,22 @@
       "prior_value": "Pending Implementation",
       "reconciled_value": "Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms) Complete",
       "evidence": "`FEATURE_COMPLETION_PROOF`: Verified feature completion proofs: Commit: 8c25abe feat(giving): pledges and campaigns (G3.4) (#232)"
+    },
+    {
+      "date": "2026-10-25 18:30:15 UTC",
+      "product": "ChurchCore ChMS",
+      "field": "council_governing_state.documented_reviews_count",
+      "prior_value": "unindexed",
+      "reconciled_value": "211",
+      "evidence": "`COUNCIL_REVIEW_PROOF`: Verified 211 documented council review markdown records"
+    },
+    {
+      "date": "2026-10-25 18:30:15 UTC",
+      "product": "ChurchCore ChMS",
+      "field": "feature_completion",
+      "prior_value": "Pending Implementation",
+      "reconciled_value": "Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms) Complete",
+      "evidence": "`FEATURE_COMPLETION_PROOF`: Verified feature completion proofs: Commit: def471e feat(volunteers): localized planner refusals and linked already-scheduled shifts (S94, S95) (#239)"
     }
   ],
   "commercial": {
@@ -2507,13 +2533,13 @@
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-23 18:34:34 UTC",
+      "last_synced": "2026-10-25 18:32:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Sovereign Platform: The Sovereign Operating System for the Global Church, Christian Education, and Pastoral Care",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 23, 2026",
+          "subtitle": "Live Production Architecture \u2022 517 Database Tables \u2022 423 Next.js Routes \u2022 6 Sovereign Pillars \u2022 October 25, 2026",
           "key_takeaways": [
             "Target Buyers: Denominational Bishop / General Superintendent, Executive Pastor / COO of Multi-Site Church",
             "Strategic Replacement: Replaces fragmented stack: Planning Center + Canvas LMS + FACTS/RenWeb + SimplePractice + Subsplash",
@@ -2615,13 +2641,13 @@
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-23 18:34:34 UTC",
+      "last_synced": "2026-10-25 18:32:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore ChMS: Worship Planning, Child Check-In Security, and Double-Entry Ministry Accounting",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 23, 2026",
+          "subtitle": "Live Production Architecture \u2022 133 Relational Tables \u2022 121 Application Routes \u2022 v3.5.0 \u2022 October 25, 2026",
           "key_takeaways": [
             "Target Buyers: Senior Pastor / Lead Pastor, Executive Pastor / Business Administrator",
             "Strategic Replacement: Displaces Planning Center (Services/People/Giving) + Breeze + Realm + Tithe.ly",
@@ -2723,13 +2749,13 @@
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-23 18:34:34 UTC",
+      "last_synced": "2026-10-25 18:32:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 23, 2026",
+          "subtitle": "Live Production Architecture \u2022 72 Relational Tables \u2022 85 Application Routes \u2022 v0.47.0 \u2022 October 25, 2026",
           "key_takeaways": [
             "Target Buyers: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director",
             "Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi",
@@ -2831,13 +2857,13 @@
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-23 18:34:34 UTC",
+      "last_synced": "2026-10-25 18:32:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 23, 2026",
+          "subtitle": "Live Production Architecture \u2022 152 Relational Tables \u2022 105 Application Routes \u2022 v0.10.0 \u2022 October 25, 2026",
           "key_takeaways": [
             "Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar",
             "Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool",
@@ -2939,13 +2965,13 @@
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.1.0",
-      "last_synced": "2026-10-23 18:34:34 UTC",
+      "last_synced": "2026-10-25 18:32:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 23, 2026",
+          "subtitle": "Live Production Architecture \u2022 84 Relational Tables \u2022 Deny-All Row-Level Security \u2022 v7.0.0 \u2022 October 25, 2026",
           "key_takeaways": [
             "Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director",
             "Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory",
@@ -3047,13 +3073,13 @@
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.3",
-      "last_synced": "2026-10-23 18:34:34 UTC",
+      "last_synced": "2026-10-25 18:32:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "ChurchCore Orthos: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 23, 2026",
+          "subtitle": "Live Production Architecture \u2022 28 Relational Tables \u2022 30 Application Routes \u2022 Gemini AI \u2022 v0.18.0 \u2022 October 25, 2026",
           "key_takeaways": [
             "Target Buyers: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter",
             "Strategic Replacement: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits",
@@ -3155,13 +3181,13 @@
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-23 18:34:34 UTC",
+      "last_synced": "2026-10-25 18:32:49 UTC",
       "slides": [
         {
           "slide_num": 1,
           "title": "FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement",
           "type": "title_hero",
-          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 23, 2026",
+          "subtitle": "Live Production Architecture \u2022 48 Relational Tables \u2022 53 Application Routes \u2022 pgvector Semantic Search \u2022 v0.1.0 \u2022 October 25, 2026",
           "key_takeaways": [
             "Target Buyers: Seminary President / Academic Provost, Theological Faculty Search Committee Chair",
             "Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering",

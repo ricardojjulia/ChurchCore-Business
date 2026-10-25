@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-23 18:34:34 UTC`
+> **Last Aggregated:** `2026-10-25 18:32:49 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -30,50 +30,51 @@
 **Active Blockers:**
 - 🔴 External validation (O15): a pilot church and a real Planning Center / Breeze export dry run
 - 🔴 Owner actions O23 (churchcore.io mail), O24 (Business repo visibility), O25 (native Spanish review), O26 (GHAS), O27 (Vercel log forensics), O28 (Firewall rule)
+- 🔴 Post-deploy checks for 4.0.0 not yet completed by the owner (sign-in, test email/SMS, Stripe test webhook); runtime logs were clean for 12 h after release
 
 **Immediate Next Required Actions:**
-- 🛠️ Owner: smoke:preview against production (APP_URL=https://www.churchcore.io) and the RELEASE_CHECKLIST.md post-deploy checks
-- 🛠️ Recruit a pilot church; run a real-export migration dry run (O15)
-- 🛠️ Post-MVP Should/B rows (e.g. S94 volunteer action localization, S95 shift links, B-119 test timer, B-120 vendor spec cleanup)
+- 🛠️ Owner: RELEASE_CHECKLIST.md post-deploy checks still pending: sign in and reach /app/church-admin/readiness; send a test email and SMS; fire a Stripe test webhook (then verify the rows read-only)
+- 🛠️ Recruit a pilot church; run a real Planning Center / Breeze export migration dry run (O15)
+- 🛠️ Optional new row: whole-screen localization of staff pages (thrown errors and static labels stay English by design today)
 
 #### MVP Development Status & Milestones
 - **Current Phase:** `PRODUCTION`
 - **Completion Percentage:** `96%`
 - **Recent Milestones Delivered:**
+  - ✅ Localization of returned refusal messages complete (S94 #239, S96 #242, S96b #244 and #245): every module that returns user-visible refusals has codes and en/es/es-PR text (Council Reviews 74-77)
+  - ✅ Security patches deployed: Next.js 16.4.3 critical advisories (#240), undici/zod/fast-uri lockfile patch (#243)
+  - ✅ CI: concurrency cancel-in-progress for pull requests only, pull_request triggers restricted to main (#237); test flakes B-119, B-120, B-121 fixed (#238, #241)
+  - ✅ Post-release: smoke routes 200, Vercel runtime logs clean for 12 h after 4.0.0
   - ✅ MVP released as 4.0.0 on 2026-10-22 (release PR #235, signed tag v4.0.0), readiness 96/100
   - ✅ All five Stretch rows merged: G1.9 #230, G1.10 #231, G3.4 #232, G2.3 #233, G4.3 #234 (Council Reviews 69-73)
-  - ✅ R1 closed 2026-10-21: whole-app Council re-baseline, Testing Council full run and targeted re-run, all 4 Critical and 16 High fixed; readiness hold lifted at 95
-  - ✅ Testing Council v6 full run 2026-10-18: 60 defects; all 4 Critical (#209, #211, #212) and 16 High (B1-B5: #213, #215, #216, #217, #218) fixed and in production
-  - ✅ Targeted Testing Council re-run 2026-10-20/21: every original Critical and High confirmed fixed; follow-ups #220 (crash), #221 (scheduled-send time zone), #222 (contrast) merged
-  - ✅ B3b event approval and ministry-leader owner scope merged #223 (approval publishes; approved events locked)
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `release: ChurchCore 4.0.0 — the MVP (R2) (#235) (b08d3a0)`
-- `feat(imports): guided migration flow (G4.3) (#234) (0e18517)`
-- `feat(member): offline member schedule; cached pages cleared at sign-in (G2.3) (#233) (e6617f1)`
-- `feat(giving): pledges and campaigns (G3.4) (#232) (8c25abe)`
+- `feat(i18n): localized staff messages — church admin, operations, elders, giving admin (S96b part 2) (#245) (cddc803)`
+- `feat(i18n): localized portal, communications, groups and data-rights messages (S96b part 1) (#244) (c28dcb0)`
+- `fix(security): patch undici, zod and fast-uri advisories (lockfile only) (#243) (9a050d0)`
+- `feat(i18n): localized member giving, registration and check-in messages (S96 batch 1) (#242) (04973a5)`
 
 **Next Engineering Steps:**
-- 🎯 Owner: smoke:preview against production (APP_URL=https://www.churchcore.io) and the RELEASE_CHECKLIST.md post-deploy checks
-- 🎯 Recruit a pilot church; run a real-export migration dry run (O15)
-- 🎯 Post-MVP Should/B rows (e.g. S94 volunteer action localization, S95 shift links, B-119 test timer, B-120 vendor spec cleanup)
+- 🎯 Owner: RELEASE_CHECKLIST.md post-deploy checks still pending: sign in and reach /app/church-admin/readiness; send a test email and SMS; fire a Stripe test webhook (then verify the rows read-only)
+- 🎯 Recruit a pilot church; run a real Planning Center / Breeze export migration dry run (O15)
+- 🎯 Owner actions O23-O28, including the O25 native Spanish review (e.g. 'ofrendante' vs 'donante', 'registro de asistencia')
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `claude-opus-5-5`
-- **Session Duration:** `1680 minutes`
-- **Session Timestamp:** `2026-10-22T16:41:18.527404+00:00`
+- **Session Duration:** `4428 minutes`
+- **Session Timestamp:** `2026-10-25T18:29:40.354831+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** ChurchCore 4.0.0 (the MVP) released 2026-10-22, ahead of the Nov 6 target, readiness 96/100 (owner re-score). All five Stretch rows built through Council Reviews 69-73 and merged (#230 G1.9 transactional assign, #231 G1.10 recurring blockouts, #232 G3.4 pledges and campaigns, #233 G2.3 offline member schedule, #234 G4.3 guided migration flow); migrations 20261025-20261028 applied to hosted before each merge; release PR #235, signed tag v4.0.0, GitHub release; production deploys confirmed. Also: control-plane sync #228, role-access matrix #229, i18n provider stability fix, service-worker cache narrowed to the schedule (privacy).
+- **Session Work Summary:** Reconciled edge challenge CHAL-CHURCHCORE-CHMS-FEAT2-def471e: feature_completion -> Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms) Complete. Advanced active instruction to Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms).
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
-| `[2026-10-22] G4.3 e2e: CI DB user cannot set session_replication_role; spec keeps its church and deletes only its own rows` | `[2026-10-22] Production deploys confirmed for #230-#235 via the deployments API` |
-| `[2026-10-22] G3.4 e2e: pages never reached network idle; I18nProvider recreated t each render; memoized per locale` | `[2026-10-22] Service worker caches only /portal and /app/member/schedule; cached pages cleared at sign-in (privacy)` |
-| `[2026-10-22] CI e2e setup hit Docker Hub 'toomanyrequests' twice; re-ran the failed job` | `[2026-10-21] O30 closed: owner checked the Vercel git integration` |
-| `[2026-10-21] Vercel stopped auto-building production for merges (#222 delayed, #224 not built after 3h)` | `[2026-10-21] Production deployed by CLI from a clean checkout of main ceb016b with owner OK; O30 opened to investigate the git integration` |
-| `[2026-10-17] Production ran with NEXT_PUBLIC_DEMO_MODE=true (demo-only payment route passed its gate; provider stubs could fake success).` | `[2026-10-17] NEXT_PUBLIC_DEMO_MODE=false (Config) for Production and redeployed; demo route verified 403.` |
+| `[2026-10-25] PR #245 e2e: member data-rights page kept a hidden copy of the previous render, so a strict text locator matched twice` | `[2026-10-25] Locator matches the visible element only (same fix as the guided-migration spec in #238)` |
+| `[2026-10-24/25] CI e2e setup hit Docker Hub 'toomanyrequests' (rate and data limits) on several runs` | `[2026-10-24/25] Re-ran the failed e2e jobs; all green before merge` |
+| `[2026-10-23] Mantine transition timers fired after jsdom teardown and failed unrelated vitest runs (B-119, B-121)` | `[2026-10-23] 400 ms grace period in vitest.setup.ts afterAll before jsdom teardown (#241)` |
+| `[2026-10-23] Next.js and transitive dependency security advisories (critical RCE / Server Actions DoS in Next; undici, zod, fast-uri)` | `[2026-10-23] Next.js 16.4.3 (#240) and targeted lockfile patches (#243); production deploys confirmed` |
+| `[2026-10-22] G4.3 e2e: CI DB user cannot set session_replication_role` | `[2026-10-22] Spec keeps its church and deletes only its own rows` |
 
 ---
 
@@ -290,13 +291,13 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(account): export own feedback and received invitations; 12-month feedback retention; migration 20261023130000 applied by Release 2026-10-23 (#126) (e47c41d)`
 - `feat(export): contracts, milestones and licensing in the scholar data export; migration 20261023120000 applied by Release 2026-10-23 (#124) (a674c85)`
 - `fix(security): scholars cannot see or act on drafts; drafts don't block scholar deletion (ADR 0042 amendment) (#123) (a538af2)`
 - `feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)`
-- `fix(security): upgrade Next.js to 16.4.2 and Vitest to 5.0.5 (#120) (07622e3)`
 
 **Next Engineering Steps:**
-- 🎯 Owner decisions F1+F2 (Council Review 37) built on branch feat/export-feedback-invitations, pending merge: own pilot_feedback and invitations addressed to or accepted by the person are in the data export, and pilot_feedback is deleted after 12 months by the daily cron. Owner must run Release (dry run unticked) immediately after merge to apply migration 20261023130000; until then the export shows those parts empty with a notice and the cron reports the retention step failed. Next: fix the contract-list queries that select missing columns (current_title, city), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Follow-up: account_id on pilot_feedback (Council Review 38). Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events
+- 🎯 Owner decisions F1+F2 (Council Review 37) are live (PR #126; migration 20261023130000 applied 2026-10-23). The contract-list queries that selected missing columns (current_title, city) are fixed on branch fix/contract-list-columns, pending merge (with a repo-wide static select-column guard and the public dossier endorsements fix; Council Review 39). Prompt F: a scholar contract detail page. Next: account_id on pilot_feedback (root-cause, Council Review 38), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events
 - 🎯 Follow-ups from Council Review 36: Prompt B adds a scholar read policy and an export section for endorsements institutions wrote about the scholar (the export README says they are not included yet); export-completeness CI gate built (npm run audit:export), pilot_feedback flagged as an unexported table needing an owner decision; a readable HTML summary of the export; privacy v8 (Prompt G) items in the CR36 synthesis
 - 🎯 Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F
 
