@@ -4,7 +4,7 @@
 > **Scale:** 517 Database Tables • 423 Next.js Routes • 6 Sovereign Pillars  
 > **Target Buyers:** Denominational Bishop / General Superintendent, Executive Pastor / COO of Multi-Site Church, Christian Foundation / Institutional Investor, Council of Churches Executive Board  
 > **Live URL:** [https://www.churchcore.io](https://www.churchcore.io)  
-> **Last Synced from Telemetry:** 2026-10-25 18:32:49 UTC
+> **Last Synced from Telemetry:** 2026-10-25 18:36:33 UTC
 
 ---
 
