@@ -1,9 +1,9 @@
 window.CHURCHCORE_FLEET_DATA = {
-  "generated_at": "2026-10-26T10:51:14.662132+00:00",
+  "generated_at": "2026-10-26T18:18:33.936822+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
-    "average_readiness_score": 92,
+    "average_readiness_score": 93,
     "average_completion_pct": 99,
     "sovereign_data_isolation": true,
     "total_tasks": 24,
@@ -609,14 +609,14 @@ window.CHURCHCORE_FLEET_DATA = {
       "product_id": "faithfull-scholars",
       "repo_name": "FaithFullScholars",
       "version": "0.1.0",
-      "report_timestamp": "2026-10-22T23:45:14.372501+00:00",
+      "report_timestamp": "2026-10-26T18:17:31.136537+00:00",
       "online_status": {
         "is_online": true,
         "vercel_status": "deployed",
         "vercel_url": "https://faith-full-scholars.vercel.app",
         "supabase_status": "connected",
         "readiness_assessment": {
-          "readiness_score_pct": 66,
+          "readiness_score_pct": 68,
           "blockers": [
             "Phase 2 launch gates open: counsel-reviewed legal texts (Privacy v7, Terms v3 are drafts) and a support address that receives mail (faithgrid.io has no MX records)",
             "Support address abuse@faithgrid.io is live on /contact (2026-10-20), accepted as is: mail bounces until faithgrid.io has MX records, and the legal texts route rights requests there",
@@ -627,7 +627,7 @@ window.CHURCHCORE_FLEET_DATA = {
             "Extend the axe AAA contrast scan to signed-in dashboards (public pages done, ADR 0038)",
             "Owner: add MX records for faithgrid.io, then set NEXT_PUBLIC_SUPPORT_EMAIL=abuse@faithgrid.io in Vercel and redeploy"
           ],
-          "readiness_basis": "Council Review 33 (2026-10-22), full audit of main: about 64/100 (was about 45 in Council Review 20); about 65/100 after institution write permissions (ADR 0042, Council Review 34). Council Review 36 Agent 4 (CR35 live plus export completeness): about 66/100. Pilot: not ready until the support address receives mail and the pilot notification gap is covered; see docs/reviews/2026-10-22-council-review-33-synthesis.md."
+          "readiness_basis": "Council Review 41 Agent 4 estimate: Prompt B live closes CR33 findings 2 and 3 and CR36 E2 (about +2)"
         },
         "custom_domain": "https://faith-full-scholars.vercel.app",
         "supabase_project_ref": "prod-scholars-db"
@@ -644,23 +644,26 @@ window.CHURCHCORE_FLEET_DATA = {
         ]
       },
       "latest_changes": [
+        "feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)",
+        "feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)",
+        "feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)",
+        "feat(endorsements): scholar-controlled endorsements, staff-only verification (ADR 0043, Prompt B); migration 20261024090000 applied by Release 2026-10-26 (#129) (6305e46)",
+        "fix(feedback): pilot feedback attributed to the sending account, contract-list column fixes (ADR 0035 amendment); migration 20261023150000 applied by Release 2026-10-26 (#128) (b44f9ee)",
         "feat(account): export own feedback and received invitations; 12-month feedback retention; migration 20261023130000 applied by Release 2026-10-23 (#126) (e47c41d)",
         "feat(export): contracts, milestones and licensing in the scholar data export; migration 20261023120000 applied by Release 2026-10-23 (#124) (a674c85)",
         "fix(security): scholars cannot see or act on drafts; drafts don't block scholar deletion (ADR 0042 amendment) (#123) (a538af2)",
         "feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)",
-        "fix(security): upgrade Next.js to 16.4.2 and Vitest to 5.0.5 (#120) (07622e3)",
-        "fix(ci): restrict push trigger to main and add concurrency to prevent duplicate runs (#119) (c8cc383)",
-        "docs: Council Review 33 readiness re-score (about 64/100) (#118) (b93b7ab)",
-        "feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)",
-        "feat(mvp): B3 institution invitations, membership hole fix, privacy v6 (ADR 0034) (#111) (339e314)",
-        "feat(mvp): B4 founding-scholar invitations and privacy v7 (ADR 0034) (#113) (8af01b1)"
+        "fix(security): upgrade Next.js to 16.4.2 and Vitest to 5.0.5 (#120) (07622e3)"
       ],
       "next_steps": [
-        "Prompt B (scholar-controlled endorsements, ADR 0043, Council Review 41) is built on branch feat/scholar-controlled-endorsements and pending merge. Owner order: merge #128 first, then this PR, then run Release (dry run unticked) for migrations 20261023150000 and 20261024090000. Not live until then; readiness unchanged. Next: Prompt C (grounded matcher and its rate limit). Privacy v8 items: third-party endorsements stored pending, staff read access, possible Art. 9 content, retention of declined/hidden rows, verification events. Follow-ups: real report flow, scholar requests verification, one-time pending digest email, two-connection concurrency test, notifications",
-        "Pending merge: feat/feedback-account-id (Council Review 38 C1 root cause, ADR 0035 amendment; Council Review 40 found no Critical, its findings and the triage-by-issue decision are fixed in the branch): pilot_feedback.account_id set from the session, repeats merge only within one sender, my_pilot_feedback and the account-deletion scrub keyed on the account; migration 20261023150000. After merge the owner must run Release (dry run unticked). Then Prompt B (scholar-controlled endorsements), then Prompt C.",
-        "Owner decisions F1+F2 (Council Review 37) are live (PR #126; migration 20261023130000 applied 2026-10-23). The contract-list queries that selected missing columns (current_title, city) are fixed on branch fix/contract-list-columns, pending merge (with a repo-wide static select-column guard and the public dossier endorsements fix; Council Review 39). Prompt F: a scholar contract detail page. Next: account_id on pilot_feedback (root-cause, Council Review 38), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events",
+        "Owner check: run one broad matcher search on production and read the ai_gateway_call log line in Vercel logs (finish_reason 'stop', completion_tokens < 4000) (PR #131/#132 are live; the cap is unproven against live traffic)",
+        "Owner check: a Spanish-speaking reviewer re-records the es catalog with record-baseline.mjs --reviewer <id> (PR #133; baseline adoption is not a linguistic review)",
+        "Owner check: Supabase Confirm email ON in production; staff re-verify institutional endorsements via /admin/endorsements",
+        "Next build: Prompts D (Pilot Pulse and honest admin states), G (privacy v8 and restore runbook), E (accessibility and Spanish), F (route and operations fixes), per Council Review 33",
+        "Privacy v8 items are collected in ADRs 0041, 0043 and 0044 (matcher text no longer scores or ranks and sends fewer fields; endorsements; localization)",
+        "Owner/staff follow-up: staff re-verify institutional endorsements via /admin/endorsements following docs/deployment/endorsement-verification-runbook.md (Prompt B, ADR 0043, is live: PR #129, migration 20261024090000 applied 2026-10-26; PR #128, migration 20261023150000, also live). Privacy v8 items: third-party endorsements stored pending, staff read access, possible Art. 9 content, retention of declined/hidden rows, verification events. Follow-ups: real report flow, scholar requests verification, one-time pending digest email, two-connection concurrency test, notifications",
+        "Owner decisions F1+F2 (Council Review 37) are live (PR #126; migration 20261023130000 applied 2026-10-23). The contract-list queries that selected missing columns are fixed and live (PR #128, Release 2026-10-26; with a repo-wide static select-column guard and the public dossier endorsements fix; Council Review 39). Prompt F: a scholar contract detail page. Owner check: Supabase Confirm email ON in production. Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events",
         "Follow-ups from Council Review 36: Prompt B adds a scholar read policy and an export section for endorsements institutions wrote about the scholar (the export README says they are not included yet); export-completeness CI gate built (npm run audit:export), pilot_feedback flagged as an unexported table needing an owner decision; a readable HTML summary of the export; privacy v8 (Prompt G) items in the CR36 synthesis",
-        "Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F",
         "Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on",
         "Owner: monitoring via Dynatrace or Vercel when ready (not a Phase 1 item)",
         "WCAG AAA contrast: extend the axe scan to signed-in dashboards (public pages done, ADR 0038)",
@@ -699,9 +702,11 @@ window.CHURCHCORE_FLEET_DATA = {
           "COUNCIL-2026-005",
           "COUNCIL-2026-006",
           "COUNCIL-2026-007",
-          "COUNCIL-2026-008"
+          "COUNCIL-2026-008",
+          "COUNCIL-2026-010",
+          "COUNCIL-2026-011"
         ],
-        "brand_house_compliant": false,
+        "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
       "_source_path": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
