@@ -94,7 +94,12 @@ class TestGovernanceManifest(unittest.TestCase):
         )
 
         compliance = academy["governance_compliance"]
-        self.assertFalse(compliance["brand_house_compliant"])
+        # REQ-002-01 is now implemented and evidenced for Academy (2026-10-26): the badge renders on
+        # https://www.churchcoreacademy.io and ChurchCore-Academy docs/council/ACKNOWLEDGMENTS.md records
+        # src/components/branding/churchcore-trust-badge.tsx with component tests. The flag may be true only
+        # alongside an evidence pointer, so acknowledgment alone still never promotes compliance.
+        self.assertTrue(compliance["brand_house_compliant"])
+        self.assertIn("ACKNOWLEDGMENTS.md", compliance.get("verification_note", ""))
         self.assertTrue(compliance["sovereign_db_isolation_verified"])
         self.assertIn("COUNCIL-2026-006", compliance["council_decisions_acknowledged"])
         self.assertEqual(
