@@ -4,14 +4,14 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
-> **Last Synced from Telemetry:** 2026-10-25 18:36:33 UTC
+> **Last Synced from Telemetry:** 2026-10-26 10:51:14 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement
-*Live Production Architecture • 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0 • October 25, 2026*
+*Live Production Architecture • 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0 • October 26, 2026*
 
 - Target Buyers: Seminary President / Academic Provost, Theological Faculty Search Committee Chair
 - Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering

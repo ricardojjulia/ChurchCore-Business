@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-25 18:36:33 UTC`
+> **Last Aggregated:** `2026-10-26 10:51:14 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -235,21 +235,21 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `Merge pull request #33 from ricardojjulia/chore/council-008-sync (940e8d9)`
-- `chore(governance): implement COUNCIL-2026-008 automated telemetry reporting and ledger sync (v0.18.3) (737f2cd)`
-- `Merge pull request #32 from ricardojjulia/feature/phase2-testing-and-ministry-solutioning (7d39406)`
-- `feat(ministries): implement AI solutioning engine, Sunday SLA prober, and /api/health (COUNCIL-2026-005) (625569e)`
+- `M`
+- `e`
+- `r`
+- `g`
 
 **Next Engineering Steps:**
 - 🎯 Deploy staging preview build to Vercel
 - 🎯 Execute test:security and audit:rls verification
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-21T19:09:41.288991+00:00`
+- **Last AI Model Used:** `gemini-3.8-flash`
+- **Session Duration:** `20 minutes`
+- **Session Timestamp:** `2026-10-26T00:35:07.223235+00:00`
 - **Session Operator:** `Ricardo J Julia`
-- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-orthos.
+- **Session Work Summary:** Reconciled edge challenge CHAL-CHURCHCORE-ORTHOS-GIT-d43b0a6: latest_changes -> Merge pull request #36 from ricardojjulia/chore/sync-telemetry-and-council-directives (d43b0a6). Advanced active instruction to Next Phase.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -297,9 +297,9 @@
 - `feat(institution): role and status gating for institution writes; owner-run cleanup (ADR 0042) (#121) (227e123)`
 
 **Next Engineering Steps:**
+- 🎯 Prompt B (scholar-controlled endorsements, ADR 0043, Council Review 41) is built on branch feat/scholar-controlled-endorsements and pending merge. Owner order: merge #128 first, then this PR, then run Release (dry run unticked) for migrations 20261023150000 and 20261024090000. Not live until then; readiness unchanged. Next: Prompt C (grounded matcher and its rate limit). Privacy v8 items: third-party endorsements stored pending, staff read access, possible Art. 9 content, retention of declined/hidden rows, verification events. Follow-ups: real report flow, scholar requests verification, one-time pending digest email, two-connection concurrency test, notifications
+- 🎯 Pending merge: feat/feedback-account-id (Council Review 38 C1 root cause, ADR 0035 amendment; Council Review 40 found no Critical, its findings and the triage-by-issue decision are fixed in the branch): pilot_feedback.account_id set from the session, repeats merge only within one sender, my_pilot_feedback and the account-deletion scrub keyed on the account; migration 20261023150000. After merge the owner must run Release (dry run unticked). Then Prompt B (scholar-controlled endorsements), then Prompt C.
 - 🎯 Owner decisions F1+F2 (Council Review 37) are live (PR #126; migration 20261023130000 applied 2026-10-23). The contract-list queries that selected missing columns (current_title, city) are fixed on branch fix/contract-list-columns, pending merge (with a repo-wide static select-column guard and the public dossier endorsements fix; Council Review 39). Prompt F: a scholar contract detail page. Next: account_id on pilot_feedback (root-cause, Council Review 38), then Prompts B and C. Owner check: Supabase Confirm email ON in production. Counsel (privacy v8): state the 12-month feedback retention and fix the one-hour rate-limit text; is error text produced in the person's own session their data; reporter's own report text and whether a reported person learns of a report (F3); controller/processor role for institution notes; how a scholar asks for institution-held notes; disclosing contact_revealed events
-- 🎯 Follow-ups from Council Review 36: Prompt B adds a scholar read policy and an export section for endorsements institutions wrote about the scholar (the export README says they are not included yet); export-completeness CI gate built (npm run audit:export), pilot_feedback flagged as an unexported table needing an owner decision; a readable HTML summary of the export; privacy v8 (Prompt G) items in the CR36 synthesis
-- 🎯 Council Review 33 prompts B (scholar-controlled endorsements) and C (grounded matcher and rate limit), then D, G, E, F
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
