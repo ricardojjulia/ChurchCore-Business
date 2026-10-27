@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-27 02:10:33 UTC`
+> **Last Aggregated:** `2026-10-27 03:06:21 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -10,13 +10,13 @@
 | :--- | :--- | :--- | :--- |
 | **Total Sovereign Repos** | `6` | 6 Products | 🟢 Complete Fleet |
 | **Active Production Online** | `6 / 6` | 6 / 6 | 🟢 100% Online |
-| **Average Readiness Score** | `89%` | 100% | 🟢 High Readiness |
+| **Average Readiness Score** | `93%` | 100% | 🟢 High Readiness |
 | **Portfolio MVP Progress** | `99%` | 100% | 🟢 On Schedule |
 | **Cross-App Data Isolation** | `VERIFIED` | Evidence from every product | 🛡️ All edge reports verified |
 
 ## 2. Product Fleet Status Cards
 
-### ChurchCore (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
+### ChurchCore (`churchcore-chms`) — v4.0.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -50,10 +50,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `chore(scripts): demo-data seed and teardown for the live-testing church (Iglesia FAV Cayey) (#247) (bf84eca)`
-- `chore(control-plane): full status report after the post-release work (2026-10-25) (#246) (b2a9df2)`
 - `feat(i18n): localized staff messages — church admin, operations, elders, giving admin (S96b part 2) (#245) (cddc803)`
 - `feat(i18n): localized portal, communications, groups and data-rights messages (S96b part 1) (#244) (c28dcb0)`
+- `fix(security): patch undici, zod and fast-uri advisories (lockfile only) (#243) (9a050d0)`
+- `feat(i18n): localized member giving, registration and check-in messages (S96 batch 1) (#242) (04973a5)`
 
 **Next Engineering Steps:**
 - 🎯 Owner: RELEASE_CHECKLIST.md post-deploy checks still pending: sign in and reach /app/church-admin/readiness; send a test email and SMS; fire a Stripe test webhook (then verify the rows read-only)
@@ -61,16 +61,20 @@
 - 🎯 Owner actions O23-O28, including the O25 native Spanish review (e.g. 'ofrendante' vs 'donante', 'registro de asistencia')
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `180 minutes`
-- **Session Timestamp:** `2026-10-27T02:10:24.146727+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle.
+- **Last AI Model Used:** `claude-opus-5-5`
+- **Session Duration:** `4428 minutes`
+- **Session Timestamp:** `2026-10-25T18:29:40.354831+00:00`
+- **Session Operator:** `Ricardo Julia`
+- **Session Work Summary:** Reconciled edge challenge CHAL-CHURCHCORE-CHMS-FEAT2-def471e: feature_completion -> Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms) Complete. Advanced active instruction to Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms).
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
-| `[2026-10-17] Erasure notice was triggering before DB transaction confirmed in preview environment.` | `[2026-10-17] Refactored event emission to fire exclusively in post-commit callback (commit b38636f).` |
+| `[2026-10-25] PR #245 e2e: member data-rights page kept a hidden copy of the previous render, so a strict text locator matched twice` | `[2026-10-25] Locator matches the visible element only (same fix as the guided-migration spec in #238)` |
+| `[2026-10-24/25] CI e2e setup hit Docker Hub 'toomanyrequests' (rate and data limits) on several runs` | `[2026-10-24/25] Re-ran the failed e2e jobs; all green before merge` |
+| `[2026-10-23] Mantine transition timers fired after jsdom teardown and failed unrelated vitest runs (B-119, B-121)` | `[2026-10-23] 400 ms grace period in vitest.setup.ts afterAll before jsdom teardown (#241)` |
+| `[2026-10-23] Next.js and transitive dependency security advisories (critical RCE / Server Actions DoS in Next; undici, zod, fast-uri)` | `[2026-10-23] Next.js 16.4.3 (#240) and targeted lockfile patches (#243); production deploys confirmed` |
+| `[2026-10-22] G4.3 e2e: CI DB user cannot set session_replication_role` | `[2026-10-22] Spec keeps its church and deletes only its own rows` |
 
 ---
 
@@ -125,7 +129,7 @@
 
 ---
 
-### ChurchCore-Academy (`churchcore-academy`) — v0.10.0 | 🟢 ONLINE
+### ChurchCore Academy (`churchcore-academy`) — v0.10.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -147,10 +151,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)`
 - `feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)`
 - `chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#254) (3970d41)`
 - `Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)`
+- `Refresh the Academy admin dashboard (#252) (737525c)`
 
 **Next Engineering Steps:**
 - 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
@@ -158,16 +162,13 @@
 - 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `90 minutes`
-- **Session Timestamp:** `2026-10-27T02:10:24.146727+00:00`
+- **Last AI Model Used:** `claude-opus-5-5`
+- **Session Duration:** `10 minutes`
+- **Session Timestamp:** `2026-10-26T23:00:16.699763+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Reconciled COUNCIL-2026-005 via PR #2; confirmed 100% functional MVP code completion with Workstream C human pilot as active gate.
+- **Session Work Summary:** Full Control Plane telemetry refresh: directive preflight passed (27 requirements, 14 pending/manual, unchanged from ledger); npm run verify passed (2,240/2,240 tests, lint clean, build succeeded); verify:governance passed; corrected tech_stack TypeScript version to installed 6.0.3.
 
-**Recent Deployment / Build Errors & Mitigations Applied:**
-| Error Encountered | Mitigation / Fix Applied |
-| :--- | :--- |
-| `[2026-10-16] Local migration seed sequencing resolved in PR #248.` | `[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.` |
+- 🟢 *No active deployment errors logged.*
 
 ---
 
@@ -265,7 +266,7 @@
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://faith-full-scholars.vercel.app](https://faith-full-scholars.vercel.app) |
 | **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
-| **Readiness** | `45%` | No score basis supplied |
+| **Readiness** | `68%` | No score basis supplied |
 
 ##### ⚠️ Readiness Assessment
 **Active Blockers:**
@@ -290,26 +291,28 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `docs: withdraw Sentry (A4b) per owner; Phase 1 launch plan 10 of 10 (#117) (3a8d3b9)`
-- `docs: signed-in WCAG AAA done and live (PR #115); progress 9 of 10 (#116) (1443f3a)`
-- `feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)`
-- `docs: B3 and B4 done and live; progress 8 of 10 (#114) (9349cf4)`
+- `feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)`
+- `feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)`
+- `feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)`
+- `feat(endorsements): scholar-controlled endorsements, staff-only verification (ADR 0043, Prompt B); migration 20261024090000 applied by Release 2026-10-26 (#129) (6305e46)`
 
 **Next Engineering Steps:**
-- 🎯 Full Council readiness re-score now that Phase 1 is complete (last score about 45/100 on 2026-10-14)
-- 🎯 Owner: faithgrid.io mail (MX) for abuse@faithgrid.io; optionally a verified sending domain before switching email on
-- 🎯 Owner: monitoring via Dynatrace or Vercel when ready (not a Phase 1 item)
+- 🎯 Owner check: run one broad matcher search on production and read the ai_gateway_call log line in Vercel logs (finish_reason 'stop', completion_tokens < 4000) (PR #131/#132 are live; the cap is unproven against live traffic)
+- 🎯 Owner check: a Spanish-speaking reviewer re-records the es catalog with record-baseline.mjs --reviewer <id> (PR #133; baseline adoption is not a linguistic review)
+- 🎯 Owner check: Supabase Confirm email ON in production; staff re-verify institutional endorsements via /admin/endorsements
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `105 minutes`
-- **Session Timestamp:** `2026-10-27T02:10:24.146727+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-10-21T19:10:30.854737+00:00`
+- **Session Operator:** `Ricardo Julia`
+- **Session Work Summary:** Automated post-test edge telemetry synchronization for faithfull-scholars.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
+| `[2026-10-17] A3a migration preflight failed on a fresh database (PL/pgSQL planned IF ... AND EXISTS before the table existed); caught in CI.` | `[2026-10-17] Nested the preflight IF (PR #88, before any release).` |
+| `[2026-10-17] Supabase Site URL pointed at a deployment behind Vercel's login wall (sign-up confirmation emails use it).` | `[2026-10-17] Owner set Site URL to https://faith-full-scholars.vercel.app and added /auth/callback to the redirect URLs.` |
 | `[2026-10-16] Cloudflare Turnstile CAPTCHA was blocked by strict CSP header on sign-up page.` | `[2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).` |
 | `[2026-10-16] Untranslated Spanish sign-up error toasts in production.` | `[2026-10-16] Localized all auth error dictionary keys in Spanish i18n bundle (PR #86).` |
 

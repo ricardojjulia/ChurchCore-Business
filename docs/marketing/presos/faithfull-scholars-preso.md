@@ -4,7 +4,7 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
-> **Last Synced from Telemetry:** 2026-10-27 02:10:33 UTC
+> **Last Synced from Telemetry:** 2026-10-27 03:06:21 UTC
 
 ---
 
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.1.0 Live)*
 
-- Latest Feature Delivered: docs: withdraw Sentry (A4b) per owner; Phase 1 launch plan 10 of 10 (#117) (3a8d3b9)
-- Ecosystem Hardening: docs: signed-in WCAG AAA done and live (PR #115); progress 9 of 10 (#116) (1443f3a)
-- Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).
+- Latest Feature Delivered: feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)
+- Ecosystem Hardening: feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)
+- Reliability Proof: [2026-10-17] Nested the preflight IF (PR #88, before any release).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,10 @@ Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matc
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
 Recent Engineering Delivery & Milestones:
-- docs: withdraw Sentry (A4b) per owner; Phase 1 launch plan 10 of 10 (#117) (3a8d3b9)
-- docs: signed-in WCAG AAA done and live (PR #115); progress 9 of 10 (#116) (1443f3a)
-- feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)
-- docs: B3 and B4 done and live; progress 8 of 10 (#114) (9349cf4)
+- feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)
+- feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)
+- feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)
+- feat(endorsements): scholar-controlled endorsements, staff-only verification (ADR 0043, Prompt B); migration 20261024090000 applied by Release 2026-10-26 (#129) (6305e46)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 - Live Site: https://www.faithgrid.io
 - Pricing: $2,500–$15,000/yr per Institution
-- Latest Features: docs: withdraw Sentry (A4b) per owner; Phase 1 launch plan 10 of 10 (#117) (3a8d3b9), docs: signed-in WCAG AAA done and live (PR #115); progress 9 of 10 (#116) (1443f3a), feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)
+- Latest Features: feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82), feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c), feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- docs: withdraw Sentry (A4b) per owner; Phase 1 launch plan 10 of 10 (#117) (3a8d3b9)
-- docs: signed-in WCAG AAA done and live (PR #115); progress 9 of 10 (#116) (1443f3a)
-- feat(mvp): WCAG AAA contrast for signed-in areas (ADR 0038 amendment) (#115) (54d8970)
+- feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)
+- feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)
+- feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
