@@ -37,15 +37,15 @@ Status Legend:
 | **COUNCIL-2026-007** | `REQ-007-01` Multi-Persona Kingdom Community Expansion | — (N/A) | — (N/A) | — (N/A) | — (N/A) | — (N/A) | ⚪ PENDING |
 | **COUNCIL-2026-007** | `REQ-007-02` Faculty Profile Public Monograph Index & Peer-Reviewed Portfolio | — (N/A) | — (N/A) | — (N/A) | — (N/A) | — (N/A) | ⚪ PENDING |
 | **COUNCIL-2026-007** | `REQ-007-03` Fortified Organization Ownership and SLA Guarantee | — (N/A) | — (N/A) | — (N/A) | — (N/A) | — (N/A) | ⚪ PENDING |
-| **COUNCIL-2026-008** | `REQ-008-01` Universal Post-Test Telemetry Synchronization Mandate | 🟡 IN PROGRESS | ⚪ PENDING | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
-| **COUNCIL-2026-008** | `REQ-008-02` Autonomous Live Endpoint Probing & Blocker Clearance | 🟡 IN PROGRESS | ⚪ PENDING | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
-| **COUNCIL-2026-010** | `REQ-010-01` Universal OpenRouter Gateway Consolidation | ✅ IMPLEMENTED | ⚪ PENDING | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING | ⚪ PENDING |
-| **COUNCIL-2026-010** | `REQ-010-02` Sovereign Model Evaluator & Dynamic Tier Router | 🟡 IN PROGRESS | ⚪ PENDING | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING | ⚪ PENDING |
-| **COUNCIL-2026-010** | `REQ-010-03` Cost & Sustainability Guardrails | 🟡 IN PROGRESS | ⚪ PENDING | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING | ⚪ PENDING |
-| **COUNCIL-2026-011** | `REQ-011-01` Enterprise @localization-governance Framework Adoption | ✅ IMPLEMENTED | ⚪ PENDING | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ⚪ PENDING | ⚪ PENDING |
-| **COUNCIL-2026-011** | `REQ-011-02` OpenRouter AI Translation Gateway Integration | ⚪ PENDING | ⚪ PENDING | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING | ⚪ PENDING |
-| **COUNCIL-2026-011** | `REQ-011-03` Variable Token {var} Preservation & Domain Glossaries | 🟡 IN PROGRESS | ⚪ PENDING | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING | ⚪ PENDING |
-| **COUNCIL-2026-011** | `REQ-011-04` Mandatory Pre-Merge CI Quality Gate | 🟡 IN PROGRESS | ⚪ PENDING | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ⚪ PENDING | ⚪ PENDING |
+| **COUNCIL-2026-008** | `REQ-008-01` Universal Post-Test Telemetry Synchronization Mandate | 🟡 IN PROGRESS | ✅ IMPLEMENTED | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-008** | `REQ-008-02` Autonomous Live Endpoint Probing & Blocker Clearance | 🟡 IN PROGRESS | ✅ IMPLEMENTED | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-010** | `REQ-010-01` Universal OpenRouter Gateway Consolidation | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-010** | `REQ-010-02` Sovereign Model Evaluator & Dynamic Tier Router | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-010** | `REQ-010-03` Cost & Sustainability Guardrails | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-011** | `REQ-011-01` Enterprise @localization-governance Framework Adoption | ✅ IMPLEMENTED | ✅ IMPLEMENTED | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-011** | `REQ-011-02` OpenRouter AI Translation Gateway Integration | ⚪ PENDING | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-011** | `REQ-011-03` Variable Token {var} Preservation & Domain Glossaries | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-011** | `REQ-011-04` Mandatory Pre-Merge CI Quality Gate | 🟡 IN PROGRESS | ✅ IMPLEMENTED | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
 
 ---
 
