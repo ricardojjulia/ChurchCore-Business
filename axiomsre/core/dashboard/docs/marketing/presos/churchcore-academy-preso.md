@@ -4,14 +4,14 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-10-26 10:51:14 UTC
+> **Last Synced from Telemetry:** 2026-10-27 02:10:33 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies
-*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 26, 2026*
+*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 27, 2026*
 
 - Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar
 - Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
 
-- Latest Feature Delivered: feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092)
-- Ecosystem Hardening: fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b)
-- Reliability Proof: [2026-10-22] Additive migration 20261022160000_grant_admissions_conversion_rls_privileges.sql provisions table grants to anon and authenticated roles for admissions, conversion, audit, and LLIS tables.
+- Latest Feature Delivered: chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)
+- Ecosystem Hardening: feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)
+- Reliability Proof: [2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,10 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
-- feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092)
-- fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b)
-- fix(deps): remove obsolete postcss override to restore npm 10 ci resolution (984292e)
-- chore(telemetry): update latest changes with Council Review 34 record (f50b4ce)
+- chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)
+- feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)
+- chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#254) (3970d41)
+- Reconcile Academy deployment and readiness telemetry (#253) (31ab6bc)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092), fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b), fix(deps): remove obsolete postcss override to restore npm 10 ci resolution (984292e)
+- Latest Features: chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7), feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53), chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#254) (3970d41)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(governance): align Academy compliance for REQ-002-01, REQ-010-01..03, and REQ-011-02 (1b26092)
-- fix(ci): restrict pull_request triggers to main and prevent duplicate execution (2d5a33b)
-- fix(deps): remove obsolete postcss override to restore npm 10 ci resolution (984292e)
+- chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)
+- feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)
+- chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#254) (3970d41)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

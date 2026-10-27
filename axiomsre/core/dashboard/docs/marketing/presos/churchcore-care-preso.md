@@ -4,14 +4,14 @@
 > **Scale:** 84 Relational Tables • Deny-All Row-Level Security • v7.0.0  
 > **Target Buyers:** Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director, Christian Counseling Practice Owner, Hospital Chaplaincy Coordinator  
 > **Live URL:** [https://www.churchcorecare.io](https://www.churchcorecare.io)  
-> **Last Synced from Telemetry:** 2026-10-26 10:51:14 UTC
+> **Last Synced from Telemetry:** 2026-10-27 02:10:33 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Care: Pastoral Counseling, Clinical EHR, and HIPAA-Compliant Soul-Care Telehealth
-*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 26, 2026*
+*Live Production Architecture • 84 Relational Tables • Deny-All Row-Level Security • v7.0.0 • October 27, 2026*
 
 - Target Buyers: Clinical Director / Licensed Marriage & Family Therapist, Pastoral Care Pastor / Benevolence Director
 - Strategic Replacement: Displaces SimplePractice + TherapyNotes + Hushmail + Psychology Today Directory
@@ -38,10 +38,10 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://www.churchcorecare.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (7.1.0 Live)*
+*Continuous High-Velocity Delivery (7.0.0 Live)*
 
-- Latest Feature Delivered: feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb)
-- Ecosystem Hardening: chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)
+- Latest Feature Delivered: chore(governance): enforce COUNCIL-2026-010 and COUNCIL-2026-011 in telemetry compliance reporting (#159) (f66a91ad)
+- Ecosystem Hardening: chore(telemetry): record session close edge telemetry and PR reconciliation (#158) (969b141e)
 - Reliability Proof: [2026-10-14] Unified package-lock.json with explicit override resolutions in PR #139.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Absolute Cryptographic Isolation: Church membership no
 Commercial Pricing: $59–$399/mo per practitioner
 
 Recent Engineering Delivery & Milestones:
-- feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb)
-- chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)
-- chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
-- fix: ignore Google Drive, cloud storage sync, and filesystem metadata artifacts (#148) (cfb7eff)
+- chore(governance): enforce COUNCIL-2026-010 and COUNCIL-2026-011 in telemetry compliance reporting (#159) (f66a91ad)
+- chore(telemetry): record session close edge telemetry and PR reconciliation (#158) (969b141e)
+- chore(governance): synchronize council directives, reconcile telemetry, and record dependency merges (#157) (1bdd774f)
+- chore(deps-dev): bump vite from 8.3.0 to 8.3.3 (#143) (d90d5292)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Care**.
 - Core Value: Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts
 - Live Site: https://www.churchcorecare.io
 - Pricing: $59–$399/mo per practitioner
-- Latest Features: feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb), chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f), chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
+- Latest Features: chore(governance): enforce COUNCIL-2026-010 and COUNCIL-2026-011 in telemetry compliance reporting (#159) (f66a91ad), chore(telemetry): record session close edge telemetry and PR reconciliation (#158) (969b141e), chore(governance): synchronize council directives, reconcile telemetry, and record dependency merges (#157) (1bdd774f)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(governance): ingest full central control plane directives and council specifications (#151) (0d099cb)
-- chore(council): reconcile central control plane evidence and update ledger (#150) (e696a3f)
-- chore(telemetry): record central control plane reconciliation for PR #148 (#149) (77fd006)
+- chore(governance): enforce COUNCIL-2026-010 and COUNCIL-2026-011 in telemetry compliance reporting (#159) (f66a91ad)
+- chore(telemetry): record session close edge telemetry and PR reconciliation (#158) (969b141e)
+- chore(governance): synchronize council directives, reconcile telemetry, and record dependency merges (#157) (1bdd774f)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
