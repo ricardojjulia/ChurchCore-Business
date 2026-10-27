@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T03:09:24.029388+00:00",
+  "generated_at": "2026-10-27T13:35:17.200468+00:00",
   "summary": {
     "total_products": 6,
     "online_in_production": 6,
@@ -123,8 +123,8 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 32.7,
-          "age_display": "1.4d ago",
+          "age_hours": 43.1,
+          "age_display": "1.8d ago",
           "status": "AGING",
           "report_timestamp": "2026-10-25T18:29:40.354831+00:00"
         },
@@ -223,14 +223,14 @@
         "brand_house_compliant": true,
         "sovereign_db_isolation_verified": true
       },
-      "_source_path": "/Users/rjulia/ChurchCore-LMS/docs/control-plane/telemetry.json",
-      "_source_type": "local",
+      "_source_path": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
+      "_source_type": "remote",
       "provenance": {
-        "source_origin": "local_filesystem",
-        "source_url": "/Users/rjulia/ChurchCore-LMS/docs/control-plane/telemetry.json",
+        "source_origin": "remote_github",
+        "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-LMS/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 0.0,
-          "age_display": "1m ago",
+          "age_hours": 10.4,
+          "age_display": "10h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-27T03:08:58.861076+00:00"
         },
@@ -238,22 +238,19 @@
           "detected": true,
           "path": "/Users/rjulia/ChurchCore-LMS",
           "branch": "main",
-          "is_clean": false,
-          "uncommitted_files": 1,
+          "is_clean": true,
+          "uncommitted_files": 0,
           "ahead": 0,
           "behind": 0,
-          "last_commit_sha": "3acc551",
-          "last_commit_date": "2026-10-26T22:09:38-04:00",
-          "last_commit_msg": "Merge pull request #106 from ricardojjulia/feat/council-010-011-enforcement",
-          "telemetry_mtime": "2026-10-27T03:09:09.257699+00:00",
-          "telemetry_mtime_display": "2026-10-27 03:09:09 UTC"
+          "last_commit_sha": "39c19fb",
+          "last_commit_date": "2026-10-27T09:34:49-04:00",
+          "last_commit_msg": "chore(telemetry): record COUNCIL-2026-010 and COUNCIL-2026-011 acknowledged (#107)",
+          "telemetry_mtime": "2026-10-27T13:35:10.040087+00:00",
+          "telemetry_mtime_display": "2026-10-27 13:35:10 UTC"
         },
         "drift": {
-          "has_drift": true,
-          "reasons": [
-            "Local working tree has 1 uncommitted file(s)",
-            "Telemetry timestamp divergence: remote main (2026-10-27T01:44:45.433796+00:00) vs local (2026-10-27T03:08:58.861076+00:00)"
-          ]
+          "has_drift": false,
+          "reasons": []
         }
       }
     },
@@ -359,8 +356,8 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Academy/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 4.2,
-          "age_display": "4h ago",
+          "age_hours": 14.6,
+          "age_display": "14h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-26T23:00:16.699763+00:00"
         },
@@ -463,8 +460,8 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCoreCare/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 1.0,
-          "age_display": "1h ago",
+          "age_hours": 11.4,
+          "age_display": "11h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-27T02:10:24.146727+00:00"
         },
@@ -567,8 +564,8 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Orthos/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 1.0,
-          "age_display": "1h ago",
+          "age_hours": 11.4,
+          "age_display": "11h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-27T02:10:24.146727+00:00"
         },
@@ -702,8 +699,8 @@
         "source_origin": "remote_github",
         "source_url": "https://raw.githubusercontent.com/ricardojjulia/FaithFullScholars/main/docs/control-plane/telemetry.json",
         "freshness": {
-          "age_hours": 8.9,
-          "age_display": "8h ago",
+          "age_hours": 19.3,
+          "age_display": "19h ago",
           "status": "FRESH",
           "report_timestamp": "2026-10-26T18:17:31.136537+00:00"
         },
@@ -2543,7 +2540,7 @@
       "constitutional_moat": "Constitution Section III: Zero Cross-Application Data Propagation \u2022 100% PostgreSQL RLS Silos",
       "pricing_headline": "$199\u2013$499/mo Local Church \u2022 $4.5k\u2013$25k/yr Academy \u2022 $50k+ Denomination",
       "version": "v1.0.0",
-      "last_synced": "2026-10-27 03:09:24 UTC",
+      "last_synced": "2026-10-27 13:35:17 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2651,7 +2648,7 @@
       "constitutional_moat": "Financial Double-Entry Ledger with Fund Accounting Invariants & Secure Child Pickup PINs",
       "pricing_headline": "$49\u2013$749/mo + 1% Transparent Giving Interchange",
       "version": "0.1.0",
-      "last_synced": "2026-10-27 03:09:24 UTC",
+      "last_synced": "2026-10-27 13:35:17 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2759,7 +2756,7 @@
       "constitutional_moat": "Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance",
       "pricing_headline": "$79\u2013$999/mo (Unlimited Church Discipleship)",
       "version": "0.47.0",
-      "last_synced": "2026-10-27 03:09:24 UTC",
+      "last_synced": "2026-10-27 13:35:17 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2867,7 +2864,7 @@
       "constitutional_moat": "OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS",
       "pricing_headline": "$2,400\u2013$25,000/yr (Based on Student Enrollment)",
       "version": "0.10.0",
-      "last_synced": "2026-10-27 03:09:24 UTC",
+      "last_synced": "2026-10-27 13:35:17 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -2975,7 +2972,7 @@
       "constitutional_moat": "Absolute Cryptographic Isolation: Church membership notes NEVER mix with confidential clinical therapy charts",
       "pricing_headline": "$59\u2013$399/mo per practitioner",
       "version": "7.0.0",
-      "last_synced": "2026-10-27 03:09:24 UTC",
+      "last_synced": "2026-10-27 13:35:17 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -3083,7 +3080,7 @@
       "constitutional_moat": "Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity",
       "pricing_headline": "$1,200\u2013$50,000/yr (Parish to Diocesan Licensing)",
       "version": "0.18.0",
-      "last_synced": "2026-10-27 03:09:24 UTC",
+      "last_synced": "2026-10-27 13:35:17 UTC",
       "slides": [
         {
           "slide_num": 1,
@@ -3191,7 +3188,7 @@
       "constitutional_moat": "Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties",
       "pricing_headline": "$2,500\u2013$15,000/yr per Institution",
       "version": "0.1.0",
-      "last_synced": "2026-10-27 03:09:24 UTC",
+      "last_synced": "2026-10-27 13:35:17 UTC",
       "slides": [
         {
           "slide_num": 1,
