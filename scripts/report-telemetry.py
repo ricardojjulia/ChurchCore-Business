@@ -255,7 +255,11 @@ def main():
         "COUNCIL-2026-005",
         "COUNCIL-2026-006",
         "COUNCIL-2026-007",
-        "COUNCIL-2026-008"
+        "COUNCIL-2026-008",
+        "COUNCIL-2026-009",
+        "COUNCIL-2026-010",
+        "COUNCIL-2026-011",
+        "COUNCIL-2026-012"
     ]
     governance = existing.get("governance_compliance", {
         "council_decisions_acknowledged": all_decisions,
@@ -282,6 +286,54 @@ def main():
 
     with open(telemetry_file, "w") as f:
         json.dump(payload, f, indent=2)
+
+    # Also push edge telemetry directly to Control Plane Supabase Cloud if configured
+    try:
+        import urllib.request
+        env_vars = {}
+        hub_env = "/Users/rjulia/ChurchCore-Business/.env.local"
+        if os.path.exists(hub_env):
+            with open(hub_env, "r") as ef:
+                for line in ef:
+                    line = line.strip()
+                    if not line or line.startswith("#") or "=" not in line:
+                        continue
+                    k, v = line.split("=", 1)
+                    env_vars[k.strip()] = v.strip().strip("\"'")
+        sb_url = os.environ.get("CONTROL_PLANE_SUPABASE_URL") or env_vars.get("NEXT_PUBLIC_SUPABASE_URL")
+        sb_key = os.environ.get("CONTROL_PLANE_SUPABASE_KEY") or env_vars.get("SUPABASE_SERVICE_ROLE_KEY")
+        if sb_url and sb_key and "your-control-plane-project" not in sb_url:
+            row = [{
+                "product_id": product_id,
+                "repo_name": payload["repo_name"],
+                "version": str(version),
+                "report_timestamp": now_iso,
+                "is_online": bool(online_status.get("is_online", True)),
+                "vercel_status": online_status.get("vercel_status", "deployed"),
+                "supabase_status": online_status.get("supabase_status", "connected"),
+                "readiness_score_pct": int(readiness.get("readiness_score_pct") or 90),
+                "completion_pct": int(mvp_status.get("completion_pct") or 100),
+                "mvp_phase": mvp_status.get("phase", "production"),
+                "source_type": "edge_cli",
+                "telemetry_payload": payload,
+                "updated_at": now_iso
+            }]
+            req = urllib.request.Request(
+                f"{sb_url.rstrip('/')}/rest/v1/fleet_telemetry_snapshots?on_conflict=product_id",
+                data=json.dumps(row).encode("utf-8"),
+                headers={
+                    "apikey": sb_key,
+                    "Authorization": f"Bearer {sb_key}",
+                    "Content-Type": "application/json",
+                    "Prefer": "resolution=merge-duplicates"
+                },
+                method="POST"
+            )
+            with urllib.request.urlopen(req, timeout=6) as resp:
+                if resp.status in (200, 201, 204):
+                    print(f"[+] Synced edge telemetry to Control Plane Cloud ({sb_url})")
+    except Exception:
+        pass
 
     print(f"\n[+] Telemetry successfully recorded for {product_id} (v{version})")
     print(f"    Target File: {telemetry_file}")

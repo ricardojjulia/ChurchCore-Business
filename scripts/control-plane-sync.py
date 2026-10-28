@@ -720,11 +720,19 @@ def sync_control_plane(verbose=True):
     with open(js_path, "w") as f:
         f.write("window.CHURCHCORE_FLEET_DATA = " + json.dumps(fleet_payload, indent=2) + ";\n")
 
-    # Mirror sync to axiomsre/core/dashboard if present
+    # Mirror sync to public/ (for Next.js 16 App Router) and axiomsre/core/dashboard
+    public_dir = os.path.join(WORKSPACE_ROOT, "public")
+    if os.path.isdir(public_dir):
+        import shutil
+        for fname in ["fleet-data.json", "fleet-data.js", "presos-data.json", "presos-data.js", "scripts-data.json", "scripts-data.js"]:
+            src_f = os.path.join(dashboard_dir, fname)
+            if os.path.exists(src_f):
+                shutil.copy2(src_f, os.path.join(public_dir, fname))
+
     axiomsre_dir = os.path.join(WORKSPACE_ROOT, "axiomsre", "core", "dashboard")
     if os.path.isdir(axiomsre_dir):
         import shutil
-        for fname in ["fleet-data.json", "fleet-data.js", "presos-data.json", "presos-data.js", "scripts-data.json", "scripts-data.js"]:
+        for fname in ["fleet-data.json", "fleet-data.json", "fleet-data.js", "presos-data.json", "presos-data.js", "scripts-data.json", "scripts-data.js"]:
             src_f = os.path.join(dashboard_dir, fname)
             if os.path.exists(src_f):
                 shutil.copy2(src_f, os.path.join(axiomsre_dir, fname))
@@ -738,6 +746,61 @@ def sync_control_plane(verbose=True):
                 src_doc = os.path.join(WORKSPACE_ROOT, "docs", "control-plane", doc)
                 if os.path.exists(src_doc):
                     shutil.copy2(src_doc, os.path.join(axiomsre_cp, doc))
+
+    # Synchronize telemetry snapshots with Supabase Cloud Control Plane DB
+    try:
+        import urllib.request
+        env_vars = {}
+        env_path = os.path.join(WORKSPACE_ROOT, ".env.local")
+        if os.path.exists(env_path):
+            with open(env_path, "r") as ef:
+                for line in ef:
+                    line = line.strip()
+                    if not line or line.startswith("#") or "=" not in line:
+                        continue
+                    k, v = line.split("=", 1)
+                    env_vars[k.strip()] = v.strip().strip("\"'")
+        sb_url = os.environ.get("NEXT_PUBLIC_SUPABASE_URL") or env_vars.get("NEXT_PUBLIC_SUPABASE_URL")
+        sb_key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or env_vars.get("SUPABASE_SERVICE_ROLE_KEY")
+        if sb_url and sb_key and "your-control-plane-project" not in sb_url:
+            rows = []
+            now_iso = datetime.now(timezone.utc).isoformat()
+            for t in telemetry_data:
+                os_block = t.get("online_status", {})
+                ra_block = os_block.get("readiness_assessment", {})
+                mvp_block = t.get("mvp_status", {})
+                rows.append({
+                    "product_id": t.get("product_id"),
+                    "repo_name": t.get("repo_name", ""),
+                    "version": str(t.get("version", "1.0.0")),
+                    "report_timestamp": t.get("report_timestamp") or now_iso,
+                    "is_online": bool(os_block.get("is_online", True)),
+                    "vercel_status": os_block.get("vercel_status", "deployed"),
+                    "supabase_status": os_block.get("supabase_status", "connected"),
+                    "readiness_score_pct": int(ra_block.get("readiness_score_pct", 90)),
+                    "completion_pct": int(mvp_block.get("completion_pct", 100)),
+                    "mvp_phase": mvp_block.get("phase", "production"),
+                    "source_type": t.get("_source_type", "local"),
+                    "telemetry_payload": t,
+                    "updated_at": now_iso
+                })
+            req = urllib.request.Request(
+                f"{sb_url.rstrip('/')}/rest/v1/fleet_telemetry_snapshots?on_conflict=product_id",
+                data=json.dumps(rows).encode("utf-8"),
+                headers={
+                    "apikey": sb_key,
+                    "Authorization": f"Bearer {sb_key}",
+                    "Content-Type": "application/json",
+                    "Prefer": "resolution=merge-duplicates"
+                },
+                method="POST"
+            )
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                if verbose and resp.status in (200, 201, 204):
+                    print(f"[+] Cloud Sync: Upserted {len(rows)} product snapshots to Supabase ({sb_url})")
+    except Exception as sb_err:
+        if verbose:
+            print(f"[-] Warning: Cloud Supabase sync skipped: {sb_err}")
 
     if verbose:
         print(f"\n[+] Master Dashboard compiled successfully: {DASHBOARD_FILE}")

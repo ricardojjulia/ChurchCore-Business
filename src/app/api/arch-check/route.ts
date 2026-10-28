@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import { getControlPlaneConnectionStatus } from "@/lib/supabase/control-plane-store";
+import { getGitHubToken } from "@/lib/github/repo-operator";
 
 export interface ArchCheckItem {
   id: string;
@@ -120,6 +121,17 @@ export async function GET() {
         path.join(root, "src/components/branding/ChurchCoreTrustBadge.tsx")
       ),
       evidence: "src/components/branding/ChurchCoreTrustBadge.tsx",
+    },
+    {
+      id: "CHK-11",
+      councilRef: "COUNCIL-2026-012 / REQ-012-05",
+      title: "Council GitHub Repository Operator (/api/repo-ops)",
+      passed:
+        fs.existsSync(path.join(root, "src/lib/github/repo-operator.ts")) &&
+        fs.existsSync(path.join(root, "src/app/api/repo-ops/route.ts")),
+      evidence: `src/lib/github/repo-operator.ts + /api/repo-ops (GITHUB_TOKEN: ${
+        getGitHubToken() ? "active" : "pending"
+      })`,
     },
   ];
 

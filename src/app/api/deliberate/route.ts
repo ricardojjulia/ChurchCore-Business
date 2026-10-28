@@ -3,12 +3,18 @@ import { z } from "zod";
 import { createProtectedAction } from "@/lib/security/action-wrapper";
 import { dispatchOpenRouterCompletion } from "@/lib/ai/openrouter-gateway";
 import { getSupabaseServiceClient } from "@/lib/supabase/control-plane-store";
+import {
+  getGitHubToken,
+  HUB_REPO,
+  upsertRepoFile,
+} from "@/lib/github/repo-operator";
 
 const DeliberateSchema = z.object({
   query: z.string().min(3, "Deliberation query must be at least 3 characters.").max(4000),
   council_id: z.string().optional().default("council-grand"),
   target_product: z.string().optional().default("churchcore-business"),
   mode: z.string().optional().default("full_council"),
+  commit_to_github: z.boolean().optional().default(true),
 });
 
 const protectedDeliberateAction = createProtectedAction(
@@ -46,6 +52,52 @@ const protectedDeliberateAction = createProtectedAction(
       }
     }
 
+    let githubCommit: {
+      repo: string;
+      path: string;
+      commitSha: string;
+      commitUrl: string;
+    } | null = null;
+
+    if (data.commit_to_github && getGitHubToken()) {
+      try {
+        const mdContent = [
+          `# Sovereign Council Deliberation: ${deliberationId}`,
+          ``,
+          `- **Date:** ${new Date().toISOString()}`,
+          `- **Council Chamber:** \`${data.council_id}\``,
+          `- **Target Product:** \`${data.target_product}\``,
+          `- **Deliberation Mode:** \`${data.mode}\``,
+          `- **Verdict:** **6/6 UNANIMOUS RATIFICATION**`,
+          `- **AI Model Used:** \`${aiResult.audit.modelUsed}\``,
+          ``,
+          `## Executive Query`,
+          `> ${data.query.replace(/\n/g, "\n> ")}`,
+          ``,
+          `## Binding Synthesis & Directives`,
+          aiResult.content,
+          ``,
+        ].join("\n");
+
+        const pushed = await upsertRepoFile({
+          targetRepo: HUB_REPO,
+          filePath: `docs/deliberations/${deliberationId}.md`,
+          content: mdContent,
+          commitMessage: `chore(council): log ratified deliberation ${deliberationId} for ${data.target_product}`,
+          branch: "main",
+        });
+
+        githubCommit = {
+          repo: pushed.repo,
+          path: pushed.path,
+          commitSha: pushed.commitSha,
+          commitUrl: pushed.commitUrl,
+        };
+      } catch {
+        // Non-fatal if GitHub push is unavailable
+      }
+    }
+
     return {
       deliberation_id: deliberationId,
       council_id: data.council_id,
@@ -53,6 +105,7 @@ const protectedDeliberateAction = createProtectedAction(
       verdict: "6/6 UNANIMOUS RATIFICATION",
       synthesis: aiResult.content,
       audit: aiResult.audit,
+      github_commit: githubCommit,
     };
   },
   {

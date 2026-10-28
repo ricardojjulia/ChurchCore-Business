@@ -3,6 +3,7 @@ import {
   persistSyncExecutionLog,
   readDashboardJsonFile,
 } from "@/lib/supabase/control-plane-store";
+import { pullRepoFile } from "@/lib/github/repo-operator";
 
 export interface FleetRepoDescriptor {
   product_id:
@@ -141,12 +142,27 @@ export async function probeProductionUrl(
 export async function fetchGitHubPublishedTelemetry(
   repo: string
 ): Promise<Record<string, unknown> | null> {
+  // 1. Try authenticated GitHub Contents API first (supports private & public repos)
+  try {
+    const fileRes = await pullRepoFile(
+      repo,
+      "docs/control-plane/telemetry.json",
+      "main"
+    );
+    if (fileRes.exists && fileRes.content) {
+      return JSON.parse(fileRes.content) as Record<string, unknown>;
+    }
+  } catch {
+    // Fall back to raw.githubusercontent.com
+  }
+
+  // 2. Fallback to raw URL
   const rawUrl = `https://raw.githubusercontent.com/${repo}/main/docs/control-plane/telemetry.json`;
   const headers: Record<string, string> = {
     "User-Agent": "ChurchCore-Sovereign-Control-Plane/2.0",
   };
   if (process.env.GITHUB_TOKEN) {
-    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN.trim().replace(/^["']|["']$/g, "")}`;
   }
   try {
     const res = await fetch(rawUrl, { headers, cache: "no-store" });
