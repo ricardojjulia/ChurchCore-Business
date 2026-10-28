@@ -1,0 +1,37 @@
+{
+  "name": "churchcore-business",
+  "version": "2.0.0",
+  "private": true,
+  "description": "ChurchCore Sovereign Control Plane: Next.js 16, Supabase Auth & RLS Governance Ledger, Vercel Cron, GitHub Webhook Mesh, and Embedded Security Architecture.",
+  "scripts": {
+    "dev": "next dev -p 3333",
+    "build": "next build",
+    "start": "next start -p 3333",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:python": "python3 -m unittest discover -s tests -p 'test_*.py' -v",
+    "audit:rls": "node ops/audit-rls.mjs",
+    "audit:i18n": "node ops/translate-locale.mjs --review",
+    "audit:arch": "node ops/audit-architecture.mjs",
+    "telemetry:report": "python3 scripts/control-plane-sync.py",
+    "posttest": "npm run audit:rls && npm run audit:i18n && npm run audit:arch && npm run test:python",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.10.2",
+    "@supabase/supabase-js": "^2.103.0",
+    "next": "16.4.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.3",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
+

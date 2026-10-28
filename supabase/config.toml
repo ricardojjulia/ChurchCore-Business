@@ -1,0 +1,21 @@
+project_id = "churchcore-business-control-plane"
+
+[api]
+enabled = true
+port = 54341
+schemas = ["public"]
+extra_search_path = ["public"]
+max_rows = 1000
+
+[db]
+port = 54342
+shadow_port = 54340
+major_version = 15
+
+[auth]
+enabled = true
+site_url = "http://localhost:3333"
+additional_redirect_urls = ["https://churchcore-business.vercel.app"]
+jwt_expiry = 3600
+enable_signup = false
+

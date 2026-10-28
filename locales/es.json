@@ -1,0 +1,12 @@
+{
+  "cockpit.title": "Plano de Control Soberano de ChurchCore",
+  "cockpit.subtitle": "Control de Misión Ejecutivo y Telemetría de Flota",
+  "auth.login.heading": "Autenticación de Operador",
+  "auth.login.welcome": "Bienvenido de nuevo, {operator}",
+  "auth.login.button": "Autenticar al Panel Ejecutivo",
+  "sync.status.completed": "Se sincronizaron {count} repositorios en {latencyMs}ms",
+  "security.rls.enforced": "Seguridad a Nivel de Fila (RLS) y Cero Propagación de Datos aplicadas",
+  "council.ratification.status": "Ratificación del Concilio activa en {count} pilares soberanos",
+  "branding.trust_badge": "Powered by ChurchCore"
+}
+

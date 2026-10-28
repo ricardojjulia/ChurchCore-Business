@@ -1,0 +1,16 @@
+{
+  "locale": "es",
+  "domain": "Sovereign Control Plane & Governance",
+  "version": "1.0.0",
+  "protected_terms": {
+    "Sovereign Control Plane": "Plano de Control Soberano",
+    "Row-Level Security": "Seguridad a Nivel de Fila (RLS)",
+    "Council Ratification": "Ratificación del Concilio",
+    "Zero Data Propagation": "Cero Propagación de Datos",
+    "Powered by ChurchCore": "Powered by ChurchCore"
+  },
+  "forbidden_terms": [
+    "propagación automática de clientes"
+  ]
+}
+

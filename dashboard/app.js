@@ -1,6 +1,10 @@
 // ChurchCore Sovereign Control Plane: Executive Dashboard Logic
 
-document.addEventListener('DOMContentLoaded', () => {
+function bootChurchCoreDashboard() {
+  if (window.__CHURCHCORE_DASHBOARD_BOOTED) return;
+  if (!document.querySelector('.sidebar-nav-btn')) return;
+  window.__CHURCHCORE_DASHBOARD_BOOTED = true;
+
   let fleetData = window.CHURCHCORE_FLEET_DATA || null;
   let activeFilter = 'all';
   let activeTaskFilter = 'all';
@@ -4862,4 +4866,11 @@ Your objective is to inspect the central control plane (ricardojjulia/ChurchCore
   }
 
   initData();
-});
+}
+
+window.bootChurchCoreDashboard = bootChurchCoreDashboard;
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootChurchCoreDashboard);
+} else {
+  bootChurchCoreDashboard();
+}

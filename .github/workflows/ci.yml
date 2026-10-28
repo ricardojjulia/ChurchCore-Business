@@ -1,0 +1,47 @@
+name: Security, Governance & Quality Engine
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit_and_test:
+    name: Next.js 16 Security, RLS, i18n & Governance Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Embedded Security & Governance Test Suite
+        run: npm test
+        env:
+          ARCJET_KEY: aj_key_mock_test_value
+          CRON_SECRET: test_cron_secret
+          GITHUB_WEBHOOK_SECRET: whsec_test_secret
+          CONTROL_PLANE_SESSION_SECRET: test_session_secret_2026_churchcore
+
+      - name: Run Mandatory i18n, RLS, and Architecture Audits
+        run: |
+          npm run audit:rls
+          npm run audit:i18n
+          npm run audit:arch
+          npm run typecheck
+          npm run build
+

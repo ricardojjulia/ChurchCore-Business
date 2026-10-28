@@ -500,7 +500,7 @@ describe("Embedded Guardrails Test Suite", () => {
 
 ---
 
-## 9. Independent External Model Evaluations (OpenRouter Dialectic)
+## 9. Independent External Model Evaluations (O penRouter Dialectic)
 
 ### Model 1: OpenAI GPT-4o
 * **Strengths:** Commended the structured error contracts, zero-trust webhook signatures, constant-time cron validation, and CI/CD secret scanning.

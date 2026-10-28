@@ -1,0 +1,12 @@
+{
+  "cockpit.title": "ChurchCore Sovereign Control Plane",
+  "cockpit.subtitle": "Executive Mission Control & Fleet Telemetry",
+  "auth.login.heading": "Operator Authentication",
+  "auth.login.welcome": "Welcome back, {operator}",
+  "auth.login.button": "Authenticate to Executive Cockpit",
+  "sync.status.completed": "Synchronized {count} repositories in {latencyMs}ms",
+  "security.rls.enforced": "Row-Level Security (RLS) and Zero Data Propagation enforced",
+  "council.ratification.status": "Council Ratification active across {count} sovereign pillars",
+  "branding.trust_badge": "Powered by ChurchCore"
+}
+

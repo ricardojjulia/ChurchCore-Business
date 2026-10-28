@@ -384,6 +384,48 @@
           "verification": "Presence of npm run audit:i18n in package.json and passing CI gate in GitHub Actions."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-012",
+      "title": "Sovereign Control Plane Cloud Architecture (Next.js 16, Supabase Auth & Governance Ledger, Vercel Cron, GitHub Webhook Mesh & Embedded Security Guardrails)",
+      "ratification_date": "2026-10-28",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-012.md",
+      "impacted_products": [
+        "ChurchCore-Business"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-012-01",
+          "title": "Next.js 16 App Router & Embedded Security Guardrails",
+          "description": "Implement Next.js 16 App Router with createProtectedAction wrapper, Zod schema validation, Vercel edge IP resolution, WASM/signature payload threat detection, and token-bucket rate limiting.",
+          "verification": "Presence of src/types/security.ts and src/lib/security/action-wrapper.ts with passing Vitest security assertions."
+        },
+        {
+          "req_id": "REQ-012-02",
+          "title": "Username/Password Authentication Gate & Allowlisted Operator RBAC",
+          "description": "Gate all executive cockpit routes behind /login with Supabase Auth SSR / HMAC-SHA256 operator session verification and fail-closed Next.js middleware.",
+          "verification": "src/middleware.ts and /api/auth/login enforce fail-closed authentication with passing unit tests."
+        },
+        {
+          "req_id": "REQ-012-03",
+          "title": "Constitutional Section III Supabase Schema & 100% Forced RLS",
+          "description": "Define Control Plane governance tables with ENABLE ROW LEVEL SECURITY and FORCE ROW LEVEL SECURITY on every public table, zero customer PII columns, and search_path=public on all SECURITY DEFINER functions.",
+          "verification": "npm run audit:rls exits 0 verifying 100% forced RLS and zero Section III PII violations."
+        },
+        {
+          "req_id": "REQ-012-04",
+          "title": "Constant-Time Vercel Cron & Cryptographic GitHub Webhook Mesh",
+          "description": "Expose /api/cron/fleet-sync (constant-time CRON_SECRET) and /api/webhooks/github (HMAC-SHA256 X-Hub-Signature-256) to synchronize published main telemetry and live availability probes without mutating edge readiness scores (REQ-008-02).",
+          "verification": "Unit tests verifying constant-time cron/webhook verification and non-mutating live availability probes."
+        },
+        {
+          "req_id": "REQ-012-05",
+          "title": "Full Control Plane Dogfooding of COUNCIL-2026-002, 010, and 011",
+          "description": "Integrate the Powered by ChurchCore trust badge (REQ-002-01), OpenRouter Sovereign Model Evaluator (COUNCIL-2026-010), and Localization Governance (COUNCIL-2026-011) directly within ChurchCore-Business.",
+          "verification": "npm run audit:arch and npm run audit:i18n pass with zero violations."
+        }
+      ]
     }
   ]
 }
