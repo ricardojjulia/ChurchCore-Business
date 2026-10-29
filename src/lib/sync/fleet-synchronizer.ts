@@ -139,6 +139,36 @@ export async function probeProductionUrl(
   }
 }
 
+/**
+ * Sends a zero-row HEAD keep-alive probe to the product's isolated Supabase instance
+ * (when configured in FLEET_SUPABASE_KEEPALIVE_JSON) so Free-tier instances (e.g. LMS, Care)
+ * never auto-pause from 7-day inactivity. Zero customer data or rows are ever read (Section III).
+ */
+export async function pingSupabaseKeepAlive(productId: string): Promise<boolean> {
+  const raw = process.env.FLEET_SUPABASE_KEEPALIVE_JSON;
+  if (!raw) return false;
+  try {
+    const parsed = JSON.parse(raw) as Record<
+      string,
+      { url: string; apikey: string; ref: string }
+    >;
+    const target = parsed[productId];
+    if (!target || !target.url || !target.apikey) return false;
+    const res = await fetch(target.url, {
+      method: "HEAD",
+      headers: {
+        apikey: target.apikey,
+        Authorization: `Bearer ${target.apikey}`,
+        "User-Agent": "ChurchCore-Sovereign-KeepAlive/2.0",
+      },
+      cache: "no-store",
+    });
+    return res.status >= 200 && res.status < 400;
+  } catch {
+    return false;
+  }
+}
+
 export async function fetchGitHubPublishedTelemetry(
   repo: string
 ): Promise<Record<string, unknown> | null> {
@@ -223,8 +253,11 @@ export async function executeFleetSynchronization(
 
   for (const descriptor of targets) {
     const existing = localProductsById.get(descriptor.product_id) || {};
-    const remoteTelemetry = await fetchGitHubPublishedTelemetry(descriptor.repo);
-    const probe = await probeProductionUrl(descriptor.production_url);
+    const [remoteTelemetry, probe] = await Promise.all([
+      fetchGitHubPublishedTelemetry(descriptor.repo),
+      probeProductionUrl(descriptor.production_url),
+      pingSupabaseKeepAlive(descriptor.product_id),
+    ]);
 
     const baseRecord = (remoteTelemetry || existing) as {
       version?: string;

@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-28 21:48:45 UTC`
+> **Last Aggregated:** `2026-10-28 22:46:55 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -151,10 +151,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `chore(telemetry): record SIS competitive expansion session (697f183)`
-- `feat(sis): add clash-free timetabling, data migration engine, advisory interventions, and i18n (3c9f063)`
+- `feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)`
 - `chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)`
 - `feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)`
+- `chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#254) (3970d41)`
 
 **Next Engineering Steps:**
 - 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
@@ -163,10 +163,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `60 minutes`
-- **Session Timestamp:** `2026-10-28T21:48:09.528545+00:00`
+- **Session Duration:** `20 minutes`
+- **Session Timestamp:** `2026-10-28T22:46:47.184933+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Implemented dual institutional orientation architecture (faith_based vs. independent_academic), vocational_academy mode pack, secular vocabulary abstraction layer, dynamic UI mapping, orientation admin & tenant control selectors, and verified 2275 tests, lint, build, and governance gates.
+- **Session Work Summary:** Seeded independent academic / vocational academy demo showcase tenant (metro-tech) and demo persona accounts (admin@metrotech.academy, faculty@metrotech.academy, student@metrotech.academy) with clock-hour programs and secular vocabulary.
 
 - 🟢 *No active deployment errors logged.*
 
