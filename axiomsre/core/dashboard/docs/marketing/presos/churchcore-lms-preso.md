@@ -4,14 +4,14 @@
 > **Scale:** 72 Relational Tables • 85 Application Routes • v0.47.0  
 > **Target Buyers:** Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director, Small Groups Coordinator, Youth & Leadership Training Director  
 > **Live URL:** [https://www.churchcorelms.io](https://www.churchcorelms.io)  
-> **Last Synced from Telemetry:** 2026-10-28 22:46:55 UTC
+> **Last Synced from Telemetry:** 2026-10-29 20:23:02 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore LMS: Ministry Formation, Interactive Discipleship Tracks, and Bilingual Offline PWA
-*Live Production Architecture • 72 Relational Tables • 85 Application Routes • v0.47.0 • October 28, 2026*
+*Live Production Architecture • 72 Relational Tables • 85 Application Routes • v0.47.0 • October 29, 2026*
 
 - Target Buyers: Discipleship Pastor / Christian Education Director, Bible Institute Dean / Seminary Extension Director
 - Strategic Replacement: Displaces Canvas LMS (high institutional cost) + Teachable + RightNow Media + Kajabi
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.47.0 Live)*
 
-- Latest Feature Delivered: feat(governance): implement COUNCIL-2026-048 SpeedGrader originality scanner, 48h deadline nudges, and dual-vertical AI parity (f2bdd1a)
-- Ecosystem Hardening: Automated Council Directives sync
+- Latest Feature Delivered: Merge pull request #108 from ricardojjulia/feat/council-048-integrity-and-nudges (4d48d28)
+- Ecosystem Hardening: chore(telemetry): record COUNCIL-2026-048 reconciliation and edge telemetry (4d80e14)
 - Reliability Proof: [2026-10-16] Converted server action exports to explicit async functions in compliance with Turbopack specifications (PR #89).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,7 +87,10 @@ Constitutional Invariant: Offline IndexedDB PWA with Trinity SpeedGrader, Rubric
 Commercial Pricing: $79–$999/mo (Unlimited Church Discipleship)
 
 Recent Engineering Delivery & Milestones:
+- Merge pull request #108 from ricardojjulia/feat/council-048-integrity-and-nudges (4d48d28)
+- chore(telemetry): record COUNCIL-2026-048 reconciliation and edge telemetry (4d80e14)
 - feat(governance): implement COUNCIL-2026-048 SpeedGrader originality scanner, 48h deadline nudges, and dual-vertical AI parity (f2bdd1a)
+- chore(telemetry): record COUNCIL-2026-010 and COUNCIL-2026-011 acknowledged (#107) (39c19fb)
 </context>
 
 <instructions>
@@ -113,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore LMS**.
 - Core Value: Offline IndexedDB PWA with Trinity SpeedGrader, Rubrics & Dual-Tier Council Curriculum Governance
 - Live Site: https://www.churchcorelms.io
 - Pricing: $79–$999/mo (Unlimited Church Discipleship)
-- Latest Features: feat(governance): implement COUNCIL-2026-048 SpeedGrader originality scanner, 48h deadline nudges, and dual-vertical AI parity (f2bdd1a)
+- Latest Features: Merge pull request #108 from ricardojjulia/feat/council-048-integrity-and-nudges (4d48d28), chore(telemetry): record COUNCIL-2026-048 reconciliation and edge telemetry (4d80e14), feat(governance): implement COUNCIL-2026-048 SpeedGrader originality scanner, 48h deadline nudges, and dual-vertical AI parity (f2bdd1a)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -145,6 +148,8 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- Merge pull request #108 from ricardojjulia/feat/council-048-integrity-and-nudges (4d48d28)
+- chore(telemetry): record COUNCIL-2026-048 reconciliation and edge telemetry (4d80e14)
 - feat(governance): implement COUNCIL-2026-048 SpeedGrader originality scanner, 48h deadline nudges, and dual-vertical AI parity (f2bdd1a)
 - High-Performance Database Architecture
 

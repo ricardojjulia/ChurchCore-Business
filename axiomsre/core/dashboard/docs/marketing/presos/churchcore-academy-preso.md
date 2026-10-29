@@ -4,14 +4,14 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-10-28 22:46:55 UTC
+> **Last Synced from Telemetry:** 2026-10-29 20:23:02 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies
-*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 28, 2026*
+*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • October 29, 2026*
 
 - Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar
 - Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
 
-- Latest Feature Delivered: feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)
-- Ecosystem Hardening: chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)
+- Latest Feature Delivered: feat(demo): seed independent academic vocational demo tenant and persona accounts (baa0174)
+- Ecosystem Hardening: feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)
 - Reliability Proof: [2026-10-22] Additive migration 20261022160000_grant_admissions_conversion_rls_privileges.sql provisions table grants to anon and authenticated roles for admissions, conversion, audit, and LLIS tables.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
+- feat(demo): seed independent academic vocational demo tenant and persona accounts (baa0174)
 - feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)
 - chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)
 - feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)
-- chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#254) (3970d41)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d), chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7), feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)
+- Latest Features: feat(demo): seed independent academic vocational demo tenant and persona accounts (baa0174), feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d), chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
+- feat(demo): seed independent academic vocational demo tenant and persona accounts (baa0174)
 - feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)
 - chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)
-- feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

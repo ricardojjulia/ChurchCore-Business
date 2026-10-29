@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-28 22:46:55 UTC`
+> **Last Aggregated:** `2026-10-29 20:23:02 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -105,21 +105,21 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `f`
-- `e`
-- `a`
-- `t`
+- `Merge pull request #108 from ricardojjulia/feat/council-048-integrity-and-nudges (4d48d28)`
+- `chore(telemetry): record COUNCIL-2026-048 reconciliation and edge telemetry (4d80e14)`
+- `feat(governance): implement COUNCIL-2026-048 SpeedGrader originality scanner, 48h deadline nudges, and dual-vertical AI parity (f2bdd1a)`
+- `chore(telemetry): record COUNCIL-2026-010 and COUNCIL-2026-011 acknowledged (#107) (39c19fb)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
 - 🎯 Run full synthetic production test suite (npm run test:prod-synthetic)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `Gemini 4 Argon`
-- **Session Duration:** `25 minutes`
-- **Session Timestamp:** `2026-10-28T16:22:58.005712+00:00`
+- **Last AI Model Used:** `claude-opus-4-6`
+- **Session Duration:** `5 minutes`
+- **Session Timestamp:** `2026-10-29T14:26:33.499978+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Reconciled edge challenge CHAL-CHURCHCORE-LMS-REVIEWS-1793204579: council_governing_state.documented_reviews_count -> 70. Advanced active instruction to Next Phase.
+- **Session Work Summary:** Implemented domain-based Christian vs. Non-Christian login and signup branding: churchcorelms.io (*.churchcorelms.io) renders Christian ChurchCore LMS branding and SSO, while all non-churchcorelms.io domains render secular Core LMS branding.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -136,7 +136,7 @@
 | :--- | :--- | :--- |
 | **Online Status** | `ONLINE` | Publicly accessible via Vercel |
 | **Vercel Deployment** | `DEPLOYED` | [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io) |
-| **Supabase Database** | `LOCAL_ONLY` | Sovereign isolation reported and verified |
+| **Supabase Database** | `CONNECTED` | Sovereign isolation reported and verified |
 | **Phase 1 engineering readiness** | `100%` | The repository-defined functional MVP and its inseparable automated verification are complete. This score is the Phase 1 entry gate for human testing; it is not pilot completion or production authorization. |
 | **Phase 2 Human Validation** | `ENTRY_GATE_PENDING` | Verify participant login from the actual Colegio Biblos browser or VM. |
 | **Phase 3 Production Authorization** | `NOT_GRANTED` | Authenticated Vercel evidence proves a Ready production-target deployment exists; it does not prove an owner-approved Phase 3 production release. |
@@ -151,10 +151,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `feat(demo): seed independent academic vocational demo tenant and persona accounts (baa0174)`
 - `feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)`
 - `chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)`
 - `feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)`
-- `chore(telemetry): automated edge check-in (COUNCIL-2026-008) (#254) (3970d41)`
 
 **Next Engineering Steps:**
 - 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
@@ -162,11 +162,11 @@
 - 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `20 minutes`
-- **Session Timestamp:** `2026-10-28T22:46:47.184933+00:00`
+- **Last AI Model Used:** `Gemini 4 Argon`
+- **Session Duration:** `6 minutes`
+- **Session Timestamp:** `2026-10-29T14:58:15.057869+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Seeded independent academic / vocational academy demo showcase tenant (metro-tech) and demo persona accounts (admin@metrotech.academy, faculty@metrotech.academy, student@metrotech.academy) with clock-hour programs and secular vocabulary.
+- **Session Work Summary:** Coordinated domain-aware Christian (ChurchCore Academy) vs. Non-Christian (Core Academy) login branding with ChurchCore LMS using the churchcorelms.io hostname rule and ?mode= preview override
 
 - 🟢 *No active deployment errors logged.*
 
