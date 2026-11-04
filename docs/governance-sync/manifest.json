@@ -392,7 +392,9 @@
       "status": "RATIFIED",
       "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-012.md",
       "impacted_products": [
-        "ChurchCore-Business"
+        "ChurchCore-Business",
+        "ChurchCore-Orthos",
+        "ChurchCore-Academy"
       ],
       "requirements": [
         {

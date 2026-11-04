@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
-import { verifyGitHubWebhookSignature } from "@/lib/security/crypto-guards";
+import {
+  inspectPayloadForThreats,
+  verifyGitHubWebhookSignature,
+} from "@/lib/security/crypto-guards";
 import { executeFleetSynchronization } from "@/lib/sync/fleet-synchronizer";
 
 /**
  * REQ-012-04: Cryptographic GitHub Webhook Receiver (X-Hub-Signature-256)
  * Automatically synchronizes edge product telemetry & plans upon push or merged PR.
+ * Fails closed (HTTP 401) even when secrets and headers are both unset, and returns
+ * HTTP 403 (THREAT_DETECTED) on malicious SQLi/XSS/PathTraversal/CommandInjection payloads.
  */
 export async function POST(req: Request) {
   const rawBody = await req.text();
@@ -25,9 +30,11 @@ export async function POST(req: Request) {
     );
   }
 
+  let parsedPayload: unknown;
   let repoFullName: string | undefined;
   try {
-    const payload = JSON.parse(rawBody) as {
+    parsedPayload = JSON.parse(rawBody);
+    const payload = parsedPayload as {
       repository?: { full_name?: string };
     };
     repoFullName = payload?.repository?.full_name;
@@ -45,6 +52,25 @@ export async function POST(req: Request) {
     );
   }
 
+  const threat = inspectPayloadForThreats(parsedPayload);
+  if (threat.isThreat) {
+    return NextResponse.json(
+      {
+        success: false,
+        code: "THREAT_DETECTED",
+        isThreat: true,
+        threatReason: threat.reason,
+        error: {
+          code: "THREAT_DETECTED",
+          message: "Webhook payload blocked by embedded security guardrails.",
+          isThreat: true,
+          threatReason: threat.reason,
+        },
+      },
+      { status: 403 }
+    );
+  }
+
   const summary = await executeFleetSynchronization(
     "github_webhook",
     repoFullName
@@ -57,4 +83,3 @@ export async function POST(req: Request) {
     sync: summary,
   });
 }
-

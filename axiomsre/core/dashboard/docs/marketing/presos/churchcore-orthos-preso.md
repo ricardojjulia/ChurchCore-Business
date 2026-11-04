@@ -4,14 +4,14 @@
 > **Scale:** 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0  
 > **Target Buyers:** Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter, Denominational Legal Counsel / Risk Manager, Church Insurance Underwriter  
 > **Live URL:** [https://church-core-orthos.vercel.app](https://church-core-orthos.vercel.app)  
-> **Last Synced from Telemetry:** 2026-10-29 20:23:02 UTC
+> **Last Synced from Telemetry:** 2026-11-04 19:24:06 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Orthos: Autonomous Ecclesial Safeguarding, Financial Health Auditing & AI Compliance Scanner
-*Live Production Architecture • 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0 • October 29, 2026*
+*Live Production Architecture • 28 Relational Tables • 30 Application Routes • Gemini AI • v0.18.0 • November 04, 2026*
 
 - Target Buyers: Elder Board Chairman / Church Council President, Denominational Bishop / Regional Presbyter
 - Strategic Replacement: Displaces Protect My Ministry + MinistrySafe + expensive forensic accounting audits
@@ -38,10 +38,10 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://church-core-orthos.vercel.app. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (0.18.0 Live)*
+*Continuous High-Velocity Delivery (0.19.0 Live)*
 
-- Latest Feature Delivered: Merge pull request #37 from ricardojjulia/chore/ratify-council-010-011-enforcement (79ef491)
-- Ecosystem Hardening: chore(governance): ratify COUNCIL-2026-010/011 enforcement and edge evidence reconciliation (40d2574)
+- Latest Feature Delivered: fix(security): address PR #40 review feedback (non-recursive RLS helper, stateful SQL audit, fail-closed webhook, zero-preserving telemetry) (ad647da)
+- Ecosystem Hardening: feat(security): implement COUNCIL-2026-012 embedded security architecture and 100% FORCE RLS (v0.19.0) (ccb2e06)
 - Reliability Proof: [2026-10-15] Configured explicit CSP allowlists in vercel.json for audit PDF preview rendering.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Omni-Council Compliance Engine: Real-time checks for b
 Commercial Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
 
 Recent Engineering Delivery & Milestones:
-- Merge pull request #37 from ricardojjulia/chore/ratify-council-010-011-enforcement (79ef491)
-- chore(governance): ratify COUNCIL-2026-010/011 enforcement and edge evidence reconciliation (40d2574)
-- Merge pull request #36 from ricardojjulia/chore/sync-telemetry-and-council-directives (d43b0a6)
-- chore(governance): synchronize Council Directives 010/011 and edge telemetry (v0.18.3) (1e487d1)
+- fix(security): address PR #40 review feedback (non-recursive RLS helper, stateful SQL audit, fail-closed webhook, zero-preserving telemetry) (ad647da)
+- feat(security): implement COUNCIL-2026-012 embedded security architecture and 100% FORCE RLS (v0.19.0) (ccb2e06)
+- chore(control-plane): synchronize directives, edge telemetry v0.18.3, and cloud snapshot sync (64cfdd8)
+- fix(build,db): fix next/font build loader and Supabase RLS migration syntax, connect vnuoibklcldxadffmitj (dcf6b06)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Orthos**
 - Core Value: Omni-Council Compliance Engine: Real-time checks for background check currency, double-entry fund balance, and RLS integrity
 - Live Site: https://church-core-orthos.vercel.app
 - Pricing: $1,200–$50,000/yr (Parish to Diocesan Licensing)
-- Latest Features: Merge pull request #37 from ricardojjulia/chore/ratify-council-010-011-enforcement (79ef491), chore(governance): ratify COUNCIL-2026-010/011 enforcement and edge evidence reconciliation (40d2574), Merge pull request #36 from ricardojjulia/chore/sync-telemetry-and-council-directives (d43b0a6)
+- Latest Features: fix(security): address PR #40 review feedback (non-recursive RLS helper, stateful SQL audit, fail-closed webhook, zero-preserving telemetry) (ad647da), feat(security): implement COUNCIL-2026-012 embedded security architecture and 100% FORCE RLS (v0.19.0) (ccb2e06), chore(control-plane): synchronize directives, edge telemetry v0.18.3, and cloud snapshot sync (64cfdd8)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- Merge pull request #37 from ricardojjulia/chore/ratify-council-010-011-enforcement (79ef491)
-- chore(governance): ratify COUNCIL-2026-010/011 enforcement and edge evidence reconciliation (40d2574)
-- Merge pull request #36 from ricardojjulia/chore/sync-telemetry-and-council-directives (d43b0a6)
+- fix(security): address PR #40 review feedback (non-recursive RLS helper, stateful SQL audit, fail-closed webhook, zero-preserving telemetry) (ad647da)
+- feat(security): implement COUNCIL-2026-012 embedded security architecture and 100% FORCE RLS (v0.19.0) (ccb2e06)
+- chore(control-plane): synchronize directives, edge telemetry v0.18.3, and cloud snapshot sync (64cfdd8)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
