@@ -303,3 +303,4 @@ describe("COUNCIL-2026-012 / DIR-2026-EMBEDDED-SEC-001: Embedded Security Guardr
     ).toBe(true);
   });
 });
+

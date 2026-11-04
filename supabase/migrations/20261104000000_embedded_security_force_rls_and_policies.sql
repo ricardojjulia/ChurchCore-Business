@@ -152,3 +152,4 @@ DROP POLICY IF EXISTS sync_logs_insert_policy ON public.sync_execution_logs;
 CREATE POLICY sync_logs_insert_policy ON public.sync_execution_logs
   FOR INSERT TO authenticated
   WITH CHECK (public.is_control_plane_operator());
+
