@@ -1,6 +1,18 @@
+/**
+ * ChurchCore Sovereign Control Plane — Serverless Context & Higher-Order Action Wrapper
+ * Reference: COUNCIL-2026-012 / DIR-2026-EMBEDDED-SEC-001 & EMBEDDED-SECURITY-ARCHITECTURE.md (§3)
+ *
+ * Implements:
+ * 1. Structural Schema Validation (Zod)
+ * 2. Hardened Serverless Network Context Extraction (`x-vercel-forwarded-for` / `x-vercel-ip` priority)
+ * 3. Token-Bucket Rate Limiting (AI Wallet & Brute-Force Defense)
+ * 4. In-Process Threat Signature Analysis (SQLi, XSS, Path Traversal, Command Injection)
+ * 5. Fail-Closed Security Evaluation Posture (Fixed non-sensitive error log)
+ */
+
 import { headers } from "next/headers";
 import { z } from "zod";
-import { ActionResponse } from "@/types/security";
+import { ActionResponse, SecurityErrorDetail } from "@/types/security";
 import {
   consumeTokenBucket,
   inspectPayloadForThreats,
@@ -13,8 +25,9 @@ export async function getClientContext(): Promise<{
 }> {
   try {
     const headersList = await headers();
-    // Prioritize Vercel verified edge headers to prevent client IP spoofing
+    // On Vercel, prioritize verified edge headers to prevent client IP spoofing
     const ip =
+      headersList.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() ||
       headersList.get("x-vercel-ip") ||
       headersList.get("x-real-ip") ||
       headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -33,12 +46,67 @@ export interface ProtectedActionOptions {
 }
 
 /**
+ * Evaluates embedded security guardrails (rate limit + threat inspection) and fails closed on internal error.
+ */
+export async function evaluateEmbeddedGuardrails(
+  payload: unknown,
+  options: ProtectedActionOptions = {}
+): Promise<
+  | { allowed: true; context: { ip: string; userAgent: string } }
+  | { allowed: false; error: SecurityErrorDetail }
+> {
+  const { ip, userAgent } = await getClientContext();
+
+  try {
+    if (options.simulateEvaluatorFailure) {
+      throw new Error("Simulated security evaluator failure");
+    }
+
+    if (options.rateLimit) {
+      const bucketKey = `${options.actionName || "default"}:${ip}`;
+      const rateDecision = consumeTokenBucket(bucketKey, 1, options.rateLimit);
+      if (!rateDecision.allowed) {
+        return {
+          allowed: false,
+          error: {
+            code: "RATE_LIMIT_EXCEEDED",
+            message: "Rate limit exhausted: Too many requests.",
+            isThreat: false,
+          },
+        };
+      }
+    }
+
+    const threatDecision = inspectPayloadForThreats(payload);
+    if (threatDecision.isThreat) {
+      return {
+        allowed: false,
+        error: {
+          code: "THREAT_DETECTED",
+          message:
+            "Security violation: Access denied by local application guardrails.",
+          isThreat: true,
+          threatReason: threatDecision.reason,
+        },
+      };
+    }
+
+    return { allowed: true, context: { ip, userAgent } };
+  } catch {
+    console.error("[SECURITY] Embedded guardrail evaluation failed closed (INTERNAL_SECURITY_FAIL).");
+    return {
+      allowed: false,
+      error: {
+        code: "INTERNAL_SECURITY_FAIL",
+        message: "Unable to verify security posture.",
+        isThreat: true,
+      },
+    };
+  }
+}
+
+/**
  * Higher-order Server Action & Route Guardrail Wrapper
- * Implements EMBEDDED-SECURITY-ARCHITECTURE.md Section 3:
- * 1. Structural Schema Validation (Zod)
- * 2. Serverless Network Context Extraction (x-vercel-ip priority)
- * 3. Token-Bucket Rate Limiting (AI Wallet & Brute-Force Defense)
- * 4. In-Process Threat Signature Analysis (SQLi, XSS, Path Traversal)
  */
 export function createProtectedAction<T extends z.ZodTypeAny, R>(
   schema: T,
@@ -63,57 +131,17 @@ export function createProtectedAction<T extends z.ZodTypeAny, R>(
       };
     }
 
-    // 2. Extract Serverless Network Context
-    const { ip, userAgent } = await getClientContext();
-
-    // 3. Evaluate Threat & Rate-Limit Guardrails (Fail Closed on Error)
-    try {
-      if (options.simulateEvaluatorFailure) {
-        throw new Error("Simulated security evaluator failure");
-      }
-
-      if (options.rateLimit) {
-        const bucketKey = `${options.actionName || "default"}:${ip}`;
-        const rateDecision = consumeTokenBucket(bucketKey, 1, options.rateLimit);
-        if (!rateDecision.allowed) {
-          return {
-            success: false,
-            error: {
-              code: "RATE_LIMIT_EXCEEDED",
-              message: "Rate limit exhausted: Too many requests.",
-              isThreat: false,
-            },
-          };
-        }
-      }
-
-      const threatDecision = inspectPayloadForThreats(parsed.data);
-      if (threatDecision.isThreat) {
-        return {
-          success: false,
-          error: {
-            code: "THREAT_DETECTED",
-            message:
-              "Security violation: Access denied by local application guardrails.",
-            isThreat: true,
-          },
-        };
-      }
-    } catch (err) {
-      console.error("[SECURITY] Embedded guardrail evaluation error:", err);
+    // 2. Evaluate Serverless Context, Token Bucket Rate Limit & Threat Signatures
+    const guardDecision = await evaluateEmbeddedGuardrails(parsed.data, options);
+    if (!guardDecision.allowed) {
       return {
         success: false,
-        error: {
-          code: "INTERNAL_SECURITY_FAIL",
-          message: "Unable to verify security posture.",
-          isThreat: true,
-        },
+        error: guardDecision.error,
       };
     }
 
-    // 4. Safe entry to domain business logic
-    const result = await action(parsed.data, { ip, userAgent });
+    // 3. Safe entry to domain business logic
+    const result = await action(parsed.data, guardDecision.context);
     return { success: true, data: result };
   };
 }
-

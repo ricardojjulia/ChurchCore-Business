@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-10-29 20:23:02 UTC`
+> **Last Aggregated:** `2026-11-04 19:24:06 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -16,7 +16,7 @@
 
 ## 2. Product Fleet Status Cards
 
-### ChurchCore (`churchcore-chms`) — v4.0.0 | 🟢 ONLINE
+### i18n-batch8 (`churchcore-chms`) — v4.0.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -50,10 +50,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `feat(i18n): localized staff messages — church admin, operations, elders, giving admin (S96b part 2) (#245) (cddc803)`
-- `feat(i18n): localized portal, communications, groups and data-rights messages (S96b part 1) (#244) (c28dcb0)`
-- `fix(security): patch undici, zod and fast-uri advisories (lockfile only) (#243) (9a050d0)`
-- `feat(i18n): localized member giving, registration and check-in messages (S96 batch 1) (#242) (04973a5)`
+- `fix(i18n): batch 8 Council Review 88 amendments (ae682e8)`
+- `feat(i18n): localize control plane, launch checklist, ShepherdAI queue, HQ and demo screens (batch 8) (5cb556a)`
+- `feat(i18n): localize volunteers, service planning, calendar, groups, attendance, visitors, onboarding (batch 7) (#259) (b406172)`
+- `feat(i18n): localize communications and operations screens (batch 6) (#258) (a411142)`
 
 **Next Engineering Steps:**
 - 🎯 Owner: RELEASE_CHECKLIST.md post-deploy checks still pending: sign in and reach /app/church-admin/readiness; send a test email and SMS; fire a Stripe test webhook (then verify the rows read-only)
@@ -62,10 +62,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `claude-opus-5-5`
-- **Session Duration:** `4428 minutes`
-- **Session Timestamp:** `2026-10-25T18:29:40.354831+00:00`
+- **Session Duration:** `240 minutes`
+- **Session Timestamp:** `2026-10-29T21:54:37.973051+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Reconciled edge challenge CHAL-CHURCHCORE-CHMS-FEAT2-def471e: feature_completion -> Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms) Complete. Advanced active instruction to Feature 2: Vercel Edge Cron Automation (shepherd-ai & scheduled comms).
+- **Session Work Summary:** Staff localization: batch 7 merged (#259, Council Review 87); batch 8 control plane, launch checklist, ShepherdAI, HQ and demo built with Council Review 88 amendments (final batch)
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -145,6 +145,7 @@
 - **Current Phase:** `PILOT_READY`
 - **Completion Percentage:** `100%`
 - **Recent Milestones Delivered:**
+  - ✅ Implemented COUNCIL-2026-012 Embedded Security Add-On (createProtectedAction, constant-time cron/webhook verification, recursive threat inspection, 100% forced RLS across 152 tables, stateful SQL migration auditor) and domain-aware login branding.
   - ✅ PR #256 aligned Academy compliance with Control Plane (REQ-002-01, REQ-010-01..03, REQ-011-02..03) and standardized Node 22.
   - ✅ PR #248 recorded Colegio Biblos local/private pilot preparation.
   - ✅ PR #247 approved the Colegio Biblos local pilot charter.
@@ -162,11 +163,11 @@
 - 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `Gemini 4 Argon`
-- **Session Duration:** `6 minutes`
-- **Session Timestamp:** `2026-10-29T14:58:15.057869+00:00`
+- **Last AI Model Used:** `Gemini 3.1 Pro`
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-11-04T19:24:02.906274+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Coordinated domain-aware Christian (ChurchCore Academy) vs. Non-Christian (Core Academy) login branding with ChurchCore LMS using the churchcorelms.io hostname rule and ?mode= preview override
+- **Session Work Summary:** Implemented Council Embedded Security Add-On (COUNCIL-2026-012 / DIR-2026-EMBEDDED-SEC-001): application-layer security guardrails, constant-time cron/webhook verification, threat inspection, 100% forced RLS across all 152 tables, stateful SQL migration auditor with sabotage gate, 12-test embedded security suite, and domain-aware login branding.
 
 - 🟢 *No active deployment errors logged.*
 
@@ -215,7 +216,7 @@
 
 ---
 
-### ChurchCore-Orthos (`churchcore-orthos`) — v0.18.0 | 🟢 ONLINE
+### ChurchCore Orthos (`churchcore-orthos`) — v0.19.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -235,10 +236,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `Merge pull request #37 from ricardojjulia/chore/ratify-council-010-011-enforcement (79ef491)`
-- `chore(governance): ratify COUNCIL-2026-010/011 enforcement and edge evidence reconciliation (40d2574)`
-- `Merge pull request #36 from ricardojjulia/chore/sync-telemetry-and-council-directives (d43b0a6)`
-- `chore(governance): synchronize Council Directives 010/011 and edge telemetry (v0.18.3) (1e487d1)`
+- `fix(security): address PR #40 review feedback (non-recursive RLS helper, stateful SQL audit, fail-closed webhook, zero-preserving telemetry) (ad647da)`
+- `feat(security): implement COUNCIL-2026-012 embedded security architecture and 100% FORCE RLS (v0.19.0) (ccb2e06)`
+- `chore(control-plane): synchronize directives, edge telemetry v0.18.3, and cloud snapshot sync (64cfdd8)`
+- `fix(build,db): fix next/font build loader and Supabase RLS migration syntax, connect vnuoibklcldxadffmitj (dcf6b06)`
 
 **Next Engineering Steps:**
 - 🎯 Deploy staging preview build to Vercel
@@ -246,10 +247,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `75 minutes`
-- **Session Timestamp:** `2026-10-27T02:10:24.146727+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-11-04T18:08:38.467204+00:00`
+- **Session Operator:** `Ricardo J Julia`
+- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-orthos.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
