@@ -1,10 +1,11 @@
 :root {
-  --bg-base: #080C14;
-  --bg-surface: #0E1524;
-  --bg-card: rgba(17, 24, 39, 0.7);
-  --bg-card-hover: rgba(24, 33, 54, 0.85);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-active: rgba(245, 158, 11, 0.35);
+  color-scheme: dark;
+  --bg-base: #020617;
+  --bg-surface: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.78);
+  --bg-card-hover: rgba(30, 41, 59, 0.88);
+  --border-subtle: #1e293b;
+  --border-active: rgba(99, 102, 241, 0.45);
 
   --gold-400: #FBBF24;
   --gold-500: #F59E0B;
@@ -19,14 +20,17 @@
   --rose-500: #F43F5E;
   --cyan-400: #38BDF8;
   --indigo-400: #818CF8;
+  --indigo-500: #6366F1;
+  --indigo-600: #4F46E5;
 
-  --text-main: #F3F4F6;
-  --text-muted: #9CA3AF;
-  --text-dim: #6B7280;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
 
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-heading: var(--font-inter, 'Inter'), 'Inter', 'Outfit', system-ui, sans-serif;
+  --font-body: var(--font-inter, 'Inter'), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-fraunces, 'Fraunces'), 'Fraunces', Georgia, serif;
+  --font-mono: var(--font-geist-mono, 'Geist Mono'), 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
 }
 
 * {

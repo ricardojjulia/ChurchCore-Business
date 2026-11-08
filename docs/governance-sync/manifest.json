@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ChurchCore Governance Dispatch Manifest",
   "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "organization": "ChurchCore",
   "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
   "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
-  "last_updated": "2026-10-18T14:35:10Z",
+  "last_updated": "2026-11-08T17:10:00Z",
   "registered_products": [
     {
       "name": "ChurchCore",
@@ -394,7 +394,8 @@
       "impacted_products": [
         "ChurchCore-Business",
         "ChurchCore-Orthos",
-        "ChurchCore-Academy"
+        "ChurchCore-Academy",
+        "ChurchCoreCare"
       ],
       "requirements": [
         {
@@ -426,6 +427,92 @@
           "title": "Full Control Plane Dogfooding of COUNCIL-2026-002, 010, and 011",
           "description": "Integrate the Powered by ChurchCore trust badge (REQ-002-01), OpenRouter Sovereign Model Evaluator (COUNCIL-2026-010), and Localization Governance (COUNCIL-2026-011) directly within ChurchCore-Business.",
           "verification": "npm run audit:arch and npm run audit:i18n pass with zero violations."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-013",
+      "title": "Universal Embedded Security Verification & Stateful RLS Sabotage Testing Standard",
+      "ratification_date": "2026-11-04",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-013.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-013-01",
+          "priority": "P0_CRITICAL",
+          "title": "Standardized 10-Point Embedded Security Test Suite",
+          "description": "Every ChurchCore software package must maintain and execute src/__tests__/embedded_security.test.ts verifying schema validation failure (INVALID_INPUT), trusted edge IP extraction (x-vercel-forwarded-for priority), in-process WAF-lite blocking of SQLi/XSS/Path Traversal/Command Injection (THREAT_DETECTED), token-bucket rate limiting (RATE_LIMIT_EXCEEDED), fail-closed exception redaction (INTERNAL_SECURITY_FAIL), constant-time cron/webhook verification, HTTP 403 public route threat rejection, fail-closed HTTP 401 on unconfigured cron/webhook POST routes, and AI/governance/financial action protection.",
+          "verification": "src/__tests__/embedded_security.test.ts present and passing all 10 security test cases in standard test runs."
+        },
+        {
+          "req_id": "REQ-013-02",
+          "priority": "P0_CRITICAL",
+          "title": "Stateful SQL Migration RLS Evaluator (auditSqlMigrationsText)",
+          "description": "Every package with Supabase/PostgreSQL migrations must implement scripts/audit-rls-isolation.ts (wired to audit:rls) that strips block and line comments, normalizes quoted/unquoted identifiers, and sequentially evaluates CREATE TABLE, ENABLE/DISABLE RLS, FORCE/NO FORCE RLS, and CREATE/DROP POLICY across all migrations to verify 100% ENABLE RLS + FORCE RLS + active policies on every public table.",
+          "verification": "scripts/audit-rls-isolation.ts present and npm/pnpm run audit:rls exits 0 with 100% table coverage."
+        },
+        {
+          "req_id": "REQ-013-03",
+          "priority": "P0_CRITICAL",
+          "title": "Mandatory In-Memory Live Sabotage Self-Test",
+          "description": "Both scripts/audit-rls-isolation.ts and src/__tests__/embedded_security.test.ts must execute an in-memory live sabotage self-test on every run by appending NO FORCE ROW LEVEL SECURITY and DROP POLICY to the combined migration SQL and asserting that auditSqlMigrationsText detects the regression and fails.",
+          "verification": "Live sabotage self-test present in scripts/audit-rls-isolation.ts and src/__tests__/embedded_security.test.ts and verified passing."
+        },
+        {
+          "req_id": "REQ-013-04",
+          "priority": "P0_CRITICAL",
+          "title": "Non-Recursive SECURITY DEFINER Tenant Helper & Search-Path Pinning Verification",
+          "description": "Automated tests and migrations must verify that multi-tenant RLS helpers (e.g. public.current_user_organization_id()) use SECURITY DEFINER SET search_path = public SET row_security = off with REVOKE ALL FROM PUBLIC and GRANT EXECUTE TO authenticated, service_role, and that all SECURITY DEFINER functions pin SET search_path = public.",
+          "verification": "Forward migration and automated test assertion confirm SET search_path = public SET row_security = off on tenant lookup helper."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-014",
+      "title": "Ratification of the Unified ChurchCore Design System, Self-Hosted Variable Typography, Dark-First Slate/Indigo Surface Hierarchy & 6-Step Rem Sizing Scale",
+      "ratification_date": "2026-11-08",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-014.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-014-01",
+          "title": "Self-Hosted Variable Typography Standard (Inter + Fraunces + Geist Mono)",
+          "description": "Bundle and load inter-latin-var.woff2 (--font-inter/--font-sans), fraunces-latin-var.woff2 (--font-fraunces/--font-serif), and geist-mono-latin-var.woff2 (--font-geist-mono/--font-mono) via next/font/local with zero runtime Google Fonts dependency.",
+          "verification": "All 3 .woff2 files present in fonts directory and loaded via next/font/local in root layout."
+        },
+        {
+          "req_id": "REQ-014-02",
+          "title": "Dark-First Slate/Indigo Surface Hierarchy & Print Parity",
+          "description": "Enforce Dark-First Slate-950 (#020617) canvas, Slate-900 (#0f172a) card surface, Slate-800 (#1e293b) border, Indigo-600 (#4f46e5) / Indigo-500 (#6366f1) primary accent, Amber-500 (#f59e0b) warm accent, Slate-50 (#f8fafc) primary text, and @media print ink-on-paper overrides.",
+          "verification": "Root CSS tokens and theme providers align with Slate-950/Slate-900/Indigo-600 hierarchy."
+        },
+        {
+          "req_id": "REQ-014-03",
+          "title": "Standardized 6-Step Rem Typography Scale & 44px Touch Target Floor",
+          "description": "Normalize typography sizing onto the 6-step rem scale (0.75rem, 0.875rem, 1rem, 1.25rem, 1.5rem, 1.875rem+) and enforce a 2.75rem (44px) minimum touch target on mobile/member/student controls.",
+          "verification": "CSS stylesheets and UI primitives adhere to standard rem scale and 2.75rem touch targets."
+        },
+        {
+          "req_id": "REQ-014-04",
+          "title": "Automated WCAG AAA Contrast & Design Token Contract Verification",
+          "description": "Maintain automated contrast and design token tests verifying >= 7.0:1 WCAG AAA contrast on primary/secondary text and surface pairings.",
+          "verification": "Automated contrast and design-system contract tests pass."
         }
       ]
     }
