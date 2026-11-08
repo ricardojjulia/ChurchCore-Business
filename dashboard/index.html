@@ -279,9 +279,9 @@
 
     <!-- TAB: COUNCIL CHAMBERS & GOVERNANCE MESH -->
     <section id="tab-councils" class="tab-content">
-      <div class="section-hero">
-        <h2>Council Chambers & Sovereign Governance Mesh</h2>
-        <p>Directly address each app-specific council, verify quorum and governing state, consult individual specialized seats, or convene the Grand Sovereign Assembly for consensus synthesis.</p>
+      <div class="section-hero" style="margin-bottom: 18px;">
+        <h2>Council Chambers</h2>
+        <p>Select the Grand Council or any product council. Click any member to view their focus or consult them directly, then request a thorough <strong>Executive Report</strong> or a <strong>Fully Acknowledged Decision</strong>.</p>
       </div>
 
       <!-- Council Selector Bar -->
@@ -289,85 +289,95 @@
         <!-- Rendered dynamically by app.js -->
       </div>
 
-      <!-- Live Council Governing State HUD -->
-      <div class="council-hud-grid" id="council-hud-container">
+      <!-- Compact Apple-Simple Council Status Strip -->
+      <div id="council-hud-container" style="margin-bottom: 16px;">
         <!-- Rendered dynamically by app.js -->
       </div>
 
-      <!-- Charter Invariants Banner -->
-      <div class="charter-invariants-banner" id="council-invariants-container">
+      <!-- Hidden Charter Invariants Drawer (expandable on demand) -->
+      <div id="council-invariants-container" style="display: none; margin-bottom: 18px;">
         <!-- Rendered dynamically by app.js -->
       </div>
 
-      <!-- Council Deliberation Chamber (Interactive Query & Speech) -->
+      <!-- Clean Apple-Simple Council Member Roster (Click any member to inspect focus & consult) -->
+      <div class="roster-header-bar" style="margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <h3 id="roster-section-title" style="font-size: 15px; font-weight: 600; letter-spacing: -0.015em; color: #F8FAFC;">Council Members</h3>
+          <span style="font-size: 12px; color: #94A3B8;" id="roster-seat-count">Click a member to inspect their focus</span>
+        </div>
+      </div>
+
+      <div class="council-members-grid" id="council-members-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Apple-Simple Member Focus Inspector Sheet (Shown when a member is clicked) -->
+      <div id="council-member-inspector" style="display: none; margin-bottom: 24px;"></div>
+
+      <!-- Council Deliberation & Reporting Chamber -->
       <div class="deliberation-chamber-card">
-        <div class="deliberation-chamber-header">
+        <div class="deliberation-chamber-header" style="flex-wrap: wrap; gap: 12px;">
           <div>
-            <h3 style="font-family: var(--font-heading); font-size: 18px; color: #FFF; font-weight: 700;">Council Deliberations & Inquiries Chamber</h3>
-            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Submit technical inquiries, policy audits, or architectural proposals to the council.</p>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; color: #F8FAFC; font-weight: 700; letter-spacing: -0.02em;">Council Deliverable Studio</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Commission a crisp, thorough <strong>Executive Report</strong> or a binding, <strong>Fully Acknowledged Decision</strong>.</p>
           </div>
           <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-            <button class="btn btn-secondary" id="btn-open-gemini-config" style="padding: 6px 12px; font-size: 12px; border: 1px solid rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.12); color: #c4b5fd; border-radius: 8px; display: inline-flex; align-items: center; gap: 7px; cursor: pointer;">
-              <span id="gemini-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #64748b; display: inline-block;"></span>
-              <span id="gemini-status-text" style="font-weight: 600;">⚡ Gemini Dual-Contender Engine</span>
-              <span style="font-size: 10px; opacity: 0.8; background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 4px;">OpenRouter</span>
-            </button>
-            <div class="deliberation-modes">
-              <button class="delib-mode-btn active" id="btn-mode-all" data-mode="all">🏛️ Address Council as a Whole</button>
-              <button class="delib-mode-btn" id="btn-mode-member" data-mode="member">👤 Direct Member Consultation</button>
+            <!-- Deliverable Type Segmented Control -->
+            <div class="deliberation-modes" id="deliverable-type-selector" title="Choose whether the Council delivers a comprehensive Report or a formally Acknowledged Decision">
+              <button class="delib-mode-btn active" id="btn-deliverable-report" data-deliverable="report">📄 Deliver Report</button>
+              <button class="delib-mode-btn" id="btn-deliverable-decision" data-deliverable="decision">⚖️ Deliver Decision</button>
             </div>
+            <!-- Audience Mode Segmented Control -->
+            <div class="deliberation-modes">
+              <button class="delib-mode-btn active" id="btn-mode-all" data-mode="all">🏛️ Full Council</button>
+              <button class="delib-mode-btn" id="btn-mode-member" data-mode="member">👤 Selected Member</button>
+            </div>
+            <button class="btn btn-secondary" id="btn-open-gemini-config" style="padding: 6px 12px; font-size: 12px; border: 1px solid rgba(99, 102, 241, 0.35); background: rgba(99, 102, 241, 0.1); color: #C7D2FE; border-radius: 8px; display: inline-flex; align-items: center; gap: 7px; cursor: pointer;">
+              <span id="gemini-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; display: inline-block;"></span>
+              <span id="gemini-status-text" style="font-weight: 600;">⚡ AI Engine</span>
+            </button>
           </div>
         </div>
 
-        <!-- Preset Inquiries -->
+        <!-- Preset Inquiries (Report & Decision Templates) -->
         <div class="preset-inquiries-bar" id="preset-inquiries-container">
-          <span style="font-size: 12px; color: var(--text-dim); display: flex; align-items: center; margin-right: 4px;">Fast Inquiries:</span>
-          <button class="preset-inquiry-btn" data-query="Audit compliance with Constitution Section III: Zero Customer Data Propagation and check for any background event brokers or cross-database replication.">🛡️ Audit Zero Data Propagation</button>
-          <button class="preset-inquiry-btn" data-query="Assess Sunday Morning 99.99% SLA readiness, kiosk peak concurrency headroom, and automated database snapshot recency.">⏱️ Assess Sunday Morning SLA</button>
-          <button class="preset-inquiry-btn" data-query="Evaluate confidential pastoral notes encryption and verify PostgreSQL RLS column-level security isolation.">🔒 Evaluate Confidential Notes RLS</button>
-          <button class="preset-inquiry-btn" data-query="Review SpeedGrader and multi-criterion rubrics implementation for zero variable hosting cost and pedagogical efficiency.">📝 Review SpeedGrader & Rubrics</button>
-          <button class="preset-inquiry-btn" data-query="Verify historic confessional cross-links and doctrinal guardrails against theological drift.">📜 Verify Historic Creeds Alignment</button>
+          <span style="font-size: 12px; color: var(--text-dim); display: flex; align-items: center; margin-right: 4px;">Quick Templates:</span>
+          <button class="preset-inquiry-btn" data-deliverable="report" data-query="Deliver a comprehensive Executive Report auditing Constitution Section III (Zero Customer Data Propagation), 100% Forced RLS posture, and database isolation across the repository.">📄 Report: Security &amp; Forced RLS Audit</button>
+          <button class="preset-inquiry-btn" data-deliverable="report" data-query="Deliver a thorough Executive Report assessing Sunday Morning 99.99% SLA readiness, p95 latency budgets (<50ms), and Vercel/Supabase production capacity.">📄 Report: Sunday 99.99% SLA Assessment</button>
+          <button class="preset-inquiry-btn" data-deliverable="report" data-query="Deliver a crisp Executive Report evaluating UI/UX standardization, self-hosted typography (Inter/Fraunces/Geist Mono), and WCAG AAA 7:1 contrast compliance.">📄 Report: UI &amp; Design System Review</button>
+          <button class="preset-inquiry-btn" data-deliverable="decision" data-query="Deliver a Fully Acknowledged Decision ratifying the next phase of MVP production hardening, mandatory security guardrails, and automated testing gates.">⚖️ Decision: Ratify Production Hardening Gate</button>
+          <button class="preset-inquiry-btn" data-deliverable="decision" data-query="Deliver a Fully Acknowledged Decision governing confidential pastoral/clinical records encryption, RBAC boundaries, and audit logging.">⚖️ Decision: Confidential Records Governance</button>
         </div>
 
         <div class="query-input-wrapper">
-          <textarea class="delib-textarea" id="council-query-input" placeholder="Address the council with an architectural inquiry, policy question, or proposed directive..."></textarea>
+          <textarea class="delib-textarea" id="council-query-input" placeholder="Ask the council or selected member to deliver a thorough Report (e.g. 'Deliver a full architectural & security report...') or a Fully Acknowledged Decision (e.g. 'Deliver a binding decision on...')"></textarea>
         </div>
 
         <div class="query-action-row">
           <div class="delib-target-indicator" id="delib-target-text">
-            Addressing: <strong id="current-delib-target">High Sovereign Grand Council (All 7 Seats)</strong>
+            Target: <strong id="current-delib-target">High Sovereign Grand Council (All 7 Seats)</strong>
           </div>
-          <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
             <button class="btn btn-secondary" id="btn-view-history" style="display: inline-flex; align-items: center; gap: 8px;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-              <span>📜 Council Replies (<span id="delib-history-count">0</span>)</span>
+              <span>📜 Archive (<span id="delib-history-count">0</span>)</span>
             </button>
-            <button class="btn btn-gold" id="btn-convene-council">
+            <button class="btn btn-gold" id="btn-convene-council" style="background: #4F46E5; color: #FFFFFF; border: 1px solid #6366F1; box-shadow: 0 6px 18px -6px rgba(79, 70, 229, 0.65);">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
               </svg>
-              Convene & Deliberate
+              <span id="btn-convene-council-label">Deliver Executive Report</span>
             </button>
           </div>
         </div>
 
-        <!-- Live Deliberation Transcript / Synthesis Container -->
+        <!-- Live Deliberation Report / Decision Container -->
         <div class="delib-response-container" id="delib-response-container">
           <!-- Rendered dynamically by app.js -->
         </div>
-      </div>
-
-      <!-- App-Specific Council Member Roster -->
-      <div class="roster-header-bar">
-        <h3 id="roster-section-title">Council Seat Roster & Specialized Guardians</h3>
-        <span style="font-size: 13px; color: var(--text-muted);" id="roster-seat-count">Showing Seats</span>
-      </div>
-
-      <div class="council-members-grid" id="council-members-container">
-        <!-- Rendered dynamically by app.js -->
       </div>
     </section>
 

@@ -45,4 +45,22 @@ describe("COUNCIL-2026-014: Unified ChurchCore Design System & UI Standardizatio
       "REQ-014-04",
     ]);
   });
+
+  it("enforces Apple-simple Council member cards with click-to-inspect focus drawer and distinct Report vs. Fully Acknowledged Decision deliverables", () => {
+    const dashboardHtml = fs.readFileSync(path.join(ROOT, "dashboard/index.html"), "utf8");
+    expect(dashboardHtml).toContain('id="council-member-inspector"');
+    expect(dashboardHtml).toContain('id="btn-deliverable-report"');
+    expect(dashboardHtml).toContain('id="btn-deliverable-decision"');
+
+    const appJs = fs.readFileSync(path.join(ROOT, "public/app.js"), "utf8");
+    expect(appJs).toContain("renderMemberInspector");
+    expect(appJs).toContain("Executive Analytical Report:");
+    expect(appJs).toContain("Fully Acknowledged Council Decision:");
+    expect(appJs).toContain("Official Seat-by-Seat Signed Acknowledgment");
+
+    const routeTs = fs.readFileSync(path.join(ROOT, "src/app/api/deliberate/route.ts"), "utf8");
+    expect(routeTs).toContain("resolveDeliverableType");
+    expect(routeTs).toContain("deliverable_type");
+  });
 });
+
