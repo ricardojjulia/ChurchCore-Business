@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-11-04 19:24:06 UTC`
+> **Last Aggregated:** `2026-11-09 18:48:44 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -105,10 +105,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `Merge pull request #108 from ricardojjulia/feat/council-048-integrity-and-nudges (4d48d28)`
-- `chore(telemetry): record COUNCIL-2026-048 reconciliation and edge telemetry (4d80e14)`
-- `feat(governance): implement COUNCIL-2026-048 SpeedGrader originality scanner, 48h deadline nudges, and dual-vertical AI parity (f2bdd1a)`
-- `chore(telemetry): record COUNCIL-2026-010 and COUNCIL-2026-011 acknowledged (#107) (39c19fb)`
+- `Merge pull request #110 from ricardojjulia/feat/embedded-security-guardrails-wave1 (4c48486)`
+- `feat(design-system): implement COUNCIL-2026-014 unified self-hosted typography and UI tokens (8bb339f)`
+- `feat(security): implement Council Embedded Security Add-On (COUNCIL-2026-012) Wave 1 (c605e68)`
+- `Merge pull request #109 from ricardojjulia/feat/domain-login-branding (3decb3e)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
@@ -116,10 +116,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `claude-opus-4-6`
-- **Session Duration:** `5 minutes`
-- **Session Timestamp:** `2026-10-29T14:26:33.499978+00:00`
+- **Session Duration:** `10 minutes`
+- **Session Timestamp:** `2026-11-08T18:02:00.433353+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Implemented domain-based Christian vs. Non-Christian login and signup branding: churchcorelms.io (*.churchcorelms.io) renders Christian ChurchCore LMS branding and SSO, while all non-churchcorelms.io domains render secular Core LMS branding.
+- **Session Work Summary:** Enforced COUNCIL-2026-013 (REQ-013-01..04) and COUNCIL-2026-014 (REQ-014-01..04) with 35/35 Control Plane directives passing, added WCAG AAA contrast & design-system contract test suite, wired audit:rls, and documented multi-vertical & domain-aware login branding.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -152,10 +152,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `feat(demo): seed independent academic vocational demo tenant and persona accounts (baa0174)`
+- `feat(a11y,docs): implement REQ-002-02 WCAG AAA contrast audit, RLS forward refinements, and doc updates (4247275)`
+- `feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)`
+- `feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)`
 - `feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)`
-- `chore(telemetry): full Control Plane telemetry refresh (#257) (a5995f7)`
-- `feat(governance): align Academy compliance with Control Plane and upgrade Node 22 (#256) (6270f53)`
 
 **Next Engineering Steps:**
 - 🎯 Verify the actual Colegio Biblos participant login on the approved local/private topology.
@@ -164,16 +164,16 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `Gemini 3.1 Pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-11-04T19:24:02.906274+00:00`
+- **Session Duration:** `25 minutes`
+- **Session Timestamp:** `2026-11-08T17:28:03.389660+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Implemented Council Embedded Security Add-On (COUNCIL-2026-012 / DIR-2026-EMBEDDED-SEC-001): application-layer security guardrails, constant-time cron/webhook verification, threat inspection, 100% forced RLS across all 152 tables, stateful SQL migration auditor with sabotage gate, 12-test embedded security suite, and domain-aware login branding.
+- **Session Work Summary:** Implemented COUNCIL-2026-014 (REQ-014-01..04): self-hosted Inter/Fraunces/Geist Mono variable .woff2 typography via next/font/local, Dark-First Slate-950/900/Indigo-600 token hierarchy, standardized 6-step rem scale, and REQ-002-02 WCAG AAA 7:1 contrast verification.
 
 - 🟢 *No active deployment errors logged.*
 
 ---
 
-### ChurchCoreCare (`churchcore-care`) — v7.0.0 | 🟢 ONLINE
+### ChurchCore Care (`churchcore-care`) — v7.2.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -193,10 +193,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `chore(governance): enforce COUNCIL-2026-010 and COUNCIL-2026-011 in telemetry compliance reporting (#159) (f66a91ad)`
-- `chore(telemetry): record session close edge telemetry and PR reconciliation (#158) (969b141e)`
-- `chore(governance): synchronize council directives, reconcile telemetry, and record dependency merges (#157) (1bdd774f)`
-- `chore(deps-dev): bump vite from 8.3.0 to 8.3.3 (#143) (d90d5292)`
+- `Merge pull request #166 from ricardojjulia/feat/unified-churchcore-ui-overhaul (e3e8e58f)`
+- `feat(ui): align ChurchCore Care UI, AppShell, and all 16 screen surfaces with flagship ChurchCore design system (1d5a0cfe)`
+- `Merge pull request #165 from ricardojjulia/fix/stale-chunk-auto-reload (047a8977)`
+- `fix(web): prevent stale Vite chunk crashes across deployments with static ClientPickerModal import and auto-reload (0cdba417)`
 
 **Next Engineering Steps:**
 - 🎯 Verify production serverless cron execution at /api/cron/scheduler
@@ -204,10 +204,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `60 minutes`
-- **Session Timestamp:** `2026-10-27T02:10:24.146727+00:00`
-- **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries.
+- **Session Duration:** `30 minutes`
+- **Session Timestamp:** `2026-11-08T20:22:09.952007+00:00`
+- **Session Operator:** `Ricardo J Julia`
+- **Session Work Summary:** Automated Council Directives Enforcement
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -292,10 +292,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)`
-- `feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)`
-- `feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)`
-- `feat(endorsements): scholar-controlled endorsements, staff-only verification (ADR 0043, Prompt B); migration 20261024090000 applied by Release 2026-10-26 (#129) (6305e46)`
+- `feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)`
+- `chore(telemetry): update session timestamp in telemetry report (aaa31db)`
+- `chore(telemetry): record post-merge session telemetry and governance ledger updates (db2fd0a)`
+- `feat(sec): embedded security guardrails, 100% forced RLS, cryptographic origin checks (COUNCIL-2026-012/013, DIR-2026-EMBEDDED-SEC-001) (#136) (2e60f70)`
 
 **Next Engineering Steps:**
 - 🎯 Owner check: run one broad matcher search on production and read the ai_gateway_call log line in Vercel logs (finish_reason 'stop', completion_tokens < 4000) (PR #131/#132 are live; the cap is unproven against live traffic)
@@ -305,9 +305,9 @@
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
 - **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-10-21T19:10:30.854737+00:00`
+- **Session Timestamp:** `2026-11-08T17:40:31.041213+00:00`
 - **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Automated post-test edge telemetry synchronization for faithfull-scholars.
+- **Session Work Summary:** Automated Council Directives Enforcement
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |

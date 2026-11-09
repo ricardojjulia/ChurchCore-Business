@@ -4,14 +4,14 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
-> **Last Synced from Telemetry:** 2026-11-04 19:24:06 UTC
+> **Last Synced from Telemetry:** 2026-11-09 18:48:44 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement
-*Live Production Architecture • 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0 • November 04, 2026*
+*Live Production Architecture • 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0 • November 09, 2026*
 
 - Target Buyers: Seminary President / Academic Provost, Theological Faculty Search Committee Chair
 - Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering
@@ -40,8 +40,8 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.1.0 Live)*
 
-- Latest Feature Delivered: feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)
-- Ecosystem Hardening: feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)
+- Latest Feature Delivered: feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)
+- Ecosystem Hardening: chore(telemetry): update session timestamp in telemetry report (aaa31db)
 - Reliability Proof: [2026-10-17] Nested the preflight IF (PR #88, before any release).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
@@ -87,10 +87,10 @@ Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matc
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
 Recent Engineering Delivery & Milestones:
-- feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)
-- feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)
-- feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)
-- feat(endorsements): scholar-controlled endorsements, staff-only verification (ADR 0043, Prompt B); migration 20261024090000 applied by Release 2026-10-26 (#129) (6305e46)
+- feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)
+- chore(telemetry): update session timestamp in telemetry report (aaa31db)
+- chore(telemetry): record post-merge session telemetry and governance ledger updates (db2fd0a)
+- feat(sec): embedded security guardrails, 100% forced RLS, cryptographic origin checks (COUNCIL-2026-012/013, DIR-2026-EMBEDDED-SEC-001) (#136) (2e60f70)
 </context>
 
 <instructions>
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 - Live Site: https://www.faithgrid.io
 - Pricing: $2,500–$15,000/yr per Institution
-- Latest Features: feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82), feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c), feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)
+- Latest Features: feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540), chore(telemetry): update session timestamp in telemetry report (aaa31db), chore(telemetry): record post-merge session telemetry and governance ledger updates (db2fd0a)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +148,9 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(i18n): COUNCIL-2026-011 localization governance, audit:i18n CI gate, Spanish 'endosos' (ADR 0044); tooling and CI only (#133) (5837a82)
-- feat(ai): COUNCIL-2026-010 REQ-010-02/03 model evaluator, token cap and usage log (ADR 0041 amendment) (#132) (6241d2c)
-- feat(ai): Prompt C grounded matcher, fail-closed rate limit (ADR 0041/0026 amendments, CR33 findings 4 and 5) (#131) (9a52303)
+- feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)
+- chore(telemetry): update session timestamp in telemetry report (aaa31db)
+- chore(telemetry): record post-merge session telemetry and governance ledger updates (db2fd0a)
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)
