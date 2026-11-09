@@ -4,7 +4,7 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-11-09 18:48:44 UTC
+> **Last Synced from Telemetry:** 2026-11-09 18:49:57 UTC
 
 ---
 
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.10.0 Live)*
 
-- Latest Feature Delivered: feat(a11y,docs): implement REQ-002-02 WCAG AAA contrast audit, RLS forward refinements, and doc updates (4247275)
+- Latest Feature Delivered: feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75)
 - Ecosystem Hardening: feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)
-- Reliability Proof: [2026-10-22] Additive migration 20261022160000_grant_admissions_conversion_rls_privileges.sql provisions table grants to anon and authenticated roles for admissions, conversion, audit, and LLIS tables.
+- Reliability Proof: [2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,7 +87,7 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
-- feat(a11y,docs): implement REQ-002-02 WCAG AAA contrast audit, RLS forward refinements, and doc updates (4247275)
+- feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75)
 - feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)
 - feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)
 - feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: feat(a11y,docs): implement REQ-002-02 WCAG AAA contrast audit, RLS forward refinements, and doc updates (4247275), feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb), feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)
+- Latest Features: feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75), feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb), feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,7 +148,7 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(a11y,docs): implement REQ-002-02 WCAG AAA contrast audit, RLS forward refinements, and doc updates (4247275)
+- feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75)
 - feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)
 - feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)
 - High-Performance Database Architecture

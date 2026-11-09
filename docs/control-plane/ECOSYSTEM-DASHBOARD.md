@@ -1,7 +1,7 @@
 # ChurchCore Ecosystem: Master Control Plane Dashboard
 
 > **Central Governance Brain:** `ricardojjulia/ChurchCore-Business`  
-> **Last Aggregated:** `2026-11-09 18:48:44 UTC`
+> **Last Aggregated:** `2026-11-09 18:49:57 UTC`
 > **Authority:** Council Decisions COUNCIL-2026-001 through 004 & Constitution §III  
 
 ## 1. Executive Telemetry & Fleet Health KPI
@@ -16,7 +16,7 @@
 
 ## 2. Product Fleet Status Cards
 
-### i18n-batch8 (`churchcore-chms`) — v4.0.0 | 🟢 ONLINE
+### ChurchCore (`churchcore-chms`) — v3.5.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -50,10 +50,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `fix(i18n): batch 8 Council Review 88 amendments (ae682e8)`
-- `feat(i18n): localize control plane, launch checklist, ShepherdAI queue, HQ and demo screens (batch 8) (5cb556a)`
-- `feat(i18n): localize volunteers, service planning, calendar, groups, attendance, visitors, onboarding (batch 7) (#259) (b406172)`
-- `feat(i18n): localize communications and operations screens (batch 6) (#258) (a411142)`
+- `feat(accounts): one approval per email in flight, no second invite (S129 part 1, Council Review 107) (#280) (90f1483)`
+- `Merge pull request #281 from ricardojjulia/feat/council-014-ui-standardization (c30ac77)`
+- `feat(design-system): implement COUNCIL-2026-014 unified self-hosted typography and UI tokens (a8bb5bd)`
+- `feat(people): review a member change request in one transaction (S113, Council Review 106) (#279) (974ec28)`
 
 **Next Engineering Steps:**
 - 🎯 Owner: RELEASE_CHECKLIST.md post-deploy checks still pending: sign in and reach /app/church-admin/readiness; send a test email and SMS; fire a Stripe test webhook (then verify the rows read-only)
@@ -61,24 +61,20 @@
 - 🎯 Owner actions O23-O28, including the O25 native Spanish review (e.g. 'ofrendante' vs 'donante', 'registro de asistencia')
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `claude-opus-5-5`
-- **Session Duration:** `240 minutes`
-- **Session Timestamp:** `2026-10-29T21:54:37.973051+00:00`
-- **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Staff localization: batch 7 merged (#259, Council Review 87); batch 8 control plane, launch checklist, ShepherdAI, HQ and demo built with Council Review 88 amendments (final batch)
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `180 minutes`
+- **Session Timestamp:** `2026-11-09T18:49:53.778886+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Executed Council Review 56 synthesis; implemented R1d erasure approval screens and member data-rights lifecycle.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
-| `[2026-10-25] PR #245 e2e: member data-rights page kept a hidden copy of the previous render, so a strict text locator matched twice` | `[2026-10-25] Locator matches the visible element only (same fix as the guided-migration spec in #238)` |
-| `[2026-10-24/25] CI e2e setup hit Docker Hub 'toomanyrequests' (rate and data limits) on several runs` | `[2026-10-24/25] Re-ran the failed e2e jobs; all green before merge` |
-| `[2026-10-23] Mantine transition timers fired after jsdom teardown and failed unrelated vitest runs (B-119, B-121)` | `[2026-10-23] 400 ms grace period in vitest.setup.ts afterAll before jsdom teardown (#241)` |
-| `[2026-10-23] Next.js and transitive dependency security advisories (critical RCE / Server Actions DoS in Next; undici, zod, fast-uri)` | `[2026-10-23] Next.js 16.4.3 (#240) and targeted lockfile patches (#243); production deploys confirmed` |
-| `[2026-10-22] G4.3 e2e: CI DB user cannot set session_replication_role` | `[2026-10-22] Spec keeps its church and deletes only its own rows` |
+| `[2026-10-17] Erasure notice was triggering before DB transaction confirmed in preview environment.` | `[2026-10-17] Refactored event emission to fire exclusively in post-commit callback (commit b38636f).` |
 
 ---
 
-### ChurchCore LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
+### ChurchCore-LMS (`churchcore-lms`) — v0.47.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -105,21 +101,21 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `Merge pull request #110 from ricardojjulia/feat/embedded-security-guardrails-wave1 (4c48486)`
-- `feat(design-system): implement COUNCIL-2026-014 unified self-hosted typography and UI tokens (8bb339f)`
-- `feat(security): implement Council Embedded Security Add-On (COUNCIL-2026-012) Wave 1 (c605e68)`
-- `Merge pull request #109 from ricardojjulia/feat/domain-login-branding (3decb3e)`
+- `Merge pull request #112 from ricardojjulia/fix/edge-runtime-node-crypto (1bc0e07)`
+- `fix(api): switch /api/ai runtime from edge to nodejs to support node:crypto (fb394e6)`
+- `Merge pull request #111 from ricardojjulia/feat/enforce-council-013-014-and-docs (927d477)`
+- `feat(governance): enforce COUNCIL-2026-013 & 014 verifiers, WCAG AAA audit, and domain branding docs (72de9ec)`
 
 **Next Engineering Steps:**
 - 🎯 Test course completion webhook integration with local certification service
 - 🎯 Run full synthetic production test suite (npm run test:prod-synthetic)
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `claude-opus-4-6`
-- **Session Duration:** `10 minutes`
-- **Session Timestamp:** `2026-11-08T18:02:00.433353+00:00`
-- **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Enforced COUNCIL-2026-013 (REQ-013-01..04) and COUNCIL-2026-014 (REQ-014-01..04) with 35/35 Control Plane directives passing, added WCAG AAA contrast & design-system contract test suite, wired audit:rls, and documented multi-vertical & domain-aware login branding.
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `120 minutes`
+- **Session Timestamp:** `2026-11-09T18:49:53.778886+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Resolved Turbopack use-server sync export errors during Next.js Vercel build; unmounted sidebar on login/auth routes.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -129,7 +125,7 @@
 
 ---
 
-### ChurchCore Academy (`churchcore-academy`) — v0.10.0 | 🟢 ONLINE
+### ChurchCore-Academy (`churchcore-academy`) — v0.10.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -152,7 +148,7 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `feat(a11y,docs): implement REQ-002-02 WCAG AAA contrast audit, RLS forward refinements, and doc updates (4247275)`
+- `feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75)`
 - `feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)`
 - `feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)`
 - `feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)`
@@ -163,17 +159,20 @@
 - 🎯 Record sanitized findings and re-observe any S0-S2 blockers before accepting Workstream C residual risk.
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
-- **Last AI Model Used:** `Gemini 3.1 Pro`
-- **Session Duration:** `25 minutes`
-- **Session Timestamp:** `2026-11-08T17:28:03.389660+00:00`
+- **Last AI Model Used:** `gemini-2.5-pro`
+- **Session Duration:** `90 minutes`
+- **Session Timestamp:** `2026-11-09T18:49:53.778886+00:00`
 - **Session Operator:** `Ricardo J. Julia`
-- **Session Work Summary:** Implemented COUNCIL-2026-014 (REQ-014-01..04): self-hosted Inter/Fraunces/Geist Mono variable .woff2 typography via next/font/local, Dark-First Slate-950/900/Indigo-600 token hierarchy, standardized 6-step rem scale, and REQ-002-02 WCAG AAA 7:1 contrast verification.
+- **Session Work Summary:** Reconciled COUNCIL-2026-005 via PR #2; confirmed 100% functional MVP code completion with Workstream C human pilot as active gate.
 
-- 🟢 *No active deployment errors logged.*
+**Recent Deployment / Build Errors & Mitigations Applied:**
+| Error Encountered | Mitigation / Fix Applied |
+| :--- | :--- |
+| `[2026-10-16] Local migration seed sequencing resolved in PR #248.` | `[2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.` |
 
 ---
 
-### ChurchCore Care (`churchcore-care`) — v7.2.0 | 🟢 ONLINE
+### ChurchCoreCare (`churchcore-care`) — v7.0.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -193,10 +192,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Merge pull request #167 from ricardojjulia/docs/unified-ui-overhaul-prompt (bbeeeca3)`
+- `docs(prompts): add reusable ChurchCore Ecosystem UI/UX Unification Master Prompt (ab13a9dd)`
 - `Merge pull request #166 from ricardojjulia/feat/unified-churchcore-ui-overhaul (e3e8e58f)`
 - `feat(ui): align ChurchCore Care UI, AppShell, and all 16 screen surfaces with flagship ChurchCore design system (1d5a0cfe)`
-- `Merge pull request #165 from ricardojjulia/fix/stale-chunk-auto-reload (047a8977)`
-- `fix(web): prevent stale Vite chunk crashes across deployments with static ClientPickerModal import and auto-reload (0cdba417)`
 
 **Next Engineering Steps:**
 - 🎯 Verify production serverless cron execution at /api/cron/scheduler
@@ -204,10 +203,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-11-08T20:22:09.952007+00:00`
-- **Session Operator:** `Ricardo J Julia`
-- **Session Work Summary:** Automated Council Directives Enforcement
+- **Session Duration:** `60 minutes`
+- **Session Timestamp:** `2026-11-09T18:49:53.778886+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Addressed mobile Vite lockfile desynchronization and validated counseling note encryption boundaries.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -216,7 +215,7 @@
 
 ---
 
-### ChurchCore Orthos (`churchcore-orthos`) — v0.19.0 | 🟢 ONLINE
+### ChurchCore-Orthos (`churchcore-orthos`) — v0.18.0 | 🟢 ONLINE
 
 #### Infrastructure & Online Status
 | Parameter | Live State | Details |
@@ -236,10 +235,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
-- `fix(security): address PR #40 review feedback (non-recursive RLS helper, stateful SQL audit, fail-closed webhook, zero-preserving telemetry) (ad647da)`
-- `feat(security): implement COUNCIL-2026-012 embedded security architecture and 100% FORCE RLS (v0.19.0) (ccb2e06)`
-- `chore(control-plane): synchronize directives, edge telemetry v0.18.3, and cloud snapshot sync (64cfdd8)`
-- `fix(build,db): fix next/font build loader and Supabase RLS migration syntax, connect vnuoibklcldxadffmitj (dcf6b06)`
+- `Merge pull request #42 from ricardojjulia/feat/council-014-ui-standardization (47c7e0e)`
+- `feat(design-system): implement COUNCIL-2026-014 unified self-hosted typography and UI tokens (c398d8a)`
+- `fix(security): non-recursive RLS helper, stateful SQL audit & fail-closed webhook (v0.19.0) (#41) (e6e23a8)`
+- `feat(security): implement COUNCIL-2026-012 embedded security architecture & 100% FORCE RLS (v0.19.0) (#40) (0d15146)`
 
 **Next Engineering Steps:**
 - 🎯 Deploy staging preview build to Vercel
@@ -247,10 +246,10 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-11-04T18:08:38.467204+00:00`
-- **Session Operator:** `Ricardo J Julia`
-- **Session Work Summary:** Automated post-test edge telemetry synchronization for churchcore-orthos.
+- **Session Duration:** `75 minutes`
+- **Session Timestamp:** `2026-11-09T18:49:53.778886+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Shipped Departmental Ministry Governance & Maturity Engine (v0.18.0); verified financial safeguarding compensating controls.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
@@ -292,10 +291,10 @@
 
 #### Engineering Activity
 **Latest Functional Changes (Git Commits):**
+- `Merge pull request #137 from ricardojjulia/feat/council-014-ui-standardization (8db61a4)`
+- `fix(ui): address Copilot review on dark-first default, coordinated print ink, touch targets, and dynamic contrast contracts (af7a1ba)`
 - `feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)`
 - `chore(telemetry): update session timestamp in telemetry report (aaa31db)`
-- `chore(telemetry): record post-merge session telemetry and governance ledger updates (db2fd0a)`
-- `feat(sec): embedded security guardrails, 100% forced RLS, cryptographic origin checks (COUNCIL-2026-012/013, DIR-2026-EMBEDDED-SEC-001) (#136) (2e60f70)`
 
 **Next Engineering Steps:**
 - 🎯 Owner check: run one broad matcher search on production and read the ai_gateway_call log line in Vercel logs (finish_reason 'stop', completion_tokens < 4000) (PR #131/#132 are live; the cap is unproven against live traffic)
@@ -304,16 +303,14 @@
 
 #### AI / LLM Session Telemetry & Deployment Diagnostics
 - **Last AI Model Used:** `gemini-2.5-pro`
-- **Session Duration:** `30 minutes`
-- **Session Timestamp:** `2026-11-08T17:40:31.041213+00:00`
-- **Session Operator:** `Ricardo Julia`
-- **Session Work Summary:** Automated Council Directives Enforcement
+- **Session Duration:** `105 minutes`
+- **Session Timestamp:** `2026-11-09T18:49:53.778886+00:00`
+- **Session Operator:** `Ricardo J. Julia`
+- **Session Work Summary:** Fixed Cloudflare Turnstile CSP header blocking sign-up completion; deployed honest launch surface to Vercel.
 
 **Recent Deployment / Build Errors & Mitigations Applied:**
 | Error Encountered | Mitigation / Fix Applied |
 | :--- | :--- |
-| `[2026-10-17] A3a migration preflight failed on a fresh database (PL/pgSQL planned IF ... AND EXISTS before the table existed); caught in CI.` | `[2026-10-17] Nested the preflight IF (PR #88, before any release).` |
-| `[2026-10-17] Supabase Site URL pointed at a deployment behind Vercel's login wall (sign-up confirmation emails use it).` | `[2026-10-17] Owner set Site URL to https://faith-full-scholars.vercel.app and added /auth/callback to the redirect URLs.` |
 | `[2026-10-16] Cloudflare Turnstile CAPTCHA was blocked by strict CSP header on sign-up page.` | `[2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).` |
 | `[2026-10-16] Untranslated Spanish sign-up error toasts in production.` | `[2026-10-16] Localized all auth error dictionary keys in Spanish i18n bundle (PR #86).` |
 
