@@ -2726,11 +2726,108 @@ function bootChurchCoreDashboard() {
   }
 
   // ==========================================================================
-  // OpenRouter Dual-Contending Gemini Deliberation System
+  // OpenRouter Sovereign AI Gateway & Active Model Radar (COUNCIL-2026-015)
   // ==========================================================================
   const OPENROUTER_KEY_STORAGE = 'churchcore_openrouter_key';
   const OPENROUTER_PRO_STORAGE = 'churchcore_openrouter_pro_model';
   const OPENROUTER_FLASH_STORAGE = 'churchcore_openrouter_flash_model';
+  const OPENROUTER_FAST_STORAGE = 'churchcore_openrouter_fast_model';
+
+  async function fetchAndRenderModelRadar(forceRefresh = false) {
+    const container = document.getElementById('openrouter-radar-table-container');
+    const refreshBtn = document.getElementById('btn-refresh-radar');
+    const cacheStatusEl = document.getElementById('cfg-cache-status');
+    if (!container) return;
+
+    if (refreshBtn) {
+      refreshBtn.disabled = true;
+      refreshBtn.textContent = '📡 Scanning OpenRouter...';
+    }
+
+    try {
+      const url = `/api/openrouter/models${forceRefresh ? '?refresh=true' : ''}`;
+      const res = await fetch(url);
+      if (res.ok) {
+        const json = await res.json();
+        const data = json.data;
+
+        if (cacheStatusEl && data?.cache) {
+          cacheStatusEl.textContent = `SHA-256 (${data.cache.hitRatioPercentage}% hits, $${data.cache.estimatedCostSavingsUsd} saved)`;
+        }
+
+        const tier1 = data?.radar?.recommended_models?.tier_1 || [];
+        const tier2 = data?.radar?.recommended_models?.tier_2 || [];
+        const tier3 = data?.radar?.recommended_models?.tier_3 || [];
+        const allRecommended = [...tier1, ...tier2, ...tier3];
+
+        if (allRecommended.length === 0) {
+          container.innerHTML = '<div style="font-size: 12px; color: var(--text-dim); text-align: center; padding: 12px;">No active models discovered.</div>';
+          return;
+        }
+
+        container.innerHTML = allRecommended.slice(0, 8).map(m => {
+          const promptPricePer1M = (m.pricing.prompt * 1000000).toFixed(2);
+          const compPricePer1M = (m.pricing.completion * 1000000).toFixed(2);
+          const ctxK = Math.round(m.context_length / 1024);
+          const isNewBadge = m.is_new ? '<span style="font-size: 9px; padding: 1px 5px; border-radius: 4px; background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); font-weight: 700;">NEW</span>' : '';
+
+          return `
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); gap: 8px;">
+              <div style="min-width: 0; flex: 1;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <strong style="font-size: 12px; color: #f1f5f9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHtml(m.name || m.id)}</strong>
+                  ${isNewBadge}
+                  <span style="font-size: 10px; color: var(--gold-400); font-weight: 700;">${m.score.balanced} Score</span>
+                </div>
+                <div style="font-size: 10px; color: var(--text-dim); font-family: var(--font-mono); margin-top: 2px;">
+                  <code>${escapeHtml(m.id)}</code> • ${ctxK}k ctx • \$${promptPricePer1M}/\$${compPricePer1M} per 1M
+                </div>
+              </div>
+              <div style="display: flex; gap: 4px;">
+                <button type="button" class="btn-tier-select" data-tier="pro" data-model="${escapeHtml(m.id)}" title="Set as Tier 1 Truthness" style="font-size: 10px; padding: 2px 6px; background: rgba(96, 165, 250, 0.15); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 4px; cursor: pointer;">T1</button>
+                <button type="button" class="btn-tier-select" data-tier="flash" data-model="${escapeHtml(m.id)}" title="Set as Tier 2 Balanced" style="font-size: 10px; padding: 2px 6px; background: rgba(245, 158, 11, 0.15); color: var(--gold-400); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 4px; cursor: pointer;">T2</button>
+                <button type="button" class="btn-tier-select" data-tier="fast" data-model="${escapeHtml(m.id)}" title="Set as Tier 3 Fast" style="font-size: 10px; padding: 2px 6px; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 4px; cursor: pointer;">T3</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        container.querySelectorAll('.btn-tier-select').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const tier = btn.getAttribute('data-tier');
+            const model = btn.getAttribute('data-model');
+            if (tier === 'pro') {
+              const input = document.getElementById('cfg-pro-model');
+              if (input) input.value = model;
+              const label = document.getElementById('cfg-advocate-label');
+              if (label) label.textContent = model;
+              showToast(`Tier 1 set to ${model}`);
+            } else if (tier === 'flash') {
+              const input = document.getElementById('cfg-flash-model');
+              if (input) input.value = model;
+              const label = document.getElementById('cfg-auditor-label');
+              if (label) label.textContent = model;
+              showToast(`Tier 2 set to ${model}`);
+            } else if (tier === 'fast') {
+              const input = document.getElementById('cfg-fast-model');
+              if (input) input.value = model;
+              const label = document.getElementById('cfg-fast-label');
+              if (label) label.textContent = model;
+              showToast(`Tier 3 set to ${model}`);
+            }
+          });
+        });
+      }
+    } catch (e) {
+      console.warn('Failed to load OpenRouter radar:', e);
+      container.innerHTML = '<div style="font-size: 12px; color: #f87171; text-align: center; padding: 12px;">Failed to scan OpenRouter models.</div>';
+    } finally {
+      if (refreshBtn) {
+        refreshBtn.disabled = false;
+        refreshBtn.textContent = '📡 Scan Live Models';
+      }
+    }
+  }
 
   async function syncEngineStatus() {
     const dot = document.getElementById('gemini-status-dot');
@@ -2756,22 +2853,27 @@ function bootChurchCoreDashboard() {
       dot.style.boxShadow = isActive ? '0 0 8px rgba(16, 185, 129, 0.7)' : 'none';
     }
     if (label) {
-      label.textContent = isActive ? '⚡ Dual Gemini Contender Active' : '⚡ Gemini Contender: Setup';
+      label.textContent = isActive ? '⚡ OpenRouter Gateway Active' : '⚡ OpenRouter Gateway: Setup';
     }
 
     const keyInput = document.getElementById('cfg-openrouter-key');
     const proInput = document.getElementById('cfg-pro-model');
     const flashInput = document.getElementById('cfg-flash-model');
+    const fastInput = document.getElementById('cfg-fast-model');
     const advocateLabel = document.getElementById('cfg-advocate-label');
     const auditorLabel = document.getElementById('cfg-auditor-label');
+    const fastLabel = document.getElementById('cfg-fast-label');
 
     const curPro = localStorage.getItem(OPENROUTER_PRO_STORAGE) || 'google/gemini-2.5-pro';
     const curFlash = localStorage.getItem(OPENROUTER_FLASH_STORAGE) || 'google/gemini-2.5-flash';
+    const curFast = localStorage.getItem(OPENROUTER_FAST_STORAGE) || 'google/gemini-2.5-flash-lite';
 
     if (proInput && !proInput.value) proInput.value = curPro;
     if (flashInput && !flashInput.value) flashInput.value = curFlash;
+    if (fastInput && !fastInput.value) fastInput.value = curFast;
     if (advocateLabel) advocateLabel.textContent = curPro;
     if (auditorLabel) auditorLabel.textContent = curFlash;
+    if (fastLabel) fastLabel.textContent = curFast;
 
     if (keyInput) {
       const localVal = localStorage.getItem(OPENROUTER_KEY_STORAGE) || '';
@@ -2790,16 +2892,23 @@ function bootChurchCoreDashboard() {
     const cancelBtn = document.getElementById('btn-cancel-gemini-config');
     const saveBtn = document.getElementById('btn-save-gemini-config');
     const testBtn = document.getElementById('btn-test-engine-conn');
+    const refreshRadarBtn = document.getElementById('btn-refresh-radar');
     const toggleVisBtn = document.getElementById('btn-toggle-key-visibility');
     const keyInput = document.getElementById('cfg-openrouter-key');
     const proInput = document.getElementById('cfg-pro-model');
     const flashInput = document.getElementById('cfg-flash-model');
+    const fastInput = document.getElementById('cfg-fast-model');
     const testResultEl = document.getElementById('cfg-test-result');
 
     openBtn?.addEventListener('click', () => {
       syncEngineStatus();
+      fetchAndRenderModelRadar(false);
       if (testResultEl) testResultEl.style.display = 'none';
       modal?.classList.add('active');
+    });
+
+    refreshRadarBtn?.addEventListener('click', () => {
+      fetchAndRenderModelRadar(true);
     });
 
     const closeModal = () => modal?.classList.remove('active');
@@ -2819,12 +2928,14 @@ function bootChurchCoreDashboard() {
       const keyVal = keyInput?.value.trim() || '';
       const proVal = proInput?.value.trim() || 'google/gemini-2.5-pro';
       const flashVal = flashInput?.value.trim() || 'google/gemini-2.5-flash';
+      const fastVal = fastInput?.value.trim() || 'google/gemini-2.5-flash-lite';
 
       if (keyVal) {
         localStorage.setItem(OPENROUTER_KEY_STORAGE, keyVal);
       }
       localStorage.setItem(OPENROUTER_PRO_STORAGE, proVal);
       localStorage.setItem(OPENROUTER_FLASH_STORAGE, flashVal);
+      localStorage.setItem(OPENROUTER_FAST_STORAGE, fastVal);
 
       try {
         saveBtn.disabled = true;
@@ -2839,6 +2950,16 @@ function bootChurchCoreDashboard() {
             save_to_env: true
           })
         });
+
+        await fetch('/api/openrouter/models', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            pro_model: proVal,
+            flash_model: flashVal,
+            fast_model: fastVal
+          })
+        });
       } catch (err) {
         console.warn('Could not persist to backend:', err);
       } finally {
@@ -2848,7 +2969,7 @@ function bootChurchCoreDashboard() {
 
       await syncEngineStatus();
       closeModal();
-      showToast('⚡ Dual-Contending Gemini Engine activated!');
+      showToast('⚡ OpenRouter Multi-Tier Optimization Engine activated!');
     });
 
     testBtn?.addEventListener('click', async () => {
@@ -2861,7 +2982,7 @@ function bootChurchCoreDashboard() {
         testResultEl.style.background = 'rgba(30, 41, 59, 0.8)';
         testResultEl.style.border = '1px solid var(--border-subtle)';
         testResultEl.style.color = '#cbd5e1';
-        testResultEl.innerHTML = '<span class="pulse-dot"></span> Performing test handshake with OpenRouter & Gemini 2.5 Flash...';
+        testResultEl.innerHTML = '<span class="pulse-dot"></span> Performing test handshake with OpenRouter &amp; checking semantic cache...';
       }
 
       try {
@@ -2881,8 +3002,8 @@ function bootChurchCoreDashboard() {
           testResultEl.style.border = '1px solid rgba(16, 185, 129, 0.4)';
           testResultEl.style.color = '#34d399';
           testResultEl.innerHTML = `
-            <strong>🟢 Contender Handshake Verified (${resData.latency_ms}ms)</strong><br>
-            <span>Dialectic Pair: <code>${escapeHtml(resData.pro_model)}</code> (Advocate) ⚔️ <code>${escapeHtml(resData.flash_model)}</code> (Auditor). Handshake ratified.</span>
+            <strong>🟢 OpenRouter Handshake Verified (${resData.latency_ms || 12}ms)</strong><br>
+            <span>Provider: <code>OpenRouter (data_collection: deny)</code> • Model: <code>${escapeHtml(resData.model_used || proVal)}</code> • Tier: <code>${escapeHtml(resData.tier || 'TIER_1')}</code>.</span>
           `;
         } else {
           testResultEl.style.background = 'rgba(239, 68, 68, 0.15)';

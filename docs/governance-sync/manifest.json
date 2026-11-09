@@ -515,6 +515,47 @@
           "verification": "Automated contrast and design-system contract tests pass."
         }
       ]
+    },
+    {
+      "id": "COUNCIL-2026-015",
+      "title": "Establishment of OpenRouter as Default Sovereign Fleet AI Provider with Multi-Dimensional Optimization, Prompt Caching & Active Model Radar",
+      "ratification_date": "2026-11-09",
+      "status": "RATIFIED",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-015.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-015-01",
+          "title": "OpenRouter Default Fleet AI Provider Standard",
+          "description": "Route all generative AI workloads through OpenRouter with Bearer auth, HTTP-Referer, and mandatory Zero Data Retention (provider.data_collection: deny).",
+          "verification": "All AI actions invoke OpenRouter endpoint with data_collection: deny."
+        },
+        {
+          "req_id": "REQ-015-02",
+          "title": "Multi-Dimensional Balanced Routing Algorithm",
+          "description": "Dynamically route workloads across Tier 1 (Truthness), Tier 2 (Balanced), and Tier 3 (Fast) based on multi-dimensional accuracy vs usability scoring.",
+          "verification": "Task evaluation assigns appropriate model tier with fallback cascade."
+        },
+        {
+          "req_id": "REQ-015-03",
+          "title": "SHA-256 Prompt Caching & Context Compaction",
+          "description": "Implement in-memory SHA-256 prompt caching with task-specific TTLs and context compaction to return identical queries in <5ms with zero token cost.",
+          "verification": "Repeated inquiries return from semantic cache with cacheHit: true and 0 latency."
+        },
+        {
+          "req_id": "REQ-015-04",
+          "title": "Active OpenRouter Model Radar & Feature Discovery Engine",
+          "description": "Continuously evaluate live OpenRouter models via API, rank balanced fitness, and expose active discovery radar via /api/openrouter/models.",
+          "verification": "/api/openrouter/models returns catalog with recommended models and newly discovered flags."
+        }
+      ]
     }
   ]
 }
