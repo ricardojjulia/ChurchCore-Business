@@ -4,14 +4,14 @@
 > **Scale:** 152 Relational Tables • 105 Application Routes • v0.10.0  
 > **Target Buyers:** Head of School / Academy Principal, Academic Dean / Registrar, Admissions Director, School Board Chairman  
 > **Live URL:** [https://www.churchcoreacademy.io](https://www.churchcoreacademy.io)  
-> **Last Synced from Telemetry:** 2026-11-09 18:49:58 UTC
+> **Last Synced from Telemetry:** 2026-11-10 18:15:40 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: ChurchCore Academy: OneRoster 1.2 School Information System for Christian Day Schools & K-12 Academies
-*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • November 09, 2026*
+*Live Production Architecture • 152 Relational Tables • 105 Application Routes • v0.10.0 • November 10, 2026*
 
 - Target Buyers: Head of School / Academy Principal, Academic Dean / Registrar
 - Strategic Replacement: Displaces FACTS / RenWeb + Blackbaud K-12 + Alma + PowerSchool
@@ -38,11 +38,11 @@
 > 🗣️ **Speaker Script:** Showcase the actual live application at https://www.churchcoreacademy.io. Highlight that ChurchCore respects the sacred trust of church data by giving every church total database sovereignty.
 
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
-*Continuous High-Velocity Delivery (0.10.0 Live)*
+*Continuous High-Velocity Delivery (v1.0.0 Live)*
 
-- Latest Feature Delivered: feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75)
-- Ecosystem Hardening: feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)
-- Reliability Proof: [2026-10-16] Ordered seed insertion sequence and added cascading transaction locks in db:seed:pilot.
+- Latest Feature Delivered: Continuous architectural refinement
+- Ecosystem Hardening: 100% Row-Level Security verification
+- Reliability Proof: Automated CI/CD validation and zero-downtime database migrations.
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,10 +87,7 @@ Constitutional Invariant: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pil
 Commercial Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
 
 Recent Engineering Delivery & Milestones:
-- feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75)
-- feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)
-- feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)
-- feat(sis): competitive expansion and dual institutional orientation architecture (#259) (f54937d)
+- Continuous verified production releases
 </context>
 
 <instructions>
@@ -116,7 +113,7 @@ Create a high-converting, 6-slide executive pitch deck for **ChurchCore Academy*
 - Core Value: OneRoster 1.2 Compliant Gradebooks, Colegio Biblos Pilot Schema & Admissions RLS
 - Live Site: https://www.churchcoreacademy.io
 - Pricing: $2,400–$25,000/yr (Based on Student Enrollment)
-- Latest Features: feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75), feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb), feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)
+- Latest Features: Active Next.js Vercel Production Build
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,9 +145,7 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- feat(ui,a11y,docs): implement COUNCIL-2026-014 unified design system, REQ-002-02 WCAG AAA audit, and RLS refinements (#263) (ff11a75)
-- feat(security): implement COUNCIL-2026-013 security verification standard and RLS refinements (#262) (9e92ceb)
-- feat(security): implement COUNCIL-2026-012 embedded security guardrails, 100% forced RLS, and domain-aware login branding (#261) (0669d3f)
+- Production-ready release
 - High-Performance Database Architecture
 
 Slide 5: Why We Win (The Moat)

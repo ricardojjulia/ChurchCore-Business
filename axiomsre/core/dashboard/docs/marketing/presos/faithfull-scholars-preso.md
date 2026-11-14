@@ -4,14 +4,14 @@
 > **Scale:** 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0  
 > **Target Buyers:** Seminary President / Academic Provost, Theological Faculty Search Committee Chair, Theological Association Director (e.g. AETH, ATS), Doctoral Program Director  
 > **Live URL:** [https://www.faithgrid.io](https://www.faithgrid.io)  
-> **Last Synced from Telemetry:** 2026-11-09 18:49:57 UTC
+> **Last Synced from Telemetry:** 2026-11-10 18:15:40 UTC
 
 ---
 
 ## 🎞️ 6-Slide Executive Presentation Deck
 
 ### Slide 1: FaithFull Scholars: Theological Higher-Education Network, Confessional Search & Faculty Placement
-*Live Production Architecture • 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0 • November 09, 2026*
+*Live Production Architecture • 48 Relational Tables • 53 Application Routes • pgvector Semantic Search • v0.1.0 • November 10, 2026*
 
 - Target Buyers: Seminary President / Academic Provost, Theological Faculty Search Committee Chair
 - Strategic Replacement: Displaces Chronicle of Higher Education + HigherEdJobs + Academia.edu with confessional filtering
@@ -40,9 +40,9 @@
 ### Slide 4: Fresh Off the Press: Latest Engineering Milestones
 *Continuous High-Velocity Delivery (0.1.0 Live)*
 
-- Latest Feature Delivered: Merge pull request #137 from ricardojjulia/feat/council-014-ui-standardization (8db61a4)
+- Latest Feature Delivered: fix(ui): configure class-based dark variant, broaden print background reset, and harden contract validator against commented/skipped tests (954fbea)
 - Ecosystem Hardening: fix(ui): address Copilot review on dark-first default, coordinated print ink, touch targets, and dynamic contrast contracts (af7a1ba)
-- Reliability Proof: [2026-10-16] Added challenges.cloudflare.com to vercel.json connect-src and script-src directives (PR #85).
+- Reliability Proof: [2026-10-17] Nested the preflight IF (PR #88, before any release).
 
 > 🗣️ **Speaker Script:** This slide proves to the buyer or board that our software is actively maintained, battle-tested, and rapidly evolving. We are not selling vaporware; we are deploying verified code weekly.
 
@@ -87,7 +87,7 @@ Constitutional Invariant: Confessional Credo Alignment & AI Semantic Vector Matc
 Commercial Pricing: $2,500–$15,000/yr per Institution
 
 Recent Engineering Delivery & Milestones:
-- Merge pull request #137 from ricardojjulia/feat/council-014-ui-standardization (8db61a4)
+- fix(ui): configure class-based dark variant, broaden print background reset, and harden contract validator against commented/skipped tests (954fbea)
 - fix(ui): address Copilot review on dark-first default, coordinated print ink, touch targets, and dynamic contrast contracts (af7a1ba)
 - feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)
 - chore(telemetry): update session timestamp in telemetry report (aaa31db)
@@ -116,7 +116,7 @@ Create a high-converting, 6-slide executive pitch deck for **FaithFull Scholars*
 - Core Value: Confessional Credo Alignment & AI Semantic Vector Matching for Theological Specialties
 - Live Site: https://www.faithgrid.io
 - Pricing: $2,500–$15,000/yr per Institution
-- Latest Features: Merge pull request #137 from ricardojjulia/feat/council-014-ui-standardization (8db61a4), fix(ui): address Copilot review on dark-first default, coordinated print ink, touch targets, and dynamic contrast contracts (af7a1ba), feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)
+- Latest Features: fix(ui): configure class-based dark variant, broaden print background reset, and harden contract validator against commented/skipped tests (954fbea), fix(ui): address Copilot review on dark-first default, coordinated print ink, touch targets, and dynamic contrast contracts (af7a1ba), feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)
 
 **Output Requirements:**
 1. Generate Slide 1 to Slide 6 with:
@@ -148,7 +148,7 @@ Slide 3: The Sovereign ChurchCore Solution
 - Ultra-low Latency on Vercel Global Edge
 
 Slide 4: Verified Capabilities & Recent Milestones
-- Merge pull request #137 from ricardojjulia/feat/council-014-ui-standardization (8db61a4)
+- fix(ui): configure class-based dark variant, broaden print background reset, and harden contract validator against commented/skipped tests (954fbea)
 - fix(ui): address Copilot review on dark-first default, coordinated print ink, touch targets, and dynamic contrast contracts (af7a1ba)
 - feat(ui): unified ChurchCore design system, self-hosted variable typography, and dark-first surface hierarchy (COUNCIL-2026-014, DIR-2026-UI-STANDARD-001) (f202540)
 - High-Performance Database Architecture
