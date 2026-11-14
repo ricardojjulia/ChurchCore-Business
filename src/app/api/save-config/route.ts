@@ -26,6 +26,7 @@ const protectedSaveConfigAction = createProtectedAction(
   },
   {
     actionName: "save_openrouter_config",
+    requireOperatorSession: true,
     rateLimit: {
       refillRate: 5,
       intervalMs: 60_000,

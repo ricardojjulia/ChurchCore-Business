@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { verifyOperatorSessionEdge } from "@/lib/auth/session-edge";
 
 const SESSION_COOKIE_NAME = "cc_cp_session";
 
@@ -11,7 +12,7 @@ const PUBLIC_PATHS = [
   "/api/webhooks/github",
 ];
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Allow Next.js static assets, images, and public endpoints
@@ -23,13 +24,12 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
+  // COUNCIL-2026-016 REQ-016-11: verify the HMAC signature and expiry, not just the
+  // token's shape. Fails closed when no signing secret is configured.
   const sessionToken = req.cookies.get(SESSION_COOKIE_NAME)?.value;
-  const hasValidTokenStructure =
-    typeof sessionToken === "string" &&
-    sessionToken.includes(".") &&
-    sessionToken.length > 32;
+  const session = await verifyOperatorSessionEdge(sessionToken);
 
-  if (!hasValidTokenStructure) {
+  if (!session) {
     if (pathname.startsWith("/api/")) {
       return NextResponse.json(
         {

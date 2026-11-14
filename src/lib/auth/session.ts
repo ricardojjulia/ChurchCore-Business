@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { getSessionSigningSecret } from "./session-secret";
 
 export const SESSION_COOKIE_NAME = "cc_cp_session";
 export const SESSION_TTL_SECONDS = 60 * 60 * 12; // 12 hours
@@ -17,12 +18,15 @@ function cleanEnv(val: string | undefined): string {
   return val.trim().replace(/^["']|["']$/g, "").trim();
 }
 
+// COUNCIL-2026-016 REQ-016-11: no built-in default signing key; fail closed.
 function getSigningSecret(): string {
-  return (
-    cleanEnv(process.env.CONTROL_PLANE_SESSION_SECRET) ||
-    cleanEnv(process.env.CRON_SECRET) ||
-    "churchcore-sovereign-control-plane-default-hmac-key-2026"
-  );
+  const secret = getSessionSigningSecret();
+  if (!secret) {
+    throw new Error(
+      "CONTROL_PLANE_SESSION_SECRET is not configured (min 32 chars); operator sessions are disabled."
+    );
+  }
+  return secret;
 }
 
 /**
@@ -57,9 +61,11 @@ export function verifyOperatorSession(
   if (!token || !token.includes(".")) return null;
   const [bodyB64, providedSig] = token.split(".", 2);
   if (!bodyB64 || !providedSig) return null;
+  const secret = getSessionSigningSecret();
+  if (!secret) return null;
 
   const expectedSig = crypto
-    .createHmac("sha256", getSigningSecret())
+    .createHmac("sha256", secret)
     .update(bodyB64, "utf8")
     .digest("base64url");
 
@@ -99,17 +105,32 @@ export async function authenticateOperatorCredentials(
   const cleanUser = username.trim();
   const cleanPass = password.trim();
 
-  // 1. Check Supabase Auth if configured with real project URL
+  // COUNCIL-2026-016 REQ-016-11: no session can be issued without a signing secret.
+  if (!getSessionSigningSecret()) {
+    return { authenticated: false, error: "Operator login is not configured." };
+  }
+
+  // 1. Supabase Auth, restricted to an explicit operator allow-list.
+  //    Only the anon key is used for sign-in (never the service-role key), and a
+  //    successful Supabase login grants nothing unless the email is allow-listed.
   const supabaseUrl =
     cleanEnv(process.env.NEXT_PUBLIC_SUPABASE_URL) ||
     cleanEnv(process.env.SUPABASE_URL);
   const supabaseKey =
     cleanEnv(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) ||
-    cleanEnv(process.env.SUPABASE_ANON_KEY) ||
-    cleanEnv(process.env.SUPABASE_SERVICE_ROLE_KEY);
+    cleanEnv(process.env.SUPABASE_ANON_KEY);
+  const operatorEmails = new Set(
+    cleanEnv(process.env.CONTROL_PLANE_OPERATOR_EMAILS)
+      .split(",")
+      .map((e) => e.trim().toLowerCase())
+      .filter(Boolean)
+  );
   if (
     supabaseUrl &&
     supabaseKey &&
+    operatorEmails.size > 0 &&
+    cleanUser.includes("@") &&
+    operatorEmails.has(cleanUser.toLowerCase()) &&
     !supabaseUrl.includes("your-control-plane-project")
   ) {
     try {
@@ -117,15 +138,16 @@ export async function authenticateOperatorCredentials(
       const supabase = createClient(supabaseUrl, supabaseKey, {
         auth: { persistSession: false },
       });
-      const emailToTry = cleanUser.includes("@")
-        ? cleanUser
-        : `${cleanUser}@churchcore.io`;
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: emailToTry,
+        email: cleanUser,
         password: cleanPass,
       });
 
-      if (!error && data.user) {
+      if (
+        !error &&
+        data.user &&
+        operatorEmails.has((data.user.email || "").toLowerCase())
+      ) {
         const token = signOperatorSession({
           sub: data.user.id,
           username: data.user.email || cleanUser,
@@ -140,39 +162,25 @@ export async function authenticateOperatorCredentials(
     }
   }
 
-  // 2. Constant-time check against sovereign operator credentials
-  const configuredUser =
+  // 2. Constant-time check against the single configured operator credential.
+  //    COUNCIL-2026-016 REQ-016-11: no built-in usernames or passwords. If the
+  //    operator credential is not configured (or is shorter than 12 chars), this
+  //    login path is disabled.
+  const configuredUser = (
     cleanEnv(process.env.CONTROL_PLANE_ADMIN_USERNAME) ||
-    cleanEnv(process.env.CONTROL_PLANE_OPERATOR_EMAIL) ||
-    "admin@churchcore.io";
+    cleanEnv(process.env.CONTROL_PLANE_OPERATOR_EMAIL)
+  ).toLowerCase();
   const configuredPass =
     cleanEnv(process.env.CONTROL_PLANE_ADMIN_PASSWORD) ||
-    cleanEnv(process.env.CONTROL_PLANE_OPERATOR_PASSWORD) ||
-    "churchcore-sovereign-2026";
+    cleanEnv(process.env.CONTROL_PLANE_OPERATOR_PASSWORD);
 
-  const validUsernames = new Set([
-    configuredUser.toLowerCase(),
-    "admin",
-    "rjulia",
-    "ricardo@churchcore.io",
-    "admin@churchcore.io",
-  ]);
-
-  const userMatch = validUsernames.has(cleanUser.toLowerCase());
-  const candidatePasswords = new Set([
-    configuredPass,
-    "churchcore-sovereign-2026",
-  ]);
-
-  let passMatch = false;
-  const inputHash = crypto.createHash("sha256").update(cleanPass).digest();
-  for (const candidate of candidatePasswords) {
-    if (!candidate) continue;
-    const candidateHash = crypto.createHash("sha256").update(candidate).digest();
-    if (crypto.timingSafeEqual(inputHash, candidateHash)) {
-      passMatch = true;
-    }
-  }
+  const credentialConfigured = Boolean(configuredUser) && configuredPass.length >= 12;
+  const sha = (s: string) => crypto.createHash("sha256").update(s).digest();
+  const userMatch =
+    credentialConfigured &&
+    crypto.timingSafeEqual(sha(cleanUser.toLowerCase()), sha(configuredUser));
+  const passMatch =
+    credentialConfigured && crypto.timingSafeEqual(sha(cleanPass), sha(configuredPass));
 
   if (!userMatch || !passMatch) {
     return {

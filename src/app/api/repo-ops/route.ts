@@ -147,6 +147,7 @@ const protectedRepoOpsAction = createProtectedAction(
   },
   {
     actionName: "council_repo_ops",
+    requireOperatorSession: true,
     rateLimit: {
       refillRate: 10,
       intervalMs: 60_000,

@@ -43,6 +43,22 @@ export interface ProtectedActionOptions {
   actionName?: string;
   rateLimit?: TokenBucketConfig;
   simulateEvaluatorFailure?: boolean;
+  /**
+   * COUNCIL-2026-016 REQ-016-11: require a valid, signature-verified operator session
+   * in addition to middleware (defense in depth for privileged actions).
+   */
+  requireOperatorSession?: boolean;
+}
+
+async function hasVerifiedOperatorSession(): Promise<boolean> {
+  try {
+    const { cookies } = await import("next/headers");
+    const { SESSION_COOKIE_NAME, verifyOperatorSession } = await import("@/lib/auth/session");
+    const store = await cookies();
+    return verifyOperatorSession(store.get(SESSION_COOKIE_NAME)?.value) !== null;
+  } catch {
+    return false; // fail closed
+  }
 }
 
 /**
@@ -114,6 +130,18 @@ export function createProtectedAction<T extends z.ZodTypeAny, R>(
   options: ProtectedActionOptions = {}
 ) {
   return async (input: unknown): Promise<ActionResponse<R>> => {
+    // 0. Operator session (privileged actions only)
+    if (options.requireOperatorSession && !(await hasVerifiedOperatorSession())) {
+      return {
+        success: false,
+        error: {
+          code: "UNAUTHORIZED_ORIGIN",
+          message: "Authentication required: Valid Control Plane operator session missing.",
+          isThreat: true,
+        },
+      };
+    }
+
     // 1. Structural Schema Validation
     const parsed = schema.safeParse(input);
     if (!parsed.success) {

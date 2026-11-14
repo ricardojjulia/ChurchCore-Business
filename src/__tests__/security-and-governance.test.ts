@@ -34,6 +34,7 @@ const MockSchema = z.object({
 describe("COUNCIL-2026-012: Embedded Security Guardrails & Control Plane Suite", () => {
   beforeEach(() => {
     resetTokenBucketsForTests();
+    process.env.CONTROL_PLANE_SESSION_SECRET = "vitest-control-plane-session-secret-0123456789";
   });
 
   it("traps structural variations breaching schema configurations (INVALID_INPUT)", async () => {
