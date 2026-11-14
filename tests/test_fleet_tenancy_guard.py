@@ -90,6 +90,14 @@ class TestFleetTenancyGuard(unittest.TestCase):
             self.assertFalse(r.passed)
             self.assertIn("scripts/seed-client.mjs:1", r.findings[0])
 
+    def test_pem_placeholder_is_not_a_key_but_real_key_material_is(self):
+        with tempfile.TemporaryDirectory() as repo:
+            conformant_repo(repo)
+            write(repo, "src/ui/Practice.jsx", "placeholder='-----BEGIN PRIVATE KEY-----\\n...'\n")
+            self.assertTrue(by_id(guard.run_guard(repo, SPEC))["G02"].passed)
+            write(repo, "src/ui/key.ts", "const k = `-----BEGIN RSA PRIVATE KEY-----\n" + "MIIEow" + "A" * 60 + "`\n")
+            self.assertFalse(by_id(guard.run_guard(repo, SPEC))["G02"].passed)
+
     def test_committed_env_file_fails(self):
         with tempfile.TemporaryDirectory() as repo:
             conformant_repo(repo)

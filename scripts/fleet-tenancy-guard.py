@@ -32,7 +32,7 @@ CANONICAL_SPEC_CANDIDATES = [
     os.path.join(ROOT_DIR, "docs", "control-plane", "tenancy", "fleet-tenancy.json"),
     os.path.join(ROOT_DIR, ".fleet", "fleet-tenancy.json"),  # vendored copy in product repos
 ]
-GUARD_VERSION = "1.0.0"
+GUARD_VERSION = "1.0.1"
 DIRECTIVE_ID = "COUNCIL-2026-016"
 
 LOCAL_FLEET = {
@@ -68,7 +68,9 @@ SECRET_PATTERNS = [
     ("anthropic-key", re.compile(r"\bsk-ant-[0-9A-Za-z_\-]{20,}")),
     ("github-token", re.compile(r"\b(ghp_[0-9A-Za-z]{30,}|github_pat_[0-9A-Za-z_]{30,})")),
     ("sendgrid-key", re.compile(r"\bSG\.[0-9A-Za-z_\-]{16,}\.[0-9A-Za-z_\-]{16,}")),
-    ("private-key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
+    # A real key has base64 key material after the header (literal or escaped newline);
+    # bare PEM headers in UI placeholders and crypto libraries are not keys.
+    ("private-key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----(?:\s|\\n|\\r)*[A-Za-z0-9+/=]{40,}")),
     ("db-url-with-password", re.compile(r"postgres(?:ql)?://[^:\s/'\"]+:(?!\$\{|<|password@|postgres@)[^@\s'\"]{6,}@(?!localhost|127\.0\.0\.1|db:|postgres:)")),
 ]
 # Hard-coded password assignment in non-test source.
@@ -232,11 +234,6 @@ def run_guard(repo, spec=None, today=None):
                     g02.fail(f"{rel}: banned credential literal `{lit[:3]}…`")
         compiled = _is_compiled_asset(rel)
         for label, rx in SECRET_PATTERNS:
-            if label == "private-key" and compiled:
-                # Bundled crypto libraries embed PEM header strings; a real key also
-                # carries base64 key material on the following line.
-                if not re.search(r"-----BEGIN [A-Z ]*PRIVATE KEY-----\s*\n[A-Za-z0-9+/=]{40,}", text):
-                    continue
             if rx.search(text) and not _allowlisted(contract, "G02", rel, today):
                 g02.fail(f"{rel}: possible {label}")
         if not _is_test_path(rel) and not rel.endswith(".sql") and not compiled and not _is_i18n_path(rel):
