@@ -76,7 +76,7 @@ Status Legend:
 ### COUNCIL-2026-016: Fleet Tenancy, Uniform Self-Serve Signup & Subscriptions (BLOCKING)
 * **Computed, not self-attested.** Rows are produced by `scripts/fleet-tenancy-guard.py` through `scripts/sync-governance.py`. Entries in `ACKNOWLEDGMENTS.md` are ignored for this directive (§IV.1). `⛔ NON-CONFORMANT (Gxx)` lists the failing guard checks.
 * **Baseline 2026-11-14 (main branches, before the Phase 0 PRs merge):** ChurchCore 2/9 · ChurchCore-LMS 1/9 · ChurchCore-Academy 1/9 · ChurchCoreCare 2/9 · ChurchCore-Orthos 2/9 · FaithFullScholars 2/9 guard checks passing. No app is go-live certified.
-* **Phase 0 security PRs:** ChMS ricardojjulia/ChurchCore#284, Orthos ricardojjulia/ChurchCore-Orthos#44, LMS ricardojjulia/ChurchCore-LMS#115 and Care ricardojjulia/ChurchCoreCare#169. The Academy and Scholars PRs are tracked in `docs/control-plane/tenancy/IMPLEMENTATION-PLAN.md`.
+* **Phase 0 security PRs:** ChMS ricardojjulia/ChurchCore#284, Orthos ricardojjulia/ChurchCore-Orthos#44, LMS ricardojjulia/ChurchCore-LMS#115, Care ricardojjulia/ChurchCoreCare#169, Academy ricardojjulia/ChurchCore-Academy#264, Scholars ricardojjulia/FaithFullScholars#140. All open; none merged.
 * **Active guard exceptions:** none.
 * **Owner credential rotation (Phase 0.5):** ⛔ not yet confirmed.
 
