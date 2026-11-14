@@ -54,6 +54,9 @@ export default async function ExecutiveCockpitPage() {
         }}
       >
         <ChurchCoreTrustBadge />
+        <a href="/fleet" style={{ fontSize: "12px", color: "#818CF8" }}>
+          Fleet tenants (COUNCIL-2026-016)
+        </a>
         <span style={{ fontSize: "12px", color: "#94A3B8" }}>
           COUNCIL-2026-012 • Next.js 16 App Router • Supabase 100% Forced RLS •
           Zero Cross-App Customer Data Propagation

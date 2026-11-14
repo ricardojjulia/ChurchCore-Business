@@ -10,6 +10,9 @@ const PUBLIC_PATHS = [
   "/api/auth/session",
   "/api/cron/fleet-sync",
   "/api/webhooks/github",
+  // COUNCIL-2026-016: product → control plane event ingest. Authenticated inside the route by
+  // the product's fleet HMAC secret (X-Fleet-Timestamp / X-Fleet-Signature), not a session.
+  "/api/fleet/events",
 ];
 
 export async function middleware(req: NextRequest) {
