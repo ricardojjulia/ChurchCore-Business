@@ -275,6 +275,54 @@ def audit_acknowledgment_ledger(repo_root):
         return True, "Verified (docs/council/ACKNOWLEDGMENTS.md present)"
     return False, "Missing (docs/council/ACKNOWLEDGMENTS.md missing)"
 
+# COUNCIL-2026-016: guard checks that prove each requirement statically. Requirements
+# that also need the conformance test are only partially provable here and therefore
+# report NOT VERIFIED until the guard's G07 (conformance test wired into CI) passes.
+FLEET_TENANCY_REQ_CHECKS = {
+    "REQ-016-01": ["G09"],
+    "REQ-016-02": ["G01", "G07"],
+    "REQ-016-03": ["G04", "G05"],
+    "REQ-016-04": ["G03", "G06"],
+    "REQ-016-05": ["G06", "G07"],
+    "REQ-016-06": ["G08", "G07"],
+    "REQ-016-07": ["G02", "G07"],
+    "REQ-016-08": ["G07"],
+    "REQ-016-09": ["G07"],
+    "REQ-016-10": ["G01", "G07"],
+    "REQ-016-11": ["G02"],
+    "REQ-016-12": ["G07"],
+}
+
+
+def audit_fleet_tenancy(repo_root, req_id, _cache={}):
+    """Run fleet-tenancy-guard.py (vendored next to this script). No default pass."""
+    guard_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fleet-tenancy-guard.py")
+    if not os.path.exists(guard_path):
+        return False, "NOT VERIFIED (scripts/fleet-tenancy-guard.py not vendored)"
+    key = os.path.abspath(repo_root)
+    if key not in _cache:
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("fleet_tenancy_guard", guard_path)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            _cache[key] = {r.check_id: r for r in mod.run_guard(repo_root)}
+        except Exception as e:  # any failure to prove compliance is a failure
+            return False, f"NOT VERIFIED (guard error: {e})"
+    results = _cache[key]
+    needed = FLEET_TENANCY_REQ_CHECKS.get(req_id, [])
+    if not needed:
+        return False, "NOT VERIFIED (no guard mapping)"
+    # A repo without a valid tenancy contract can never verify any requirement
+    # (checks such as G02 would otherwise pass vacuously on an empty tree).
+    if "G01" not in needed:
+        needed = ["G01"] + needed
+    failing = [c for c in needed if not results.get(c) or not results[c].passed]
+    if failing:
+        return False, f"NOT VERIFIED (guard checks failing: {', '.join(failing)})"
+    return True, f"Verified by fleet-tenancy-guard ({', '.join(needed)})"
+
+
 def execute_enforcement(repo_root, strict_mode=False):
     product_id, canonical_name = detect_product(repo_root)
     manifest, source_desc = fetch_manifest(repo_root)
@@ -325,6 +373,12 @@ def execute_enforcement(repo_root, strict_mode=False):
             passed, evidence = audit_telemetry(repo_root)
         elif rid in ["REQ-004-02", "REQ-004-03"]:
             passed, evidence = audit_telemetry(repo_root)
+        elif rid.startswith("REQ-016-"):
+            passed, evidence = audit_fleet_tenancy(repo_root, rid)
+        elif req.get("enforcement") == "BLOCKING":
+            # COUNCIL-2026-016 §IV.1: BLOCKING requirements never default-pass.
+            passed = False
+            evidence = "NOT VERIFIED (blocking requirement has no automated proof)"
         else:
             passed = True
             evidence = "Verified"

@@ -1,0 +1,102 @@
+{
+  "$comment": "Canonical machine-readable spec for COUNCIL-2026-016 (DIR-2026-TENANCY-001). Normative. Vendored into each product repo at .fleet/fleet-tenancy.json; reserved_slugs is also vendored at the path declared in .fleet/tenancy.json. Change only via an amending directive.",
+  "directive": "COUNCIL-2026-016",
+  "spec_version": "1.0.0",
+  "effective": "2026-11-14",
+  "identity": {
+    "fleet_tenant_id": "uuid-v4, minted by control plane or self-serve signup; unique non-null on tenant root row",
+    "slug_regex": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+    "slug_min_length": 3,
+    "slug_max_length": 30,
+    "slug_case_insensitive_unique": true,
+    "reserved_slugs": [
+      "about", "abuse", "account", "accounts", "admin", "administrator", "api", "app", "apps", "assets",
+      "auth", "billing", "blog", "cdn", "churchcore", "control", "dashboard", "demo", "dev", "docs",
+      "email", "fleet", "ftp", "help", "hq", "imap", "internal", "invite", "join", "legal",
+      "login", "logout", "mail", "marketing", "mx", "my", "new", "ns1", "ns2", "oauth",
+      "platform", "pop", "portal", "preview", "privacy", "root", "sales", "sandbox", "security", "settings",
+      "signin", "signup", "smtp", "sso", "staging", "start", "static", "status", "support", "system",
+      "terms", "test", "trial", "www"
+    ]
+  },
+  "lifecycle": {
+    "tenant_status": ["provisioning", "provision_failed", "active", "trial_expired", "suspended", "archived", "purged"],
+    "initial_tenant_status": "provisioning",
+    "transitions": {
+      "provisioning": ["active", "provision_failed"],
+      "provision_failed": ["provisioning"],
+      "active": ["trial_expired", "suspended", "archived"],
+      "trial_expired": ["active", "archived"],
+      "suspended": ["active", "archived"],
+      "archived": ["active", "purged"],
+      "purged": []
+    },
+    "access": {
+      "active": "full",
+      "trial_expired": "read_only_with_export",
+      "suspended": "read_only_with_export",
+      "archived": "none",
+      "provisioning": "none",
+      "provision_failed": "none",
+      "purged": "none"
+    },
+    "billing_status": ["trialing", "active", "past_due", "canceled", "comped"],
+    "timers": {
+      "trial_expired_to_archived_days": 30,
+      "suspended_past_due_grace_days": 14,
+      "archived_to_purged_days": 30
+    },
+    "protected_columns": ["fleet_tenant_id", "tenant_status", "billing_status", "plan", "trial_ends_at", "stripe_customer_id", "stripe_subscription_id", "is_synthetic", "signup_source"]
+  },
+  "subscription": {
+    "trial": {
+      "days": 30,
+      "plan_during_trial": "pro",
+      "features": "all",
+      "card_required": false,
+      "on_expiry": "trial_expired"
+    },
+    "tiers": [
+      { "key": "starter", "name": "Starter", "rank": 1 },
+      { "key": "growth", "name": "Growth", "rank": 2 },
+      { "key": "pro", "name": "Pro", "rank": 3 }
+    ],
+    "annual_multiplier_of_monthly": 10,
+    "currency": "usd",
+    "enterprise": "Sales-led contracts above Pro are provisioned via the control plane on plan 'pro' with billing_status 'active' or 'comped' and a contract reference; they are not a tier key.",
+    "stripe_price_env_pattern": "STRIPE_PRICE_{TIER}_{MONTHLY|ANNUAL}",
+    "never_paywalled": ["child_safety", "safeguarding", "security_controls", "data_export", "accessibility"],
+    "over_limit_policy": "Prompt to upgrade with 30-day grace; never block reads, never delete data."
+  },
+  "fleet_api": {
+    "auth": "HMAC-SHA256 over `${timestamp}.${raw_body}` with per-app secret FLEET_PROVISIONING_SECRET; headers X-Fleet-Timestamp, X-Fleet-Signature; reject if |now - timestamp| > 300s",
+    "routes": [
+      "POST /api/fleet/tenants",
+      "GET /api/fleet/tenants/{fleet_tenant_id}",
+      "POST /api/fleet/tenants/{fleet_tenant_id}/suspend",
+      "POST /api/fleet/tenants/{fleet_tenant_id}/restore",
+      "POST /api/fleet/tenants/{fleet_tenant_id}/archive"
+    ],
+    "create_request": {
+      "fleet_tenant_id": "uuid",
+      "slug": "string",
+      "display_name": "string",
+      "plan": "starter|growth|pro",
+      "billing_status": "trialing|active|comped",
+      "admin": { "email": "string", "name": "string" },
+      "timezone": "IANA tz",
+      "country": "ISO-3166-1 alpha-2",
+      "contract_ref": "string|null"
+    },
+    "create_response": { "fleet_tenant_id": "uuid", "app_tenant_id": "string", "tenant_status": "string", "billing_status": "string" }
+  },
+  "audit_events": [
+    "tenant.requested", "tenant.provisioned", "tenant.provision_failed", "tenant.activated",
+    "tenant.trial_expired", "tenant.suspended", "tenant.restored", "tenant.archived", "tenant.purged",
+    "tenant.admin_invited", "tenant.plan_changed", "tenant.billing_status_changed", "tenant.support_access"
+  ],
+  "funnel_events": [
+    "signup.started", "signup.email_sent", "signup.verified", "tenant.provisioned",
+    "signup.password_set", "signup.compliance_ack", "trial.converted", "trial.expired"
+  ]
+}

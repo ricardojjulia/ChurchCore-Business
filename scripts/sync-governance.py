@@ -117,6 +117,38 @@ def normalize_status(raw_status):
         return "✅ IMPLEMENTED"
     return "⚪ PENDING"
 
+def _load_script(filename, modname):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(modname, os.path.join(SCRIPT_DIR, filename))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def run_tenancy_guard(product_name):
+    """Run fleet-tenancy-guard.py against the local sibling repo. None if unavailable."""
+    try:
+        guard = _load_script("fleet-tenancy-guard.py", "fleet_tenancy_guard")
+        path = guard.LOCAL_FLEET.get(product_name)
+        if not path or not os.path.isdir(path):
+            return None
+        return {r.check_id: r.passed for r in guard.run_guard(path)}
+    except Exception as e:
+        print(f"  [!] tenancy guard failed for {product_name}: {e}")
+        return None
+
+
+def tenancy_status(guard_results, req_id):
+    if guard_results is None:
+        return "⛔ NOT VERIFIED (repo unavailable)"
+    engine = _load_script("pull-and-enforce-directives.py", "pull_and_enforce_directives")
+    needed = ["G01"] + [c for c in engine.FLEET_TENANCY_REQ_CHECKS.get(req_id, []) if c != "G01"]
+    failing = [c for c in needed if not guard_results.get(c)]
+    if not failing:
+        return "✅ VERIFIED (guard)"
+    return f"⛔ NON-CONFORMANT ({','.join(failing)})"
+
+
 def main():
     print("=" * 60)
     print("ChurchCore Governance Sync Engine")
@@ -153,8 +185,17 @@ def main():
         print(f"  Source: {source}")
         ack_data = parse_acknowledgments(content) if content else {}
         
+        guard_results = None
         for d in decisions:
             if p_name in d.get("impacted_products", []):
+                # COUNCIL-2026-016 §IV.1: directives that reject self-attestation are
+                # computed by their verifier, never from ACKNOWLEDGMENTS.md.
+                if d.get("self_attestation_accepted") is False:
+                    if guard_results is None:
+                        guard_results = run_tenancy_guard(p_name)
+                    for req in d.get("requirements", []):
+                        compliance[(req["req_id"], p_name)] = tenancy_status(guard_results, req["req_id"])
+                    continue
                 for req in d.get("requirements", []):
                     rid = req["req_id"]
                     if rid in ack_data:

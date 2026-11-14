@@ -3,7 +3,7 @@
 **Classification:** Cross-Product Governance Audit & Tracking Dashboard  
 **Central Manifest:** [manifest.json](file:///Users/rjulia/ChurchCore-Business/docs/governance-sync/manifest.json)  
 **Governing Authority:** Executive Governing Council  
-**Last Updated:** 2026-10-16  
+**Last Updated:** 2026-11-14  
 
 ---
 
@@ -46,6 +46,18 @@ Status Legend:
 | **COUNCIL-2026-011** | `REQ-011-02` OpenRouter AI Translation Gateway Integration | ⚪ PENDING | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
 | **COUNCIL-2026-011** | `REQ-011-03` Variable Token {var} Preservation & Domain Glossaries | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
 | **COUNCIL-2026-011** | `REQ-011-04` Mandatory Pre-Merge CI Quality Gate | 🟡 IN PROGRESS | ✅ IMPLEMENTED | 🟡 IN PROGRESS | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ⚪ PENDING |
+| **COUNCIL-2026-016** | `REQ-016-01` Canonical Tenant Identity & Slug | ⛔ NON-CONFORMANT (G01,G09) | ⛔ NON-CONFORMANT (G01,G09) | ⛔ NON-CONFORMANT (G01,G09) | ⛔ NON-CONFORMANT (G01,G09) | ⛔ NON-CONFORMANT (G01,G09) | ⛔ NON-CONFORMANT (G01,G09) |
+| **COUNCIL-2026-016** | `REQ-016-02` Shared Lifecycle State Machine | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) |
+| **COUNCIL-2026-016** | `REQ-016-03` One Atomic, Idempotent Provisioning Entry Point | ⛔ NON-CONFORMANT (G01,G05) | ⛔ NON-CONFORMANT (G01,G05) | ⛔ NON-CONFORMANT (G01,G04,G05) | ⛔ NON-CONFORMANT (G01,G05) | ⛔ NON-CONFORMANT (G01,G05) | ⛔ NON-CONFORMANT (G01,G05) |
+| **COUNCIL-2026-016** | `REQ-016-04` Exactly Two Hardened Entry Points | ⛔ NON-CONFORMANT (G01,G06) | ⛔ NON-CONFORMANT (G01,G03,G06) | ⛔ NON-CONFORMANT (G01,G06) | ⛔ NON-CONFORMANT (G01,G06) | ⛔ NON-CONFORMANT (G01,G06) | ⛔ NON-CONFORMANT (G01,G06) |
+| **COUNCIL-2026-016** | `REQ-016-05` Uniform Self-Serve Experience | ⛔ NON-CONFORMANT (G01,G06,G07) | ⛔ NON-CONFORMANT (G01,G06,G07) | ⛔ NON-CONFORMANT (G01,G06,G07) | ⛔ NON-CONFORMANT (G01,G06,G07) | ⛔ NON-CONFORMANT (G01,G06,G07) | ⛔ NON-CONFORMANT (G01,G06,G07) |
+| **COUNCIL-2026-016** | `REQ-016-06` 30-Day Full-Feature Trial & Standard Tiers | ⛔ NON-CONFORMANT (G01,G08,G07) | ⛔ NON-CONFORMANT (G01,G08,G07) | ⛔ NON-CONFORMANT (G01,G08,G07) | ⛔ NON-CONFORMANT (G01,G08,G07) | ⛔ NON-CONFORMANT (G01,G08,G07) | ⛔ NON-CONFORMANT (G01,G08,G07) |
+| **COUNCIL-2026-016** | `REQ-016-07` Customer-Owned First Admin; No Operator Passwords | ⛔ NON-CONFORMANT (G01,G02,G07) | ⛔ NON-CONFORMANT (G01,G02,G07) | ⛔ NON-CONFORMANT (G01,G02,G07) | ⛔ NON-CONFORMANT (G01,G02,G07) | ⛔ NON-CONFORMANT (G01,G02,G07) | ⛔ NON-CONFORMANT (G01,G02,G07) |
+| **COUNCIL-2026-016** | `REQ-016-08` Lifecycle Status Enforced | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) |
+| **COUNCIL-2026-016** | `REQ-016-09` Audit, Telemetry & Compliance Capture | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) |
+| **COUNCIL-2026-016** | `REQ-016-10` Conformance Test & Blocking Guard (Go-Live Gate) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) |
+| **COUNCIL-2026-016** | `REQ-016-11` Credential & Session Hygiene (Phase 0) | ⛔ NON-CONFORMANT (G01,G02) | ⛔ NON-CONFORMANT (G01,G02) | ⛔ NON-CONFORMANT (G01,G02) | ⛔ NON-CONFORMANT (G01,G02) | ⛔ NON-CONFORMANT (G01,G02) | ⛔ NON-CONFORMANT (G01,G02) |
+| **COUNCIL-2026-016** | `REQ-016-12` Deprovisioning | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) | ⛔ NON-CONFORMANT (G01,G07) |
 
 ---
 
@@ -59,6 +71,14 @@ Status Legend:
 * **`REQ-002-01` (Footer Trust Badge):** All client-facing footers must render the official *"Powered by ChurchCore"* trust mark linking to `https://www.churchcore.io/security`. Dispatched to all 6 product repos.
 * **`REQ-002-02` (WCAG AAA Contrast):** Automated accessibility audit (7:1 contrast ratio) required on primary navigation and dashboard buttons. Dispatched to all 6 product repos.
 * **`REQ-002-03` (Naming Orthography):** All repos have verified exact CamelCase nomenclature (`ChurchCore`, `ChurchCore-LMS`, `ChurchCore-Academy`, `ChurchCoreCare`, `ChurchCore-Orthos`, `FaithFullScholars`).
+
+
+### COUNCIL-2026-016: Fleet Tenancy, Uniform Self-Serve Signup & Subscriptions (BLOCKING)
+* **Computed, not self-attested.** Rows are produced by `scripts/fleet-tenancy-guard.py` through `scripts/sync-governance.py`. Entries in `ACKNOWLEDGMENTS.md` are ignored for this directive (§IV.1). `⛔ NON-CONFORMANT (Gxx)` lists the failing guard checks.
+* **Baseline 2026-11-14 (main branches, before the Phase 0 PRs merge):** ChurchCore 2/9 · ChurchCore-LMS 1/9 · ChurchCore-Academy 1/9 · ChurchCoreCare 2/9 · ChurchCore-Orthos 2/9 · FaithFullScholars 2/9 guard checks passing. No app is go-live certified.
+* **Phase 0 security PRs:** ChMS ricardojjulia/ChurchCore#284 and Orthos ricardojjulia/ChurchCore-Orthos#44. LMS, Care, Academy and Scholars PRs are tracked in `docs/control-plane/tenancy/IMPLEMENTATION-PLAN.md`.
+* **Active guard exceptions:** none.
+* **Owner credential rotation (Phase 0.5):** ⛔ not yet confirmed.
 
 ---
 

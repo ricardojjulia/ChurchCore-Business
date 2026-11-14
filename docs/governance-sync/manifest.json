@@ -2,11 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ChurchCore Governance Dispatch Manifest",
   "description": "Central machine-readable registry of ratified Council decisions and cross-product implementation requirements.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "organization": "ChurchCore",
   "governance_repo": "https://github.com/ricardojjulia/ChurchCore-Business",
   "raw_manifest_url": "https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/main/docs/governance-sync/manifest.json",
-  "last_updated": "2026-11-08T17:10:00Z",
+  "last_updated": "2026-11-14T20:00:00Z",
   "registered_products": [
     {
       "name": "ChurchCore",
@@ -554,6 +554,122 @@
           "title": "Active OpenRouter Model Radar & Feature Discovery Engine",
           "description": "Continuously evaluate live OpenRouter models via API, rank balanced fitness, and expose active discovery radar via /api/openrouter/models.",
           "verification": "/api/openrouter/models returns catalog with recommended models and newly discovered flags."
+        }
+      ]
+    },
+    {
+      "id": "COUNCIL-2026-016",
+      "title": "Fleet Tenant Provisioning, Uniform Self-Serve Signup & Subscription Standard",
+      "ratification_date": "2026-11-14",
+      "status": "RATIFIED",
+      "enforcement": "BLOCKING",
+      "self_attestation_accepted": false,
+      "verifier": "scripts/fleet-tenancy-guard.py",
+      "doc_url": "https://github.com/ricardojjulia/ChurchCore-Business/blob/main/docs/council/COUNCIL-2026-016.md",
+      "impacted_products": [
+        "ChurchCore",
+        "ChurchCore-LMS",
+        "ChurchCore-Academy",
+        "ChurchCoreCare",
+        "ChurchCore-Orthos",
+        "FaithFullScholars"
+      ],
+      "requirements": [
+        {
+          "req_id": "REQ-016-01",
+          "title": "Canonical Tenant Identity & Slug",
+          "description": "fleet_tenant_id UUID on the tenant root row; fleet slug rule; vendored reserved-slug list identical to the control plane.",
+          "verification": "python3 scripts/fleet-tenancy-guard.py --repo . passes check G09",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-02",
+          "title": "Shared Lifecycle State Machine",
+          "description": "tenant_status/billing_status values and transitions exactly per fleet-tenancy.json; protected columns not writable by tenant users (DB-enforced).",
+          "verification": "Conformance test scenarios 6-8 green in CI",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-03",
+          "title": "One Atomic, Idempotent Provisioning Entry Point",
+          "description": "Single provisionTenant in one DB transaction (no pool-level BEGIN); idempotent on fleet_tenant_id; side effects via outbox.",
+          "verification": "python3 scripts/fleet-tenancy-guard.py --repo . passes check G04 and G05; conformance scenario 2 (idempotent replay) green",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-04",
+          "title": "Exactly Two Hardened Entry Points",
+          "description": "Uniform self-serve signup and HMAC-authenticated POST /api/fleet/tenants; all other creation paths removed; fail-closed CAPTCHA and rate limits; no bypass tokens.",
+          "verification": "python3 scripts/fleet-tenancy-guard.py --repo . passes check G03 and G06",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-05",
+          "title": "Uniform Self-Serve Experience",
+          "description": "Identical signup, verification, provisioning, set-password, compliance, trial-banner, email and plan-selection steps via @churchcore/fleet-signup.",
+          "verification": "Conformance scenario 1 green using the fleet-signup package",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-06",
+          "title": "30-Day Full-Feature Trial & Standard Tiers",
+          "description": "plan keys starter/growth/pro; 30-day trial with all Pro features, no card; conversion via fleet Stripe Checkout; prices from PRICING-SCHEDULE.md; webhook dedupe by event.id.",
+          "verification": "python3 scripts/fleet-tenancy-guard.py --repo . passes check G08; conformance scenario 5 green",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-07",
+          "title": "Customer-Owned First Admin; No Operator Passwords",
+          "description": "Customer sets own password or receives an invite; no operator-set/printed/committed passwords; no modification of existing accounts; staff never tenant members.",
+          "verification": "Conformance scenario 3 green; G02 passes",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-08",
+          "title": "Lifecycle Status Enforced",
+          "description": "Session resolution and RLS tenant helper deny writes unless tenant_status = active; suspended/trial_expired read-only.",
+          "verification": "Conformance scenarios 6-7 green",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-09",
+          "title": "Audit, Telemetry & Compliance Capture",
+          "description": "Append-only lifecycle audit events reported to control plane; ToS/Privacy acceptance with version; Care BAA; Academy FERPA/COPPA.",
+          "verification": "Conformance test asserts audit events and acknowledgments",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-10",
+          "title": "Conformance Test & Blocking Guard (Go-Live Gate)",
+          "description": "Contract .fleet/tenancy.json; vendored guard; real-DB conformance test; both required status checks on main.",
+          "verification": "python3 scripts/fleet-tenancy-guard.py --repo . passes check G01 and G07",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-11",
+          "title": "Credential & Session Hygiene (Phase 0)",
+          "description": "No hard-coded/master/default credentials or live secrets; hashed passwords; signed or server-side sessions; roles never from user-editable metadata; exposed credentials rotated.",
+          "verification": "python3 scripts/fleet-tenancy-guard.py --repo . passes check G02; owner rotation confirmed in Compliance Matrix",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
+        },
+        {
+          "req_id": "REQ-016-12",
+          "title": "Deprovisioning",
+          "description": "suspend/restore/archive/purge via transition function; purge is transactional, removes orphaned identities, cancels Stripe, keeps tombstones; jobs scheduled.",
+          "verification": "Conformance scenario 8 green",
+          "priority": "P0_CRITICAL",
+          "enforcement": "BLOCKING"
         }
       ]
     }

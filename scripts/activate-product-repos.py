@@ -518,7 +518,8 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
     edge_scripts = [
         "report-telemetry.py",
         "pull-and-enforce-directives.py",
-        "challenge-central-record.py"
+        "challenge-central-record.py",
+        "fleet-tenancy-guard.py",  # COUNCIL-2026-016 blocking gate
     ]
     for sname in edge_scripts:
         src_path = os.path.join("/Users/rjulia/ChurchCore-Business/scripts", sname)
@@ -528,6 +529,22 @@ Manifest: `https://raw.githubusercontent.com/ricardojjulia/ChurchCore-Business/m
                 dst.write(src.read())
             os.chmod(dst_path, 0o755)
             print(f"  [x] Installed edge script: {dst_path}")
+
+    # 4b. COUNCIL-2026-016: vendor canonical tenancy spec + reserved-slug list into .fleet/
+    #     (the per-repo contract .fleet/tenancy.json is authored by each product team).
+    tenancy_spec_src = "/Users/rjulia/ChurchCore-Business/docs/control-plane/tenancy/fleet-tenancy.json"
+    if os.path.exists(tenancy_spec_src):
+        fleet_dir = os.path.join(valid_path, ".fleet")
+        os.makedirs(fleet_dir, exist_ok=True)
+        with open(tenancy_spec_src, "r") as f:
+            tenancy_spec = json.load(f)
+        with open(os.path.join(fleet_dir, "fleet-tenancy.json"), "w") as f:
+            json.dump(tenancy_spec, f, indent=2)
+            f.write("\n")
+        with open(os.path.join(fleet_dir, "reserved-slugs.json"), "w") as f:
+            json.dump(tenancy_spec["identity"]["reserved_slugs"], f, indent=2)
+            f.write("\n")
+        print(f"  [x] Vendored COUNCIL-2026-016 tenancy spec into {fleet_dir}")
 
     # 5. Generate docs/mvp-100-plan.md (Mandatory COUNCIL-2026-005 Roadmap)
     mvp_plan_file = os.path.join(valid_path, "docs", "mvp-100-plan.md")
